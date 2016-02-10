@@ -3,10 +3,10 @@
 	"features": [{
 		"type": "Feature",
 		"properties": {
-			"stroke": "#555555",
+			"stroke": "#FFFFFF",
 			"stroke-width": 2,
 			"stroke-opacity": 1,
-			"fill": "#555555",
+			"fill": "#FFFFFF",
 			"fill-opacity": 0.5,
 			"name": "Ø20-604-0"
 		},
@@ -69,10 +69,10 @@
 	}, {
 		"type": "Feature",
 		"properties": {
-			"stroke": "#555555",
+			"stroke": "#FFFFFF",
 			"stroke-width": 2,
 			"stroke-opacity": 1,
-			"fill": "#555555",
+			"fill": "#FFFFFF",
 			"fill-opacity": 0.5,
 			"name": "Ø22-508-0"
 		},
