@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 namespace Website
 {
@@ -11,7 +12,13 @@ namespace Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
 
+                //var line = new GeoJSON.Net.Geometry.LineString(coordinates);
+                //string json = JsonConvert.SerializeObject(line);
+                //return Content(json, "application/json");
+            }
         }
     }
 }
