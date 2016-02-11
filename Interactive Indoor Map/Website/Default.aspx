@@ -18,6 +18,7 @@
       <p>Here's an interactive map indicating the countries I've either lived in or travelled through for a month or more.
       
       <div id="map" style="width: 800px; height: 440px; border: 1px solid #AAA;"></div>
+
     </form>
 </body>
 </html>

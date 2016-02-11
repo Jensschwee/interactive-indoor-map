@@ -11,6 +11,11 @@ $.getJSON("map/map.json", function (data) {
     var geojson = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
             layer.bindPopup(feature.properties.name);
+            layer.setStyle({
+                fillColor: feature.properties.fill,
+                weight: 1,
+                fillOpacity: 0.8
+            });
         }
     });
 
