@@ -102,11 +102,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\geojson.min.js" />
     <Content Include="scripts\leaf-demo.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\leaflet-realtime.js" />
     <Content Include="scripts\leaflet.js" />
     <Content Include="Default.aspx" />
     <None Include="Map\map.json" />
@@ -120,6 +122,7 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\leafletDraw.js" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
