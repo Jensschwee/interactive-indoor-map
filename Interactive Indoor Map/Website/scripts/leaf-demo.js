@@ -19,6 +19,7 @@ function leafletDraw(JSONMap) {
                     console.log("Draw icon");
                 }
             }
+
     });
    
     //Fints the div for the map to draw in
