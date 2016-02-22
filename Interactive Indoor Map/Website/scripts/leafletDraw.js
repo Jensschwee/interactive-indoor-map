@@ -15,9 +15,9 @@
 	                return {
 	                    type: 'Feature',
 	                    properties: {
-	                        id: location.id,
-	                        fillColor: location.fill,
-	                        "stroke-width": 1
+	                        id: location.id
+	                        //fillColor: location.fill,
+	                        //"stroke-width": 1
 	                    },
 	                    geometry: {
 	                        type: 'Polygon',
@@ -30,7 +30,8 @@
 	                        ]
 	                    }
 	                };
-	            });
+	            })
+	        ;
 	    }).catch(function (err) {
 	        error(err);
 	    });
@@ -50,10 +51,21 @@
 
 function style(feature) {
     return {
-        fillColor: feature.properties.fill,
+        fillColor: feature.properties.fill, //getPower(feature.properties.power),
         color: 'white',//feature.properties.stroke,
         weight: 1,
         opacity: 1,
         fillOpacity: 1
     };
+}
+
+function getPower(power) {
+    return power > 1000 ? '#800026' :
+           power > 500 ?  '#BD0026' :
+           power > 200 ?  '#E31A1C' :
+           power > 100 ?  '#FC4E2A' :
+           power > 50 ?   '#FD8D3C' :
+           power > 20 ?   '#FEB24C' :
+           power > 10 ?   '#FED976' :
+                          '#FFEDA0';
 }
