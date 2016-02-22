@@ -95,6 +95,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleClient.cs" />
     <Compile Include="Domain\Building.cs" />
     <Compile Include="Domain\Floor.cs" />
     <Compile Include="Domain\Room.cs" />

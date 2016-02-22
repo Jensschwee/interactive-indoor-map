@@ -22,25 +22,51 @@ namespace BuildingService.Service
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "GetProductList/")]
-        Building GetFloorLevelNeg1Data();
+            UriTemplate = "GetCellarFloorData/")]
+        Building GetCellarFloorLevel();
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "GetProductList/")]
-        Building GetFloorLevel0Data();
+            UriTemplate = "GetGroundFloorData/")]
+        Building GetGroundFloorData();
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "GetProductList/")]
-        Building GetFloorLevel1Data();
+            UriTemplate = "GetFirstFloorData/")]
+        Building GetFirstFloorData();
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "GetProductList/")]
-        Building GetFloorLevel2Data();
+            UriTemplate = "GetSecondFloorData")]
+        Building GetSecondFloorData();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "GetCellarFloorData/{time}")]
+        Building GetCellarFloorHistory();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "GetGroundFloorData/{time}")]
+        Building GetGroundFloorHistory();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "GetFirstFloorData/{time}")]
+        Building GetFirstFloorHistory();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "GetSecondFloorData/{time}")]
+        Building GetSecondFloorHistory();
+
+        
     }
 }

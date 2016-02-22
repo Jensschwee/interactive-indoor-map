@@ -14,25 +14,34 @@ namespace BuildingService.Service
     {
         public Building GetBuildingData()
         {
+            //Denne metode skal lave et kald til DB som giver os objekterne til bygningen, disse skal derefter bruges af de andre metoder.
+            /*using (DBContext context = new DBContext())
+            {
+                //create building with DB data as input and return it
+            }*/
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevelNeg1Data()
+        public Building GetCellarFloorLevel()
+        {
+            //sorter bygningsobjekterne så der kun er til de ene niveau.
+            //Opret forbindelse til sensor api, hvis dette ikke kan lade sig gøre så returner resultat fra DB
+            //Ændrer objekt data efter hvad input fra sensor api er
+            //returner dette
+            throw new NotImplementedException();
+        }
+
+        public Building GetGroundFloorData()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevel0Data()
+        public Building GetFirstFloorData()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevel1Data()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Building GetFloorLevel2Data()
+        public Building GetSecondFloorData()
         {
             throw new NotImplementedException();
         }
