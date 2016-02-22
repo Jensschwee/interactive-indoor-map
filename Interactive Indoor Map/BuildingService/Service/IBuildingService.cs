@@ -14,42 +14,42 @@ namespace BuildingService.Service
     public interface IBuildingService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "/BuildingDimensions/{BuildingId}")]
         Building BuildingDimensions();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "/SensorLocations/{BuildingId}")]
         Building SensorLocations();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "/BuildingSensorData/{BuildingId}")]
         Building BuildingSensorData();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "/FloorSensorData/{BuildingId}/{FloorLevel}")]
         Building FloorSensorData();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "/RoomSensorData/{BuildingId}/{RoomName}")]
         Building RoomSensorData();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", 
+        [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
