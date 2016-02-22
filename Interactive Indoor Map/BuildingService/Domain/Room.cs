@@ -12,45 +12,72 @@ namespace BuildingService.Domain
     public class Room
     {
         [DataMember]
-        public string Id { get; set; }
+        public string RoomName { get; set; }
 
         [DataMember]
         public Area Area { get; set; }
 
         [DataMember]
-        public bool IsLightActivated { get; set; }
+        public bool? IsLightActivated { get; set; }
 
         [DataMember]
-        public int Lumen { get; set; }
+        public int? Lumen { get; set; }
 
         [DataMember]
-        public bool IsMotionDetected { get; set; }
+        public bool? IsMotionDetected { get; set; }
 
         [DataMember]
-        public double Temperature { get; set; }
+        public double? Temperature { get; set; }
 
         [DataMember]
-        public int CO2 { get; set; }
+        public int? CO2 { get; set; }
+
+        //[DataMember]
+        //public List<WifiClient> Clients { get; set; }
 
         [DataMember]
-        public List<WifiClient> Clients { get; set; }
+        public int? Occupants { get; set; }
 
         [DataMember]
-        public int Occupants { get; set; }
+        public double? VentilationConsumption { get; set; }
 
         [DataMember]
-        public double VentilationConsumption { get; set; }
+        public double? LightConsumption { get; set; }
 
         [DataMember]
-        public double LightConsumption { get; set; }
+        public double? HardwareConsumption { get; set; }
 
         [DataMember]
-        public double HardwareConsumption { get; set; }
+        public double? OtherConsumption { get; set; }
 
         [DataMember]
-        public double OtherConsumption { get; set; }
+        public double? TotalConsumption
+        {
+            get { return VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption; }
+            set { TotalConsumption = value; }
+        }
 
-        [DataMember]
-        public double TotalConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
+        public Room(string roomName)
+        {
+            RoomName = roomName;
+        }
+
+        public Room(Room roomToCopy)
+        {
+            RoomName = roomToCopy.RoomName;
+            Area = new Area(roomToCopy.Area);
+            IsLightActivated = roomToCopy.IsLightActivated;
+            Lumen = roomToCopy.Lumen;
+            IsMotionDetected = roomToCopy.IsMotionDetected;
+            Temperature = roomToCopy.Temperature;
+            CO2 = roomToCopy.CO2;
+            Occupants = roomToCopy.Occupants;
+            VentilationConsumption = roomToCopy.VentilationConsumption;
+            LightConsumption = roomToCopy.LightConsumption;
+            HardwareConsumption = roomToCopy.HardwareConsumption;
+            OtherConsumption = roomToCopy.OtherConsumption;
+            TotalConsumption = roomToCopy.TotalConsumption;
+
+        }
     }
 }
