@@ -52,7 +52,7 @@ namespace BuildingService.Service
                 }
             }
 
-            throw new NotImplementedException();
+            return building;
         }
 
         public Building SensorLocations()
