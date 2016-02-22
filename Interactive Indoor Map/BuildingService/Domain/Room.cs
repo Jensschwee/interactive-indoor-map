@@ -52,5 +52,10 @@ namespace BuildingService.Domain
 
         [DataMember]
         public double TotalConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
+
+        public Room(string id)
+        {
+            Id = id;
+        }
     }
 }
