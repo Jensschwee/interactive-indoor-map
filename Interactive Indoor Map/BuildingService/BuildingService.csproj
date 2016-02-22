@@ -97,9 +97,12 @@
   <ItemGroup>
     <Compile Include="Domain\Building.cs" />
     <Compile Include="Domain\Floor.cs" />
+    <Compile Include="Domain\FloorDimensons.cs" />
     <Compile Include="Domain\Room.cs" />
+    <Compile Include="Domain\RoomDimensions.cs" />
     <Compile Include="Domain\SensorRoom.cs" />
     <Compile Include="Domain\Utility\Area.cs" />
+    <Compile Include="Domain\BuildingDimensions.cs" />
     <Compile Include="Domain\Utility\Coordinates.cs" />
     <Compile Include="Domain\Utility\DeviceType.cs" />
     <Compile Include="Domain\Utility\Sensor.cs" />

@@ -12,7 +12,7 @@ namespace BuildingService.Domain
     public class Room
     {
         [DataMember]
-        public string Id { get; set; }
+        public string RoomName { get; set; }
 
         [DataMember]
         public Area Area { get; set; }
@@ -32,8 +32,8 @@ namespace BuildingService.Domain
         [DataMember]
         public int CO2 { get; set; }
 
-        [DataMember]
-        public List<WifiClient> Clients { get; set; }
+        //[DataMember]
+        //public List<WifiClient> Clients { get; set; }
 
         [DataMember]
         public int Occupants { get; set; }

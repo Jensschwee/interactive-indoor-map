@@ -11,11 +11,13 @@ namespace BuildingService.Domain
     [DataContract]
     public class Building
     {
-        [DataMember]
-        public int Occupants { get; set; }
+        public List<Floor> Floors { get; set; }
 
         [DataMember]
-        public List<Floor> Floors { get; set; }
+        public string BuildingName { get; set; }
+
+        [DataMember]
+        public int Occupants { get; set; }
 
         [DataMember]
         public double VentilationConsumption => Floors.Sum(floor => floor.VentilationConsumption);
@@ -38,7 +40,10 @@ namespace BuildingService.Domain
         [DataMember]
         public double ColdWaterConsumption { get; set; }
 
-        [DataMember]
-        public List<WifiClient> Clients { get; set; }
+        //[DataMember]
+        //public List<WifiClient> Clients { get; set; }
+
+        //[DataMember]
+        //public int WifiClients { get; set; }
     }
 }

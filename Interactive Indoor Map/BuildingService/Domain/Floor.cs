@@ -14,7 +14,6 @@ namespace BuildingService.Domain
         [DataMember]
         public int FloorLevel { get; set; }
 
-        [DataMember]
         public List<Room> Rooms { get; set; }
 
         [DataMember]
@@ -33,14 +32,14 @@ namespace BuildingService.Domain
         public double TotalConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
 
         [DataMember]
-        public List<WifiClient> Clients { get; set; }
-
-        [DataMember]
         public List<Sensor> Sensors { get; set; }
 
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;
         }
+
+        //[DataMember]
+        //public List<WifiClient> Clients { get; set; }
     }
 }

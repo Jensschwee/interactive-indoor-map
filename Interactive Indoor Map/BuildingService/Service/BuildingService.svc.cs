@@ -12,34 +12,40 @@ namespace BuildingService.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select BuildingService.svc or BuildingService.svc.cs at the Solution Explorer and start debugging.
     public class BuildingService : IBuildingService
     {
-        public Building GetBuildingData()
+
+        public Building BuildingDimensions()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevelNeg1Data()
+        public Building SensorLocations()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevel0Data()
+        public Building BuildingSensorData()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevel1Data()
+        public Building FloorSensorData()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetFloorLevel2Data()
+        public Building RoomSensorData()
         {
             throw new NotImplementedException();
         }
 
-        public List<Product> GetProductList()
+        public Building WifiClients()
         {
-            return Products.Instance.ProductList;
+            throw new NotImplementedException();
+        }
+
+        public Building StoreBuildingSensorData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
