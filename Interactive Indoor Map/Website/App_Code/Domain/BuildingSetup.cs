@@ -38,6 +38,7 @@ namespace Website.Domain
             Ø20_604_0.Temperature = 19.5;
 
             groundFloor.Rooms.Add(Ø22_508_0);
+            
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);

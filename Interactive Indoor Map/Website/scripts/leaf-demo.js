@@ -62,8 +62,13 @@ function leafletDraw(JSONMap) {
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-        this._div.innerHTML = '<h4>Building data:</h4>' + (props ?
-            '<b>' + props.name + '</    b>'
+        this._div.innerHTML = '<h4>Room data:</h4>' + (props ?
+            '<b>' + props.RoomName + '</b>' +
+            '<br/> CO2: ' + props.CO2 +
+            '<br/> HardwareConsumption: ' + props.HardwareConsumption +
+            '<br/> IsLightActivated: ' + props.IsLightActivated
+
+
             : 'Hover over room to see info');
     };
 
