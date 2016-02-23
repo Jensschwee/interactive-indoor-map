@@ -35,7 +35,7 @@ namespace Website.Domain
             Room Ø20_604_0 = new Room("Ø20_604_0", new Area(new List<Coordinates> { new Coordinates(10.430603921413422, 55.36697392651307),
                 new Coordinates(10.430810451507568, 55.36698307259987), new Coordinates(10.430764853954315, 55.367210199744484),
                 new Coordinates(10.430574417114258, 55.36719952937089), new Coordinates(10.430603921413422, 55.36697392651307)}));
-            Ø20_604_0.Temperature = 19.5;
+            Ø20_604_0.Temperature = 22;
 
             groundFloor.Rooms.Add(Ø22_508_0);
             
