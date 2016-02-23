@@ -9,7 +9,7 @@ namespace Website.Domain
 {
     public class BuildingSetup
     {
-        public void setupBuilding()
+        public void SetupBuilding()
         {
             Building building = new Building();
             Floor cellarFloor = new Floor(-1);

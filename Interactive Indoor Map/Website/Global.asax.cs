@@ -16,7 +16,7 @@ namespace Website
         {
 
             BuildingSetup setup = new BuildingSetup();
-            //Application["test"] = "test";
+            setup.SetupBuilding();
         }
 
         protected void Session_Start(object sender, EventArgs e)
