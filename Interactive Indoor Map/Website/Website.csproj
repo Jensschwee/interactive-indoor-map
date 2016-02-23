@@ -125,6 +125,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BO\Utility\Area.cs" />
+    <Compile Include="App_Code\BO\Utility\Coordinates.cs" />
+    <Compile Include="App_Code\BO\Utility\DeviceType.cs" />
+    <Compile Include="App_Code\BO\Utility\Sensor.cs" />
+    <Compile Include="App_Code\BO\Utility\WiFiClient.cs" />
+    <Compile Include="App_Code\BO\Building.cs" />
+    <Compile Include="App_Code\BO\Floor.cs" />
+    <Compile Include="App_Code\BO\Room.cs" />
+    <Compile Include="App_Code\Domain\BuildingSetup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,8 +147,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\BO\" />
-    <Folder Include="App_Code\Domain\" />
     <Folder Include="App_Code\Service\" />
   </ItemGroup>
   <PropertyGroup>

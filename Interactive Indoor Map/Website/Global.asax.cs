@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Website.Domain;
 
 namespace Website
 {
@@ -13,6 +14,8 @@ namespace Website
 
         protected void Application_Start(object sender, EventArgs e)
         {
+
+            BuildingSetup setup = new BuildingSetup();
             //Application["test"] = "test";
         }
 

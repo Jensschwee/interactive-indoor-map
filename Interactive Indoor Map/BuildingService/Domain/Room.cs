@@ -57,9 +57,10 @@ namespace BuildingService.Domain
             set { TotalConsumption = value; }
         }
 
-        public Room(string roomName)
+        public Room(string roomName, Area area)
         {
             RoomName = roomName;
+            Area = area;
         }
 
         public Room(Room roomToCopy)
