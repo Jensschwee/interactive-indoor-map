@@ -16,10 +16,10 @@ function leafletDraw(JSONMap) {
 
     //Reads the JSON input
     geojson = L.geoJson(JSONMap, {
-            style: style,
-            onEachFeature: onEachFeature
+        style: style,
+        onEachFeature: onEachFeature
     });
-   
+
     //Fints the div for the map to draw in
     var geoMap = L.map('map').fitBounds(geojson.getBounds());
 
@@ -38,14 +38,18 @@ function leafletDraw(JSONMap) {
     legend.onAdd = function (map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+            grades = [24, 23.5, 23, 22.5, 22, 21.5,21,20.5, 20 ],
             labels = [];
 
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
                 '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                //(grades[i + 1] ? '' : '-') +
+                //(grades[i - 1] ? '' : '+') +
+                grades[i] + (grades[i + 1] ? '&#8451'+ '<br>' : '&#8451');
+                //'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                //grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
         return div;
@@ -62,13 +66,28 @@ function leafletDraw(JSONMap) {
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-        this._div.innerHTML = '<h4>Room data:</h4>' + (props ?
-            '<b>' + props.RoomName + '</b>' +
-            '<br/> CO2: ' + props.CO2 +
-            '<br/> HardwareConsumption: ' + props.HardwareConsumption +
-            '<br/> IsLightActivated: ' + props.IsLightActivated
+        this._div.innerHTML = '<h5>Room data</h5>' + (props ?
+            '<span style="line-height:170%"><h4>' + props.RoomName + '</h4>' +
 
+            '<h4>Occupancy</h4>' +
+            '<b>Motion</b>: ' + props.IsMotionDetected +
+            '<br/> <b>Occupants</b>: ' + props.Occupants +
 
+            '<br/><br/><h4>Air</h4>' +
+            '<b>Temperature</b>: ' + props.Temperature + '&#8451' +
+            '<br/> <b>CO2</b>: ' + props.CO2 +
+
+            '<br/><br/><h4>Light</h4>' +
+            '<b>Lighting</b>: ' + props.IsLightActivated +
+            '<br/> <b>Lumen</b>: ' + props.Lumen +
+
+            '<br/><br/><h4>Power Consumption</h4>' +
+            '<b>Total</b>: ' + props.TotalConsumption +
+            '<br/><b>Hardware</b>: ' + props.HardwareConsumption +
+            '<br/> <b>Light</b>: ' + props.LightConsumption +
+            '<br/> <b>Ventilation</b>: ' + props.TotalConsumption +
+            '<br/> <b>Other</b>: ' + props.OtherConsumption +
+            '</span>'
             : 'Hover over room to see info');
     };
 
@@ -100,7 +119,7 @@ function resetHighlight(e) {
 
 function style(feature) {
     return {
-        fillColor: feature.properties.fill, //getPower(feature.properties.power),
+        fillColor: getColor(feature.properties.Temperature), //getPower(feature.properties.power),
         color: 'white',//feature.properties.stroke,
         weight: 1,
         opacity: 1,
@@ -109,13 +128,15 @@ function style(feature) {
 }
 
 function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500 ? '#BD0026' :
-           d > 200 ? '#E31A1C' :
-           d > 100 ? '#FC4E2A' :
-           d > 50 ? '#FD8D3C' :
-           d > 20 ? '#FEB24C' :
-           d > 10 ? '#FED976' :
+    return d > 24 ? '#800026' :
+           d > 23.5 ? '#800026' :
+           d > 23 ? '#800026' :
+           d > 22.5 ? '#BD0026' :
+           d > 22 ? '#E31A1C' :
+           d > 21.5 ? '#FC4E2A' :
+           d > 21 ? '#FD8D3C' :
+           d > 20.5 ? '#FEB24C' :
+           d > 20 ? '#FED976' :
                       '#FFEDA0';
 }
 

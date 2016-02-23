@@ -26,8 +26,14 @@ namespace Website.Domain
                         sb.Append("\"RoomName\":" + JsonConvert.SerializeObject(room.RoomName) + ",");
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(room.CO2) + ",");
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(room.HardwareConsumption) + ",");
-                        sb.Append("\"IsLightActivated\":" + JsonConvert.SerializeObject(room.IsLightActivated) + ",");
-                        sb.Append("\"IsMotionDetected\":" + JsonConvert.SerializeObject(room.IsMotionDetected) + ",");
+                        sb.Append("\"IsLightActivated\":");
+
+                        sb.Append(room.IsLightActivated ? "\"On\"," : "\"Off\",");
+
+                        sb.Append("\"IsMotionDetected\":");
+
+                        sb.Append(room.IsMotionDetected ? "\"Detected\"," : "\"None\",");
+
                         sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(room.LightConsumption) + ",");
                         sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(room.Lumen) + ",");
                         sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(room.Occupants) + ",");
