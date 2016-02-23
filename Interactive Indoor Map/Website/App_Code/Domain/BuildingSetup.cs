@@ -36,6 +36,7 @@ namespace Website.Domain
             //    new Coordinates(10.430711209774017, 55.367673596050246), new Coordinates(10.430732667446136, 55.367447995895)}));
 
             //groundFloor.Rooms.Add(Ø22_508_0);
+            
             groundFloor.Rooms.Add(Ø20_508a_0);
             //groundFloor.Rooms.Add(Ø22_604_0);
             //groundFloor.Rooms.Add(Ø20_604_0);

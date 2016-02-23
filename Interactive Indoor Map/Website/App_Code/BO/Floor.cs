@@ -34,6 +34,7 @@ namespace Website.BO
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;
+            Rooms = new List<Room>();
         }
     }
 }

@@ -134,6 +134,8 @@
     <Compile Include="App_Code\BO\Floor.cs" />
     <Compile Include="App_Code\BO\Room.cs" />
     <Compile Include="App_Code\Domain\BuildingSetup.cs" />
+    <Compile Include="App_Code\Domain\GeoJsonConverter.cs" />
+    <Content Include="App_Code\Domain\Floor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
