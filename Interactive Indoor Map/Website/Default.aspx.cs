@@ -20,6 +20,7 @@ namespace Website
             {
                  //json = @"'map/map.json'";
                 //Session["Map"] = json;
+                
                 //var line = new GeoJSON.Net.Geometry.LineString(coordinates);
                 //string json = JsonConvert.SerializeObject(line);
                 //return Content(json, "application/json");
@@ -33,6 +34,8 @@ namespace Website
 
         public void DrawBuilding(object sender, EventArgs e)
         {
+            //Application.Lock();
+            //Application["dsgerd"] = "fisk";
             Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + json + ");", true);
         }
     }
