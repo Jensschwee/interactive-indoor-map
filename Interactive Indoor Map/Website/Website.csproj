@@ -104,6 +104,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\fullscreen.png" />
+    <Content Include="scripts\easy-button.js" />
     <Content Include="scripts\leaf-demo.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -122,6 +124,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\leafletDraw.js" />
+    <Content Include="Style\easy-button.css" />
     <Content Include="Style\Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\Service\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,11 +17,17 @@ namespace Website
                               ", { \"type\": \"Feature\", \"properties\": { \"stroke\": \"#FFFFFF\", \"stroke-width\": 2, \"stroke-opacity\": 1, \"fill\": \"#FFFFFF\", \"fill-opacity\": 0.5, \"name\": \"Ø22-508-0\", \"power\" : 20, \"floor\" : 2 }, \"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [ [10.43104112148285, 55.36767664469221], [10.430856049060822, 55.36767207172922], [10.430874824523926, 55.367451044554315], [10.431067943572998, 55.36746171486007], [10.43104112148285, 55.36767664469221] ] ] } }]}";
 
         //private string testJson;
+        private static Building building = null;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                if (Request.QueryString.HasKeys())
+                {
+                    Test(Convert.ToInt32(Request.QueryString["f"]));
+                }
 
                  //json = @"'map/map.json'";
                 //Session["Map"] = json;
@@ -44,6 +50,15 @@ namespace Website
             GeoJsonConverter converter = new GeoJsonConverter();
 
             String testJson = converter.Convert((Building)Application["Building"], 0);
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + testJson + ");", true);
+        }
+
+        public void Test(int floorLevel)
+        {
+            GeoJsonConverter converter = new GeoJsonConverter();
+
+            String testJson = converter.Convert((Building)Application["Building"], floorLevel);
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + testJson + ");", true);
         }
