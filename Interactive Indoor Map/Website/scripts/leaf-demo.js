@@ -6,11 +6,9 @@ function leafletDraw(JSONMap) {
 
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        center: [55.366983072599, 10.4308104515075],
         minZoom: 19,
         zoom: 19,
         maxZoom: 19,
-        zoomControl: false,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
     });
 
@@ -22,7 +20,12 @@ function leafletDraw(JSONMap) {
     });
 
     //Fints the div for the map to draw in
-    var geoMap = L.map('map').fitBounds(geojson.getBounds());
+    var geoMap = L.map('map', {
+        zoomControl: false,
+        minZoom: 19,
+        zoom: 19,
+        maxZoom: 19
+    }).fitBounds(geojson.getBounds());
 
     //Adds the two maps to the div
     geojson.addTo(geoMap);
@@ -35,7 +38,8 @@ function leafletDraw(JSONMap) {
     geoMap.scrollWheelZoom.disable();
     geoMap.keyboard.disable();
 
-    if (geoMap.tap) geoMap.tap.disable();
+
+    //if (geoMap.tap) geoMap.tap.disable();
 
     var legend = L.control({ position: 'bottomright' });
 
