@@ -25,7 +25,22 @@ function leafletDraw(JSONMap) {
         minZoom: 19,
         zoom: 19,
         maxZoom: 19
+        ,
+        fullscreenControl: true
     }).fitBounds(geojson.getBounds());
+
+    L.easyButton('-1;', function () {
+        PageMethods.test(-1);
+    }).addTo(geoMap);
+    L.easyButton('0;', function () {
+        alert('test');
+    }).addTo(geoMap);
+    L.easyButton('1;', function () {
+        alert('test');
+    }).addTo(geoMap);
+    L.easyButton('2;', function () {
+        alert('test');
+    }).addTo(geoMap);
 
     //Adds the two maps to the div
     geojson.addTo(geoMap);
@@ -37,9 +52,6 @@ function leafletDraw(JSONMap) {
     geoMap.doubleClickZoom.disable();
     geoMap.scrollWheelZoom.disable();
     geoMap.keyboard.disable();
-
-
-    //if (geoMap.tap) geoMap.tap.disable();
 
     var legend = L.control({ position: 'bottomright' });
 
@@ -55,9 +67,9 @@ function leafletDraw(JSONMap) {
                 '<i style="background:' + getColor(grades[i]) + '"></i> ' +
                 //(grades[i + 1] ? '' : '-') +
                 //(grades[i - 1] ? '' : '+') +
-                grades[i] + (grades[i + 1] ? '&#8451'+ '<br>' : '&#8451');
-                //'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                //grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                grades[i] + (grades[i + 1] ? '&#8451' + '<br>' : '&#8451');
+            //'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            //grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
         return div;
@@ -137,7 +149,7 @@ function style(feature) {
 }
 
 function getColor(d) {
-    return d >= 24 ? '#800026' : 
+    return d >= 24 ? '#800026' :
            d >= 23.5 ? '#FC4E2A' :
            d >= 23 ? '#FD8D3C' :
            d >= 22.5 ? '#FEB24C' :
