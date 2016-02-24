@@ -85,7 +85,7 @@ function leafletDraw(JSONMap) {
             '<b>Total</b>: ' + props.TotalConsumption +
             '<br/><b>Hardware</b>: ' + props.HardwareConsumption +
             '<br/> <b>Light</b>: ' + props.LightConsumption +
-            '<br/> <b>Ventilation</b>: ' + props.TotalConsumption +
+            '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
             '</span>'
             : 'Hover over room to see info');
