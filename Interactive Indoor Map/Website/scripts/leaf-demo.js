@@ -10,6 +10,7 @@ function leafletDraw(JSONMap) {
         minZoom: 19,
         zoom: 19,
         maxZoom: 19,
+        zoomControl: false,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
     });
 
@@ -32,6 +33,9 @@ function leafletDraw(JSONMap) {
     geoMap.touchZoom.disable();
     geoMap.doubleClickZoom.disable();
     geoMap.scrollWheelZoom.disable();
+    geoMap.keyboard.disable();
+
+    if (geoMap.tap) geoMap.tap.disable();
 
     var legend = L.control({ position: 'bottomright' });
 
@@ -67,7 +71,7 @@ function leafletDraw(JSONMap) {
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h5>Room data</h5>' + (props ?
-            '<span style="line-height:170%"><h4>' + props.RoomName + '</h4>' +
+            '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
 
             '<h4>Occupancy</h4>' +
             '<b>Motion</b>: ' + props.IsMotionDetected +
@@ -82,11 +86,12 @@ function leafletDraw(JSONMap) {
             '<br/> <b>Lumen</b>: ' + props.Lumen +
 
             '<br/><br/><h4>Power Consumption</h4>' +
-            '<b>Total</b>: ' + props.TotalConsumption +
-            '<br/><b>Hardware</b>: ' + props.HardwareConsumption +
+            '<b>Hardware</b>: ' + props.HardwareConsumption +
             '<br/> <b>Light</b>: ' + props.LightConsumption +
             '<br/> <b>Ventilation</b>: ' + props.TotalConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
+            '<br/><b>Total</b>: ' + props.TotalConsumption +
+
             '</span>'
             : 'Hover over room to see info');
     };
