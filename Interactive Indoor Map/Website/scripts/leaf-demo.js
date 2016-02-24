@@ -137,7 +137,7 @@ function leafletDraw(JSONMap) {
             '<br/><b>Total</b>: ' + props.TotalConsumption +
 
             '</span>'
-            : 'Hover over room to see info');
+            : 'Hover over a room to see info');
     };
 
     info.addTo(geoMap);
