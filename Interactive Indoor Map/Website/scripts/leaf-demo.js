@@ -12,7 +12,6 @@ function leafletDraw(JSONMap) {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
     });
 
-
     //Reads the JSON input
     geojson = L.geoJson(JSONMap, {
         style: style,
@@ -97,7 +96,7 @@ function leafletDraw(JSONMap) {
             '<br/><b>Total</b>: ' + props.TotalConsumption +
 
             '</span>'
-            : 'Hover over room to see info');
+            : 'Hover over a room to see info');
     };
 
     info.addTo(geoMap);
