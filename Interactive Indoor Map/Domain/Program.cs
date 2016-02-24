@@ -27,13 +27,13 @@ namespace Domain
             buildingArea.Vertices.Add(new Point(10.5, 55.4));
             buildingArea.Vertices.Add(new Point(10.6, 55.5));
             buildingArea.Vertices.Add(new Point(10.7, 55.6));
-            Building building44 = new Building("Building 44", buildingArea);
+            //Building building44 = new Building("Building 44", buildingArea);
         }
 
         private static void InitializeSensors()
         {
             List<Sensor3DScanner> ThreeDSensorScanners = new List<Sensor3DScanner>();
-            ThreeDSensorScanners.Add(new Sensor3DScanner());
+            //ThreeDSensorScanners.Add(new Sensor3DScanner());
         }
     }
 }

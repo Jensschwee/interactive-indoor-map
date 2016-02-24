@@ -11,6 +11,6 @@ namespace BuildingService
     {
         EndpointAddress ep = new EndpointAddress("http://localhost:8080/");
 
-        IBuildingService proxy = new ChannelFactory<IBuil>.
+        //IBuildingService proxy = new ChannelFactory<IBuil>.
     }
 }

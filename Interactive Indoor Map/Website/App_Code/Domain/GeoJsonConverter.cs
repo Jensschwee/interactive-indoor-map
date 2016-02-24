@@ -11,6 +11,10 @@ namespace Website.Domain
 {
     public class GeoJsonConverter
     {
+        public string Convert(int? floorLevel = null)
+        {
+            return Convert((Building) HttpContext.Current.Application["Building"], floorLevel);
+        }
 
         public string Convert(Building building, int? floorLevel = null)
         {
