@@ -9,7 +9,7 @@ namespace Domain.Construction
         public List<Sensor3DScanner> ThreeDScannerSensors { get; set; }
         public List<SensorPower> PowerSensors { get; set; }
 
-        public SensorRoom(string name, Area area, List<SensorWifi> wifiSensors, List<SensorPIR> pirSensors, List<SensorTemperature> temperatureSensors, List<SensorCO2> co2Sensors, List<SensorLightActivated> lightActivatedSensors, List<SensorLumen> lumenSensors, List<Sensor3DScanner> threeDScannerSensors, List<SensorPower> powerSensors) : base(name, area, wifiSensors, pirSensors, temperatureSensors, co2Sensors, lightActivatedSensors, lumenSensors)
+        public SensorRoom(string name, Area area, List<SensorWifi> wifiSensors, List<SensorPIR> pirSensors, /*List<SensorTemperature> temperatureSensors,*/ List<SensorCO2> co2Sensors, List<SensorLightActivated> lightActivatedSensors, List<SensorLumen> lumenSensors, List<Sensor3DScanner> threeDScannerSensors, List<SensorPower> powerSensors) : base(name, area, wifiSensors, pirSensors, /*temperatureSensors,*/ co2Sensors, lightActivatedSensors, lumenSensors)
         {
             ThreeDScannerSensors = threeDScannerSensors;
             PowerSensors = powerSensors;

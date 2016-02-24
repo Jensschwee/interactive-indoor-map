@@ -1,6 +1,7 @@
 // See post: http://asmaloney.com/2014/01/code/creating-an-interactive-map-with-leaflet-and-openstreetmap/
 var info = L.control();
 var geojson;
+var geoMap;
 
 function leafletDraw(JSONMap) {
 
@@ -12,7 +13,6 @@ function leafletDraw(JSONMap) {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
     });
 
-
     //Reads the JSON input
     geojson = L.geoJson(JSONMap, {
         style: style,
@@ -20,7 +20,7 @@ function leafletDraw(JSONMap) {
     });
 
     //Fints the div for the map to draw in
-    var geoMap = L.map('map', {
+    geoMap = L.map('map', {
         zoomControl: false,
         minZoom: 19,
         zoom: 19,
@@ -30,16 +30,44 @@ function leafletDraw(JSONMap) {
     }).fitBounds(geojson.getBounds());
 
     L.easyButton('-1;', function () {
-        PageMethods.test(-1);
+        if (geoMap != null) {
+            geoMap.removeLayer(geojson);
+        }
+
+        PageMethods.DrawFloor(-1, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            DrawTemp(response);
+        }
     }).addTo(geoMap);
     L.easyButton('0;', function () {
-        alert('test');
+        if (geoMap != null) {
+            geoMap.removeLayer(geojson);
+        }
+
+        PageMethods.DrawFloor(0, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            DrawTemp(response);
+        }
     }).addTo(geoMap);
     L.easyButton('1;', function () {
-        alert('test');
+        if (geoMap != null) {
+            geoMap.removeLayer(geojson);
+        }
+
+        PageMethods.DrawFloor(1, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            DrawTemp(response);
+        }
     }).addTo(geoMap);
     L.easyButton('2;', function () {
-        alert('test');
+        if (geoMap != null) {
+            geoMap.removeLayer(geojson);
+        }
+
+        PageMethods.DrawFloor(2, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            DrawTemp(response);
+        }
     }).addTo(geoMap);
 
     //Adds the two maps to the div
@@ -182,3 +210,14 @@ function onEachFeature(feature, layer) {
     }
 }
 
+
+function DrawTemp(JSONMap) {
+
+    geojson = L.geoJson(jQuery.parseJSON(JSONMap), {
+        style: style,
+        onEachFeature: onEachFeature
+    });
+
+    geoMap.addLayer(geojson);
+
+}

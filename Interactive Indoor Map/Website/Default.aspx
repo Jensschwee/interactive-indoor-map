@@ -38,16 +38,17 @@
 <body>
     <form id="form1" runat="server">
         <%--<h1>Leaflet Example</h1>--%>
-        <asp:ScriptManager ID="ScriptManager" EnablePageMethods="True" EnablePartialRendering="True" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods = "true">
+</asp:ScriptManager>
         <%--<p>Here's an interactive map indicating the countries I've either lived in or travelled through for a month or more.--%>
-        <div id="map" style="width: 100%; height: 93vh; border: 1px solid #AAA;"></div>
-        <div id="menu" style="width: 100%; height: 7vh; border: 1px solid #AAA;">
+        <div id="map" style="width: 100%; height: 100vh; border: 1px solid #AAA;"></div>
+       <%-- <div id="menu" style="width: 100%; height: 7vh; border: 1px solid #AAA;">
             <ul class="nav nav-tabs">
                 <li>
                     <asp:LinkButton ID="myLink" Text="Draw Building" OnClick="DrawBuilding" runat="server" /></li>
-                <%--<li><a href="#">Menu 3</a></li>--%>
+                <li><a href="#">Menu 3</a></li>
             </ul>
-        </div>
+        </div>--%>
 
     </form>
 </body>
