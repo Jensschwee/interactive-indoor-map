@@ -129,15 +129,25 @@ function style(feature) {
 
 function getColor(d) {
     return d > 24 ? '#800026' :
-           d > 23.5 ? '#800026' :
-           d > 23 ? '#800026' :
-           d > 22.5 ? '#BD0026' :
-           d > 22 ? '#E31A1C' :
-           d > 21.5 ? '#FC4E2A' :
+           d > 23.5 ? '#FC4E2A' :
+           d > 23 ? '#FD8D3C' :
+           d > 22.5 ? '#FEB24C' :
+           d > 22 ? '#FED976' :
+           d > 21.5 ? '#FED976' :
            d > 21 ? '#FD8D3C' :
            d > 20.5 ? '#FEB24C' :
            d > 20 ? '#FED976' :
                       '#FFEDA0';
+    //return d > 24 ? '#800026' :
+    //       d > 23.5 ? '#800026' :
+    //       d > 23 ? '#800026' :
+    //       d > 22.5 ? '#BD0026' :
+    //       d > 22 ? '#E31A1C' :
+    //       d > 21.5 ? '#FC4E2A' :
+    //       d > 21 ? '#FD8D3C' :
+    //       d > 20.5 ? '#FEB24C' :
+    //       d > 20 ? '#FED976' :
+    //                  '#FFEDA0';
 }
 
 function onEachFeature(feature, layer) {
