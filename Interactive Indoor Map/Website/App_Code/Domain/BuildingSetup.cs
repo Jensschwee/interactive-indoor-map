@@ -48,7 +48,7 @@ namespace Website.Domain
             Room Ø22_604_0 = new Room("Ø22-604-0", new Area(new List<Coordinates> { new Coordinates(10.430928468704224, 55.36698916998991),
                 new Coordinates(10.431126952171324, 55.3669983160732), new Coordinates(10.431097447872162, 55.367223918792),
                 new Coordinates(10.430896282196045, 55.36721629709953), new Coordinates(10.430928468704224, 55.36698916998991)}));
-            Ø22_604_0.Temperature = 23;
+            Ø22_604_0.Temperature = 21.5;
             Ø22_604_0.CO2 = 80;
             Ø22_604_0.HardwareConsumption = 4200;
             Ø22_604_0.VentilationConsumption = 1900;

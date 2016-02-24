@@ -42,13 +42,13 @@ function leafletDraw(JSONMap) {
     legend.onAdd = function (map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [24, 23.5, 23, 22.5, 22, 21.5,21,20.5, 20 ],
+            grades = [24, 23.5, 23, 22.5, 22, 21.5, 21, 20.5, 20],
             labels = [];
 
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(grades[i]) + '"></i> ' +
                 //(grades[i + 1] ? '' : '-') +
                 //(grades[i - 1] ? '' : '+') +
                 grades[i] + (grades[i + 1] ? '&#8451'+ '<br>' : '&#8451');
@@ -133,16 +133,16 @@ function style(feature) {
 }
 
 function getColor(d) {
-    return d > 24 ? '#800026' :
-           d > 23.5 ? '#FC4E2A' :
-           d > 23 ? '#FD8D3C' :
-           d > 22.5 ? '#FEB24C' :
-           d > 22 ? '#FED976' :
-           d > 21.5 ? '#FED976' :
-           d > 21 ? '#FD8D3C' :
-           d > 20.5 ? '#FEB24C' :
-           d > 20 ? '#FED976' :
-                      '#FFEDA0';
+    return d >= 24 ? '#800026' : 
+           d >= 23.5 ? '#FC4E2A' :
+           d >= 23 ? '#FD8D3C' :
+           d >= 22.5 ? '#FEB24C' :
+           d >= 22 ? '#FED976' :
+           d >= 21.5 ? '#A4D98B' :
+           d >= 21 ? '#6FA375' :
+           d >= 20.5 ? '#577BB5' :
+           d >= 20 ? '#264E5C' :
+                      '#264E5C';
     //return d > 24 ? '#800026' :
     //       d > 23.5 ? '#800026' :
     //       d > 23 ? '#800026' :
