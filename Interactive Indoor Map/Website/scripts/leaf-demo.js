@@ -42,7 +42,8 @@ function leafletDraw(JSONMap) {
         function onSuccess(response, userContext, methodName) {
             DrawTemp(response);
         }
-    }).addTo(geoMap);
+    }, { position: 'bottomleft' }).addTo(geoMap);
+
     L.easyButton('0;', function () {
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
@@ -52,7 +53,7 @@ function leafletDraw(JSONMap) {
         function onSuccess(response, userContext, methodName) {
             DrawTemp(response);
         }
-    }).addTo(geoMap);
+    }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('1;', function () {
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
@@ -62,7 +63,7 @@ function leafletDraw(JSONMap) {
         function onSuccess(response, userContext, methodName) {
             DrawTemp(response);
         }
-    }).addTo(geoMap);
+    }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('2;', function () {
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
@@ -72,7 +73,7 @@ function leafletDraw(JSONMap) {
         function onSuccess(response, userContext, methodName) {
             DrawTemp(response);
         }
-    }).addTo(geoMap);
+    }, { position: 'bottomleft' }).addTo(geoMap);
 
     //Adds the two maps to the div
     geojson.addTo(geoMap);
