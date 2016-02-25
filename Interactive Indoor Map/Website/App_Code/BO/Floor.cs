@@ -31,6 +31,10 @@ namespace Website.BO
         
         public List<Sensor> Sensors { get; set; }
 
+        public double HotWaterConsumption { get; set; }
+
+        public double ColdWaterConsumption { get; set; }
+
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;

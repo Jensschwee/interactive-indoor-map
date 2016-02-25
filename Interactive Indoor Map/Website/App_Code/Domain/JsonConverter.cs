@@ -9,14 +9,27 @@ using Website.BO.Utility;
 
 namespace Website.Domain
 {
-    public class GeoJsonConverter
+    public class JsonConverter
     {
-        public string Convert(int? floorLevel = null)
+        public string ConvertBuilding()
         {
-            return Convert((Building) HttpContext.Current.Application["Building"], floorLevel);
+            StringBuilder sb = new StringBuilder();
+            //sb.Append();
+
+            return sb.ToString();
         }
 
-        public string Convert(Building building, int? floorLevel = null)
+        public string ConvertFloors()
+        {
+            return null;
+        }
+
+        public string ConvertRooms(int? floorLevel = null)
+        {
+            return ConvertRooms((Building) HttpContext.Current.Application["Building"], floorLevel);
+        }
+
+        public string ConvertRooms(Building building, int? floorLevel = null)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
