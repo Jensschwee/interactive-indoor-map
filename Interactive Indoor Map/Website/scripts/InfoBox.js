@@ -1,4 +1,4 @@
-﻿var buildingInfo = L.Control();
+﻿var buildingInfo = L.Control({ position: 'topright' });
 var floorInfo = L.Control();
 var roomInfo = L.control();
 
@@ -61,6 +61,7 @@ function drawFloorInfo() {
 function drawRoomInfo() {
     roomInfo.onAdd = function(map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;
     };
@@ -89,6 +90,17 @@ function drawRoomInfo() {
     };
 
     roomInfo.addTo(geoMap);
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight
+    });
+    //layer.bindPopup(feature.properties.name);
+    if (feature.properties.icon != null) {
+        console.log("Draw icon");
+    }
 }
 
 function highlightFeature(e) {
