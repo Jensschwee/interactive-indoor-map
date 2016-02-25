@@ -125,6 +125,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\leafletDraw.js" />
+    <Content Include="scripts\MenuButtons.js" />
     <Content Include="Style\easy-button.css" />
     <Content Include="Style\Style.css" />
     <Content Include="Web.config" />

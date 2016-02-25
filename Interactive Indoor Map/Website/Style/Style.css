@@ -15,7 +15,7 @@
     margin-right: 8px;
 }
 
-.roomInfo {
+.info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
     background: white;
@@ -27,7 +27,7 @@
     border-radius: 5px;
 }
 
-.roomInfo h4 {
+.info h4 {
         margin: 0 0 5px;
         color: #777;
     }
