@@ -1,5 +1,6 @@
 // See post: http://asmaloney.com/2014/01/code/creating-an-interactive-map-with-leaflet-and-openstreetmap/
-var buildingInfo = L.Control();
+var buildingInfo = L.Control({ position: 'topright' });
+var floorInfo = L.Control({ position: 'topright' });
 var roomInfo = L.control();
 var geojson;
 var geoMap;
@@ -111,14 +112,8 @@ function leafletDraw(JSONMap) {
 
     legend.addTo(geoMap);
 
-    buildingInfo.onAdd = function(map) {
-        this._div = L.DomUtil.create('div', 'buildingInfo');
-        this.update();
-        return this._div;
-    };
-
     roomInfo.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'roomInfo'); // create a div with a class "info"
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;
     };
