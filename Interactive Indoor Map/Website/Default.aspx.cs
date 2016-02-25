@@ -31,6 +31,7 @@ namespace Website
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + jsonRooms + ");", true);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "buildingInfo", "drawBuildingInfo();", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "floorInfo", "drawFloorInfo();", true);
                 }
             }
         }

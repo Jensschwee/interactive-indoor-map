@@ -1,5 +1,5 @@
-﻿var buildingInfo = L.Control({ position: 'topright' });
-var floorInfo = L.Control();
+﻿var buildingInfo = L.control({ position: 'topleft' }) ;
+var floorInfo = L.control({ position: 'topleft' });
 var roomInfo = L.control();
 
 
@@ -21,7 +21,7 @@ function drawBuildingInfo() {
             '<br/> <b>Light</b>: ' + props.LightConsumption +
             '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
-            '<br/> <b>Total</b>: ' + props.TotalConsumption +
+            '<br/> <b>Total</b>: ' + props.TotalPowerConsumption +
             '<br/><br/><h4>Water Consumption</h4>' +
             '<b><Cold Water</b>:' + props.ColdWaterConsumption +
             '<br/> <b><Hot Water</b>: ' + props.HotWaterConsumption +
@@ -60,7 +60,6 @@ function drawFloorInfo() {
 
 function drawRoomInfo() {
     roomInfo.onAdd = function(map) {
-        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;

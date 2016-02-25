@@ -11,17 +11,49 @@ namespace Website.Domain
 {
     public class JsonConverter
     {
-        public string ConvertBuilding()
+        public string ConvertBuilding(Building building)
         {
             StringBuilder sb = new StringBuilder();
-            //sb.Append();
+            sb.Append("{");
+
+            sb.Append("\"BuildingName\":" + building.BuildingName + ",");
+            sb.Append("\"HardwareConsumption\":" + building.HardwareConsumption + ",");
+            sb.Append("\"LightConsumption\":" + building.LightConsumption + ",");
+            sb.Append("\"VentilationConsumption\":" + building.VentilationConsumption + ",");
+            sb.Append("\"OtherConsumption\":" + building.OtherConsumption + ",");
+            sb.Append("\"TotalPowerConsumption\":" + building.TotalPowerConsumption + ",");
+            sb.Append("\"ColdWaterConsumption\":" + building.ColdWaterConsumption + ",");
+            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption);
+
+            sb.Append("}");
 
             return sb.ToString();
         }
 
-        public string ConvertFloors()
+        public string ConvertFloors(Building building, int floorLevel)
         {
-            return null;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{");
+
+            foreach (var floor in building.Floors)
+            {
+                if (floor.FloorLevel == floorLevel)
+                {
+                    sb.Append("\"FloorLevel\":" + floor.FloorLevel + ",");
+                    sb.Append("\"HardwareConsumption\":" + floor.HardwareConsumption + ",");
+                    sb.Append("\"LightConsumption\":" + floor.LightConsumption + ",");
+                    sb.Append("\"VentilationConsumption\":" + floor.VentilationConsumption + ",");
+                    sb.Append("\"OtherConsumption\":" + floor.OtherConsumption + ",");
+                    sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
+                    sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");
+                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption);
+                }
+                break;
+            }
+
+            sb.Append("}");
+
+            return sb.ToString();
         }
 
         public string ConvertRooms(int? floorLevel = null)
@@ -56,7 +88,7 @@ namespace Website.Domain
                         sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(room.Occupants) + ",");
                         sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(room.OtherConsumption) + ",");
                         sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(room.Temperature) + ",");
-                        sb.Append("\"TotalConsumption\":" + JsonConvert.SerializeObject(room.TotalConsumption) + ",");
+                        sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalConsumption) + ",");
                         sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(room.VentilationConsumption));
                         sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
                         foreach (Coordinates coordinates in room.Area.Vertices)
