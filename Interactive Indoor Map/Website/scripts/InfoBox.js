@@ -1,9 +1,66 @@
 ﻿var buildingInfo = L.Control({ position: 'topright' });
-var floorInfo = L.Control({ position: 'topright' });
+var floorInfo = L.Control();
 var roomInfo = L.control();
 
-function drawRoomInfo(geoMap) {
+
+
+function drawBuildingInfo() {
+    buildingInfo.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+    };
+
+    buildingInfo.update = function (props) {
+        this._div.innerHTML = '<h5>Building data</h5>' + (props ?
+            '<span style="line-height:100%"><h4>' + props.BuildingName + '</h4>' +
+            '<h4>Occupancy</h4>' +
+            '<b>Occupants</b>: ' + props.Occupants +
+            '<br/><br/><h4>Power Consumption</h4>' +
+            '<b>Hardware</b>: ' + props.HardwareConsumption +
+            '<br/> <b>Light</b>: ' + props.LightConsumption +
+            '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
+            '<br/> <b>Other</b>: ' + props.OtherConsumption +
+            '<br/> <b>Total</b>: ' + props.TotalConsumption +
+            '<br/><br/><h4>Water Consumption</h4>' +
+            '<b><Cold Water</b>:' + props.ColdWaterConsumption +
+            '<br/> <b><Hot Water</b>: ' + props.HotWaterConsumption +
+            '</span>'
+            : 'Hover or click to expand');
+    };
+
+    buildingInfo.addTo(geoMap);
+}
+
+function drawFloorInfo() {
+    floorInfo.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+    };
+
+    floorInfo.update = function (props) {
+        this._div.innerHTML = '<h5>Floor data</h5>' + (props ?
+            '<span style="line-height:100%"><h4>' + props.FloorLevel + '</h4>' +
+            '<br/><br/><h4>Power Consumption</h4>' +
+            '<b>Hardware</b>: ' + props.HardwareConsumption +
+            '<br/> <b>Light</b>: ' + props.LightConsumption +
+            '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
+            '<br/> <b>Other</b>: ' + props.OtherConsumption +
+            '<br/><b>Total</b>: ' + props.TotalConsumption +
+            '<br/><br/><h4>Water Consumption</h4>' +
+            '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
+            '<b>Hot Water</b>: ' + props.HotWaterConsumption +
+            '</span>'
+            : 'Hover or click to expand');
+    };
+
+    floorInfo.addTo(geoMap);
+}
+
+function drawRoomInfo() {
     roomInfo.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;

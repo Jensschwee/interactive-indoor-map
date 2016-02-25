@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Website.BO;
 using Website.Domain;
+using JsonConverter = Website.Domain.JsonConverter;
 
 namespace Website
 {
@@ -24,11 +25,12 @@ namespace Website
             {
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
-                    GeoJsonConverter converter = new GeoJsonConverter();
+                    JsonConverter converter = new JsonConverter();
 
-                    String json = converter.Convert((Building)Application["Building"], 0);
+                    String jsonRooms = converter.ConvertRooms((Building)Application["Building"], 0);
 
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + json + ");", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + jsonRooms + ");", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "buildingInfo", "drawBuildingInfo();", true);
                 }
             }
         }
@@ -37,9 +39,9 @@ namespace Website
         {
             //Application.Lock();
             //Application["dsgerd"] = "fisk";
-            //GeoJsonConverter converter = new GeoJsonConverter();
+            //JsonConverter converter = new JsonConverter();
 
-            //String testJson = converter.Convert((Building)Application["Building"], 0);
+            //String testJson = converter.ConvertRooms((Building)Application["Building"], 0);
 
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "leafletDraw(" + testJson + ");", true);
 
@@ -49,9 +51,9 @@ namespace Website
         [System.Web.Services.WebMethod]
         public static string DrawFloor(int floorLevel)
         {
-            GeoJsonConverter converter = new GeoJsonConverter();
+            JsonConverter converter = new JsonConverter();
 
-            return converter.Convert(floorLevel);
+            return converter.ConvertRooms(floorLevel);
         }
     }
 }
