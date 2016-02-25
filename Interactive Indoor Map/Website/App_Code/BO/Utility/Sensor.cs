@@ -8,6 +8,7 @@ namespace Website.BO.Utility
 {
     public class Sensor
     {
+        public string SensorName { get; set; }
         public string SensorType { get; set; }
         public Coordinates Coordinates { get; set; }
 
