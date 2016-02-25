@@ -32,6 +32,8 @@
 
     <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
     <script type='text/javascript' src='scripts/leaf-demo.js'></script>
+    <script type='text/javascript' src='scripts/InfoBox.js'></script>
+
 
     <%--<script type="text/javascript" src="scripts/leaflet-realtime.js"></script>--%>
 </head>

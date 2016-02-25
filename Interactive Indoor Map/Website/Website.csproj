@@ -106,6 +106,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\fullscreen.png" />
     <Content Include="scripts\easy-button.js" />
+    <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\leaf-demo.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
