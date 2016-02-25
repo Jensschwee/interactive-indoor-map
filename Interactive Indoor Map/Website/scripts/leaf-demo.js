@@ -24,10 +24,14 @@ function leafletDraw(JSONMap) {
         zoomControl: false,
         minZoom: 19,
         zoom: 19,
-        maxZoom: 19
-        ,
-        fullscreenControl: true
+        maxZoom: 19,
     }).fitBounds(geojson.getBounds());
+
+    L.control.fullscreen({
+        position: 'bottomleft'
+    }).addTo(geoMap);
+    //https://github.com/brunob/leaflet.fullscreen
+    
 
     L.easyButton('-1;', function () {
         if (geoMap != null) {
