@@ -1,5 +1,6 @@
 // See post: http://asmaloney.com/2014/01/code/creating-an-interactive-map-with-leaflet-and-openstreetmap/
-var info = L.control();
+var buildingInfo = L.Control();
+var roomInfo = L.control();
 var geojson;
 var geoMap;
 
@@ -110,15 +111,20 @@ function leafletDraw(JSONMap) {
 
     legend.addTo(geoMap);
 
+    buildingInfo.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'buildingInfo');
+        this.update();
+        return this._div;
+    };
 
-    info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    roomInfo.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'roomInfo'); // create a div with a class "info"
         this.update();
         return this._div;
     };
 
     // method that we will use to update the control based on feature properties passed
-    info.update = function (props) {
+    roomInfo.update = function (props) {
         this._div.innerHTML = '<h5>Room data</h5>' + (props ?
             '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
 
@@ -145,7 +151,7 @@ function leafletDraw(JSONMap) {
             : 'Hover over a room to see info');
     };
 
-    info.addTo(geoMap);
+    roomInfo.addTo(geoMap);
 
 }
 
@@ -163,12 +169,12 @@ function highlightFeature(e) {
         layer.bringToFront();
     }
 
-    info.update(layer.feature.properties);
+    roomInfo.update(layer.feature.properties);
 }
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
-    info.update();
+    roomInfo.update();
 }
 
 function style(feature) {
