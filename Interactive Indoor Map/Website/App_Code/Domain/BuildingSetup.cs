@@ -37,6 +37,7 @@ namespace Website.Domain
         private void CreateBuilding()
         {
             building = new Building();
+            building.BuildingName = "Building 44";
             building.Occupants = 200;
             building.ColdWaterConsumption = 2200;
             building.HotWaterConsumption = 2100;

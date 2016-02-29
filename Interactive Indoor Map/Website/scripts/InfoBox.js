@@ -4,15 +4,19 @@ var roomInfo = L.control();
 var isFloorInfoToggled = false;
 
 function drawBuildingInfo() {
+    var isToggled = false;
+
     buildingInfo.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info');
-        this.update();
+        this._div = L.DomUtil.create('div');
+        this._div.innerHTML = '<div class="info" id="buildingInfoBox"><h4>Building data</h4> Click to expand</div>';
         return this._div;
     };
 
+    buildingInfo.addTo(geoMap);
+
     buildingInfo.update = function (props) {
-        this._div.innerHTML = '<h4>Building data</h4>' + (props ?
-            '<span style="line-height:100%"><h5>' + props.BuildingName + '</h5>' +
+        this._div.innerHTML = '<div class="info" id="buildingInfoBox"> <h4>Building data</h4>' + (props ?
+            '<span style="line-height:100%"><h5><b>Name</b>: ' + props.BuildingName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Occupants</b>: ' + props.Occupants +
             '<br/><br/><h4>Power Consumption</h4>' +
@@ -22,19 +26,37 @@ function drawBuildingInfo() {
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
             '<br/> <b>Total</b>: ' + props.TotalPowerConsumption +
             '<br/><br/><h4>Water Consumption</h4>' +
-            '<b><Cold Water</b>:' + props.ColdWaterConsumption +
-            '<br/> <b><Hot Water</b>: ' + props.HotWaterConsumption +
+            '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
+            '<br/><b>Hot Water</b>: ' + props.HotWaterConsumption +
             '</span>'
-            : 'Click to expand');
+            : 'Click to expand') + '</div>';
     };
 
-    buildingInfo.addTo(geoMap);
+    function onBuildingInfoClick() {
+        if (!isToggled) {
+            isToggled = true;
+            PageMethods.DrawBuildingInfoBox(onSuccess);
+            function onSuccess(response, userContext, methodName) {
+                console.log(response);
+                buildingInfo.update(jQuery.parseJSON(response));
+                document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
+
+            }
+        } else {
+            isToggled = false;
+            buildingInfo.update();
+            document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
+
+        }
+    }
+
+    document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
 }
 
 function drawFloorInfoBox() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<div class="info" id="floorInfoBox"><h4>Floor Data</h4> Click to expand</div>';
+        this._div.innerHTML = '<div class="info" id="floorInfoBox"><h4>Floor data</h4> Click to expand</div>';
         return this._div;
     };
 
@@ -55,7 +77,6 @@ function drawFloorInfoBox() {
             '</div></span>'
             : 'Click to expand') + '</div>';
     };
-
     
     document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
 }
