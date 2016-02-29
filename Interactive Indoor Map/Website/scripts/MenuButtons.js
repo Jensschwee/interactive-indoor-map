@@ -1,5 +1,6 @@
 ﻿var currentFloorLevel = 0;
 
+
 function OnFloorLevelButtonClick() {
     if (geoMap != null) {
         geoMap.removeLayer(geojson);
