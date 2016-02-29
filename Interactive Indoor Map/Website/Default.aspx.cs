@@ -58,7 +58,7 @@ namespace Website
             return converter.ConvertRooms(floorLevel);
         }
 
-        [WebMethod]
+        [System.Web.Services.WebMethod]
         public static string DrawFloorInfoBox(int floorLevel)
         {
             JsonConverter converter = new JsonConverter();
@@ -66,7 +66,7 @@ namespace Website
             return converter.ConvertFloors(floorLevel);
         }
 
-        [WebMethod]
+        [System.Web.Services.WebMethod]
         public static string DrawBuildingInfoBox()
         {
             JsonConverter converter = new JsonConverter();

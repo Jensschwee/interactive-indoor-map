@@ -43,7 +43,8 @@ function drawFloorInfoBox() {
         PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
 
         function onSuccess(response, userContext, methodName) {
-            floorInfo.update(response);
+            console.log(response);
+            floorInfo.update(jQuery.parseJSON(response));
         }
     }
 
