@@ -1,6 +1,7 @@
 ﻿var buildingInfo = L.control({ position: 'topleft' });
 var floorInfo = L.control({ position: 'topleft' });
 var roomInfo = L.control();
+var isFloorInfoToggled = false;
 
 function drawBuildingInfo() {
     buildingInfo.onAdd = function (map) {
@@ -37,18 +38,11 @@ function drawFloorInfoBox() {
         return this._div;
     };
 
-    function onClick() {
-        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-
-        function onSuccess(response, userContext, methodName) {
-            console.log(response);
-            floorInfo.update(jQuery.parseJSON(response));
-        }
-    }
+    floorInfo.addTo(geoMap);
 
     floorInfo.update = function (props) {
         this._div.innerHTML = '<div class="info" id="floorInfoBox"> <h4>Floor data</h4>' + (props ?
-            '<span style="line-height:100%"><h5><b>Floor Level:</b> ' + props.FloorLevel + '</h5>' +
+            '<span style="line-height:100%"><h5><b>Floor Level</b>: ' + props.FloorLevel + '</h5>' +
             '<br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
             '<br/> <b>Light</b>: ' + props.LightConsumption +
@@ -59,11 +53,28 @@ function drawFloorInfoBox() {
             '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
             '<br/><b>Hot Water</b>: ' + props.HotWaterConsumption +
             '</div></span>'
-            : 'Click to expand');
+            : 'Click to expand') + '</div>';
     };
 
-    floorInfo.addTo(geoMap);
-    document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
+    
+    document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
+}
+
+function onFloorInfoClick() {
+    if (!isFloorInfoToggled) {
+        isFloorInfoToggled = true;
+        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            floorInfo.update(jQuery.parseJSON(response));
+            document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
+
+        }
+    } else {
+        isFloorInfoToggled = false;
+        floorInfo.update();
+        document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
+
+    }
 }
 
 /*function drawFloorInfoBox() {
