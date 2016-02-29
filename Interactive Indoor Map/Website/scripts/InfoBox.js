@@ -10,8 +10,8 @@ function drawBuildingInfo() {
     };
 
     buildingInfo.update = function (props) {
-        this._div.innerHTML = '<h5>Building data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.BuildingName + '</h4>' +
+        this._div.innerHTML = '<h4>Building data</h4>' + (props ?
+            '<span style="line-height:100%"><h5>' + props.BuildingName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Occupants</b>: ' + props.Occupants +
             '<br/><br/><h4>Power Consumption</h4>' +
@@ -33,7 +33,7 @@ function drawBuildingInfo() {
 function drawFloorInfoBox() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<div class="info" id="floorInfoBox">floorInfoBox</div>';
+        this._div.innerHTML = '<form class="info" id="floorInfoBox">floorInfoBox </br> Click to expand</form>';
         return this._div;
     };
 
@@ -43,22 +43,20 @@ function drawFloorInfoBox() {
         console.log(isToggled);
         if (!isToggled) {
             isToggled = true;
-            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-            function onSuccess(response, userContext, methodName) {
-                console.log(response);
-                floorInfo.update(jQuery.parseJSON(response));
+        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+        function onSuccess(response, userContext, methodName) {
+            console.log(response);
+            floorInfo.update(jQuery.parseJSON(response));
                 document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 
-            }
+        }
         } else {
             isToggled = false;
             floorInfo.update();
             document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 
-        }
     }
-
-    document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
+    }
 
     floorInfo.update = function (props) {
         this._div.innerHTML = '<div id="floorInfoBox" class="info"> <h5>Floor data</h5>' + (props ?
@@ -76,7 +74,8 @@ function drawFloorInfoBox() {
             : 'Click to expand') + '</div>';
     };
 
-
+    floorInfo.addTo(geoMap);
+    document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 }
 
 /*function drawFloorInfoBox() {
@@ -161,8 +160,8 @@ function drawRoomInfo() {
 
     // method that we will use to update the control based on feature properties passed
     roomInfo.update = function (props) {
-        this._div.innerHTML = '<h5>Room data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
+        this._div.innerHTML = '<h4>Room data</h4>' + (props ?
+            '<span style="line-height:100%"><h5><b>Name: </b>' + props.RoomName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Motion</b>: ' + props.IsMotionDetected +
             '<br/> <b>Occupants</b>: ' + props.Occupants +

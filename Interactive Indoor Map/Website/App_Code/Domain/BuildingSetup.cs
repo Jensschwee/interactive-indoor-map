@@ -45,15 +45,36 @@ namespace Website.Domain
         private void CreateFloors()
         {
             cellarFloor = new Floor(-1);
-            groundFloor = new Floor(0);
-            firstFloor = new Floor(1);
-            secondFloor = new Floor(2);
             cellarFloor.HardwareConsumption = 3500;
             cellarFloor.LightConsumption = 2400;
             cellarFloor.OtherConsumption = 700;
             cellarFloor.VentilationConsumption = 1300;
             cellarFloor.ColdWaterConsumption = 500;
             cellarFloor.HotWaterConsumption = 400;
+
+            groundFloor = new Floor(0);
+            groundFloor.HardwareConsumption = 4000;
+            groundFloor.LightConsumption = 2000;
+            groundFloor.OtherConsumption = 500;
+            groundFloor.VentilationConsumption = 1500;
+            groundFloor.ColdWaterConsumption = 700;
+            groundFloor.HotWaterConsumption = 800;
+
+            firstFloor = new Floor(1);
+            firstFloor.HardwareConsumption = 5000;
+            firstFloor.LightConsumption = 1500;
+            firstFloor.OtherConsumption = 1000;
+            firstFloor.VentilationConsumption = 2500;
+            firstFloor.ColdWaterConsumption = 300;
+            firstFloor.HotWaterConsumption = 250;
+
+            secondFloor = new Floor(2);
+            secondFloor.HardwareConsumption = 3200;
+            secondFloor.LightConsumption = 900;
+            secondFloor.OtherConsumption = 200;
+            secondFloor.VentilationConsumption = 1800;
+            secondFloor.ColdWaterConsumption = 1100;
+            secondFloor.HotWaterConsumption = 1000;
 
             CreateSensors();
         }
