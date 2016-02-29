@@ -88,7 +88,6 @@ function onFloorInfoUpdate() {
     function onSuccess(response, userContext, methodName) {
         floorInfo.update(jQuery.parseJSON(response));
         document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
-
     }
 }
 
@@ -103,79 +102,6 @@ function onFloorInfoClick() {
 
     }
 }
-
-/*function drawFloorInfoBox() {
-    var floorInfo = L.Control.extend({
-        options: { position: 'topleft' },
-
-        onAdd: function(map) {
-            this._div = L.DomUtil.create('div', 'info');
-            this._div.innerHTML = "<h2>'Hover or click to expand'</h2>";
-            L.DomEvent.on(this._div, "click", this._click)
-            return this._div;
-        },
-
-        update: = function (props) {
-            this._div.innerHTML = '<h5>Room data</h5>' + (props ?
-                '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
-                '<h4>Occupancy</h4>' +
-                '<b>Motion</b>: ' + props.IsMotionDetected +
-                '<br/> <b>Occupants</b>: ' + props.Occupants +
-                '<br/><br/><h4>Air</h4>' +
-                '<b>Temperature</b>: ' + props.Temperature + '&#8451' +
-                '<br/> <b>CO2</b>: ' + props.CO2 +
-                '<br/><br/><h4>Light</h4>' +
-                '<b>Lighting</b>: ' + props.IsLightActivated +
-                '<br/> <b>Lumen</b>: ' + props.Lumen +
-                '<br/><br/><h4>Power Consumption</h4>' +
-                '<b>Hardware</b>: ' + props.HardwareConsumption +
-                '<br/> <b>Light</b>: ' + props.LightConsumption +
-                '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
-                '<br/> <b>Other</b>: ' + props.OtherConsumption +
-                '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
-                '</span>'
-                : 'Hover over a room to see info');
-        },
-
-        _click: function (e) {
-            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-
-            function onSuccess(response, userContext, methodName) {
-                callBackMethodsToDraw(response);
-            }
-
-            this._div.innerHTML = '<h5>Floor data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.FloorLevel + '</h4>' +
-            '<br/><br/><h4>Power Consumption</h4>' +
-            '<b>Hardware</b>: ' + props.HardwareConsumption +
-            '<br/> <b>Light</b>: ' + props.LightConsumption +
-            '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
-            '<br/> <b>Other</b>: ' + props.OtherConsumption +
-            '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
-            '<br/><br/><h4>Water Consumption</h4>' +
-            '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
-            '<b>Hot Water</b>: ' + props.HotWaterConsumption +
-            '</span>'
-            : 'Hover or click to expand');
-
-            var layer = e.target;
-
-            layer.setStyle({
-                weight: 5,
-                color: '#666',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera) {
-                layer.bringToFront();
-            }
-
-            floorInfo.update(layer.feature.properties);
-
-        },
-    });
-}*/
 
 function drawRoomInfo() {
     roomInfo.onAdd = function (map) {
