@@ -1,4 +1,6 @@
-﻿function CreateButtons(CallBackDraw, style) {
+﻿var currentFloorLevel = 0;
+
+function CreateButtons(CallBackDraw, style) {
     L.control.fullscreen({
         position: 'bottomleft'
     }).addTo(geoMap);
@@ -6,6 +8,8 @@
 
 
     L.easyButton('-1;', function () {
+        currentFloorLevel = -1;
+
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
         }
@@ -17,6 +21,8 @@
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('0;', function () {
+        currentFloorLevel = 0;
+
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
         }
@@ -27,6 +33,8 @@
         }
     }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('1;', function () {
+        currentFloorLevel = 1;
+
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
         }
@@ -37,6 +45,8 @@
         }
     }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('2;', function () {
+        currentFloorLevel = 2;
+
         if (geoMap != null) {
             geoMap.removeLayer(geojson);
         }

@@ -1,5 +1,5 @@
-﻿var buildingInfo = L.control({ position: 'topleft' }) ;
-var floorInfo = L.control({ position: 'topleft' });
+﻿var buildingInfo = L.control({ position: 'topleft' });
+//var floorInfo = L.control({ position: 'topleft' });
 var roomInfo = L.control();
 
 
@@ -58,15 +58,46 @@ function drawFloorInfo() {
     floorInfo.addTo(geoMap);
 }
 
+function drawFloorInfo() {
+    var floorInfo = L.Control.extend({
+        options: { position: 'topleft' },
+
+        onAdd: function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this._div.innerHTML = "<h2>'Hover or click to expand'</h2>";
+            L.DomEvent.on(this._div, "click", this._click)
+            return this._div;
+        },
+
+        _click: function (e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+
+            floorInfo.update(layer.feature.properties);
+
+        },
+    });
+}
+
 function drawRoomInfo() {
-    roomInfo.onAdd = function(map) {
+    roomInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;
     };
 
     // method that we will use to update the control based on feature properties passed
-    roomInfo.update = function(props) {
+    roomInfo.update = function (props) {
         this._div.innerHTML = '<h5>Room data</h5>' + (props ?
             '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
             '<h4>Occupancy</h4>' +
