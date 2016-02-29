@@ -33,7 +33,7 @@
 
     callBackMethodsToDraw = DrawTemp;
         
-    DrawLegend([24, 23.5, 23, 22.5, 22, 21.5, 21, 20.5, 20], getColor, '&#8451');
+    drawLegend([24, 23.5, 23, 22.5, 22, 21.5, 21, 20.5, 20], getColor, '&#8451');
 
     OnFloorLevelButtonClick();
 }
