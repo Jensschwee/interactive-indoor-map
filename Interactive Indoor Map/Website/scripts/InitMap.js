@@ -1,6 +1,6 @@
 ﻿var geojson;
 var geoMap;
-var callBackMethoedsToDraw;
+var callBackMethodsToDraw;
 
 var legend;
 
@@ -55,7 +55,7 @@ function leafletDraw(JSONMap) {
         geoMap.addLayer(geojson);
     }
 
-    callBackMethoedsToDraw = DrawInit;
+    callBackMethodsToDraw = DrawInit;
 
     CreateButtons();
 }
