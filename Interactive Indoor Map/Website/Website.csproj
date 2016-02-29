@@ -104,7 +104,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Images\fullscreen.png" />
+    <Content Include="Images\temperature.png" />
     <Content Include="scripts\easy-button.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
