@@ -33,25 +33,35 @@ function drawBuildingInfo() {
 function drawFloorInfoBox() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<form class="info" id="floorInfoBox">floorInfoBox</form>';
+        this._div.innerHTML = '<div class="info" id="floorInfoBox">floorInfoBox</div>';
         return this._div;
     };
 
     floorInfo.addTo(geoMap);
-
+    var isToggled = false;
     function onClick() {
-        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+        console.log(isToggled);
+        if (!isToggled) {
+            isToggled = true;
+            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+            function onSuccess(response, userContext, methodName) {
+                console.log(response);
+                floorInfo.update(jQuery.parseJSON(response));
+                document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 
-        function onSuccess(response, userContext, methodName) {
-            console.log(response);
-            floorInfo.update(jQuery.parseJSON(response));
+            }
+        } else {
+            isToggled = false;
+            floorInfo.update();
+            document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
+
         }
     }
 
     document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 
     floorInfo.update = function (props) {
-        this._div.innerHTML = '<div class="info"> <h5>Floor data</h5>' + (props ?
+        this._div.innerHTML = '<div id="floorInfoBox" class="info"> <h5>Floor data</h5>' + (props ?
             '<span style="line-height:100%"><h4>' + props.FloorLevel + '</h4>' +
             '<br/><br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
@@ -63,10 +73,10 @@ function drawFloorInfoBox() {
             '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
             '<br/><b>Hot Water</b>: ' + props.HotWaterConsumption +
             '</div></span>'
-            : 'Click to expand');
+            : 'Click to expand') + '</div>';
     };
 
-    
+
 }
 
 /*function drawFloorInfoBox() {
