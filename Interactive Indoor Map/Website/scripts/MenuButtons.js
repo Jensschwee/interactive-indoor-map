@@ -23,7 +23,6 @@ function CreateButtons() {
 
     L.easyButton('&#45;&#49;', function () {
         currentFloorLevel = -1;
-        floorInfo.update();
         OnFloorLevelButtonClick();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
