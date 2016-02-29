@@ -4,7 +4,7 @@ var callBackMethodsToDraw;
 
 var legend;
 
-function DrawWolrdMap() {
+function DrawWorldMap() {
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         minZoom: 19,
@@ -16,9 +16,9 @@ function DrawWolrdMap() {
     return worldMap;
 }
 
-function leafletDraw(JSONMap) {
+function InitLeafletMap(JSONMap) {draw
 
-    var worldMap = DrawWolrdMap();
+    var worldMap = DrawWorldMap();
 
     function style(feature) {
         return {
@@ -37,7 +37,7 @@ function leafletDraw(JSONMap) {
         onEachFeature: onEachFeature
     });
 
-    InitMapSettings();
+    initMapSettings();
 
 
     //Adds the two maps to the div
@@ -47,7 +47,7 @@ function leafletDraw(JSONMap) {
     drawRoomInfo(geoMap);
 
 
-    function DrawInit(JSONMap) {
+    function drawGeoJsonMap(JSONMap) {
         geojson = L.geoJson(jQuery.parseJSON(JSONMap), {
             onEachFeature: onEachFeature,
             style: style
@@ -55,13 +55,13 @@ function leafletDraw(JSONMap) {
         geoMap.addLayer(geojson);
     }
 
-    callBackMethodsToDraw = DrawInit;
+    callBackMethodsToDraw = drawGeoJsonMap;
 
     CreateButtons();
 }
 
-function InitMapSettings() {
-    //Fints the div for the map to draw in
+function initMapSettings() {
+    //Finds the div for the map to draw in
     geoMap = L.map('map', {
         zoomControl: false,
         minZoom: 19,
@@ -69,7 +69,7 @@ function InitMapSettings() {
         maxZoom: 19,
     }).fitBounds(geojson.getBounds());
 
-    //Disableds zoom and dragging on the map
+    //Disables zoom and dragging on the map
     geoMap.dragging.disable();
     geoMap.touchZoom.disable();
     geoMap.doubleClickZoom.disable();

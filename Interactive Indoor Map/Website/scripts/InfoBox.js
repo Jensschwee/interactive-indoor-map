@@ -31,7 +31,10 @@ function drawBuildingInfo() {
             '</span>'
             : 'Click to expand') + '</div>';
     };
-
+    /**
+     * Creates an eventlistener for the info box,
+     * fetches json from codebehind and puts it into the infobox
+     */
     function onBuildingInfoClick() {
         if (!isToggled) {
             isToggled = true;

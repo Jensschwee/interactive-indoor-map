@@ -1,4 +1,4 @@
-﻿function DrawLegend(grade, collerting, unit) {
+﻿function DrawLegend(grade, coloring, unit) {
     if (legend != null) {
         geoMap.removeControl(legend);
     }
@@ -14,7 +14,7 @@
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + collerting(grades[i]) + '"></i> ' +
+                '<i style="background:' + coloring(grades[i]) + '"></i> ' +
                 //(grades[i + 1] ? '' : '-') +
                 //(grades[i - 1] ? '' : '+') +
                 grades[i] + (grades[i + 1] ? unit + '<br>' : unit);
