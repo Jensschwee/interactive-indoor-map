@@ -31,12 +31,12 @@
     <script type='text/javascript' src='scripts/easy-button.js'></script>
 
     <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
-    <script type='text/javascript' src='scripts/leaf-demo.js'></script>
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
-    <script type='text/javascript' src='scripts/MapSettings.js'></script>
     <script type='text/javascript' src='scripts/MenuButtons.js'></script>
     <script type='text/javascript' src='scripts/legend.js'></script>
+    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>
+
 
 
 

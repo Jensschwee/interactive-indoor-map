@@ -1,5 +1,5 @@
 ﻿var buildingInfo = L.control({ position: 'topleft' });
-//var floorInfo = L.control({ position: 'topleft' });
+var floorInfo = L.control({ position: 'topleft' });
 var roomInfo = L.control();
 
 
@@ -56,37 +56,6 @@ function drawFloorInfo() {
     };
 
     floorInfo.addTo(geoMap);
-}
-
-function drawFloorInfo() {
-    var floorInfo = L.Control.extend({
-        options: { position: 'topleft' },
-
-        onAdd: function (map) {
-            this._div = L.DomUtil.create('div', 'info');
-            this._div.innerHTML = "<h2>'Hover or click to expand'</h2>";
-            L.DomEvent.on(this._div, "click", this._click)
-            return this._div;
-        },
-
-        _click: function (e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                weight: 5,
-                color: '#666',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera) {
-                layer.bringToFront();
-            }
-
-            floorInfo.update(layer.feature.properties);
-
-        },
-    });
 }
 
 function drawRoomInfo() {

@@ -108,7 +108,6 @@
     <Content Include="scripts\easy-button.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
-    <Content Include="scripts\leaf-demo.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -125,10 +124,9 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="scripts\leafletDraw.js" />
     <Content Include="scripts\legend.js" />
-    <Content Include="scripts\MapSettings.js" />
     <Content Include="scripts\MenuButtons.js" />
+    <Content Include="scripts\Views\TemperatureView.js" />
     <Content Include="Style\easy-button.css" />
     <Content Include="Style\Style.css" />
     <Content Include="Web.config" />
