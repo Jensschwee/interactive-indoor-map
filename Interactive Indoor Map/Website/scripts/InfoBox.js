@@ -58,7 +58,7 @@ function drawFloorInfo() {
     floorInfo.addTo(geoMap);
 }
 
-function drawFloorInfo() {
+/*function drawFloorInfo() {
     var floorInfo = L.Control.extend({
         options: { position: 'topleft' },
 
@@ -69,7 +69,12 @@ function drawFloorInfo() {
             return this._div;
         },
 
+        PageMethods.DrawFloorInfoBox(currentFloorLevel);
+        function onClick()
+    }
+
         _click: function (e) {
+            
             var layer = e.target;
 
             layer.setStyle({
@@ -87,7 +92,7 @@ function drawFloorInfo() {
 
         },
     });
-}
+}*/
 
 function drawRoomInfo() {
     roomInfo.onAdd = function (map) {

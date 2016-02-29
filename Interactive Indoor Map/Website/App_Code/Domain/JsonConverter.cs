@@ -11,6 +11,11 @@ namespace Website.Domain
 {
     public class JsonConverter
     {
+        public string ConvertBuilding()
+        {
+            return ConvertBuilding((Building) HttpContext.Current.Application["Building"]);
+        }
+
         public string ConvertBuilding(Building building)
         {
             StringBuilder sb = new StringBuilder();
@@ -28,6 +33,11 @@ namespace Website.Domain
             sb.Append("}");
 
             return sb.ToString();
+        }
+
+        public string ConvertFloors(int floorLevel)
+        {
+            return ConvertFloors((Building)HttpContext.Current.Application["Building"], floorLevel);
         }
 
         public string ConvertFloors(Building building, int floorLevel)

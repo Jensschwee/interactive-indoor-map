@@ -63,7 +63,15 @@ namespace Website
         {
             JsonConverter converter = new JsonConverter();
 
-            return converter.ConvertRooms(floorLevel);
+            return converter.ConvertFloors(floorLevel);
+        }
+
+        [WebMethod]
+        public static string DrawBuildingInfoBox()
+        {
+            JsonConverter converter = new JsonConverter();
+
+            return converter.ConvertBuilding();
         }
     }
 }
