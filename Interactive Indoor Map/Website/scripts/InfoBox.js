@@ -33,7 +33,7 @@ function drawBuildingInfo() {
 function drawFloorInfoBox() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<form class="info" id="floorInfoBox">floorInfoBox </br> Click to expand</form>';
+        this._div.innerHTML = '<div class="info" id="floorInfoBox"><h4>Floor Data</h4> Click to expand</div>';
         return this._div;
     };
 
@@ -47,7 +47,7 @@ function drawFloorInfoBox() {
     }
 
     floorInfo.update = function (props) {
-        this._div.innerHTML = '<div class="info"> <h4>Floor data</h4>' + (props ?
+        this._div.innerHTML = '<div class="info" id="floorInfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Floor Level:</b> ' + props.FloorLevel + '</h5>' +
             '<br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
