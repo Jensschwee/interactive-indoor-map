@@ -60,6 +60,8 @@ function drawFloorInfoBox() {
         return this._div;
     };
 
+    
+
     floorInfo.addTo(geoMap);
 
     floorInfo.update = function (props) {
@@ -81,15 +83,19 @@ function drawFloorInfoBox() {
     document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
 }
 
+function onFloorInfoUpdate() {
+    PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+    function onSuccess(response, userContext, methodName) {
+        floorInfo.update(jQuery.parseJSON(response));
+        document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
+
+    }
+}
+
 function onFloorInfoClick() {
     if (!isFloorInfoToggled) {
         isFloorInfoToggled = true;
-        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-        function onSuccess(response, userContext, methodName) {
-            floorInfo.update(jQuery.parseJSON(response));
-            document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
-
-        }
+        onFloorInfoUpdate();
     } else {
         isFloorInfoToggled = false;
         floorInfo.update();

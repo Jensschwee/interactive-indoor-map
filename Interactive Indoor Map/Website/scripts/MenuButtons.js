@@ -10,7 +10,9 @@ function OnFloorLevelButtonClick() {
 
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 
-    
+    if (isFloorInfoToggled) {
+        onFloorInfoUpdate();
+    }
 }
 
 function CreateButtons() {
@@ -42,6 +44,6 @@ function CreateButtons() {
 
     L.easyButton(imgTemp, function () {
         ViewTemperature();
-    }, { position: 'bottomleft', paddingleft: "0px"}).addTo(geoMap);
+    }, { position: 'bottomleft', paddingleft: "0px" }).addTo(geoMap);
 
 }
