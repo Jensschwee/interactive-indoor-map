@@ -10,8 +10,8 @@ function drawBuildingInfo() {
     };
 
     buildingInfo.update = function (props) {
-        this._div.innerHTML = '<h5>Building data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.BuildingName + '</h4>' +
+        this._div.innerHTML = '<h4>Building data</h4>' + (props ?
+            '<span style="line-height:100%"><h5>' + props.BuildingName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Occupants</b>: ' + props.Occupants +
             '<br/><br/><h4>Power Consumption</h4>' +
@@ -33,7 +33,7 @@ function drawBuildingInfo() {
 function drawFloorInfoBox() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<form class="info" id="floorInfoBox">floorInfoBox</form>';
+        this._div.innerHTML = '<form class="info" id="floorInfoBox">floorInfoBox </br> Click to expand</form>';
         return this._div;
     };
 
@@ -47,9 +47,9 @@ function drawFloorInfoBox() {
     }
 
     floorInfo.update = function (props) {
-        this._div.innerHTML = '<div class="info"> <h5>Floor data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>Floor Level: ' + props.FloorLevel + '</h4>' +
-            '<br/><br/><h4>Power Consumption</h4>' +
+        this._div.innerHTML = '<div class="info"> <h4>Floor data</h4>' + (props ?
+            '<span style="line-height:100%"><h5><b>Floor Level:</b> ' + props.FloorLevel + '</h5>' +
+            '<br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
             '<br/> <b>Light</b>: ' + props.LightConsumption +
             '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
@@ -148,8 +148,8 @@ function drawRoomInfo() {
 
     // method that we will use to update the control based on feature properties passed
     roomInfo.update = function (props) {
-        this._div.innerHTML = '<h5>Room data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.RoomName + '</h4>' +
+        this._div.innerHTML = '<h4>Room data</h4>' + (props ?
+            '<span style="line-height:100%"><h5><b>Name: </b>' + props.RoomName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Motion</b>: ' + props.IsMotionDetected +
             '<br/> <b>Occupants</b>: ' + props.Occupants +
