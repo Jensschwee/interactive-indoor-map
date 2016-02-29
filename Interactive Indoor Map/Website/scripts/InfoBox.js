@@ -37,8 +37,6 @@ function drawFloorInfoBox() {
         return this._div;
     };
 
-    floorInfo.addTo(geoMap);
-
     function onClick() {
         PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
 
@@ -47,11 +45,9 @@ function drawFloorInfoBox() {
         }
     }
 
-    document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
-
     floorInfo.update = function (props) {
         this._div.innerHTML = '<div class="info"> <h5>Floor data</h5>' + (props ?
-            '<span style="line-height:100%"><h4>' + props.FloorLevel + '</h4>' +
+            '<span style="line-height:100%"><h4>Floor Level: ' + props.FloorLevel + '</h4>' +
             '<br/><br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
             '<br/> <b>Light</b>: ' + props.LightConsumption +
@@ -65,7 +61,8 @@ function drawFloorInfoBox() {
             : 'Click to expand');
     };
 
-    
+    floorInfo.addTo(geoMap);
+    document.getElementById("floorInfoBox").addEventListener("click", onClick, false);
 }
 
 /*function drawFloorInfoBox() {

@@ -57,8 +57,8 @@ namespace Website.Domain
                     sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
                     sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");
                     sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption);
+                    break;
                 }
-                break;
             }
 
             sb.Append("}");
