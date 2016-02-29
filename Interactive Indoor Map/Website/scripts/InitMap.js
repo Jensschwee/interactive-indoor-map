@@ -2,7 +2,7 @@
 var geoMap;
 var callBackMethoedsToDraw;
 
-//var legend = L.control({ position: 'bottomright' });
+var legend;
 
 function DrawWolrdMap() {
     //Setup the world map

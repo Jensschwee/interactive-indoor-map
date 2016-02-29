@@ -1,5 +1,9 @@
 ﻿function DrawLegend(grade, collerting, unit) {
-    var legend = L.control({ position: 'bottomright' });
+    if (legend != null) {
+        geoMap.removeControl(legend);
+    }
+
+    legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function (map) {
 
