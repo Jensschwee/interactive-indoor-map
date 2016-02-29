@@ -47,7 +47,7 @@ function drawFloorInfo() {
             '<br/> <b>Light</b>: ' + props.LightConsumption +
             '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
-            '<br/><b>Total</b>: ' + props.TotalConsumption +
+            '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
             '<br/><br/><h4>Water Consumption</h4>' +
             '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
             '<b>Hot Water</b>: ' + props.HotWaterConsumption +
@@ -83,7 +83,7 @@ function drawRoomInfo() {
             '<br/> <b>Light</b>: ' + props.LightConsumption +
             '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
-            '<br/><b>Total</b>: ' + props.TotalConsumption +
+            '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
             '</span>'
             : 'Hover over a room to see info');
     };

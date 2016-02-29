@@ -22,36 +22,16 @@ namespace Website.BO
         
         public int Occupants { get; set; }
         
-        public double VentilationConsumption
-        {
-            get { return Floors.Sum(floor => floor.VentilationConsumption); }
-            set { VentilationConsumption = value; }
-        }
+        public double VentilationConsumption => Floors.Sum(floor => floor.VentilationConsumption);
 
-        public double LightConsumption
-        {
-            get { return Floors.Sum(floor => floor.LightConsumption); }
-            set { LightConsumption = value; }
-        }
-        
-        public double HardwareConsumption
-        {
-            get { return Floors.Sum(floor => floor.HardwareConsumption); }
-            set { HardwareConsumption = value; }
-        }
-        
-        public double OtherConsumption
-        {
-            get { return Floors.Sum(floor => floor.OtherConsumption); }
-            set { OtherConsumption = value; }
-        }
-        
-        public double TotalPowerConsumption
-        {
-            get { return VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption; }
-            set { TotalPowerConsumption = value; }
-        }
-        
+        public double LightConsumption => Floors.Sum(floor => floor.LightConsumption);
+
+        public double HardwareConsumption => Floors.Sum(floor => floor.HardwareConsumption);
+
+        public double OtherConsumption => Floors.Sum(floor => floor.OtherConsumption);
+
+        public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
+
         public double HotWaterConsumption { get; set; }
         
         public double ColdWaterConsumption { get; set; }

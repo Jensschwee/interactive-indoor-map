@@ -9,16 +9,64 @@ namespace Website.Domain
 {
     public class BuildingSetup
     {
+        private Building building;
+        private Floor cellarFloor;
+        private Floor groundFloor;
+        private Floor firstFloor;
+        private Floor secondFloor;
+        private Room Ø22_508_0;
+        private Room Ø22_604_0;
+        private Room Ø20_604_0;
+        private Room Ø20_508a_0;
+        private Sensor testSensor;
+
+
         public void SetupBuilding()
         {
-            Building building = new Building();
-            Floor cellarFloor = new Floor(-1);
-            Floor groundFloor = new Floor(0);
-            Floor firstFloor = new Floor(1);
-            Floor secondFloor = new Floor(2);
-            //Room Ø20_501c_2 = new Room("Ø20-501c-2", );
+            CreateBuilding();
 
-            Room Ø20_508a_0 = new Room("Ø20-508a-0", new Area(new List<Coordinates>
+            CreateFloors();
+
+            CreateRooms();
+
+            AssembleBuilding();
+
+            HttpContext.Current.Application["Building"] = building;
+        }
+
+        private void CreateBuilding()
+        {
+            building = new Building();
+            building.Occupants = 200;
+            building.ColdWaterConsumption = 2200;
+            building.HotWaterConsumption = 2100;
+        }
+
+        private void CreateFloors()
+        {
+            cellarFloor = new Floor(-1);
+            groundFloor = new Floor(0);
+            firstFloor = new Floor(1);
+            secondFloor = new Floor(2);
+            cellarFloor.HardwareConsumption = 3500;
+            cellarFloor.LightConsumption = 2400;
+            cellarFloor.OtherConsumption = 700;
+            cellarFloor.VentilationConsumption = 1300;
+            cellarFloor.ColdWaterConsumption = 500;
+            cellarFloor.HotWaterConsumption = 400;
+
+            CreateSensors();
+        }
+
+        private void CreateSensors()
+        {
+            testSensor = new Sensor("Test Sensor", "Laptop");
+            cellarFloor.Sensors.Add(testSensor);
+        }
+
+        private void CreateRooms()
+        {
+            Ø20_508a_0 = new Room("Ø20-508a-0", new Area(new List<Coordinates>
             {
                 new Coordinates(10.430732667446136, 55.367447995895),
                 new Coordinates(10.430542230606079, 55.36744037424566),
@@ -39,7 +87,7 @@ namespace Website.Domain
                 Occupants = 7
             };
 
-            Room Ø22_508_0 = new Room("Ø22-508-0", new Area(new List<Coordinates>
+            Ø22_508_0 = new Room("Ø22-508-0", new Area(new List<Coordinates>
             {
                 new Coordinates(10.43104112148285, 55.36767664469221),
                 new Coordinates(10.430856049060822, 55.36767207172922),
@@ -60,7 +108,7 @@ namespace Website.Domain
                 Occupants = 0
             };
 
-            Room Ø22_604_0 = new Room("Ø22-604-0", new Area(new List<Coordinates>
+            Ø22_604_0 = new Room("Ø22-604-0", new Area(new List<Coordinates>
             {
                 new Coordinates(10.430928468704224, 55.36698916998991),
                 new Coordinates(10.431126952171324, 55.3669983160732),
@@ -81,7 +129,7 @@ namespace Website.Domain
                 Occupants = 5
             };
 
-            Room Ø20_604_0 = new Room("Ø20_604_0", new Area(new List<Coordinates>
+            Ø20_604_0 = new Room("Ø20_604_0", new Area(new List<Coordinates>
             {
                 new Coordinates(10.430603921413422, 55.36697392651307),
                 new Coordinates(10.430810451507568, 55.36698307259987),
@@ -100,26 +148,23 @@ namespace Website.Domain
                 IsMotionDetected = false,
                 Occupants = 1
             };
+        }
 
+        private void AssembleBuilding()
+        {
             cellarFloor.Rooms.Add(Ø20_604_0);
-
             groundFloor.Rooms.Add(Ø22_508_0);
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);
-
             firstFloor.Rooms.Add(Ø20_508a_0);
             firstFloor.Rooms.Add(Ø22_508_0);
-
             secondFloor.Rooms.Add(Ø22_604_0);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(groundFloor);
             building.Floors.Add(firstFloor);
             building.Floors.Add(secondFloor);
-
-            HttpContext.Current.Application["Building"] = building;
-
         }
     }
 }

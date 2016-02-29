@@ -35,10 +35,10 @@ namespace Website.BO
         
         public double OtherConsumption { get; set; }
         
-        public double TotalConsumption
+        public double TotalPowerConsumption
         {
             get { return VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption; }
-            set { TotalConsumption = value; }
+            //set { TotalPowerConsumption = value; }
         }
 
         public Room(string roomName, Area area)

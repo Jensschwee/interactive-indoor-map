@@ -88,7 +88,7 @@ namespace Website.Domain
                         sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(room.Occupants) + ",");
                         sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(room.OtherConsumption) + ",");
                         sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(room.Temperature) + ",");
-                        sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalConsumption) + ",");
+                        sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalPowerConsumption) + ",");
                         sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(room.VentilationConsumption));
                         sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
                         foreach (Coordinates coordinates in room.Area.Vertices)

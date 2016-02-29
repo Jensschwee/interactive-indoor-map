@@ -12,5 +12,10 @@ namespace Website.BO.Utility
         public string SensorType { get; set; }
         public Coordinates Coordinates { get; set; }
 
+        public Sensor(string sensorName, string sensorType)
+        {
+            SensorName = sensorName;
+            SensorType = sensorType;
+        }
     }
 }

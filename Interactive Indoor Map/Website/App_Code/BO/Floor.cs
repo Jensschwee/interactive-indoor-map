@@ -23,12 +23,8 @@ namespace Website.BO
     
         public double OtherConsumption { get; set; }
     
-        public double TotalPowerConsumption
-        {
-            get { return VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption; }
-            set { TotalPowerConsumption = value; }
-        }
-        
+        public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
+
         public List<Sensor> Sensors { get; set; }
 
         public double HotWaterConsumption { get; set; }
@@ -39,6 +35,7 @@ namespace Website.BO
         {
             FloorLevel = floorLevel;
             Rooms = new List<Room>();
+            Sensors = new List<Sensor>();
         }
     }
 }
