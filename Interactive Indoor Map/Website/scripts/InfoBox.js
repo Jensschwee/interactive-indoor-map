@@ -1,5 +1,5 @@
 ﻿var buildingInfo = L.control({ position: 'topleft' });
-//var floorInfo = L.control({ position: 'topleft' });
+var floorInfo = L.control({ position: 'topleft' });
 var roomInfo = L.control();
 
 
@@ -32,7 +32,7 @@ function drawBuildingInfo() {
     buildingInfo.addTo(geoMap);
 }
 
-function drawFloorInfo() {
+/*function drawFloorInfo() {
     floorInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info');
         this.update();
@@ -56,25 +56,40 @@ function drawFloorInfo() {
     };
 
     floorInfo.addTo(geoMap);
-}
+}*/
 
-/*function drawFloorInfo() {
+function drawFloorInfo() {
     var floorInfo = L.Control.extend({
         options: { position: 'topleft' },
 
-        onAdd: function (map) {
+        onAdd: function(map) {
             this._div = L.DomUtil.create('div', 'info');
             this._div.innerHTML = "<h2>'Hover or click to expand'</h2>";
             L.DomEvent.on(this._div, "click", this._click)
             return this._div;
         },
 
-        PageMethods.DrawFloorInfoBox(currentFloorLevel);
-        function onClick()
-    }
-
         _click: function (e) {
-            
+            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+
+            function onSuccess(response, userContext, methodName) {
+                callBackMethodsToDraw(response);
+            }
+
+            this._div.innerHTML = '<h5>Floor data</h5>' + (props ?
+            '<span style="line-height:100%"><h4>' + props.FloorLevel + '</h4>' +
+            '<br/><br/><h4>Power Consumption</h4>' +
+            '<b>Hardware</b>: ' + props.HardwareConsumption +
+            '<br/> <b>Light</b>: ' + props.LightConsumption +
+            '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
+            '<br/> <b>Other</b>: ' + props.OtherConsumption +
+            '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
+            '<br/><br/><h4>Water Consumption</h4>' +
+            '<b>Cold Water</b>: ' + props.ColdWaterConsumption +
+            '<b>Hot Water</b>: ' + props.HotWaterConsumption +
+            '</span>'
+            : 'Hover or click to expand');
+
             var layer = e.target;
 
             layer.setStyle({
@@ -92,7 +107,7 @@ function drawFloorInfo() {
 
         },
     });
-}*/
+}
 
 function drawRoomInfo() {
     roomInfo.onAdd = function (map) {
