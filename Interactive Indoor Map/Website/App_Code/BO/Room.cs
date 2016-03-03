@@ -10,7 +10,6 @@ namespace Website.BO
 {
     public class Room
     {
-
         public string RoomName { get; set; }
 
         public Area Area { get; set; }
