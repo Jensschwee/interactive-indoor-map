@@ -1,35 +1,30 @@
-﻿"use strict";
-class View {
+﻿function View(style, roomColor, siUnit, sensorValues) {
+    this.style = style;
+    this.roomColor = roomColor;
+    this.siUnit = siUnit;
+    this.sensorValues = sensorValues;
+    this.roomGeoJson = null;
 
-     constructor(style, roomColor, siUnit, sensorValues) {
-         View.style = style;
-         View.roomColor = roomColor;
-         View.siUnit = siUnit;
-         View.sensorValues = sensorValues;
-         View.roomGeoJson = null;
-     }
 
-    drawView() {
+    View.drawView = function() {
         this.removeView();
+
         //console.log(View.style);
 
         function onSuccess(response) {
-           View.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
-               style: View.style,
+            View.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
+                style: View.style,
                 onEachFeature: onEachFeature
-           });
-           geoMap.addLayer(View.roomGeoJson);
+            });
+            geoMap.addLayer(View.roomGeoJson);
         }
+
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 
         if (isFloorInfoToggled) {
             onFloorInfoUpdate();
         }
-    }
-
-    getStyle() {
-        return View.style;
-    }
+    };
 
     //set style(value) {
     //    //console.log("1");
@@ -50,17 +45,17 @@ class View {
     //    }
     //}
 
-    cleanup() {
+    View.cleanup = function () {
         this.removeView();
         this.removeLegend();
     }
 
-    removeLegend() {
+    View.removeLegend = function() {
         if (View.legend != null) {
             geoMap.removeControl(View.legend);
         }
     }
-    removeView() {
+    View.removeView = function() {
         if (View.roomGeoJson != null) {
             geoMap.removeLayer(View.roomGeoJson);
         }
@@ -71,7 +66,7 @@ class View {
 * @param {} coloring the collering for the items, this must be a function
 * @param {} siUnit the unit for all the items
 */
-    drawLegend() {
+    View.drawLegend = function() {
         this.removeLegend();
 
         View.legend = L.control({ position: 'bottomright' });
