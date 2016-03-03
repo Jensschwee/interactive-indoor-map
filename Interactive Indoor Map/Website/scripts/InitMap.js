@@ -33,8 +33,14 @@ function InitLeafletMap(JSONMap) {
     var geojson = L.geoJson(JSONMap);
     initMapSettings(geojson);
 
+    //Links obj to super obj
+    DefaultView.prototype = new View();
+    TemperatureView.prototype = new View();
+
     view = new DefaultView();
-    
+
+    view.drawView();
+
     //Adds the two maps to the div
     //geojson.addTo(geoMap);
     worldMap.addTo(geoMap);

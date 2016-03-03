@@ -3,17 +3,15 @@
     this.roomColor = roomColor;
     this.siUnit = siUnit;
     this.sensorValues = sensorValues;
+
     this.roomGeoJson = null;
 
-
-    View.drawView = function() {
-        this.removeView();
-
-        //console.log(View.style);
+    View.prototype.drawView = function () {
+        View.prototype.removeView.call();
 
         function onSuccess(response) {
             View.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
-                style: View.style,
+                style: style,
                 onEachFeature: onEachFeature
             });
             geoMap.addLayer(View.roomGeoJson);
@@ -26,36 +24,18 @@
         }
     };
 
-    //set style(value) {
-    //    //console.log("1");
-    //    this.style = value;
-    //}
-
-    //changeFloor(floorLevel) {
-    //    removeView();
-
-    //    function onSuccess(response, userContext, methodName) {
-    //        drawView(response);
-    //    }
-
-    //    PageMethods.DrawFloor(floorLevel, onSuccess);
-
-    //    if (isFloorInfoToggled) {
-    //        onFloorInfoUpdate();
-    //    }
-    //}
-
-    View.cleanup = function () {
+    View.prototype.cleanup = function () {
         this.removeView();
         this.removeLegend();
     }
 
-    View.removeLegend = function() {
+    View.prototype.removeLegend = function () {
         if (View.legend != null) {
             geoMap.removeControl(View.legend);
         }
     }
-    View.removeView = function() {
+
+    View.prototype.removeView = function () {
         if (View.roomGeoJson != null) {
             geoMap.removeLayer(View.roomGeoJson);
         }
@@ -66,21 +46,19 @@
 * @param {} coloring the collering for the items, this must be a function
 * @param {} siUnit the unit for all the items
 */
-    View.drawLegend = function() {
-        this.removeLegend();
+    View.prototype.drawLegend = function () {
+        View.prototype.removeLegend.call();
 
         View.legend = L.control({ position: 'bottomright' });
-
-
         View.legend.onAdd = function (map) {
+
             //Creates the div for the legend
             var div = L.DomUtil.create('div', 'info legend');
-
             // loop through our density intervals and generate a label with a colored square for each interval
-            for (var i = 0; i < View.sensorValues.length; i++) {
+            for (var i = 0; i < sensorValues.length; i++) {
                 div.innerHTML +=
-                    '<i style="background:' + View.roomColor(View.sensorValues[i]) + '"></i> ' +
-                    View.sensorValues[i] + (View.sensorValues[i + 1] ? View.siUnit + '<br>' : View.siUnit);
+                    '<i style="background:' + roomColor(sensorValues[i]) + '"></i> ' +
+                    sensorValues[i] + (sensorValues[i + 1] ? siUnit + '<br>' : siUnit);
             }
             return div;
         };
