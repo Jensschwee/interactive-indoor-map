@@ -40,7 +40,6 @@ function drawBuildingInfo() {
             isToggled = true;
             PageMethods.DrawBuildingInfoBox(onSuccess);
             function onSuccess(response, userContext, methodName) {
-                console.log(response);
                 buildingInfo.update(jQuery.parseJSON(response));
                 document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
 
@@ -168,6 +167,6 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    View.roomGeoJson.resetStyle(e.target);
     roomInfo.update();
 }

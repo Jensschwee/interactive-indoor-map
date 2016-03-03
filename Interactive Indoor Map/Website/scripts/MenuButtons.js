@@ -46,7 +46,7 @@ function CreateButtons() {
         //OnFloorLevelButtonClick();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
-    var imgTemp = '<img src="Images/temperature.png" width="25" height="25"style=""/>';
+    var imgTemp = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
 
     L.easyButton(imgTemp, function () {
         view.cleanup();

@@ -30,14 +30,11 @@ function InitLeafletMap(JSONMap) {
 
 
     //Reads the JSON input
-    //var geojson = L.geoJson(JSONMap, {
-    //    onEachFeature: onEachFeature
-    //});
+    var geojson = L.geoJson(JSONMap);
+    initMapSettings(geojson);
+
     view = new DefaultView();
-
-    initMapSettings();
-
-
+    
     //Adds the two maps to the div
     //geojson.addTo(geoMap);
     worldMap.addTo(geoMap);

@@ -1,38 +1,34 @@
 ﻿"use strict";
 class View {
 
-    constructor(style, roomColor, siUnit, sensorValues) {
-        this.roomGeoJson = "";
-        this.style = style;
-        this.roomColor = roomColor;
-        this.siUnit = siUnit;
-        this.sensorValues = sensorValues;
-    }
-
-    
+     constructor(style, roomColor, siUnit, sensorValues) {
+         View.style = style;
+         View.roomColor = roomColor;
+         View.siUnit = siUnit;
+         View.sensorValues = sensorValues;
+         View.roomGeoJson = null;
+     }
 
     drawView() {
-        console.log(this.style);
         this.removeView();
+        //console.log(View.style);
 
-        function onSuccess(response, userContext, methodName) {
-            this.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
-                style: getStyle(),
+        function onSuccess(response) {
+           View.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
+               style: View.style,
                 onEachFeature: onEachFeature
-            });
+           });
+           geoMap.addLayer(View.roomGeoJson);
         }
-
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 
         if (isFloorInfoToggled) {
             onFloorInfoUpdate();
         }
-
-        geoMap.addLayer(this.geojson);
     }
 
     getStyle() {
-        return this.style;
+        return View.style;
     }
 
     //set style(value) {
@@ -60,13 +56,13 @@ class View {
     }
 
     removeLegend() {
-        if (this.legend != null) {
-            geoMap.removeControl(this.legend);
+        if (View.legend != null) {
+            geoMap.removeControl(View.legend);
         }
     }
     removeView() {
-        if (geoMap != null) {
-            geoMap.removeLayer(this.roomGeoJson);
+        if (View.roomGeoJson != null) {
+            geoMap.removeLayer(View.roomGeoJson);
         }
     }
 
@@ -76,24 +72,26 @@ class View {
 * @param {} siUnit the unit for all the items
 */
     drawLegend() {
-        removeLegend();
+        this.removeLegend();
 
-        this.legend = L.control({ position: 'bottomright' });
+        View.legend = L.control({ position: 'bottomright' });
 
-        this.legend.onAdd = function (map) {
+
+        View.legend.onAdd = function (map) {
             //Creates the div for the legend
             var div = L.DomUtil.create('div', 'info legend');
 
             // loop through our density intervals and generate a label with a colored square for each interval
-            for (var i = 0; i < this.sensorValues.length; i++) {
+            for (var i = 0; i < View.sensorValues.length; i++) {
                 div.innerHTML +=
-                    '<i style="background:' + this.roomColor(this.sensorValues[i]) + '"></i> ' +
-                    this.sensorValues[i] + (this.sensorValues[i + 1] ? this.siUnit + '<br>' : this.siUnit);
+                    '<i style="background:' + View.roomColor(View.sensorValues[i]) + '"></i> ' +
+                    View.sensorValues[i] + (View.sensorValues[i + 1] ? View.siUnit + '<br>' : View.siUnit);
             }
             return div;
         };
 
-        this.legend.addTo(geoMap);
+
+        View.legend.addTo(geoMap);
     }
 
 }
