@@ -47,8 +47,6 @@
 * @param {} siUnit the unit for all the items
 */
     View.prototype.drawLegend = function () {
-        View.prototype.removeLegend.call();
-
         View.legend = L.control({ position: 'bottomright' });
         View.legend.onAdd = function (map) {
 
