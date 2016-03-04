@@ -126,7 +126,6 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\MenuButtons.js" />
     <Content Include="scripts\Views\DefaultView.js" />
-    <Content Include="scripts\Views\Factory.js" />
     <Content Include="scripts\Views\TemperatureView.js" />
     <Content Include="scripts\Views\View.js" />
     <Content Include="Style\easy-button.css" />

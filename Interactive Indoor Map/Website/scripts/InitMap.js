@@ -18,17 +18,6 @@ function InitLeafletMap(JSONMap) {
 
     var worldMap = DrawWorldMap();
 
-    //function style(feature) {
-    //    return {
-    //        fillColor: 'blue',
-    //        color: 'white',//feature.properties.stroke,
-    //        weight: 1,
-    //        opacity: 1,
-    //        fillOpacity: 1
-    //    };
-    //}
-
-
     //Reads the JSON input
     var geojson = L.geoJson(JSONMap);
     initMapSettings(geojson);
@@ -41,21 +30,9 @@ function InitLeafletMap(JSONMap) {
 
     view.drawView();
 
-    //Adds the two maps to the div
-    //geojson.addTo(geoMap);
     worldMap.addTo(geoMap);
 
     drawRoomInfo(geoMap);
-
-    //function drawGeoJsonMap(JSONMap) {
-    //    geojson = L.geoJson(jQuery.parseJSON(JSONMap), {
-    //        onEachFeature: onEachFeature,
-    //        style: style
-    //    });
-    //    geoMap.addLayer(geojson);
-    //}
-
-    //callBackMethodsToDraw = drawGeoJsonMap;
 
     CreateButtons();
 
