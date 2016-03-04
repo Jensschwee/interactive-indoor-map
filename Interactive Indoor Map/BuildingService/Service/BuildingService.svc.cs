@@ -6,49 +6,84 @@ using System.ServiceModel;
 using System.Text;
 using BuildingService.Domain;
 
+
 namespace BuildingService.Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "BuildingService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select BuildingService.svc or BuildingService.svc.cs at the Solution Explorer and start debugging.
     public class BuildingService : IBuildingService
     {
-        public Building GetBuildingData()
+
+        public Building BuildingDimensions()
         {
-            //Denne metode skal lave et kald til DB som giver os objekterne til bygningen, disse skal derefter bruges af de andre metoder.
-            /*using (DBContext context = new DBContext())
+            Building building = new Building(Program.Building)
             {
-                //create building with DB data as input and return it
-            }*/
+                VentilationConsumption = null,
+                LightConsumption = null,
+                HardwareConsumption = null,
+                OtherConsumption = null,
+                TotalPowerConsumption = null,
+                Occupants = null,
+                ColdWaterConsumption = null,
+                HotWaterConsumption = null,
+            };
+            foreach (var floor in building.Floors)
+            {
+                floor.HardwareConsumption = null;
+                floor.LightConsumption = null;
+                floor.OtherConsumption = null;
+                floor.TotalConsumption = null;
+                floor.VentilationConsumption = null;
+                floor.Sensors = null;
+
+                foreach (var room in floor.Rooms)
+                {
+                    room.VentilationConsumption = null;
+                    room.CO2 = null;
+                    room.HardwareConsumption = null;
+                    room.IsMotionDetected = null;
+                    room.LightConsumption = null;
+                    room.Occupants = null;
+                    room.OtherConsumption = null;
+                    room.Temperature = null;
+                    room.TotalConsumption = null;
+                    room.IsLightActivated = null;
+                    room.Lumen = null;
+                }
+            }
+
+            return building;
+        }
+
+        public Building SensorLocations()
+        {
             throw new NotImplementedException();
         }
 
-        public Building GetCellarFloorLevel()
+        public Building BuildingSensorData()
         {
-            //sorter bygningsobjekterne så der kun er til de ene niveau.
-            //Opret forbindelse til sensor api, hvis dette ikke kan lade sig gøre så returner resultat fra DB
-            //Ændrer objekt data efter hvad input fra sensor api er
-            //returner dette
+
             throw new NotImplementedException();
         }
 
-        public Building GetGroundFloorData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Building GetFirstFloorData()
+        public Building FloorSensorData()
         {
             throw new NotImplementedException();
         }
 
-        public Building GetSecondFloorData()
+        public Building RoomSensorData()
         {
             throw new NotImplementedException();
         }
 
-        public List<Product> GetProductList()
+        public Building WifiClients()
         {
-            return Products.Instance.ProductList;
+            throw new NotImplementedException();
+        }
+
+        public Building StoreBuildingSensorData()
+        {
+            throw new NotImplementedException();
         }
     }
 }

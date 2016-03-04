@@ -12,9 +12,17 @@ namespace BuildingService.Domain.Utility
     public class Coordinates
     {
         [DataMember]
-        public string XCoordinate { get; set; }
+        public double XCoordinate { get; set; }
 
         [DataMember]
-        public string YCoordinate { get; set; }
+        public double YCoordinate { get; set; }
+
+        public Coordinates() { }
+
+        public Coordinates( double xCoordinate, double yCoordinate)
+        {
+            XCoordinate = xCoordinate;
+            YCoordinate = yCoordinate;
+        }
     }
 }

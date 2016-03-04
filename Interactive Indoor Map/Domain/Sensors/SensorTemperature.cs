@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Sensors
 {
-    class SensorTemperature : Sensor
-    {
-        public double Temperature { get; set; }
-    }
+    //public class SensorTemperature : Sensor
+    //{
+
+    //    public double Temperature { get; set; }
+    //}
 }

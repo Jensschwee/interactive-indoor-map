@@ -6,18 +6,21 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Web;
 using System.Web;
 using BuildingService.Domain;
+using BuildingService.Domain.Utility;
 
 namespace BuildingService.Service
 {
     public class Program
     {
+        public static Building Building;
+
         public static void Main()
         {
             var host = InitializeHost();
-
             host.Open();
+
             InitializeBuilding();
-            //do stuff
+
 
             Console.WriteLine("Service is running..");
             Console.WriteLine("Press Enter to shut it down");
@@ -30,9 +33,9 @@ namespace BuildingService.Service
         {
             Uri baseAddress = new Uri("http://localhost:8080");
 
-            WebServiceHost host = new WebServiceHost(typeof (Program), baseAddress);
+            WebServiceHost host = new WebServiceHost(typeof(Program), baseAddress);
             WebHttpBinding binding = new WebHttpBinding();
-            host.AddServiceEndpoint(typeof (IBuildingService), binding, "WebServiceHost");
+            host.AddServiceEndpoint(typeof(IBuildingService), binding, "WebServiceHost");
 
             return host;
         }
@@ -40,43 +43,39 @@ namespace BuildingService.Service
         private static void InitializeBuilding()
         {
             //Er 90% sikker på at dette bare skal være i BuildingService, derefter skal det 
-            Building fullBuilding = new Building();
-            Building cellarFloorBuilding = new Building();
-            Building groundFloorBuilding = new Building();
-            Building firstFloorBuilding = new Building();
-            Building secondFloorBuilding = new Building();
+            Building = new Building();
             Floor cellarFloor = new Floor(-1);
             Floor groundFloor = new Floor(0);
             Floor firstFloor = new Floor(1);
             Floor secondFloor = new Floor(2);
-            Room room1 = new Room("1");
-            Room room2 = new Room("2");
-            Room room3 = new Room("3");
-            Room room4 = new Room("4");
-            Room room5 = new Room("5");
-            Room room6 = new Room("6");
-            Room room7 = new Room("7");
+            //Room Ø20_501c_2 = new Room("Ø20-501c-2", );
+            Room Ø20_508a_0 = new Room("Ø20-508a-0", new Area(new List<Coordinates> { new Coordinates(10.430732667446136, 55.367447995895),
+                new Coordinates(10.430542230606079, 55.36744037424566), new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430711209774017, 55.367673596050246), new Coordinates(10.430732667446136, 55.367447995895)}));
 
-            cellarFloor.Rooms.Add(room1);
-            groundFloor.Rooms.Add(room2);
-            groundFloor.Rooms.Add(room3);
-            groundFloor.Rooms.Add(room4);
-            firstFloor.Rooms.Add(room5);
-            secondFloor.Rooms.Add(room6);
-            secondFloor.Rooms.Add((room7));
+            //Her er jeg nået til, resten af koordinaterne skal ændres
 
-            fullBuilding.Floors.Add(cellarFloor);
-            fullBuilding.Floors.Add(groundFloor);
-            fullBuilding.Floors.Add(firstFloor);
-            fullBuilding.Floors.Add(secondFloor);
+            Room Ø22_508_0 = new Room("Ø22-508-0", new Area(new List<Coordinates> { new Coordinates(10.430732667446136, 55.367447995895),
+                new Coordinates(10.430542230606079, 55.36744037424566), new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430711209774017, 55.367673596050246), new Coordinates(10.430732667446136, 55.367447995895)}));
 
-            cellarFloorBuilding.Floors.Add(cellarFloor);
+            Room Ø22_604_0 = new Room("Ø22-604-0", new Area(new List<Coordinates> { new Coordinates(10.430732667446136, 55.367447995895),
+                new Coordinates(10.430542230606079, 55.36744037424566), new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430711209774017, 55.367673596050246), new Coordinates(10.430732667446136, 55.367447995895)}));
 
-            groundFloorBuilding.Floors.Add(groundFloor);
+            Room Ø20_604_0 = new Room("Ø20_604_0", new Area(new List<Coordinates> { new Coordinates(10.430732667446136, 55.367447995895),
+                new Coordinates(10.430542230606079, 55.36744037424566), new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430711209774017, 55.367673596050246), new Coordinates(10.430732667446136, 55.367447995895)}));
 
-            firstFloorBuilding.Floors.Add(firstFloor);
+            groundFloor.Rooms.Add(Ø22_508_0);
+            groundFloor.Rooms.Add(Ø20_508a_0);
+            groundFloor.Rooms.Add(Ø22_604_0);
+            groundFloor.Rooms.Add(Ø20_604_0);
 
-            secondFloorBuilding.Floors.Add(secondFloor);
+            Building.Floors.Add(cellarFloor);
+            Building.Floors.Add(groundFloor);
+            Building.Floors.Add(firstFloor);
+            Building.Floors.Add(secondFloor);
         }
     }
 }
