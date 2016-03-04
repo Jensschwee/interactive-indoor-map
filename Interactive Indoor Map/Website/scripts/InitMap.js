@@ -1,8 +1,6 @@
-﻿var geojson;
-var geoMap;
-var callBackMethodsToDraw;
-
-var legend;
+﻿var geoMap;
+var view;
+var currentFloorLevel = 0;
 
 function DrawWorldMap() {
     //Setup the world map
@@ -16,51 +14,54 @@ function DrawWorldMap() {
     return worldMap;
 }
 
-function InitLeafletMap(JSONMap) {draw
+function InitLeafletMap(JSONMap) {
 
     var worldMap = DrawWorldMap();
 
-    function style(feature) {
-        return {
-            fillColor: 'blue',
-            color: 'white',//feature.properties.stroke,
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 1
-        };
-    }
+    //function style(feature) {
+    //    return {
+    //        fillColor: 'blue',
+    //        color: 'white',//feature.properties.stroke,
+    //        weight: 1,
+    //        opacity: 1,
+    //        fillOpacity: 1
+    //    };
+    //}
 
 
     //Reads the JSON input
-    geojson = L.geoJson(JSONMap, {
-        style: style,
-        onEachFeature: onEachFeature
-    });
+    var geojson = L.geoJson(JSONMap);
+    initMapSettings(geojson);
 
-    initMapSettings();
+    //Links obj to super obj
+    DefaultView.prototype = new View();
+    TemperatureView.prototype = new View();
 
+    view = new DefaultView();
+
+    view.drawView();
 
     //Adds the two maps to the div
-    geojson.addTo(geoMap);
+    //geojson.addTo(geoMap);
     worldMap.addTo(geoMap);
 
     drawRoomInfo(geoMap);
 
+    //function drawGeoJsonMap(JSONMap) {
+    //    geojson = L.geoJson(jQuery.parseJSON(JSONMap), {
+    //        onEachFeature: onEachFeature,
+    //        style: style
+    //    });
+    //    geoMap.addLayer(geojson);
+    //}
 
-    function drawGeoJsonMap(JSONMap) {
-        geojson = L.geoJson(jQuery.parseJSON(JSONMap), {
-            onEachFeature: onEachFeature,
-            style: style
-        });
-        geoMap.addLayer(geojson);
-    }
-
-    callBackMethodsToDraw = drawGeoJsonMap;
+    //callBackMethodsToDraw = drawGeoJsonMap;
 
     CreateButtons();
+
 }
 
-function initMapSettings() {
+function initMapSettings(geojson) {
     //Finds the div for the map to draw in
     geoMap = L.map('map', {
         zoomControl: false,
@@ -71,6 +72,7 @@ function initMapSettings() {
 
     //Disables zoom and dragging on the map
     geoMap.dragging.disable();
+
     geoMap.touchZoom.disable();
     geoMap.doubleClickZoom.disable();
     geoMap.scrollWheelZoom.disable();

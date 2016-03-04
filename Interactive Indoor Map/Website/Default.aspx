@@ -34,8 +34,12 @@
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/MenuButtons.js'></script>
-    <script type='text/javascript' src='scripts/legend.js'></script>
-    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>
+    <script type='text/javascript' src='scripts/Views/View.js'></script>
+    <script type='text/javascript' src='scripts/Views/Factory.js'></script>
+
+<%--    <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
+    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>--%>
+
 
 
 
