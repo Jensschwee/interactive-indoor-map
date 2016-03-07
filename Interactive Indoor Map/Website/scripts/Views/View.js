@@ -19,9 +19,7 @@
 
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 
-        if (isFloorInfoToggled) {
-            onFloorInfoUpdate();
-        }
+        
     };
 
     View.prototype.cleanup = function () {
