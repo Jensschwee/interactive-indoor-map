@@ -7,7 +7,8 @@ function DrawWorldMap() {
     var worldMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         minZoom: 19,
         zoom: 19,
-        maxZoom: 19,
+        maxZoom: 20,
+        maxNativeZoom: 19,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
     });
 
@@ -41,10 +42,11 @@ function InitLeafletMap(JSONMap) {
 function initMapSettings(geojson) {
     //Finds the div for the map to draw in
     geoMap = L.map('map', {
-        zoomControl: false,
+        //zoomControl: false,
         minZoom: 19,
-        zoom: 19,
-        maxZoom: 19,
+        zoom: 20,
+        maxZoom: 20,
+        maxNativeZoom: 19
     }).fitBounds(geojson.getBounds());
 
     //Disables zoom and dragging on the map
