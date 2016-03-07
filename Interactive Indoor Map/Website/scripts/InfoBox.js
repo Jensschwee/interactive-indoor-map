@@ -1,21 +1,20 @@
-﻿var buildingInfo = L.control({ position: 'topleft' });
-var floorInfo = L.control({ position: 'topleft' });
-var roomInfo = L.control();
-var isFloorInfoToggled = false;
+﻿var infoBox = L.control({ position: 'topleft' });
 
-function drawBuildingInfo() {
-    var isToggled = false;
-
-    buildingInfo.onAdd = function (map) {
+function createInfoBox() {
+    infoBox.onAdd = function (map) {
         this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<div class="info" id="buildingInfoBox"><h4>Building data</h4> Click to expand</div>';
+        this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Building data</h4> Click to expand</div>';
         return this._div;
     };
+    drawBuildingInfo();
 
-    buildingInfo.addTo(geoMap);
+    infoBox.addTo(geoMap);
 
-    buildingInfo.update = function (props) {
-        this._div.innerHTML = '<div class="info" id="buildingInfoBox"> <h4>Building data</h4>' + (props ?
+}
+
+function drawBuildingInfo() {
+    infoBox.update = function (props) {
+        this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Name</b>: ' + props.BuildingName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Occupants</b>: ' + props.Occupants +
@@ -31,43 +30,16 @@ function drawBuildingInfo() {
             '</span>'
             : 'Click to expand') + '</div>';
     };
-    /**
-     * Creates an eventlistener for the info box,
-     * fetches json from codebehind and puts it into the infobox
-     */
-    function onBuildingInfoClick() {
-        if (!isToggled) {
-            isToggled = true;
-            PageMethods.DrawBuildingInfoBox(onSuccess);
-            function onSuccess(response, userContext, methodName) {
-                buildingInfo.update(jQuery.parseJSON(response));
-                document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
 
-            }
-        } else {
-            isToggled = false;
-            buildingInfo.update();
-            document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
-
-        }
+    PageMethods.DrawBuildingInfoBox(onSuccess);
+    function onSuccess(response, userContext, methodName) {
+        infoBox.update(jQuery.parseJSON(response));
     }
-
-    document.getElementById("buildingInfoBox").addEventListener("click", onBuildingInfoClick, false);
 }
 
 function drawFloorInfoBox() {
-    floorInfo.onAdd = function (map) {
-        this._div = L.DomUtil.create('div');
-        this._div.innerHTML = '<div class="info" id="floorInfoBox"><h4>Floor data</h4> Click to expand</div>';
-        return this._div;
-    };
-
-    
-
-    floorInfo.addTo(geoMap);
-
-    floorInfo.update = function (props) {
-        this._div.innerHTML = '<div class="info" id="floorInfoBox"> <h4>Floor data</h4>' + (props ?
+    infoBox.update = function (props) {
+        this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Floor Level</b>: ' + props.FloorLevel + '</h5>' +
             '<br/><h4>Power Consumption</h4>' +
             '<b>Hardware</b>: ' + props.HardwareConsumption +
@@ -81,40 +53,18 @@ function drawFloorInfoBox() {
             '</div></span>'
             : 'Click to expand') + '</div>';
     };
-    
-    document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
-}
 
-function onFloorInfoUpdate() {
     PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
     function onSuccess(response, userContext, methodName) {
-        floorInfo.update(jQuery.parseJSON(response));
-        document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
+        infoBox.update(jQuery.parseJSON(response));
     }
-}
-
-function onFloorInfoClick() {
-    if (!isFloorInfoToggled) {
-        isFloorInfoToggled = true;
-        onFloorInfoUpdate();
-    } else {
-        isFloorInfoToggled = false;
-        floorInfo.update();
-        document.getElementById("floorInfoBox").addEventListener("click", onFloorInfoClick, false);
-
-    }
+    
 }
 
 function drawRoomInfo() {
-    roomInfo.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-        this.update();
-        return this._div;
-    };
-
-    // method that we will use to update the control based on feature properties passed
-    roomInfo.update = function (props) {
-        this._div.innerHTML = '<h4>Room data</h4>' + (props ?
+   // method that we will use to update the control based on feature properties passed
+    infoBox.update = function (props) {
+        this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Name: </b>' + props.RoomName + '</h5>' +
             '<h4>Occupancy</h4>' +
             '<b>Motion</b>: ' + props.IsMotionDetected +
@@ -131,42 +81,48 @@ function drawRoomInfo() {
             '<br/> <b>Ventilation</b>: ' + props.VentilationConsumption +
             '<br/> <b>Other</b>: ' + props.OtherConsumption +
             '<br/><b>Total</b>: ' + props.TotalPowerConsumption +
-            '</span>'
+            '</span></div>'
             : 'Hover over a room to see info');
     };
 
-    roomInfo.addTo(geoMap);
 }
 
 function onEachFeature(feature, layer) {
     layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight
+        click: highlightFeature
+        //,
+        //mouseover: highlightFeature,
+        //mouseout: resetHighlight
     });
-    //layer.bindPopup(feature.properties.name);
-    if (feature.properties.icon != null) {
-        console.log("Draw icon");
-    }
 }
 
 function highlightFeature(e) {
     var layer = e.target;
 
-    layer.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
+    if (!roomSet.has(layer.feature.properties.RoomName)) {
+        layer.setStyle({
+            weight: 5,
+            color: '#666',
+            dashArray: '',
+            fillOpacity: 0.7
+        });
 
-    if (!L.Browser.ie && !L.Browser.opera) {
-        layer.bringToFront();
+        if (!L.Browser.ie && !L.Browser.opera) {
+            layer.bringToFront();
+        }
+        drawRoomInfo();
+        infoBox.update(layer.feature.properties);
+        roomSet.add(layer.feature.properties.RoomName);
+    } else {
+        roomSet.delete(layer.feature.properties.RoomName);
+        resetHighlight(e);
+        if (roomSet.size === 0) {
+            drawFloorInfoBox();
+        }
     }
-
-    roomInfo.update(layer.feature.properties);
 }
 
 function resetHighlight(e) {
     View.roomGeoJson.resetStyle(e.target);
-    roomInfo.update();
+    infoBox.update();
 }

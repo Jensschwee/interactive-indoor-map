@@ -16,7 +16,7 @@ function OnFloorLevelButtonClick() {
 
 function CreateButtons() {
     L.control.fullscreen({
-        position: 'bottomleft'
+        position: 'bottomright'
     }).addTo(geoMap);
 
     //https://github.com/brunob/leaflet.fullscreen
@@ -25,9 +25,7 @@ function CreateButtons() {
         if (currentFloorLevel !== -1) {
             currentFloorLevel = -1;
             view.drawView();
-            if (isFloorInfoToggled) {
-                onFloorInfoUpdate();
-            }
+            drawFloorInfoBox();
         }
 
         //OnFloorLevelButtonClick();
@@ -37,9 +35,8 @@ function CreateButtons() {
         if (currentFloorLevel !== 0) {
             currentFloorLevel = 0;
             view.drawView();
-            if (isFloorInfoToggled) {
-                onFloorInfoUpdate();
-            }
+            drawFloorInfoBox();
+
         }
 
         //OnFloorLevelButtonClick();
@@ -48,9 +45,8 @@ function CreateButtons() {
         if (currentFloorLevel !== 1) {
             currentFloorLevel = 1;
             view.drawView();
-            if (isFloorInfoToggled) {
-                onFloorInfoUpdate();
-            }
+            drawFloorInfoBox();
+
         }
 
         //OnFloorLevelButtonClick();
@@ -59,12 +55,14 @@ function CreateButtons() {
         if (currentFloorLevel !== 2) {
             currentFloorLevel = 2;
             view.drawView();
-            if (isFloorInfoToggled) {
-                onFloorInfoUpdate();
-            }
+            drawFloorInfoBox();
         }
 
         //OnFloorLevelButtonClick();
+    }, { position: 'bottomleft' }).addTo(geoMap);
+
+    L.easyButton('B;', function () {
+        drawBuildingInfo();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     var imgTemp = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
@@ -74,7 +72,6 @@ function CreateButtons() {
         view = new TemperatureView();
         view.drawView();
         view.drawLegend();
-
-    }, { position: 'bottomleft', paddingleft: "0px" }).addTo(geoMap);
+    }, { position: 'topright', paddingleft: "0px" }).addTo(geoMap);
 
 }
