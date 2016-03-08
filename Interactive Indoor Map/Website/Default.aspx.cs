@@ -31,8 +31,6 @@ namespace Website
                     string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 0);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "buildingInfo", "drawBuildingInfo();", true);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "floorInfo", "drawFloorInfoBox();", true);
                 }
             }
         }

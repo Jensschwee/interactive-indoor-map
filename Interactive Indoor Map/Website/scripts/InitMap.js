@@ -1,6 +1,7 @@
 ﻿var geoMap;
 var view;
 var currentFloorLevel = 0;
+var roomSet = new Set();
 
 function DrawWorldMap() {
     //Setup the world map
@@ -33,7 +34,7 @@ function InitLeafletMap(JSONMap) {
 
     worldMap.addTo(geoMap);
 
-    drawRoomInfo(geoMap);
+    createInfoBox();
 
     CreateButtons();
     CreateViewButtons();
