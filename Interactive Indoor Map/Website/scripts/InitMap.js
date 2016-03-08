@@ -36,6 +36,7 @@ function InitLeafletMap(JSONMap) {
     drawRoomInfo(geoMap);
 
     CreateButtons();
+    CreateViewButtons();
 
 }
 
