@@ -1,4 +1,6 @@
-﻿/*
+﻿var viewSet = new Set();
+
+/*
 function OnFloorLevelButtonClick() {
     if (geoMap != null) {
         geoMap.removeLayer(geojson);
@@ -74,4 +76,23 @@ function CreateButtons() {
         view.drawLegend();
     }, { position: 'topright', paddingleft: "0px" }).addTo(geoMap);
 
+}
+
+function CreateViewButtons() {
+    L.control.fullscreen({
+        position: 'bottomleft'
+    }).addTo(geoMap);
+
+    var temperatureButton = new L.Control.Button('Toggle me', {
+        toggleButton: 'active'
+    });
+    button.addTo(geoMap);
+    button.on('click', function() {
+        if (button.isToggled()) {
+            sidebar.hide();
+        } else {
+            sidebar.show();
+        }
+    })
+    ,{ position: 'topright', paddingleft: "0px" }.addTo(geoMap);
 }

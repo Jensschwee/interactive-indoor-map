@@ -37,6 +37,7 @@ function InitLeafletMap(JSONMap) {
     createInfoBox();
 
     CreateButtons();
+    CreateViewButtons();
 
 }
 
