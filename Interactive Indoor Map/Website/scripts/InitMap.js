@@ -57,13 +57,15 @@ function InitLeafletMap(JSONMap) {
 function initMapSettings(geojson) {
     //Finds the div for the map to draw in
     geoMap = L.map('map', {
-        //zoomControl: false,
+        zoomControl: false,
         minZoom: 19,
-        zoom: 20,
         maxZoom: 20,
+        zoom: 19,
         maxNativeZoom: 19
     }).fitBounds(geojson.getBounds());
 
+    //Bug 
+    geoMap.zoomOut();
     //Disables zoom and dragging on the map
     geoMap.dragging.disable();
 

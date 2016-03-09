@@ -1,27 +1,15 @@
-﻿var viewSet = new Set();
-
-/*
-function OnFloorLevelButtonClick() {
-    if (geoMap != null) {
-        geoMap.removeLayer(geojson);
-    }
-    function onSuccess(response, userContext, methodName) {
-        callBackMethodsToDraw(response);
-    }
-
-    PageMethods.DrawFloor(currentFloorLevel, onSuccess);
-
-    if (isFloorInfoToggled) {
-        onFloorInfoUpdate();
-    }
-}*/
-
-function CreateButtons() {
+﻿function CreateButtons() {
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);
 
-    //https://github.com/brunob/leaflet.fullscreen
+    geoMap.on('fullscreenchange', function () {
+        if (geoMap.isFullscreen()) {
+            geoMap.zoomIn();
+        } else {
+            geoMap.zoomOut();
+        }
+    });
 
     L.easyButton('&#45;&#49;', function () {
         if (currentFloorLevel !== -1) {
