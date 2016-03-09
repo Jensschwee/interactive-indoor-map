@@ -2,6 +2,19 @@
 var view;
 var currentFloorLevel = 0;
 var roomSet = new Set();
+var ViewStates = {
+    Temperature: false,
+    CO2: false,
+    Light: false,
+    HardwareConsumption: false,
+    VentilationConsumption: false,
+    OtherConsumption: false,
+    LightConsumption: false,
+    Motion: false,
+    Occupants: false,
+    WifiClients: false
+};
+
 
 function DrawWorldMap() {
     //Setup the world map
