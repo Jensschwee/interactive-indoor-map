@@ -96,10 +96,40 @@ function onEachFeature(feature, layer) {
     });
 }
 
+function roomInfoDrawSelected() {
+    if (roomSet.size === 0) {
+        drawFloorInfoBox();
+    }
+    else if (roomSet.size === 1) {
+        infoBox.update(roomSet.values().next().value);
+    } else {
+        var roomInfo = {
+            IsMotionDetected : "None",
+            Occupants : 0,
+            RoomName : "More selected",
+            Temperature : 0,
+            CO2 : 0,
+            IsLightActivated : "None",
+            Lumen : 0,
+            TotalPowerConsumption : 0,
+            HardwareConsumption : 0,
+            LightConsumption : 0,
+            VentilationConsumption : 0,
+            OtherConsumption : 0,
+            TotalPowerConsumption: 0
+        };
+
+        for (var element of roomSet) {
+            roomInfo.Temperature += element.Temperature / roomSet.size;
+        }
+        infoBox.update(roomInfo);
+    }
+}
+
 function highlightFeature(e) {
     var layer = e.target;
 
-    if (!roomSet.has(layer.feature.properties.RoomName)) {
+    if (!roomSet.has(layer.feature.properties)) {
         layer.setStyle({
             weight: 5,
             color: '#666',
@@ -111,14 +141,12 @@ function highlightFeature(e) {
             layer.bringToFront();
         }
         drawRoomInfo();
-        infoBox.update(layer.feature.properties);
-        roomSet.add(layer.feature.properties.RoomName);
+        roomSet.add(layer.feature.properties);
+        roomInfoDrawSelected();
     } else {
-        roomSet.delete(layer.feature.properties.RoomName);
+        roomSet.delete(layer.feature.properties);
         resetHighlight(e);
-        if (roomSet.size === 0) {
-            drawFloorInfoBox();
-        }
+        roomInfoDrawSelected();
     }
 }
 
