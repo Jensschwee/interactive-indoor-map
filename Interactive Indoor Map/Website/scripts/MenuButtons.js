@@ -83,16 +83,24 @@ function CreateViewButtons() {
         position: 'bottomleft'
     }).addTo(geoMap);
 
-    var temperatureButton = new L.Control.Button('Toggle me', {
-        toggleButton: 'active'
-    });
-    button.addTo(geoMap);
-    button.on('click', function() {
-        if (button.isToggled()) {
-            sidebar.hide();
+    geoMap.on('fullscreenchange', function () {
+        if (geoMap.isFullscreen()) {
+            geoMap.zoomIn();
         } else {
-            sidebar.show();
+            geoMap.zoomOut();
         }
-    })
-    ,{ position: 'topright', paddingleft: "0px" }.addTo(geoMap);
+    });
+
+    //var temperatureButton = new L.Control.Button('Toggle me', {
+    //    toggleButton: 'active'
+    //});
+    //button.addTo(geoMap);
+    //button.on('click', function() {
+    //    if (button.isToggled()) {
+    //        sidebar.hide();
+    //    } else {
+    //        sidebar.show();
+    //    }
+    //})
+    //,{ position: 'topright', paddingleft: "0px" }.addTo(geoMap);
 }
