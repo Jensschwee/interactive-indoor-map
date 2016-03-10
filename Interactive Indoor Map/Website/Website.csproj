@@ -114,6 +114,7 @@
     <Content Include="Images\otherPowerIcon.png" />
     <Content Include="Images\temperature.png" />
     <Content Include="Images\temperatureIcon.png" />
+    <Content Include="Images\totalPowerIcon.png" />
     <Content Include="Images\ventilationPowerIcon.png" />
     <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\easy-button.js" />

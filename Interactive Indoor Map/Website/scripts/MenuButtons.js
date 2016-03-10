@@ -55,6 +55,7 @@ function CreateViewButtons() {
     var temperatureIcon = '<div><img src="Images/temperatureIcon.png" width="25" height="25"/></div>';
     var co2Icon = '<div class="buttonImage"><img src="Images/co2Icon.png" width="25" height="25"style=""/></div>';
     var lightIcon = '<div class="buttonImage"><img src="Images/lightIcon.png" width="25" height="25"style=""/></div>';
+    var totalConsumptionIcon = '<div class="buttonImage"><img src="Images/totalPowerIcon.png" width="25" height="25"style=""/></div>';
     var hardwareConsumptionIcon = '<span class="buttonImage"><img src="Images/laptopIcon.png" width="25" height="25" /></span>';
     var lightConsumptionIcon = '<div class="buttonImage"><img src="Images/lightPowerIcon.png" width="25" height="25"style=""/></div>';
     var ventilationConsumptonIcon = '<div class="buttonImage"><img src="Images/ventilationPowerIcon.png" width="25" height="25"style=""/></div>';
@@ -96,6 +97,14 @@ function CreateViewButtons() {
             ViewStates.Light = false;
         }
 
+    }, { position: 'topright' }).addTo(geoMap);
+
+    L.easyButton(totalConsumptionIcon, function () {
+        if (!ViewStates.TotalPowerConsumption) {
+            ViewStates.TotalPowerConsumption = true;
+        } else {
+            ViewStates.TotalPowerConsumption = false;
+        }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(hardwareConsumptionIcon, function () {
