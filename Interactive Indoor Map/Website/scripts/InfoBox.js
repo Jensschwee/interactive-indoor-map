@@ -16,7 +16,7 @@ function drawBuildingInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Name</b>: ' + props.BuildingName + '</h5>' +
-            '<br/>Surface Area: ' + props.SurfaceArea +
+            'Surface Area: ' + props.SurfaceArea +
             props.HTML   +
             '</span>'
             : 'Click to expand') + '</div>';
@@ -39,7 +39,7 @@ function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Floor Level</b>: ' + props.FloorLevel + '</h5>' +
-            '<br/>Surface Area: ' + props.SurfaceArea +
+            'Surface Area: ' + props.SurfaceArea +
             props.HTML +
             '</div></span>'
             : 'Click to expand') + '</div>';
@@ -63,13 +63,12 @@ function drawRoomInfo() {
    // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
-            '<span style="line-height:100%"><h5><b>Name: </b>' + props.RoomName + '</h5>' +
-            '<br/>Surface Area: ' + props.SurfaceArea +
+            props.Name + 
+            'Surface Area: ' + props.SurfaceArea +
             props.HTML +
             '</span></div>'
             : 'Hover over a room to see info');
     };
-
 }
 
 function onEachFeature(feature, layer) {
@@ -87,36 +86,37 @@ function roomInfoDrawSelected() {
     }
     else if (roomArray.length === 1) {
         var roomInfo = {
-            RoomName: roomArray[0].RoomName,
+            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].RoomName + '</h5>',
             SurfaceArea: roomArray[0].SurfaceArea,
-            HTML: ""
+            HTML: ''
         };
-        roomInfo.HTML = infoBoxGenerateHTML(roomArray[0]);
+        roomInfo.HTML += infoBoxGenerateHTML(roomArray[0]);
         infoBox.update(roomInfo);
     } else {
         var roomInfo = {
-            IsMotionDetected : "None",
-            Occupants : 0,
-            RoomName : "More selected",
-            Temperature : 0,
-            CO2 : 0,
-            IsLightActivated : "None",
-            Lumen : 0,
-            TotalPowerConsumption : 0,
-            HardwareConsumption : 0,
-            LightConsumption : 0,
-            VentilationConsumption : 0,
-            OtherConsumption : 0,
+            Name: '<span style="line-height:100%"><h5><b>Rooms selected:  </b>' + roomArray.length + '</h5>',
+            IsMotionDetected: "None",
+            Occupants: 0,
+            Temperature: 0,
+            CO2: 0,
+            IsLightActivated: "None",
+            Lumen: 0,
+            TotalPowerConsumption: 0,
+            HardwareConsumption: 0,
+            LightConsumption: 0,
+            VentilationConsumption: 0,
+            OtherConsumption: 0,
             TotalPowerConsumption: 0,
             SurfaceArea: 0,
-            HTML : ""
-        };
+            HTML: ""
+    };
 
         for (var i in roomArray) {
             roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
             roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
         }
-        roomInfo.HTML = infoBoxGenerateHTML(roomInfo);
+        roomInfo.HTML += infoBoxGenerateHTML(roomInfo);
+
         infoBox.update(roomInfo);
     }
 }
@@ -130,7 +130,7 @@ function infoBoxGenerateHTML(SenserData) {
         html += '<b>Occupants</b>: ' + SenserData.Occupants + '<br/>';
     }
     if (ViewStates.Temperature) {
-        html += '<b>Temperature</b>: ' + SenserData.Temperature + '&#8451' + '<br/>';
+        html += '<b>Temperature</b>: ' + SenserData.Temperature.toFixed(1) + '&#8451' + '<br/>';
     }
     if (ViewStates.CO2) {
         html += '<b>CO2</b>: ' + SenserData.CO2 + '<br/>';
