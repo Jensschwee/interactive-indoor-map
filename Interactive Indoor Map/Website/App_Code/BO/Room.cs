@@ -33,7 +33,10 @@ namespace Website.BO
         public double HardwareConsumption { get; set; }
         
         public double OtherConsumption { get; set; }
-        
+
+        public double SurfaceArea { get; set;}
+
+
         public double TotalPowerConsumption
         {
             get { return VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption; }

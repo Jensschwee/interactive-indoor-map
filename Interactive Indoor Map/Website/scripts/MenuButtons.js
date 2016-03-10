@@ -15,32 +15,33 @@
         if (currentFloorLevel !== -1) {
             currentFloorLevel = -1;
             view.drawView();
-            drawFloorInfoBox();
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('&#48;', function () {
         if (currentFloorLevel !== 0) {
             currentFloorLevel = 0;
             view.drawView();
-            drawFloorInfoBox();
-
         }
+        drawFloorInfoBox();
+
     }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('&#49;', function () {
         if (currentFloorLevel !== 1) {
             currentFloorLevel = 1;
             view.drawView();
-            drawFloorInfoBox()
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('&#50;', function () {
+        drawFloorInfoBox();
         if (currentFloorLevel !== 2) {
             currentFloorLevel = 2;
             view.drawView();
-            drawFloorInfoBox();
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     var buildingIcon = '<div><img src="Images/buildingIcon.png" width="25" height="25"/></div>';
@@ -70,11 +71,11 @@ function CreateViewButtons() {
             view.drawLegend();
             ViewStates.Temperature = true;
             console.log('on');
-            console.log('temperature state: ' + ViewStates.temperature);
+            console.log('temperature state: ' + ViewStates.Temperature);
         } else {
             ViewStates.Temperature = false;
             console.log('off');
-            console.log('temperature state: ' + ViewStates.temperature);
+            console.log('temperature state: ' + ViewStates.Temperature);
         }
 
     }, { position: 'topright' }).addTo(geoMap);

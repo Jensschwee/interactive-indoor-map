@@ -28,8 +28,13 @@ namespace Website.Domain
             sb.Append("\"OtherConsumption\":" + building.OtherConsumption + ",");
             sb.Append("\"TotalPowerConsumption\":" + building.TotalPowerConsumption + ",");
             sb.Append("\"ColdWaterConsumption\":" + building.ColdWaterConsumption + ",");
-            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption);
-
+            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption + ",");
+            sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(building.Lumen) + ",");
+            sb.Append("\"IsMotionDetected\":" + JsonConvert.SerializeObject(building.IsMotionDetected) + ",");
+            sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(building.Temperature) + ",");
+            sb.Append("\"CO2\":" + JsonConvert.SerializeObject(building.CO2) + ",");
+            sb.Append("\"IsLightActivated\":" + JsonConvert.SerializeObject(building.IsLightActivated) + ",");
+            sb.Append("\"SurfaceArea\":" + building.SurfaceArea);
             sb.Append("}");
 
             return sb.ToString();
@@ -56,7 +61,13 @@ namespace Website.Domain
                     sb.Append("\"OtherConsumption\":" + floor.OtherConsumption + ",");
                     sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
                     sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");
-                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption);
+                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption + ",");
+                    sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(floor.Lumen) + ",");
+                    sb.Append("\"IsMotionDetected\":" + JsonConvert.SerializeObject(floor.IsMotionDetected) + ",");
+                    sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(floor.Temperature) + ",");
+                    sb.Append("\"CO2\":" + JsonConvert.SerializeObject(floor.CO2) + ",");
+                    sb.Append("\"IsLightActivated\":" + JsonConvert.SerializeObject(floor.IsLightActivated) + ",");
+                    sb.Append("\"SurfaceArea\":" + floor.SurfaceArea);
                     break;
                 }
             }
@@ -99,7 +110,8 @@ namespace Website.Domain
                         sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(room.OtherConsumption) + ",");
                         sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(room.Temperature) + ",");
                         sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalPowerConsumption) + ",");
-                        sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(room.VentilationConsumption));
+                        sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(room.VentilationConsumption) + ",");
+                        sb.Append("\"SurfaceArea\":" + JsonConvert.SerializeObject(room.SurfaceArea));
                         sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
                         foreach (Coordinates coordinates in room.Area.Vertices)
                         {
