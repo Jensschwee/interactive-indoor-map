@@ -82,16 +82,16 @@ function onEachFeature(feature, layer) {
 }
 
 function roomInfoDrawSelected() {
-    if (roomSet.size === 0) {
+    if (roomArray.length === 0) {
         drawFloorInfoBox();
     }
-    else if (roomSet.size === 1) {
+    else if (roomArray.length === 1) {
         var roomInfo = {
-            RoomName: roomSet.values().next().value.RoomName,
-            SurfaceArea: roomSet.values().next().value.SurfaceArea,
+            RoomName: roomArray[0].RoomName,
+            SurfaceArea: roomArray[0].SurfaceArea,
             HTML: ""
         };
-        roomInfo.HTML = infoBoxGenerateHTML(roomSet.values().next().value);
+        roomInfo.HTML = infoBoxGenerateHTML(roomArray[0]);
         infoBox.update(roomInfo);
     } else {
         var roomInfo = {
@@ -112,9 +112,9 @@ function roomInfoDrawSelected() {
             HTML : ""
         };
 
-        for (var element of roomSet) {
-            roomInfo.Temperature += element.Temperature / roomSet.size;
-            roomInfo.SurfaceArea += element.SurfaceArea;
+        for (var i in roomArray) {
+            roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
+            roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
         }
         roomInfo.HTML = infoBoxGenerateHTML(roomInfo);
         infoBox.update(roomInfo);
@@ -162,8 +162,7 @@ function infoBoxGenerateHTML(SenserData) {
 
 function highlightFeature(e) {
     var layer = e.target;
-
-    if (!roomSet.has(layer.feature.properties)) {
+    if ($.inArray(layer.feature.properties, roomArray) === -1) {
         layer.setStyle({
             weight: 5,
             color: '#666',
@@ -175,10 +174,12 @@ function highlightFeature(e) {
             layer.bringToFront();
         }
         drawRoomInfo();
-        roomSet.add(layer.feature.properties);
+        roomArray.push(layer.feature.properties);
         roomInfoDrawSelected();
     } else {
-        roomSet.delete(layer.feature.properties);
+        roomArray = jQuery.grep(roomArray, function (value) {
+            return value != layer.feature.properties;
+        });
         resetHighlight(e);
         roomInfoDrawSelected();
     }

@@ -1,7 +1,7 @@
 ﻿var geoMap;
 var view;
 var currentFloorLevel = 0;
-var roomSet = new Set();
+var roomArray = new Array;
 var ViewStates = {
     Temperature: false,
     CO2: false,
