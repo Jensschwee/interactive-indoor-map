@@ -44,22 +44,24 @@
         drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
-    L.easyButton('B;', function () {
+    var buildingIcon = '<div><img src="Images/buildingIcon.png" width="25" height="25"/></div>';
+
+    L.easyButton(buildingIcon, function () {
         drawBuildingInfo();
     }, { position: 'bottomleft' }).addTo(geoMap);
 }
 
 function CreateViewButtons() {
-    var temperatureIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var co2Icon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var lightIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var hardwareConsumptionIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var lightConsumptionIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var ventilationConsumptonIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var otherConsumptionIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var motionIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var occupantsIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
-    var wifiClientsIcon = '<div class="buttonImage"><img src="Images/temperature.png" width="25" height="25"style=""/></div>';
+    var temperatureIcon = '<div><img src="Images/temperatureIcon.png" width="25" height="25"/></div>';
+    var co2Icon = '<div class="buttonImage"><img src="Images/co2Icon.png" width="25" height="25"style=""/></div>';
+    var lightIcon = '<div class="buttonImage"><img src="Images/lightIcon.png" width="25" height="25"style=""/></div>';
+    var hardwareConsumptionIcon = '<span class="buttonImage"><img src="Images/laptopIcon.png" width="25" height="25" style="padding-right: 8px" /></span>';
+    var lightConsumptionIcon = '<div class="buttonImage"><img src="Images/lightPowerIcon.png" width="25" height="25"style=""/></div>';
+    var ventilationConsumptonIcon = '<div class="buttonImage"><img src="Images/ventilationPowerIcon.png" width="25" height="25"style=""/></div>';
+    var otherConsumptionIcon = '<div class="buttonImage"><img src="Images/otherPowerIcon.png" width="25" height="25"style=""/></div>';
+    var motionIcon = '<div class="buttonImage"><img src="Images/motionIcon.png" width="25" height="25"style=""/></div>';
+    var occupantsIcon = '<div class="buttonImage"><img src="Images/occupantsIcon.png" width="25" height="25"style=""/></div>';
+    var wifiClientsIcon = '<div class="buttonImage"><img src="Images/wifiIcon.png" width="25" height="25"style=""/></div>';
 
     L.easyButton(temperatureIcon, function () {
         if (!ViewStates.temperature) {
