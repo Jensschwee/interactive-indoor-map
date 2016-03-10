@@ -16,7 +16,7 @@ function drawBuildingInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Name</b>: ' + props.BuildingName + '</h5>' +
-            'Surface Area: ' + props.SurfaceArea +
+            '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML   +
             '</span>'
             : 'Click to expand') + '</div>';
@@ -39,7 +39,7 @@ function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Floor Level</b>: ' + props.FloorLevel + '</h5>' +
-            'Surface Area: ' + props.SurfaceArea +
+            '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML +
             '</div></span>'
             : 'Click to expand') + '</div>';
@@ -64,7 +64,7 @@ function drawRoomInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             props.Name + 
-            'Surface Area: ' + props.SurfaceArea +
+            '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML +
             '</span></div>'
             : 'Hover over a room to see info');
@@ -74,9 +74,6 @@ function drawRoomInfo() {
 function onEachFeature(feature, layer) {
     layer.on({
         click: highlightFeature
-        //,
-        //mouseover: highlightFeature,
-        //mouseout: resetHighlight
     });
 }
 
@@ -121,40 +118,40 @@ function roomInfoDrawSelected() {
     }
 }
 
-function infoBoxGenerateHTML(SenserData) {
+function infoBoxGenerateHTML(sensorData) {
     var html = "<br/>";
     if (ViewStates.IsMotionDetected) {
-        html += '<b>Motion</b>: ' + SenserData.IsMotionDetected + '<br/>';
+        html += '<b>Motion</b>: ' + sensorData.IsMotionDetected + '<br/>';
     }
     if (ViewStates.Occupants) {
-        html += '<b>Occupants</b>: ' + SenserData.Occupants + '<br/>';
+        html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
     }
     if (ViewStates.Temperature) {
-        html += '<b>Temperature</b>: ' + SenserData.Temperature.toFixed(1) + '&#8451' + '<br/>';
+        html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + '&#8451' + '<br/>';
     }
     if (ViewStates.CO2) {
-        html += '<b>CO2</b>: ' + SenserData.CO2 + '<br/>';
+        html += '<b>CO2</b>: ' + sensorData.CO2 + '<br/>';
     }
     if (ViewStates.Lighting) {
-        html += '<b>Lighting</b>: ' + SenserData.IsLightActivated + '<br/>';
+        html += '<b>Lighting</b>: ' + sensorData.IsLightActivated + '<br/>';
     }
     if (ViewStates.Lumen) {
-        html += '<b>Lighting</b>: ' + SenserData.Lumen + '<br/>';
+        html += '<b>Lighting</b>: ' + sensorData.Lumen + '<br/>';
     }
-    if (ViewStates.Hardware) {
-        html += '<b>Hardware Consumption</b>: ' + SenserData.HardwareConsumption + '<br/>';
+    if (ViewStates.HardwareConsumption) {
+        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption + '<br/>';
     }
-    if (ViewStates.Light) {
-        html += '<b>LightConsumption</b>: ' + SenserData.LightConsumption + '<br/>';
+    if (ViewStates.LightConsumption) {
+        html += '<b>LightConsumption</b>: ' + sensorData.LightConsumption + '<br/>';
     }
-    if (ViewStates.Light) {
-        html += '<b>VentilationConsumption</b>: ' + SenserData.VentilationConsumption + '<br/>';
+    if (ViewStates.VentilationConsumption) {
+        html += '<b>VentilationConsumption</b>: ' + sensorData.VentilationConsumption + '<br/>';
     }
-    if (ViewStates.Light) {
-        html += '<b>Other Consumption</b>: ' + SenserData.OtherConsumption + '<br/>';
+    if (ViewStates.OtherConsumption) {
+        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption + '<br/>';
     }
-    if (ViewStates.Light) {
-        html += '<b>Total PowerConsumption</b>: ' + SenserData.TotalPowerConsumption + '<br/>';
+    if (ViewStates.TotalPowerConsumption) {
+        html += '<b>Total PowerConsumption</b>: ' + sensorData.TotalPowerConsumption + '<br/>';
     }
     return html;
 
