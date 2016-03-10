@@ -22,6 +22,8 @@ namespace Website.BO
 
         public double SurfaceArea => Floors.Sum(floor => floor.SurfaceArea);
 
+        public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
+
         public int IsLightActivated => Floors.Sum(floor => floor.IsLightActivated);
 
         public double Lumen => (Floors.Sum(floor => floor.Rooms.Sum(room => room.Lumen)) / Floors.Sum(floor => floor.Rooms.Count));

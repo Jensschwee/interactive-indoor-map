@@ -28,6 +28,7 @@ function drawBuildingInfo() {
         var buildingInfo = {
             BuildingName: json.BuildingName,
             SurfaceArea: json.SurfaceArea,
+            NumberOfRooms: json.NumberOfRooms,
             HTML: ""
         };
         buildingInfo.HTML = infoBoxGenerateHTML(json);
@@ -51,6 +52,7 @@ function drawFloorInfoBox() {
         var floorInfo = {
             FloorLevel: json.FloorLevel,
             SurfaceArea: json.SurfaceArea,
+            NumberOfRooms : json.NumberOfRooms,
             HTML: ""
         };
         floorInfo.HTML = infoBoxGenerateHTML(json);
@@ -87,6 +89,7 @@ function roomInfoDrawSelected() {
             SurfaceArea: roomArray[0].SurfaceArea,
             HTML: ''
         };
+
         roomInfo.HTML += infoBoxGenerateHTML(roomArray[0]);
         infoBox.update(roomInfo);
     } else {
@@ -104,8 +107,11 @@ function roomInfoDrawSelected() {
             VentilationConsumption: 0,
             OtherConsumption: 0,
             SurfaceArea: 0,
+            NumberOfRooms: roomArray.length,
             HTML: ""
-    };
+        };
+
+        var test = true;
 
         for (var i in roomArray) {
             if (roomArray.hasOwnProperty(i)) {
@@ -114,8 +120,9 @@ function roomInfoDrawSelected() {
                     roomInfo.IsMotionDetected += 1;
                 }
                 roomInfo.Occupants += roomArray[i].Occupants;
-
+                
                 if (roomArray[i].IsLightActivated) {
+
                     roomInfo.IsLightActivated += 1;
                 }
 
@@ -129,6 +136,7 @@ function roomInfoDrawSelected() {
                 roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
             }
         }
+
         roomInfo.HTML += infoBoxGenerateHTML(roomInfo);
 
         infoBox.update(roomInfo);
@@ -138,7 +146,16 @@ function roomInfoDrawSelected() {
 function infoBoxGenerateHTML(sensorData) {
     var html = "<br/>";
     if (ViewStates.IsMotionDetected) {
-        html += '<b>Motion</b>: ' + sensorData.IsMotionDetected + '<br/>';
+        if (sensorData.hasOwnProperty("NumberOfRooms")) {
+            html += '<b>Motion</b>: ' + sensorData.IsMotionDetected + " / " + sensorData.NumberOfRooms + '<br/>';
+        } else {
+            if (sensorData.IsMotionDetected) {
+                html += '<b>Motion</b>: Motion<br/>';
+
+            } else {
+                html += '<b>Motion</b>: None<br/>';
+            }
+        }
     }
     if (ViewStates.Occupants) {
         html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
@@ -149,12 +166,21 @@ function infoBoxGenerateHTML(sensorData) {
     if (ViewStates.CO2) {
         html += '<b>CO2</b>: ' + sensorData.CO2 + '<br/>';
     }
-    if (ViewStates.Lighting) {
-        html += '<b>Lighting</b>: ' + sensorData.IsLightActivated + '<br/>';
+    if (ViewStates.Light) {
+        if (sensorData.hasOwnProperty("NumberOfRooms")) {
+            html += '<b>Light Activated</b>: ' + sensorData.IsLightActivated + " / " + sensorData.NumberOfRooms + '<br/>';
+        } else {
+            if (sensorData.IsLightActivated) {
+                html += '<b>Light Activated</b>: Light<br/>';
+
+            } else {
+                html += '<b>Light Activated</b>: None<br/>';
+            }
+        }
+        
+        html += '<b>Lumen</b>: ' + sensorData.Lumen + '<br/>';
     }
-    if (ViewStates.Lumen) {
-        html += '<b>Lighting</b>: ' + sensorData.Lumen + '<br/>';
-    }
+
     if (ViewStates.HardwareConsumption) {
         html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption + '<br/>';
     }
