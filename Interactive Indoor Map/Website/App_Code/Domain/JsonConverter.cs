@@ -98,11 +98,11 @@ namespace Website.Domain
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(room.HardwareConsumption) + ",");
                         sb.Append("\"IsLightActivated\":");
 
-                        sb.Append(room.IsLightActivated ? "\"On\"," : "\"Off\",");
+                        sb.Append("\"" + room.IsLightActivated + "\",");
 
                         sb.Append("\"IsMotionDetected\":");
 
-                        sb.Append(room.IsMotionDetected ? "\"Detected\"," : "\"None\",");
+                        sb.Append("\""+ room.IsMotionDetected + "\",");
 
                         sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(room.LightConsumption) + ",");
                         sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(room.Lumen) + ",");

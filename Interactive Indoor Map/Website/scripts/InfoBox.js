@@ -95,25 +95,42 @@ function roomInfoDrawSelected() {
     } else {
         var roomInfo = {
             Name: '<span style="line-height:100%"><h5><b>Rooms selected:  </b>' + roomArray.length + '</h5>',
-            IsMotionDetected: "None",
+            IsMotionDetected: 0,
             Occupants: 0,
             Temperature: 0,
             CO2: 0,
-            IsLightActivated: "None",
+            IsLightActivated: 0,
             Lumen: 0,
             TotalPowerConsumption: 0,
             HardwareConsumption: 0,
             LightConsumption: 0,
             VentilationConsumption: 0,
             OtherConsumption: 0,
-            TotalPowerConsumption: 0,
             SurfaceArea: 0,
             HTML: ""
     };
 
         for (var i in roomArray) {
-            roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
-            roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
+            if (roomArray.hasOwnProperty(i)) {
+                roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
+                if (roomArray[i].IsMotionDetected) {
+                    roomInfo.IsMotionDetected += 1;
+                }
+                roomInfo.Occupants += roomArray[i].Occupants;
+
+                if (roomArray[i].IsLightActivated) {
+                    roomInfo.IsLightActivated += 1;
+                }
+
+                roomInfo.CO2 += roomArray[i].CO2 / roomArray.length;
+                roomInfo.Lumen += roomArray[i].Lumen / roomArray.length;
+                roomInfo.TotalPowerConsumption += roomArray[i].TotalPowerConsumption;
+                roomInfo.HardwareConsumption += roomArray[i].HardwareConsumption;
+                roomInfo.LightConsumption += roomArray[i].LightConsumption;
+                roomInfo.VentilationConsumption += roomArray[i].VentilationConsumption;
+                roomInfo.OtherConsumption += roomArray[i].OtherConsumption;
+                roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
+            }
         }
         roomInfo.HTML += infoBoxGenerateHTML(roomInfo);
 
