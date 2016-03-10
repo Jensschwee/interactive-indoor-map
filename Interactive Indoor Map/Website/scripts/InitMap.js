@@ -51,6 +51,8 @@ function InitLeafletMap(JSONMap) {
 
     CreateButtons();
     CreateViewButtons();
+    //DrawLegend();
+    //DrawLinearLegend();
 
 }
 

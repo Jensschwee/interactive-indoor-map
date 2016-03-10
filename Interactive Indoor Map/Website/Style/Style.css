@@ -33,3 +33,18 @@
         margin: 0 0 5px;
         color: #777;
     }
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis--x path {
+    display: none;
+}

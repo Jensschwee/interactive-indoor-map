@@ -104,7 +104,18 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\buildingIcon.png" />
+    <Content Include="Images\co2Icon.png" />
+    <Content Include="Images\laptopIcon.png" />
+    <Content Include="Images\lightIcon.png" />
+    <Content Include="Images\lightPowerIcon.png" />
+    <Content Include="Images\motionIcon.png" />
+    <Content Include="Images\occupantsIcon.png" />
+    <Content Include="Images\otherPowerIcon.png" />
     <Content Include="Images\temperature.png" />
+    <Content Include="Images\temperatureIcon.png" />
+    <Content Include="Images\ventilationPowerIcon.png" />
+    <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\easy-button.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
@@ -126,6 +137,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\Legend.js" />
     <Content Include="scripts\MenuButtons.js" />
+    <Content Include="scripts\TestLegend.js" />
     <Content Include="scripts\Views\DefaultView.js" />
     <Content Include="scripts\Views\TemperatureView.js" />
     <Content Include="scripts\Views\View.js" />
