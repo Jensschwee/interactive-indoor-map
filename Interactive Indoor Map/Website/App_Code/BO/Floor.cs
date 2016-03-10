@@ -23,6 +23,16 @@ namespace Website.BO
 
         public double SurfaceArea => Rooms.Sum(room => room.SurfaceArea);
 
+        public int IsLightActivated => (Rooms.Where(room => room.IsLightActivated)).Count();
+
+        public double Lumen => (Rooms.Sum(room => room.Lumen) / Rooms.Count);
+
+        public int IsMotionDetected => (Rooms.Where(room => room.IsMotionDetected)).Count();
+
+        public double Temperature => (Rooms.Sum(room => room.Temperature) / Rooms.Count);
+
+        public double CO2 => (Rooms.Sum(room => room.CO2) / Rooms.Count);
+
         public double OtherConsumption { get; set; }
     
         public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
