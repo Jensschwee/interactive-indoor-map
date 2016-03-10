@@ -15,32 +15,33 @@
         if (currentFloorLevel !== -1) {
             currentFloorLevel = -1;
             view.drawView();
-            drawFloorInfoBox();
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('&#48;', function () {
         if (currentFloorLevel !== 0) {
             currentFloorLevel = 0;
             view.drawView();
-            drawFloorInfoBox();
-
         }
+        drawFloorInfoBox();
+
     }, { position: 'bottomleft' }).addTo(geoMap);
     L.easyButton('&#49;', function () {
         if (currentFloorLevel !== 1) {
             currentFloorLevel = 1;
             view.drawView();
-            drawFloorInfoBox()
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('&#50;', function () {
+        drawFloorInfoBox();
         if (currentFloorLevel !== 2) {
             currentFloorLevel = 2;
             view.drawView();
-            drawFloorInfoBox();
         }
+        drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
 
     L.easyButton('B;', function () {
