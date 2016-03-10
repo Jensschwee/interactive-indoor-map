@@ -106,7 +106,9 @@ namespace Website.Domain
                 IsLightActivated = true,
                 Lumen = 90,
                 IsMotionDetected = true,
-                Occupants = 7
+                Occupants = 7,
+                SurfaceArea= 7
+
             };
 
             Ø22_508_0 = new Room("Ø22-508-0", new Area(new List<Coordinates>
@@ -127,7 +129,8 @@ namespace Website.Domain
                 IsLightActivated = false,
                 Lumen = 0,
                 IsMotionDetected = false,
-                Occupants = 0
+                Occupants = 0,
+                SurfaceArea = 7
             };
 
             Ø22_604_0 = new Room("Ø22-604-0", new Area(new List<Coordinates>
@@ -148,7 +151,8 @@ namespace Website.Domain
                 Lumen = 50,
                 IsLightActivated = true,
                 IsMotionDetected = true,
-                Occupants = 5
+                Occupants = 5,
+                SurfaceArea = 7
             };
 
             Ø20_604_0 = new Room("Ø20_604_0", new Area(new List<Coordinates>
@@ -168,7 +172,8 @@ namespace Website.Domain
                 Lumen = 65,
                 IsLightActivated = true,
                 IsMotionDetected = false,
-                Occupants = 1
+                Occupants = 1,
+                SurfaceArea = 7
             };
         }
 

@@ -68,11 +68,11 @@ function CreateViewButtons() {
             view.drawLegend();
             ViewStates.Temperature = true;
             console.log('on');
-            console.log('temperature state: ' + ViewStates.temperature);
+            console.log('temperature state: ' + ViewStates.Temperature);
         } else {
             ViewStates.Temperature = false;
             console.log('off');
-            console.log('temperature state: ' + ViewStates.temperature);
+            console.log('temperature state: ' + ViewStates.Temperature);
         }
 
     }, { position: 'topright' }).addTo(geoMap);

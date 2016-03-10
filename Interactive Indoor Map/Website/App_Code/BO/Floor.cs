@@ -20,7 +20,9 @@ namespace Website.BO
         public double LightConsumption { get; set; }
     
         public double HardwareConsumption { get; set; }
-    
+
+        public double SurfaceArea => Rooms.Sum(room => room.SurfaceArea);
+
         public double OtherConsumption { get; set; }
     
         public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;

@@ -19,7 +19,9 @@ namespace Website.BO
         public List<Floor> Floors { get; set; }
         
         public string BuildingName { get; set; }
-        
+
+        public double SurfaceArea => Floors.Sum(floor => floor.SurfaceArea);
+
         public int Occupants { get; set; }
         
         public double VentilationConsumption => Floors.Sum(floor => floor.VentilationConsumption);
