@@ -95,11 +95,11 @@ function roomInfoDrawSelected() {
     } else {
         var roomInfo = {
             Name: '<span style="line-height:100%"><h5><b>Rooms selected:  </b>' + roomArray.length + '</h5>',
-            IsMotionDetected: 0,
+            Motion: 0,
             Occupants: 0,
             Temperature: 0,
             CO2: 0,
-            IsLightActivated: 0,
+            Light: 0,
             Lumen: 0,
             TotalPowerConsumption: 0,
             HardwareConsumption: 0,
@@ -116,14 +116,14 @@ function roomInfoDrawSelected() {
         for (var i in roomArray) {
             if (roomArray.hasOwnProperty(i)) {
                 roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
-                if (roomArray[i].IsMotionDetected) {
-                    roomInfo.IsMotionDetected += 1;
+                if (roomArray[i].Motion) {
+                    roomInfo.Motion += 1;
                 }
                 roomInfo.Occupants += roomArray[i].Occupants;
                 
-                if (roomArray[i].IsLightActivated) {
+                if (roomArray[i].Light) {
 
-                    roomInfo.IsLightActivated += 1;
+                    roomInfo.Light += 1;
                 }
 
                 roomInfo.CO2 += roomArray[i].CO2 / roomArray.length;
@@ -145,12 +145,12 @@ function roomInfoDrawSelected() {
 
 function infoBoxGenerateHTML(sensorData) {
     var html = "<br/>";
-    if (ViewStates.IsMotionDetected) {
+    if (ViewStates.Motion) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
-            html += '<b>Motion</b>: ' + sensorData.IsMotionDetected + " / " + sensorData.NumberOfRooms + '<br/>';
+            html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
-            if (sensorData.IsMotionDetected) {
-                html += '<b>Motion</b>: Motion<br/>';
+            if (sensorData.Motion) {
+                html += '<b>Motion</b>: Detected<br/>';
 
             } else {
                 html += '<b>Motion</b>: None<br/>';
@@ -168,17 +168,17 @@ function infoBoxGenerateHTML(sensorData) {
     }
     if (ViewStates.Light) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
-            html += '<b>Light Activated</b>: ' + sensorData.IsLightActivated + " / " + sensorData.NumberOfRooms + '<br/>';
+            html += '<b>Light</b>: ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
-            if (sensorData.IsLightActivated) {
-                html += '<b>Light Activated</b>: Light<br/>';
+            if (sensorData.Light) {
+                html += '<b>Light</b>: On<br/>';
 
             } else {
-                html += '<b>Light Activated</b>: None<br/>';
+                html += '<b>Light</b>: Off<br/>';
             }
         }
         
-        html += '<b>Lumen</b>: ' + sensorData.Lumen + '<br/>';
+        html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + '<br/>';
     }
 
     if (ViewStates.HardwareConsumption) {

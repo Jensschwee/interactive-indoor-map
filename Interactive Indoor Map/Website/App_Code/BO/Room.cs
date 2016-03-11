@@ -14,11 +14,11 @@ namespace Website.BO
 
         public Area Area { get; set; }
         
-        public bool IsLightActivated { get; set; }
+        public bool Light { get; set; }
         
         public int Lumen { get; set; }
         
-        public bool IsMotionDetected { get; set; }
+        public bool Motion { get; set; }
         
         public double Temperature { get; set; }
         

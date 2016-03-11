@@ -103,9 +103,9 @@ namespace Website.Domain
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
                 LightConsumption = 3000,
-                IsLightActivated = true,
+                Light = true,
                 Lumen = 90,
-                IsMotionDetected = true,
+                Motion = true,
                 Occupants = 7,
                 SurfaceArea= 7
 
@@ -126,9 +126,9 @@ namespace Website.Domain
                 VentilationConsumption = 2300,
                 LightConsumption = 1100,
                 OtherConsumption = 700,
-                IsLightActivated = false,
+                Light = false,
                 Lumen = 0,
-                IsMotionDetected = false,
+                Motion = false,
                 Occupants = 0,
                 SurfaceArea = 7
             };
@@ -149,8 +149,8 @@ namespace Website.Domain
                 LightConsumption = 1900,
                 OtherConsumption = 500,
                 Lumen = 50,
-                IsLightActivated = true,
-                IsMotionDetected = true,
+                Light = true,
+                Motion = true,
                 Occupants = 5,
                 SurfaceArea = 7
             };
@@ -170,8 +170,8 @@ namespace Website.Domain
                 VentilationConsumption = 1700,
                 LightConsumption = 1200,
                 Lumen = 65,
-                IsLightActivated = true,
-                IsMotionDetected = false,
+                Light = true,
+                Motion = false,
                 Occupants = 1,
                 SurfaceArea = 7
             };
