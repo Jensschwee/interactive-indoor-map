@@ -5,16 +5,27 @@ var roomArray = new Array;
 var ViewStates = {
     ActiveViews: 0,
     Temperature: false,
-    TemperatureColor: "FFFFFF",
+    TemperatureColor: "#e74c3c",
     CO2: false,
+    CO2Color: "#1abc9c",
     Light: false,
+    LightColor: "#f1c40f",
     HardwareConsumption: false,
-    VentilationConsumption: false,
-    OtherConsumption: false,
+    HardWareConsumptionColor: "#e67e22",
     LightConsumption: false,
+    LightConsumptionColor: "#e67e22",
+    VentilationConsumption: false,
+    VentilationConsumptionColor: "#e67e22",
+    OtherConsumption: false,
+    OtherConsumptionColor: "#e67e22",
+    TotalPowerConsumption: false,
+    TotalPowerConsumptionColor: "#e67e22",
     Motion: false,
+    MotionColor: "#2ecc71",
     Occupants: false,
-    WifiClients: false
+    OccupantsColor: "#e74c3c",
+    WifiClients: false,
+    WifiClientsColor: "#9b59b6"
 };
 
 
