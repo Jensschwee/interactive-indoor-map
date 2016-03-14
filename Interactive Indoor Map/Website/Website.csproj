@@ -143,6 +143,7 @@
     <Content Include="scripts\Views\TemperatureView.js" />
     <Content Include="scripts\Views\View.js" />
     <Content Include="Style\easy-button.css" />
+    <Content Include="Style\leaflet.css" />
     <Content Include="Style\Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>

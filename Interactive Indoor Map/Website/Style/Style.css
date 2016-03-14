@@ -1,19 +1,7 @@
 ﻿.leaflet-labels {
     color: black;
 }
-
-.legend {
-    text-align: left;
-    line-height: 20px !important;
-    color: #555;
-}
-
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-}
+    
 
 .info {
     padding: 6px 8px;
@@ -47,4 +35,15 @@
 
 .axis--x path {
     display: none;
+}
+
+#legend {
+  position: absolute;
+  top: 50%;
+  left: 87.5%;
+    margin-right: 10px;
+
+}
+#legend {
+  z-index: 10;
 }
