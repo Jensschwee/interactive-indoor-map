@@ -66,100 +66,162 @@ function CreateViewButtons() {
 
     L.easyButton(temperatureIcon, function () {
         if (!ViewStates.temperature) {
-            view.cleanup();
-            view = new TemperatureView();
-            view.drawView();
-            view.drawLegend();
-            ViewStates.Temperature = true;
-            console.log('on');
-            console.log('temperature state: ' + ViewStates.Temperature);
+            if (ViewStates.ActiveViews < 4) {
+                view.cleanup();
+                view = new TemperatureView();
+                view.drawView();
+                view.drawLegend();
+                ViewStates.Temperature = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.Temperature = false;
-            console.log('off');
-            console.log('temperature state: ' + ViewStates.Temperature);
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(co2Icon, function () {
         if (!ViewStates.CO2) {
-            ViewStates.CO2 = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.CO2 = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.CO2 = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(lightIcon, function () {
         if (!ViewStates.Light) {
-            ViewStates.Light = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.Light = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.Light = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(totalConsumptionIcon, function () {
         if (!ViewStates.TotalPowerConsumption) {
-            ViewStates.TotalPowerConsumption = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.TotalPowerConsumption = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.TotalPowerConsumption = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(hardwareConsumptionIcon, function () {
         if (!ViewStates.HardwareConsumption) {
-            ViewStates.HardwareConsumption = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.HardwareConsumption = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.HardwareConsumption = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(lightConsumptionIcon, function () {
         if (!ViewStates.LightConsumption) {
-            ViewStates.LightConsumption = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.LightConsumption = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.LightConsumption = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(ventilationConsumptonIcon, function () {
         if (!ViewStates.VentilationConsumption) {
-            ViewStates.VentilationConsumption = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.VentilationConsumption = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.VentilationConsumption = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(otherConsumptionIcon, function () {
         if (!ViewStates.OtherConsumption) {
-            ViewStates.OtherConsumption = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.OtherConsumption = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.OtherConsumption = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(motionIcon, function () {
         if (!ViewStates.Motion) {
-            ViewStates.Motion = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.Motion = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.Motion = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(occupantsIcon, function () {
         if (!ViewStates.Occupants) {
-            ViewStates.Occupants = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.Occupants = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.Occupants = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(wifiClientsIcon, function () {
         if (!ViewStates.WifiClients) {
-            ViewStates.WifiClients = true;
+            if (ViewStates.ActiveViews < 4) {
+                ViewStates.WifiClients = true;
+                ViewStates.ActiveViews++;
+                console.log(ViewStates.ActiveViews);
+            }
         } else {
             ViewStates.WifiClients = false;
+            ViewStates.ActiveViews--;
+            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 }
