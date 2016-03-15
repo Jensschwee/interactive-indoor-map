@@ -139,7 +139,7 @@ function selectLegendItem(i) {
     if (ViewStates.WifiClients) {
         if (counter === 0) {
             legendItem.color = ViewStates.WifiClientsColor;
-            legendItem.icon = 'Images/hardwarePowerIcon.png';
+            legendItem.icon = 'Images/wifiIcon.png';
             return legendItem;
         } else 
             counter--;
