@@ -25,7 +25,7 @@ function drawLegend() {
               .append("rect")
               .attr("width", 100 + '%')
               .attr("height", 100 + '%')
-              .style("fill", legendItem.coler);
+              .style("fill", legendItem.color);
 
             d3.select("#legend")
                 .append('div')
@@ -43,12 +43,12 @@ function drawLegend() {
 function selectLegendItem(i) {
     var counter = i;
     var legendItem = {
-        coler: '',
+        color: '',
         icon: ''
     };
     if (ViewStates.Temperature) {
         if (counter === 0) {
-            legendItem.coler = 'Blue';
+            legendItem.color = ViewStates.TemperatureColor;
             legendItem.icon = 'Images/temperatureIcon.png';
             return legendItem;
         } else
@@ -57,7 +57,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.CO2) {
         if (counter === 0) {
-            legendItem.coler = 'red';
+            legendItem.color = ViewStates.CO2Color;
             legendItem.icon = 'Images/co2icon.png';
             return legendItem;
         } else
@@ -66,8 +66,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.Light) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
-            legendItem.icon = 'Images/lighticon.png';
+            legendItem.color = ViewStates.LightColor;
 
             return legendItem;
         } else
@@ -76,9 +75,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.HardwareConsumption) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
-            legendItem.icon = 'Images/laptopIcon.png';
-
+            legendItem.color = ViewStates.HardWareConsumptionColor;
             return legendItem;
         } else
             counter--;
@@ -86,7 +83,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.VentilationConsumption) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.VentilationConsumptionColor;
             return legendItem;
         } else
             counter--;
@@ -94,7 +91,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.OtherConsumption) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.OtherConsumptionColor;
             return legendItem;
         } else
             counter--;
@@ -102,7 +99,16 @@ function selectLegendItem(i) {
 
     if (ViewStates.LightConsumption) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.LightConsumptionColor;
+
+            return legendItem;
+        } else
+            counter--;
+    }
+
+    if (ViewStates.TotalPowerConsumption) {
+        if (counter === 0) {
+            legendItem.color = ViewStates.TotalPowerConsumptionColor
 
             return legendItem;
         } else
@@ -111,7 +117,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.Motion) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.MotionColor;
             return legendItem;
         } else
             counter--;
@@ -119,7 +125,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.Occupants) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.OccupantsColor;
             return legendItem;
         } else
             counter--;
@@ -127,7 +133,7 @@ function selectLegendItem(i) {
 
     if (ViewStates.WifiClients) {
         if (counter === 0) {
-            legendItem.coler = 'Green';
+            legendItem.color = ViewStates.WifiClientsColor;
             return legendItem;
         }
     }
