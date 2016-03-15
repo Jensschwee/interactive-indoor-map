@@ -4,12 +4,19 @@ function drawLegend() {
     var activeViews = ViewStates.ActiveViews;
     if (activeViews != 0) {
         d3.select("#legend").select("svg").remove();
-        d3.select("#legend").select("img").remove();
+        d3.select("#legend").select("div").remove();
+        var imageStartPos = 45;
+        if (activeViews === 1) {
+            imageStartPos = 15;
+        }
+        else if (activeViews === 2) {
+            imageStartPos = 7;
+        }
+        else if (activeViews === 3) {
+            imageStartPos = 4;
+        }
 
         for (var i = 0; i < activeViews; i++) {
-            //legendArray[i].width = 100 / viewCount;
-            //legendArray[i].height = 10;
-            //legendArray[i].fill = 'red';
             var legendItem = selectLegendItem(i);
             d3.select("#legend")
              .append("svg")
@@ -23,8 +30,7 @@ function drawLegend() {
             d3.select("#legend")
                 .append('div')
                 .attr("class", 'IconImage')
-                //.attr("style", 'top: 42%; left:' + 100 / activeViews * i + '%')
-                .attr("style", 'top: 42%; left: 45%')
+                .attr("style", 'top: 42%; left:' + 100 / activeViews * i + imageStartPos +  '%')
                 .append('img')
                 .attr("width", 25)
                 .attr("height", 25)
@@ -108,7 +114,7 @@ function selectLegendItem(i) {
             legendItem.color = ViewStates.TotalPowerConsumptionColor;
             legendItem.icon = 'Images/totalPowerIcon.png';
             return legendItem;
-        } else 
+        } else
             counter--;
     }
 
