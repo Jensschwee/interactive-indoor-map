@@ -5,11 +5,11 @@ var roomArray = new Array;
 var ViewStates = {
     ActiveViews: 0,
     Temperature: false,
-    TemperatureColor: "#e74c3c",
+    TemperatureColor: "#f83e2d",
     CO2: false,
     CO2Color: "#1abc9c",
     Light: false,
-    LightColor: "#f1c40f",
+    LightColor: "#fce30b",
     HardwareConsumption: false,
     HardWareConsumptionColor: "#8d7959",
     LightConsumption: false,
