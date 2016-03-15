@@ -1,4 +1,5 @@
 ﻿var infoBox = L.control({ position: 'topleft' });
+var selectedLayers = [];
 
 function createInfoBox() {
     infoBox.onAdd = function (map) {
@@ -79,7 +80,7 @@ function onEachFeature(feature, layer) {
     });
 }
 
-function roomInfoDrawSelected() {
+function drawSelectedRoomInfoBox() {
     if (roomArray.length === 0) {
         drawFloorInfoBox();
     }
@@ -110,8 +111,6 @@ function roomInfoDrawSelected() {
             NumberOfRooms: roomArray.length,
             HTML: ""
         };
-
-        var test = true;
 
         for (var i in roomArray) {
             if (roomArray.hasOwnProperty(i)) {
@@ -202,6 +201,8 @@ function infoBoxGenerateHTML(sensorData) {
 
 function highlightFeature(e) {
     var layer = e.target;
+    //selectedLayers[selectedLayers.length] = layer;
+
     if ($.inArray(layer.feature.properties, roomArray) === -1) {
         layer.setStyle({
             weight: 5,
@@ -215,13 +216,13 @@ function highlightFeature(e) {
         }
         drawRoomInfo();
         roomArray.push(layer.feature.properties);
-        roomInfoDrawSelected();
+        drawSelectedRoomInfoBox();
     } else {
         roomArray = jQuery.grep(roomArray, function (value) {
             return value != layer.feature.properties;
         });
         resetHighlight(e);
-        roomInfoDrawSelected();
+        drawSelectedRoomInfoBox();
     }
 }
 
@@ -229,3 +230,9 @@ function resetHighlight(e) {
     View.roomGeoJson.resetStyle(e.target);
     infoBox.update();
 }
+
+//Array.prototype.remove = function (from, to) {
+//    var rest = this.slice((to || from) + 1 || this.length);
+//    this.length = from < 0 ? this.length + from : from;
+//    return this.push.apply(this, rest);
+//};
