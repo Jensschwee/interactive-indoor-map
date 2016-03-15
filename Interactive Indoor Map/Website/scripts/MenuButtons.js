@@ -70,15 +70,14 @@ function CreateViewButtons() {
                 view.cleanup();
                 view = new TemperatureView();
                 view.drawView();
-                view.drawLegend();
+                drawLegend();
+                //view.drawLegend();
                 ViewStates.Temperature = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.Temperature = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -88,13 +87,11 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.CO2 = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
                 drawLegend();
             }
         } else {
             ViewStates.CO2 = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -104,12 +101,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Light = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.Light = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -119,12 +114,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.TotalPowerConsumption = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.TotalPowerConsumption = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -133,12 +126,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.HardwareConsumption = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.HardwareConsumption = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -161,12 +152,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.VentilationConsumption = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.VentilationConsumption = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -175,12 +164,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.OtherConsumption = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.OtherConsumption = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -189,12 +176,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Motion = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.Motion = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -203,12 +188,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Occupants = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.Occupants = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -217,12 +200,10 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.WifiClients = true;
                 ViewStates.ActiveViews++;
-                console.log(ViewStates.ActiveViews);
             }
         } else {
             ViewStates.WifiClients = false;
             ViewStates.ActiveViews--;
-            console.log(ViewStates.ActiveViews);
         }
     }, { position: 'topright' }).addTo(geoMap);
 }
