@@ -184,16 +184,16 @@ function infoBoxGenerateHTML(sensorData) {
         html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption + '<br/>';
     }
     if (ViewStates.LightConsumption) {
-        html += '<b>LightConsumption</b>: ' + sensorData.LightConsumption + '<br/>';
+        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption + '<br/>';
     }
     if (ViewStates.VentilationConsumption) {
-        html += '<b>VentilationConsumption</b>: ' + sensorData.VentilationConsumption + '<br/>';
+        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption + '<br/>';
     }
     if (ViewStates.OtherConsumption) {
         html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption + '<br/>';
     }
     if (ViewStates.TotalPowerConsumption) {
-        html += '<b>Total PowerConsumption</b>: ' + sensorData.TotalPowerConsumption + '<br/>';
+        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption + '<br/>';
     }
     return html;
 

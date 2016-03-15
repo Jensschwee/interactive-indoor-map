@@ -89,6 +89,7 @@ function CreateViewButtons() {
                 ViewStates.CO2 = true;
                 ViewStates.ActiveViews++;
                 console.log(ViewStates.ActiveViews);
+                drawLegend();
             }
         } else {
             ViewStates.CO2 = false;
