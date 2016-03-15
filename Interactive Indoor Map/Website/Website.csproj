@@ -144,7 +144,8 @@
     <Content Include="scripts\Views\View.js" />
     <Content Include="Style\easy-button.css" />
     <Content Include="Style\leaflet.css" />
-    <Content Include="Style\Style.css" />
+    <Content Include="Style\IE-style.css" />
+    <Content Include="Style\non-IE-Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

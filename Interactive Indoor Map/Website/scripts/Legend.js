@@ -6,7 +6,7 @@ function drawLegend() {
     d3.select("#legend").selectAll("div").remove();
     if (activeViews != 0) {
         console.log(activeViews);
-        var imageStartPos = 45;
+        var imageStartPos = 43;
         if (activeViews === 2) {
             imageStartPos = 15;
         }

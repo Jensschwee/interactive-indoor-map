@@ -6,6 +6,7 @@
     geoMap.on('fullscreenchange', function () {
         if (geoMap.isFullscreen()) {
             geoMap.zoomIn();
+            drawLegend();
         } else {
             geoMap.zoomOut();
         }
