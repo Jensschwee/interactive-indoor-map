@@ -5,27 +5,29 @@ var roomArray = new Array;
 var ViewStates = {
     ActiveViews: 0,
     Temperature: false,
-    TemperatureColor: "#f83e2d",
+    TemperatureColor: "#8ab1c4",
     CO2: false,
-    CO2Color: "#1abc9c",
+    CO2Color: "#c7b7ea", //#9b59b6
     Light: false,
-    LightColor: "#fce30b",
+    LightColor: "#ffe11d", //#fce30b
     HardwareConsumption: false,
-    HardWareConsumptionColor: "#8d7959",
+    HardWareConsumptionColor: "#f83e2d",
     LightConsumption: false,
-    LightConsumptionColor: "#8d7959",
+    LightConsumptionColor: "#fe4e35",
     VentilationConsumption: false,
-    VentilationConsumptionColor: "#8d7959",
+    VentilationConsumptionColor: "#d15258",
     OtherConsumption: false,
-    OtherConsumptionColor: "#8d7959",
+    OtherConsumptionColor: "#ff8289",
     TotalPowerConsumption: false,
-    TotalPowerConsumptionColor: "#8d7959",
+    TotalPowerConsumptionColor: "#e74c3c",
     Motion: false,
-    MotionColor: "#2ecc71",
+    MotionColor: "#b2d649",
     Occupants: false,
-    OccupantsColor: "#e74c3c",
+    OccupantsColor: "#2ecc71",
     WifiClients: false,
-    WifiClientsColor: "#9b59b6"
+    WifiClientsColor: "#83bd1a"
+    //"#2ecc71"
+    //#d6f58e
 };
 
 

@@ -138,7 +138,6 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\Legend.js" />
     <Content Include="scripts\MenuButtons.js" />
-    <Content Include="scripts\TestLegend.js" />
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="scripts\Views\DefaultView.js" />
     <Content Include="scripts\Views\TemperatureView.js" />
