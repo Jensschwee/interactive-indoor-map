@@ -67,13 +67,13 @@ function CreateViewButtons() {
     L.easyButton(temperatureIcon, function () {
         if (!ViewStates.temperature) {
             if (ViewStates.ActiveViews < 4) {
-                view.cleanup();
-                view = new TemperatureView();
-                view.drawView();
-                drawLegend();
+                //view.cleanup();
+                //view = new TemperatureView();
+                //view.drawView();
                 //view.drawLegend();
                 ViewStates.Temperature = true;
                 ViewStates.ActiveViews++;
+                drawLegend();
             }
         } else {
             ViewStates.Temperature = false;

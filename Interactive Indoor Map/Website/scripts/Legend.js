@@ -6,13 +6,13 @@ function drawLegend() {
         d3.select("#legend").select("svg").remove();
         d3.select("#legend").select("div").remove();
         var imageStartPos = 45;
-        if (activeViews === 1) {
+        if (activeViews === 2) {
             imageStartPos = 15;
         }
-        else if (activeViews === 2) {
+        else if (activeViews === 3) {
             imageStartPos = 7;
         }
-        else if (activeViews === 3) {
+        else if (activeViews === 4) {
             imageStartPos = 4;
         }
 
@@ -30,7 +30,7 @@ function drawLegend() {
             d3.select("#legend")
                 .append('div')
                 .attr("class", 'IconImage')
-                .attr("style", 'top: 42%; left:' + 100 / activeViews * i + imageStartPos +  '%')
+                .attr("style", 'top: 42%; left:' + (100 / activeViews * i + imageStartPos) +  '%')
                 .append('img')
                 .attr("width", 25)
                 .attr("height", 25)
