@@ -25,6 +25,8 @@ function drawLegend() {
               .attr("height", '100%')
               .append("rect")
               .attr("width", 100 + '%')
+              .attr('stroke-width', 1)
+              .attr('stroke', 'rgb(0,0,0)')
               .attr("height", 100 + '%')
               .style("fill", legendItem.color);
 
