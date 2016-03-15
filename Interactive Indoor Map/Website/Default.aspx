@@ -6,9 +6,18 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" type="text/css" href="Style/leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="Style/Style.css" />
+    <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
     <link rel="stylesheet" type="text/css" href="Style/easy-button.css" />
-
+    <% System.Web.HttpBrowserCapabilities browser = Request.Browser; %>
+    <% Console.Write(browser.Browser);
+        if (browser.Browser == "InternetExplorer")
+        { %>
+    <link rel="stylesheet" type="text/css" href="Style/IE-Style.css" />
+    <% }
+        else if (browser.Browser != "IE")
+        { %>
+    <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
+    <% }%>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
 
 

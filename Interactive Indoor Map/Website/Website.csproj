@@ -138,14 +138,14 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\Legend.js" />
     <Content Include="scripts\MenuButtons.js" />
-    <Content Include="scripts\TestLegend.js" />
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="scripts\Views\DefaultView.js" />
     <Content Include="scripts\Views\TemperatureView.js" />
     <Content Include="scripts\Views\View.js" />
     <Content Include="Style\easy-button.css" />
     <Content Include="Style\leaflet.css" />
-    <Content Include="Style\Style.css" />
+    <Content Include="Style\IE-style.css" />
+    <Content Include="Style\non-IE-Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
