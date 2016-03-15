@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Timers;
 using System.Web;
 using Website.BO;
 using Website.BO.Utility;
@@ -20,7 +21,6 @@ namespace Website.Domain
         private Room Ø20_508a_0;
         private Sensor testSensor;
 
-
         public void SetupBuilding()
         {
             CreateBuilding();
@@ -32,15 +32,19 @@ namespace Website.Domain
             AssembleBuilding();
 
             HttpContext.Current.Application["Building"] = building;
+
+            TestTimer();
         }
 
         private void CreateBuilding()
         {
-            building = new Building();
-            building.BuildingName = "Building 44";
-            building.Occupants = 200;
-            building.ColdWaterConsumption = 2200;
-            building.HotWaterConsumption = 2100;
+            building = new Building
+            {
+                BuildingName = "Building 44",
+                Occupants = 200,
+                ColdWaterConsumption = 2200,
+                HotWaterConsumption = 2100
+            };
         }
 
         private void CreateFloors()
@@ -192,6 +196,19 @@ namespace Website.Domain
             building.Floors.Add(groundFloor);
             building.Floors.Add(firstFloor);
             building.Floors.Add(secondFloor);
+        }
+
+        private void TestTimer()
+        {
+            Timer testTimer = new Timer();
+            testTimer.Elapsed+=new ElapsedEventHandler(OnTimedEvent);
+            testTimer.Interval = 2000;
+            testTimer.Enabled = true;
+        }
+
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            Ø22_508_0.Occupants++;
         }
     }
 }
