@@ -106,7 +106,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\buildingIcon.png" />
     <Content Include="Images\co2Icon.png" />
-    <Content Include="Images\laptopIcon.png" />
+    <Content Include="Images\hardwarePowerIcon.png" />
     <Content Include="Images\lightIcon.png" />
     <Content Include="Images\lightPowerIcon.png" />
     <Content Include="Images\motionIcon.png" />
