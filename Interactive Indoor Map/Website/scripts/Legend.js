@@ -2,9 +2,10 @@
 
 function drawLegend() {
     var activeViews = ViewStates.ActiveViews;
+    d3.select("#legend").selectAll("svg").remove();
+    d3.select("#legend").selectAll("div").remove();
     if (activeViews != 0) {
-        d3.select("#legend").select("svg").remove();
-        d3.select("#legend").select("div").remove();
+        console.log(activeViews);
         var imageStartPos = 45;
         if (activeViews === 2) {
             imageStartPos = 15;
