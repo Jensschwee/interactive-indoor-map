@@ -33,7 +33,7 @@ namespace Website.Domain
 
             HttpContext.Current.Application["Building"] = building;
 
-            TestTimer();
+            //TestTimer();
         }
 
         private void CreateBuilding()
