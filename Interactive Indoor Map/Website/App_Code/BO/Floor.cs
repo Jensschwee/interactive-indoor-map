@@ -80,6 +80,8 @@ namespace Website.BO
 
         public double ColdWaterConsumptionMax { get; set; }
 
+        public Floor() { }
+
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;

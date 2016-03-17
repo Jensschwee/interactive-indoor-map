@@ -11,12 +11,6 @@ namespace Website.BO
 {
     public class Building
     {
-
-        public Building()
-        {
-            Floors = new List<Floor>();
-        }
-
         public List<Floor> Floors { get; set; }
         
         public string BuildingName { get; set; }
@@ -92,5 +86,10 @@ namespace Website.BO
         public double ColdWaterConsumption { get; set; }
 
         public double ColdWaterConsumptionMax { get; set; }
+
+        public Building()
+        {
+            Floors = new List<Floor>();
+        }
     }
 }

@@ -71,7 +71,9 @@ namespace Website.BO
         [NotMapped]
         public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
 
-        public double TotalPowerConsumptionMax { get; set; }
+        public double TotalPowerConsumptionMax => VentilationConsumptionMax + LightConsumptionMax + HardwareConsumptionMax + OtherConsumptionMax;
+
+        public Room() { }
 
         public Room(string name, Area area)
         {
