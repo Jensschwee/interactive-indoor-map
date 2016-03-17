@@ -95,7 +95,7 @@ namespace Website.Domain
                     foreach (Room room in floor.Rooms)
                     {
                         sb.Append("{ \"type\": \"Feature\", \"properties\": {");
-                        sb.Append("\"RoomName\":" + JsonConvert.SerializeObject(room.RoomName) + ",");
+                        sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(room.CO2) + ",");
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(room.HardwareConsumption) + ",");
                         sb.Append("\"Light\":");
