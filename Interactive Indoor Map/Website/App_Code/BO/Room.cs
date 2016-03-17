@@ -14,7 +14,7 @@ namespace Website.BO
 
         public string Alias { get; set; }
 
-        public RoomType Type { get; set; }
+        //public RoomType Type { get; set; }
 
         public Area Area { get; set; }
 
