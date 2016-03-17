@@ -62,32 +62,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <%--<h1>Leaflet Example</h1>--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <%--<p>Here's an interactive map indicating the countries I've either lived in or travelled through for a month or more.--%>
         <div id="container">
-            <div id="map" style="width: 100%; height: 100vh; border: 1px solid #AAA;"></div>
-            <%-- <div id="menu" style="width: 100%; height: 7vh; border: 1px solid #AAA;">
-            <ul class="nav nav-tabs">
-                <li>
-                    <asp:LinkButton ID="myLink" Text="Draw Building" OnClick="DrawBuilding" runat="server" /></li>
-                <li><a href="#">Menu 3</a></li>
-            </ul>
-        </div>--%>
-            <div id="legend">
-                <%--<svg width="50" height="200">
-                <rect width="50" height="200" style="fill: rgb(0,0,255); stroke: rgb(0,0,0)">
-            </svg>
-            <svg width="50" height="200">
-                <rect width="50" height="200" style="fill: rgb(0,0,255); stroke: rgb(0,0,0)">
-            </svg>
-            <svg width="50" height="200">
-                <rect width="50" height="200" style="fill: rgb(0,0,255); stroke: rgb(0,0,0)">
-            </svg>
-            <svg width="50" height="200">
-                <rect width="50" height="200" style="fill: rgb(0,0,255); stroke: rgb(0,0,0)">
-            </svg>--%>
+            <div id="map" style="width: 100%; height: 100vh; border: 1px solid #AAA;">
+                <div id="legend">
+                </div>
             </div>
         </div>
     </form>

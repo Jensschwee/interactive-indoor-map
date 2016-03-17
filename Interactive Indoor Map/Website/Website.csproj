@@ -151,7 +151,6 @@
   <ItemGroup>
     <Compile Include="App_Code\BO\Utility\Area.cs" />
     <Compile Include="App_Code\BO\Utility\Coordinates.cs" />
-    <Content Include="App_Code\BO\Utility\RoomType.cs" />
     <Compile Include="App_Code\BO\Utility\Sensor.cs" />
     <Compile Include="App_Code\BO\Building.cs" />
     <Compile Include="App_Code\BO\Floor.cs" />

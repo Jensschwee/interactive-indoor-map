@@ -66,4 +66,9 @@ namespace Website.BO
             Area = area;
         }
     }
+
+    public enum RoomType
+    {
+        Corridor, Classroom, Grouproom, Office, Toilet, Utilityroom
+    }
 }
