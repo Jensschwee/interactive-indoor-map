@@ -76,6 +76,15 @@ function selectLegendItem(i) {
             counter--;
     }
 
+    if (ViewStates.TotalPowerConsumption) {
+        if (counter === 0) {
+            legendItem.color = ViewStates.TotalPowerConsumptionColor;
+            legendItem.icon = 'Images/totalPowerIcon.png';
+            return legendItem;
+        } else
+            counter--;
+    }
+
     if (ViewStates.HardwareConsumption) {
         if (counter === 0) {
             legendItem.color = ViewStates.HardWareConsumptionColor;
@@ -107,15 +116,6 @@ function selectLegendItem(i) {
         if (counter === 0) {
             legendItem.color = ViewStates.OtherConsumptionColor;
             legendItem.icon = 'Images/otherPowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
-
-    if (ViewStates.TotalPowerConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.TotalPowerConsumptionColor;
-            legendItem.icon = 'Images/totalPowerIcon.png';
             return legendItem;
         } else
             counter--;
