@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="Style/easy-button.css" />
     <% System.Web.HttpBrowserCapabilities browser = Request.Browser; %>
     <% Console.Write(browser.Browser);
-        if (browser.Browser == "InternetExplorer")
+        if (browser.Browser == "InternetExplorer" || (browser.Browser.Equals("Chrome") && browser.Version.Equals("42.0")))
         { %>
     <link rel="stylesheet" type="text/css" href="Style/IE-Style.css" />
     <% }
