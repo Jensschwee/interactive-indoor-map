@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.AccessControl;
-using System.Web;
-using Website.Domain;
 
-namespace Website.BO
+namespace Website.Logic.BO
 {
     public class Building
     {
@@ -19,7 +15,7 @@ namespace Website.BO
 
         public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
 
-        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        [NotMapped]
         public int Light => Floors.Sum(floor => floor.Light);
 
         [NotMapped]

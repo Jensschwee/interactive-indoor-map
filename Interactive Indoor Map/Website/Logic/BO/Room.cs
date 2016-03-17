@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.AccessControl;
-using System.Web;
-using Website.BO.Utility;
+using Website.Logic.BO.Utility;
 
-namespace Website.BO
+namespace Website.Logic.BO
 {
     public class Room
     {

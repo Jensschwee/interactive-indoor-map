@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Website.BO.Utility
+namespace Website.Logic.BO.Utility
 {
     public class Area
     {

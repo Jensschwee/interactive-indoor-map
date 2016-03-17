@@ -6,9 +6,9 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-using Website.BO;
-using Website.Domain;
-using JsonConverter = Website.Domain.JsonConverter;
+using Website.Logic.BO;
+using Website.Logic.Domain;
+using JsonConverter = Website.Logic.Domain.JsonConverter;
 
 namespace Website
 {

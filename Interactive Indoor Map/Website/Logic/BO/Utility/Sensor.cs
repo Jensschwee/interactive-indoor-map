@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
 
-namespace Website.BO.Utility
+namespace Website.Logic.BO.Utility
 {
     public class Sensor
     {

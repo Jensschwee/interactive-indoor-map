@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Web;
 using Newtonsoft.Json;
-using Website.BO;
-using Website.BO.Utility;
+using Website.Logic.BO;
+using Website.Logic.BO.Utility;
 
-namespace Website.Domain
+namespace Website.Logic.Domain
 {
     public class JsonConverter
     {

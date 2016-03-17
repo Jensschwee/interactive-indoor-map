@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Security.AccessControl;
 using System.Web;
 
-namespace Website.BO.Utility
+namespace Website.Logic.BO.Utility
 {
     public class Coordinates
     {

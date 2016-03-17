@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Timers;
 using System.Web;
-using Website.BO;
-using Website.BO.Utility;
+using Website.Logic.BO;
+using Website.Logic.BO.Utility;
+using Website.Persistence;
 
-namespace Website.Domain
+namespace Website.Logic.Domain
 {
     public class BuildingSetup
     {
@@ -40,6 +42,9 @@ namespace Website.Domain
         {
             building = new Building
             {
+                ColdWaterConsumptionMax = 100000,
+                HotWaterConsumptionMax = 100000,
+                OccupantsMax = 10000,
                 BuildingName = "Building 44",
                 Occupants = 200,
                 ColdWaterConsumption = 2200,
@@ -49,37 +54,69 @@ namespace Website.Domain
 
         private void CreateFloors()
         {
-            cellarFloor = new Floor(-1);
-            cellarFloor.HardwareConsumption = 3500;
-            cellarFloor.LightConsumption = 2400;
-            cellarFloor.OtherConsumption = 700;
-            cellarFloor.VentilationConsumption = 1300;
-            cellarFloor.ColdWaterConsumption = 500;
-            cellarFloor.HotWaterConsumption = 400;
+            cellarFloor = new Floor(-1)
+            {
+                HardwareConsumptionMax = 10000,
+                LightConsumptionMax = 10000,
+                VentilationConsumptionMax = 10000,
+                OtherConsumptionMax = 10000,
+                ColdWaterConsumptionMax = 10000,
+                HotWaterConsumptionMax = 10000,
+                HardwareConsumption = 3500,
+                LightConsumption = 2400,
+                OtherConsumption = 700,
+                VentilationConsumption = 1300,
+                ColdWaterConsumption = 500,
+                HotWaterConsumption = 400
+            };
 
-            groundFloor = new Floor(0);
-            groundFloor.HardwareConsumption = 4000;
-            groundFloor.LightConsumption = 2000;
-            groundFloor.OtherConsumption = 500;
-            groundFloor.VentilationConsumption = 1500;
-            groundFloor.ColdWaterConsumption = 700;
-            groundFloor.HotWaterConsumption = 800;
+            groundFloor = new Floor(0)
+            {
+                HardwareConsumptionMax = 10000,
+                LightConsumptionMax = 10000,
+                VentilationConsumptionMax = 10000,
+                OtherConsumptionMax = 10000,
+                ColdWaterConsumptionMax = 10000,
+                HotWaterConsumptionMax = 10000,
+                HardwareConsumption = 4000,
+                LightConsumption = 2000,
+                OtherConsumption = 500,
+                VentilationConsumption = 1500,
+                ColdWaterConsumption = 700,
+                HotWaterConsumption = 800
+            };
 
-            firstFloor = new Floor(1);
-            firstFloor.HardwareConsumption = 5000;
-            firstFloor.LightConsumption = 1500;
-            firstFloor.OtherConsumption = 1000;
-            firstFloor.VentilationConsumption = 2500;
-            firstFloor.ColdWaterConsumption = 300;
-            firstFloor.HotWaterConsumption = 250;
+            firstFloor = new Floor(1)
+            {
+                HardwareConsumptionMax = 10000,
+                LightConsumptionMax = 10000,
+                VentilationConsumptionMax = 10000,
+                OtherConsumptionMax = 10000,
+                ColdWaterConsumptionMax = 10000,
+                HotWaterConsumptionMax = 10000,
+                HardwareConsumption = 5000,
+                LightConsumption = 1500,
+                OtherConsumption = 1000,
+                VentilationConsumption = 2500,
+                ColdWaterConsumption = 300,
+                HotWaterConsumption = 250
+            };
 
-            secondFloor = new Floor(2);
-            secondFloor.HardwareConsumption = 3200;
-            secondFloor.LightConsumption = 900;
-            secondFloor.OtherConsumption = 200;
-            secondFloor.VentilationConsumption = 1800;
-            secondFloor.ColdWaterConsumption = 1100;
-            secondFloor.HotWaterConsumption = 1000;
+            secondFloor = new Floor(2)
+            {
+                HardwareConsumptionMax = 10000,
+                LightConsumptionMax = 10000,
+                VentilationConsumptionMax = 10000,
+                OtherConsumptionMax = 10000,
+                ColdWaterConsumptionMax = 10000,
+                HotWaterConsumptionMax = 10000,
+                HardwareConsumption = 3200,
+                LightConsumption = 900,
+                OtherConsumption = 200,
+                VentilationConsumption = 1800,
+                ColdWaterConsumption = 1100,
+                HotWaterConsumption = 1000
+            };
 
             CreateSensors();
         }
@@ -101,6 +138,14 @@ namespace Website.Domain
                 new Coordinates(10.430732667446136, 55.367447995895)
             }))
             {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                HardwareConsumptionMax = 1000,
+                LightConsumptionMax = 1000,
+                OtherConsumptionMax = 1000,
+                VentilationConsumptionMax = 1000,
+                OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
                 HardwareConsumption = 4000,
@@ -124,6 +169,14 @@ namespace Website.Domain
                 new Coordinates(10.43104112148285, 55.36767664469221)
             }))
             {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                HardwareConsumptionMax = 1000,
+                LightConsumptionMax = 1000,
+                OtherConsumptionMax = 1000,
+                VentilationConsumptionMax = 1000,
+                OccupantsMax = 50,
                 Temperature = 20.5,
                 CO2 = 85,
                 HardwareConsumption = 3700,
@@ -146,6 +199,14 @@ namespace Website.Domain
                 new Coordinates(10.430928468704224, 55.36698916998991)
             }))
             {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                HardwareConsumptionMax = 1000,
+                LightConsumptionMax = 1000,
+                OtherConsumptionMax = 1000,
+                VentilationConsumptionMax = 1000,
+                OccupantsMax = 50,
                 Temperature = 21.5,
                 CO2 = 80,
                 HardwareConsumption = 4200,
@@ -168,6 +229,14 @@ namespace Website.Domain
                 new Coordinates(10.430603921413422, 55.36697392651307)
             }))
             {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                HardwareConsumptionMax = 1000,
+                LightConsumptionMax = 1000,
+                OtherConsumptionMax = 1000,
+                VentilationConsumptionMax = 1000,
+                OccupantsMax = 50,
                 Temperature = 22,
                 CO2 = 70,
                 HardwareConsumption = 2700,
@@ -209,6 +278,15 @@ namespace Website.Domain
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             Ø22_508_0.Occupants++;
+        }
+
+        private void saveDataToDB()
+        {
+            using (BuildingDBContext context = new BuildingDBContext())
+            {
+                context.Buildings.AddOrUpdate(building);
+                context.SaveChanges();
+            }
         }
     }
 }
