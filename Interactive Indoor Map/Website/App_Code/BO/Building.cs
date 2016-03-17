@@ -19,7 +19,7 @@ namespace Website.BO
 
         public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
 
-        [NotMapped]
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public int Light => Floors.Sum(floor => floor.Light);
 
         [NotMapped]
