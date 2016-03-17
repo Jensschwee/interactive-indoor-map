@@ -19,7 +19,7 @@ namespace Website.Logic.Domain
             StringBuilder sb = new StringBuilder();
             sb.Append("{");
 
-            sb.Append("\"BuildingName\":\"" + building.BuildingName + "\",");
+            sb.Append("\"Name\":\"" + building.Name + "\",");
             sb.Append("\"HardwareConsumption\":" + building.HardwareConsumption + ",");
             sb.Append("\"LightConsumption\":" + building.LightConsumption + ",");
             sb.Append("\"VentilationConsumption\":" + building.VentilationConsumption + ",");

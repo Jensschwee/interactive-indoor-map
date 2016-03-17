@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Website.Logic.BO.Utility;
 
@@ -6,6 +7,7 @@ namespace Website.Logic.BO
 {
     public class Room
     {
+        [Key]
         public string Name { get; set; }
 
         public string Alias { get; set; }

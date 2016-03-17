@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Website.Logic.BO.Utility;
@@ -8,6 +9,10 @@ namespace Website.Logic.BO
 {
     public class Floor
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         public int FloorLevel { get; set; }
     
         public List<Room> Rooms { get; set; }
@@ -76,7 +81,11 @@ namespace Website.Logic.BO
 
         public double ColdWaterConsumptionMax { get; set; }
 
-        public Floor() { }
+        public Floor()
+        {
+            Rooms = new List<Room>();
+            Sensors = new List<Sensor>();
+        }
 
         public Floor(int floorLevel)
         {

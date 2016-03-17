@@ -36,6 +36,7 @@ namespace Website.Logic.Domain
             HttpContext.Current.Application["Building"] = building;
 
             //TestTimer();
+            saveDataToDB();
         }
 
         private void CreateBuilding()
@@ -45,7 +46,7 @@ namespace Website.Logic.Domain
                 ColdWaterConsumptionMax = 100000,
                 HotWaterConsumptionMax = 100000,
                 OccupantsMax = 10000,
-                BuildingName = "Building 44",
+                Name = "Building 44",
                 Occupants = 200,
                 ColdWaterConsumption = 2200,
                 HotWaterConsumption = 2100
@@ -248,18 +249,19 @@ namespace Website.Logic.Domain
                 Occupants = 1,
                 SurfaceArea = 7
             };
+
         }
 
         private void AssembleBuilding()
         {
-            cellarFloor.Rooms.Add(Ø20_604_0);
+            //cellarFloor.Rooms.Add(Ø20_604_0);
             groundFloor.Rooms.Add(Ø22_508_0);
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);
-            firstFloor.Rooms.Add(Ø20_508a_0);
-            firstFloor.Rooms.Add(Ø22_508_0);
-            secondFloor.Rooms.Add(Ø22_604_0);
+            //firstFloor.Rooms.Add(Ø20_508a_0);
+            //firstFloor.Rooms.Add(Ø22_508_0);
+            //secondFloor.Rooms.Add(Ø22_604_0);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(groundFloor);
@@ -282,7 +284,7 @@ namespace Website.Logic.Domain
 
         private void saveDataToDB()
         {
-            using (BuildingDBContext context = new BuildingDBContext())
+            using (BuildingDbContext context = new BuildingDbContext())
             {
                 context.Buildings.AddOrUpdate(building);
                 context.SaveChanges();
