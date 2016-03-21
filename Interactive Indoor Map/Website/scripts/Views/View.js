@@ -10,16 +10,109 @@
         View.prototype.removeView.call();
 
         function onSuccess(response) {
-            View.roomGeoJson = L.geoJson(jQuery.parseJSON(response), {
-                style: style,
-                onEachFeature: onEachFeature
-            });
-            geoMap.addLayer(View.roomGeoJson);
+
+            var collection = JSON.parse(response);
+            var column = new Array();
+            for (var j = 0; j < ViewStates.ActiveViews; j++) {
+                var features = new Array();
+                var jsonColumn = {
+                    type: "FeatureCollection",
+                    features: features
+                };
+                $.each(collection.features, function (index, value) {
+
+                    var coordinate = new Array();
+                    var coordinates = new Array();
+                    coordinate.push(coordinates);
+                    var geometry =
+                        {
+                            type: "Polygon",
+                            coordinates: coordinate
+                        };
+                    var test = {
+                        type: "Feature",
+                        geometry: geometry,
+                        properties: value.properties
+                }
+                    coordinates.push(value.geometry.coordinates[0][1]);
+                    coordinates.push(value.geometry.coordinates[0][2]);
+
+                    var x1 = value.geometry.coordinates[0][2][0];
+                    var x2 = value.geometry.coordinates[0][3][0];
+
+                    var y1 = value.geometry.coordinates[0][2][1];
+                    var y2 = value.geometry.coordinates[0][3][1];
+
+                    var pointMid1 = new Array();
+                    pointMid1.push(((x1 + x2) / 2));
+                    pointMid1.push((y1 + y2) / 2);
+                    coordinates.push(pointMid1);
+
+                    x1 = value.geometry.coordinates[0][1][0];
+                    x2 = value.geometry.coordinates[0][4][0];
+
+                    y1 = value.geometry.coordinates[0][1][1];
+                    y2 = value.geometry.coordinates[0][4][1];
+
+                    pointMid1 = new Array();
+                    pointMid1.push(((x1 + x2) / 2));
+                    pointMid1.push((y1 + y2) / 2);
+                    coordinates.push(pointMid1);
+
+                    coordinates.push(value.geometry.coordinates[0][1]);
+                    features.push(test);
+
+                });
+                column.push(jsonColumn);
+            }
+
+            for (var i = 0; i < ViewStates.ActiveViews; i++) {
+                var roomColumn = column.pop();
+
+                var svg = d3.select(geoMap.getPanes().overlayPane).append("svg"),
+               g = svg.append("g").attr("class", "leaflet-zoom-hide");
+
+                var transform = d3.geo.transform({ point: projectPoint }),
+                    path = d3.geo.path().projection(transform);
+
+                var feature = g.selectAll("path")
+                    .data(roomColumn.features)
+                  .enter().append("path");
+
+                var style = selectLegendItem(i);
+
+                geoMap.on("viewreset", reset);
+
+                reset();
+
+                // Reposition the SVG to cover the features.
+                function reset() {
+
+                    var bounds = path.bounds(roomColumn),
+                        topLeft = bounds[0],
+                        bottomRight = bounds[1];
+
+                    svg.attr("width", bottomRight[0] - topLeft[0])
+                        .attr("height", bottomRight[1] - topLeft[1])
+                        .style("left", topLeft[0] + "px")
+                        .style("top", topLeft[1] + "px");
+
+                    g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+                    feature.attr("d", path)
+                        .style("fill", style.color);
+                }
+
+                // Use Leaflet to implement a D3 geometric transformation.
+                function projectPoint(x, y) {
+                    var point = geoMap.latLngToLayerPoint(new L.LatLng(y, x));
+                    this.stream.point(point.x, point.y);
+                }
+            }
+
+
         }
 
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
-
-        
     };
 
     View.prototype.cleanup = function () {

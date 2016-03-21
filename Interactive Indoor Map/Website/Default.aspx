@@ -37,6 +37,7 @@
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <script src="scripts/L.D3SvgOverlay.min.js"></script>
 
     <script type='text/javascript' src='scripts/easy-button.js'></script>
 

@@ -3,10 +3,10 @@ var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
 var ViewStates = {
-    ActiveViews: 0,
-    Temperature: false,
+    ActiveViews: 2,
+    Temperature: true,
     TemperatureColor: "#8ab1c4",
-    CO2: false,
+    CO2: true,
     CO2Color: "#c7b7ea", //#9b59b6
     Light: false,
     LightColor: "#ffe11d", //#fce30b
