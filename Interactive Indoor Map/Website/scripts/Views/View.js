@@ -46,45 +46,37 @@
                     var B = value.geometry.coordinates[0][1];
                     var minValue = 0;
                     var maxValue = 5;
-                    var sensorValue = 5;
+                    var sensorValue = 4;
 
                     var point = [];
                     //Col A X
                     point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * j);
-                    console.log(j + ".A.x: " + point[0]);
                     //Col A y
                     point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * j);
-                    console.log(j + ".A.y: " + point[1]);
 
                     coordinates.push(point);
 
                     point = [];
                     //Col D X
                     point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * (j + 1));
-                    console.log(j + ".D.x: " + point[0]);
 
                     //Col D y
-                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * (j + 1));
-                    console.log(j + ".D.y: " + point[1]);
+                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * (j + 1) );
 
                     coordinates.push(point);
                     point = [];
                     //Col C X
-                    point.push((coordinates[1][0] + ((C[0] - D[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
-                    //console.log(j + ".C.x: " + (coordinates[1][0] + ((C[0] - D[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j + 1) -((C[0] - D[0]) * (1-(sensorValue - minValue) / (maxValue - minValue))));
                     //Col C y
-                    point.push((coordinates[1][1] + ((C[1] - D[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
-                    //console.log(j + ".C.y: " + (coordinates[1][1] + ((C[1] - D[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j + 1) - ((C[1] - D[1]) * (1-(sensorValue - minValue) / (maxValue - minValue))));
 
                     coordinates.push(point);
 
                     point = [];
                     //Col B X
-                    point.push((coordinates[0][0] + ((B[0] - A[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
-                    //console.log(j + ".B.x " + (coordinates[0][0] + ((B[0] - A[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
                     //Col B y
-                    point.push((coordinates[0][1] + ((B[1] - A[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
-                    //console.log(j + ".B.y " + (coordinates[0][1] + ((B[1] - A[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
                     coordinates.push(point);
 
