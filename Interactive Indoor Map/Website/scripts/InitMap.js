@@ -6,7 +6,7 @@ var ViewStates = {
     ActiveViews: 2,
     Temperature: true,
     TemperatureColor: "#8ab1c4",
-    CO2: true,
+    CO2: false,
     CO2Color: "#c7b7ea", //#9b59b6
     Light: false,
     LightColor: "#ffe11d", //#fce30b

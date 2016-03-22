@@ -29,45 +29,75 @@
                             type: "Polygon",
                             coordinates: coordinate
                         };
-                    var test = {
+                    var feature = {
                         type: "Feature",
                         geometry: geometry,
                         properties: value.properties
                 }
-                    coordinates.push(value.geometry.coordinates[0][1]);
-                    coordinates.push(value.geometry.coordinates[0][2]);
+                    //bottomRightVertex
+                    var D = value.geometry.coordinates[0][3];
+                    //bottomLeftVertex
+                    var A = value.geometry.coordinates[0][2];
+                    console.log(value.geometry.coordinates[0][1]);
 
-                    var x1 = value.geometry.coordinates[0][2][0];
-                    var x2 = value.geometry.coordinates[0][3][0];
+                    ////topRightVertex
+                    var C = value.geometry.coordinates[0][0];
+                    ////topLeftVertex
+                    var B = value.geometry.coordinates[0][1];
+                    var minValue = 0;
+                    var maxValue = 5;
+                    var sensorValue = 5;
 
-                    var y1 = value.geometry.coordinates[0][2][1];
-                    var y2 = value.geometry.coordinates[0][3][1];
+                    var point = [];
+                    //Col A X
+                    point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * j);
+                    console.log(j + ".A.x: " + point[0]);
+                    //Col A y
+                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * j);
+                    console.log(j + ".A.y: " + point[1]);
 
-                    var pointMid1 = new Array();
-                    pointMid1.push(((x1 + x2) / 2));
-                    pointMid1.push((y1 + y2) / 2);
-                    coordinates.push(pointMid1);
+                    coordinates.push(point);
 
-                    x1 = value.geometry.coordinates[0][1][0];
-                    x2 = value.geometry.coordinates[0][4][0];
+                    point = [];
+                    //Col D X
+                    point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * (j + 1));
+                    console.log(j + ".D.x: " + point[0]);
 
-                    y1 = value.geometry.coordinates[0][1][1];
-                    y2 = value.geometry.coordinates[0][4][1];
+                    //Col D y
+                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * (j + 1));
+                    console.log(j + ".D.y: " + point[1]);
 
-                    pointMid1 = new Array();
-                    pointMid1.push(((x1 + x2) / 2));
-                    pointMid1.push((y1 + y2) / 2);
-                    coordinates.push(pointMid1);
+                    coordinates.push(point);
+                    point = [];
+                    //Col C X
+                    point.push((coordinates[1][0] + ((C[0] - D[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //console.log(j + ".C.x: " + (coordinates[1][0] + ((C[0] - D[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //Col C y
+                    point.push((coordinates[1][1] + ((C[1] - D[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //console.log(j + ".C.y: " + (coordinates[1][1] + ((C[1] - D[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
 
-                    coordinates.push(value.geometry.coordinates[0][1]);
-                    features.push(test);
+                    coordinates.push(point);
+
+                    point = [];
+                    //Col B X
+                    point.push((coordinates[0][0] + ((B[0] - A[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //console.log(j + ".B.x " + (coordinates[0][0] + ((B[0] - A[0]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //Col B y
+                    point.push((coordinates[0][1] + ((B[1] - A[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+                    //console.log(j + ".B.y " + (coordinates[0][1] + ((B[1] - A[1]) * ((sensorValue - minValue) / (maxValue - minValue)))).toFixed(20));
+
+                    coordinates.push(point);
+
+                    coordinates.push(coordinates[0]);
+
+                    features.push(feature);
 
                 });
                 column.push(jsonColumn);
             }
 
             for (var i = 0; i < ViewStates.ActiveViews; i++) {
-                var roomColumn = column.pop();
+                var roomColumn = column.shift();
 
                 var svg = d3.select(geoMap.getPanes().overlayPane).append("svg"),
                g = svg.append("g").attr("class", "leaflet-zoom-hide");
