@@ -1,7 +1,7 @@
 ﻿var legendArray = new Array();
 
 function drawLegend() {
-    var activeViews = ViewStates.ActiveViews;
+    var activeViews = ActiveViews.length;
     d3.select("#legend").selectAll("svg").remove();
     d3.select("#legend").selectAll("div").remove();
     if (activeViews != 0) {
@@ -17,7 +17,6 @@ function drawLegend() {
         }
 
         for (var i = 0; i < activeViews; i++) {
-            var legendItem = selectLegendItem(i);
             d3.select("#legend")
              .append("svg")
               .attr("width", 100 / activeViews + '%')
@@ -27,7 +26,7 @@ function drawLegend() {
               .attr('stroke-width', 1)
               .attr('stroke', 'rgb(0,0,0)')
               .attr("height", 100 + '%')
-              .style("fill", legendItem.color);
+              .style("fill", ActiveViews[i].color);
 
             d3.select("#legend")
                 .append('div')
@@ -36,118 +35,120 @@ function drawLegend() {
                 .append('img')
                 .attr("width", 25)
                 .attr("height", 25)
-                .attr("src", legendItem.icon);
+                .attr("src", ActiveViews[i].icon);
 
         }
     }
 }
 
-function selectLegendItem(i) {
-    var counter = i;
-    var legendItem = {
-        color: '',
-        icon: ''
-    };
-    if (ViewStates.Temperature) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.TemperatureColor;
-            legendItem.icon = 'Images/temperatureIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//function selectLegendItem(i) {
+//    var counter = i;
+//    var legendItem = {
+//        color: '',
+//        icon: '',
+//        max: 'CO2Max',
+//        value: 'CO2'
+//    };
+//    if (ActiveViews.Temperature) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.TemperatureColor;
+//            legendItem.icon = 'Images/temperatureIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.CO2) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.CO2Color;
-            legendItem.icon = 'Images/co2icon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.CO2) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.CO2Color;
+//            legendItem.icon = 'Images/co2icon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.Light) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.LightColor;
-            legendItem.icon = 'Images/lightIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.Light) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.LightColor;
+//            legendItem.icon = 'Images/lightIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.TotalPowerConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.TotalPowerConsumptionColor;
-            legendItem.icon = 'Images/totalPowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.TotalPowerConsumption) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.TotalPowerConsumptionColor;
+//            legendItem.icon = 'Images/totalPowerIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.HardwareConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.HardWareConsumptionColor;
-            legendItem.icon = 'Images/hardwarePowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.HardwareConsumption) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.HardWareConsumptionColor;
+//            legendItem.icon = 'Images/hardwarePowerIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.LightConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.LightConsumptionColor;
-            legendItem.icon = 'Images/LightPowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.LightConsumption) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.LightConsumptionColor;
+//            legendItem.icon = 'Images/LightPowerIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.VentilationConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.VentilationConsumptionColor;
-            legendItem.icon = 'Images/ventilationPowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.VentilationConsumption) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.VentilationConsumptionColor;
+//            legendItem.icon = 'Images/ventilationPowerIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.OtherConsumption) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.OtherConsumptionColor;
-            legendItem.icon = 'Images/otherPowerIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.OtherConsumption) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.OtherConsumptionColor;
+//            legendItem.icon = 'Images/otherPowerIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.Motion) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.MotionColor;
-            legendItem.icon = 'Images/motionIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.Motion) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.MotionColor;
+//            legendItem.icon = 'Images/motionIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.Occupants) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.OccupantsColor;
-            legendItem.icon = 'Images/occupantsIcon.png';
-            return legendItem;
-        } else
-            counter--;
-    }
+//    if (ActiveViews.Occupants) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.OccupantsColor;
+//            legendItem.icon = 'Images/occupantsIcon.png';
+//            return legendItem;
+//        } else
+//            counter--;
+//    }
 
-    if (ViewStates.WifiClients) {
-        if (counter === 0) {
-            legendItem.color = ViewStates.WifiClientsColor;
-            legendItem.icon = 'Images/wifiIcon.png';
-            return legendItem;
-        } else 
-            counter--;
-    }
+//    if (ActiveViews.WifiClients) {
+//        if (counter === 0) {
+//            legendItem.color = ActiveViews.WifiClientsColor;
+//            legendItem.icon = 'Images/wifiIcon.png';
+//            return legendItem;
+//        } else 
+//            counter--;
+//    }
 
-}
+//}
 
 
 

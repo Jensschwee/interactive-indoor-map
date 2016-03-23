@@ -144,7 +144,7 @@ function drawSelectedRoomInfoBox() {
 
 function infoBoxGenerateHTML(sensorData) {
     var html = "<br/>";
-    if (ViewStates.Motion) {
+    if (findIndexOfView('Motion') !== -1) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
@@ -156,16 +156,16 @@ function infoBoxGenerateHTML(sensorData) {
             }
         }
     }
-    if (ViewStates.Occupants) {
+    if (findIndexOfView('Occupants') !== -1) {
         html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
     }
-    if (ViewStates.Temperature) {
+    if (findIndexOfView('Temperature') !== -1) {
         html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + '&#8451' + '<br/>';
     }
-    if (ViewStates.CO2) {
+    if (findIndexOfView('CO2') !== -1) {
         html += '<b>CO2</b>: ' + sensorData.CO2 + '<br/>';
     }
-    if (ViewStates.Light) {
+    if (findIndexOfView('Lumen') !== -1) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Light</b>: ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
@@ -180,19 +180,19 @@ function infoBoxGenerateHTML(sensorData) {
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + '<br/>';
     }
 
-    if (ViewStates.HardwareConsumption) {
+    if (findIndexOfView('HardwareConsumption') !== -1) {
         html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption + '<br/>';
     }
-    if (ViewStates.LightConsumption) {
+    if (findIndexOfView('LightConsumption') !== -1 ){
         html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption + '<br/>';
     }
-    if (ViewStates.VentilationConsumption) {
+    if (findIndexOfView('VentilationConsumption') !== -1) {
         html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption + '<br/>';
     }
-    if (ViewStates.OtherConsumption) {
+    if (findIndexOfView('OtherConsumption') !== -1) {
         html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption + '<br/>';
     }
-    if (ViewStates.TotalPowerConsumption) {
+    if (findIndexOfView('PowerConsumption') !== -1) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption + '<br/>';
     }
     return html;

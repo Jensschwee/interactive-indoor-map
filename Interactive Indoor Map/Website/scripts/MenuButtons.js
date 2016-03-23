@@ -65,159 +65,232 @@ function CreateViewButtons() {
     var wifiClientsIcon = '<div class="buttonImage"><img src="Images/wifiIcon.png" width="25" height="25"style=""/></div>';
 
     L.easyButton(temperatureIcon, function () {
-        if (!ViewStates.Temperature) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.Temperature = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("Temperature");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var temperatureObj = {
+                    name: "Temperature",
+                    color: '#8ab1c4',
+                    icon: 'Images/temperatureIcon.png',
+                    max: 'TemperatureMax',
+                    value: 'Temperature',
+                    min: "TemperatureMin"
+                };
+                ActiveViews.push(temperatureObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.Temperature = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
 
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(co2Icon, function () {
-        if (!ViewStates.CO2) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.CO2 = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("CO2");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var co2Obj = {
+                    name: "CO2",
+                    color: '#c7b7ea',
+                    icon: 'Images/co2Icon.png',
+                    max: 'CO2Max',
+                    value: 'CO2',
+                    min: "CO2Min"
+                };
+                ActiveViews.push(co2Obj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.CO2 = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
 
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(lightIcon, function () {
-        if (!ViewStates.Light) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.Light = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("Lumen");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var lightObj = {
+                    name: "Lumen",
+                    color: '#ffe11d',
+                    icon: 'Images/lightIcon.png',
+                    value: 'Lumen',
+                    max: 'LumenMax'
+                };
+                ActiveViews.push(lightObj);
                 reDrawItemsOnMap();
-
             }
         } else {
-            ViewStates.Light = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
-
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(totalConsumptionIcon, function () {
-        if (!ViewStates.TotalPowerConsumption) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.TotalPowerConsumption = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("TotalPowerConsumption");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var totalPowerObj = {
+                    name: "TotalPowerConsumption",
+                    color: '#e74c3c',
+                    icon: 'Images/totalPowerIcon.png',
+                    max: 'TotalPowerConsumptionMax',
+                    value: 'TotalPowerConsumption',
+                    min: "TotalPowerConsumptionMin"
+                };
+                ActiveViews.push(totalPowerObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.TotalPowerConsumption = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(hardwareConsumptionIcon, function () {
-        if (!ViewStates.HardwareConsumption) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.HardwareConsumption = true;
-                ViewStates.ActiveViews++;
+
+        var index = findIndexOfView("HardwareConsumption");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var hardwareObj = {
+                    name: "HardwareConsumption",
+                    color: '#f83e2d',
+                    icon: 'Images/hardwarePowerIcon.png',
+                    max: 'HardwareConsumptionMax',
+                    value: 'HardwareConsumption',
+                    min: "HardwareConsumptionMin"
+                };
+                ActiveViews.push(hardwareObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.HardwareConsumption = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(lightConsumptionIcon, function () {
-        if (!ViewStates.LightConsumption) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.LightConsumption = true;
-                ViewStates.ActiveViews++;
+
+        var index = findIndexOfView("LightConsumption");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var lightPowerObj = {
+                    name: "LightConsumption",
+                    color: '#fe4e35',
+                    icon: 'Images/lightPowerIcon.png',
+                    max: 'LightConsumptionMax',
+                    value: 'LightConsumption',
+                    min: "LightConsumptionMin"
+                };
+                ActiveViews.push(lightPowerObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.LightConsumption = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(ventilationConsumptonIcon, function () {
-        if (!ViewStates.VentilationConsumption) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.VentilationConsumption = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("VentilationConsumption");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var ventilationPowerObj = {
+                    name: "VentilationConsumption",
+                    color: '#d15258',
+                    icon: 'Images/ventilationPowerIcon.png',
+                    max: 'VentilationConsumptionMax',
+                    value: 'VentilationConsumption',
+                    min: "VentilationConsumptionMin"
+                };
+                ActiveViews.push(ventilationPowerObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.VentilationConsumption = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(otherConsumptionIcon, function () {
-        if (!ViewStates.OtherConsumption) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.OtherConsumption = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("OtherConsumption");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var otherPowerObj = {
+                    name: "OtherConsumption",
+                    color: '#ff8289',
+                    icon: 'Images/otherPowerIcon.png',
+                    max: 'OtherConsumptionMax',
+                    value: 'OtherConsumption',
+                    min: "OtherConsumptionMin"
+                };
+                ActiveViews.push(otherPowerObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.OtherConsumption = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(motionIcon, function () {
-        if (!ViewStates.Motion) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.Motion = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("Motion");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var otherPowerObj = {
+                    name: "Motion",
+                    color: '#b2d649',
+                    icon: 'Images/motionIcon.png',
+                    value: 'Motion'
+                };
+                ActiveViews.push(otherPowerObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.Motion = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(occupantsIcon, function () {
-        if (!ViewStates.Occupants) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.Occupants = true;
-                ViewStates.ActiveViews++;
+
+        var index = findIndexOfView("Occupants");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var occupantsObj = {
+                    name: "Occupants",
+                    color: '#2ecc71',
+                    icon: 'Images/occupantsIcon.png',
+                    max: 'OccupantsMax',
+                    value: 'Occupants'
+                };
+                ActiveViews.push(occupantsObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.Occupants = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
     L.easyButton(wifiClientsIcon, function () {
-        if (!ViewStates.WifiClients) {
-            if (ViewStates.ActiveViews < 4) {
-                ViewStates.WifiClients = true;
-                ViewStates.ActiveViews++;
+        var index = findIndexOfView("WifiClients");
+        if (index === -1) {
+            if (ActiveViews.length < 4) {
+                var wifiClientsObj = {
+                    name: "WifiClients",
+                    color: '#83bd1a',
+                    icon: 'Images/wifiIcon.png',
+                    max: 'WifiClientsMax',
+                    value: 'WifiClients'
+                };
+                ActiveViews.push(wifiClientsObj);
                 reDrawItemsOnMap();
             }
         } else {
-            ViewStates.WifiClients = false;
-            ViewStates.ActiveViews--;
+            ActiveViews.splice(index, 1);
             reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
@@ -226,4 +299,13 @@ function CreateViewButtons() {
 function reDrawItemsOnMap() {
     drawLegend();
     drawRooms();
+}
+
+function findIndexOfView(name) {
+    for (var i = 0; i < ActiveViews.length; i++) {
+        if (ActiveViews[i].name === name) {
+            return i;
+        }
+    }
+    return -1;
 }
