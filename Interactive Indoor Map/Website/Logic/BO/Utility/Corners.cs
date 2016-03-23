@@ -13,20 +13,20 @@ namespace Website.Logic.BO.Utility
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public Coordinates TopRightCorner { get; set; }
         public Coordinates TopLeftCorner { get; set; }
-        public Coordinates BottomRightCorner { get; set; }
         public Coordinates BottomLeftCorner { get; set; }
+        public Coordinates BottomRightCorner { get; set; }
+        public Coordinates TopRightCorner { get; set; }
 
         public Corners() { }
 
         public Corners(List<Coordinates> cornerCoordinates)
         {
             //Algorithm which decide which coordinate corresponds to which corner
-            TopRightCorner = cornerCoordinates[0];
-            TopLeftCorner = cornerCoordinates[1];
+            TopLeftCorner = cornerCoordinates[0];
+            BottomLeftCorner = cornerCoordinates[1];
             BottomRightCorner = cornerCoordinates[2];
-            BottomLeftCorner = cornerCoordinates[3];
+            TopRightCorner = cornerCoordinates[3];
         }
 
     }
