@@ -28,6 +28,8 @@ namespace Website.Logic.BO
 
         public int LumenMax { get; set; }
 
+        public int LumenMin { get; set; }
+
         [NotMapped]
         public bool Motion { get; set; }
 
@@ -36,41 +38,58 @@ namespace Website.Logic.BO
 
         public double TemperatureMax { get; set; }
 
+        public double TemperatureMin { get; set; }
+
         [NotMapped]
         public int CO2 { get; set; }
 
         public int CO2Max { get; set; }
+
+        public int CO2Min { get; set; }
 
         [NotMapped]
         public int Occupants { get; set; }
 
         public int OccupantsMax { get; set; }
 
+        public int OccupantsMin { get; set; }
+
         [NotMapped]
         public double VentilationConsumption { get; set; }
 
-        [NotMapped]
         public double VentilationConsumptionMax { get; set; }
+
+        public double VentilationConsumptionMin { get; set; }
 
         [NotMapped]
         public double LightConsumption { get; set; }
         
         public double LightConsumptionMax { get; set; }
 
+        public double LightConsumptionMin { get; set; }
+
         [NotMapped]
         public double HardwareConsumption { get; set; }
         
         public double HardwareConsumptionMax { get; set; }
+
+        public double HardwareConsumptionMin { get; set; }
 
         [NotMapped]
         public double OtherConsumption { get; set; }
 
         public double OtherConsumptionMax { get; set; }
 
+        public double OtherConsumptionMin { get; set; }
+
         [NotMapped]
         public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
 
+        [NotMapped]
         public double TotalPowerConsumptionMax => VentilationConsumptionMax + LightConsumptionMax + HardwareConsumptionMax + OtherConsumptionMax;
+
+        [NotMapped]
+        public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
 
         public Room() { }
 

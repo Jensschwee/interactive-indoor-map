@@ -54,15 +54,25 @@ namespace Website.Logic.BO
         public double HardwareConsumptionMax => Floors.Sum(floor => floor.HardwareConsumptionMax);
 
         [NotMapped]
+        public double HardwareConsumptionMin => Floors.Sum(floor => floor.HardwareConsumptionMin);
+
+        [NotMapped]
         public double LightConsumption => Floors.Sum(floor => floor.LightConsumption);
 
         [NotMapped]
         public double LightConsumptionMax => Floors.Sum(floor => floor.LightConsumptionMax);
 
+        [NotMapped]
+        public double LightConsumptionMin => Floors.Sum(floor => floor.LightConsumptionMin);
+
+        [NotMapped]
         public double OtherConsumption => Floors.Sum(floor => floor.OtherConsumption);
 
         [NotMapped]
         public double OtherConsumptionMax => Floors.Sum(floor => floor.OtherConsumptionMax);
+
+        [NotMapped]
+        public double OtherConsumptionMin => Floors.Sum(floor => floor.OtherConsumptionMin);
 
         [NotMapped]
         public double VentilationConsumption => Floors.Sum(floor => floor.VentilationConsumption);
@@ -71,20 +81,30 @@ namespace Website.Logic.BO
         public double VentilationConsumptionMax => Floors.Sum(floor => floor.VentilationConsumptionMax);
 
         [NotMapped]
+        public double VentilationConsumptionMin => Floors.Sum(floor => floor.VentilationConsumptionMin);
+
+        [NotMapped]
         public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
 
         [NotMapped]
         public double TotalPowerConsumptionMax => VentilationConsumptionMax + LightConsumptionMax + HardwareConsumptionMax + OtherConsumptionMax;
 
         [NotMapped]
+        public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
+
+        [NotMapped]
         public double HotWaterConsumption { get; set; }
 
         public double HotWaterConsumptionMax { get; set; }
+
+        public double HotWaterConsumptionMin { get; set; }
 
         [NotMapped]
         public double ColdWaterConsumption { get; set; }
 
         public double ColdWaterConsumptionMax { get; set; }
+
+        public double ColdWaterConsumptionMin { get; set; }
 
         public Building()
         {
