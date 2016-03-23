@@ -118,7 +118,7 @@ namespace Website.Logic.Domain
 
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(room.CO2) + ",");
                         sb.Append("\"CO2Max\":" + JsonConvert.SerializeObject(room.CO2Max) + ",");
-                        sb.Append("\"CO2Min\":" + JsonConvert.SerializeObject(room.CO2Max) + ",");
+                        sb.Append("\"CO2Min\":" + JsonConvert.SerializeObject(room.CO2Min) + ",");
                         
                         sb.Append("\"Light\":" + JsonConvert.SerializeObject(room.Light) + ",");
 
