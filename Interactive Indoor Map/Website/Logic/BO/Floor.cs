@@ -20,25 +20,10 @@ namespace Website.Logic.BO
         public double SurfaceArea { get; set; }
 
         [NotMapped]
-        public int Light => (Rooms.Where(room => room.Light)).Count();
-
-        [NotMapped]
-        public double Lumen => (Rooms.Sum(room => room.Lumen) / Convert.ToDouble(Rooms.Count));
-
-        [NotMapped]
-        public double LumenMax => (Rooms.Sum(room => room.LumenMax) / Convert.ToDouble(Rooms.Count));
-
-        [NotMapped]
-        public double LumenMin => (Rooms.Sum(room => room.LumenMin) / Convert.ToDouble(Rooms.Count));
-
-        [NotMapped]
-        public int Motion => (Rooms.Where(room => room.Motion)).Count();
-
-        [NotMapped]
         public double Temperature => (Rooms.Sum(room => room.Temperature) / Rooms.Count);
 
         [NotMapped]
-        public double TemperatureMax => (Rooms.Sum(room => room.TemperatureMax)/Rooms.Count);
+        public double TemperatureMax => (Rooms.Sum(room => room.TemperatureMax) / Rooms.Count);
 
         [NotMapped]
         public double TemperatureMin => (Rooms.Sum(room => room.TemperatureMin) / Rooms.Count);
@@ -47,11 +32,20 @@ namespace Website.Logic.BO
         public double CO2 => (Rooms.Sum(room => room.CO2) / Convert.ToDouble(Rooms.Count));
 
         [NotMapped]
-        public double CO2Max => (Rooms.Sum(room => room.CO2Max)/ Convert.ToDouble(Rooms.Count));
+        public double CO2Max => (Rooms.Sum(room => room.CO2Max) / Convert.ToDouble(Rooms.Count));
 
         [NotMapped]
         public double CO2Min => (Rooms.Sum(room => room.CO2Min) / Convert.ToDouble(Rooms.Count));
 
+        [NotMapped]
+        public int Light => (Rooms.Where(room => room.Light)).Count();
+
+        [NotMapped]
+        public double Lumen => (Rooms.Sum(room => room.Lumen) / Convert.ToDouble(Rooms.Count));
+
+        [NotMapped]
+        public double LumenMax => (Rooms.Sum(room => room.LumenMax) / Convert.ToDouble(Rooms.Count));
+        
         [NotMapped]
         public double HardwareConsumption { get; set; }
 
@@ -104,6 +98,15 @@ namespace Website.Logic.BO
         public double ColdWaterConsumptionMax { get; set; }
 
         public double ColdWaterConsumptionMin { get; set; }
+
+        [NotMapped]
+        public int Motion => (Rooms.Where(room => room.Motion)).Count();
+
+        [NotMapped]
+        public int WifiClients => (Rooms.Sum(room => room.WifiClients));
+
+        [NotMapped]
+        public double WifiClientsMax => (Rooms.Sum(room => room.WifiClientsMax));
 
         public Floor()
         {

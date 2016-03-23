@@ -21,19 +21,6 @@ namespace Website.Logic.BO
         public double SurfaceArea { get; set; }
 
         [NotMapped]
-        public bool Light { get; set; }
-
-        [NotMapped]
-        public int Lumen { get; set; }
-
-        public int LumenMax { get; set; }
-
-        public int LumenMin { get; set; }
-
-        [NotMapped]
-        public bool Motion { get; set; }
-
-        [NotMapped]
         public double Temperature { get; set; }
 
         public double TemperatureMax { get; set; }
@@ -48,18 +35,19 @@ namespace Website.Logic.BO
         public int CO2Min { get; set; }
 
         [NotMapped]
-        public int Occupants { get; set; }
-
-        public int OccupantsMax { get; set; }
-
-        public int OccupantsMin { get; set; }
+        public bool Light { get; set; }
 
         [NotMapped]
-        public double VentilationConsumption { get; set; }
+        public int Lumen { get; set; }
 
-        public double VentilationConsumptionMax { get; set; }
+        public int LumenMax { get; set; }
 
-        public double VentilationConsumptionMin { get; set; }
+        [NotMapped]
+        public double HardwareConsumption { get; set; }
+
+        public double HardwareConsumptionMax { get; set; }
+
+        public double HardwareConsumptionMin { get; set; }
 
         [NotMapped]
         public double LightConsumption { get; set; }
@@ -69,11 +57,11 @@ namespace Website.Logic.BO
         public double LightConsumptionMin { get; set; }
 
         [NotMapped]
-        public double HardwareConsumption { get; set; }
-        
-        public double HardwareConsumptionMax { get; set; }
+        public double VentilationConsumption { get; set; }
 
-        public double HardwareConsumptionMin { get; set; }
+        public double VentilationConsumptionMax { get; set; }
+
+        public double VentilationConsumptionMin { get; set; }
 
         [NotMapped]
         public double OtherConsumption { get; set; }
@@ -90,6 +78,19 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
+
+        [NotMapped]
+        public bool Motion { get; set; }
+
+        [NotMapped]
+        public int Occupants { get; set; }
+
+        public int OccupantsMax { get; set; }
+
+        [NotMapped]
+        public int WifiClients { get; set; }
+
+        public int WifiClientsMax { get; set; }
 
         public Room() { }
 

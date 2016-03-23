@@ -20,13 +20,14 @@ namespace Website.Logic.BO.Utility
 
         public Corners() { }
 
-        public Corners(Coordinates topRightCorner, Coordinates topLeftCorner, Coordinates bottomRightCorner,
-            Coordinates bottomLeftCorner)
+        public Corners(List<Coordinates> cornerCoordinates)
         {
-            TopRightCorner = topRightCorner;
-            TopLeftCorner = topLeftCorner;
-            BottomRightCorner = bottomRightCorner;
-            BottomLeftCorner = bottomLeftCorner;
+            //Algorithm which decide which coordinate corresponds to which corner
+            TopRightCorner = cornerCoordinates[0];
+            TopLeftCorner = cornerCoordinates[1];
+            BottomRightCorner = cornerCoordinates[2];
+            BottomLeftCorner = cornerCoordinates[3];
         }
+
     }
 }

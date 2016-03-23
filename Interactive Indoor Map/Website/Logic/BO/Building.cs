@@ -19,18 +19,6 @@ namespace Website.Logic.BO
         public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
 
         [NotMapped]
-        public int Light => Floors.Sum(floor => floor.Light);
-
-        [NotMapped]
-        public double Lumen => (Floors.Sum(floor => floor.Rooms.Sum(room => room.Lumen)) / NumberOfRooms);
-
-        [NotMapped]
-        public double LumenMax => (Floors.Sum(floor => floor.Rooms.Sum(room => room.LumenMax)) / NumberOfRooms);
-
-        [NotMapped]
-        public int Motion => Floors.Sum(floor => floor.Motion);
-
-        [NotMapped]
         public double Temperature => (Floors.Sum(floor => floor.Rooms.Sum(room => room.Temperature)) / NumberOfRooms);
 
         [NotMapped]
@@ -43,9 +31,15 @@ namespace Website.Logic.BO
         public double CO2Max => (Floors.Sum(floor => floor.Rooms.Sum(room => room.CO2Max)) / NumberOfRooms);
 
         [NotMapped]
-        public int Occupants { get; set; }
+        public int Light => Floors.Sum(floor => floor.Light);
 
-        public int OccupantsMax { get; set; }
+        [NotMapped]
+        public double Lumen => (Floors.Sum(floor => floor.Rooms.Sum(room => room.Lumen)) / NumberOfRooms);
+
+        [NotMapped]
+        public double LumenMax => (Floors.Sum(floor => floor.Rooms.Sum(room => room.LumenMax)) / NumberOfRooms);
+
+        
 
         [NotMapped]
         public double HardwareConsumption => Floors.Sum(floor => floor.HardwareConsumption);
@@ -91,6 +85,20 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
+
+        [NotMapped]
+        public int Motion => Floors.Sum(floor => floor.Motion);
+
+        [NotMapped]
+        public int Occupants { get; set; }
+
+        public int OccupantsMax { get; set; }
+
+        [NotMapped]
+        public int WifiClients => (Floors.Sum(floor => floor.Rooms.Sum(room => room.WifiClients)));
+
+        [NotMapped]
+        public int WifiClientsMax => (Floors.Sum(floor => floor.Rooms.Sum(room => room.WifiClientsMax)));
 
         [NotMapped]
         public double HotWaterConsumption { get; set; }
