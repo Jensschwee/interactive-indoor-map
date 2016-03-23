@@ -1,4 +1,4 @@
-﻿function CreateButtons() {
+﻿function CreateSpacelButtons() {
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);
@@ -6,7 +6,6 @@
     geoMap.on('fullscreenchange', function () {
         if (geoMap.isFullscreen()) {
             geoMap.zoomIn();
-            drawLegend();
         } else {
             geoMap.zoomOut();
         }
@@ -15,7 +14,7 @@
     L.easyButton('&#45;&#49;', function () {
         if (currentFloorLevel !== -1) {
             currentFloorLevel = -1;
-            view.drawView();
+            getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
@@ -23,7 +22,7 @@
     L.easyButton('&#48;', function () {
         if (currentFloorLevel !== 0) {
             currentFloorLevel = 0;
-            view.drawView();
+            getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
 
@@ -31,7 +30,7 @@
     L.easyButton('&#49;', function () {
         if (currentFloorLevel !== 1) {
             currentFloorLevel = 1;
-            view.drawView();
+            getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
@@ -40,7 +39,7 @@
         drawFloorInfoBox();
         if (currentFloorLevel !== 2) {
             currentFloorLevel = 2;
-            view.drawView();
+            getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
     }, { position: 'bottomleft' }).addTo(geoMap);
@@ -68,18 +67,14 @@ function CreateViewButtons() {
     L.easyButton(temperatureIcon, function () {
         if (!ViewStates.Temperature) {
             if (ViewStates.ActiveViews < 4) {
-                //view.cleanup();
-                //view = new TemperatureView();
-                //view.drawView();
-                //view.drawLegend();
                 ViewStates.Temperature = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.Temperature = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -89,12 +84,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.CO2 = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.CO2 = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -104,12 +99,13 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Light = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
+
             }
         } else {
             ViewStates.Light = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
 
     }, { position: 'topright' }).addTo(geoMap);
@@ -119,12 +115,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.TotalPowerConsumption = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.TotalPowerConsumption = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -133,12 +129,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.HardwareConsumption = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.HardwareConsumption = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -147,12 +143,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.LightConsumption = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.LightConsumption = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -161,12 +157,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.VentilationConsumption = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.VentilationConsumption = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -175,12 +171,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.OtherConsumption = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.OtherConsumption = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -189,12 +185,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Motion = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.Motion = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -203,12 +199,12 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.Occupants = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.Occupants = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
 
@@ -217,12 +213,17 @@ function CreateViewButtons() {
             if (ViewStates.ActiveViews < 4) {
                 ViewStates.WifiClients = true;
                 ViewStates.ActiveViews++;
-                drawLegend();
+                reDrawItemsOnMap();
             }
         } else {
             ViewStates.WifiClients = false;
             ViewStates.ActiveViews--;
-            drawLegend();
+            reDrawItemsOnMap();
         }
     }, { position: 'topright' }).addTo(geoMap);
+}
+
+function reDrawItemsOnMap() {
+    drawLegend();
+    drawRooms();
 }
