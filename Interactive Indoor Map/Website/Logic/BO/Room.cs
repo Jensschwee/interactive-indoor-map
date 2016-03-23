@@ -16,6 +16,8 @@ namespace Website.Logic.BO
 
         public Area Area { get; set; }
 
+        public Corners Corners { get; set; }
+
         public double SurfaceArea { get; set; }
 
         [NotMapped]
@@ -76,6 +78,12 @@ namespace Website.Logic.BO
         {
             Name = name;
             Area = area;
+        }
+
+        public Room(string name, Corners corners)
+        {
+            Name = name;
+            Corners = corners;
         }
     }
 

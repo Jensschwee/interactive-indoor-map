@@ -34,6 +34,32 @@
                         geometry: geometry,
                         properties: value.properties
                     }
+
+
+
+                    $.each(value.geometry.coordinates, function (index, coordinate) {
+                        var x1 = value.geometry.coordinates[0][1][0];
+                        var x2 = value.geometry.coordinates[0][2][0];
+                        var x3 = value.geometry.coordinates[0][3][0];
+                        var x4 = value.geometry.coordinates[0][4][0];
+                        var y1 = value.geometry.coordinates[0][1][1];
+                        var y2 = value.geometry.coordinates[0][2][1];
+                        var y3 = value.geometry.coordinates[0][3][1];
+                        var y4 = value.geometry.coordinates[0][4][1];
+
+                        var highestX = Math.max(x1, x2, x3, x4);
+                        var highestY = Math.max(y1, y2, y3, y4);
+
+                        var topRightVertex;
+                        var topLeftVertex;
+                        var bottomRightVertex;
+                        var bottomLeftVertex;
+
+                        if (coordinates[index][0] >= coordinates[index+1][0] && coordinates[index][1] >= coordinates[index+1][1]) {
+                            
+                        }
+                    });
+
                     //bottomRightVertex
                     var D = value.geometry.coordinates[0][3];
                     //bottomLeftVertex
