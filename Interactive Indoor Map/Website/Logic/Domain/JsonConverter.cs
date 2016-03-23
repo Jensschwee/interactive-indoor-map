@@ -96,14 +96,8 @@ namespace Website.Logic.Domain
                         sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(room.CO2) + ",");
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(room.HardwareConsumption) + ",");
-                        sb.Append("\"Light\":");
-
-                        sb.Append( JsonConvert.SerializeObject(room.Light) + ",");
-
-                        sb.Append("\"Motion\":");
-
-                        sb.Append(JsonConvert.SerializeObject(room.Motion) + ",");
-
+                        sb.Append("\"Light\":" + JsonConvert.SerializeObject(room.Light) + ",");
+                        sb.Append("\"Motion\":" + JsonConvert.SerializeObject(room.Motion) + ",");
                         sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(room.LightConsumption) + ",");
                         sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(room.Lumen) + ",");
                         sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(room.Occupants) + ",");
@@ -112,11 +106,12 @@ namespace Website.Logic.Domain
                         sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalPowerConsumption) + ",");
                         sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(room.VentilationConsumption) + ",");
                         sb.Append("\"SurfaceArea\":" + JsonConvert.SerializeObject(room.SurfaceArea));
+
                         sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
-                        foreach (Coordinates coordinates in room.Area.Vertices)
-                        {
-                            sb.Append("[" + JsonConvert.SerializeObject(coordinates.XCoordinate) + ","+ JsonConvert.SerializeObject(coordinates.YCoordinate) +  "],");
-                        }
+                        sb.Append("[" + JsonConvert.SerializeObject(room.Corners.TopLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(room.Corners.TopLeftCorner.YCoordinate) + "],");
+                        sb.Append("[" + JsonConvert.SerializeObject(room.Corners.BottomLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(room.Corners.BottomLeftCorner.YCoordinate) + "],");
+                        sb.Append("[" + JsonConvert.SerializeObject(room.Corners.BottomRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(room.Corners.BottomRightCorner.YCoordinate) + "],");
+                        sb.Append("[" + JsonConvert.SerializeObject(room.Corners.TopRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(room.Corners.TopRightCorner.YCoordinate) + "],");
                         sb.Remove(sb.Length - 1, 1);
                         sb.Append("]]}},");
                     }
