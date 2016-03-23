@@ -119,7 +119,6 @@ namespace Website.Logic.Domain
                         }
                         sb.Remove(sb.Length - 1, 1);
                         sb.Append("]]}},");
-                        break;
                     }
                     sb.Remove(sb.Length - 1, 1);
                     break;
