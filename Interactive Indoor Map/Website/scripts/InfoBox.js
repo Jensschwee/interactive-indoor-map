@@ -16,7 +16,7 @@ function createInfoBox() {
 function drawBuildingInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
-            '<span style="line-height:100%"><h5><b>Name</b>: ' + props.BuildingName + '</h5>' +
+            '<span style="line-height:100%"><h5><b>Name</b>: ' + props.Name + '</h5>' +
             '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML   +
             '</span>'
@@ -27,7 +27,7 @@ function drawBuildingInfo() {
     function onSuccess(response, userContext, methodName) {
         var json = jQuery.parseJSON(response);
         var buildingInfo = {
-            BuildingName: json.BuildingName,
+            Name: json.Name,
             SurfaceArea: json.SurfaceArea,
             NumberOfRooms: json.NumberOfRooms,
             HTML: ""

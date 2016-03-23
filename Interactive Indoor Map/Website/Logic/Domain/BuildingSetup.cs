@@ -133,9 +133,10 @@ namespace Website.Logic.Domain
             Ø20_508a_0 = new Room("Ø20-508a-0", new Corners(new List<Coordinates>()
             {
                 //Top Left Room
+                
+                new Coordinates(10.430542230606079, 55.36744037424566),
                 new Coordinates(10.430711209774017, 55.367673596050246),
                 new Coordinates(10.43051540851593, 55.36767054740808),
-                new Coordinates(10.430542230606079, 55.36744037424566),
                 new Coordinates(10.430732667446136, 55.367447995895)
             }))
             {
