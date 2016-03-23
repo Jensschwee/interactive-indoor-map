@@ -157,6 +157,7 @@ namespace Website.Logic.Domain
                 Lumen = 90,
                 Motion = true,
                 Occupants = 7,
+                WifiClients = 6,
                 SurfaceArea= 7
 
             };
@@ -187,6 +188,7 @@ namespace Website.Logic.Domain
                 Lumen = 0,
                 Motion = false,
                 Occupants = 0,
+                WifiClients = 0,
                 SurfaceArea = 7
             };
 
@@ -216,6 +218,7 @@ namespace Website.Logic.Domain
                 Light = true,
                 Motion = true,
                 Occupants = 5,
+                WifiClients = 6,
                 SurfaceArea = 7
             };
 
@@ -244,6 +247,7 @@ namespace Website.Logic.Domain
                 Light = true,
                 Motion = false,
                 Occupants = 1,
+                WifiClients = 1,
                 SurfaceArea = 7
             };
 
