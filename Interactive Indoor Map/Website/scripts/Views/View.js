@@ -13,7 +13,7 @@
 
             var collection = JSON.parse(response);
             var column = new Array();
-            for (var j = 0; j < ViewStates.ActiveViews; j++) {
+            for (var j = 0; j < ActiveViews.ActiveViews; j++) {
                 var features = new Array();
                 var jsonColumn = {
                     type: "FeatureCollection",
@@ -76,36 +76,36 @@
 
                     var point = [];
                     //Col A X
-                    point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * j);
+                    point.push(A[0] + ((D[0] - A[0]) / ActiveViews.ActiveViews) * j);
                     //Col A y
-                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * j);
+                    point.push(A[1] + ((D[1] - A[1]) / ActiveViews.ActiveViews) * j);
 
 
                     coordinates.push(point);
 
                     point = [];
                     //Col D X
-                    point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * (j + 1));
+                    point.push(A[0] + ((D[0] - A[0]) / ActiveViews.ActiveViews) * (j + 1));
 
                     //Col D y
-                    point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * (j + 1));
+                    point.push(A[1] + ((D[1] - A[1]) / ActiveViews.ActiveViews) * (j + 1));
 
                     coordinates.push(point);
                     point = [];
                     //Col C X
-                    point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j + 1) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+                    point.push(B[0] + ((C[0] - B[0]) / ActiveViews.ActiveViews) * (j + 1) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
                     //Col C y
-                    point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j + 1) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+                    point.push(B[1] + ((C[1] - B[1]) / ActiveViews.ActiveViews) * (j + 1) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
                     coordinates.push(point);
 
                     point = [];
                     //Col B X
-                    point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+                    point.push(B[0] + ((C[0] - B[0]) / ActiveViews.ActiveViews) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
                     //Col B y
-                    point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+                    point.push(B[1] + ((C[1] - B[1]) / ActiveViews.ActiveViews) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
                     coordinates.push(point);
 
@@ -117,7 +117,7 @@
                 column.push(jsonColumn);
             }
 
-            for (var i = 0; i < ViewStates.ActiveViews; i++) {
+            for (var i = 0; i < ActiveViews.ActiveViews; i++) {
                 var roomColumn = column.shift();
 
                 var svg = d3.select(geoMap.getPanes().overlayPane).append("svg"),

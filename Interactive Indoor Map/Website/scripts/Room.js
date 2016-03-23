@@ -7,7 +7,7 @@
     }
     d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
     var column = new Array();
-    for (var j = 0; j < ViewStates.ActiveViews; j++) {
+    for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
         var jsonColumn = {
             type: "FeatureCollection",
@@ -16,6 +16,7 @@
         $.each(rooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
+
             coordinate.push(coordinates);
             var geometry =
                 {
@@ -36,43 +37,49 @@
             var C = value.geometry.coordinates[0][0];
             ////topLeftVertex
             var B = value.geometry.coordinates[0][1];
-
             var minValue = 0;
-            var maxValue = 5;
-            var sensorValue = j;
+            if (ActiveViews[j].hasOwnProperty("min")) {
+                minValue = value.properties[ActiveViews[j].min];
+            }
+            var maxValue = 1;
+            if (ActiveViews[j].hasOwnProperty("max")) {
+                maxValue = value.properties[ActiveViews[j].max];
+            }
+
+            var sensorValue = value.properties[ActiveViews[j].value];
 
             var point = [];
             //Col A X
-            point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * j);
+            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * j);
             //Col A y
-            point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * j);
+            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * j);
 
 
             coordinates.push(point);
 
             point = [];
             //Col D X
-            point.push(A[0] + ((D[0] - A[0]) / ViewStates.ActiveViews) * (j + 1));
+            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * (j + 1));
 
             //Col D y
-            point.push(A[1] + ((D[1] - A[1]) / ViewStates.ActiveViews) * (j + 1));
+            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * (j + 1));
 
             coordinates.push(point);
             point = [];
             //Col C X
-            point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j + 1) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
             //Col C y
-            point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j + 1) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j + 1) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
             coordinates.push(point);
 
             point = [];
             //Col B X
-            point.push(B[0] + ((C[0] - B[0]) / ViewStates.ActiveViews) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
             //Col B y
-            point.push(B[1] + ((C[1] - B[1]) / ViewStates.ActiveViews) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
 
             coordinates.push(point);
 
@@ -84,7 +91,7 @@
         column.push(jsonColumn);
     }
 
-    for (var i = 0; i < ViewStates.ActiveViews; i++) {
+    for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
 
         var svg = d3.select(geoMap.getPanes().overlayPane).append("svg"),
@@ -96,8 +103,6 @@
         var feature = g.selectAll("path")
             .data(roomColumn.features)
           .enter().append("path");
-
-        var style = selectLegendItem(i);
 
         geoMap.on("viewreset", reset);
 
@@ -117,7 +122,7 @@
 
             g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
             feature.attr("d", path)
-                .style("fill", style.color);
+                .style("fill", ActiveViews[i].color);
         }
 
         // Use Leaflet to implement a D3 geometric transformation.
