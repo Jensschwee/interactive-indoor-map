@@ -49,6 +49,7 @@
     <script type='text/javascript' src='scripts/Views/View.js'></script>
     <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>
     <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
+    <script type='text/javascript' src='scripts/Room.js'></script>
 
 
     <%--    <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
@@ -68,6 +69,8 @@
         <%--<p>Here's an interactive map indicating the countries I've either lived in or travelled through for a month or more.--%>
         <div id="container">
             <div id="map" style="width: 100%; height: 100vh; border: 1px solid #AAA;">
+                <%--<div id="rooms">
+                </div>--%>
                 <div id="legend">
                 </div>
             </div>

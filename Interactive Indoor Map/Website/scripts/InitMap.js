@@ -2,13 +2,14 @@
 var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
+var colletionOfRoomsOnMap = null;
 var ViewStates = {
-    ActiveViews: 3,
-    Temperature: true,
+    ActiveViews: 0,
+    Temperature: false,
     TemperatureColor: "#8ab1c4",
-    CO2: true,
+    CO2: false,
     CO2Color: "#c7b7ea", //#9b59b6
-    Light: true,
+    Light: false,
     LightColor: "#ffe11d", //#fce30b
     HardwareConsumption: false,
     HardWareConsumptionColor: "#f83e2d",
@@ -53,22 +54,15 @@ function InitLeafletMap(JSONMap) {
     initMapSettings(geojson);
 
     //Links obj to super obj
-    DefaultView.prototype = new View();
-    TemperatureView.prototype = new View();
-
-    view = new DefaultView();
-
-    view.drawView();
+    //DefaultView.prototype = new View();
+    //TemperatureView.prototype = new View();
 
     worldMap.addTo(geoMap);
 
     createInfoBox();
 
-    CreateButtons();
+    CreateSpacelButtons();
     CreateViewButtons();
-    //DrawLegend();
-    //DrawLinearLegend();
-
 }
 
 function initMapSettings(geojson) {

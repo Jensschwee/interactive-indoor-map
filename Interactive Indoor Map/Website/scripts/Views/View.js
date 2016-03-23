@@ -72,7 +72,7 @@
 
                     var minValue = 0;
                     var maxValue = 5;
-                    var sensorValue = 2.5;
+                    var sensorValue = j;
 
                     var point = [];
                     //Col A X
