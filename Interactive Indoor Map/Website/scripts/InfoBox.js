@@ -201,7 +201,6 @@ function infoBoxGenerateHTML(sensorData) {
 
 function highlightFeature(e) {
     var layer = e.target;
-    //selectedLayers[selectedLayers.length] = layer;
 
     if ($.inArray(layer.feature.properties, roomArray) === -1) {
         layer.setStyle({
@@ -227,12 +226,6 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    View.roomGeoJson.resetStyle(e.target);
+    roomBackgrundLayer.resetStyle(e.target);
     infoBox.update();
 }
-
-//Array.prototype.remove = function (from, to) {
-//    var rest = this.slice((to || from) + 1 || this.length);
-//    this.length = from < 0 ? this.length + from : from;
-//    return this.push.apply(this, rest);
-//};

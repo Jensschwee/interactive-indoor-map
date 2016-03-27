@@ -83,6 +83,7 @@ function initMapSettings(geojson) {
 
     //Bug 
     geoMap.zoomOut();
+
     //Disables zoom and dragging on the map
     geoMap.dragging.disable();
 

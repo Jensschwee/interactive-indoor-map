@@ -157,6 +157,14 @@ function drawRoomsBackgrund(json) {
             opacity: 10,
             fillOpacity: 0.2
         }
+        ,
+        onEachFeature: onEachFeature
     });
     roomBackgrundLayer.addTo(geoMap);
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        click: highlightFeature
+    });
 }
