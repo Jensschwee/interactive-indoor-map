@@ -66,8 +66,7 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpacelButtons();
     CreateViewButtons();
-
-    geojson.addTo(geoMap);
+    drawRoomsBackgrund(JSONMap);
 }
 
 function initMapSettings(geojson) {
@@ -93,18 +92,17 @@ function initMapSettings(geojson) {
 }
 
 function drawRoomsBackgrund(json) {
-    //d3.json(json, function(error, topology) {
-    //    var collection2 = topojson.feature(topology, topology.objects.roads2);
-    //    var roadsTopoJSON = [collection2];
-
-
-    //    var geojson_tj = L.geoJson(roadsTopoJSON, {
-    //        onEachFeature: onEachFeature
-    //    })
-
-    //    overlays["geojson_topojson"] = geojson_tj;
-
-    //    L.control.layers(baseLayers, overlays).addTo(map);
-
-    //});
+    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
+    L.geoJson(json, {
+        style: {
+            //Backgrund color
+            fillColor: "#FFFFFF",
+            //border color
+            color: "#FFFFFF",
+            //Border thickness
+            weight: 5,
+            opacity: 10,
+            fillOpacity: 0.2
+        }
+    }).addTo(geoMap);
 }
