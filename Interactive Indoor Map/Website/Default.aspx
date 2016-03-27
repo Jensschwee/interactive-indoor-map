@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="Style/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="Style/ekstrerne/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
-    <link rel="stylesheet" type="text/css" href="Style/easy-button.css" />
+    <link rel="stylesheet" type="text/css" href="Style/ekstrerne/easy-button.css" />
     <% System.Web.HttpBrowserCapabilities browser = Request.Browser; %>
     <% Console.Write(browser.Browser);
         if (browser.Browser == "InternetExplorer" || (browser.Browser.Equals("Chrome") && browser.Version.Equals("42.0")))
@@ -19,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
     <% }%>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-
 
     <!-- Latest compiled and minified CSS -->
     <%--<link rel="stylesheet" type="text/css" href="Style/bootstrap.min.css" />--%>
@@ -37,9 +36,9 @@
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
-    <script src="scripts/L.D3SvgOverlay.min.js"></script>
+    <script src="scripts/ekstrerne/L.D3SvgOverlay.min.js"></script>
 
-    <script type='text/javascript' src='scripts/easy-button.js'></script>
+    <script type='text/javascript' src='scripts/ekstrerne/easy-button.js'></script>
 
     <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
     <script type='text/javascript' src='scripts/InitMap.js'></script>

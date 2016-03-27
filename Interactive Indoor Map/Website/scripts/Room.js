@@ -5,7 +5,7 @@
     } else {
         rooms = colletionOfRoomsOnMap;
     }
-    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
+    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
@@ -94,7 +94,7 @@
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
 
-        var svg = d3.select(geoMap.getPanes().overlayPane).append("svg"),
+        var svg = d3.select(geoMap.getPanes().overlayPane).append("svg").attr("class", "rooms"),
        g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
         var transform = d3.geo.transform({ point: projectPoint }),

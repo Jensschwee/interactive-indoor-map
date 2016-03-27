@@ -66,6 +66,8 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpacelButtons();
     CreateViewButtons();
+
+    geojson.addTo(geoMap);
 }
 
 function initMapSettings(geojson) {
@@ -78,6 +80,7 @@ function initMapSettings(geojson) {
         maxNativeZoom: 19
     }).fitBounds(geojson.getBounds());
 
+
     //Bug 
     geoMap.zoomOut();
     //Disables zoom and dragging on the map
@@ -87,4 +90,21 @@ function initMapSettings(geojson) {
     geoMap.doubleClickZoom.disable();
     geoMap.scrollWheelZoom.disable();
     geoMap.keyboard.disable();
+}
+
+function drawRoomsBackgrund(json) {
+    //d3.json(json, function(error, topology) {
+    //    var collection2 = topojson.feature(topology, topology.objects.roads2);
+    //    var roadsTopoJSON = [collection2];
+
+
+    //    var geojson_tj = L.geoJson(roadsTopoJSON, {
+    //        onEachFeature: onEachFeature
+    //    })
+
+    //    overlays["geojson_topojson"] = geojson_tj;
+
+    //    L.control.layers(baseLayers, overlays).addTo(map);
+
+    //});
 }
