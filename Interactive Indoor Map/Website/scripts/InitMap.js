@@ -64,7 +64,7 @@ function InitLeafletMap(JSONMap) {
 
     createInfoBox();
 
-    CreateSpacelButtons();
+    CreateSpatialButtons();
     CreateViewButtons();
     drawRoomsBackgrund(JSONMap);
 }
@@ -89,20 +89,4 @@ function initMapSettings(geojson) {
     geoMap.doubleClickZoom.disable();
     geoMap.scrollWheelZoom.disable();
     geoMap.keyboard.disable();
-}
-
-function drawRoomsBackgrund(json) {
-    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
-    L.geoJson(json, {
-        style: {
-            //Backgrund color
-            fillColor: "#FFFFFF",
-            //border color
-            color: "#FFFFFF",
-            //Border thickness
-            weight: 5,
-            opacity: 10,
-            fillOpacity: 0.2
-        }
-    }).addTo(geoMap);
 }

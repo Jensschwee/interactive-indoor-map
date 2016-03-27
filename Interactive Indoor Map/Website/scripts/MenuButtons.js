@@ -1,4 +1,4 @@
-﻿function CreateSpacelButtons() {
+﻿function CreateSpatialButtons() {
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);

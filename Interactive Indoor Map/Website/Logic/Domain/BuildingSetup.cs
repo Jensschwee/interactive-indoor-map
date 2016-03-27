@@ -17,6 +17,12 @@ namespace Website.Logic.Domain
         private Floor groundFloor;
         private Floor firstFloor;
         private Floor secondFloor;
+        private Room testRoomCellar1;
+        private Room testRoomFirstFloor1;
+        private Room testRoomFirstFloor2;
+        private Room testRoomSecondFloor1;
+        private Room testRoomSecondFloor2;
+        private Room testRoom;
         private Room Ø22_508_0;
         private Room Ø22_604_0;
         private Room Ø20_604_0;
@@ -130,6 +136,164 @@ namespace Website.Logic.Domain
 
         private void CreateRooms()
         {
+            testRoomCellar1 = new Room("testRoomCellar1", new Corners(new List<Coordinates>()
+            {
+                //Top Left Room
+                
+                new Coordinates(10.430542230606079, 55.36744037424566),
+                new Coordinates(10.430711209774017, 55.367673596050246),
+                new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430732667446136, 55.367447995895)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            testRoomFirstFloor1 = new Room("testRoomFirstFloor1", new Corners(new List<Coordinates>()
+            {
+                //Bottom Right Room
+                new Coordinates(10.431097447872162, 55.367223918792),
+                new Coordinates(10.430896282196045, 55.36721629709953),
+                new Coordinates(10.430928468704224, 55.36698916998991),
+                new Coordinates(10.431126952171324, 55.3669983160732)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            testRoomFirstFloor2 = new Room("testRoomFirstFloor2", new Corners(new List<Coordinates>()
+            {
+                //Bottom Left Room
+                new Coordinates(10.430764853954315, 55.367210199744484),
+                new Coordinates(10.430574417114258, 55.36719952937089),
+                new Coordinates(10.430603921413422, 55.36697392651307),
+                new Coordinates(10.430810451507568, 55.36698307259987)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            testRoomSecondFloor1 = new Room("testRoomSecondFloor1", new Corners(new List<Coordinates>()
+            {
+                //Top Left Room
+                
+                new Coordinates(10.430542230606079, 55.36744037424566),
+                new Coordinates(10.430711209774017, 55.367673596050246),
+                new Coordinates(10.43051540851593, 55.36767054740808),
+                new Coordinates(10.430732667446136, 55.367447995895)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            testRoomSecondFloor2 = new Room("testRoomSecondFloor2", new Corners(new List<Coordinates>()
+            {
+                //Top Right Room
+                
+                new Coordinates(10.43104112148285, 55.36767664469221),
+                new Coordinates(10.430856049060822, 55.36767207172922),
+                new Coordinates(10.430874824523926, 55.367451044554315),
+                new Coordinates(10.431067943572998, 55.36746171486007)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
             Ø20_508a_0 = new Room("Ø20-508a-0", new Corners(new List<Coordinates>()
             {
                 //Top Left Room
@@ -260,14 +424,15 @@ namespace Website.Logic.Domain
 
         private void AssembleBuilding()
         {
-            //cellarFloor.Rooms.Add(Ø20_604_0);
+            cellarFloor.Rooms.Add(testRoomCellar1);
             groundFloor.Rooms.Add(Ø22_508_0);
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);
-            //firstFloor.Rooms.Add(Ø20_508a_0);
-            //firstFloor.Rooms.Add(Ø22_508_0);
-            //secondFloor.Rooms.Add(Ø22_604_0);
+            firstFloor.Rooms.Add(testRoomFirstFloor1);
+            firstFloor.Rooms.Add(testRoomFirstFloor2);
+            secondFloor.Rooms.Add(testRoomSecondFloor1);
+            secondFloor.Rooms.Add(testRoomSecondFloor2);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(groundFloor);

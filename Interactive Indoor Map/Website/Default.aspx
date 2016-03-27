@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="Style/ekstrerne/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="Style/External/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
-    <link rel="stylesheet" type="text/css" href="Style/ekstrerne/easy-button.css" />
+    <link rel="stylesheet" type="text/css" href="Style/External/easy-button.css" />
     <% System.Web.HttpBrowserCapabilities browser = Request.Browser; %>
     <% Console.Write(browser.Browser);
         if (browser.Browser == "InternetExplorer" || (browser.Browser.Equals("Chrome") && browser.Version.Equals("42.0")))
@@ -36,18 +36,15 @@
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
-    <script src="scripts/ekstrerne/L.D3SvgOverlay.min.js"></script>
+    <script src="scripts/External/L.D3SvgOverlay.min.js"></script>
 
-    <script type='text/javascript' src='scripts/ekstrerne/easy-button.js'></script>
+    <script type='text/javascript' src='scripts/External/easy-button.js'></script>
 
     <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/Legend.js'></script>
     <script type='text/javascript' src='scripts/MenuButtons.js'></script>
-    <script type='text/javascript' src='scripts/Views/View.js'></script>
-    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>
-    <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
 
 

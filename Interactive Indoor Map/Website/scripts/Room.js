@@ -140,3 +140,19 @@ function getRoomsAndDrawRooms() {
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
+
+function drawRoomsBackgrund(json) {
+    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
+    L.geoJson(json, {
+        style: {
+            //Backgrund color
+            fillColor: "#FFFFFF",
+            //border color
+            color: "#FFFFFF",
+            //Border thickness
+            weight: 5,
+            opacity: 10,
+            fillOpacity: 0.2
+        }
+    }).addTo(geoMap);
+}
