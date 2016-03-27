@@ -3,6 +3,7 @@ var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
+var roomBackgrundLayer = null;
 var ActiveViews = [];
 //    Views: [],
 //    ActiveViews: ActiveViews.Views.length
@@ -66,7 +67,7 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
-    drawRoomsBackgrund(JSONMap);
+    //drawRoomsBackgrund(JSONMap);
 }
 
 function initMapSettings(geojson) {

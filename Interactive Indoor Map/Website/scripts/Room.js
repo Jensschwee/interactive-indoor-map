@@ -136,14 +136,17 @@
 function getRoomsAndDrawRooms() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
+        drawRoomsBackgrund(colletionOfRoomsOnMap);
         drawRooms();
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
 
 function drawRoomsBackgrund(json) {
-    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg").remove();
-    L.geoJson(json, {
+    if (roomBackgrundLayer != null) {
+        geoMap.removeLayer(roomBackgrundLayer);
+    }
+    roomBackgrundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
             fillColor: "#FFFFFF",
@@ -154,5 +157,6 @@ function drawRoomsBackgrund(json) {
             opacity: 10,
             fillOpacity: 0.2
         }
-    }).addTo(geoMap);
+    });
+    roomBackgrundLayer.addTo(geoMap);
 }
