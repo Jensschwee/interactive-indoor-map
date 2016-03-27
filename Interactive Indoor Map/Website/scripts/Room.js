@@ -143,10 +143,10 @@ function getRoomsAndDrawRooms() {
 }
 
 function drawRoomsBackgrund(json) {
-    if (roomBackgrundLayer != null) {
-        geoMap.removeLayer(roomBackgrundLayer);
+    if (roomBackgroundLayer != null) {
+        geoMap.removeLayer(roomBackgroundLayer);
     }
-    roomBackgrundLayer = L.geoJson(json, {
+    roomBackgroundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
             fillColor: "#FFFFFF",
@@ -158,5 +158,5 @@ function drawRoomsBackgrund(json) {
             fillOpacity: 0.2
         }
     });
-    roomBackgrundLayer.addTo(geoMap);
+    roomBackgroundLayer.addTo(geoMap);
 }
