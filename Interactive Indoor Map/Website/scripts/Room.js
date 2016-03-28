@@ -5,7 +5,13 @@
     } else {
         rooms = colletionOfRoomsOnMap;
     }
-    d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
+    var numberOfLayers = roomLayers.length;
+    for (var k = 0; k < numberOfLayers; k++) {
+        geoMap.removeLayer(roomLayers.pop());
+
+    }
+
+    //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
@@ -94,42 +100,60 @@
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
 
-        var svg = d3.select(geoMap.getPanes().overlayPane).append("svg").attr("class", "rooms"),
-       g = svg.append("g").attr("class", "leaflet-zoom-hide");
+        roomLayers.push(L.geoJson(roomColumn, {
+            style: {
+                //Backgrund color
+                fillColor: ActiveViews[i].color,
+                //border color
+                color: "none",
+                //Border thickness
+                opacity: "none",
+                fillOpacity: "none"
+            }
+        }).addTo(geoMap).bringToBack());
 
-        var transform = d3.geo.transform({ point: projectPoint }),
-            path = d3.geo.path().projection(transform);
+        
 
-        var feature = g.selectAll("path")
-            .data(roomColumn.features)
-          .enter().append("path");
+        // var svg = d3.select(geoMap.getPanes().overlayPane).insert("svg").attr("class", "rooms"),
+        //g = svg.append("g").attr("class", "leaflet-zoom-hide leaflet-zoom-animated");
 
-        geoMap.on("viewreset", reset);
+        // var transform = d3.geo.transform({ point: projectPoint }),
+        //     path = d3.geo.path().projection(transform);
 
-        reset();
+        // var feature = g.selectAll("path")
+        //     .data(roomColumn.features)
+        //   .enter().append("path");
 
-        // Reposition the SVG to cover the features.
-        function reset() {
 
-            var bounds = path.bounds(roomColumn),
-                topLeft = bounds[0],
-                bottomRight = bounds[1];
+        // geoMap.on("viewreset", reset);
 
-            svg.attr("width", bottomRight[0] - topLeft[0])
-                .attr("height", bottomRight[1] - topLeft[1])
-                .style("left", topLeft[0] + "px")
-                .style("top", topLeft[1] + "px");
+        // reset();
 
-            g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-            feature.attr("d", path)
-                .style("fill", ActiveViews[i].color);
-        }
+        // // Reposition the SVG to cover the features.
+        // function reset() {
 
-        // Use Leaflet to implement a D3 geometric transformation.
-        function projectPoint(x, y) {
-            var point = geoMap.latLngToLayerPoint(new L.LatLng(y, x));
-            this.stream.point(point.x, point.y);
-        }
+        //     var bounds = path.bounds(roomColumn),
+        //         topLeft = bounds[0],
+        //         bottomRight = bounds[1];
+
+        //     svg.attr("width", bottomRight[0] - topLeft[0])
+        //         .attr("height", bottomRight[1] - topLeft[1])
+        //         .style("left", topLeft[0] + "px")
+        //         .style("top", topLeft[1] + "px");
+
+        //     g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+        //     feature.attr("d", path)
+        //         .style("fill", ActiveViews[i].color);
+
+        // }
+
+        // // Use Leaflet to implement a D3 geometric transformation.
+        // function projectPoint(x, y) {
+        //     var point = geoMap.latLngToLayerPoint(new L.LatLng(y, x));
+        //     this.stream.point(point.x, point.y);
+        // }
+        // drawRoomsBackgrund(colletionOfRoomsOnMap);
+
     }
 }
 
@@ -160,7 +184,7 @@ function drawRoomsBackgrund(json) {
         ,
         onEachFeature: onEachFeature
     });
-    roomBackgrundLayer.addTo(geoMap);
+    roomBackgrundLayer.setZIndex(1).addTo(geoMap);
 }
 
 function onEachFeature(feature, layer) {
