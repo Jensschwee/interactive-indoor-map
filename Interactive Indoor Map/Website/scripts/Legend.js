@@ -16,7 +16,7 @@ function drawLegend() {
             imageStartPos = 4;
         }
 
-        for (var i = 0; i < activeViews; i++) {
+        ActiveViews.forEach(function (view, i) {
             d3.select("#legend")
              .append("svg")
               .attr("width", 100 / activeViews + '%')
@@ -26,17 +26,27 @@ function drawLegend() {
               .attr('stroke-width', 1)
               .attr('stroke', 'rgb(0,0,0)')
               .attr("height", 100 + '%')
-              .style("fill", ActiveViews[i].color);
+              .style("fill", ActiveViews[i].color)
+                .on('click', function () {
+                    onLegendItemClicked(i);
+                });
+
 
             d3.select("#legend")
                 .append('div')
                 .attr("class", 'IconImage')
-                .attr("style", 'top: 42%; left:' + (100 / activeViews * i + imageStartPos) +  '%')
+                .attr("style", 'top: 42%; left:' + (100 / activeViews * i + imageStartPos) + '%')
                 .append('img')
                 .attr("width", 25)
                 .attr("height", 25)
                 .attr("src", ActiveViews[i].icon);
 
-        }
+        });
     }
+}
+
+function onLegendItemClicked(number) {
+    ActiveViews.splice(number, 1);
+    drawLegend();
+    drawRooms();
 }

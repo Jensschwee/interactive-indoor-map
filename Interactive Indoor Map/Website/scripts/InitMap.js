@@ -3,7 +3,8 @@ var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
-var roomBackgroundLayer = null;
+var roomBackgrundLayer = null;
+var roomLayers = [];
 var ActiveViews = [];
 //    Views: [],
 //    ActiveViews: ActiveViews.Views.length
@@ -83,6 +84,7 @@ function initMapSettings(geojson) {
 
     //Bug 
     geoMap.zoomOut();
+
     //Disables zoom and dragging on the map
     geoMap.dragging.disable();
 

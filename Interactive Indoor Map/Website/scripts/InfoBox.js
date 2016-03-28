@@ -86,7 +86,7 @@ function drawSelectedRoomInfoBox() {
     }
     else if (roomArray.length === 1) {
         var roomInfo = {
-            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].RoomName + '</h5>',
+            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].Name + '</h5>',
             SurfaceArea: roomArray[0].SurfaceArea,
             HTML: ''
         };
@@ -163,7 +163,7 @@ function infoBoxGenerateHTML(sensorData) {
         html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + '&#8451' + '<br/>';
     }
     if (findIndexOfView('CO2') !== -1) {
-        html += '<b>CO2</b>: ' + sensorData.CO2 + '<br/>';
+        html += '<b>CO2</b>: ' + sensorData.CO2.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('Lumen') !== -1) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
@@ -181,19 +181,19 @@ function infoBoxGenerateHTML(sensorData) {
     }
 
     if (findIndexOfView('HardwareConsumption') !== -1) {
-        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption + '<br/>';
+        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('LightConsumption') !== -1 ){
-        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption + '<br/>';
+        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('VentilationConsumption') !== -1) {
-        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption + '<br/>';
+        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('OtherConsumption') !== -1) {
-        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption + '<br/>';
+        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('PowerConsumption') !== -1) {
-        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption + '<br/>';
+        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + '<br/>';
     }
     return html;
 
@@ -201,14 +201,13 @@ function infoBoxGenerateHTML(sensorData) {
 
 function highlightFeature(e) {
     var layer = e.target;
-    //selectedLayers[selectedLayers.length] = layer;
 
     if ($.inArray(layer.feature.properties, roomArray) === -1) {
         layer.setStyle({
+            fillColor: "#FFFFFF",
+            //border color
             weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7
+            color: '#666'
         });
 
         if (!L.Browser.ie && !L.Browser.opera) {
@@ -227,12 +226,6 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    View.roomGeoJson.resetStyle(e.target);
+    roomBackgrundLayer.resetStyle(e.target);
     infoBox.update();
 }
-
-//Array.prototype.remove = function (from, to) {
-//    var rest = this.slice((to || from) + 1 || this.length);
-//    this.length = from < 0 ? this.length + from : from;
-//    return this.push.apply(this, rest);
-//};
