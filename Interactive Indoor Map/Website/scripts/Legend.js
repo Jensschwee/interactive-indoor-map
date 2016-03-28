@@ -26,7 +26,10 @@ function drawLegend() {
               .attr('stroke-width', 1)
               .attr('stroke', 'rgb(0,0,0)')
               .attr("height", 100 + '%')
-              .style("fill", ActiveViews[i].color);
+              .style("fill", ActiveViews[i].color)
+                .on('click', function () {
+                    onLegendItemClicked(i);
+                });
 
 
             d3.select("#legend")
@@ -36,10 +39,8 @@ function drawLegend() {
                 .append('img')
                 .attr("width", 25)
                 .attr("height", 25)
-                .attr("src", ActiveViews[i].icon)
-                .on('click', function () {
-                    onLegendItemClicked(i);
-                });
+                .attr("src", ActiveViews[i].icon);
+
         });
     }
 }
