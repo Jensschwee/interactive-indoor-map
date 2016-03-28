@@ -192,3 +192,7 @@ function onEachFeature(feature, layer) {
         click: highlightFeature
     });
 }
+
+function resetSelectedRooms() {
+    roomArray = [];
+}

@@ -85,7 +85,6 @@ function drawSelectedRoomInfoBox() {
         drawFloorInfoBox();
     }
     else if (roomArray.length === 1) {
-        console.log(roomArray[0]);
         var roomInfo = {
             Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].Name + '</h5>',
             SurfaceArea: roomArray[0].SurfaceArea,
