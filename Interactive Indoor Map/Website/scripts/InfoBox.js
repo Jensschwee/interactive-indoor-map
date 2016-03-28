@@ -85,8 +85,9 @@ function drawSelectedRoomInfoBox() {
         drawFloorInfoBox();
     }
     else if (roomArray.length === 1) {
+        console.log(roomArray[0]);
         var roomInfo = {
-            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].RoomName + '</h5>',
+            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].Name + '</h5>',
             SurfaceArea: roomArray[0].SurfaceArea,
             HTML: ''
         };
@@ -204,10 +205,10 @@ function highlightFeature(e) {
 
     if ($.inArray(layer.feature.properties, roomArray) === -1) {
         layer.setStyle({
+            fillColor: "#FFFFFF",
+            //border color
             weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7
+            color: '#666'
         });
 
         if (!L.Browser.ie && !L.Browser.opera) {
