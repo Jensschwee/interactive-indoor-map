@@ -184,7 +184,7 @@ function drawRoomsBackgrund(json) {
         ,
         onEachFeature: onEachFeature
     });
-    roomBackgrundLayer.setZIndex(1).addTo(geoMap);
+    roomBackgroundLayer.setZIndex(1).addTo(geoMap);
 }
 
 function onEachFeature(feature, layer) {

@@ -3,7 +3,7 @@ var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
-var roomBackgrundLayer = null;
+var roomBackgroundLayer = null;
 var roomLayers = [];
 var ActiveViews = [];
 //    Views: [],

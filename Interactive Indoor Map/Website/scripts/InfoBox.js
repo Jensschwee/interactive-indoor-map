@@ -226,6 +226,6 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    roomBackgrundLayer.resetStyle(e.target);
+    roomBackgroundLayer.resetStyle(e.target);
     infoBox.update();
 }

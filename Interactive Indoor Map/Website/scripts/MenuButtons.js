@@ -83,6 +83,7 @@ function CreateViewButtons() {
                             max: 'TemperatureMax',
                             value: 'Temperature',
                             min: "TemperatureMin",
+                            button: toggleTempButton
                         };
                         btn.button.style.backgroundColor = '#8ab1c4';
                         ActiveViews.push(temperatureObj);
@@ -591,6 +592,7 @@ function CreateViewButtons() {
                 icon: motionIcon,
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
+                    console.log("Im temp");
                     var index = findIndexOfView("Motion");
                     if (index !== -1) {
                         ActiveViews.splice(index, 1);
