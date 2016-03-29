@@ -259,6 +259,7 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 7,
                 WifiClients = 6,
+                WifiClientsMax = 15,
                 SurfaceArea = 7
             };
 
@@ -291,6 +292,7 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 7,
                 WifiClients = 6,
+                WifiClientsMax = 15,
                 SurfaceArea = 7
             };
 
@@ -323,7 +325,8 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 7,
                 WifiClients = 6,
-                SurfaceArea= 7
+                WifiClientsMax = 15,
+                SurfaceArea = 7
 
             };
 
@@ -355,6 +358,7 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 0,
                 WifiClients = 0,
+                WifiClientsMax = 15,
                 SurfaceArea = 7
             };
 
@@ -386,6 +390,7 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 5,
                 WifiClients = 6,
+                WifiClientsMax = 15,
                 SurfaceArea = 7
             };
 
@@ -417,6 +422,7 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 1,
                 WifiClients = 1,
+                WifiClientsMax = 15,
                 SurfaceArea = 7
             };
 
