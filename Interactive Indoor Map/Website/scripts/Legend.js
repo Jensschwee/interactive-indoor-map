@@ -46,7 +46,5 @@ function drawLegend() {
 }
 
 function onLegendItemClicked(number) {
-    ActiveViews.splice(number, 1);
-    drawLegend();
-    drawRooms();
+    ActiveViews[number].button.button.click();
 }

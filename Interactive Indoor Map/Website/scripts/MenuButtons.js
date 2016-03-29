@@ -147,7 +147,8 @@ function CreateViewButtons() {
                             icon: 'Images/co2Icon.png',
                             max: 'CO2Max',
                             value: 'CO2',
-                            min: "CO2Min"
+                            min: "CO2Min",
+                            button: toggleCO2Button
                         };
                         btn.button.style.backgroundColor = '#c7b7ea';
                         ActiveViews.push(co2Obj);
@@ -209,7 +210,8 @@ function CreateViewButtons() {
                             color: '#ffe11d',
                             icon: 'Images/lightIcon.png',
                             value: 'Lumen',
-                            max: 'LumenMax'
+                            max: 'LumenMax',
+                            button: toggleLightButton
                         };
                         btn.button.style.backgroundColor = '#ffe11d';
                         ActiveViews.push(co2Obj);
@@ -270,7 +272,8 @@ function CreateViewButtons() {
                             icon: 'Images/totalPowerIcon.png',
                             max: 'TotalPowerConsumptionMax',
                             value: 'TotalPowerConsumption',
-                            min: "TotalPowerConsumptionMin"
+                            min: "TotalPowerConsumptionMin",
+                            button: toggleTotalConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#e74c3c';
                         ActiveViews.push(totalPowerObj);
@@ -332,7 +335,8 @@ function CreateViewButtons() {
                             icon: 'Images/hardwarePowerIcon.png',
                             max: 'HardwareConsumptionMax',
                             value: 'HardwareConsumption',
-                            min: "HardwareConsumptionMin"
+                            min: "HardwareConsumptionMin",
+                            button: toggleHardwareConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#f83e2d';
                         ActiveViews.push(hardwareConsumptionObj);
@@ -395,7 +399,8 @@ function CreateViewButtons() {
                             icon: 'Images/lightPowerIcon.png',
                             max: 'LightConsumptionMax',
                             value: 'LightConsumption',
-                            min: "LightConsumptionMin"
+                            min: "LightConsumptionMin",
+                            button: toggleLightConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#f83e2d';
                         ActiveViews.push(lightConsumptionObj);
@@ -458,7 +463,8 @@ function CreateViewButtons() {
                             icon: 'Images/ventilationPowerIcon.png',
                             max: 'VentilationConsumptionMax',
                             value: 'VentilationConsumption',
-                            min: "VentilationConsumptionMin"
+                            min: "VentilationConsumptionMin",
+                            button: toggleVentilationConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#d15258';
                         ActiveViews.push(ventilationConsumptionObj);
@@ -520,7 +526,8 @@ function CreateViewButtons() {
                             icon: 'Images/otherPowerIcon.png',
                             max: 'OtherConsumptionMax',
                             value: 'OtherConsumption',
-                            min: "OtherConsumptionMin"
+                            min: "OtherConsumptionMin",
+                            button: toggleOtherConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#ff8289';
                         ActiveViews.push(otherConsumptionObj);
@@ -580,7 +587,8 @@ function CreateViewButtons() {
                             name: "Motion",
                             color: '#b2d649',
                             icon: 'Images/motionIcon.png',
-                            value: 'Motion'
+                            value: 'Motion',
+                            button: toggleMotionButton
                         };
                         btn.button.style.backgroundColor = '#b2d649';
                         ActiveViews.push(motionObj);
@@ -593,7 +601,6 @@ function CreateViewButtons() {
                 icon: motionIcon,
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
-                    console.log("Im temp");
                     var index = findIndexOfView("Motion");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -640,7 +647,8 @@ function CreateViewButtons() {
                             color: '#2ecc71',
                             icon: 'Images/occupantsIcon.png',
                             max: 'OccupantsMax',
-                            value: 'Occupants'
+                            value: 'Occupants',
+                            button: toggleOccupantsButton
                         };
                         btn.button.style.backgroundColor = '#2ecc71';
                         ActiveViews.push(occupantsObj);
@@ -701,7 +709,8 @@ function CreateViewButtons() {
                             color: '#83bd1a',
                             icon: 'Images/wifiIcon.png',
                             max: 'WifiClientsMax',
-                            value: 'WifiClients'
+                            value: 'WifiClients',
+                            button: toggleWifiClientsButton
                         };
                         btn.button.style.backgroundColor = '#83bd1a';
                         ActiveViews.push(wifiClientsObj);
