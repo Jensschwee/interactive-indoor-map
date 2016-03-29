@@ -18,7 +18,7 @@
             getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
-    }, { position: 'bottomleft' }).addTo(geoMap);
+    }, { position: 'bottomright' }).addTo(geoMap);
 
     L.easyButton('&#48;', function () {
         if (currentFloorLevel !== 0) {
@@ -28,7 +28,7 @@
         }
         drawFloorInfoBox();
 
-    }, { position: 'bottomleft' }).addTo(geoMap);
+    }, { position: 'bottomright' }).addTo(geoMap);
     L.easyButton('&#49;', function () {
         if (currentFloorLevel !== 1) {
             currentFloorLevel = 1;
@@ -36,7 +36,7 @@
             getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
-    }, { position: 'bottomleft' }).addTo(geoMap);
+    }, { position: 'bottomright' }).addTo(geoMap);
 
     L.easyButton('&#50;', function () {
         drawFloorInfoBox();
@@ -46,13 +46,13 @@
             getRoomsAndDrawRooms();
         }
         drawFloorInfoBox();
-    }, { position: 'bottomleft' }).addTo(geoMap);
+    }, { position: 'bottomright' }).addTo(geoMap);
 
     var buildingIcon = '<div><img src="Images/buildingIcon.png" width="25" height="25"/></div>';
 
     L.easyButton(buildingIcon, function () {
         drawBuildingInfo();
-    }, { position: 'bottomleft' }).addTo(geoMap);
+    }, { position: 'bottomright' }).addTo(geoMap);
 }
 
 function CreateViewButtons() {

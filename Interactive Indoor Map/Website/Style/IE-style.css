@@ -37,12 +37,21 @@
     display: none;
 }
 
-#legend {
+/*#legend {
     position: absolute;
     bottom: 67px;
     left: 90.5%;
     margin-right: 10px;
     max-width: 150px;
+}*/
+
+#legend {
+    max-width: 150px;
+    position: absolute;
+    left: 0%;
+    margin-left: 10px;
+    bottom: 0px;
+    margin-bottom: 10px;
 }
 
 #legend {
