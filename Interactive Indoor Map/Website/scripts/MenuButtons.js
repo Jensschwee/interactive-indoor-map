@@ -68,7 +68,8 @@ function CreateViewButtons() {
     var occupantsIcon = '<div class="buttonImage"><img src="Images/occupantsIcon.png" width="25" height="25"style=""/></div>';
     var wifiClientsIcon = '<div class="buttonImage"><img src="Images/wifiIcon.png" width="25" height="25"style=""/></div>';
 
-    //if (index === -1) { //-1 should have a final name that explains what it is
+    var notContained = -1;
+
     var toggleTempButton = L.easyButton({
         states: [
             {
@@ -97,7 +98,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Temperature");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -160,7 +161,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("CO2");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -222,7 +223,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Lumen");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -283,7 +284,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("TotalPowerConsumption");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -345,7 +346,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("HardwareConsumption");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -408,7 +409,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("LightConsumption");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -471,7 +472,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("VentilationConsumption");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -533,7 +534,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("OtherConsumption");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -594,7 +595,7 @@ function CreateViewButtons() {
                 onClick: function (btn, map) {
                     console.log("Im temp");
                     var index = findIndexOfView("Motion");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -653,7 +654,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Occupants");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
@@ -714,7 +715,7 @@ function CreateViewButtons() {
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("WifiClients");
-                    if (index !== -1) {
+                    if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                     }
