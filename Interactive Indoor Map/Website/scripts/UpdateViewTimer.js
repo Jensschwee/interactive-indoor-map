@@ -1,6 +1,7 @@
-﻿//var int = 0;
-//setInterval(function () {
-//    //drawFloorInfoBox();
-//    int++;
-//    console.log(int);
-//}, 3000);
+﻿setInterval(function () {
+    function onSuccess(response) {
+        colletionOfRoomsOnMap = JSON.parse(response);
+        drawRooms();
+    }
+    PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+}, 3000);
