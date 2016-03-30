@@ -11,48 +11,88 @@
         }
     });
 
-    L.easyButton('&#45;&#49;', function () {
-        if (currentFloorLevel !== -1) {
-            currentFloorLevel = -1;
-            resetSelectedRooms();
-            getRoomsAndDrawRooms();
-        }
-        drawFloorInfoBox();
-    }, { position: 'bottomright' }).addTo(geoMap);
+    L.easyButton({
+        position: 'bottomright',
+        states: [{
+            stateName: 'None',
+            icon: '&#45;&#49;',
+            title: 'Level -1',
+            onClick: function () {
+                if (currentFloorLevel !== -1) {
+                    currentFloorLevel = -1;
+                    resetSelectedRooms();
+                    getRoomsAndDrawRooms();
+                }
+                drawFloorInfoBox();
+            }
+        }]
+    }).addTo(geoMap);
 
-    L.easyButton('&#48;', function () {
-        if (currentFloorLevel !== 0) {
-            currentFloorLevel = 0;
-            resetSelectedRooms();
-            getRoomsAndDrawRooms();
-        }
-        drawFloorInfoBox();
+    L.easyButton({
+        position: 'bottomright',
+        states: [{
+            stateName: 'None',
+            icon: '&#48;',
+            title: 'Level 0',
+            onClick: function () {
+                if (currentFloorLevel !== 0) {
+                    currentFloorLevel = 0;
+                    resetSelectedRooms();
+                    getRoomsAndDrawRooms();
+                }
+                drawFloorInfoBox();
+            }
+        }]
+    }).addTo(geoMap);
 
-    }, { position: 'bottomright' }).addTo(geoMap);
-    L.easyButton('&#49;', function () {
-        if (currentFloorLevel !== 1) {
-            currentFloorLevel = 1;
-            resetSelectedRooms();
-            getRoomsAndDrawRooms();
-        }
-        drawFloorInfoBox();
-    }, { position: 'bottomright' }).addTo(geoMap);
+    L.easyButton({
+        position: 'bottomright',
+        states: [{
+            stateName: 'None',
+            icon: '&#49;',
+            title: 'Level 1',
+            onClick: function () {
+                if (currentFloorLevel !== 1) {
+                    currentFloorLevel = 1;
+                    resetSelectedRooms();
+                    getRoomsAndDrawRooms();
+                }
+                drawFloorInfoBox();
+            }
+        }]
+    }).addTo(geoMap);
 
-    L.easyButton('&#50;', function () {
-        drawFloorInfoBox();
-        if (currentFloorLevel !== 2) {
-            currentFloorLevel = 2;
-            resetSelectedRooms();
-            getRoomsAndDrawRooms();
-        }
-        drawFloorInfoBox();
-    }, { position: 'bottomright' }).addTo(geoMap);
+    L.easyButton({
+        position: 'bottomright',
+        states: [{
+            stateName: 'None',
+            icon: '&#50;',
+            title: 'Level 2',
+            onClick: function () {
+                if (currentFloorLevel !== 2) {
+                    currentFloorLevel = 2;
+                    resetSelectedRooms();
+                    getRoomsAndDrawRooms();
+                }
+                drawFloorInfoBox();
+            }
+        }]
+    }).addTo(geoMap);
 
     var buildingIcon = '<div><img src="Images/buildingIcon.png" width="25" height="25"/></div>';
 
-    L.easyButton(buildingIcon, function () {
-        drawBuildingInfo();
-    }, { position: 'bottomright' }).addTo(geoMap);
+
+    L.easyButton({
+        position: 'bottomright',
+        states: [{
+            stateName: 'None',
+            icon: buildingIcon,
+            title: 'Building info',
+            onClick: function () {
+                drawBuildingInfo();
+            }
+        }]
+    }).addTo(geoMap);
 }
 
 function CreateViewButtons() {
@@ -176,7 +216,7 @@ function CreateViewButtons() {
             }
         ]
     });
-    
+
     toggleCO2Button.options.position = 'topright';
     toggleCO2Button.addTo(geoMap);
 
