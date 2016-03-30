@@ -6,9 +6,9 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-using Website.BO;
-using Website.Domain;
-using JsonConverter = Website.Domain.JsonConverter;
+using Website.Logic.BO;
+using Website.Logic.Domain;
+using JsonConverter = Website.Logic.Domain.JsonConverter;
 
 namespace Website
 {
@@ -31,8 +31,6 @@ namespace Website
                     string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 0);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "buildingInfo", "drawBuildingInfo();", true);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "floorInfo", "drawFloorInfoBox();", true);
                 }
             }
         }

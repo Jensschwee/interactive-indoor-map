@@ -1,0 +1,63 @@
+﻿.leaflet-labels {
+    color: black;
+}
+
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    -ms-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    float: none;
+    display: inline-block;
+}
+
+    .info h4 {
+        margin: 0 0 5px;
+        color: #777;
+    }
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis--x path {
+    display: none;
+}
+
+/*#legend {
+    max-width: 150px;
+    position: absolute;
+    bottom: 57px;
+    left: 92%;
+    margin-right: 10px;
+}*/
+
+#legend {
+    max-width: 150px;
+    position: absolute;
+    left: 0%;
+    margin-left: 10px;
+    bottom: 0px;
+    margin-bottom: 10px;
+}
+
+#legend {
+    z-index: 5;
+}
+
+.IconImage {
+    position: absolute;
+}

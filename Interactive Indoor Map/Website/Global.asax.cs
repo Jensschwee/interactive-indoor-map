@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-using Website.Domain;
+using Website.Logic.Domain;
 
 namespace Website
 {
