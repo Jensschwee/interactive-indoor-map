@@ -3,5 +3,5 @@
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRooms();
     }
-    PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+    //PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }, 3000);

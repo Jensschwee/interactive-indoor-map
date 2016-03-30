@@ -74,6 +74,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: temperatureIcon,
+                title: 'Temperature view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -96,6 +97,7 @@ function CreateViewButtons() {
             }, {
                 icon: temperatureIcon,
                 stateName: 'detoggled',
+                title: 'Temperature view',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Temperature");
                     if (index !== notContained) {
@@ -139,6 +141,7 @@ function CreateViewButtons() {
             {
                 icon: co2Icon,
                 stateName: 'toggled',
+                title: 'Co2 view',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
                         var co2Obj = {
@@ -160,6 +163,7 @@ function CreateViewButtons() {
             }, {
                 icon: co2Icon,
                 stateName: 'detoggled',
+                title: 'Co2 view',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("CO2");
                     if (index !== notContained) {
@@ -202,6 +206,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: lightIcon,
+                title: 'light view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -222,6 +227,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: lightIcon,
+                title: 'light view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Lumen");
@@ -263,6 +269,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: totalConsumptionIcon,
+                title: 'total power view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -284,6 +291,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: totalConsumptionIcon,
+                title: 'total power view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("TotalPowerConsumption");
@@ -326,6 +334,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: hardwareConsumptionIcon,
+                title: 'Hardware Consumption view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -347,6 +356,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: hardwareConsumptionIcon,
+                title: 'Hardware Consumption view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("HardwareConsumption");
@@ -390,6 +400,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: lightConsumptionIcon,
+                title: 'Light Consumption view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -411,6 +422,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: lightConsumptionIcon,
+                title: 'Light Consumption view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("LightConsumption");
@@ -454,6 +466,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: ventilationConsumptonIcon,
+                title: 'Ventilation Consumption view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -476,6 +489,7 @@ function CreateViewButtons() {
             }, {
                 icon: ventilationConsumptonIcon,
                 stateName: 'detoggled',
+                title: 'Ventilation Consumption view',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("VentilationConsumption");
                     if (index !== notContained) {
@@ -517,6 +531,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: otherConsumptionIcon,
+                title: 'Other Consumption view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -538,6 +553,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: otherConsumptionIcon,
+                title: 'Other Consumption view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("OtherConsumption");
@@ -580,6 +596,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: motionIcon,
+                title: 'Motion view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -599,6 +616,7 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: motionIcon,
+                title: 'Motion view',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Motion");
@@ -639,6 +657,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: occupantsIcon,
+                title: 'Occupants view',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -660,6 +679,7 @@ function CreateViewButtons() {
             }, {
                 icon: occupantsIcon,
                 stateName: 'detoggled',
+                title: 'Occupants view',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Occupants");
                     if (index !== notContained) {
@@ -701,7 +721,9 @@ function CreateViewButtons() {
         states: [
             {
                 icon: wifiClientsIcon,
+
                 stateName: 'toggled',
+                title: 'Wifi view',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
                         var wifiClientsObj = {
@@ -722,6 +744,7 @@ function CreateViewButtons() {
             }, {
                 icon: wifiClientsIcon,
                 stateName: 'detoggled',
+                title: 'Wifi view',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("WifiClients");
                     if (index !== notContained) {

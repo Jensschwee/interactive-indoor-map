@@ -105,10 +105,11 @@
                 //Backgrund color
                 fillColor: ActiveViews[i].color,
                 //border color
-                color: "none",
+                color: "black",
                 //Border thickness
                 opacity: "none",
-                fillOpacity: "none"
+                fillOpacity: "none",
+                weight: "1px"
             }
         }).addTo(geoMap).bringToBack());
 
