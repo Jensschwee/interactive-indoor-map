@@ -7,12 +7,11 @@ function createInfoBox() {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Building data</h4> Click to expand</div>';
         return this._div;
     };
-    drawBuildingInfo();
+    drawBuildingInfoBox();
     infoBox.addTo(geoMap);
-
 }
 
-function drawBuildingInfo() {
+function drawBuildingInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
@@ -33,7 +32,7 @@ function drawBuildingInfo() {
                 NumberOfRooms: json.NumberOfRooms,
                 HTML: ""
             };
-            buildingInfo.HTML = infoBoxGenerateHTML(json);
+            buildingInfo.HTML = drawSensorValuesInfoBox(json);
             infoBox.update(buildingInfo);
         }
     };
@@ -61,7 +60,7 @@ function drawFloorInfoBox() {
                 NumberOfRooms: json.NumberOfRooms,
                 HTML: ""
             };
-            floorInfo.HTML = infoBoxGenerateHTML(json);
+            floorInfo.HTML = drawSensorValuesInfoBox(json);
             infoBox.update(floorInfo);
         }
     };
@@ -98,11 +97,11 @@ function drawSelectedRoomInfoBox() {
             HTML: ''
         };
 
-        roomInfo.HTML += infoBoxGenerateHTML(roomArray[0]);
+        roomInfo.HTML += drawSensorValuesInfoBox(roomArray[0]);
         infoBox.update(roomInfo);
     } else {
         var roomInfo = {
-            Name: '<span style="line-height:100%"><b>Rooms selected:  </b>' + roomArray.length,
+            Name: '<span style="line-height:100%"><b>Rooms selected: </b>' + roomArray.length,
             Motion: 0,
             Occupants: 0,
             Temperature: 0,
@@ -143,18 +142,19 @@ function drawSelectedRoomInfoBox() {
             }   
         }
 
-        roomInfo.HTML += infoBoxGenerateHTML(roomInfo);
+        roomInfo.HTML += drawSensorValuesInfoBox(roomInfo);
 
         infoBox.update(roomInfo);
     }
 }
 
-function infoBoxGenerateHTML(sensorData) {
+function drawSensorValuesInfoBox(sensorData) {
+    var notContained = -1;
     var html = "<br/>";
     if (ActiveViews.length !== 0) {
         html += "<br/>";
     }
-    if (findIndexOfView('Motion') !== -1) {
+    if (findIndexOfView('Motion') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
@@ -166,19 +166,19 @@ function infoBoxGenerateHTML(sensorData) {
             }
         }
     }
-    if (findIndexOfView('Occupants') !== -1) {
+    if (findIndexOfView('Occupants') !== notContained) {
         html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
     }
-    if (findIndexOfView('WifiClients') !== -1) {
+    if (findIndexOfView('WifiClients') !== notContained) {
         html += '<b>Wifi Clients</b>: ' + sensorData.WifiClients + '<br/>';
     }
-    if (findIndexOfView('Temperature') !== -1) {
+    if (findIndexOfView('Temperature') !== notContained) {
         html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + ' &#8451 <br/>';
     }
-    if (findIndexOfView('CO2') !== -1) {
+    if (findIndexOfView('CO2') !== notContained) {
         html += '<b>CO2</b>: ' + sensorData.CO2.toFixed(1) + ' PPM <br/>';
     }
-    if (findIndexOfView('Lumen') !== -1) {
+    if (findIndexOfView('Lumen') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Light</b>: ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '<br/>';
         } else {
@@ -193,22 +193,22 @@ function infoBoxGenerateHTML(sensorData) {
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + ' lm <br/>';
     }
 
-    if (findIndexOfView('TotalPowerConsumption') !== -1) {
+    if (findIndexOfView('TotalPowerConsumption') !== notContained) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + ' kWh <br/>';
     }
-    if (findIndexOfView('HardwareConsumption') !== -1) {
+    if (findIndexOfView('HardwareConsumption') !== notContained) {
         html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(1) + ' kWh <br/>';
     }
-    if (findIndexOfView('LightConsumption') !== -1) {
+    if (findIndexOfView('LightConsumption') !== notContained) {
         html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(1) + ' kWh <br/>';
     }
-    if (findIndexOfView('VentilationConsumption') !== -1) {
+    if (findIndexOfView('VentilationConsumption') !== notContained) {
         html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(1) + ' kWh <br/>';
     }
-    if (findIndexOfView('OtherConsumption') !== -1) {
+    if (findIndexOfView('OtherConsumption') !== notContained) {
         html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(1) + ' kWh <br/>';
     }
-    if (findIndexOfView('PowerConsumption') !== -1) {
+    if (findIndexOfView('PowerConsumption') !== notContained) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + ' kWh <br/>';
     }
     return html;
