@@ -79,8 +79,7 @@
         }]
     }).addTo(geoMap);
 
-    var buildingIcon = '<div><img src="Images/buildingIcon.png" width="25" height="25"/></div>';
-
+    var buildingIcon = createIconForButton("Images/buildingIcon.png");
 
     L.easyButton({
         position: 'bottomright',
@@ -95,18 +94,24 @@
     }).addTo(geoMap);
 }
 
+function createIconForButton(imageSrc) {
+    var height = 25;
+    var width = 25;
+    return '<div><img src="' + imageSrc + '" width="' + width + '" height="' + height + '"/></div>';
+}
+
 function CreateViewButtons() {
-    var temperatureIcon = '<div><img src="Images/temperatureIcon.png" width="25" height="25"/></div>';
-    var co2Icon = '<div class="buttonImage"><img src="Images/co2Icon.png" width="25" height="25"style=""/></div>';
-    var lightIcon = '<div class="buttonImage"><img src="Images/lightIcon.png" width="25" height="25"style=""/></div>';
-    var totalConsumptionIcon = '<div class="buttonImage"><img src="Images/totalPowerIcon.png" width="25" height="25"style=""/></div>';
-    var hardwareConsumptionIcon = '<span class="buttonImage"><img src="Images/hardwarePowerIcon.png" width="25" height="25" /></span>';
-    var lightConsumptionIcon = '<div class="buttonImage"><img src="Images/lightPowerIcon.png" width="25" height="25"style=""/></div>';
-    var ventilationConsumptonIcon = '<div class="buttonImage"><img src="Images/ventilationPowerIcon.png" width="25" height="25"style=""/></div>';
-    var otherConsumptionIcon = '<div class="buttonImage"><img src="Images/otherPowerIcon.png" width="25" height="25"style=""/></div>';
-    var motionIcon = '<div class="buttonImage"><img src="Images/motionIcon.png" width="25" height="25"style=""/></div>';
-    var occupantsIcon = '<div class="buttonImage"><img src="Images/occupantsIcon.png" width="25" height="25"style=""/></div>';
-    var wifiClientsIcon = '<div class="buttonImage"><img src="Images/wifiIcon.png" width="25" height="25"style=""/></div>';
+    var temperatureIcon = createIconForButton("Images/temperatureIcon.png");
+    var co2Icon = createIconForButton("Images/co2Icon.png"); 
+    var lightIcon = createIconForButton("Images/co2Icon.png");
+    var totalConsumptionIcon = createIconForButton("Images/totalPowerIcon.png");
+    var hardwareConsumptionIcon = createIconForButton("Images/hardwarePowerIcon.png");
+    var lightConsumptionIcon = createIconForButton("Images/lightPowerIcon.png");
+    var ventilationConsumptonIcon = createIconForButton("Images/ventilationPowerIcon.png");
+    var otherConsumptionIcon = createIconForButton("Images/otherPowerIcon.png");
+    var motionIcon = createIconForButton("Images/motionIcon.png");
+    var occupantsIcon = createIconForButton("Images/occupantsIcon.png");
+    var wifiClientsIcon = createIconForButton("Images/wifiIcon.png");
 
     var notContained = -1;
 
