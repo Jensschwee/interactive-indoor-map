@@ -84,8 +84,6 @@
                 hightOfRoom = 1;
             }
 
-
-
             point = [];
             //Col C X
             point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * hightOfRoom));

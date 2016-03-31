@@ -131,6 +131,7 @@ function CreateViewButtons() {
                         ActiveViews.push(temperatureObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
                 }
             }, {
@@ -145,6 +146,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -197,6 +199,7 @@ function CreateViewButtons() {
                         ActiveViews.push(co2Obj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
                 }
             }, {
@@ -211,6 +214,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -262,6 +266,7 @@ function CreateViewButtons() {
                         ActiveViews.push(co2Obj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
                 }
             }, {
@@ -276,6 +281,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -325,6 +331,7 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#e74c3c';
                         ActiveViews.push(totalPowerObj);
                         reDrawItemsOnMap();
+                        infoboxUpdate();
                         btn.state('detoggled');
                     }
 
@@ -338,9 +345,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -392,6 +399,7 @@ function CreateViewButtons() {
                         ActiveViews.push(hardwareConsumptionObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
 
                 }
@@ -407,6 +415,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -459,6 +468,7 @@ function CreateViewButtons() {
                         ActiveViews.push(lightConsumptionObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
                 }
             }, {
@@ -473,6 +483,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -525,6 +536,7 @@ function CreateViewButtons() {
                         ActiveViews.push(ventilationConsumptionObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
 
                 }
@@ -540,6 +552,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -591,6 +604,7 @@ function CreateViewButtons() {
                         ActiveViews.push(otherConsumptionObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
                 }
             }, {
@@ -605,6 +619,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -654,6 +669,7 @@ function CreateViewButtons() {
                         ActiveViews.push(motionObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
 
                 }
@@ -668,6 +684,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -716,6 +733,7 @@ function CreateViewButtons() {
                         ActiveViews.push(occupantsObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
 
                 }
@@ -731,6 +749,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
+                        infoboxUpdate();
                     }
                 }
             }
@@ -783,6 +802,7 @@ function CreateViewButtons() {
                         ActiveViews.push(wifiClientsObj);
                         reDrawItemsOnMap();
                         btn.state('detoggled');
+                        infoboxUpdate();
                     }
 
                 }
@@ -798,6 +818,7 @@ function CreateViewButtons() {
 
                         btn.state('toggled');
                         btn.button.style.backgroundColor = 'white';
+                        infoboxUpdate();
                     }
                 }
             }
