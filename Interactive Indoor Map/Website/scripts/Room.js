@@ -71,21 +71,36 @@
             point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * (j + 1));
 
             coordinates.push(point);
+
+            //calc the hight of the room
+            var hightOfRoom = (1 - (sensorValue - minValue) / (maxValue - minValue));
+
+            //If the room is to fill more then 100%
+            if (hightOfRoom < 0) {
+                hightOfRoom = 0;
+            }
+            //If the room is to fill less then 0%
+            else if (hightOfRoom > 1) {
+                hightOfRoom = 1;
+            }
+
+
+
             point = [];
             //Col C X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * hightOfRoom));
 
             //Col C y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j + 1) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j + 1) - ((B[1] - A[1]) * hightOfRoom));
 
             coordinates.push(point);
 
             point = [];
             //Col B X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j) - ((B[0] - A[0]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j) - ((B[0] - A[0]) * hightOfRoom));
 
             //Col B y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j) - ((B[1] - A[1]) * (1 - (sensorValue - minValue) / (maxValue - minValue))));
+            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j) - ((B[1] - A[1]) * hightOfRoom));
 
             coordinates.push(point);
 
