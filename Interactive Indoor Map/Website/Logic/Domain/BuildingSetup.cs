@@ -851,7 +851,7 @@ namespace Website.Logic.Domain
 
             if (Ø22_604_0.WifiClients < 6)
             {
-                Ø22_604_0.WifiClients += random.Next(0, 5);
+                Ø22_604_0.WifiClients += random.Next(0x, 5);
             }
             else if (Ø22_604_0.WifiClients > Ø22_604_0.WifiClientsMax)
             {
