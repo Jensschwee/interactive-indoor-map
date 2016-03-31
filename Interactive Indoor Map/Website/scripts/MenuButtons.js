@@ -103,7 +103,7 @@ function createIconForButton(imageSrc) {
 function CreateViewButtons() {
     var temperatureIcon = createIconForButton("Images/temperatureIcon.png");
     var co2Icon = createIconForButton("Images/co2Icon.png"); 
-    var lightIcon = createIconForButton("Images/co2Icon.png");
+    var lightIcon = createIconForButton("Images/lightIcon.png");
     var totalConsumptionIcon = createIconForButton("Images/totalPowerIcon.png");
     var hardwareConsumptionIcon = createIconForButton("Images/hardwarePowerIcon.png");
     var lightConsumptionIcon = createIconForButton("Images/lightPowerIcon.png");
