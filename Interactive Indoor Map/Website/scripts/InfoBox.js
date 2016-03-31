@@ -8,7 +8,6 @@ function createInfoBox() {
         return this._div;
     };
     drawBuildingInfo();
-
     infoBox.addTo(geoMap);
 
 }
@@ -18,23 +17,27 @@ function drawBuildingInfo() {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><h5><b>Name</b>: ' + props.Name + '</h5>' +
             '<b>Surface Area:</b> ' + props.SurfaceArea +
-            props.HTML   +
+            props.HTML +
             '</span>'
             : 'Click to expand') + '</div>';
     };
 
-    PageMethods.DrawBuildingInfoBox(onSuccess);
-    function onSuccess(response, userContext, methodName) {
-        var json = jQuery.parseJSON(response);
-        var buildingInfo = {
-            Name: json.Name,
-            SurfaceArea: json.SurfaceArea,
-            NumberOfRooms: json.NumberOfRooms,
-            HTML: ""
-        };
-        buildingInfo.HTML = infoBoxGenerateHTML(json);
-        infoBox.update(buildingInfo);
-    }
+    infoboxUpdate = function () {
+        PageMethods.DrawBuildingInfoBox(onSuccess);
+
+        function onSuccess(response, userContext, methodName) {
+            var json = jQuery.parseJSON(response);
+            var buildingInfo = {
+                Name: json.Name,
+                SurfaceArea: json.SurfaceArea,
+                NumberOfRooms: json.NumberOfRooms,
+                HTML: ""
+            };
+            buildingInfo.HTML = infoBoxGenerateHTML(json);
+            infoBox.update(buildingInfo);
+        }
+    };
+    infoboxUpdate();
 }
 
 function drawFloorInfoBox() {
@@ -47,26 +50,30 @@ function drawFloorInfoBox() {
             : 'Click to expand') + '</div>';
     };
 
-    PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-    function onSuccess(response, userContext, methodName) {
-        var json = jQuery.parseJSON(response);
-        var floorInfo = {
-            FloorLevel: json.FloorLevel,
-            SurfaceArea: json.SurfaceArea,
-            NumberOfRooms : json.NumberOfRooms,
-            HTML: ""
-        };
-        floorInfo.HTML = infoBoxGenerateHTML(json);
-        infoBox.update(floorInfo);
-    }
-    
+    infoboxUpdate = function () {
+        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+
+        function onSuccess(response, userContext, methodName) {
+            var json = jQuery.parseJSON(response);
+            var floorInfo = {
+                FloorLevel: json.FloorLevel,
+                SurfaceArea: json.SurfaceArea,
+                NumberOfRooms: json.NumberOfRooms,
+                HTML: ""
+            };
+            floorInfo.HTML = infoBoxGenerateHTML(json);
+            infoBox.update(floorInfo);
+        }
+    };
+    infoboxUpdate();
+
 }
 
 function drawRoomInfo() {
-   // method that we will use to update the control based on feature properties passed
+    // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
-            props.Name + 
+            props.Name +
             '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML +
             '</span></div>'
@@ -119,7 +126,7 @@ function drawSelectedRoomInfoBox() {
                     roomInfo.Motion += 1;
                 }
                 roomInfo.Occupants += roomArray[i].Occupants;
-                
+
                 if (roomArray[i].Light) {
 
                     roomInfo.Light += 1;
@@ -159,6 +166,9 @@ function infoBoxGenerateHTML(sensorData) {
     if (findIndexOfView('Occupants') !== -1) {
         html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
     }
+    if (findIndexOfView('WifiClients') !== -1) {
+        html += '<b>Wifi Clients</b>: ' + sensorData.WifiClients + '<br/>';
+    }
     if (findIndexOfView('Temperature') !== -1) {
         html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + '&#8451' + '<br/>';
     }
@@ -176,14 +186,17 @@ function infoBoxGenerateHTML(sensorData) {
                 html += '<b>Light</b>: Off<br/>';
             }
         }
-        
+
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + 'lm' + '<br/>';
     }
 
+    if (findIndexOfView('TotalPowerConsumption') !== -1) {
+        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + '<br/>';
+    }
     if (findIndexOfView('HardwareConsumption') !== -1) {
         html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(1) + 'kWh' + '<br/>';
     }
-    if (findIndexOfView('LightConsumption') !== -1 ){
+    if (findIndexOfView('LightConsumption') !== -1) {
         html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(1) + 'kWh' + '<br/>';
     }
     if (findIndexOfView('VentilationConsumption') !== -1) {
@@ -215,14 +228,14 @@ function highlightFeature(e) {
         }
         drawRoomInfo();
         roomArray.push(layer.feature.properties);
-        drawSelectedRoomInfoBox();
     } else {
         roomArray = jQuery.grep(roomArray, function (value) {
             return value != layer.feature.properties;
         });
         resetHighlight(e);
-        drawSelectedRoomInfoBox();
     }
+    infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
+    infoboxUpdate();
 }
 
 function resetHighlight(e) {

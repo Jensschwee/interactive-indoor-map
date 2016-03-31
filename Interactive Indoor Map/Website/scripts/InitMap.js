@@ -4,6 +4,7 @@ var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
 var roomBackgroundLayer = null;
+var infoboxUpdate = null;
 var roomLayers = [];
 var ActiveViews = [];
 //    Views: [],
