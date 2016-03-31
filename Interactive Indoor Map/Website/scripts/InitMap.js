@@ -61,7 +61,7 @@ function InitLeafletMap(JSONMap) {
     //Links obj to super obj
     //DefaultView.prototype = new View();
     //TemperatureView.prototype = new View();
-    getRoomsAndDrawRooms();
+    getRoomsAndDrawRoomsWithRoomOverlay();
 
     worldMap.addTo(geoMap);
 

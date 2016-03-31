@@ -124,10 +124,18 @@
     }
 }
 
-function getRoomsAndDrawRooms() {
+function getRoomsAndDrawRoomsWithRoomOverlay() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRoomsBackgrund(colletionOfRoomsOnMap);
+        drawRooms(colletionOfRoomsOnMap);
+    }
+    PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+}
+
+function getRoomsAndDrawRooms() {
+    function onSuccess(response) {
+        colletionOfRoomsOnMap = JSON.parse(response);
         drawRooms(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
@@ -162,14 +170,15 @@ function drawRoomsBackgrund(json) {
     roomBackgroundLayer.setZIndex(frontLayer).addTo(geoMap);
 }
 
-function resetSelectedRooms() {
+function changeFloor() {
     roomArray = [];
+    getRoomsAndDrawRoomsWithRoomOverlay();
 }
 
 function onRoomClicked(e) {
     var layer = e.target;
 
-    if ($.inArray(layer.feature.properties, roomArray) === -1) {
+    if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
         layer.setStyle({
             fillColor: "#FFFFFF",
             //border color
@@ -181,10 +190,10 @@ function onRoomClicked(e) {
             layer.bringToFront();
         }
         drawRoomInfo();
-        roomArray.push(layer.feature.properties);
+        roomArray.push(layer.feature.properties.Name);
     } else {
         roomArray = jQuery.grep(roomArray, function (value) {
-            return value != layer.feature.properties;
+            return value != layer.feature.properties.Name;
         });
 
         //diseleced room

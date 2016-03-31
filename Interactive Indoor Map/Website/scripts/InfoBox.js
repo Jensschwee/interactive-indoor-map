@@ -91,14 +91,18 @@ function drawSelectedRoomInfoBox() {
         drawFloorInfoBox();
     }
     else if (roomArray.length === 1) {
+        var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
+            return roomArray[0] === value.properties.Name;
+        });
+
         var roomInfo = {
-            Name: '<span style="line-height:100%"><b>Name: </b>' + roomArray[0].Name,
-            SurfaceArea: roomArray[0].SurfaceArea,
+            Name: '<span style="line-height:100%"><b>Name: </b>' + roomArray[0],
+            SurfaceArea: room[0].properties.SurfaceArea,
             HTML: ''
         };
-        roomInfo.HTML += drawSensorValuesInfoBox(roomArray[0]);
+        roomInfo.HTML += drawSensorValuesInfoBox(room[0].properties);
         infoBox.update(roomInfo);
-    } else if (roomArray.length > 1){
+    } else if (roomArray.length > 1) {
         calculateAverageSensorValues();
     }
 
@@ -117,32 +121,36 @@ function drawSelectedRoomInfoBox() {
             VentilationConsumption: 0,
             OtherConsumption: 0,
             SurfaceArea: 0,
+            WifiClients: 0,
             NumberOfRooms: roomArray.length,
             HTML: ""
         };
 
-        for (var i in roomArray) {
-            if (roomArray.hasOwnProperty(i)) {
-                roomInfo.Temperature += roomArray[i].Temperature / roomArray.length;
-                if (roomArray[i].Motion) {
-                    roomInfo.Motion += 1;
-                }
-                roomInfo.Occupants += roomArray[i].Occupants;
-
-                if (roomArray[i].Light) {
-                    roomInfo.Light += 1;
-                }
-
-                roomInfo.CO2 += roomArray[i].CO2 / roomArray.length;
-                roomInfo.Lumen += roomArray[i].Lumen / roomArray.length;
-                roomInfo.TotalPowerConsumption += roomArray[i].TotalPowerConsumption;
-                roomInfo.HardwareConsumption += roomArray[i].HardwareConsumption;
-                roomInfo.LightConsumption += roomArray[i].LightConsumption;
-                roomInfo.VentilationConsumption += roomArray[i].VentilationConsumption;
-                roomInfo.OtherConsumption += roomArray[i].OtherConsumption;
-                roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
+        roomArray.forEach(function (roomName, index)
+        {
+            var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
+                return roomName === value.properties.Name;
+            });
+            roomInfo.Temperature += room[0].properties.Temperature / roomArray.length;
+            if (room[0].properties.Motion) {
+                roomInfo.Motion += 1;
             }
-        }
+            roomInfo.Occupants += room[0].properties.Occupants;
+
+            if (room[0].properties.Light) {
+                roomInfo.Light += 1;
+            }
+
+            roomInfo.CO2 += room[0].properties.CO2 / roomArray.length;
+            roomInfo.Lumen += room[0].properties.Lumen / roomArray.length;
+            roomInfo.TotalPowerConsumption += room[0].properties.TotalPowerConsumption;
+            roomInfo.HardwareConsumption += room[0].properties.HardwareConsumption;
+            roomInfo.LightConsumption += room[0].properties.LightConsumption;
+            roomInfo.VentilationConsumption += room[0].properties.VentilationConsumption;
+            roomInfo.OtherConsumption += room[0].properties.OtherConsumption;
+            roomInfo.SurfaceArea += room[0].properties.SurfaceArea;
+            roomInfo.WifiClients += room[0].properties.WifiClients;
+        });
 
         roomInfo.HTML += drawSensorValuesInfoBox(roomInfo);
 
@@ -156,7 +164,7 @@ function drawSensorValuesInfoBox(sensorData) {
     if (ActiveViews.length !== 0) {
         html += "<br/>";
     }
-    
+
     if (findIndexOfView('Temperature') !== notContained) {
         html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + ' &#8451 <br/>';
     }

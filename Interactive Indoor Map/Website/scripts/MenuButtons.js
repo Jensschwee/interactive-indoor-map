@@ -20,8 +20,7 @@
             onClick: function () {
                 if (currentFloorLevel !== -1) {
                     currentFloorLevel = -1;
-                    resetSelectedRooms();
-                    getRoomsAndDrawRooms();
+                    changeFloor();
                 }
                 drawFloorInfoBox();
             }
@@ -37,8 +36,7 @@
             onClick: function () {
                 if (currentFloorLevel !== 0) {
                     currentFloorLevel = 0;
-                    resetSelectedRooms();
-                    getRoomsAndDrawRooms();
+                    changeFloor();
                 }
                 drawFloorInfoBox();
             }
@@ -54,8 +52,7 @@
             onClick: function () {
                 if (currentFloorLevel !== 1) {
                     currentFloorLevel = 1;
-                    resetSelectedRooms();
-                    getRoomsAndDrawRooms();
+                    changeFloor();
                 }
                 drawFloorInfoBox();
             }
@@ -71,8 +68,7 @@
             onClick: function () {
                 if (currentFloorLevel !== 2) {
                     currentFloorLevel = 2;
-                    resetSelectedRooms();
-                    getRoomsAndDrawRooms();
+                    changeFloor();
                 }
                 drawFloorInfoBox();
             }
