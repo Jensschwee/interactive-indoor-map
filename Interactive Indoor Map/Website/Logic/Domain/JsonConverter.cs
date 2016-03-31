@@ -37,7 +37,7 @@ namespace Website.Logic.Domain
 
             sb.Append("\"Motion\":" + JsonConvert.SerializeObject(building.Motion) + ",");
             sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.Occupants) + ",");
-            sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.OccupantsMax) + ",");
+            sb.Append("\"OccupantsMax\":" + JsonConvert.SerializeObject(building.OccupantsMax) + ",");
             sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(building.WifiClients) + ",");
             sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(building.WifiClientsMax) + ",");
 

@@ -4,6 +4,7 @@ var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
 var roomBackgroundLayer = null;
+var infoboxUpdate = null;
 var roomLayers = [];
 var ActiveViews = [];
 //    Views: [],
@@ -60,7 +61,7 @@ function InitLeafletMap(JSONMap) {
     //Links obj to super obj
     //DefaultView.prototype = new View();
     //TemperatureView.prototype = new View();
-    getRoomsAndDrawRooms();
+    getRoomsAndDrawRoomsWithRoomOverlay();
 
     worldMap.addTo(geoMap);
 

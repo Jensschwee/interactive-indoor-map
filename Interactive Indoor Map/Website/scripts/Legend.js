@@ -23,7 +23,7 @@ function drawLegend() {
               .attr("height", '100%')
               .append("rect")
               .attr("width", 100 + '%')
-              .attr('stroke-width', 1)
+              .attr('stroke-width', 2)
               .attr('stroke', 'rgb(0,0,0)')
               .attr("height", 100 + '%')
               .style("fill", ActiveViews[i].color)
@@ -36,10 +36,11 @@ function drawLegend() {
                 .append('div')
                 .attr("class", 'IconImage')
                 .attr("style", 'top: 42%; left:' + (100 / activeViews * i + imageStartPos) + '%')
-                .append('img')
-                .attr("width", 25)
-                .attr("height", 25)
-                .attr("src", ActiveViews[i].icon);
+                .html(ActiveViews[i].icon);
+                //.append('img')
+                //.attr("width", 25)
+                //.attr("height", 25)
+                //.attr("src", ActiveViews[i].icon);
 
         });
     }
