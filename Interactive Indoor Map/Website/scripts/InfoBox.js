@@ -15,7 +15,7 @@ function createInfoBox() {
 function drawBuildingInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
-            '<span style="line-height:100%"><h5><b>Name</b>: ' + props.Name + '</h5>' +
+            '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML +
             '</span>'
@@ -43,7 +43,7 @@ function drawBuildingInfo() {
 function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
-            '<span style="line-height:100%"><h5><b>Floor Level</b>: ' + props.FloorLevel + '</h5>' +
+            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorLevel + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea +
             props.HTML +
             '</div></span>'
@@ -73,8 +73,8 @@ function drawRoomInfo() {
     // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
-            props.Name +
-            '<b>Surface Area:</b> ' + props.SurfaceArea +
+            props.Name + "</br>" +
+            '<b>Surface Area:</b> ' + props.SurfaceArea  +
             props.HTML +
             '</span></div>'
             : 'Hover over a room to see info');
@@ -93,7 +93,7 @@ function drawSelectedRoomInfoBox() {
     }
     else if (roomArray.length === 1) {
         var roomInfo = {
-            Name: '<span style="line-height:100%"><h5><b>Name: </b>' + roomArray[0].Name + '</h5>',
+            Name: '<span style="line-height:100%"><b>Name: </b>' + roomArray[0].Name,
             SurfaceArea: roomArray[0].SurfaceArea,
             HTML: ''
         };
@@ -102,7 +102,7 @@ function drawSelectedRoomInfoBox() {
         infoBox.update(roomInfo);
     } else {
         var roomInfo = {
-            Name: '<span style="line-height:100%"><h5><b>Rooms selected:  </b>' + roomArray.length + '</h5>',
+            Name: '<span style="line-height:100%"><b>Rooms selected:  </b>' + roomArray.length,
             Motion: 0,
             Occupants: 0,
             Temperature: 0,
@@ -151,6 +151,9 @@ function drawSelectedRoomInfoBox() {
 
 function infoBoxGenerateHTML(sensorData) {
     var html = "<br/>";
+    if (ActiveViews.length !== 0) {
+        html += "<br/>";
+    }
     if (findIndexOfView('Motion') !== -1) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
