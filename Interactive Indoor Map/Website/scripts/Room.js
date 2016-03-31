@@ -125,49 +125,6 @@
                 weight: "1px"
             }
         }).addTo(geoMap).bringToBack());
-
-        
-
-        // var svg = d3.select(geoMap.getPanes().overlayPane).insert("svg").attr("class", "rooms"),
-        //g = svg.append("g").attr("class", "leaflet-zoom-hide leaflet-zoom-animated");
-
-        // var transform = d3.geo.transform({ point: projectPoint }),
-        //     path = d3.geo.path().projection(transform);
-
-        // var feature = g.selectAll("path")
-        //     .data(roomColumn.features)
-        //   .enter().append("path");
-
-
-        // geoMap.on("viewreset", reset);
-
-        // reset();
-
-        // // Reposition the SVG to cover the features.
-        // function reset() {
-
-        //     var bounds = path.bounds(roomColumn),
-        //         topLeft = bounds[0],
-        //         bottomRight = bounds[1];
-
-        //     svg.attr("width", bottomRight[0] - topLeft[0])
-        //         .attr("height", bottomRight[1] - topLeft[1])
-        //         .style("left", topLeft[0] + "px")
-        //         .style("top", topLeft[1] + "px");
-
-        //     g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-        //     feature.attr("d", path)
-        //         .style("fill", ActiveViews[i].color);
-
-        // }
-
-        // // Use Leaflet to implement a D3 geometric transformation.
-        // function projectPoint(x, y) {
-        //     var point = geoMap.latLngToLayerPoint(new L.LatLng(y, x));
-        //     this.stream.point(point.x, point.y);
-        // }
-        // drawRoomsBackgrund(colletionOfRoomsOnMap);
-
     }
 }
 
@@ -185,6 +142,13 @@ function drawRoomsBackgrund(json) {
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
     }
+
+    var roomOnClickEventHandler = function (feature, layer) {
+        layer.on({
+            click: onRoomClicked
+        });
+    };
+
     roomBackgroundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
@@ -195,18 +159,11 @@ function drawRoomsBackgrund(json) {
             weight: 5,
             opacity: 10,
             fillOpacity: 0.2
-        }
-        ,
-        onEachFeature: onEachFeature
+        },
+        onEachFeature: roomOnClickEventHandler
     });
     var frontLayer = 1;
     roomBackgroundLayer.setZIndex(frontLayer).addTo(geoMap);
-}
-
-function onEachFeature(feature, layer) {
-    layer.on({
-        click: onRoomClicked
-    });
 }
 
 function resetSelectedRooms() {

@@ -36,10 +36,11 @@ function drawLegend() {
                 .append('div')
                 .attr("class", 'IconImage')
                 .attr("style", 'top: 42%; left:' + (100 / activeViews * i + imageStartPos) + '%')
-                .append('img')
-                .attr("width", 25)
-                .attr("height", 25)
-                .attr("src", ActiveViews[i].icon);
+                .html(ActiveViews[i].icon);
+                //.append('img')
+                //.attr("width", 25)
+                //.attr("height", 25)
+                //.attr("src", ActiveViews[i].icon);
 
         });
     }

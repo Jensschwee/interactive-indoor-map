@@ -121,7 +121,7 @@ function CreateViewButtons() {
                         var temperatureObj = {
                             name: "Temperature",
                             color: '#8ab1c4',
-                            icon: 'Images/temperatureIcon.png',
+                            icon: temperatureIcon,
                             max: 'TemperatureMax',
                             value: 'Temperature',
                             min: "TemperatureMin",
@@ -189,7 +189,7 @@ function CreateViewButtons() {
                         var co2Obj = {
                             name: "CO2",
                             color: '#c7b7ea',
-                            icon: 'Images/co2Icon.png',
+                            icon: co2Icon,
                             max: 'CO2Max',
                             value: 'CO2',
                             min: "CO2Min",
@@ -257,7 +257,7 @@ function CreateViewButtons() {
                         var co2Obj = {
                             name: "Lumen",
                             color: '#ffe11d',
-                            icon: 'Images/lightIcon.png',
+                            icon: lightIcon,
                             value: 'Lumen',
                             max: 'LumenMax',
                             button: toggleLightButton
@@ -322,7 +322,7 @@ function CreateViewButtons() {
                         var totalPowerObj = {
                             name: "TotalPowerConsumption",
                             color: '#e74c3c',
-                            icon: 'Images/totalPowerIcon.png',
+                            icon: totalConsumptionIcon,
                             max: 'TotalPowerConsumptionMax',
                             value: 'TotalPowerConsumption',
                             min: "TotalPowerConsumptionMin",
@@ -389,7 +389,7 @@ function CreateViewButtons() {
                         var hardwareConsumptionObj = {
                             name: "HardwareConsumption",
                             color: '#f83e2d',
-                            icon: 'Images/hardwarePowerIcon.png',
+                            icon: hardwareConsumptionIcon,
                             max: 'HardwareConsumptionMax',
                             value: 'HardwareConsumption',
                             min: "HardwareConsumptionMin",
@@ -458,7 +458,7 @@ function CreateViewButtons() {
                         var lightConsumptionObj = {
                             name: "LightConsumption",
                             color: '#fe4e35',
-                            icon: 'Images/lightPowerIcon.png',
+                            icon: lightConsumptionIcon,
                             max: 'LightConsumptionMax',
                             value: 'LightConsumption',
                             min: "LightConsumptionMin",
@@ -526,7 +526,7 @@ function CreateViewButtons() {
                         var ventilationConsumptionObj = {
                             name: "VentilationConsumption",
                             color: '#d15258',
-                            icon: 'Images/ventilationPowerIcon.png',
+                            icon: ventilationConsumptonIcon,
                             max: 'VentilationConsumptionMax',
                             value: 'VentilationConsumption',
                             min: "VentilationConsumptionMin",
@@ -594,7 +594,7 @@ function CreateViewButtons() {
                         var otherConsumptionObj = {
                             name: "OtherConsumption",
                             color: '#ff8289',
-                            icon: 'Images/otherPowerIcon.png',
+                            icon: otherConsumptionIcon,
                             max: 'OtherConsumptionMax',
                             value: 'OtherConsumption',
                             min: "OtherConsumptionMin",
@@ -661,7 +661,7 @@ function CreateViewButtons() {
                         var motionObj = {
                             name: "Motion",
                             color: '#b2d649',
-                            icon: 'Images/motionIcon.png',
+                            icon: motionIcon,
                             value: 'Motion',
                             button: toggleMotionButton
                         };
@@ -724,7 +724,7 @@ function CreateViewButtons() {
                         var occupantsObj = {
                             name: "Occupants",
                             color: '#2ecc71',
-                            icon: 'Images/occupantsIcon.png',
+                            icon: occupantsIcon,
                             max: 'OccupantsMax',
                             value: 'Occupants',
                             button: toggleOccupantsButton
@@ -792,7 +792,7 @@ function CreateViewButtons() {
                         var wifiClientsObj = {
                             name: "WifiClients",
                             color: '#83bd1a',
-                            icon: 'Images/wifiIcon.png',
+                            icon: wifiClientsIcon,
                             max: 'WifiClientsMax',
                             value: 'WifiClients',
                             button: toggleWifiClientsButton
