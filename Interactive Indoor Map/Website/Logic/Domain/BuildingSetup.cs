@@ -308,7 +308,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
@@ -341,7 +341,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 20.5,
                 CO2 = 85,
@@ -373,7 +373,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 21.5,
                 CO2 = 80,
@@ -405,7 +405,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 22,
                 CO2 = 70,
@@ -450,13 +450,424 @@ namespace Website.Logic.Domain
         {
             Timer testTimer = new Timer();
             testTimer.Elapsed+=new ElapsedEventHandler(OnTimedEvent);
-            testTimer.Interval = 2000;
+            testTimer.Interval = 1000;
             testTimer.Enabled = true;
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            Ø22_508_0.Temperature += 1.0;
+            Random random = new Random();
+
+            if (Ø22_508_0.Temperature < 20)
+            {
+                Ø22_508_0.Temperature += random.NextDouble();
+            }
+            else if (Ø22_508_0.Temperature > 24)
+            {
+                Ø22_508_0.Temperature -= random.NextDouble();
+            }
+            else
+            {
+                if (random.Next(1, 2)%2 == 0)
+                {
+                    Ø22_508_0.Temperature += random.NextDouble();
+                }
+                else
+                {
+                    Ø22_508_0.Temperature -= random.NextDouble();
+                }
+            }
+
+            if (Ø22_508_0.CO2 < 200)
+            {
+                Ø22_508_0.CO2 += random.Next(0, 100);
+            }
+            else if (Ø22_508_0.CO2 > 1000)
+            {
+                Ø22_508_0.CO2 -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2)%2 == 0)
+                {
+                    Ø22_508_0.CO2 += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_508_0.CO2 -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø22_508_0.Lumen < 101)
+            {
+                Ø22_508_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø22_508_0.Lumen > 600)
+            {
+                Ø22_508_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_508_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_508_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø22_508_0.Lumen < 101)
+            {
+                Ø22_508_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø22_508_0.Lumen > Ø22_508_0.LumenMax)
+            {
+                Ø22_508_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_508_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_508_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø22_508_0.WifiClients < 6 )
+            {
+                Ø22_508_0.WifiClients += random.Next(0, 5);
+            }
+            else if (Ø22_508_0.WifiClients > Ø22_508_0.WifiClientsMax)
+            {
+                Ø22_508_0.WifiClients -= random.Next(0, 5);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_508_0.WifiClients += random.Next(0, 5);
+                }
+                else
+                {
+                    Ø22_508_0.WifiClients -= random.Next(0, 5);
+                }
+            }
+
+            //Room Ø20_508a_0
+            if (Ø20_508a_0.Temperature < 20)
+            {
+                Ø20_508a_0.Temperature += random.NextDouble();
+            }
+            else if (Ø20_508a_0.Temperature > 24)
+            {
+                Ø20_508a_0.Temperature -= random.NextDouble();
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_508a_0.Temperature += random.NextDouble();
+                }
+                else
+                {
+                    Ø20_508a_0.Temperature -= random.NextDouble();
+                }
+            }
+
+            if (Ø20_508a_0.CO2 < 200)
+            {
+                Ø20_508a_0.CO2 += random.Next(0, 100);
+            }
+            else if (Ø20_508a_0.CO2 > 1000)
+            {
+                Ø20_508a_0.CO2 -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_508a_0.CO2 += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_508a_0.CO2 -= random.Next(0, 100);
+                }
+            }
+
+            if (Ø20_508a_0.Lumen < 101)
+            {
+                Ø20_508a_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø20_508a_0.Lumen > 600)
+            {
+                Ø20_508a_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_508a_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_508a_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø20_508a_0.Lumen < 101)
+            {
+                Ø20_508a_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø20_508a_0.Lumen > Ø20_508a_0.LumenMax)
+            {
+                Ø20_508a_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_508a_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_508a_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø20_508a_0.WifiClients < 6)
+            {
+                Ø20_508a_0.WifiClients += random.Next(0, 5);
+            }
+            else if (Ø20_508a_0.WifiClients > Ø20_508a_0.WifiClientsMax)
+            {
+                Ø20_508a_0.WifiClients -= random.Next(0, 5);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_508a_0.WifiClients += random.Next(0, 5);
+                }
+                else
+                {
+                    Ø20_508a_0.WifiClients -= random.Next(0, 5);
+                }
+            }
+
+            //Room Ø20_604_0
+            if (Ø20_604_0.Temperature < 20)
+            {
+                Ø20_604_0.Temperature += random.NextDouble();
+            }
+            else if (Ø20_604_0.Temperature > 24)
+            {
+                Ø20_604_0.Temperature -= random.NextDouble();
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_604_0.Temperature += random.NextDouble();
+                }
+                else
+                {
+                    Ø20_604_0.Temperature -= random.NextDouble();
+                }
+            }
+
+            if (Ø20_604_0.CO2 < 200)
+            {
+                Ø20_604_0.CO2 += random.Next(0, 100);
+            }
+            else if (Ø20_604_0.CO2 > 1000)
+            {
+                Ø20_604_0.CO2 -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_604_0.CO2 += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_604_0.CO2 -= random.Next(0, 100);
+                }
+            }
+
+            if (Ø20_604_0.Lumen < 101)
+            {
+                Ø20_604_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø20_604_0.Lumen > 600)
+            {
+                Ø20_604_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_604_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_604_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø20_604_0.Lumen < 101)
+            {
+                Ø20_604_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø20_604_0.Lumen > Ø20_604_0.LumenMax)
+            {
+                Ø20_604_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_604_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø20_604_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø20_604_0.WifiClients < 6)
+            {
+                Ø20_604_0.WifiClients += random.Next(0, 5);
+            }
+            else if (Ø20_604_0.WifiClients > Ø20_604_0.WifiClientsMax)
+            {
+                Ø20_604_0.WifiClients -= random.Next(0, 5);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø20_604_0.WifiClients += random.Next(0, 5);
+                }
+                else
+                {
+                    Ø20_604_0.WifiClients -= random.Next(0, 5);
+                }
+            }
+
+            //Room Ø22_604_0
+            if (Ø22_604_0.Temperature < 20)
+            {
+                Ø22_604_0.Temperature += random.NextDouble();
+            }
+            else if (Ø22_604_0.Temperature > 24)
+            {
+                Ø22_604_0.Temperature -= random.NextDouble();
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_604_0.Temperature += random.NextDouble();
+                }
+                else
+                {
+                    Ø22_604_0.Temperature -= random.NextDouble();
+                }
+            }
+
+            if (Ø22_604_0.CO2 < 200)
+            {
+                Ø22_604_0.CO2 += random.Next(0, 100);
+            }
+            else if (Ø22_604_0.CO2 > 1000)
+            {
+                Ø22_604_0.CO2 -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_604_0.CO2 += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_604_0.CO2 -= random.Next(0, 100);
+                }
+            }
+
+            if (Ø22_604_0.Lumen < 101)
+            {
+                Ø22_604_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø22_604_0.Lumen > 600)
+            {
+                Ø22_604_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_604_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_604_0.Lumen -= random.Next(0, 100);
+                }
+            }
+
+            if (Ø22_604_0.Lumen < 101)
+            {
+                Ø22_604_0.Lumen += random.Next(0, 100);
+            }
+            else if (Ø22_604_0.Lumen > Ø22_604_0.LumenMax)
+            {
+                Ø22_604_0.Lumen -= random.Next(0, 100);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_604_0.Lumen += random.Next(0, 100);
+                }
+                else
+                {
+                    Ø22_604_0.Lumen -= random.Next(0, 100);
+
+                }
+            }
+
+            if (Ø22_604_0.WifiClients < 6)
+            {
+                Ø22_604_0.WifiClients += random.Next(0, 5);
+            }
+            else if (Ø22_604_0.WifiClients > Ø22_604_0.WifiClientsMax)
+            {
+                Ø22_604_0.WifiClients -= random.Next(0, 5);
+            }
+            else
+            {
+                if (random.Next(1, 2) % 2 == 0)
+                {
+                    Ø22_604_0.WifiClients += random.Next(0, 5);
+                }
+                else
+                {
+                    Ø22_604_0.WifiClients -= random.Next(0, 5);
+                }
+            }
         }
 
         private void saveDataToDB()
