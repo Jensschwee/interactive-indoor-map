@@ -1,10 +1,6 @@
 ﻿function drawRooms(colletionOfRooms) {
-    var rooms = null;
-    if (colletionOfRooms != null) {
-        rooms = JSON.parse(colletionOfRooms);
-    } else {
-        rooms = colletionOfRoomsOnMap;
-    }
+    colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
+
     var numberOfLayers = roomLayers.length;
     for (var k = 0; k < numberOfLayers; k++) {
         geoMap.removeLayer(roomLayers.pop());
@@ -19,7 +15,7 @@
             type: "FeatureCollection",
             features: features
         };
-        $.each(rooms.features, function (index, value) {
+        $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
 
@@ -132,7 +128,7 @@ function getRoomsAndDrawRooms() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRoomsBackgrund(colletionOfRoomsOnMap);
-        drawRooms();
+        drawRooms(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
