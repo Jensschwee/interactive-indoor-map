@@ -456,7 +456,31 @@ namespace Website.Logic.Domain
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            Ø22_508_0.Occupants++;
+            Random random = new Random();
+            int decider = 0;
+
+            if (Ø22_508_0.Temperature > 24)
+            {
+                Ø22_508_0.Temperature -= random.NextDouble();
+            }
+            else if (Ø22_508_0.Temperature < 20)
+            {
+                Ø22_508_0.Temperature += random.NextDouble();
+
+            }
+            else
+            {
+                if (decider%2 == 0)
+                {
+                    Ø22_508_0.Temperature += random.NextDouble();
+                    decider++;
+                }
+                else
+                {
+                Ø22_508_0.Temperature -= random.NextDouble();
+                    decider--;
+                }
+            }
         }
 
         private void saveDataToDB()
