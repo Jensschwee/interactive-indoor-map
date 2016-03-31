@@ -121,6 +121,7 @@ function drawSelectedRoomInfoBox() {
             VentilationConsumption: 0,
             OtherConsumption: 0,
             SurfaceArea: 0,
+            WifiClients: 0,
             NumberOfRooms: roomArray.length,
             HTML: ""
         };
@@ -148,6 +149,7 @@ function drawSelectedRoomInfoBox() {
             roomInfo.VentilationConsumption += room[0].properties.VentilationConsumption;
             roomInfo.OtherConsumption += room[0].properties.OtherConsumption;
             roomInfo.SurfaceArea += room[0].properties.SurfaceArea;
+            roomInfo.WifiClients += room[0].properties.WifiClients;
         });
 
         roomInfo.HTML += drawSensorValuesInfoBox(roomInfo);
