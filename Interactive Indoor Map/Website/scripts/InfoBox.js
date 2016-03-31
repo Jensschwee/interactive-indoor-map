@@ -214,34 +214,3 @@ function infoBoxGenerateHTML(sensorData) {
     return html;
 
 }
-
-function highlightFeature(e) {
-    var layer = e.target;
-
-    if ($.inArray(layer.feature.properties, roomArray) === -1) {
-        layer.setStyle({
-            fillColor: "#FFFFFF",
-            //border color
-            weight: 5,
-            color: '#666'
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera) {
-            layer.bringToFront();
-        }
-        drawRoomInfo();
-        roomArray.push(layer.feature.properties);
-    } else {
-        roomArray = jQuery.grep(roomArray, function (value) {
-            return value != layer.feature.properties;
-        });
-        resetHighlight(e);
-    }
-    infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
-    infoboxUpdate();
-}
-
-function resetHighlight(e) {
-    roomBackgroundLayer.resetStyle(e.target);
-    infoBox.update();
-}

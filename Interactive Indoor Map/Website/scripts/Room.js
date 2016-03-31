@@ -181,6 +181,7 @@ function getRoomsAndDrawRooms() {
 }
 
 function drawRoomsBackgrund(json) {
+    
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
     }
@@ -198,15 +199,45 @@ function drawRoomsBackgrund(json) {
         ,
         onEachFeature: onEachFeature
     });
-    roomBackgroundLayer.setZIndex(1).addTo(geoMap);
+    var frontLayer = 1;
+    roomBackgroundLayer.setZIndex(frontLayer).addTo(geoMap);
 }
 
 function onEachFeature(feature, layer) {
     layer.on({
-        click: highlightFeature
+        click: onRoomClicked
     });
 }
 
 function resetSelectedRooms() {
     roomArray = [];
+}
+
+function onRoomClicked(e) {
+    var layer = e.target;
+
+    if ($.inArray(layer.feature.properties, roomArray) === -1) {
+        layer.setStyle({
+            fillColor: "#FFFFFF",
+            //border color
+            weight: 5,
+            color: '#8c8c8c'
+        });
+
+        if (!L.Browser.ie && !L.Browser.opera) {
+            layer.bringToFront();
+        }
+        drawRoomInfo();
+        roomArray.push(layer.feature.properties);
+    } else {
+        roomArray = jQuery.grep(roomArray, function (value) {
+            return value != layer.feature.properties;
+        });
+
+        //diseleced room
+        roomBackgroundLayer.resetStyle(e.target);
+        infoBox.update();
+    }
+    infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
+    infoboxUpdate();
 }
