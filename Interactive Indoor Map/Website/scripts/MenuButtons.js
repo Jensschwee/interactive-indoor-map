@@ -16,7 +16,7 @@
         states: [{
             stateName: 'None',
             icon: '&#45;&#49;',
-            title: 'Level -1',
+            title: 'Cellar',
             onClick: function () {
                 if (currentFloorLevel !== -1) {
                     currentFloorLevel = -1;
@@ -33,7 +33,7 @@
         states: [{
             stateName: 'None',
             icon: '&#48;',
-            title: 'Level 0',
+            title: 'Ground Floor',
             onClick: function () {
                 if (currentFloorLevel !== 0) {
                     currentFloorLevel = 0;
@@ -50,7 +50,7 @@
         states: [{
             stateName: 'None',
             icon: '&#49;',
-            title: 'Level 1',
+            title: 'First Floor',
             onClick: function () {
                 if (currentFloorLevel !== 1) {
                     currentFloorLevel = 1;
@@ -67,7 +67,7 @@
         states: [{
             stateName: 'None',
             icon: '&#50;',
-            title: 'Level 2',
+            title: 'Second Floor',
             onClick: function () {
                 if (currentFloorLevel !== 2) {
                     currentFloorLevel = 2;
@@ -87,7 +87,7 @@
         states: [{
             stateName: 'None',
             icon: buildingIcon,
-            title: 'Building info',
+            title: 'Building',
             onClick: function () {
                 drawBuildingInfo();
             }
@@ -114,7 +114,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: temperatureIcon,
-                title: 'Temperature view',
+                title: 'Temperature',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -130,22 +130,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#8ab1c4';
                         ActiveViews.push(temperatureObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
-
-                    btn.state('detoggled');
                 }
             }, {
                 icon: temperatureIcon,
                 stateName: 'detoggled',
-                title: 'Temperature view',
+                title: 'Temperature',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Temperature");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -181,7 +181,7 @@ function CreateViewButtons() {
             {
                 icon: co2Icon,
                 stateName: 'toggled',
-                title: 'Co2 view',
+                title: 'CO2',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
                         var co2Obj = {
@@ -196,22 +196,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#c7b7ea';
                         ActiveViews.push(co2Obj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
-
-                    btn.state('detoggled');
                 }
             }, {
                 icon: co2Icon,
                 stateName: 'detoggled',
-                title: 'Co2 view',
+                title: 'CO2',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("CO2");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -246,7 +246,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: lightIcon,
-                title: 'light view',
+                title: 'Lumen',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -261,22 +261,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#ffe11d';
                         ActiveViews.push(co2Obj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
-
-                    btn.state('detoggled');
                 }
             }, {
                 icon: lightIcon,
-                title: 'light view',
+                title: 'Lumen',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Lumen");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -309,7 +309,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: totalConsumptionIcon,
-                title: 'total power view',
+                title: 'Total Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -325,22 +325,23 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#e74c3c';
                         ActiveViews.push(totalPowerObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: totalConsumptionIcon,
-                title: 'total power view',
+                title: 'Total Power Consumption',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("TotalPowerConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -374,7 +375,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: hardwareConsumptionIcon,
-                title: 'Hardware Consumption view',
+                title: 'Hardware Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -390,22 +391,23 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#f83e2d';
                         ActiveViews.push(hardwareConsumptionObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: hardwareConsumptionIcon,
-                title: 'Hardware Consumption view',
+                title: 'Hardware Power Consumption',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("HardwareConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -440,7 +442,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: lightConsumptionIcon,
-                title: 'Light Consumption view',
+                title: 'Light Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -456,22 +458,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#f83e2d';
                         ActiveViews.push(lightConsumptionObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
-
-                    btn.state('detoggled');
                 }
             }, {
                 icon: lightConsumptionIcon,
-                title: 'Light Consumption view',
+                title: 'Light Power Consumption',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("LightConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -506,7 +508,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: ventilationConsumptonIcon,
-                title: 'Ventilation Consumption view',
+                title: 'Ventilation Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -522,22 +524,23 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#d15258';
                         ActiveViews.push(ventilationConsumptionObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: ventilationConsumptonIcon,
                 stateName: 'detoggled',
-                title: 'Ventilation Consumption view',
+                title: 'Ventilation Power Consumption',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("VentilationConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -571,7 +574,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: otherConsumptionIcon,
-                title: 'Other Consumption view',
+                title: 'Other Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -587,22 +590,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#ff8289';
                         ActiveViews.push(otherConsumptionObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
-
-                    btn.state('detoggled');
                 }
             }, {
                 icon: otherConsumptionIcon,
-                title: 'Other Consumption view',
+                title: 'Other Power Consumption',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("OtherConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -636,7 +639,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: motionIcon,
-                title: 'Motion view',
+                title: 'Motion Detection',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -650,22 +653,22 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#b2d649';
                         ActiveViews.push(motionObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: motionIcon,
-                title: 'Motion view',
+                title: 'Motion Detection',
                 stateName: 'detoggled',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Motion");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -697,7 +700,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: occupantsIcon,
-                title: 'Occupants view',
+                title: 'Occupants',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
@@ -712,22 +715,23 @@ function CreateViewButtons() {
                         btn.button.style.backgroundColor = '#2ecc71';
                         ActiveViews.push(occupantsObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: occupantsIcon,
                 stateName: 'detoggled',
-                title: 'Occupants view',
+                title: 'Occupants',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("Occupants");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
@@ -763,7 +767,7 @@ function CreateViewButtons() {
                 icon: wifiClientsIcon,
 
                 stateName: 'toggled',
-                title: 'Wifi view',
+                title: 'Wifi Clients',
                 onClick: function (btn, map) {
                     if (ActiveViews.length < 4) {
                         var wifiClientsObj = {
@@ -773,26 +777,28 @@ function CreateViewButtons() {
                             max: 'WifiClientsMax',
                             value: 'WifiClients',
                             button: toggleWifiClientsButton
+
                         };
                         btn.button.style.backgroundColor = '#83bd1a';
                         ActiveViews.push(wifiClientsObj);
                         reDrawItemsOnMap();
+                        btn.state('detoggled');
                     }
 
-                    btn.state('detoggled');
                 }
             }, {
                 icon: wifiClientsIcon,
                 stateName: 'detoggled',
-                title: 'Wifi view',
+                title: 'Wifi Clients',
                 onClick: function (btn, map) {
                     var index = findIndexOfView("WifiClients");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
+
+                        btn.state('toggled');
+                        btn.button.style.backgroundColor = 'white';
                     }
-                    btn.button.style.backgroundColor = 'white';
-                    btn.state('toggled');
                 }
             }
         ]
