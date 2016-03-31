@@ -456,7 +456,7 @@ namespace Website.Logic.Domain
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            Ø22_508_0.Occupants++;
+            Ø22_508_0.Temperature += 1.0;
         }
 
         private void saveDataToDB()

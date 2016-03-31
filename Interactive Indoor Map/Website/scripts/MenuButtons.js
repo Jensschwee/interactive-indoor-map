@@ -88,7 +88,7 @@
             icon: buildingIcon,
             title: 'Building',
             onClick: function () {
-                drawBuildingInfo();
+                drawBuildingInfoBox();
             }
         }]
     }).addTo(geoMap);
