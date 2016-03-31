@@ -16,7 +16,7 @@ function drawBuildingInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
-            '<b>Surface Area:</b> ' + props.SurfaceArea +
+            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</span>'
             : 'Click to expand') + '</div>';
@@ -44,7 +44,7 @@ function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorLevel + "</br>" +
-            '<b>Surface Area:</b> ' + props.SurfaceArea +
+            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</div></span>'
             : 'Click to expand') + '</div>';
@@ -74,7 +74,7 @@ function drawRoomInfo() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             props.Name + "</br>" +
-            '<b>Surface Area:</b> ' + props.SurfaceArea  +
+            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</span></div>'
             : 'Hover over a room to see info');
@@ -140,7 +140,7 @@ function drawSelectedRoomInfoBox() {
                 roomInfo.VentilationConsumption += roomArray[i].VentilationConsumption;
                 roomInfo.OtherConsumption += roomArray[i].OtherConsumption;
                 roomInfo.SurfaceArea += roomArray[i].SurfaceArea;
-            }
+            }   
         }
 
         roomInfo.HTML += infoBoxGenerateHTML(roomInfo);
@@ -173,10 +173,10 @@ function infoBoxGenerateHTML(sensorData) {
         html += '<b>Wifi Clients</b>: ' + sensorData.WifiClients + '<br/>';
     }
     if (findIndexOfView('Temperature') !== -1) {
-        html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + '&#8451' + '<br/>';
+        html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + ' &#8451' + '<br/>';
     }
     if (findIndexOfView('CO2') !== -1) {
-        html += '<b>CO2</b>: ' + sensorData.CO2.toFixed(1) + 'PPM' + '<br/>';
+        html += '<b>CO2</b>: ' + sensorData.CO2.toFixed(1) + ' PPM' + '<br/>';
     }
     if (findIndexOfView('Lumen') !== -1) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
@@ -190,26 +190,26 @@ function infoBoxGenerateHTML(sensorData) {
             }
         }
 
-        html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + 'lm' + '<br/>';
+        html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(1) + ' lm' + '<br/>';
     }
 
     if (findIndexOfView('TotalPowerConsumption') !== -1) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + '<br/>';
     }
     if (findIndexOfView('HardwareConsumption') !== -1) {
-        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(1) + 'kWh' + '<br/>';
+        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(1) + ' kWh' + '<br/>';
     }
     if (findIndexOfView('LightConsumption') !== -1) {
-        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(1) + 'kWh' + '<br/>';
+        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(1) + ' kWh' + '<br/>';
     }
     if (findIndexOfView('VentilationConsumption') !== -1) {
-        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(1) + 'kWh' + '<br/>';
+        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(1) + ' kWh' + '<br/>';
     }
     if (findIndexOfView('OtherConsumption') !== -1) {
-        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(1) + 'kWh' + '<br/>';
+        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(1) + ' kWh' + '<br/>';
     }
     if (findIndexOfView('PowerConsumption') !== -1) {
-        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + 'kWh' + '<br/>';
+        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(1) + ' kWh' + '<br/>';
     }
     return html;
 
