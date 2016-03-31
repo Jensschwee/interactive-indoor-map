@@ -41,7 +41,7 @@ namespace Website.Logic.Domain
 
             HttpContext.Current.Application["Building"] = building;
 
-            //TestTimer();
+            TestTimer();
             //saveDataToDB();
         }
 
