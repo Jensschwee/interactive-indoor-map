@@ -12,6 +12,7 @@ namespace Website.Logic.Domain
 {
     public class BuildingSetup
     {
+        private BuildingDAL buildingDAL;
         private Building building;
         private Floor cellarFloor;
         private Floor groundFloor;
@@ -32,6 +33,9 @@ namespace Website.Logic.Domain
 
         public void SetupBuilding()
         {
+            //buildingDAL = new BuildingDAL();
+            //building = buildingDAL.GetBuilding("Building 44");
+
             CreateBuilding();
 
             CreateFloors();
@@ -928,15 +932,6 @@ namespace Website.Logic.Domain
                 {
                     Ø22_604_0.WifiClients -= random.Next(0, 5);
                 }
-            }
-        }
-
-        private void saveDataToDB()
-        {
-            using (BuildingDbContext context = new BuildingDbContext())
-            {
-                context.Buildings.AddOrUpdate(building);
-                context.SaveChanges();
             }
         }
     }
