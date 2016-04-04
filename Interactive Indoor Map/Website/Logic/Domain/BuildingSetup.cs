@@ -130,13 +130,6 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 1000
             };
 
-            CreateSensors();
-        }
-
-        private void CreateSensors()
-        {
-            testSensor = new Sensor("Test Sensor", "Laptop");
-            cellarFloor.Sensors.Add(testSensor);
         }
 
         private void CreateRooms()
