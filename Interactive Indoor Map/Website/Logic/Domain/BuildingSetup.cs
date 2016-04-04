@@ -27,6 +27,8 @@ namespace Website.Logic.Domain
         private Room Ø22_604_0;
         private Room Ø20_604_0;
         private Room Ø20_508a_0;
+        private Room Ø20_606_1;
+        private Room Ø22_606c_1;
         private Sensor testSensor;
 
         public void SetupBuilding()
@@ -426,6 +428,71 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
+            Ø20_606_1 = new Room("Ø20-606-1", new Corners(new List<Coordinates>()
+            {
+                //Top Left Room
+                
+                new Coordinates(10.43070692999217,55.36711127188644),
+                new Coordinates(10.43056692392323,55.36710705298766),
+                new Coordinates(10.43057877027221,55.36699865466709),
+                new Coordinates(10.43071804722406,55.3670028455568)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 600,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                WifiClientsMax = 15,
+                SurfaceArea = 7
+            };
+
+            Ø22_606c_1 = new Room("Ø22-606c-1", new Corners(new List<Coordinates>()
+            {
+                //Top Left Room
+                
+                new Coordinates(10.43088801675897,55.36700263483737),
+                new Coordinates(10.43103473095622,55.36700515385672),
+                new Coordinates(10.43102477942718,55.36711676739688),
+                new Coordinates(10.43087766380805,55.3671124653335)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 600,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                WifiClientsMax = 15,
+                SurfaceArea = 7
+            };
         }
 
         private void AssembleBuilding()
@@ -435,6 +502,8 @@ namespace Website.Logic.Domain
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);
+            groundFloor.Rooms.Add(Ø20_606_1);
+            groundFloor.Rooms.Add(Ø22_606c_1);
             firstFloor.Rooms.Add(testRoomFirstFloor1);
             firstFloor.Rooms.Add(testRoomFirstFloor2);
             secondFloor.Rooms.Add(testRoomSecondFloor1);
@@ -851,7 +920,7 @@ namespace Website.Logic.Domain
 
             if (Ø22_604_0.WifiClients < 6)
             {
-                Ø22_604_0.WifiClients += random.Next(0x, 5);
+                Ø22_604_0.WifiClients += random.Next(0, 5);
             }
             else if (Ø22_604_0.WifiClients > Ø22_604_0.WifiClientsMax)
             {
