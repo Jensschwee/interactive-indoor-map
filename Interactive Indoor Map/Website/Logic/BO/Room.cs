@@ -10,11 +10,9 @@ namespace Website.Logic.BO
         [Key]
         public string Name { get; set; }
 
+        public SmapEndpoints SmapTemperatureEndpoints { get; set; }
+
         public string Alias { get; set; }
-
-        public RoomType Type { get; set; }
-
-        public Area Area { get; set; }
 
         public Corners Corners { get; set; }
 
@@ -94,21 +92,10 @@ namespace Website.Logic.BO
 
         public Room() { }
 
-        public Room(string name, Area area)
-        {
-            Name = name;
-            Area = area;
-        }
-
         public Room(string name, Corners corners)
         {
             Name = name;
             Corners = corners;
         }
-    }
-
-    public enum RoomType
-    {
-        Corridor, Classroom, Grouproom, Office, Toilet, Utilityroom
     }
 }

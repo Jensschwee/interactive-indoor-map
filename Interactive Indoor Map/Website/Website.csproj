@@ -165,10 +165,9 @@
     <Compile Include="Logic\BO\Building.cs" />
     <Compile Include="Logic\BO\Floor.cs" />
     <Compile Include="Logic\BO\Room.cs" />
-    <Compile Include="Logic\BO\Utility\Area.cs" />
     <Compile Include="Logic\BO\Utility\Coordinates.cs" />
     <Compile Include="Logic\BO\Utility\Corners.cs" />
-    <Compile Include="Logic\BO\Utility\Sensor.cs" />
+    <Compile Include="Logic\BO\Utility\SmapEndpoints.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
     <Compile Include="Logic\Domain\JsonConverter.cs" />
     <Compile Include="Persistence\BuildingDbContext.cs" />

@@ -32,7 +32,7 @@
         states: [{
             stateName: 'None',
             icon: '&#48;',
-            title: 'Ground Floor',
+            title: 'Parterre',
             onClick: function () {
                 if (currentFloorLevel !== 0) {
                     currentFloorLevel = 0;
@@ -48,7 +48,7 @@
         states: [{
             stateName: 'None',
             icon: '&#49;',
-            title: 'First Floor',
+            title: 'Ground Floor',
             onClick: function () {
                 if (currentFloorLevel !== 1) {
                     currentFloorLevel = 1;
@@ -64,7 +64,7 @@
         states: [{
             stateName: 'None',
             icon: '&#50;',
-            title: 'Second Floor',
+            title: 'First Floor',
             onClick: function () {
                 if (currentFloorLevel !== 2) {
                     currentFloorLevel = 2;
