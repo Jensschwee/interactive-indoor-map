@@ -29,7 +29,6 @@ namespace Website.Logic.Domain
         private Room Ø20_508a_0;
         private Room Ø20_606_1;
         private Room Ø22_606c_1;
-        private Sensor testSensor;
 
         public void SetupBuilding()
         {
@@ -127,13 +126,6 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 1000
             };
 
-            CreateSensors();
-        }
-
-        private void CreateSensors()
-        {
-            testSensor = new Sensor("Test Sensor", "Laptop");
-            cellarFloor.Sensors.Add(testSensor);
         }
 
         private void CreateRooms()
