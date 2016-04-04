@@ -170,6 +170,7 @@
     <Compile Include="Logic\BO\Utility\SmapEndpoints.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
     <Compile Include="Logic\Domain\JsonConverter.cs" />
+    <Compile Include="Logic\Helpers\DateConverter.cs" />
     <Compile Include="Persistence\BuildingDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
