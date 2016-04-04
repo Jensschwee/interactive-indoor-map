@@ -136,7 +136,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Default.aspx" />
-    <None Include="Map\map.json" />
+    <Content Include="Map\map.geojson" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
