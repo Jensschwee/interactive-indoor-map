@@ -524,7 +524,6 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('toggled');
                         infoboxUpdate();

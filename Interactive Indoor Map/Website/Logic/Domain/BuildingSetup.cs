@@ -66,6 +66,7 @@ namespace Website.Logic.Domain
         {
             cellarFloor = new Floor(-1)
             {
+                FloorName = "Cellar",
                 SurfaceArea = 2400,
                 HardwareConsumptionMax = 10000,
                 LightConsumptionMax = 10000,
@@ -83,6 +84,7 @@ namespace Website.Logic.Domain
 
             groundFloor = new Floor(0)
             {
+                FloorName = "Parterre",
                 SurfaceArea = 2400,
                 HardwareConsumptionMax = 10000,
                 LightConsumptionMax = 10000,
@@ -100,6 +102,7 @@ namespace Website.Logic.Domain
 
             firstFloor = new Floor(1)
             {
+                FloorName = "Ground Floor",
                 SurfaceArea = 2400,
                 HardwareConsumptionMax = 10000,
                 LightConsumptionMax = 10000,
@@ -117,6 +120,7 @@ namespace Website.Logic.Domain
 
             secondFloor = new Floor(2)
             {
+                FloorName = "First Floor",
                 SurfaceArea = 2400,
                 HardwareConsumptionMax = 10000,
                 LightConsumptionMax = 10000,
