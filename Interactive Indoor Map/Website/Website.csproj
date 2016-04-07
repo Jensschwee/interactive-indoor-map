@@ -126,6 +126,7 @@
     <Content Include="Images\temperatureIcon.png" />
     <Content Include="Images\totalPowerIcon.png" />
     <Content Include="Images\ventilationPowerIcon.png" />
+    <Content Include="Images\waterConsumptionIcon.png" />
     <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\External\easy-button.js" />
     <Content Include="scripts\InfoBox.js" />

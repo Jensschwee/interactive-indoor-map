@@ -134,6 +134,7 @@ function CreateViewButtons() {
     var motionIcon = createIconForButton("Images/motionIcon.png");
     var occupantsIcon = createIconForButton("Images/occupantsIcon.png");
     var wifiClientsIcon = createIconForButton("Images/wifiIcon.png");
+    var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
 
     var notContained = -1;
 
@@ -489,6 +490,50 @@ function CreateViewButtons() {
         ],
         position: 'topright'
     }).addTo(geoMap);;
+
+    var toggleWaterConsumptionButton = L.easyButton({
+        states: [
+            {
+                icon: waterConsumptionIcon,
+                title: 'Water Consumption',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    if (ActiveViews.length < 4) {
+                        var waterConsumptionObj = {
+                            name: "WaterConsumption",
+                            color: '#3399cc',
+                            icon: waterConsumptionIcon,
+                            max: 'WaterConsumptionMax',
+                            value: 'WaterConsumption',
+                            min: "WaterConsumptionMin",
+                            button: toggleWaterConsumptionButton
+                        };
+                        btn.button.style.backgroundColor = '#3399cc';
+                        ActiveViews.push(waterConsumptionObj);
+                        reDrawItemsOnMap();
+                        btn.state('detoggled');
+                        infoboxUpdate();
+                    }
+                }
+            }, {
+                icon: waterConsumptionIcon,
+                stateName: 'detoggled',
+                title: 'Water Consumption',
+                onClick: function (btn) {
+                    var index = findIndexOfView("WaterConsumption");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
 
     var toggleMotionButton = L.easyButton({
         states: [
