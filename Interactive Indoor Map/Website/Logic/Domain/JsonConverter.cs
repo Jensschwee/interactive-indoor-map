@@ -63,6 +63,7 @@ namespace Website.Logic.Domain
             {
                 if (floor.FloorLevel == floorLevel)
                 {
+                    sb.Append("\"FloorName\":\"" + floor.FloorName + "\",");
                     sb.Append("\"FloorLevel\":" + floor.FloorLevel + ",");
                     sb.Append("\"SurfaceArea\":" + floor.SurfaceArea + ",");
                     sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.Rooms.Count) + ",");
@@ -79,6 +80,7 @@ namespace Website.Logic.Domain
                     sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
 
                     sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
+                    sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(floor.Occupants) + ",");
                     sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients) + ",");
 
                     sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");

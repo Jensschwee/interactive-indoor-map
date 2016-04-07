@@ -14,6 +14,8 @@ namespace Website.Logic.BO
         public int Id { get; set; }
 
         public int FloorLevel { get; set; }
+
+        public string FloorName { get; set; }
     
         public List<Room> Rooms { get; set; }
     
@@ -99,6 +101,9 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public int Motion => (Rooms.Where(room => room.Motion)).Count();
+
+        [NotMapped]
+        public int Occupants => (Rooms.Sum(room => room.Occupants));
 
         [NotMapped]
         public int WifiClients => (Rooms.Sum(room => room.WifiClients));
