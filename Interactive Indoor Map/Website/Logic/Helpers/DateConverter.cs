@@ -7,9 +7,9 @@ namespace Website.Logic.Helpers
 {
     public class DateConverter
     {
-        public DateTime ConvertDate(int msSince1970)
+        public DateTime ConvertDate(long msSince1970)
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(msSince1970);
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(msSince1970).ToLocalTime(); ;
         }
     }
 }
