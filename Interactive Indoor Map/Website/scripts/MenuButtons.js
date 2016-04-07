@@ -55,6 +55,8 @@ function CreateSpatialButtons() {
         }]
     }).addTo(geoMap);
 
+    parterreButton.button.style.backgroundColor = '#8c8c8c';
+
     var groundFloorButton = L.easyButton({
         position: 'bottomright',
         states: [{
@@ -141,7 +143,7 @@ function CreateViewButtons() {
                 icon: temperatureIcon,
                 title: 'Temperature',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var temperatureObj = {
                             name: "Temperature",
@@ -163,7 +165,7 @@ function CreateViewButtons() {
                 icon: temperatureIcon,
                 stateName: 'detoggled',
                 title: 'Temperature',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("Temperature");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -185,7 +187,7 @@ function CreateViewButtons() {
                 icon: co2Icon,
                 stateName: 'toggled',
                 title: 'CO2',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var co2Obj = {
                             name: "CO2",
@@ -207,7 +209,7 @@ function CreateViewButtons() {
                 icon: co2Icon,
                 stateName: 'detoggled',
                 title: 'CO2',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("CO2");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -229,7 +231,7 @@ function CreateViewButtons() {
                 icon: lightIcon,
                 title: 'Lumen',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var co2Obj = {
                             name: "Lumen",
@@ -250,7 +252,7 @@ function CreateViewButtons() {
                 icon: lightIcon,
                 title: 'Lumen',
                 stateName: 'detoggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("Lumen");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -272,7 +274,7 @@ function CreateViewButtons() {
                 icon: totalConsumptionIcon,
                 title: 'Total Power Consumption',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var totalPowerObj = {
                             name: "TotalPowerConsumption",
@@ -295,7 +297,7 @@ function CreateViewButtons() {
                 icon: totalConsumptionIcon,
                 title: 'Total Power Consumption',
                 stateName: 'detoggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("TotalPowerConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -316,7 +318,7 @@ function CreateViewButtons() {
                 icon: hardwareConsumptionIcon,
                 title: 'Hardware Power Consumption',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var hardwareConsumptionObj = {
                             name: "HardwareConsumption",
@@ -339,7 +341,7 @@ function CreateViewButtons() {
                 icon: hardwareConsumptionIcon,
                 title: 'Hardware Power Consumption',
                 stateName: 'detoggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("HardwareConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -361,7 +363,7 @@ function CreateViewButtons() {
                 icon: lightConsumptionIcon,
                 title: 'Light Power Consumption',
                 stateName: 'toggled',
-                onClick: function(btn, map) {
+                onClick: function(btn) {
                     if (ActiveViews.length < 4) {
                         var lightConsumptionObj = {
                             name: "LightConsumption",
@@ -383,7 +385,7 @@ function CreateViewButtons() {
                 icon: lightConsumptionIcon,
                 title: 'Light Power Consumption',
                 stateName: 'detoggled',
-                onClick: function(btn, map) {
+                onClick: function(btn) {
                     var index = findIndexOfView("LightConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -405,7 +407,7 @@ function CreateViewButtons() {
                 icon: ventilationConsumptonIcon,
                 title: 'Ventilation Power Consumption',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var ventilationConsumptionObj = {
                             name: "VentilationConsumption",
@@ -428,7 +430,7 @@ function CreateViewButtons() {
                 icon: ventilationConsumptonIcon,
                 stateName: 'detoggled',
                 title: 'Ventilation Power Consumption',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("VentilationConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -450,7 +452,7 @@ function CreateViewButtons() {
                 icon: otherConsumptionIcon,
                 title: 'Other Power Consumption',
                 stateName: 'toggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     if (ActiveViews.length < 4) {
                         var otherConsumptionObj = {
                             name: "OtherConsumption",

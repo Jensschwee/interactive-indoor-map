@@ -180,6 +180,7 @@ function onRoomClicked(e) {
     var layer = e.target;
 
     if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
+        //Select room
         layer.setStyle({
             fillColor: "#FFFFFF",
             //border color
@@ -198,8 +199,7 @@ function onRoomClicked(e) {
             return value != layer.feature.properties.Name;
         });
 
-        //deseleced room
-
+        //Deselect room
         roomBackgroundLayer.resetStyle(e.target);
         infoBox.update();
     }

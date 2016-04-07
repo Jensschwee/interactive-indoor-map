@@ -6,7 +6,6 @@ using System.Timers;
 using System.Web;
 using Website.Logic.BO;
 using Website.Logic.BO.Utility;
-using Website.Persistence;
 
 namespace Website.Logic.Domain
 {
