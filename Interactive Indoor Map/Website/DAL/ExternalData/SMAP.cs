@@ -18,7 +18,7 @@ namespace Website.DAL.ExternalData
         public double GetCurrentSensorValue(string uuid)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select data before now where uuid");
+            sb.Append("select data before now where uuid = ");
             sb.Append("'" + uuid + "'");
             sb.Append("and Metadata/SourceName like 'OpcUa'");
             return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
