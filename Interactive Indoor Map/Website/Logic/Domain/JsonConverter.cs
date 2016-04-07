@@ -35,14 +35,19 @@ namespace Website.Logic.Domain
             sb.Append("\"OtherConsumption\":" + building.OtherConsumption + ",");
             sb.Append("\"TotalPowerConsumption\":" + building.TotalPowerConsumption + ",");
 
+            sb.Append("\"ColdWaterConsumption\":" + building.ColdWaterConsumption + ",");
+            sb.Append("\"ColdWaterConsumptionMax\":" + building.ColdWaterConsumptionMax + ",");
+            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption + ",");
+            sb.Append("\"HotWaterConsumptionMax\":" + building.HotWaterConsumptionMax + ",");
+
             sb.Append("\"Motion\":" + JsonConvert.SerializeObject(building.Motion) + ",");
             sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.Occupants) + ",");
             sb.Append("\"OccupantsMax\":" + JsonConvert.SerializeObject(building.OccupantsMax) + ",");
             sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(building.WifiClients) + ",");
-            sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(building.WifiClientsMax) + ",");
+            sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(building.WifiClientsMax));
 
-            sb.Append("\"ColdWaterConsumption\":" + building.ColdWaterConsumption + ",");
-            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption);
+          
+
 
             sb.Append("}");
 
@@ -78,11 +83,14 @@ namespace Website.Logic.Domain
                     sb.Append("\"OtherConsumption\":" + floor.OtherConsumption + ",");
                     sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
 
-                    sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
-                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients) + ",");
-
                     sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");
-                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption);
+                    sb.Append("\"ColdWaterConsumptionMax\":" + floor.ColdWaterConsumptionMax + ",");
+                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption + ",");
+                    sb.Append("\"HotWaterConsumptionMax\":" + floor.HotWaterConsumptionMax + ",");
+
+                    sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
+                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients));
+
 
                     break;
                 }
