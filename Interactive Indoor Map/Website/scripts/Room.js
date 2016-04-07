@@ -176,7 +176,6 @@ function changeFloor() {
 }
 
 function onRoomClicked(e) {
-    buildingButton.button.style.backgroundColor = 'white';
     var layer = e.target;
 
     if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
@@ -191,7 +190,6 @@ function onRoomClicked(e) {
             layer.bringToFront();
         }
 
-        drawRoomInfo();
         roomArray.push(layer.feature.properties.Name);
     } else {
         roomArray = jQuery.grep(roomArray, function (value) {
@@ -199,11 +197,12 @@ function onRoomClicked(e) {
         });
 
         //deseleced room
-
         roomBackgroundLayer.resetStyle(e.target);
         infoBox.update();
     }
 
+    buildingButton.button.style.backgroundColor = 'white';
+    drawRoomInfo();
     infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
     infoboxUpdate();
 }
