@@ -15,13 +15,44 @@ namespace Website.DAL.ExternalData
 
         private static readonly string ENDPOINT = @"http://10.123.3.12:8079/api/query";
 
-        public double GetCurrentSensorValue(string uuid)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uuid"></param>
+        /// <param name="sensorSoruce">
+        /// To get power use OU44-EnergyKey else use OpcUa
+        /// </param>
+        /// <returns></returns>
+        public double GetCurrentSensorValue(string uuid, string sensorSoruce)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now where uuid = ");
             sb.Append("'" + uuid + "'");
-            sb.Append("and Metadata/SourceName like 'OpcUa'");
+            sb.Append("and Metadata/SourceName like ");
+            sb.Append("'" + sensorSoruce + "'");
             return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uuid"></param>
+        /// <param name="sensorSoruce">
+        /// To get power use OU44-EnergyKey else use OpcUa
+        /// </param>
+        /// <param name="fromDate"></param>
+        /// <param name="toDate"></param>
+        /// <returns></returns>
+        public SMapSensorReading GetHistoricSensorValue(string uuid, string sensorSoruce, DateTime fromDate, DateTime toDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select data in (");
+            sb.Append("'" + fromDate.Date.ToString() + "'");
+            sb.Append(", '" + toDate.Date.ToString() + "')");
+            sb.Append(" where uuid = '" + uuid + "'");
+            sb.Append("and Metadata/SourceName like ");
+            sb.Append("'" + sensorSoruce + "'");
+            return sendHTTPPost(ENDPOINT, sb.ToString());
         }
 
         private SMapSensorReading sendHTTPPost(string endpoint, string body)
