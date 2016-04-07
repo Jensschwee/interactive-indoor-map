@@ -12,7 +12,6 @@ namespace Website.Logic.Domain
 {
     public class BuildingSetup
     {
-        private BuildingDAL buildingDAL;
         private Building building;
         private Floor cellarFloor;
         private Floor groundFloor;
@@ -23,7 +22,7 @@ namespace Website.Logic.Domain
         private Room testRoomFirstFloor2;
         private Room testRoomSecondFloor1;
         private Room testRoomSecondFloor2;
-        private Room testRoom;
+        //private Room testRoom;
         private Room Ø22_508_0;
         private Room Ø22_604_0;
         private Room Ø20_604_0;

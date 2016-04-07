@@ -137,6 +137,7 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="Map\map.geojson" />
+    <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

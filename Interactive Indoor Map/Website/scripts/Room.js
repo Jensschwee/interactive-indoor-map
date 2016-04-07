@@ -176,6 +176,7 @@ function changeFloor() {
 }
 
 function onRoomClicked(e) {
+    buildingButton.button.style.backgroundColor = 'white';
     var layer = e.target;
 
     if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
@@ -189,6 +190,7 @@ function onRoomClicked(e) {
         if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();
         }
+
         drawRoomInfo();
         roomArray.push(layer.feature.properties.Name);
     } else {
@@ -196,10 +198,12 @@ function onRoomClicked(e) {
             return value != layer.feature.properties.Name;
         });
 
-        //diseleced room
+        //deseleced room
+
         roomBackgroundLayer.resetStyle(e.target);
         infoBox.update();
     }
+
     infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
     infoboxUpdate();
 }

@@ -1,4 +1,6 @@
-﻿function CreateSpatialButtons() {
+﻿var buildingButton;
+
+function CreateSpatialButtons() {
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);
@@ -11,80 +13,102 @@
         }
     });
 
-    L.easyButton({
+    var cellarButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
             icon: '&#45;&#49;',
             title: 'Cellar',
-            onClick: function () {
+            onClick: function (btn) {
                 if (currentFloorLevel !== -1) {
                     currentFloorLevel = -1;
                     changeFloor();
                 }
                 drawFloorInfoBox();
+                btn.button.style.backgroundColor = '#8c8c8c';
+                parterreButton.button.style.backgroundColor = 'white';
+                groundFloorButton.button.style.backgroundColor = 'white';
+                firstFloorButton.button.style.backgroundColor = 'white';
+                buildingButton.button.style.backgroundColor = 'white';
             }
         }]
     }).addTo(geoMap);
 
-    L.easyButton({
+    var parterreButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
             icon: '&#48;',
             title: 'Parterre',
-            onClick: function () {
+            onClick: function (btn) {
                 if (currentFloorLevel !== 0) {
                     currentFloorLevel = 0;
                     changeFloor();
                 }
                 drawFloorInfoBox();
+                btn.button.style.backgroundColor = '#8c8c8c';
+                cellarButton.button.style.backgroundColor = 'white';
+                groundFloorButton.button.style.backgroundColor = 'white';
+                firstFloorButton.button.style.backgroundColor = 'white';
+                buildingButton.button.style.backgroundColor = 'white';
             }
         }]
     }).addTo(geoMap);
 
-    L.easyButton({
+    var groundFloorButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
             icon: '&#49;',
             title: 'Ground Floor',
-            onClick: function () {
+            onClick: function (btn) {
                 if (currentFloorLevel !== 1) {
                     currentFloorLevel = 1;
                     changeFloor();
                 }
                 drawFloorInfoBox();
+                btn.button.style.backgroundColor = '#8c8c8c';
+                cellarButton.button.style.backgroundColor = 'white';
+                parterreButton.button.style.backgroundColor = 'white';
+                firstFloorButton.button.style.backgroundColor = 'white';
+                buildingButton.button.style.backgroundColor = 'white';
             }
         }]
     }).addTo(geoMap);
 
-    L.easyButton({
+    var firstFloorButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
             icon: '&#50;',
             title: 'First Floor',
-            onClick: function () {
+            onClick: function (btn) {
                 if (currentFloorLevel !== 2) {
                     currentFloorLevel = 2;
                     changeFloor();
                 }
                 drawFloorInfoBox();
+                btn.button.style.backgroundColor = '#8c8c8c';
+                cellarButton.button.style.backgroundColor = 'white';
+                parterreButton.button.style.backgroundColor = 'white';
+                groundFloorButton.button.style.backgroundColor = 'white';
+                buildingButton.button.style.backgroundColor = 'white';
             }
         }]
     }).addTo(geoMap);
 
     var buildingIcon = createIconForButton("Images/buildingIcon.png");
 
-    L.easyButton({
+    buildingButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
             icon: buildingIcon,
             title: 'Building',
-            onClick: function () {
+            onClick: function (btn) {
                 drawBuildingInfoBox();
+                btn.button.style.backgroundColor = '#8c8c8c';
+
             }
         }]
     }).addTo(geoMap);
