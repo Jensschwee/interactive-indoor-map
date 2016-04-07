@@ -184,7 +184,7 @@ function onRoomClicked(e) {
             //border color
             weight: 5,
             color: '#8c8c8c'
-        });
+        }); 
 
         if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();
