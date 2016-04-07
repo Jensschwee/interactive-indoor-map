@@ -83,8 +83,6 @@ namespace Website.Logic.BO
         [NotMapped]
         public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
 
-        public List<Sensor> Sensors { get; set; }
-
         [NotMapped]
         public double HotWaterConsumption { get; set; }
 
@@ -111,14 +109,12 @@ namespace Website.Logic.BO
         public Floor()
         {
             Rooms = new List<Room>();
-            Sensors = new List<Sensor>();
         }
 
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;
             Rooms = new List<Room>();
-            Sensors = new List<Sensor>();
         }
     }
 }

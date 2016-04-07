@@ -498,8 +498,8 @@ namespace Website.Logic.Domain
             groundFloor.Rooms.Add(Ø20_508a_0);
             groundFloor.Rooms.Add(Ø22_604_0);
             groundFloor.Rooms.Add(Ø20_604_0);
-            groundFloor.Rooms.Add(Ø20_606_1);
-            groundFloor.Rooms.Add(Ø22_606c_1);
+            //groundFloor.Rooms.Add(Ø20_606_1);
+            //groundFloor.Rooms.Add(Ø22_606c_1);
             firstFloor.Rooms.Add(testRoomFirstFloor1);
             firstFloor.Rooms.Add(testRoomFirstFloor2);
             secondFloor.Rooms.Add(testRoomSecondFloor1);
