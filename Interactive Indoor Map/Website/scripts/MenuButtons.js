@@ -1,4 +1,6 @@
-﻿function CreateSpatialButtons() {
+﻿var buildingButton;
+
+function CreateSpatialButtons() {
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);
@@ -97,7 +99,7 @@
 
     var buildingIcon = createIconForButton("Images/buildingIcon.png");
 
-    var buildingButton = L.easyButton({
+    buildingButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
