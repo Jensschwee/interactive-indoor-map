@@ -1,7 +1,7 @@
 using Website.Logic.BO;
 using Website.Logic.BO.Utility;
 
-namespace Website.Persistence
+namespace Website.DAL.Persistence
 {
     using System;
     using System.Data.Entity;

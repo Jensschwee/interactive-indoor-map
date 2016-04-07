@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Website.Logic.BO;
 
-namespace Website.Persistence
+namespace Website.DAL.Persistence
 {
     public class BuildingDAL
     {
