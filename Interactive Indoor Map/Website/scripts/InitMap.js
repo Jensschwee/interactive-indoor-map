@@ -39,12 +39,13 @@ var ActiveViews = [];
 
 function DrawWorldMap() {
     //Setup the world map
-    var worldMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    var worldMap = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
         minZoom: 19,
         zoom: 19,
         maxZoom: 20,
         maxNativeZoom: 19,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
+        subdomains:['mt0','mt1','mt2','mt3'],
+        attribution: 'Map data &copy; Google maps</a>'
     });
 
     return worldMap;
