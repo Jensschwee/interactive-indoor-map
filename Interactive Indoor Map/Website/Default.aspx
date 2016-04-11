@@ -32,6 +32,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script>
+        if (typeof L == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/external/leaflet.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
     <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
@@ -39,23 +44,12 @@
     <script src="scripts/External/L.D3SvgOverlay.min.js"></script>
 
     <script type='text/javascript' src='scripts/External/easy-button.js'></script>
-
-    <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/Legend.js'></script>
     <script type='text/javascript' src='scripts/MenuButtons.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
     <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>
-
-
-
-    <%--    <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
-    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>--%>
-
-
-
-    <%--<script type="text/javascript" src="scripts/leaflet-realtime.js"></script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
