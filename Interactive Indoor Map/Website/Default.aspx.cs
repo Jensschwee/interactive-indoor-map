@@ -23,6 +23,8 @@ namespace Website
         {
             if (!Page.IsPostBack)
             {
+                //BuildingSetup building = new BuildingSetup();
+                //building.SetupBuilding();
                 Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {

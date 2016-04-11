@@ -129,6 +129,7 @@
     <Content Include="Images\waterConsumptionIcon.png" />
     <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\External\easy-button.js" />
+    <Content Include="scripts\External\leaflet.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
     <Content Include="packages.config" />
@@ -138,6 +139,7 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="Map\map.geojson" />
+    <Content Include="Map\ou44_geometry.geojson" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
     <None Include="Web.Debug.config">

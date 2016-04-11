@@ -71,7 +71,7 @@ namespace Website.DAL.ExternalData
             }
 
             var response = (HttpWebResponse)request.GetResponse();
-
+                
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
             var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
