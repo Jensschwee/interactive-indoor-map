@@ -175,10 +175,12 @@
     <Compile Include="Logic\BO\Room.cs" />
     <Compile Include="Logic\BO\Utility\Coordinates.cs" />
     <Compile Include="Logic\BO\Utility\Corners.cs" />
+    <Compile Include="Logic\BO\Utility\SensorType.cs" />
     <Compile Include="Logic\BO\Utility\SmapEndpoints.cs" />
     <Compile Include="Logic\BO\Utility\SMapSensorReading.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
     <Compile Include="Logic\Domain\JsonConverter.cs" />
+    <Compile Include="Logic\Domain\RealTimeUpdater.cs" />
     <Compile Include="Logic\Helpers\DateConverter.cs" />
     <Compile Include="DAL\Persistence\BuildingDAL.cs" />
     <Compile Include="DAL\Persistence\BuildingDbContext.cs" />

@@ -21,6 +21,8 @@ namespace Website.Logic.BO
     
         public double SurfaceArea { get; set; }
 
+        public SmapEndpoints SmapEndpoints { get; set; }
+
         [NotMapped]
         public double Temperature
             =>

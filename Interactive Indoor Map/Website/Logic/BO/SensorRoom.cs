@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Website.Logic.BO.Utility;
@@ -7,8 +8,7 @@ namespace Website.Logic.BO
 {
     public class SensorRoom : Room
     {
-
-        public SmapEndpoints SmapTemperatureEndpoints { get; set; }
+        public SmapEndpoints SmapEndpoints { get; set; }
 
         public Corners Corners { get; set; }
 

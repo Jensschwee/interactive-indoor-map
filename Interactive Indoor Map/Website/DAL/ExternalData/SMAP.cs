@@ -19,17 +19,17 @@ namespace Website.DAL.ExternalData
         /// 
         /// </summary>
         /// <param name="uuid"></param>
-        /// <param name="sensorSoruce">
+        /// <param name="sensorSource">
         /// To get power use OU44-EnergyKey else use OpcUa
         /// </param>
         /// <returns></returns>
-        public double GetCurrentSensorValue(string uuid, string sensorSoruce)
+        public double GetCurrentSensorValue(string uuid, string sensorSource)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now where uuid = ");
             sb.Append("'" + uuid + "'");
             sb.Append("and Metadata/SourceName like ");
-            sb.Append("'" + sensorSoruce + "'");
+            sb.Append("'" + sensorSource + "'");
             return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
         }
 
