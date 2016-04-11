@@ -16,30 +16,18 @@ namespace Website.Logic.Domain
         private Floor groundFloor;
         private Floor firstFloor;
         private Floor secondFloor;
-        private fisk _testSensorRoomCellar1;
-        private fisk _testSensorRoomFirstFloor1;
-        private fisk _testSensorRoomFirstFloor2;
-        private fisk _testSensorRoomSecondFloor1;
-        private fisk _testSensorRoomSecondFloor2;
+        private SensorRoom _testSensorRoomCellar1;
+        private SensorRoom _testSensorRoomFirstFloor1;
+        private SensorRoom _testSensorRoomFirstFloor2;
+        private SensorRoom _testSensorRoomSecondFloor1;
+        private SensorRoom _testSensorRoomSecondFloor2;
         //private SensorRoom testRoom;
-        private fisk Ø22_508_0;
-        private fisk Ø22_604_0;
-        private fisk Ø20_604_0;
-        private fisk Ø20_508a_0;
-        private fisk Ø20_606_1;
-        private fisk Ø22_606c_1;
-        private Room testRoomCellar1;
-        private Room testRoomFirstFloor1;
-        private Room testRoomFirstFloor2;
-        private Room testRoomSecondFloor1;
-        private Room testRoomSecondFloor2;
-        //private Room testRoom;
-        private Room Ø22_508_0;
-        private Room Ø22_604_0;
-        private Room Ø20_604_0;
-        private Room Ø20_508a_0;
-        private Room Ø20_606_1;
-        private Room Ø22_606c_1;
+        private SensorRoom Ø22_508_0;
+        private SensorRoom Ø22_604_0;
+        private SensorRoom Ø20_604_0;
+        private SensorRoom Ø20_508a_0;
+        private SensorRoom Ø20_606_1;
+        private SensorRoom Ø22_606c_1;
 
         public void SetupBuilding()
         {
@@ -152,7 +140,7 @@ namespace Website.Logic.Domain
 
         private void CreateRooms()
         {
-            _testSensorRoomCellar1 = new fisk("_testSensorRoomCellar1", new Corners(new List<Coordinates>()
+            _testSensorRoomCellar1 = new SensorRoom("_testSensorRoomCellar1", new Corners(new List<Coordinates>()
             {
                 //Top Left SensorRoom
                 
@@ -184,7 +172,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            _testSensorRoomFirstFloor1 = new fisk("_testSensorRoomFirstFloor1", new Corners(new List<Coordinates>()
+            _testSensorRoomFirstFloor1 = new SensorRoom("_testSensorRoomFirstFloor1", new Corners(new List<Coordinates>()
             {
                 //Bottom Right SensorRoom
                 new Coordinates(10.431097447872162, 55.367223918792),
@@ -215,7 +203,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            _testSensorRoomFirstFloor2 = new fisk("_testSensorRoomFirstFloor2", new Corners(new List<Coordinates>()
+            _testSensorRoomFirstFloor2 = new SensorRoom("_testSensorRoomFirstFloor2", new Corners(new List<Coordinates>()
             {
                 //Bottom Left SensorRoom
                 new Coordinates(10.430764853954315, 55.367210199744484),
@@ -246,7 +234,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            _testSensorRoomSecondFloor1 = new fisk("_testSensorRoomSecondFloor1", new Corners(new List<Coordinates>()
+            _testSensorRoomSecondFloor1 = new SensorRoom("_testSensorRoomSecondFloor1", new Corners(new List<Coordinates>()
             {
                 //Top Left SensorRoom
                 
@@ -279,7 +267,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            _testSensorRoomSecondFloor2 = new fisk("_testSensorRoomSecondFloor2", new Corners(new List<Coordinates>()
+            _testSensorRoomSecondFloor2 = new SensorRoom("_testSensorRoomSecondFloor2", new Corners(new List<Coordinates>()
             {
                 //Top Right SensorRoom
                 
@@ -312,7 +300,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_508a_0 = new fisk("Ø20-508a-0", new Corners(new List<Coordinates>()
+            Ø20_508a_0 = new SensorRoom("Ø20-508a-0", new Corners(new List<Coordinates>()
             {
                 //Top Left SensorRoom
                 
@@ -346,7 +334,7 @@ namespace Website.Logic.Domain
 
             };
 
-            Ø22_508_0 = new fisk("Ø22-508-0", new Corners(new List<Coordinates>()
+            Ø22_508_0 = new SensorRoom("Ø22-508-0", new Corners(new List<Coordinates>()
             {
                 //Top Right SensorRoom
                 new Coordinates(10.4310491750001,55.367560482),
@@ -378,7 +366,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø22_604_0 = new fisk("Ø22-604-0", new Corners(new List<Coordinates>()
+            Ø22_604_0 = new SensorRoom("Ø22-604-0", new Corners(new List<Coordinates>()
             {
                 //Bottom Right SensorRoom
                 new Coordinates(10.431097447872162, 55.367223918792),
@@ -410,7 +398,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_604_0 = new fisk("Ø20_604_0", new Corners(new List<Coordinates>()
+            Ø20_604_0 = new SensorRoom("Ø20_604_0", new Corners(new List<Coordinates>()
             {
                 //Bottom Left SensorRoom
                 new Coordinates(10.430764853954315, 55.367210199744484),
@@ -442,7 +430,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_606_1 = new fisk("Ø20-606-1", new Corners(new List<Coordinates>()
+            Ø20_606_1 = new SensorRoom("Ø20-606-1", new Corners(new List<Coordinates>()
             {
                 //Top Left SensorRoom
                 
@@ -475,7 +463,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø22_606c_1 = new fisk("Ø22-606c-1", new Corners(new List<Coordinates>()
+            Ø22_606c_1 = new SensorRoom("Ø22-606c-1", new Corners(new List<Coordinates>()
             {
                 //Top Left SensorRoom
                 
