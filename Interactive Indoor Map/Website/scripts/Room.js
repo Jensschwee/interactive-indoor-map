@@ -163,6 +163,7 @@ function drawRoomsBackgrund(json) {
     });
     var backLayer = 0;
     roomBackgroundLayer.setZIndex(backLayer).addTo(geoMap);
+    roomBackgroundLayer.bringToBack();
 }
 
 function backgrundStyle(feature) {
