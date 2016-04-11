@@ -11,7 +11,7 @@ namespace Website.Logic.Domain
     {
         public string ConvertBuilding()
         {
-            return ConvertBuilding((Building) HttpContext.Current.Application["Building"]);
+            return ConvertBuilding((Building)HttpContext.Current.Application["Building"]);
         }
 
         public string ConvertBuilding(Building building)
@@ -46,7 +46,7 @@ namespace Website.Logic.Domain
             sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(building.WifiClients) + ",");
             sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(building.WifiClientsMax));
 
-          
+
 
 
             sb.Append("}");
@@ -91,7 +91,7 @@ namespace Website.Logic.Domain
 
                     sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
                     sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(floor.Occupants) + ",");
-                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients)+ ",");
+                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients) + ",");
                     sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(floor.WifiClientsMax));
                     break;
                 }
@@ -104,18 +104,53 @@ namespace Website.Logic.Domain
 
         public string ConvertRoomsGeoJson(int floorLevel)
         {
-            Building building = (Building) HttpContext.Current.Application["Building"];
+            Building building = (Building)HttpContext.Current.Application["Building"];
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
             foreach (Floor floor in building.Floors)
             {
+                if (floor.FloorLevel == floorLevel)
+                {
+                    foreach (Room room in floor.Rooms)
+                    {
+                        if (room.GetType() == typeof(SensorRoom))
+                        {
+                            SensorRoom currentRoom = (SensorRoom)room;
+                            sb.Append("{ \"type\": \"Feature\", \"properties\": {");
+                            sb.Append("\"RoomType\":" + JsonConvert.SerializeObject(currentRoom.RoomType.ToString()));
+                            sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
+                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.YCoordinate) + "],");
+                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.BottomLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.BottomLeftCorner.YCoordinate) + "],");
+                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.BottomRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.BottomRightCorner.YCoordinate) + "],");
+                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.TopRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.TopRightCorner.YCoordinate) + "],");
+                            sb.Remove(sb.Length - 1, 1);
+                            sb.Append("]]}},");
+                        }
+                        else if (room.GetType() == typeof(SensorlessRoom))
+                        {
+                            SensorlessRoom currentRoom = (SensorlessRoom)room;
+                            sb.Append("{ \"type\": \"Feature\", \"properties\": {");
+                            sb.Append("\"RoomType\":" + JsonConvert.SerializeObject(currentRoom.RoomType.ToString()));
+                            sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
+                            foreach (Coordinates coordinates in currentRoom.Coordinates)
+                            {
+                                sb.Append("[" + JsonConvert.SerializeObject(coordinates.XCoordinate) + "," + JsonConvert.SerializeObject(coordinates.YCoordinate) + "],");
+                            }
+                            sb.Remove(sb.Length - 1, 1);
+                            sb.Append("]]}},");
+                        }
+                    }
+                    sb.Remove(sb.Length - 1, 1);
+                    break;
+                }
             }
-            return "";
+            sb.Append("]}");
+            return sb.ToString();
         }
 
         public string ConvertRooms(int? floorLevel = null)
         {
-            return ConvertRooms((Building) HttpContext.Current.Application["Building"], floorLevel);
+            return ConvertRooms((Building)HttpContext.Current.Application["Building"], floorLevel);
         }
 
         public string ConvertRooms(Building building, int? floorLevel = null)
@@ -129,9 +164,9 @@ namespace Website.Logic.Domain
                     foreach (Room room in floor.Rooms)
                     {
                         SensorRoom currentRoom = null;
-                        if (typeof (SensorRoom) == room.GetType())
+                        if (typeof(SensorRoom) == room.GetType())
                         {
-                            currentRoom = (SensorRoom) room;
+                            currentRoom = (SensorRoom)room;
                         }
                         else
                         {
@@ -148,7 +183,7 @@ namespace Website.Logic.Domain
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(currentRoom.CO2) + ",");
                         sb.Append("\"CO2Max\":" + JsonConvert.SerializeObject(currentRoom.CO2Max) + ",");
                         sb.Append("\"CO2Min\":" + JsonConvert.SerializeObject(currentRoom.CO2Min) + ",");
-                        
+
                         sb.Append("\"Light\":" + JsonConvert.SerializeObject(currentRoom.Light) + ",");
 
                         sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(currentRoom.Lumen) + ",");

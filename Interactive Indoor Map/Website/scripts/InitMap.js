@@ -3,38 +3,11 @@ var view;
 var currentFloorLevel = 0;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
+var roomForgroundLayer = null;
 var roomBackgroundLayer = null;
 var infoboxUpdate = null;
 var roomLayers = [];
 var ActiveViews = [];
-//    Views: [],
-//    ActiveViews: ActiveViews.Views.length
-//    //,
-//    //Temperature: false,
-//    //TemperatureColor: "#8ab1c4",
-//    //CO2: false,
-//    //CO2Color: "#c7b7ea", //#9b59b6
-//    //Light: false,
-//    //LightColor: "#ffe11d", //#fce30b
-//    //HardwareConsumption: false,
-//    //HardWareConsumptionColor: "#f83e2d",
-//    //LightConsumption: false,
-//    //LightConsumptionColor: "#fe4e35",
-//    //VentilationConsumption: false,
-//    //VentilationConsumptionColor: "#d15258",
-//    //OtherConsumption: false,
-//    //OtherConsumptionColor: "#ff8289",
-//    //TotalPowerConsumption: false,
-//    //TotalPowerConsumptionColor: "#e74c3c",
-//    //Motion: false,
-//    //MotionColor: "#b2d649",
-//    //Occupants: false,
-//    //OccupantsColor: "#2ecc71",
-//    //WifiClients: false,
-//    //WifiClientsColor: "#83bd1a"
-//    ////"#2ecc71"
-//    ////#d6f58e
-//};
 
 
 function DrawWorldMap() {
@@ -62,7 +35,8 @@ function InitLeafletMap(JSONMap) {
     //Links obj to super obj
     //DefaultView.prototype = new View();
     //TemperatureView.prototype = new View();
-    getRoomsAndDrawRoomsWithRoomOverlay();
+    getRoomsAndDrawBackgrund();
+    getRoomsAndDrawRoomsWithRoomOverlays();
 
     worldMap.addTo(geoMap);
 

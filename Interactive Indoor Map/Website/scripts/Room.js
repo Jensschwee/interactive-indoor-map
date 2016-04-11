@@ -125,15 +125,17 @@
             }
         }).addTo(geoMap).bringToBack());
     }
+    roomBackgroundLayer.bringToBack();
 }
 
-function getRoomsAndDrawRoomsWithRoomOverlay() {
+function getRoomsAndDrawRoomsWithRoomOverlays() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRoomsBackground(colletionOfRoomsOnMap);
+        drawRoomsForground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+    getRoomsAndDrawBackgrund();
 }
 
 function getRoomsAndDrawRooms() {
@@ -144,10 +146,53 @@ function getRoomsAndDrawRooms() {
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
 
-function drawRoomsBackground(json) {
-    
+function getRoomsAndDrawBackgrund() {
+    function onSuccess(response) {
+        var roomsBackgrund = JSON.parse(response);
+        drawRoomsBackgrund(roomsBackgrund);
+    }
+    PageMethods.DrawRoomsBackgrund(currentFloorLevel, onSuccess);
+}
+
+function drawRoomsBackgrund(json) {
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
+    }
+    roomBackgroundLayer = L.geoJson(json, {
+        style: backgrundStyle
+    });
+    var backLayer = 0;
+    roomBackgroundLayer.setZIndex(backLayer).addTo(geoMap);
+    roomBackgroundLayer.bringToBack();
+}
+
+function backgrundStyle(feature) {
+    return {
+        //Backgrund color
+        fillColor: getRoomBackgrundColor(feature.properties.RoomType),
+        //border color
+        color: "#FFFFFF",
+        //Border thickness
+        fillOpacity: 1.0
+    };
+}
+
+function getRoomBackgrundColor(RoomType) {
+    return RoomType === "Classroom" ? '#fff8dc' :
+           RoomType === "Studyzone" ? '#fff8dc' :
+           RoomType === "Office" ? '#fff8dc' :
+           RoomType === "Hallway" ? '#FFFFFF' :
+           RoomType === "Stairs" ? '#FFFFFF' :
+           RoomType === "Elevator" ? '#FFFFFF' :
+           RoomType === "Toilet" ? '#FFFFFF' :
+           RoomType === "Utility" ? '#FFFFFF' :
+           '#FFFFFF';
+}
+
+function drawRoomsForground(json) {
+    
+    if (roomForgroundLayer != null) {
+        geoMap.removeLayer(roomForgroundLayer);
     }
 
     var roomOnClickEventHandler = function (feature, layer) {
@@ -156,7 +201,7 @@ function drawRoomsBackground(json) {
         });
     };
 
-    roomBackgroundLayer = L.geoJson(json, {
+    roomForgroundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
             fillColor: "#FFFFFF",
@@ -170,12 +215,12 @@ function drawRoomsBackground(json) {
         onEachFeature: roomOnClickEventHandler
     });
     var frontLayer = 1;
-    roomBackgroundLayer.setZIndex(frontLayer).addTo(geoMap);
+    roomForgroundLayer.setZIndex(frontLayer).addTo(geoMap);
 }
 
 function changeFloor() {
     roomArray = [];
-    getRoomsAndDrawRoomsWithRoomOverlay();
+    getRoomsAndDrawRoomsWithRoomOverlays();
 }
 
 function onRoomClicked(e) {
@@ -199,7 +244,7 @@ function onRoomClicked(e) {
         });
 
         //Deselect room
-        roomBackgroundLayer.resetStyle(e.target);
+        roomForgroundLayer.resetStyle(e.target);
         infoBox.update();
     }
 
