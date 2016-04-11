@@ -23,8 +23,6 @@ namespace Website
         {
             if (!Page.IsPostBack)
             {
-                //BuildingSetup building = new BuildingSetup();
-                //building.SetupBuilding();
                 Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
@@ -56,6 +54,15 @@ namespace Website
             JsonConverter converter = new JsonConverter();
 
             return converter.ConvertRooms(floorLevel);
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static string DrawRoomsBackgrund(int floorLevel)
+        {
+            JsonConverter converter = new JsonConverter();
+
+            return converter.ConvertRoomsGeoJson(floorLevel);
         }
 
         [System.Web.Services.WebMethod]
