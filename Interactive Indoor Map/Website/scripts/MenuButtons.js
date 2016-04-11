@@ -669,7 +669,7 @@ function CreateViewButtons() {
 
 function reDrawItemsOnMap() {
     drawLegend();
-    drawRooms();
+    splitRoomsIntoBarchart();
 }
 
 function findIndexOfView(name) {

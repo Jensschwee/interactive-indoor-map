@@ -72,7 +72,6 @@ function InitLeafletMap(JSONMap) {
     CreateViewButtons();
     //L.geoJson("Map\ou44_geometry.geojson").addTo(geoMap);
     //addLevel2();
-    //drawRoomsBackgrund(JSONMap);
 }
 
 function initMapSettings(geojson) {

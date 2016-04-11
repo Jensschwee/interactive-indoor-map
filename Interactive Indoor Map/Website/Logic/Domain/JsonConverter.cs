@@ -126,7 +126,7 @@ namespace Website.Logic.Domain
             {
                 if (floor.FloorLevel == floorLevel)
                 {
-                    foreach (Room room in floor.Rooms)
+                    foreach (fisk room in floor.Rooms)
                     {
                         sb.Append("{ \"type\": \"Feature\", \"properties\": {");
                         sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
