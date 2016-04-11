@@ -13,108 +13,167 @@ namespace Website.Logic.Domain
     public class RealTimeUpdater
     {
         private SMAP smap = new SMAP();
+        Building building = (Building)HttpContext.Current.Application["Building"];
         private readonly string electricitySmapRoot = "OU44-EnergyKey";
         private readonly string otherSmapRoot = "OpcUa";
+        private int temperatureUpdateInterval = 5000;
+        private int co2UpdateInterval = 5000;
+        private int lightUpdateInterval = 5000;
+        private int lumenUpdateInterval = 5000;
+        private int powerConsumptionInterval = 5000;
+        private int waterUpdateInterval = 5000;
+        private int motionDetectedUpdateInterval = 5000;
+        private int occupantsUpdateInterval = 5000;
+        private int wifiClientsUpdateInterval = 5000;
 
-        public void Updater()
+        public void CreateUpdateTimers()
         {
+            Timer temperatureUpdater = new Timer();
+            temperatureUpdater.Elapsed += new ElapsedEventHandler(OnTemperatureTimedEvent);
+            temperatureUpdater.Interval = temperatureUpdateInterval;
+            temperatureUpdater.Enabled = true;
+
+            Timer co2Updater = new Timer();
+            co2Updater.Elapsed += new ElapsedEventHandler(OnCO2TimedEvent);
+            co2Updater.Interval = co2UpdateInterval;
+            co2Updater.Enabled = true;
+
+            Timer lightUpdater = new Timer();
+            lightUpdater.Elapsed += new ElapsedEventHandler(OnLightTimedEvent);
+            lightUpdater.Interval = lightUpdateInterval;
+            lightUpdater.Enabled = true;
+
+            Timer lumenUpdater = new Timer();
+            lumenUpdater.Elapsed += new ElapsedEventHandler(OnLumenTimedEvent);
+            lumenUpdater.Interval = lumenUpdateInterval;
+            lumenUpdater.Enabled = true;
+
+            Timer powerConsumptionUpdater = new Timer();
+            powerConsumptionUpdater.Elapsed += new ElapsedEventHandler(OnPowerConsumptionTimedEvent);
+            powerConsumptionUpdater.Interval = powerConsumptionInterval;
+            powerConsumptionUpdater.Enabled = true;
+
+            Timer waterUpdater = new Timer();
+            waterUpdater.Elapsed += new ElapsedEventHandler(OnWaterTimedEvent);
+            waterUpdater.Interval = waterUpdateInterval;
+            waterUpdater.Enabled = true;
+
             Timer motionUpdater = new Timer();
-            motionUpdater.Elapsed += (sender, e) => OnTimedEvent(sender, e, SensorType.MotionDetection);
-            //motionUpdater.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            motionUpdater.Interval = 1000;
+            motionUpdater.Elapsed += new ElapsedEventHandler(OnMotionTimedEvent);
+            motionUpdater.Interval = motionDetectedUpdateInterval;
             motionUpdater.Enabled = true;
 
-            Timer temperatureUpdater = new Timer();
-            motionUpdater.Interval = 1000;
-            motionUpdater.Enabled = true;
+            Timer occupancyUpdater = new Timer();
+            occupancyUpdater.Elapsed += new ElapsedEventHandler(OnOccupantsTimedEvent);
+            occupancyUpdater.Interval = occupantsUpdateInterval;
+            occupancyUpdater.Enabled = true;
+
+            Timer wifiClientsUpdater = new Timer();
+            wifiClientsUpdater.Elapsed += new ElapsedEventHandler(OnWifiClientsTimedEvent);
+            wifiClientsUpdater.Interval = wifiClientsUpdateInterval;
+            wifiClientsUpdater.Enabled = true;
         }
 
-        private void OnTimedEvent(object source, ElapsedEventArgs e, SensorType type)
+        private void OnTemperatureTimedEvent(object source, ElapsedEventArgs e)
         {
-            Building building = (Building) HttpContext.Current.Application["Building"];
-
             foreach (Floor floor in building.Floors)
             {
-                if (type == SensorType.HotWater)
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    floor.HotWaterConsumption = smap.GetCurrentSensorValue(
-                        floor.SmapEndpoints.HotWaterConsumptionUUID,
-                        otherSmapRoot);
-                }
-
-                if (type == SensorType.ColdWater)
-                {
-                    floor.ColdWaterConsumption = smap.GetCurrentSensorValue(
-                        floor.SmapEndpoints.ColdWaterConsumptionUUID,
-                        otherSmapRoot);
-                }
-
-                foreach (SensorRoom sensorRoom in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
-                {
-                    if (type == SensorType.Temperature)
-                    {
-                        sensorRoom.Temperature = smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.TemperatureUUID, otherSmapRoot);
-                    }
-
-                    if (type == SensorType.CO2)
-                    {
-                        sensorRoom.CO2 = (int)smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.CO2UUID, otherSmapRoot);
-                    }
-
-                    if (type == SensorType.Lumen)
-                    {
-                        sensorRoom.Lumen = (int)smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.LumenUUID, otherSmapRoot);
-                    }
-
-                    if (type == SensorType.HardwarePowerConsumption)
-                    {
-                        sensorRoom.HardwareConsumption =
-                            smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.HardwarePowerConsumptionUUID,
-                                electricitySmapRoot);
-                    }
-
-                    if (type == SensorType.LightPowerConsumption)
-                    {
-                        sensorRoom.LightConsumption =
-                            smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.LightPowerConsumptionUUID,
-                                electricitySmapRoot);
-                    }
-
-                    if (type == SensorType.VentilationPowerConsumption)
-                    {
-                        sensorRoom.VentilationConsumption =
-                            smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.VentilationPowerConsumptionUUID,
-                                electricitySmapRoot);
-                    }
-
-                    if (type == SensorType.OtherPowerConsumption)
-                    {
-                        sensorRoom.OtherConsumption =
-                            smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.OtherPowerConsumptionUUID,
-                                electricitySmapRoot);
-                    }
-
-                    if (type == SensorType.MotionDetection)
-                    {
-                        sensorRoom.Motion = smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.MotionDetectionUUID, otherSmapRoot).Equals(0.0);
-                    }
-
-                    if (type == SensorType.Occupants)
-                    {
-                        sensorRoom.Occupants = 
-                            (int)smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.OccupantsUUID,
-                                otherSmapRoot);
-                    }
-
-                    if (type == SensorType.WifiClients)
-                    {
-                        sensorRoom.WifiClients =
-                            (int) smap.GetCurrentSensorValue(sensorRoom.SmapEndpoints.WifiClientsUUID,
-                                otherSmapRoot);
-                    }
+                    room.Temperature = smap.GetCurrentSensorValue(room.SmapEndpoints.TemperatureUUID, otherSmapRoot);
                 }
             }
+        }
 
+        private void OnCO2TimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.CO2 = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.CO2UUID, otherSmapRoot);
+                }
+            }
+        }
+
+        private void OnLightTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.Light = smap.GetCurrentSensorValue(room.SmapEndpoints.LightUUID, otherSmapRoot).Equals(0.0);
+                }
+            }
+        }
+
+        private void OnLumenTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.Lumen = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.LumenUUID, otherSmapRoot);
+                }
+            }
+        }
+
+        private void OnPowerConsumptionTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.HardwareConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.HardwarePowerConsumptionUUID, otherSmapRoot);
+                    room.LightConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.LightPowerConsumptionUUID, otherSmapRoot);
+                    room.VentilationConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.VentilationPowerConsumptionUUID, otherSmapRoot);
+                    room.OtherConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.OtherPowerConsumptionUUID, otherSmapRoot);
+                }
+            }
+        }
+
+        private void OnWaterTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                floor.HotWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.HotWaterConsumptionUUID,
+                    otherSmapRoot);
+                floor.ColdWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.ColdWaterConsumptionUUID,
+                    otherSmapRoot);
+            }
+        }
+
+        private void OnMotionTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.Motion = smap.GetCurrentSensorValue(room.SmapEndpoints.MotionDetectionUUID, otherSmapRoot).Equals(0.0);
+                }
+            }
+        }
+
+        private void OnOccupantsTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.Occupants = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.OccupantsUUID, otherSmapRoot);
+                }
+            }
+        }
+
+        private void OnWifiClientsTimedEvent(object source, ElapsedEventArgs e)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                {
+                    room.WifiClients = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.WifiClientsUUID, otherSmapRoot);
+                }
+            }
         }
     }
 }
