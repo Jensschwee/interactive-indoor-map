@@ -53,19 +53,19 @@ namespace Website.Logic.BO.Utility
             {
                 if (coordinateSet.XCoordinate > averageX && coordinateSet.YCoordinate > averageY)
                 {
-                    TopLeftCorner = coordinateSet;
+                    TopRightCorner  = coordinateSet;
                 }
                 else if (coordinateSet.XCoordinate < averageX && coordinateSet.YCoordinate > averageY)
                 {
-                    BottomLeftCorner = coordinateSet;
+                    TopLeftCorner = coordinateSet;
                 }
                 else if (coordinateSet.XCoordinate < averageX && coordinateSet.YCoordinate < averageY)
                 {
-                    BottomRightCorner = coordinateSet;
+                    BottomLeftCorner = coordinateSet;
                 }
                 else if (coordinateSet.XCoordinate > averageX && coordinateSet.YCoordinate < averageY)
                 {
-                    TopRightCorner = coordinateSet;
+                    BottomRightCorner = coordinateSet;
                 }
             }
         }

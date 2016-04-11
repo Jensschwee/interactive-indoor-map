@@ -61,7 +61,7 @@ function InitLeafletMap(JSONMap) {
     //Links obj to super obj
     //DefaultView.prototype = new View();
     //TemperatureView.prototype = new View();
-    //getRoomsAndDrawRoomsWithRoomOverlay();
+    getRoomsAndDrawRoomsWithRoomOverlay();
 
     worldMap.addTo(geoMap);
 
@@ -70,7 +70,7 @@ function InitLeafletMap(JSONMap) {
     CreateSpatialButtons();
     CreateViewButtons();
     //L.geoJson("Map\ou44_geometry.geojson").addTo(geoMap);
-    addLevel2();
+    //addLevel2();
     //drawRoomsBackgrund(JSONMap);
 }
 

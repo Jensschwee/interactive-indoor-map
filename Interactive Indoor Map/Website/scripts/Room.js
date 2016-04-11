@@ -31,14 +31,17 @@
                 properties: value.properties
             }
             //bottomRightVertex
-            var D = value.geometry.coordinates[0][3];
+            var bottomRightVertex = value.geometry.coordinates[0][2];
+
             //bottomLeftVertex
-            var A = value.geometry.coordinates[0][2];
+            var bottomLeftVertex = value.geometry.coordinates[0][1];
 
             ////topRightVertex
-            var C = value.geometry.coordinates[0][0];
+            var topRightVertex = value.geometry.coordinates[0][3];
+
             ////topLeftVertex
-            var B = value.geometry.coordinates[0][1];
+            var topLeftVertex = value.geometry.coordinates[0][0];
+
             var minValue = 0;
             if (ActiveViews[j].hasOwnProperty("min")) {
                 minValue = value.properties[ActiveViews[j].min];
@@ -52,19 +55,19 @@
 
             var point = [];
             //Col A X
-            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * j);
+            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * j);
             //Col A y
-            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * j);
+            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * j);
 
 
             coordinates.push(point);
 
             point = [];
             //Col D X
-            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * (j + 1));
+            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * (j + 1));
 
             //Col D y
-            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * (j + 1));
+            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * (j + 1));
 
             coordinates.push(point);
 
@@ -82,19 +85,19 @@
 
             point = [];
             //Col C X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * roomHeight));
+            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
 
             //Col C y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j + 1) - ((B[1] - A[1]) * roomHeight));
+            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
 
             coordinates.push(point);
 
             point = [];
             //Col B X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j) - ((B[0] - A[0]) * roomHeight));
+            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
 
             //Col B y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j) - ((B[1] - A[1]) * roomHeight));
+            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
 
             coordinates.push(point);
 

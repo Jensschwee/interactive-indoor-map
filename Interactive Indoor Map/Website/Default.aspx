@@ -49,7 +49,7 @@
     <script type='text/javascript' src='scripts/Legend.js'></script>
     <script type='text/javascript' src='scripts/MenuButtons.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
-    <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>
+    <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>   
 </head>
 <body>
     <form id="form1" runat="server">

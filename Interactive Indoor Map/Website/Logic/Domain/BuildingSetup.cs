@@ -337,10 +337,10 @@ namespace Website.Logic.Domain
             Ø22_508_0 = new Room("Ø22-508-0", new Corners(new List<Coordinates>()
             {
                 //Top Right Room
-                new Coordinates(10.43104112148285, 55.36767664469221),
-                new Coordinates(10.430856049060822, 55.36767207172922),
-                new Coordinates(10.430874824523926, 55.367451044554315),
-                new Coordinates(10.431067943572998, 55.36746171486007)
+                new Coordinates(10.4310491750001,55.367560482),
+                new Coordinates(10.4308625030001,55.3675524080001),
+                new Coordinates(10.4308452550001,55.367681212),
+                new Coordinates(10.4310319250001,55.367689286)
             }))
             {
                 TemperatureMax = 25,
