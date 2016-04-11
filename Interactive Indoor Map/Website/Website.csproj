@@ -168,6 +168,8 @@
     </Compile>
     <Compile Include="Logic\BO\Building.cs" />
     <Compile Include="Logic\BO\Floor.cs" />
+    <Compile Include="Logic\BO\SensorlessRoom.cs" />
+    <Compile Include="Logic\BO\SensorRoom.cs" />
     <Compile Include="Logic\BO\Room.cs" />
     <Compile Include="Logic\BO\Utility\Coordinates.cs" />
     <Compile Include="Logic\BO\Utility\Corners.cs" />

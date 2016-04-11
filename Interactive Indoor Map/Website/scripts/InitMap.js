@@ -69,7 +69,7 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
-    //drawRoomsBackgrund(JSONMap);
+    //drawRoomsBackground(JSONMap);
 }
 
 function initMapSettings(geojson) {

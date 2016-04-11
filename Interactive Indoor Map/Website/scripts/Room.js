@@ -1,4 +1,4 @@
-﻿function drawRooms(colletionOfRooms) {
+﻿function splitRoomsIntoBarchart(colletionOfRooms) {
     colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
 
     var numberOfLayers = roomLayers.length;
@@ -127,8 +127,8 @@
 function getRoomsAndDrawRoomsWithRoomOverlay() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRoomsBackgrund(colletionOfRoomsOnMap);
-        drawRooms(colletionOfRoomsOnMap);
+        drawRoomsBackground(colletionOfRoomsOnMap);
+        splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
@@ -136,12 +136,12 @@ function getRoomsAndDrawRoomsWithRoomOverlay() {
 function getRoomsAndDrawRooms() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRooms(colletionOfRoomsOnMap);
+        splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
 
-function drawRoomsBackgrund(json) {
+function drawRoomsBackground(json) {
     
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
