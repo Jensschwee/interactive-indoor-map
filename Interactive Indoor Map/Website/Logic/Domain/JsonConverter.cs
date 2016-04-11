@@ -91,9 +91,8 @@ namespace Website.Logic.Domain
 
                     sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
                     sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(floor.Occupants) + ",");
-                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients) + ",");
-
-
+                    sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients)+ ",");
+                    sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(floor.WifiClientsMax));
                     break;
                 }
             }

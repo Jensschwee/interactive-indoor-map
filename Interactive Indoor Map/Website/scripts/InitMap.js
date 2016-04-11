@@ -69,6 +69,7 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
+    //L.geoJson("Map\ou44_geometry.geojson").addTo(geoMap);
     //drawRoomsBackgrund(JSONMap);
 }
 

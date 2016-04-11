@@ -138,6 +138,7 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="Map\map.geojson" />
+    <Content Include="Map\ou44_geometry.geojson" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
     <None Include="Web.Debug.config">
