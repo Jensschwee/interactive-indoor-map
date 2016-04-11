@@ -102,6 +102,17 @@ namespace Website.Logic.Domain
             return sb.ToString();
         }
 
+        public string ConvertRoomsGeoJson(int floorLevel)
+        {
+            Building building = (Building) HttpContext.Current.Application["Building"];
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
+            foreach (Floor floor in building.Floors)
+            {
+            }
+            return "";
+        }
+
         public string ConvertRooms(int? floorLevel = null)
         {
             return ConvertRooms((Building) HttpContext.Current.Application["Building"], floorLevel);
@@ -177,35 +188,5 @@ namespace Website.Logic.Domain
             sb.Append("]}");
             return sb.ToString();
         }
-
-        //public string ConvertSensors(Building building, int floorLevel)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
-
-        //    foreach (Floor floor in building.Floors)
-        //    {
-        //        if (floor.FloorLevel == floorLevel)
-        //        {
-        //            foreach (Sensor sensor in floor.Sensors)
-        //            {
-        //                sb.Append("{ \"type\": \"Feature\", \"properties\": {");
-        //                sb.Append("\"SensorName\":" + JsonConvert.SerializeObject(sensor.SensorName) + ",");
-        //                sb.Append("\"SensorType\":" + JsonConvert.SerializeObject(sensor.SensorType) + ",");
-        //                sb.Append("},\"geometry\": { \"type\": \"Point\", \"coordinates\": [ [[");
-        //                sb.Append(JsonConvert.SerializeObject(sensor.Coordinates.XCoordinate) + "," +
-        //                          JsonConvert.SerializeObject(sensor.Coordinates.YCoordinate));
-        //                sb.Append("]");
-
-        //                sb.Remove(sb.Length - 1, 1);
-        //                sb.Append("]]}},");
-        //            }
-        //            sb.Remove(sb.Length - 1, 1);
-        //            break;
-        //        }
-
-        //    }
-        //    return sb.ToString();
-        //}
     }
 }

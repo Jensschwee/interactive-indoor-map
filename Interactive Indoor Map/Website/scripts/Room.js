@@ -163,9 +163,9 @@ function drawRoomsBackgrund(json) {
             //border color
             color: "#FFFFFF",
             //Border thickness
-            weight: 5,
+            weight: 3,
             opacity: 10,
-            fillOpacity: 0.2
+            fillOpacity: 0.0
         },
         onEachFeature: roomOnClickEventHandler
     });
@@ -184,9 +184,7 @@ function onRoomClicked(e) {
     if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
         //Select room
         layer.setStyle({
-            fillColor: "#FFFFFF",
             //border color
-            weight: 5,
             color: '#8c8c8c'
         }); 
 
