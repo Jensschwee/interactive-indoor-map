@@ -59,7 +59,7 @@ namespace Website.Logic.Domain
 
             HttpContext.Current.Application["Building"] = building;
 
-            TestTimer();
+            //TestTimer();
             //saveDataToDB();
         }
 
@@ -224,7 +224,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_511_1 = new SensorRoom("Ø20-511-1", new Corners(new List<Coordinates>()
+            Ø20_510_1 = new SensorRoom("Ø20-510-1", new Corners(new List<Coordinates>()
             {
                 new Coordinates(10.43076928, 55.36748349),
                 new Coordinates(10.430584067, 55.3674754790001),
@@ -254,35 +254,6 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_510_1 = new SensorRoom("Ø20-510-1", new Corners(new List<Coordinates>()
-            {
-                new Coordinates(10.430723347, 55.3675465210001),
-                new Coordinates(10.4305754100001, 55.367540122),
-                new Coordinates(10.4305582060001, 55.3676685890001),
-                new Coordinates(10.4307061420001, 55.367674987)
-            }))
-            {
-                TemperatureMax = 25,
-                CO2Max = 1000,
-                LumenMax = 200,
-                OccupantsMax = 50,
-                Temperature = 24,
-                CO2 = 100,
-                HardwareConsumption = 4000,
-                VentilationConsumption = 2500,
-                OtherConsumption = 1000,
-                LightConsumption = 3000,
-                HardwareConsumptionMax = 5000,
-                LightConsumptionMax = 3000,
-                OtherConsumptionMax = 3000,
-                VentilationConsumptionMax = 5000,
-                Light = true,
-                Lumen = 90,
-                Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
-                SurfaceArea = 7
-            };
 
             Ø20_508a_1 = new SensorRoom("Ø20-508a-1", new Corners(new List<Coordinates>()
             {
@@ -330,7 +301,7 @@ namespace Website.Logic.Domain
             Ø22_601b_1;
             Ø22_604_1; //Studiezone*/
 
-            Ø22_510_1 = new SensorRoom("Ø22-510-1", new Corners(new List<Coordinates>()
+            Ø22_508_1 = new SensorRoom("Ø22-508-1", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.4309014460001, 55.367554225),
                 new Coordinates(10.4308842190001, 55.3676828480001),
@@ -359,8 +330,7 @@ namespace Website.Logic.Domain
                 WifiClients = 6,
                 SurfaceArea = 7
             };
-
-            Ø22_511_1 = new SensorRoom("Ø22_511_1", new Corners(new List<Coordinates>()
+            Ø22_510_1 = new SensorRoom("Ø22-510-1", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.431057781, 55.3674962250001),
                 new Coordinates(10.4308716730001, 55.3674881760001),
@@ -392,7 +362,7 @@ namespace Website.Logic.Domain
 
             
 
-            Ø22_603_1 = new SensorRoom("Ø22_603_1", new Corners(new List<Coordinates>()
+            Ø22_601b_1 = new SensorRoom("Ø22-601b-1", new Corners(new List<Coordinates>()
              {
                 //Top Left SensorRoom
                 
@@ -788,11 +758,15 @@ namespace Website.Logic.Domain
 
         private void AssembleActualBuilding()
         {
-            groundFloor.Rooms.Add(Ø20_510_1);
-            groundFloor.Rooms.Add(Ø20_511_1);
+            //Ø22_601b_1, Ø22_510_1, Ø22_508_1, Ø20_508a_1, Ø20_510_1, Ø20_601b_1, Ø20_604b_1
+            
             groundFloor.Rooms.Add(Ø20_508a_1);
+            groundFloor.Rooms.Add(Ø20_511_1);
             groundFloor.Rooms.Add(Ø20_601b_1);
             groundFloor.Rooms.Add(Ø20_604b_1);
+            groundFloor.Rooms.Add(Ø22_510_1);
+            groundFloor.Rooms.Add(Ø22_508_1);
+            groundFloor.Rooms.Add(Ø22_601b_1);
             building.Floors.Add(groundFloor);
         }
 
