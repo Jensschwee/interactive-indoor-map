@@ -54,7 +54,8 @@ namespace Website.Logic.Domain
             //CreateRooms();
             CreateActualRooms();
 
-            AssembleBuilding();
+            //AssembleBuilding();
+            AssembleActualBuilding();
 
             HttpContext.Current.Application["Building"] = building;
 
@@ -154,7 +155,7 @@ namespace Website.Logic.Domain
 
         private void CreateActualRooms()
         {
-            Ø20_604b_1 = new SensorRoom("Ø20_604b_1", new Corners(new List<Coordinates>()
+            Ø20_604b_1 = new SensorRoom("Ø20-604b-1", new Corners(new List<Coordinates>()
             {
                 new Coordinates(10.430624295, 55.3671750980001),
                 new Coordinates(10.430809507, 55.3671831080001),
@@ -329,7 +330,7 @@ namespace Website.Logic.Domain
             Ø22_601b_1;
             Ø22_604_1; //Studiezone*/
 
-            Ø22_510_1 = new SensorRoom("Ø22_510_1", new Corners(new List<Coordinates>()
+            Ø22_510_1 = new SensorRoom("Ø22-510-1", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.4309014460001, 55.367554225),
                 new Coordinates(10.4308842190001, 55.3676828480001),
@@ -686,7 +687,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_604_0 = new SensorRoom("Ø20_604_0", new Corners(new List<Coordinates>()
+            Ø20_604_0 = new SensorRoom("Ø20-604-0", new Corners(new List<Coordinates>()
             {
                 //Bottom Left SensorRoom
                 new Coordinates(10.430764853954315, 55.367210199744484),
@@ -783,6 +784,16 @@ namespace Website.Logic.Domain
                 WifiClientsMax = 15,
                 SurfaceArea = 7
             };
+        }
+
+        private void AssembleActualBuilding()
+        {
+            groundFloor.Rooms.Add(Ø20_510_1);
+            groundFloor.Rooms.Add(Ø20_511_1);
+            groundFloor.Rooms.Add(Ø20_508a_1);
+            groundFloor.Rooms.Add(Ø20_601b_1);
+            groundFloor.Rooms.Add(Ø20_604b_1);
+            building.Floors.Add(groundFloor);
         }
 
         private void AssembleBuilding()
