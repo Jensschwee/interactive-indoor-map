@@ -20,7 +20,6 @@ namespace Website.Logic.BO
 
         public double NumberOfSensorRoom => Floors.Sum(floor => floor.Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
-
         [NotMapped]
         public double Temperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.Temperature)) / NumberOfSensorRoom);
 

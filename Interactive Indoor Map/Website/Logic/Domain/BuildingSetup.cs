@@ -733,7 +733,7 @@ namespace Website.Logic.Domain
 
             groundFloor.Rooms.Add(Ø22_601b_1);
 
-            firstFloor.Rooms.Add(Ø20_508a_1);
+            firstFloor.Rooms.Add(Ø20_510_1);
             firstFloor.Rooms.Add(Ø20_601b_1);
             firstFloor.Rooms.Add(Ø20_604b_1);
             firstFloor.Rooms.Add(Ø22_510_1);
@@ -744,6 +744,8 @@ namespace Website.Logic.Domain
 
 
             building.Floors.Add(cellarFloor);
+            building.Floors.Add(groundFloor);
+
             building.Floors.Add(firstFloor);
             building.Floors.Add(secondFloor);
 
