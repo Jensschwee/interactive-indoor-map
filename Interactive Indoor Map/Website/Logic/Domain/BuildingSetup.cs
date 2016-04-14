@@ -255,45 +255,35 @@ namespace Website.Logic.Domain
             };
 
 
-            Ø20_508a_1 = new SensorRoom("Ø20-508a-1", new Corners(new List<Coordinates>()
-            {
-                new Coordinates(10.430723347, 55.3675465210001),
-                new Coordinates(10.4305754100001, 55.367540122),
-                new Coordinates(10.4305582060001, 55.3676685890001),
-                new Coordinates(10.4307061420001, 55.367674987)
-                /*
-                [10.4306861150001, 55.3677116630001],
-                [10.4306889050001, 55.367690833],
-                [10.4306969680001, 55.367691182],
-                [10.4306991780001, 55.367674687],
-                [10.4306911140001, 55.367674338],
-                [10.430632616, 55.3676718080001],
-                [10.4306276180001, 55.3677091330001],
-                [10.4306861150001, 55.3677116630001]
-                */
-            }))
-            {
-                TemperatureMax = 25,
-                CO2Max = 1000,
-                LumenMax = 200,
-                OccupantsMax = 50,
-                Temperature = 24,
-                CO2 = 100,
-                HardwareConsumption = 4000,
-                VentilationConsumption = 2500,
-                OtherConsumption = 1000,
-                LightConsumption = 3000,
-                HardwareConsumptionMax = 5000,
-                LightConsumptionMax = 3000,
-                OtherConsumptionMax = 3000,
-                VentilationConsumptionMax = 5000,
-                Light = true,
-                Lumen = 90,
-                Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
-                SurfaceArea = 7
-            };
+            //Ø20_508a_1 = new SensorRoom("Ø20-508a-1", new Corners(new List<Coordinates>()
+            //{
+            //    new Coordinates(10.430723347, 55.3675465210001),
+            //    new Coordinates(10.4305754100001, 55.367540122),
+            //    new Coordinates(10.4305582060001, 55.3676685890001),
+            //    new Coordinates(10.4307061420001, 55.367674987)
+            //}))
+            //{
+            //    TemperatureMax = 25,
+            //    CO2Max = 1000,
+            //    LumenMax = 200,
+            //    OccupantsMax = 50,
+            //    Temperature = 24,
+            //    CO2 = 100,
+            //    HardwareConsumption = 4000,
+            //    VentilationConsumption = 2500,
+            //    OtherConsumption = 1000,
+            //    LightConsumption = 3000,
+            //    HardwareConsumptionMax = 5000,
+            //    LightConsumptionMax = 3000,
+            //    OtherConsumptionMax = 3000,
+            //    VentilationConsumptionMax = 5000,
+            //    Light = true,
+            //    Lumen = 90,
+            //    Motion = true,
+            //    Occupants = 7,
+            //    WifiClients = 6,
+            //    SurfaceArea = 7
+            //};
 
             /*Ø20_603_1;
             Ø20_508a_1; //Studiezone
@@ -758,15 +748,12 @@ namespace Website.Logic.Domain
 
         private void AssembleActualBuilding()
         {
-            //Ø22_601b_1, Ø22_510_1, Ø22_508_1, Ø20_508a_1, Ø20_510_1, Ø20_601b_1, Ø20_604b_1
-            
             groundFloor.Rooms.Add(Ø20_508a_1);
-            groundFloor.Rooms.Add(Ø20_511_1);
+            //groundFloor.Rooms.Add(Ø20_511_1);
             groundFloor.Rooms.Add(Ø20_601b_1);
             groundFloor.Rooms.Add(Ø20_604b_1);
             groundFloor.Rooms.Add(Ø22_510_1);
             groundFloor.Rooms.Add(Ø22_508_1);
-            groundFloor.Rooms.Add(Ø22_601b_1);
             building.Floors.Add(groundFloor);
         }
 
