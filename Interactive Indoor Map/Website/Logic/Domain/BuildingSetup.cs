@@ -25,7 +25,6 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_604_0;
         private SensorRoom Ø20_604_0;
         private SensorRoom Ø20_508a_0;
-        private SensorRoom Ø20_606_1;
         private SensorRoom Ø22_606c_1;
 
         private SensorRoom Ø20_604b_1; //Studiezone
@@ -45,6 +44,9 @@ namespace Website.Logic.Domain
         private SensorlessRoom Ø21_511b_1;
         private SensorlessRoom Ø21_508b_1;
         private SensorlessRoom Ø21_600b_1;
+        private SensorlessRoom Ø20_606_1;
+        private SensorlessRoom Ø20_600b_1;
+        private SensorlessRoom Ø22_512b_1;
 
         public void SetupBuilding()
         {
@@ -678,6 +680,50 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Hallway
             };
+
+            Ø20_606_1 = new SensorlessRoom("Ø20-606-1", new List<Coordinates>()
+            {
+                new Coordinates(10.4310319320001,55.367689237),
+                new Coordinates(10.4308398060001,55.367680927),
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.430835319,55.367715247),
+                new Coordinates(10.430834937,55.3677181),
+                new Coordinates(10.4310269540001,55.367726406),
+                new Coordinates(10.4310319320001,55.367689237)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            Ø20_600b_1 = new SensorlessRoom("Ø20-600b-1", new List<Coordinates>()
+            {
+                //10.430795946,55.3672843740001,
+                //10.430610734,55.367276363,
+                //10.430600079,55.367355918,
+                //10.4307852920001,55.3673639290001,
+                //10.430795946,55.3672843740001
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.430610734,55.367276363),
+                new Coordinates(10.430600079,55.367355918),
+                new Coordinates(10.4307852920001,55.3673639290001),
+                new Coordinates(10.430795946,55.3672843740001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø22_512b_1 = new SensorlessRoom("Ø22-512b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430610734,55.367276363),
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.4307975720001,55.36727223),
+                new Coordinates(10.4306123600001,55.367264219),
+                new Coordinates(10.430610734,55.367276363)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
         }
 
         private void CreateRooms()
@@ -959,36 +1005,6 @@ namespace Website.Logic.Domain
                 SurfaceArea = 7
             };
 
-            Ø20_606_1 = new SensorRoom("Ø20-606-1", new Corners(new List<Coordinates>()
-            {
-                new Coordinates(10.43070692999217,55.36711127188644),
-                new Coordinates(10.43056692392323,55.36710705298766),
-                new Coordinates(10.43057877027221,55.36699865466709),
-                new Coordinates(10.43071804722406,55.3670028455568)
-            }))
-            {
-                TemperatureMax = 25,
-                CO2Max = 1000,
-                LumenMax = 600,
-                OccupantsMax = 50,
-                Temperature = 24,
-                CO2 = 100,
-                HardwareConsumption = 4000,
-                VentilationConsumption = 2500,
-                OtherConsumption = 1000,
-                LightConsumption = 3000,
-                HardwareConsumptionMax = 5000,
-                LightConsumptionMax = 3000,
-                OtherConsumptionMax = 3000,
-                VentilationConsumptionMax = 5000,
-                Light = true,
-                Lumen = 90,
-                Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
-                WifiClientsMax = 15,
-                SurfaceArea = 7
-            };
 
             Ø22_606c_1 = new SensorRoom("Ø22-606c-1", new Corners(new List<Coordinates>()
             {
@@ -1044,7 +1060,9 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø21_511b_1);
             firstFloor.Rooms.Add(Ø21_600b_1);
             firstFloor.Rooms.Add(Ø21_508b_1);
-
+            firstFloor.Rooms.Add(Ø20_606_1);
+            firstFloor.Rooms.Add(Ø20_600b_1);
+            firstFloor.Rooms.Add(Ø22_512b_1);
 
 
             secondFloor.Rooms.Add(Ø20_510_1);
