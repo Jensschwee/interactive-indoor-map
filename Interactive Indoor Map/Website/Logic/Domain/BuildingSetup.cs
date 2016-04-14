@@ -610,6 +610,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430823977,55.367075051),
                 new Coordinates(10.4308353340001,55.3669902400001),
                 new Coordinates(10.4309377590001,55.3669946700001),
+                new Coordinates(10.4309264020001,55.3670794810001),
                 new Coordinates(10.430823977,55.367075051),
             })
             {
