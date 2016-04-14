@@ -42,6 +42,7 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_604_1; //Studiezone
 
         private SensorlessRoom Ø21_602_1;
+        private SensorlessRoom Ø21_508b_1;
 
 
         public void SetupBuilding()
@@ -616,6 +617,29 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Hallway
             };
+
+            Ø21_508b_1 = new SensorlessRoom("Ø21-508b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.4308398060001,55.367680927),
+                new Coordinates(10.4308842190001,55.3676828480001),
+                new Coordinates(10.4309014460001,55.367554225),
+                new Coordinates(10.430723347,55.3675465210001),
+                new Coordinates(10.4307061420001,55.367674987),
+                new Coordinates(10.430750275,55.367676896),
+                new Coordinates(10.430745659,55.3677113690001),
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.430858947,55.367574189),
+                new Coordinates(10.4308475240001,55.3676595090001),
+                new Coordinates(10.4307486020001,55.3676552300001),
+                new Coordinates(10.4307600280001,55.36756991),
+                new Coordinates(10.430858947,55.367574189),
+
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
         }
 
         private void CreateRooms()
@@ -979,6 +1003,8 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø22_511_1);
             
             firstFloor.Rooms.Add(Ø21_602_1);
+            firstFloor.Rooms.Add(Ø21_508b_1);
+
             secondFloor.Rooms.Add(Ø20_510_1);
 
             building.Floors.Add(cellarFloor);
