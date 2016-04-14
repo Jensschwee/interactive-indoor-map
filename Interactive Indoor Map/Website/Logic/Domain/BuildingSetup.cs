@@ -326,11 +326,104 @@ namespace Website.Logic.Domain
             /*Ø20_603_1;
             Ø20_508a_1; //Studiezone
             Ø22_508_1; //Studiezone
-            Ø22_510_1;
-            Ø22_511_1;
             Ø22_601b_1;
-            Ø22_603_1;
             Ø22_604_1; //Studiezone*/
+
+            Ø22_510_1 = new SensorRoom("Ø22_510_1", new Corners(new List<Coordinates>()
+             {
+                new Coordinates(10.4309014460001, 55.367554225),
+                new Coordinates(10.4308842190001, 55.3676828480001),
+                new Coordinates(10.4310319320001, 55.367689237),
+                new Coordinates(10.4310491580001, 55.3675606140001)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            Ø22_511_1 = new SensorRoom("Ø22_511_1", new Corners(new List<Coordinates>()
+             {
+                new Coordinates(10.431057781, 55.3674962250001),
+                new Coordinates(10.4308716730001, 55.3674881760001),
+                new Coordinates(10.4308630510001, 55.3675525640001),
+                new Coordinates(10.4310491580001, 55.3675606140001)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+            
+
+            Ø22_603_1 = new SensorRoom("Ø22_603_1", new Corners(new List<Coordinates>()
+             {
+                //Top Left SensorRoom
+                
+                new Coordinates(10.4311009210001, 55.3671740930001),
+                new Coordinates(10.43091481, 55.3671660420001),
+                new Coordinates(10.4308999900001, 55.367276712),
+                new Coordinates(10.4310861000001, 55.3672847620001)
+            }))
+            {
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 7
+            };
+
+
         }
 
         private void CreateRooms()

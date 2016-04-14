@@ -18,6 +18,8 @@ namespace Website.DAL.Persistence
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Floor> Floors { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<SensorRoom> SensorRoom { get; set; }
+        public virtual DbSet<SensorlessRoom> SensorlessRoom { get; set; }
         public virtual DbSet<SmapEndpoints> SmapEndpoints { get; set; }
         public virtual DbSet<Coordinates> Coordinates { get; set; }
     }
