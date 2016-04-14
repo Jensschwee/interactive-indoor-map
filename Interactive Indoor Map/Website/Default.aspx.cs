@@ -28,7 +28,7 @@ namespace Website
                 {
                     JsonConverter converter = new JsonConverter();
 
-                    string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 0);
+                    string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
                 }

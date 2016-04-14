@@ -1,6 +1,6 @@
 ﻿var geoMap;
 var view;
-var currentFloorLevel = 0;
+var currentFloorLevel = 1;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
 var roomForgroundLayer = null;

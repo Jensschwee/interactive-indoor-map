@@ -191,7 +191,26 @@ namespace Website.Logic.Domain
 
             }))
             {
-
+                TemperatureMax = 25,
+                CO2Max = 1000,
+                LumenMax = 200,
+                OccupantsMax = 50,
+                Temperature = 24,
+                CO2 = 100,
+                HardwareConsumption = 4000,
+                VentilationConsumption = 2500,
+                OtherConsumption = 1000,
+                LightConsumption = 3000,
+                HardwareConsumptionMax = 5000,
+                LightConsumptionMax = 3000,
+                OtherConsumptionMax = 3000,
+                VentilationConsumptionMax = 5000,
+                Light = true,
+                Lumen = 90,
+                Motion = true,
+                Occupants = 7,
+                WifiClients = 6,
+                SurfaceArea = 80
             };
 
             Ø20_601b_1 = new SensorRoom("Ø20-601b-1", new Corners(new List<Coordinates>()
@@ -320,6 +339,7 @@ namespace Website.Logic.Domain
                 WifiClients = 6,
                 SurfaceArea = 125
             };
+
             Ø22_510_1 = new SensorRoom("Ø22-510-1", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.431057781, 55.3674962250001),
@@ -349,8 +369,6 @@ namespace Website.Logic.Domain
                 WifiClients = 6,
                 SurfaceArea = 80
             };
-
-            
 
             Ø22_601b_1 = new SensorRoom("Ø22-601b-1", new Corners(new List<Coordinates>()
              {
@@ -728,26 +746,20 @@ namespace Website.Logic.Domain
 
         private void AssembleActualBuilding()
         {
-            
             cellarFloor.Rooms.Add(Ø22_601b_1);
-
             groundFloor.Rooms.Add(Ø22_601b_1);
-
-            firstFloor.Rooms.Add(Ø20_508a_1);
+            firstFloor.Rooms.Add(Ø20_510_1);
             firstFloor.Rooms.Add(Ø20_601b_1);
             firstFloor.Rooms.Add(Ø20_604b_1);
             firstFloor.Rooms.Add(Ø22_510_1);
             firstFloor.Rooms.Add(Ø22_508_1);
             firstFloor.Rooms.Add(Ø22_601b_1);
-
             secondFloor.Rooms.Add(Ø22_601b_1);
 
-
             building.Floors.Add(cellarFloor);
+            building.Floors.Add(groundFloor);
             building.Floors.Add(firstFloor);
             building.Floors.Add(secondFloor);
-
-
         }
 
         private void AssembleBuilding()

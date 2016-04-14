@@ -55,8 +55,6 @@ function CreateSpatialButtons() {
         }]
     }).addTo(geoMap);
 
-    parterreButton.button.style.backgroundColor = '#8c8c8c';
-
     var groundFloorButton = L.easyButton({
         position: 'bottomright',
         states: [{
@@ -77,6 +75,8 @@ function CreateSpatialButtons() {
             }
         }]
     }).addTo(geoMap);
+
+    groundFloorButton.button.style.backgroundColor = '#8c8c8c';
 
     var firstFloorButton = L.easyButton({
         position: 'bottomright',
@@ -114,6 +114,8 @@ function CreateSpatialButtons() {
             }
         }]
     }).addTo(geoMap);
+
+    buildingButton.button.style.backgroundColor = '#8c8c8c';
 }
 
 function createIconForButton(imageSrc) {
