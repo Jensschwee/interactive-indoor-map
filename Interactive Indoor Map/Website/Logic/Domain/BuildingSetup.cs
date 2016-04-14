@@ -761,7 +761,7 @@ namespace Website.Logic.Domain
             //Ø22_601b_1, Ø22_510_1, Ø22_508_1, Ø20_508a_1, Ø20_510_1, Ø20_601b_1, Ø20_604b_1
             
             groundFloor.Rooms.Add(Ø20_508a_1);
-            groundFloor.Rooms.Add(Ø20_511_1);
+            //groundFloor.Rooms.Add(Ø20_511_1);
             groundFloor.Rooms.Add(Ø20_601b_1);
             groundFloor.Rooms.Add(Ø20_604b_1);
             groundFloor.Rooms.Add(Ø22_510_1);
