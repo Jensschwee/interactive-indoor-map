@@ -21,13 +21,26 @@ namespace Website.Logic.Domain
         private SensorRoom _testSensorRoomFirstFloor2;
         private SensorRoom _testSensorRoomSecondFloor1;
         private SensorRoom _testSensorRoomSecondFloor2;
-        //private SensorRoom testRoom;
         private SensorRoom Ø22_508_0;
         private SensorRoom Ø22_604_0;
         private SensorRoom Ø20_604_0;
         private SensorRoom Ø20_508a_0;
         private SensorRoom Ø20_606_1;
         private SensorRoom Ø22_606c_1;
+
+        private SensorRoom Ø20_604b_1; //Studiezone
+        private SensorRoom Ø20_603_1; 
+        private SensorRoom Ø20_601b_1; 
+        private SensorRoom Ø20_511_1; 
+        private SensorRoom Ø20_510_1; 
+        private SensorRoom Ø20_508a_1; //Studiezone
+        private SensorRoom Ø22_508_1; //Studiezone
+        private SensorRoom Ø22_510_1; 
+        private SensorRoom Ø22_511_1; 
+        private SensorRoom Ø22_601b_1; 
+        private SensorRoom Ø22_603_1;
+        private SensorRoom Ø22_604_1; //Studiezone
+
 
         public void SetupBuilding()
         {
@@ -136,6 +149,30 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 1000
             };
 
+        }
+
+        private void CreateActualRooms()
+        {
+            Ø20_604b_1 = new SensorRoom("Ø20_604b_1", new Corners(new List<Coordinates>()
+            {
+
+            }))
+            {
+
+            };
+
+            //Studiezone
+            /*Ø20_603_1;
+            Ø20_601b_1;
+            Ø20_511_1;
+            Ø20_510_1;
+            Ø20_508a_1; //Studiezone
+            Ø22_508_1; //Studiezone
+            Ø22_510_1;
+            Ø22_511_1;
+            Ø22_601b_1;
+            Ø22_603_1;
+            Ø22_604_1; //Studiezone*/
         }
 
         private void CreateRooms()

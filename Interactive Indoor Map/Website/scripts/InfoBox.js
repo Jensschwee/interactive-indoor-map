@@ -71,7 +71,7 @@ function drawFloorInfoBox() {
 function drawRoomInfo() {
     // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
-        this._div.innerHTML = '<div class="info" id="InfoBox"><h4>SensorRoom data</h4>' + (props ?
+        this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
