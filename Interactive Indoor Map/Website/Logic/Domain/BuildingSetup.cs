@@ -45,6 +45,8 @@ namespace Website.Logic.Domain
         private SensorlessRoom Ø21_511b_1;
         private SensorlessRoom Ø21_508b_1;
         private SensorlessRoom Ø21_600b_1;
+        private SensorlessRoom Ø22_507_1;
+        private SensorlessRoom Ø21_600c_1;
 
         public void SetupBuilding()
         {
@@ -618,6 +620,38 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Hallway
             };
+            Ø22_507_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
+             {
+                new Coordinates(10.4306530480001,55.366960399),
+                new Coordinates(10.4308382580001,55.36696841),
+                new Coordinates(10.4308432330001,55.3669312590001),
+                new Coordinates(10.430658023,55.366923248),
+                new Coordinates(10.4306530480001,55.366960399)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            Ø21_600c_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
+             {
+                //,,,,,,,,,,,,
+                new Coordinates(10.4310844660001,55.3672969610001),
+                new Coordinates(10.4308983560001,55.3672889100001),
+                new Coordinates(10.43089724,55.3672972480001),
+                new Coordinates(10.430911,55.3672978430001),
+                new Coordinates(10.430911109,55.367297029),
+                new Coordinates(10.430963816,55.367299309),
+                new Coordinates(10.4309607220001,55.367322421),
+                new Coordinates(10.430908013,55.367320142),
+                new Coordinates(10.4309081230001,55.3673193230001),
+                new Coordinates(10.430894364,55.367318728),
+                new Coordinates(10.4308880140001,55.367366148),
+                new Coordinates(10.431074123,55.3673741980001),
+                new Coordinates(10.4310844660001,55.3672969610001)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
 
             Ø21_508b_1 = new SensorlessRoom("Ø21-508b-1", new List<Coordinates>()
             {
@@ -1044,7 +1078,10 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø21_511b_1);
             firstFloor.Rooms.Add(Ø21_600b_1);
             firstFloor.Rooms.Add(Ø21_508b_1);
+            firstFloor.Rooms.Add(Ø22_507_1);
+            firstFloor.Rooms.Add(Ø21_600c_1);
 
+            
 
 
             secondFloor.Rooms.Add(Ø20_510_1);
