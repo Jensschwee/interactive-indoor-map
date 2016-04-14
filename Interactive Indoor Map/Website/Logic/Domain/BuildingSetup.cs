@@ -758,6 +758,7 @@ namespace Website.Logic.Domain
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(groundFloor);
+
             building.Floors.Add(firstFloor);
             building.Floors.Add(secondFloor);
         }
