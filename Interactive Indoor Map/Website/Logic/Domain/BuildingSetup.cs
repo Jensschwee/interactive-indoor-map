@@ -51,7 +51,8 @@ namespace Website.Logic.Domain
 
             CreateFloors();
 
-            CreateRooms();
+            //CreateRooms();
+            CreateActualRooms();
 
             AssembleBuilding();
 
