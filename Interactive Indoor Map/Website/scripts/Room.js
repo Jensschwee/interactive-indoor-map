@@ -176,28 +176,28 @@ function backgrundStyle(feature) {
         fillOpacity: 1.0
 };
 }
-//fff8dc
+//fff8dc, D0D6DC
 function getRoomBackgrundColor(RoomType) {
     return RoomType === "Classroom" ? '#D0D6DC' :
-           RoomType === "Studyzone" ? '#FFFFFF' :
-           RoomType === "Office" ? '#FFFFFF' :
-           RoomType === "Hallway" ? '#FFFFFF' :
-           RoomType === "Stairs" ? '#FFFFFF' :
-           RoomType === "Elevator" ? '#FFFFFF' :
-           RoomType === "Toilet" ? '#FFFFFF' :
-           RoomType === "Utility" ? '#FFFFFF' :
+           RoomType === "Studyzone" ? '#C2B49D' :
+           RoomType === "Office" ? '#C2B49D' :
+           RoomType === "Hallway" ? '#C2B49D' :
+           RoomType === "Stairs" ? '#C2B49D' :
+           RoomType === "Elevator" ? '#C2B49D' :
+           RoomType === "Toilet" ? '#C2B49D' :
+           RoomType === "Utility" ? '#C2B49D' :
            '#FFFFFF';
 }
 
 function getRoomBorderColor(RoomType) {
     return RoomType === "Classroom" ? '#FFFFFF' :
-           RoomType === "Studyzone" ? '#FFFFFF' :
-           RoomType === "Office" ? '#FFFFFF' :
-           RoomType === "Hallway" ? '#FFFFFF' :
-           RoomType === "Stairs" ? '#FFFFFF' :
-           RoomType === "Elevator" ? '#FFFFFF' :
-           RoomType === "Toilet" ? '#FFFFFF' :
-           RoomType === "Utility" ? '#FFFFFF' :
+           RoomType === "Studyzone" ? '#C2B49D' :
+           RoomType === "Office" ? '#C2B49D' :
+           RoomType === "Hallway" ? '#C2B49D' :
+           RoomType === "Stairs" ? '#C2B49D' :
+           RoomType === "Elevator" ? '#C2B49D' :
+           RoomType === "Toilet" ? '#C2B49D' :
+           RoomType === "Utility" ? '#C2B49D' :
            '#FFFFFF';
 }
 
