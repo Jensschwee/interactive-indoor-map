@@ -24,17 +24,14 @@ function DrawWorldMap() {
     return worldMap;
 }
 
-function InitLeafletMap(JSONMap) {
+function InitLeafletMap(jsonMap) {
 
     var worldMap = DrawWorldMap();
 
     //Reads the JSON input
-    var geojson = L.geoJson(JSONMap);
+    var geojson = L.geoJson(jsonMap);
     initMapSettings(geojson);
 
-    //Links obj to super obj
-    //DefaultView.prototype = new View();
-    //TemperatureView.prototype = new View();
     getRoomsAndDrawBackgrund();
     getRoomsAndDrawRoomsWithRoomOverlays();
 
@@ -44,8 +41,7 @@ function InitLeafletMap(JSONMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
-    //L.geoJson("Map\ou44_geometry.geojson").addTo(geoMap);
-    //addLevel2();
+    //addLevel1();
 }
 
 function initMapSettings(geojson) {
@@ -1206,7 +1202,11 @@ function addLevel0() {
           }]
     };
 
-    L.geoJson(json).addTo(geoMap);
+    L.geoJson(json, {
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup(feature.properties.RoomId + " " + feature.geometry.coordinates);
+        }
+    }).addTo(geoMap);
 }
 
 function addLevel1() {
@@ -2382,7 +2382,11 @@ function addLevel1() {
     }
         ]
     };
-    L.geoJson(json).addTo(geoMap);
+    L.geoJson(json, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.RoomId + " " + feature.geometry.coordinates);
+        }
+    }).addTo(geoMap);
 
 }
 
@@ -4759,6 +4763,10 @@ function addLevel2() {
     }
         ]
     };
-    L.geoJson(json).addTo(geoMap);
+    L.geoJson(json, {
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup(feature.properties.RoomId + " " + feature.geometry.coordinates);
+        }
+    }).addTo(geoMap);
 
 }
