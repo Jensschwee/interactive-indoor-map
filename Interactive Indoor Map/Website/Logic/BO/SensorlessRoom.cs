@@ -9,5 +9,13 @@ namespace Website.Logic.BO
     public class SensorlessRoom : Room
     {
         public List<Coordinates> Coordinates { get; set; }
+
+        public SensorlessRoom() { }
+
+        public SensorlessRoom(string name, List<Coordinates> coordinates )
+        {
+            Name = name;
+            Coordinates = coordinates;
+        }
     }
 }
