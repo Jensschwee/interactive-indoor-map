@@ -759,15 +759,27 @@ namespace Website.Logic.Domain
         private void AssembleActualBuilding()
         {
             //Ø22_601b_1, Ø22_510_1, Ø22_508_1, Ø20_508a_1, Ø20_510_1, Ø20_601b_1, Ø20_604b_1
-            
+            cellarFloor.Rooms.Add(Ø22_601b_1);
+
             groundFloor.Rooms.Add(Ø20_508a_1);
-            //groundFloor.Rooms.Add(Ø20_511_1);
-            groundFloor.Rooms.Add(Ø20_601b_1);
-            groundFloor.Rooms.Add(Ø20_604b_1);
-            groundFloor.Rooms.Add(Ø22_510_1);
-            groundFloor.Rooms.Add(Ø22_508_1);
             groundFloor.Rooms.Add(Ø22_601b_1);
+
+            firstFloor.Rooms.Add(Ø20_508a_1);
+            firstFloor.Rooms.Add(Ø20_601b_1);
+            firstFloor.Rooms.Add(Ø20_604b_1);
+            firstFloor.Rooms.Add(Ø22_510_1);
+            firstFloor.Rooms.Add(Ø22_508_1);
+            firstFloor.Rooms.Add(Ø22_601b_1);
+
+            secondFloor.Rooms.Add(Ø22_601b_1);
+
+
+            building.Floors.Add(cellarFloor);
             building.Floors.Add(groundFloor);
+            building.Floors.Add(firstFloor);
+            building.Floors.Add(secondFloor);
+
+
         }
 
         private void AssembleBuilding()
