@@ -178,7 +178,7 @@ function backgrundStyle(feature) {
 }
 //fff8dc
 function getRoomBackgrundColor(RoomType) {
-    return RoomType === "Classroom" ? '#6f6c69' :
+    return RoomType === "Classroom" ? '#D0D6DC' :
            RoomType === "Studyzone" ? '#FFFFFF' :
            RoomType === "Office" ? '#FFFFFF' :
            RoomType === "Hallway" ? '#FFFFFF' :
