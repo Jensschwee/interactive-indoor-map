@@ -42,8 +42,9 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_604_1; //Studiezone
 
         private SensorlessRoom Ø21_602_1;
+        private SensorlessRoom Ø21_511b_1;
         private SensorlessRoom Ø21_508b_1;
-
+        private SensorlessRoom Ø21_600b_1;
 
         public void SetupBuilding()
         {
@@ -640,6 +641,43 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Hallway
             };
 
+            Ø21_511b_1 = new SensorlessRoom("Ø21-511b-1", new List<Coordinates>()
+             {
+                new Coordinates(10.430881862,55.367412089),
+                new Coordinates(10.430779435,55.367407659),
+                new Coordinates(10.430760623,55.3675481330001),
+                new Coordinates(10.4308630510001,55.3675525640001),
+                new Coordinates(10.430881862,55.367412089)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø21_600b_1 = new SensorlessRoom("Ø21-600b-1", new List<Coordinates>()
+             {
+                new Coordinates(10.430802204,55.3672376430001),
+                new Coordinates(10.4307975720001,55.36727223),
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.4307852920001,55.3673639290001),
+                new Coordinates(10.430782655,55.3673836190001),
+                new Coordinates(10.43078122,55.3673943360001),
+                new Coordinates(10.43077966,55.367405983),
+                new Coordinates(10.430779435,55.367407659),
+                new Coordinates(10.430881862,55.367412089),
+                new Coordinates(10.4308864340001,55.3673779440001),
+                new Coordinates(10.4308880140001,55.367366148),
+                new Coordinates(10.430894364,55.367318728),
+                new Coordinates(10.4309081230001,55.3673193230001),
+                new Coordinates(10.430911,55.3672978430001),
+                new Coordinates(10.43089724,55.3672972480001),
+                new Coordinates(10.430898357,55.3672889100001),
+                new Coordinates(10.4308999900001,55.367276712),
+                new Coordinates(10.4309046290001,55.3672420730001),
+                new Coordinates(10.430802204,55.3672376430001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
         }
 
         private void CreateRooms()
@@ -1003,7 +1041,11 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø22_511_1);
             
             firstFloor.Rooms.Add(Ø21_602_1);
+            firstFloor.Rooms.Add(Ø21_511b_1);
+            firstFloor.Rooms.Add(Ø21_600b_1);
             firstFloor.Rooms.Add(Ø21_508b_1);
+
+
 
             secondFloor.Rooms.Add(Ø20_510_1);
 
