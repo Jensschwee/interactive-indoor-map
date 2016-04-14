@@ -49,6 +49,7 @@ namespace Website.Logic.Domain
         private SensorlessRoom Ø20_606_1;
         private SensorlessRoom Ø20_600b_1;
         private SensorlessRoom Ø22_512b_1;
+        private SensorlessRoom Ø21_600a_1;
 
         public void SetupBuilding()
         {
@@ -471,7 +472,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 125
             };
 
-            Ø20_604b_1 = new SensorRoom("Ø22-604-1", new Corners(new List<Coordinates>()
+            Ø20_604b_1 = new SensorRoom("Ø22-604b-1", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.430801009,55.3669667990001),
                 new Coordinates(10.4306530480001,55.366960399),
@@ -731,11 +732,6 @@ namespace Website.Logic.Domain
 
             Ø20_600b_1 = new SensorlessRoom("Ø20-600b-1", new List<Coordinates>()
             {
-                //10.430795946,55.3672843740001,
-                //10.430610734,55.367276363,
-                //10.430600079,55.367355918,
-                //10.4307852920001,55.3673639290001,
-                //10.430795946,55.3672843740001
                 new Coordinates(10.430795946,55.3672843740001),
                 new Coordinates(10.430610734,55.367276363),
                 new Coordinates(10.430600079,55.367355918),
@@ -757,6 +753,20 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Hallway
             };
+
+            Ø21_600a_1 = new SensorlessRoom("Ø22-512b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430963816,55.367299309),
+                new Coordinates(10.430911109,55.367297029),
+                new Coordinates(10.430908013,55.367320142),
+                new Coordinates(10.4309607220001,55.367322421),
+                new Coordinates(10.430963816,55.367299309)
+            })
+            {
+                RoomType = RoomType.Elevator
+            };
+
+
 
         }
 
@@ -1076,6 +1086,7 @@ namespace Website.Logic.Domain
         {
             cellarFloor.Rooms.Add(Ø20_510_1);
             groundFloor.Rooms.Add(Ø20_510_1);
+            //Rooms
             firstFloor.Rooms.Add(Ø20_510_1);
             firstFloor.Rooms.Add(Ø20_601b_1);
             firstFloor.Rooms.Add(Ø20_604b_1);
@@ -1087,20 +1098,18 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø20_511_1);
             firstFloor.Rooms.Add(Ø22_604_1);
             firstFloor.Rooms.Add(Ø22_603_1);
-            firstFloor.Rooms.Add(Ø20_601b_1);
             firstFloor.Rooms.Add(Ø22_511_1);
-            
+            //SensorlessRooms
             firstFloor.Rooms.Add(Ø21_602_1);
             firstFloor.Rooms.Add(Ø21_511b_1);
             firstFloor.Rooms.Add(Ø21_600b_1);
             firstFloor.Rooms.Add(Ø21_508b_1);
             firstFloor.Rooms.Add(Ø22_507_1);
             firstFloor.Rooms.Add(Ø21_600c_1);
-
             firstFloor.Rooms.Add(Ø20_606_1);
             firstFloor.Rooms.Add(Ø20_600b_1);
             firstFloor.Rooms.Add(Ø22_512b_1);
-            
+            firstFloor.Rooms.Add(Ø21_600a_1);
 
             secondFloor.Rooms.Add(Ø20_510_1);
 
