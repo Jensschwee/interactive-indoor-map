@@ -181,11 +181,11 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 24,
-                CO2 = 100,
+                CO2 = 650,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -195,10 +195,10 @@ namespace Website.Logic.Domain
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
                 Light = true,
-                Lumen = 90,
+                Lumen = 400,
                 Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Occupants = 15,
+                WifiClients = 10,
                 SurfaceArea = 125
             };
 
@@ -212,11 +212,11 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
-                OccupantsMax = 20,
+                LumenMax = 600,
+                OccupantsMax = 40,
                 WifiClientsMax = 25,
-                Temperature = 24,
-                CO2 = 100,
+                Temperature = 22,
+                CO2 = 600,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -226,10 +226,10 @@ namespace Website.Logic.Domain
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
                 Light = true,
-                Lumen = 90,
+                Lumen = 200,
                 Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Occupants = 17,
+                WifiClients = 26,
                 SurfaceArea = 108
             };
 
@@ -243,11 +243,11 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
-                Temperature = 24,
-                CO2 = 100,
+                Temperature = 23,
+                CO2 = 400,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -257,10 +257,10 @@ namespace Website.Logic.Domain
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
                 Light = true,
-                Lumen = 90,
+                Lumen = 200,
                 Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Occupants = 25,
+                WifiClients = 26,
                 SurfaceArea = 111
             };
 
@@ -274,11 +274,11 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 20,
                 WifiClientsMax = 25,
-                Temperature = 24,
-                CO2 = 100,
+                Temperature = 23,
+                CO2 = 600,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -287,11 +287,11 @@ namespace Website.Logic.Domain
                 LightConsumptionMax = 3000,
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
-                Light = true,
-                Lumen = 90,
-                Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Light = false,
+                Lumen = 0,
+                Motion = false,
+                Occupants = 0,
+                WifiClients = 0,
                 SurfaceArea = 80
             };
 
@@ -305,11 +305,11 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 20,
                 WifiClientsMax = 25,
                 Temperature = 24,
-                CO2 = 100,
+                CO2 = 700,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -319,10 +319,10 @@ namespace Website.Logic.Domain
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
                 Light = true,
-                Lumen = 90,
+                Lumen = 200,
                 Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Occupants = 27,
+                WifiClients = 26,
                 SurfaceArea = 80
             };
 
@@ -336,11 +336,11 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
-                OccupantsMax = 20,
+                LumenMax = 600,
+                OccupantsMax = 50,
                 WifiClientsMax = 25,
                 Temperature = 24,
-                CO2 = 100,
+                CO2 = 400,
                 HardwareConsumption = 4000,
                 VentilationConsumption = 2500,
                 OtherConsumption = 1000,
@@ -350,18 +350,12 @@ namespace Website.Logic.Domain
                 OtherConsumptionMax = 3000,
                 VentilationConsumptionMax = 5000,
                 Light = true,
-                Lumen = 90,
-                Motion = true,
-                Occupants = 7,
-                WifiClients = 6,
+                Lumen = 200,
+                Motion = false,
+                Occupants = 5,
+                WifiClients = 3,
                 SurfaceArea = 125
             };
-
-            /*Ø20_603_1;
-            Ø20_508a_1; //Studiezone
-            Ø22_508_1; //Studiezone
-            Ø22_601b_1;
-            Ø22_604_1; //Studiezone*/
 
             Ø22_508_1 = new SensorRoom("Ø22-508-1", new Corners(new List<Coordinates>()
              {
@@ -373,7 +367,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 24,
@@ -404,7 +398,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 24,
@@ -435,7 +429,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 24,
@@ -466,7 +460,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 24,
@@ -497,7 +491,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 25,
                 Temperature = 23,
@@ -528,7 +522,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 20,
                 WifiClientsMax = 25,
                 Temperature = 22.5,
@@ -559,7 +553,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 20,
                 WifiClientsMax = 25,
                 Temperature = 22,
@@ -590,7 +584,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
                 Temperature = 20,
@@ -859,7 +853,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
@@ -889,7 +883,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
@@ -919,7 +913,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
@@ -949,7 +943,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
@@ -980,7 +974,7 @@ namespace Website.Logic.Domain
             {
                 TemperatureMax = 25,
                 CO2Max = 1000,
-                LumenMax = 200,
+                LumenMax = 600,
                 OccupantsMax = 50,
                 Temperature = 24,
                 CO2 = 100,
