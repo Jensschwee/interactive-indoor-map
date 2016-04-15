@@ -180,6 +180,7 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Studyzone,
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -211,6 +212,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 40,
@@ -242,6 +244,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -273,6 +276,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 20,
@@ -304,6 +308,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 20,
@@ -335,6 +340,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -366,6 +372,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -397,6 +404,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -428,6 +436,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -459,6 +468,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -490,6 +500,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
@@ -521,6 +532,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 20,
@@ -552,6 +564,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 20,
@@ -583,6 +596,7 @@ namespace Website.Logic.Domain
             }))
             {
                 TemperatureMax = 25,
+                TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
                 OccupantsMax = 50,
