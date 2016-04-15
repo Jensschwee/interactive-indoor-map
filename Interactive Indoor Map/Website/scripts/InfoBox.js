@@ -183,14 +183,6 @@ function drawSensorValuesInfoBox(sensorData) {
         }
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(0) + ' lm <br/>';
     }
-    if (findIndexOfView('WaterConsumption') !== notContained) {
-        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
-            html += '<b>Cold Water Consumption</b>: ' + sensorData.ColdWaterConsumption.toFixed(0) + '  <br/>';
-        }
-        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
-            html += '<b>Hot Water Consumption</b>: ' + sensorData.HotWaterConsumption.toFixed(0) + '  <br/>';
-        }
-    }
 
     if (findIndexOfView('TotalPowerConsumption') !== notContained) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(0) + ' kWh <br/>';
@@ -207,6 +199,15 @@ function drawSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('OtherConsumption') !== notContained) {
         html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(0) + ' kWh <br/>';
     }
+    if (findIndexOfView('WaterConsumption') !== notContained) {
+        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
+            html += '<b>Cold Water Consumption</b>: ' + sensorData.ColdWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+        }
+        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
+            html += '<b>Hot Water Consumption</b>: ' + sensorData.HotWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+        }
+    }
+
     if (findIndexOfView('Motion') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
