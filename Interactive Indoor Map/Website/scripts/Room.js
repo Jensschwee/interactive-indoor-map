@@ -50,15 +50,17 @@
             if (ActiveViews[j].hasOwnProperty("max")) {
                 maxValue = value.properties[ActiveViews[j].max];
             }
-
-            var sensorValue = value.properties[ActiveViews[j].value];
+            var sensorValue = 0;
+            
+            if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
+                sensorValue = value.properties[ActiveViews[j].value];
+            }
 
             var point = [];
             //Col A X
             point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * j);
             //Col A y
             point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * j);
-
 
             coordinates.push(point);
 
@@ -78,7 +80,7 @@
             if (roomHeight < 0) {
                 roomHeight = 0;
             }
-            //If the room is to fill less then 0%
+                //If the room is to fill less then 0%
             else if (roomHeight > 1) {
                 roomHeight = 1;
             }
@@ -89,7 +91,6 @@
 
             //Col C y
             point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
-
             coordinates.push(point);
 
             point = [];
@@ -104,7 +105,6 @@
             coordinates.push(coordinates[0]);
 
             features.push(feature);
-
         });
         column.push(jsonColumn);
     }
@@ -174,7 +174,7 @@ function backgrundStyle(feature) {
         color: getRoomBorderColor(feature.properties.RoomType),
         //Border thickness
         fillOpacity: 1.0
-};
+    };
 }
 //fff8dc, D0D6DC
 function getRoomBackgrundColor(RoomType) {
@@ -202,7 +202,7 @@ function getRoomBorderColor(RoomType) {
 }
 
 function drawRoomsForground(json) {
-    
+
     if (roomForgroundLayer != null) {
         geoMap.removeLayer(roomForgroundLayer);
     }
@@ -243,7 +243,7 @@ function onRoomClicked(e) {
         layer.setStyle({
             //border color
             color: '#8c8c8c'
-        }); 
+        });
 
         if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();

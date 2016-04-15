@@ -505,9 +505,7 @@ function CreateViewButtons() {
                             name: "WaterConsumption",
                             color: '#3399cc',
                             icon: waterConsumptionIcon,
-                            max: 'WaterConsumptionMax',
                             value: 'WaterConsumption',
-                            min: "WaterConsumptionMin",
                             button: toggleWaterConsumptionButton
                         };
                         btn.button.style.backgroundColor = '#3399cc';

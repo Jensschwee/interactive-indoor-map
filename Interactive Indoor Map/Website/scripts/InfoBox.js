@@ -126,8 +126,7 @@ function drawSelectedRoomInfoBox() {
             HTML: ""
         };
 
-        roomArray.forEach(function (roomName, index)
-        {
+        roomArray.forEach(function (roomName, index) {
             var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
                 return roomName === value.properties.Name;
             });
@@ -184,6 +183,15 @@ function drawSensorValuesInfoBox(sensorData) {
         }
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(0) + ' lm <br/>';
     }
+    if (findIndexOfView('WaterConsumption') !== notContained) {
+        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
+            html += '<b>Cold Water Consumption</b>: ' + sensorData.ColdWaterConsumption.toFixed(0) + '  <br/>';
+        }
+        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
+            html += '<b>Hot Water Consumption</b>: ' + sensorData.HotWaterConsumption.toFixed(0) + '  <br/>';
+        }
+    }
+
     if (findIndexOfView('TotalPowerConsumption') !== notContained) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(0) + ' kWh <br/>';
     }
