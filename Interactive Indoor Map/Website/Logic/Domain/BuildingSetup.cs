@@ -35,6 +35,15 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_511_0;
         private SensorRoom Ø22_510_0;
         private SensorRoom Ø22_508_0;
+        private SensorlessRoom cellarLowerMidHallway;
+        private SensorlessRoom cellarMidHallway;
+        private SensorlessRoom cellarUpperMidHallway;
+        private SensorlessRoom cellarLowerLeftStairs;
+        private SensorlessRoom cellarLowerRightUtilities;
+        private SensorlessRoom cellarUpperRightStairs;
+        private SensorlessRoom cellarUpperLeftUtilities;
+        private SensorlessRoom cellarElevatorRoom;
+        private SensorlessRoom cellarMidStairs;
 
         //Ground Floor Rooms
         private SensorRoom Ø20_604b_1;
@@ -80,7 +89,7 @@ namespace Website.Logic.Domain
             BuildingDAL buildingDAL = new BuildingDAL();
             building = buildingDAL.GetBuilding("Building 44");
             this.building = building;
-
+            
             //CreateFloors();
 
             //CreateCellarFloorRooms();
@@ -89,7 +98,19 @@ namespace Website.Logic.Domain
             //CreateGroundFloorSensorlessRooms();
             //CreateFirstFloorRooms();
 
-            ////AssembleBuilding();
+            CreateFloors();
+
+            CreateCellarFloorRooms();
+
+            CreateParterreFloorRooms();
+            CreateParterreFloorSensorlessRooms();
+
+            CreateGroundFloorRooms();
+            CreateGroundFloorSensorlessRooms();
+
+            CreateFirstFloorRooms();
+            CreateFirstFloorSensorlessRooms();
+
             //AssembleBuilding();
 
             //buildingDAL.SaveBuilding(building);
@@ -1103,6 +1124,358 @@ namespace Website.Logic.Domain
             };
         }
 
+        private void CreateParterreFloorSensorlessRooms()
+        {
+            cellarLowerMidHallway = new SensorlessRoom("Lower Mid Hallway", new List<Coordinates>()
+             {
+                new Coordinates(10.430805369,55.367237894),
+                new Coordinates(10.430904049,55.3672421620001),
+                new Coordinates(10.4309258010001,55.367079732),
+                new Coordinates(10.4309258010001,55.367079732),
+                new Coordinates(10.4308271200001,55.367075464),
+                new Coordinates(10.430805369,55.367237894)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarMidHallway = new SensorlessRoom("Mid Hallway", new List<Coordinates>()
+             {
+                new Coordinates(10.4307825390001,55.3674083780001),
+                new Coordinates(10.4308812190001,55.367412646),
+                new Coordinates(10.430904049,55.3672421620001),
+                new Coordinates(10.430805369,55.367237894),
+                new Coordinates(10.4307825390001,55.3674083780001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+            
+            cellarUpperMidHallway = new SensorlessRoom("Upper Mid Hallway", new List<Coordinates>()
+             {
+                new Coordinates(10.4308812190001,55.367412646),
+                new Coordinates(10.4307825390001,55.3674083780001),
+                new Coordinates(10.430761025,55.3675690410001),
+                new Coordinates(10.4308597040001,55.3675733090001),
+                new Coordinates(10.4308812190001,55.367412646)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarLowerLeftStairs = new SensorlessRoom("Lower Left Stairs", new List<Coordinates>()
+             {
+                new Coordinates(10.430653052,55.3669603690001),
+                new Coordinates(10.430841441,55.366968517),
+                new Coordinates(10.4308464120001,55.366931397),
+                new Coordinates(10.430658023,55.366923248),
+                new Coordinates(10.430653052,55.3669603690001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarLowerRightUtilities = new SensorlessRoom("Lower Right Utilities", new List<Coordinates>()
+             {
+                new Coordinates(10.4311268000001,55.366980862),
+                new Coordinates(10.431131771,55.3669437400001),
+                new Coordinates(10.430945093,55.3669356660001),
+                new Coordinates(10.430940122,55.3669727860001),
+                new Coordinates(10.4311268000001,55.366980862)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarUpperRightStairs = new SensorlessRoom("Upper Right Stairs", new List<Coordinates>()
+             {
+                new Coordinates(10.4310319250001,55.367689286),
+                new Coordinates(10.4308452550001,55.367681212),
+                new Coordinates(10.4308402840001,55.367718331),
+                new Coordinates(10.4310269540001,55.367726406),
+                new Coordinates(10.4310319250001,55.367689286)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarUpperLeftUtilities = new SensorlessRoom("Upper Left Utilities", new List<Coordinates>()
+             {
+                new Coordinates(10.4305581780001,55.3676687940001),
+                new Coordinates(10.4305532070001,55.3677059140001),
+                new Coordinates(10.430741604,55.3677140630001),
+                new Coordinates(10.4307465750001,55.367676943),
+                new Coordinates(10.4305581780001,55.3676687940001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarElevatorRoom = new SensorlessRoom("Elevator", new List<Coordinates>()
+             {
+                new Coordinates(10.430885916,55.3673775670001),
+                new Coordinates(10.43107259,55.3673856410001),
+                new Coordinates(10.431086158,55.367284328),
+                new Coordinates(10.4308994830001,55.367276254),
+                new Coordinates(10.430885916,55.3673775670001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            cellarMidStairs = new SensorlessRoom("Mid Stairs", new List<Coordinates>()
+            {
+                new Coordinates(10.430801452,55.3672720260001),
+                new Coordinates(10.43061241,55.367263849),
+                new Coordinates(10.4305945140001,55.367397474),
+                new Coordinates(10.430783557,55.3674056510001),
+                new Coordinates(10.430801452,55.3672720260001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+        }
+
+        private void CreateGroundFloorSensorlessRooms()
+        {
+
+            Ø21_602_1 = new SensorlessRoom("Ø21-602-1", new List<Coordinates>()
+             {
+                new Coordinates(10.4309046290001,55.3672420730001),
+                new Coordinates(10.430923427,55.367101694),
+                new Coordinates(10.430962113,55.3671033680001),
+                new Coordinates(10.4309793780001,55.366974462),
+                new Coordinates(10.4309406890001,55.3669727880001),
+                new Coordinates(10.4309456570001,55.36693569),
+                new Coordinates(10.4309397540001,55.3669354350001),
+                new Coordinates(10.4309393720001,55.366938288),
+                new Coordinates(10.430849659,55.366934407),
+                new Coordinates(10.430850041,55.3669315540001),
+                new Coordinates(10.4308432330001,55.3669312590001),
+                new Coordinates(10.4308382580001,55.36696841),
+
+                new Coordinates(10.430801009,55.3669667990001),
+                new Coordinates(10.43078375,55.367095674),
+                new Coordinates(10.430820999,55.3670972850001),
+                new Coordinates(10.430802203,55.3672376430001),
+                new Coordinates(10.4309046290001,55.3672420730001),
+                new Coordinates(10.430823977,55.367075051),
+                new Coordinates(10.4308353340001,55.3669902400001),
+                new Coordinates(10.4309377590001,55.3669946700001),
+                new Coordinates(10.4309264020001,55.3670794810001),
+                new Coordinates(10.430823977,55.367075051),
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+            Ø22_507_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
+             {
+                new Coordinates(10.4306530480001,55.366960399),
+                new Coordinates(10.4308382580001,55.36696841),
+                new Coordinates(10.4308432330001,55.3669312590001),
+                new Coordinates(10.430658023,55.366923248),
+                new Coordinates(10.4306530480001,55.366960399)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            Ø21_600c_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
+             {
+                new Coordinates(10.4310844660001,55.3672969610001),
+                new Coordinates(10.4308983560001,55.3672889100001),
+                new Coordinates(10.43089724,55.3672972480001),
+                new Coordinates(10.430911,55.3672978430001),
+                new Coordinates(10.430911109,55.367297029),
+                new Coordinates(10.430963816,55.367299309),
+                new Coordinates(10.4309607220001,55.367322421),
+                new Coordinates(10.430908013,55.367320142),
+                new Coordinates(10.4309081230001,55.3673193230001),
+                new Coordinates(10.430894364,55.367318728),
+                new Coordinates(10.4308880140001,55.367366148),
+                new Coordinates(10.431074123,55.3673741980001),
+                new Coordinates(10.4310844660001,55.3672969610001)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            Ø21_508b_1 = new SensorlessRoom("Ø21-508b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.4308398060001,55.367680927),
+                new Coordinates(10.4308842190001,55.3676828480001),
+                new Coordinates(10.4309014460001,55.367554225),
+                new Coordinates(10.430723347,55.3675465210001),
+                new Coordinates(10.4307061420001,55.367674987),
+                new Coordinates(10.430750275,55.367676896),
+                new Coordinates(10.430745659,55.3677113690001),
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.430858947,55.367574189),
+                new Coordinates(10.4308475240001,55.3676595090001),
+                new Coordinates(10.4307486020001,55.3676552300001),
+                new Coordinates(10.4307600280001,55.36756991),
+                new Coordinates(10.430858947,55.367574189),
+
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø21_511b_1 = new SensorlessRoom("Ø21-511b-1", new List<Coordinates>()
+             {
+                new Coordinates(10.430881862,55.367412089),
+                new Coordinates(10.430779435,55.367407659),
+                new Coordinates(10.430760623,55.3675481330001),
+                new Coordinates(10.4308630510001,55.3675525640001),
+                new Coordinates(10.430881862,55.367412089)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø21_600b_1 = new SensorlessRoom("Ø21-600b-1", new List<Coordinates>()
+             {
+                new Coordinates(10.430802204,55.3672376430001),
+                new Coordinates(10.4307975720001,55.36727223),
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.4307852920001,55.3673639290001),
+                new Coordinates(10.430782655,55.3673836190001),
+                new Coordinates(10.43078122,55.3673943360001),
+                new Coordinates(10.43077966,55.367405983),
+                new Coordinates(10.430779435,55.367407659),
+                new Coordinates(10.430881862,55.367412089),
+                new Coordinates(10.4308864340001,55.3673779440001),
+                new Coordinates(10.4308880140001,55.367366148),
+                new Coordinates(10.430894364,55.367318728),
+                new Coordinates(10.4309081230001,55.3673193230001),
+                new Coordinates(10.430911,55.3672978430001),
+                new Coordinates(10.43089724,55.3672972480001),
+                new Coordinates(10.430898357,55.3672889100001),
+                new Coordinates(10.4308999900001,55.367276712),
+                new Coordinates(10.4309046290001,55.3672420730001),
+                new Coordinates(10.430802204,55.3672376430001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø20_606_1 = new SensorlessRoom("Ø20-606-1", new List<Coordinates>()
+            {
+                new Coordinates(10.4310319320001,55.367689237),
+                new Coordinates(10.4308398060001,55.367680927),
+                new Coordinates(10.430835212,55.367715242),
+                new Coordinates(10.430835319,55.367715247),
+                new Coordinates(10.430834937,55.3677181),
+                new Coordinates(10.4310269540001,55.367726406),
+                new Coordinates(10.4310319320001,55.367689237)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            Ø20_600b_1 = new SensorlessRoom("Ø20-600b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.430610734,55.367276363),
+                new Coordinates(10.430600079,55.367355918),
+                new Coordinates(10.4307852920001,55.3673639290001),
+                new Coordinates(10.430795946,55.3672843740001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø20_601a_1 = new SensorlessRoom("Ø20-601a-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430610734,55.367276363),
+                new Coordinates(10.430795946,55.3672843740001),
+                new Coordinates(10.4307975720001,55.36727223),
+                new Coordinates(10.4306123600001,55.367264219),
+                new Coordinates(10.430610734,55.367276363)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            Ø21_600a_1 = new SensorlessRoom("Ø21-600a-1", new List<Coordinates>()
+            {
+                new Coordinates(10.430963816,55.367299309),
+                new Coordinates(10.430911109,55.367297029),
+                new Coordinates(10.430908013,55.367320142),
+                new Coordinates(10.4309607220001,55.367322421),
+                new Coordinates(10.430963816,55.367299309)
+            })
+            {
+                RoomType = RoomType.Elevator
+            };
+
+            Ø22_601a = new SensorlessRoom("Ø22-601a", new List<Coordinates>()
+            {
+                new Coordinates(10.4308983560001,55.3672889100001),
+                new Coordinates(10.4310844660001,55.3672969610001),
+                new Coordinates(10.4310861000001,55.3672847620001),
+                new Coordinates(10.4308999900001,55.367276712),
+                new Coordinates(10.4308983560001,55.3672889100001)
+            })
+            {
+                RoomType = RoomType.Elevator
+            };
+
+            Ø22_512b_1 = new SensorlessRoom("Ø22-512b-1", new List<Coordinates>()
+            {
+                new Coordinates(10.431074123,55.3673741980001),
+                new Coordinates(10.4308880140001,55.367366148),
+                new Coordinates(10.4308864340001,55.3673779440001),
+                new Coordinates(10.431072543,55.3673859940001),
+                new Coordinates(10.431074123,55.3673741980001)
+            })
+            {
+                RoomType = RoomType.Elevator
+            };
+
+            UpperLeftUtilities = new SensorlessRoom("UpperLeftUtilities", new List<Coordinates>()
+            {
+                new Coordinates(10.4305582060001,55.3676685890001),
+                new Coordinates(10.4305532070001,55.3677059140001),
+                new Coordinates(10.4307452240001,55.36771422),
+                new Coordinates(10.430750275,55.367676896),
+                new Coordinates(10.4305582060001,55.3676685890001)
+            })
+            {
+                RoomType = RoomType.Utility
+            };
+
+            Toilets = new SensorlessRoom("Toilets", new List<Coordinates>()
+            {
+                new Coordinates(10.430594447, 55.367397972),
+                new Coordinates(10.430600079, 55.367355918),
+                new Coordinates(10.4307852920001, 55.3673639290001),
+                new Coordinates(10.43077966, 55.367405983),
+                new Coordinates(10.430594447, 55.367397972)
+            })
+            {
+                RoomType = RoomType.Toilet
+            };
+
+            LowerRightUtilities = new SensorlessRoom("LowerRightUtilities", new List<Coordinates>()
+            {
+                new Coordinates(10.431131771, 55.3669437400001),
+                new Coordinates(10.431126803, 55.3669808390001),
+                new Coordinates(10.4309406890001, 55.3669727880001),
+                new Coordinates(10.4309456570001, 55.36693569),
+                new Coordinates(10.431131771, 55.3669437400001)
+            })
+            {
+                RoomType = RoomType.Utility
+            };
+        }
+
+        private void CreateFirstFloorSensorlessRooms()
+        {
+            
+        }
+
         private void CreateFirstFloorRooms()
         {
             Ø20_603c_2 = new SensorRoom("Ø20-603c-2", new Corners(new List<Coordinates>()
@@ -1362,240 +1735,6 @@ namespace Website.Logic.Domain
             };
         }
 
-        private void CreateGroundFloorSensorlessRooms()
-        {
-            Ø21_602_1 = new SensorlessRoom("Ø21-602-1", new List<Coordinates>()
-             {
-                new Coordinates(10.4309046290001,55.3672420730001),
-                new Coordinates(10.430923427,55.367101694),
-                new Coordinates(10.430962113,55.3671033680001),
-                new Coordinates(10.4309793780001,55.366974462),
-                new Coordinates(10.4309406890001,55.3669727880001),
-                new Coordinates(10.4309456570001,55.36693569),
-                new Coordinates(10.4309397540001,55.3669354350001),
-                new Coordinates(10.4309393720001,55.366938288),
-                new Coordinates(10.430849659,55.366934407),
-                new Coordinates(10.430850041,55.3669315540001),
-                new Coordinates(10.4308432330001,55.3669312590001),
-                new Coordinates(10.4308382580001,55.36696841),
-
-                new Coordinates(10.430801009,55.3669667990001),
-                new Coordinates(10.43078375,55.367095674),
-                new Coordinates(10.430820999,55.3670972850001),
-                new Coordinates(10.430802203,55.3672376430001),
-                new Coordinates(10.4309046290001,55.3672420730001),
-                new Coordinates(10.430823977,55.367075051),
-                new Coordinates(10.4308353340001,55.3669902400001),
-                new Coordinates(10.4309377590001,55.3669946700001),
-                new Coordinates(10.4309264020001,55.3670794810001),
-                new Coordinates(10.430823977,55.367075051),
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-            Ø22_507_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
-             {
-                new Coordinates(10.4306530480001,55.366960399),
-                new Coordinates(10.4308382580001,55.36696841),
-                new Coordinates(10.4308432330001,55.3669312590001),
-                new Coordinates(10.430658023,55.366923248),
-                new Coordinates(10.4306530480001,55.366960399)
-            })
-            {
-                RoomType = RoomType.Stairs
-            };
-
-            Ø21_600c_1 = new SensorlessRoom("Ø22-507-1", new List<Coordinates>()
-             {
-                new Coordinates(10.4310844660001,55.3672969610001),
-                new Coordinates(10.4308983560001,55.3672889100001),
-                new Coordinates(10.43089724,55.3672972480001),
-                new Coordinates(10.430911,55.3672978430001),
-                new Coordinates(10.430911109,55.367297029),
-                new Coordinates(10.430963816,55.367299309),
-                new Coordinates(10.4309607220001,55.367322421),
-                new Coordinates(10.430908013,55.367320142),
-                new Coordinates(10.4309081230001,55.3673193230001),
-                new Coordinates(10.430894364,55.367318728),
-                new Coordinates(10.4308880140001,55.367366148),
-                new Coordinates(10.431074123,55.3673741980001),
-                new Coordinates(10.4310844660001,55.3672969610001)
-            })
-            {
-                RoomType = RoomType.Stairs
-            };
-
-            Ø21_508b_1 = new SensorlessRoom("Ø21-508b-1", new List<Coordinates>()
-            {
-                new Coordinates(10.430835212,55.367715242),
-                new Coordinates(10.4308398060001,55.367680927),
-                new Coordinates(10.4308842190001,55.3676828480001),
-                new Coordinates(10.4309014460001,55.367554225),
-                new Coordinates(10.430723347,55.3675465210001),
-                new Coordinates(10.4307061420001,55.367674987),
-                new Coordinates(10.430750275,55.367676896),
-                new Coordinates(10.430745659,55.3677113690001),
-                new Coordinates(10.430835212,55.367715242),
-                new Coordinates(10.430858947,55.367574189),
-                new Coordinates(10.4308475240001,55.3676595090001),
-                new Coordinates(10.4307486020001,55.3676552300001),
-                new Coordinates(10.4307600280001,55.36756991),
-                new Coordinates(10.430858947,55.367574189),
-
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-
-            Ø21_511b_1 = new SensorlessRoom("Ø21-511b-1", new List<Coordinates>()
-             {
-                new Coordinates(10.430881862,55.367412089),
-                new Coordinates(10.430779435,55.367407659),
-                new Coordinates(10.430760623,55.3675481330001),
-                new Coordinates(10.4308630510001,55.3675525640001),
-                new Coordinates(10.430881862,55.367412089)
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-
-            Ø21_600b_1 = new SensorlessRoom("Ø21-600b-1", new List<Coordinates>()
-             {
-                new Coordinates(10.430802204,55.3672376430001),
-                new Coordinates(10.4307975720001,55.36727223),
-                new Coordinates(10.430795946,55.3672843740001),
-                new Coordinates(10.4307852920001,55.3673639290001),
-                new Coordinates(10.430782655,55.3673836190001),
-                new Coordinates(10.43078122,55.3673943360001),
-                new Coordinates(10.43077966,55.367405983),
-                new Coordinates(10.430779435,55.367407659),
-                new Coordinates(10.430881862,55.367412089),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308880140001,55.367366148),
-                new Coordinates(10.430894364,55.367318728),
-                new Coordinates(10.4309081230001,55.3673193230001),
-                new Coordinates(10.430911,55.3672978430001),
-                new Coordinates(10.43089724,55.3672972480001),
-                new Coordinates(10.430898357,55.3672889100001),
-                new Coordinates(10.4308999900001,55.367276712),
-                new Coordinates(10.4309046290001,55.3672420730001),
-                new Coordinates(10.430802204,55.3672376430001)
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-
-            Ø20_606_1 = new SensorlessRoom("Ø20-606-1", new List<Coordinates>()
-            {
-                new Coordinates(10.4310319320001,55.367689237),
-                new Coordinates(10.4308398060001,55.367680927),
-                new Coordinates(10.430835212,55.367715242),
-                new Coordinates(10.430835319,55.367715247),
-                new Coordinates(10.430834937,55.3677181),
-                new Coordinates(10.4310269540001,55.367726406),
-                new Coordinates(10.4310319320001,55.367689237)
-            })
-            {
-                RoomType = RoomType.Stairs
-            };
-
-            Ø20_600b_1 = new SensorlessRoom("Ø20-600b-1", new List<Coordinates>()
-            {
-                new Coordinates(10.430795946,55.3672843740001),
-                new Coordinates(10.430610734,55.367276363),
-                new Coordinates(10.430600079,55.367355918),
-                new Coordinates(10.4307852920001,55.3673639290001),
-                new Coordinates(10.430795946,55.3672843740001)
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-
-            Ø20_601a_1 = new SensorlessRoom("Ø20-601a-1", new List<Coordinates>()
-            {
-                new Coordinates(10.430610734,55.367276363),
-                new Coordinates(10.430795946,55.3672843740001),
-                new Coordinates(10.4307975720001,55.36727223),
-                new Coordinates(10.4306123600001,55.367264219),
-                new Coordinates(10.430610734,55.367276363)
-            })
-            {
-                RoomType = RoomType.Hallway
-            };
-
-            Ø21_600a_1 = new SensorlessRoom("Ø21-600a-1", new List<Coordinates>()
-            {
-                new Coordinates(10.430963816,55.367299309),
-                new Coordinates(10.430911109,55.367297029),
-                new Coordinates(10.430908013,55.367320142),
-                new Coordinates(10.4309607220001,55.367322421),
-                new Coordinates(10.430963816,55.367299309)
-            })
-            {
-                RoomType = RoomType.Elevator
-            };
-
-            Ø22_601a = new SensorlessRoom("Ø22-601a", new List<Coordinates>()
-            {
-                new Coordinates(10.4308983560001,55.3672889100001),
-                new Coordinates(10.4310844660001,55.3672969610001),
-                new Coordinates(10.4310861000001,55.3672847620001),
-                new Coordinates(10.4308999900001,55.367276712),
-                new Coordinates(10.4308983560001,55.3672889100001)
-            })
-            {
-                RoomType = RoomType.Elevator
-            };
-
-            Ø22_512b_1 = new SensorlessRoom("Ø22-512b-1", new List<Coordinates>()
-            {
-                new Coordinates(10.431074123,55.3673741980001),
-                new Coordinates(10.4308880140001,55.367366148),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.431074123,55.3673741980001)
-            })
-            {
-                RoomType = RoomType.Elevator
-            };
-
-            UpperLeftUtilities = new SensorlessRoom("UpperLeftUtilities", new List<Coordinates>()
-            {
-                new Coordinates(10.4305582060001,55.3676685890001),
-                new Coordinates(10.4305532070001,55.3677059140001),
-                new Coordinates(10.4307452240001,55.36771422),
-                new Coordinates(10.430750275,55.367676896),
-                new Coordinates(10.4305582060001,55.3676685890001)
-            })
-            {
-                RoomType = RoomType.Utility
-            };
-
-            Toilets = new SensorlessRoom("Toilets", new List<Coordinates>()
-            {
-                new Coordinates(10.430594447, 55.367397972),
-                new Coordinates(10.430600079, 55.367355918),
-                new Coordinates(10.4307852920001, 55.3673639290001),
-                new Coordinates(10.43077966, 55.367405983),
-                new Coordinates(10.430594447, 55.367397972)
-            })
-            {
-                RoomType = RoomType.Toilet
-            };
-
-            LowerRightUtilities = new SensorlessRoom("LowerRightUtilities", new List<Coordinates>()
-            {
-                new Coordinates(10.431131771, 55.3669437400001),
-                new Coordinates(10.431126803, 55.3669808390001),
-                new Coordinates(10.4309406890001, 55.3669727880001),
-                new Coordinates(10.4309456570001, 55.36693569),
-                new Coordinates(10.431131771, 55.3669437400001)
-            })
-            {
-                RoomType = RoomType.Utility
-            };
-        }
-
         private void AssembleBuilding()
         {
             //Rooms
@@ -1634,6 +1773,15 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(Ø22_511_2);
             firstFloor.Rooms.Add(Ø22_510b_2);
             //SensorlessRooms
+            parterreFloor.Rooms.Add(cellarLowerMidHallway); 
+            parterreFloor.Rooms.Add(cellarMidHallway); 
+            parterreFloor.Rooms.Add(cellarUpperMidHallway); 
+            parterreFloor.Rooms.Add(cellarLowerLeftStairs); 
+            parterreFloor.Rooms.Add(cellarUpperRightStairs); 
+            parterreFloor.Rooms.Add(cellarMidStairs); 
+            parterreFloor.Rooms.Add(cellarElevatorRoom); 
+            parterreFloor.Rooms.Add(cellarUpperLeftUtilities); 
+            parterreFloor.Rooms.Add(cellarLowerRightUtilities); 
             groundFloor.Rooms.Add(Ø21_602_1);
             groundFloor.Rooms.Add(Ø21_511b_1);
             groundFloor.Rooms.Add(Ø21_600b_1);
