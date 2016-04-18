@@ -77,28 +77,24 @@ namespace Website.Logic.Domain
 
         public void SetupBuilding(Building building)
         {
-            this.building = building;
-            
-            //building = buildingDAL.GetBuilding("Building 44");
-
-            //CreateBuilding();
-
-            CreateFloors();
-
-            CreateCellarFloorRooms();
-            CreateParterreFloorRooms();
-            CreateGroundFloorRooms();
-            CreateGroundFloorSensorlessRooms();
-            CreateFirstFloorRooms();
-
-            //AssembleBuilding();
-            AssembleBuilding();
-
-            HttpContext.Current.Application["Building"] = building;
             BuildingDAL buildingDAL = new BuildingDAL();
-            buildingDAL.SaveBuilding(building);
-            //TestTimer();
-            //saveDataToDB();
+            building = buildingDAL.GetBuilding("Building 44");
+            this.building = building;
+
+            //CreateFloors();
+
+            //CreateCellarFloorRooms();
+            //CreateParterreFloorRooms();
+            //CreateGroundFloorRooms();
+            //CreateGroundFloorSensorlessRooms();
+            //CreateFirstFloorRooms();
+
+            ////AssembleBuilding();
+            //AssembleBuilding();
+
+            //buildingDAL.SaveBuilding(building);
+            HttpContext.Current.Application["Building"] = building;
+
         }
 
         public Building CreateBuilding()

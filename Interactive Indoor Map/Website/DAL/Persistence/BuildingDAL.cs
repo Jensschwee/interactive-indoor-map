@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -20,17 +21,22 @@ namespace Website.DAL.Persistence
 
             foreach (Floor floor in building.Floors)
             {
-                SaveFloor(floor);
+                //SaveFloor(floor);
             }
         }
         public Building GetBuilding(String buildingName)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                var building = context.Buildings.Where(b => b.Name == buildingName);
-                return building.First();
+                var tempBuilding = context.Buildings.Where(b => b.Name == buildingName)
+                    .Include(b => b.SmapEndpoints)
+                    .Include(b => b.Floors)
+                    .Include(b => b.Floors.Select(r => r.Rooms));
+                return tempBuilding.First();
+
+
             }
-            
+
         }
 
         private void SaveFloor(Floor floor)
@@ -43,11 +49,11 @@ namespace Website.DAL.Persistence
 
             foreach (Room room in floor.Rooms)
             {
-                if (room.GetType() == typeof (SensorRoom))
+                if (room.GetType() == typeof(SensorRoom))
                 {
                     SaveSensorRoom((SensorRoom)room);
                 }
-                else if (room.GetType() == typeof (SensorlessRoom))
+                else if (room.GetType() == typeof(SensorlessRoom))
                 {
                     SaveSensorlessRoom((SensorlessRoom)room);
                 }
@@ -78,7 +84,8 @@ namespace Website.DAL.Persistence
                 context.SaveChanges();
             }
             SaveCorners(sensorRoom.Corners);
-            SaveSmapEndpoints(sensorRoom.SmapEndpoints);
+            if (sensorRoom.SmapEndpoints != null)
+                SaveSmapEndpoints(sensorRoom.SmapEndpoints);
         }
 
         private void SaveCoordinates(Coordinates coordinates)
