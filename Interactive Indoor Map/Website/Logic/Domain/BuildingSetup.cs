@@ -13,9 +13,9 @@ namespace Website.Logic.Domain
     {
         private Building building;
         private Floor cellarFloor;
+        private Floor parterreFloor;
         private Floor groundFloor;
         private Floor firstFloor;
-        private Floor secondFloor;
         private SensorRoom _testSensorRoomCellar1;
         private SensorRoom _testSensorRoomFirstFloor1;
         private SensorRoom _testSensorRoomFirstFloor2;
@@ -78,9 +78,11 @@ namespace Website.Logic.Domain
             CreateFloors();
 
             CreateRooms();
-            CreateGroundFloorRooms();
+
             CreateParterreFloorRooms();
-            CreateActualSensorlessRooms();
+            CreateGroundFloorRooms();
+            CreateGroundFloorSensorlessRooms();
+            CreateFirstFloorRooms();
 
             //AssembleBuilding();
             AssembleActualBuilding();
@@ -126,7 +128,7 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 400
             };
 
-            groundFloor = new Floor(0)
+            parterreFloor = new Floor(0)
             {
                 FloorName = "Parterre",
                 SurfaceArea = 2400,
@@ -144,7 +146,7 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 800
             };
 
-            firstFloor = new Floor(1)
+            groundFloor = new Floor(1)
             {
                 FloorName = "Ground Floor",
                 SurfaceArea = 2400,
@@ -162,7 +164,7 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 250
             };
 
-            secondFloor = new Floor(2)
+            firstFloor = new Floor(2)
             {
                 FloorName = "First Floor",
                 SurfaceArea = 2400,
@@ -186,10 +188,10 @@ namespace Website.Logic.Domain
         {
             Ø20_604_0 = new SensorRoom("Ø20-604-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.430841441,55.366968517),
+                new Coordinates(10.430653052,55.3669603690001),
+                new Coordinates(10.430635802,55.367089175),
+                new Coordinates(10.430824193,55.367097324)
             }))
             {
                 RoomType = RoomType.Studyzone,
@@ -219,10 +221,10 @@ namespace Website.Logic.Domain
 
             Ø20_603_0 = new SensorRoom("Ø20-603-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.430824193,55.367097324),
+                new Coordinates(10.430635802,55.367089175),
+                new Coordinates(10.4306243130001,55.3671749660001),
+                new Coordinates(10.4308127080001,55.367183089)
             }))
             {
                 TemperatureMax = 25,
@@ -251,10 +253,10 @@ namespace Website.Logic.Domain
 
             Ø20_601b_0 = new SensorRoom("Ø20-601b-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.430612384,55.367264042),
+                new Coordinates(10.4308007770001,55.3672721890001),
+                new Coordinates(10.4308127080001,55.367183089),
+                new Coordinates(10.4306243130001,55.3671749660001)
             }))
             {
                 TemperatureMax = 25,
@@ -283,10 +285,10 @@ namespace Website.Logic.Domain
 
             Ø20_511_0 = new SensorRoom("Ø20-511-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4307828560001,55.367406014),
+                new Coordinates(10.430594462,55.367397866),
+                new Coordinates(10.4305840530001,55.367475588),
+                new Coordinates(10.430772448,55.367483737)
             }))
             {
                 TemperatureMax = 25,
@@ -315,10 +317,10 @@ namespace Website.Logic.Domain
 
             Ø20_510a_0 = new SensorRoom("Ø20-510a-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4305754280001,55.3675399900001),
+                new Coordinates(10.4307638240001,55.3675481390001),
+                new Coordinates(10.430772448,55.367483737),
+                new Coordinates(10.4305840530001,55.367475588)
             }))
             {
                 TemperatureMax = 25,
@@ -347,10 +349,10 @@ namespace Website.Logic.Domain
 
             Ø20_508a_0 = new SensorRoom("Ø20-508a-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4307638240001,55.3675481390001),
+                new Coordinates(10.4305754280001,55.3675399900001),
+                new Coordinates(10.4305581780001,55.3676687940001),
+                new Coordinates(10.4307465750001,55.367676943)
             }))
             {
                 RoomType = RoomType.Studyzone,
@@ -380,10 +382,10 @@ namespace Website.Logic.Domain
 
             Ø22_604_0 = new SensorRoom("Ø22-604-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4311268000001,55.366980862),
+                new Coordinates(10.430940122,55.3669727860001),
+                new Coordinates(10.430922874,55.3671015880001),
+                new Coordinates(10.43110955,55.367109665)
             }))
             {
                 RoomType = RoomType.Studyzone,
@@ -413,10 +415,10 @@ namespace Website.Logic.Domain
 
             Ø22_603_0 = new SensorRoom("Ø22-603-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.43110955,55.367109665),
+                new Coordinates(10.430922874,55.3671015880001),
+                new Coordinates(10.4309142490001,55.3671659950001),
+                new Coordinates(10.4311009250001,55.367174069)
             }))
             {
                 TemperatureMax = 25,
@@ -445,10 +447,10 @@ namespace Website.Logic.Domain
 
             Ø22_601b_0 = new SensorRoom("Ø22-601b-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4308994830001,55.367276254),
+                new Coordinates(10.431086158,55.367284328),
+                new Coordinates(10.4311009250001,55.367174069),
+                new Coordinates(10.4309142490001,55.3671659950001)
             }))
             {
                 TemperatureMax = 25,
@@ -477,10 +479,10 @@ namespace Website.Logic.Domain
 
             Ø22_512a_0= new SensorRoom("Ø22-512a-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.43107259,55.3673856410001),
+                new Coordinates(10.430885916,55.3673775670001),
+                new Coordinates(10.4308797510001,55.3674236040001),
+                new Coordinates(10.431066425,55.3674316780001)
             }))
             {
                 TemperatureMax = 25,
@@ -509,10 +511,10 @@ namespace Website.Logic.Domain
 
             Ø22_511_0 = new SensorRoom("Ø22-511-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.431066425,55.3674316780001),
+                new Coordinates(10.4308797510001,55.3674236040001),
+                new Coordinates(10.430871127,55.367488006),
+                new Coordinates(10.4310578000001,55.3674960800001)
             }))
             {
                 TemperatureMax = 25,
@@ -541,10 +543,10 @@ namespace Website.Logic.Domain
 
             Ø22_510_0 = new SensorRoom("Ø22-510-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4310578000001,55.3674960800001),
+                new Coordinates(10.430871127,55.367488006),
+                new Coordinates(10.4308625030001,55.3675524080001),
+                new Coordinates(10.4310491750001,55.367560482)
             }))
             {
                 TemperatureMax = 25,
@@ -573,10 +575,10 @@ namespace Website.Logic.Domain
 
             Ø22_508_0 = new SensorRoom("Ø22-508-0", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.4310491750001,55.367560482),
+                new Coordinates(10.4308625030001,55.3675524080001),
+                new Coordinates(10.4308452550001,55.367681212),
+                new Coordinates(10.4310319250001,55.367689286)
             }))
             {
                 RoomType = RoomType.Studyzone,
@@ -1059,10 +1061,14 @@ namespace Website.Logic.Domain
                 WifiClients = 8,
                 SurfaceArea = 139
             };
-
         }
 
-        private void CreateActualSensorlessRooms()
+        private void CreateFirstFloorRooms()
+        {
+            
+        }
+
+        private void CreateGroundFloorSensorlessRooms()
         {
             Ø21_602_1 = new SensorlessRoom("Ø21-602-1", new List<Coordinates>()
              {
@@ -1611,63 +1617,75 @@ namespace Website.Logic.Domain
         private void AssembleActualBuilding()
         {
             cellarFloor.Rooms.Add(Ø20_510_1);
-            groundFloor.Rooms.Add(Ø20_510_1);
             //Rooms
-            firstFloor.Rooms.Add(Ø20_510_1);
-            firstFloor.Rooms.Add(Ø20_601b_1);
-            firstFloor.Rooms.Add(Ø20_604b_1);
-            firstFloor.Rooms.Add(Ø22_510_1);
-            firstFloor.Rooms.Add(Ø22_508_1);
-            firstFloor.Rooms.Add(Ø22_601b_1);
-            firstFloor.Rooms.Add(Ø20_603_1);
-            firstFloor.Rooms.Add(Ø20_508a_1);
-            firstFloor.Rooms.Add(Ø20_511_1);
-            firstFloor.Rooms.Add(Ø22_604_1);
-            firstFloor.Rooms.Add(Ø22_603_1);
-            firstFloor.Rooms.Add(Ø22_511_1);
+            parterreFloor.Rooms.Add(Ø20_604_0);
+            parterreFloor.Rooms.Add(Ø20_603_0);
+            parterreFloor.Rooms.Add(Ø20_601b_0);
+            parterreFloor.Rooms.Add(Ø20_511_0);
+            parterreFloor.Rooms.Add(Ø20_510a_0);
+            parterreFloor.Rooms.Add(Ø20_508a_0);
+            parterreFloor.Rooms.Add(Ø22_604_0);
+            parterreFloor.Rooms.Add(Ø22_603_0);
+            parterreFloor.Rooms.Add(Ø22_601b_0);
+            parterreFloor.Rooms.Add(Ø22_512a_0);
+            parterreFloor.Rooms.Add(Ø22_511_0);
+            parterreFloor.Rooms.Add(Ø22_510_0);
+            parterreFloor.Rooms.Add(Ø22_508_0);
+            groundFloor.Rooms.Add(Ø20_510_1);
+            groundFloor.Rooms.Add(Ø20_601b_1);
+            groundFloor.Rooms.Add(Ø20_604b_1);
+            groundFloor.Rooms.Add(Ø22_510_1);
+            groundFloor.Rooms.Add(Ø22_508_1);
+            groundFloor.Rooms.Add(Ø22_601b_1);
+            groundFloor.Rooms.Add(Ø20_603_1);
+            groundFloor.Rooms.Add(Ø20_508a_1);
+            groundFloor.Rooms.Add(Ø20_511_1);
+            groundFloor.Rooms.Add(Ø22_604_1);
+            groundFloor.Rooms.Add(Ø22_603_1);
+            groundFloor.Rooms.Add(Ø22_511_1);
             //SensorlessRooms
-            firstFloor.Rooms.Add(Ø21_602_1);
-            firstFloor.Rooms.Add(Ø21_511b_1);
-            firstFloor.Rooms.Add(Ø21_600b_1);
-            firstFloor.Rooms.Add(Ø21_508b_1);
-            firstFloor.Rooms.Add(Ø22_507_1);
-            firstFloor.Rooms.Add(Ø21_600c_1);
-            firstFloor.Rooms.Add(Ø20_606_1);
-            firstFloor.Rooms.Add(Ø20_600b_1);
-            firstFloor.Rooms.Add(Ø22_512b_1);
-            firstFloor.Rooms.Add(Ø21_600a_1);
-            firstFloor.Rooms.Add(Ø22_601a);
-            firstFloor.Rooms.Add(Ø20_601a_1);
-            firstFloor.Rooms.Add(UpperLeftUtilities);
-            firstFloor.Rooms.Add(Toilets);
-            firstFloor.Rooms.Add(LowerRightUtilities);
+            groundFloor.Rooms.Add(Ø21_602_1);
+            groundFloor.Rooms.Add(Ø21_511b_1);
+            groundFloor.Rooms.Add(Ø21_600b_1);
+            groundFloor.Rooms.Add(Ø21_508b_1);
+            groundFloor.Rooms.Add(Ø22_507_1);
+            groundFloor.Rooms.Add(Ø21_600c_1);
+            groundFloor.Rooms.Add(Ø20_606_1);
+            groundFloor.Rooms.Add(Ø20_600b_1);
+            groundFloor.Rooms.Add(Ø22_512b_1);
+            groundFloor.Rooms.Add(Ø21_600a_1);
+            groundFloor.Rooms.Add(Ø22_601a);
+            groundFloor.Rooms.Add(Ø20_601a_1);
+            groundFloor.Rooms.Add(UpperLeftUtilities);
+            groundFloor.Rooms.Add(Toilets);
+            groundFloor.Rooms.Add(LowerRightUtilities);
 
-            secondFloor.Rooms.Add(Ø20_510_1);
+            firstFloor.Rooms.Add(Ø20_510_1);
 
             building.Floors.Add(cellarFloor);
-            building.Floors.Add(groundFloor);
+            building.Floors.Add(parterreFloor);
 
+            building.Floors.Add(groundFloor);
             building.Floors.Add(firstFloor);
-            building.Floors.Add(secondFloor);
         }
 
         private void AssembleBuilding()
         {
             cellarFloor.Rooms.Add(_testSensorRoomCellar1);
-            groundFloor.Rooms.Add(Ø22_508_0);
-            groundFloor.Rooms.Add(Ø20_508a_0);
-            groundFloor.Rooms.Add(Ø22_604_0);
-            //groundFloor.Rooms.Add(Ø20_606_1);
-            //groundFloor.Rooms.Add(Ø22_606c_1);
-            firstFloor.Rooms.Add(_testSensorRoomFirstFloor1);
-            firstFloor.Rooms.Add(_testSensorRoomFirstFloor2);
-            secondFloor.Rooms.Add(_testSensorRoomSecondFloor1);
-            secondFloor.Rooms.Add(_testSensorRoomSecondFloor2);
+            parterreFloor.Rooms.Add(Ø22_508_0);
+            parterreFloor.Rooms.Add(Ø20_508a_0);
+            parterreFloor.Rooms.Add(Ø22_604_0);
+            //parterreFloor.Rooms.Add(Ø20_606_1);
+            //parterreFloor.Rooms.Add(Ø22_606c_1);
+            groundFloor.Rooms.Add(_testSensorRoomFirstFloor1);
+            groundFloor.Rooms.Add(_testSensorRoomFirstFloor2);
+            firstFloor.Rooms.Add(_testSensorRoomSecondFloor1);
+            firstFloor.Rooms.Add(_testSensorRoomSecondFloor2);
 
             building.Floors.Add(cellarFloor);
+            building.Floors.Add(parterreFloor);
             building.Floors.Add(groundFloor);
             building.Floors.Add(firstFloor);
-            building.Floors.Add(secondFloor);
         }
 
         private void TestTimer()

@@ -179,7 +179,7 @@ function backgrundStyle(feature) {
 //fff8dc, D0D6DC
 function getRoomBackgrundColor(RoomType) {
     return RoomType === "Classroom" ? '#D0D6DC' :
-           RoomType === "Studyzone" ? '#C2B49D' :
+           RoomType === "Studyzone" ? '#D0D6DC' :
            RoomType === "Office" ? '#C2B49D' :
            RoomType === "Hallway" ? '#C2B49D' :
            RoomType === "Stairs" ? '#C2B49D' :
@@ -191,7 +191,7 @@ function getRoomBackgrundColor(RoomType) {
 
 function getRoomBorderColor(RoomType) {
     return RoomType === "Classroom" ? '#FFFFFF' :
-           RoomType === "Studyzone" ? '#C2B49D' :
+           RoomType === "Studyzone" ? '#FFFFFF' :
            RoomType === "Office" ? '#C2B49D' :
            RoomType === "Hallway" ? '#C2B49D' :
            RoomType === "Stairs" ? '#C2B49D' :
