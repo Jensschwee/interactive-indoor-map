@@ -8,7 +8,6 @@ namespace Website.Logic.BO
 {
     public class Building
     {
-
         public List<Floor> Floors { get; set; }
         
         [Key]
