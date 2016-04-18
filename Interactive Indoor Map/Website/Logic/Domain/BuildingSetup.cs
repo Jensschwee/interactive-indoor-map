@@ -83,6 +83,13 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_601b_2;
         private SensorRoom Ø22_511_2;
         private SensorRoom Ø22_510b_2;
+        private SensorlessRoom firstMidHallway;
+        private SensorlessRoom firstUpperRightStairs;
+        private SensorlessRoom firstLowerLeftStairs;
+        private SensorlessRoom firstLowerLeftHallway;
+        private SensorlessRoom firstLowerRightHallway;
+        private SensorlessRoom firstLowerRightUtilities;
+        private SensorlessRoom firstUpperLeftUtilities;
 
         public void SetupBuilding(Building building)
         {
@@ -110,7 +117,7 @@ namespace Website.Logic.Domain
 
             HttpContext.Current.Application["Building"] = building;
             BuildingDAL buildingDAL = new BuildingDAL();
-            buildingDAL.SaveBuilding(building);
+            //buildingDAL.SaveBuilding(building);
             //TestTimer();
             //saveDataToDB();
         }
@@ -1470,17 +1477,121 @@ namespace Website.Logic.Domain
 
         private void CreateFirstFloorSensorlessRooms()
         {
+            firstMidHallway = new SensorlessRoom("Mid Hallways", new List<Coordinates>()
+            {
+                new Coordinates(10.430925523,55.3670798140001),
+                new Coordinates(10.430827757,55.3670755860001),
+                new Coordinates(10.4307832860001,55.3674076780001),
+                new Coordinates(10.4308810520001,55.367411906),
+                new Coordinates(10.430925523,55.3670798140001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            firstUpperRightStairs = new SensorlessRoom("Upper Right Stairs", new List<Coordinates>()
+            {
+                new Coordinates(10.43084306,55.3676811170001),
+                new Coordinates(10.4308380900001,55.367718236),
+                new Coordinates(10.4310269540001,55.367726406),
+                new Coordinates(10.4310319250001,55.367689286),
+                new Coordinates(10.43084306,55.3676811170001)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            firstLowerLeftStairs = new SensorlessRoom("Lower Left Stairs", new List<Coordinates>()
+            {
+                new Coordinates(10.430653052,55.3669603700001),
+                new Coordinates(10.430842091,55.3669685460001),
+                new Coordinates(10.4308470620001,55.3669314250001),
+                new Coordinates(10.430658023,55.366923248),
+                new Coordinates(10.430653052,55.3669603700001)
+            })
+            {
+                RoomType = RoomType.Stairs
+            };
+
+            firstLowerLeftHallway = new SensorlessRoom("Lower Left Hallways", new List<Coordinates>()
+            {
+                new Coordinates(10.4307459550001,55.367115685),
+                new Coordinates(10.430748851,55.3670940640001),
+                new Coordinates(10.4307842320001,55.3670955950001),
+                new Coordinates(10.4307870810001,55.367074309),
+                new Coordinates(10.430751609,55.3670727740001),
+                new Coordinates(10.4307631830001,55.3669863420001),
+                new Coordinates(10.4308392670001,55.3669896330001),
+                new Coordinates(10.430842091,55.3669685460001),
+                new Coordinates(10.430735842,55.3669639510001),
+                new Coordinates(10.4307330180001,55.3669850380001),
+                new Coordinates(10.430721444,55.36707147),
+                new Coordinates(10.430718594,55.367092756),
+                new Coordinates(10.4307156990001,55.3671143770001),
+                new Coordinates(10.4307459550001,55.367115685),
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            firstLowerRightHallway = new SensorlessRoom("Lower Right Hallways", new List<Coordinates>()
+            {
+                new Coordinates(10.431026764,55.367106086),
+                new Coordinates(10.431041141,55.366998703),
+                new Coordinates(10.431041303,55.3669987100001),
+                new Coordinates(10.4310441710001,55.366977288),
+                new Coordinates(10.4309398570001,55.3669727760001),
+                new Coordinates(10.430936988,55.366994199),
+                new Coordinates(10.431011105,55.3669974040001),
+                new Coordinates(10.430999641,55.3670830200001),
+                new Coordinates(10.4309639580001,55.3670814770001),
+                new Coordinates(10.430961043,55.3671032440001),
+                new Coordinates(10.430996726,55.3671047870001),
+                new Coordinates(10.430994986,55.367117776),
+                new Coordinates(10.430993872,55.367126098),
+                new Coordinates(10.43102391,55.367127397),
+                new Coordinates(10.4310249970001,55.3671192830001),
+                new Coordinates(10.431026764,55.367106086),
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            firstLowerRightUtilities = new SensorlessRoom("Lower Right Utilities", new List<Coordinates>()
+            {
+                new Coordinates(10.431131771,55.3669437400001),
+                new Coordinates(10.4311268000001,55.366980862),
+                new Coordinates(10.4309398570001,55.3669727760001),
+                new Coordinates(10.4309448280001,55.366935654),
+                new Coordinates(10.431131771,55.3669437400001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
             
+
+            firstUpperLeftUtilities = new SensorlessRoom("Upper Left Utilities", new List<Coordinates>()
+            {
+                new Coordinates(10.4305581780001,55.367668795),
+                new Coordinates(10.4305532070001,55.3677059140001),
+                new Coordinates(10.4307420810001,55.3677140840001),
+                new Coordinates(10.4307470520001,55.3676769640001),
+                new Coordinates(10.4305581780001,55.367668795)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
         }
 
         private void CreateFirstFloorRooms()
         {
             Ø20_603c_2 = new SensorRoom("Ø20-603c-2", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431072543,55.3673859940001),
-                new Coordinates(10.4308864340001,55.3673779440001),
-                new Coordinates(10.4308716730001,55.3674881760001),
-                new Coordinates(10.431057781,55.3674962250001)
+                new Coordinates(10.430821947,55.3671189720001),
+                new Coordinates(10.4306329070001,55.3671107960001),
+                new Coordinates(10.4306271780001,55.3671535780001),
+                new Coordinates(10.4308162180001,55.3671617540001)
             }))
             {
                 TemperatureMax = 25,
@@ -1605,10 +1716,11 @@ namespace Website.Logic.Domain
 
             Ø22_603b_2 = new SensorRoom("Ø22-603b-2", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.430821947,55.3671189720001),
-                new Coordinates(10.4306329070001,55.3671107960001),
-                new Coordinates(10.4306271780001,55.3671535780001),
-                new Coordinates(10.4308162180001,55.3671617540001)
+                new Coordinates(10.431106696,55.367130978),
+                new Coordinates(10.4309197540001,55.3671228920001),
+                new Coordinates(10.430913984,55.3671659830001),
+                new Coordinates(10.4311009250001,55.367174069),
+                new Coordinates(10.431106696,55.367130978)
             }))
             {
                 TemperatureMax = 25,
@@ -1794,6 +1906,13 @@ namespace Website.Logic.Domain
             groundFloor.Rooms.Add(UpperLeftUtilities);
             groundFloor.Rooms.Add(Toilets);
             groundFloor.Rooms.Add(LowerRightUtilities);
+            firstFloor.Rooms.Add(firstMidHallway);
+            firstFloor.Rooms.Add(firstUpperRightStairs);
+            firstFloor.Rooms.Add(firstLowerLeftStairs);
+            firstFloor.Rooms.Add(firstLowerLeftHallway);
+            firstFloor.Rooms.Add(firstLowerRightHallway);
+            firstFloor.Rooms.Add(firstLowerRightUtilities);
+            firstFloor.Rooms.Add(firstUpperLeftUtilities);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(parterreFloor);
