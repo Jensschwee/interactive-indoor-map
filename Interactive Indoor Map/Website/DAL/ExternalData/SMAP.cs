@@ -43,7 +43,7 @@ namespace Website.DAL.ExternalData
         /// The number of reading returned
         /// </param>
         /// <returns></returns>
-        public double GetCurrentHourlyUse(string uuid, int limit)
+        public double GetCurrentHourlyUse(string uuid, int limit =2)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now ");
