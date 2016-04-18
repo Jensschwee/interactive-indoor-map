@@ -7,13 +7,33 @@ using System.Net;
 using System.Text;
 using System.Web;
 using Website.Logic.BO.Utility;
+using Website.Logic.Helpers;
 
 namespace Website.DAL.ExternalData
 {
     public class SMAP
     {
+        private DateConverter dateConverter;
+        public SMAP()
+        {
+            dateConverter = new DateConverter();
+        }
 
         private static readonly string ENDPOINT = @"http://10.123.3.12:8079/api/query";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uuid"></param>
+        /// <returns></returns>
+        public double GetCurrentSensorValue(string uuid)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select data before now ");
+            sb.Append(" where uuid = ");
+            sb.Append("'" + uuid + "'");
+            return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
+        }
 
         /// <summary>
         /// 
@@ -23,17 +43,21 @@ namespace Website.DAL.ExternalData
         /// The number of reading returned
         /// </param>
         /// <returns></returns>
-        public double GetCurrentSensorValue(string uuid, int? limit = null)
+        public double GetCurrentHourlyUse(string uuid, int limit)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now ");
-            if (limit != null)
-            {
-                sb.Append("limit " + limit);
-            }
+            sb.Append("limit " + limit);
             sb.Append(" where uuid = ");
             sb.Append("'" + uuid + "'");
-            return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
+            SMapSensorReading reading = sendHTTPPost(ENDPOINT, sb.ToString());
+
+            double reading1 = reading.Readings[0][1];
+            double reading2 = reading.Readings[1][1];
+
+            TimeSpan timeBetween = dateConverter.ConvertDate((long)reading.Readings[1][0]) - dateConverter.ConvertDate((long) reading.Readings[0][0]);
+
+            return ((reading2 - reading1)/ timeBetween.TotalMinutes) *60;
         }
 
         /// <summary>
