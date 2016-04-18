@@ -124,10 +124,10 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.HardwareConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.HardwarePowerConsumptionUUID);
-                    room.LightConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.LightPowerConsumptionUUID);
-                    room.VentilationConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.VentilationPowerConsumptionUUID);
-                    room.OtherConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.OtherPowerConsumptionUUID);
+                    room.HardwareConsumption = smap.GetCurrentHourlyUse(room.SmapEndpoints.HardwarePowerConsumptionUUID);
+                    room.LightConsumption = smap.GetCurrentHourlyUse(room.SmapEndpoints.LightPowerConsumptionUUID);
+                    room.VentilationConsumption = smap.GetCurrentHourlyUse(room.SmapEndpoints.VentilationPowerConsumptionUUID);
+                    room.OtherConsumption = smap.GetCurrentHourlyUse(room.SmapEndpoints.OtherPowerConsumptionUUID);
                 }
             }
         }
