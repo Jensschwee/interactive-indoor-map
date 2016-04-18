@@ -67,12 +67,13 @@ namespace Website.Logic.Domain
         private SensorlessRoom Toilets;
         private SensorlessRoom LowerRightUtilities;
 
-        public void SetupBuilding()
+        public void SetupBuilding(Building building)
         {
+            this.building = building;
             //buildingDAL = new BuildingDAL();
             //building = buildingDAL.GetBuilding("Building 44");
 
-            CreateBuilding();
+            //CreateBuilding();
 
             CreateFloors();
 
@@ -90,7 +91,7 @@ namespace Website.Logic.Domain
             //saveDataToDB();
         }
 
-        private void CreateBuilding()
+        public Building CreateBuilding()
         {
             building = new Building
             {
@@ -102,6 +103,7 @@ namespace Website.Logic.Domain
                 ColdWaterConsumption = 2200,
                 HotWaterConsumption = 2100
             };
+            return building;
         }
 
         private void CreateFloors()
