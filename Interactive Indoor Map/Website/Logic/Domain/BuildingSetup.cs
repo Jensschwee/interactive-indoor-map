@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Timers;
 using System.Web;
+using Website.DAL.Persistence;
 using Website.Logic.BO;
 using Website.Logic.BO.Utility;
 
@@ -86,7 +87,7 @@ namespace Website.Logic.Domain
         public void SetupBuilding(Building building)
         {
             this.building = building;
-            //buildingDAL = new BuildingDAL();
+            
             //building = buildingDAL.GetBuilding("Building 44");
 
             //CreateBuilding();
@@ -108,7 +109,8 @@ namespace Website.Logic.Domain
             AssembleBuilding();
 
             HttpContext.Current.Application["Building"] = building;
-
+            BuildingDAL buildingDAL = new BuildingDAL();
+            buildingDAL.SaveBuilding(building);
             //TestTimer();
             //saveDataToDB();
         }
