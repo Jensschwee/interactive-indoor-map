@@ -22,5 +22,7 @@ namespace Website.DAL.Persistence
         public virtual DbSet<SensorlessRoom> SensorlessRoom { get; set; }
         public virtual DbSet<SmapEndpoints> SmapEndpoints { get; set; }
         public virtual DbSet<Coordinates> Coordinates { get; set; }
+        public virtual DbSet<Corners> Corners { get; set; }
+
     }
 }
