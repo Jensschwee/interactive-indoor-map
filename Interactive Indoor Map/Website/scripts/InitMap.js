@@ -32,8 +32,8 @@ function InitLeafletMap(jsonMap) {
     var geojson = L.geoJson(jsonMap);
     initMapSettings(geojson);
 
-    getRoomsAndDrawBackgrund();
-    getRoomsAndDrawRoomsWithRoomOverlays();
+    //getRoomsAndDrawBackgrund();
+    //getRoomsAndDrawRoomsWithRoomOverlays();
 
     worldMap.addTo(geoMap);
 
@@ -41,7 +41,7 @@ function InitLeafletMap(jsonMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
-    //addLevel1();
+    addLevel0();
 }
 
 function initMapSettings(geojson) {
