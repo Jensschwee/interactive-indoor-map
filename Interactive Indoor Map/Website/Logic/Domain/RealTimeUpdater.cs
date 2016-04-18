@@ -80,7 +80,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.Temperature = smap.GetCurrentSensorValue(room.SmapEndpoints.TemperatureUUID, otherSmapRoot);
+                    room.Temperature = smap.GetCurrentSensorValue(room.SmapEndpoints.TemperatureUUID);
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.CO2 = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.CO2UUID, otherSmapRoot);
+                    room.CO2 = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.CO2UUID);
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.Light = smap.GetCurrentSensorValue(room.SmapEndpoints.LightUUID, otherSmapRoot).Equals(0.0);
+                    room.Light = smap.GetCurrentSensorValue(room.SmapEndpoints.LightUUID).Equals(0.0);
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.Lumen = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.LumenUUID, otherSmapRoot);
+                    room.Lumen = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.LumenUUID);
                 }
             }
         }
@@ -124,10 +124,10 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.HardwareConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.HardwarePowerConsumptionUUID, otherSmapRoot);
-                    room.LightConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.LightPowerConsumptionUUID, otherSmapRoot);
-                    room.VentilationConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.VentilationPowerConsumptionUUID, otherSmapRoot);
-                    room.OtherConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.OtherPowerConsumptionUUID, otherSmapRoot);
+                    room.HardwareConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.HardwarePowerConsumptionUUID);
+                    room.LightConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.LightPowerConsumptionUUID);
+                    room.VentilationConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.VentilationPowerConsumptionUUID);
+                    room.OtherConsumption = smap.GetCurrentSensorValue(room.SmapEndpoints.OtherPowerConsumptionUUID);
                 }
             }
         }
@@ -136,10 +136,8 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
-                floor.HotWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.HotWaterConsumptionUUID,
-                    otherSmapRoot);
-                floor.ColdWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.ColdWaterConsumptionUUID,
-                    otherSmapRoot);
+                floor.HotWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.HotWaterConsumptionUUID);
+                floor.ColdWaterConsumption = smap.GetCurrentSensorValue(floor.SmapEndpoints.ColdWaterConsumptionUUID);
             }
         }
 
@@ -149,7 +147,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.Motion = smap.GetCurrentSensorValue(room.SmapEndpoints.MotionDetectionUUID, otherSmapRoot).Equals(0.0);
+                    room.Motion = smap.GetCurrentSensorValue(room.SmapEndpoints.MotionDetectionUUID).Equals(0.0);
                 }
             }
         }
@@ -160,7 +158,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.Occupants = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.OccupantsUUID, otherSmapRoot);
+                    room.Occupants = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.OccupantsUUID);
                 }
             }
         }
@@ -171,7 +169,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    room.WifiClients = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.WifiClientsUUID, otherSmapRoot);
+                    room.WifiClients = (int)smap.GetCurrentSensorValue(room.SmapEndpoints.WifiClientsUUID);
                 }
             }
         }
