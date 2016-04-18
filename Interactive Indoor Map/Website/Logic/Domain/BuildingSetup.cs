@@ -67,6 +67,7 @@ namespace Website.Logic.Domain
         private SensorlessRoom Toilets;
         private SensorlessRoom LowerRightUtilities;
 
+        public void SetupBuilding(Building building)
         //First Floor Rooms
         private SensorRoom Ø20_603c_2;
         private SensorRoom Ø20_601b_2;
@@ -77,12 +78,12 @@ namespace Website.Logic.Domain
         private SensorRoom Ø22_511_2;
         private SensorRoom Ø22_510b_2;
 
-        public void SetupBuilding()
         {
+            this.building = building;
             //buildingDAL = new BuildingDAL();
             //building = buildingDAL.GetBuilding("Building 44");
 
-            CreateBuilding();
+            //CreateBuilding();
 
             CreateFloors();
 
@@ -102,7 +103,7 @@ namespace Website.Logic.Domain
             //saveDataToDB();
         }
 
-        private void CreateBuilding()
+        public Building CreateBuilding()
         {
             building = new Building
             {
@@ -114,6 +115,7 @@ namespace Website.Logic.Domain
                 ColdWaterConsumption = 2200,
                 HotWaterConsumption = 2100
             };
+            return building;
         }
 
         private void CreateFloors()
