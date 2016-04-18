@@ -13,7 +13,7 @@ function CreateSpatialButtons() {
         }
     });
 
-    var cellarButton = L.easyButton({
+    /*var cellarButton = L.easyButton({
         position: 'bottomright',
         states: [{
             stateName: 'None',
@@ -32,7 +32,7 @@ function CreateSpatialButtons() {
                 buildingButton.button.style.backgroundColor = 'white';
             }
         }]
-    }).addTo(geoMap);
+    }).addTo(geoMap);*/
 
     var parterreButton = L.easyButton({
         position: 'bottomright',
@@ -47,7 +47,6 @@ function CreateSpatialButtons() {
                 }
                 drawFloorInfoBox();
                 btn.button.style.backgroundColor = '#8c8c8c';
-                cellarButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
                 buildingButton.button.style.backgroundColor = 'white';
@@ -68,7 +67,6 @@ function CreateSpatialButtons() {
                 }
                 drawFloorInfoBox();
                 btn.button.style.backgroundColor = '#8c8c8c';
-                cellarButton.button.style.backgroundColor = 'white';
                 parterreButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
                 buildingButton.button.style.backgroundColor = 'white';
@@ -91,7 +89,6 @@ function CreateSpatialButtons() {
                 }
                 drawFloorInfoBox();
                 btn.button.style.backgroundColor = '#8c8c8c';
-                cellarButton.button.style.backgroundColor = 'white';
                 parterreButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
                 buildingButton.button.style.backgroundColor = 'white';

@@ -40,8 +40,6 @@ namespace Website.Logic.BO
         [NotMapped]
         public double LumenMax => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.LumenMax)) / NumberOfSensorRoom);
 
-        
-
         [NotMapped]
         public double HardwareConsumption => Floors.Sum(floor => floor.HardwareConsumption);
 

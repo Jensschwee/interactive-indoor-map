@@ -16,11 +16,9 @@ namespace Website.Logic.Domain
         private Floor parterreFloor;
         private Floor groundFloor;
         private Floor firstFloor;
-        private SensorRoom _testSensorRoomCellar1;
-        private SensorRoom _testSensorRoomFirstFloor1;
-        private SensorRoom _testSensorRoomFirstFloor2;
-        private SensorRoom _testSensorRoomSecondFloor1;
-        private SensorRoom _testSensorRoomSecondFloor2;
+
+        //Cellar Floor Rooms
+        private SensorRoom cellarPlaceholderRoom;
 
         //Parterre Floor Rooms
         private SensorRoom Ø20_604_0;
@@ -86,6 +84,7 @@ namespace Website.Logic.Domain
 
             CreateFloors();
 
+            CreateCellarFloorRooms();
             CreateParterreFloorRooms();
             CreateGroundFloorRooms();
             CreateGroundFloorSensorlessRooms();
@@ -189,6 +188,42 @@ namespace Website.Logic.Domain
                 HotWaterConsumption = 1000
             };
 
+        }
+
+        private void CreateCellarFloorRooms()
+        {
+            cellarPlaceholderRoom = new SensorRoom("Placeholder", new Corners(new List<Coordinates>()
+             {
+                new Coordinates(10.430841441,55.366968517),
+                new Coordinates(10.430653052,55.3669603690001),
+                new Coordinates(10.430635802,55.367089175),
+                new Coordinates(10.430824193,55.367097324)
+            }))
+            {
+                RoomType = RoomType.Studyzone,
+                TemperatureMax = 25,
+                TemperatureMin = 20,
+                CO2Max = 1000,
+                LumenMax = 600,
+                OccupantsMax = 50,
+                WifiClientsMax = 75,
+                Temperature = 20,
+                CO2 = 350,
+                HardwareConsumption = 290,
+                VentilationConsumption = 310,
+                OtherConsumption = 90,
+                LightConsumption = 150,
+                HardwareConsumptionMax = 400,
+                LightConsumptionMax = 800,
+                OtherConsumptionMax = 500,
+                VentilationConsumptionMax = 1000,
+                Light = true,
+                Lumen = 200,
+                Motion = false,
+                Occupants = 5,
+                WifiClients = 8,
+                SurfaceArea = 162
+            };
         }
 
         private void CreateParterreFloorRooms()
@@ -1202,10 +1237,10 @@ namespace Website.Logic.Domain
 
             Ø22_603b_2 = new SensorRoom("Ø22-603b-2", new Corners(new List<Coordinates>()
              {
-                new Coordinates(10.431106696,55.367130978),
-                new Coordinates(10.4309197540001,55.3671228920001),
-                new Coordinates(10.430913984,55.3671659830001),
-                new Coordinates(10.4311009250001,55.367174069)
+                new Coordinates(10.430821947,55.3671189720001),
+                new Coordinates(10.4306329070001,55.3671107960001),
+                new Coordinates(10.4306271780001,55.3671535780001),
+                new Coordinates(10.4308162180001,55.3671617540001)
             }))
             {
                 TemperatureMax = 25,
@@ -1264,7 +1299,7 @@ namespace Website.Logic.Domain
                 SurfaceArea = 139
             };
 
-            Ø22_601b_2 = new SensorRoom("Ø22-601b-2", new Corners(new List<Coordinates>()
+            Ø22_511_2 = new SensorRoom("Ø22-511-2", new Corners(new List<Coordinates>()
              {
                 new Coordinates(10.4310725510001,55.3673859370001),
                 new Coordinates(10.430885613,55.3673778510001),
@@ -1565,8 +1600,8 @@ namespace Website.Logic.Domain
 
         private void AssembleBuilding()
         {
-            cellarFloor.Rooms.Add(Ø20_510_1);
             //Rooms
+            cellarFloor.Rooms.Add(cellarPlaceholderRoom );
             parterreFloor.Rooms.Add(Ø20_604_0);
             parterreFloor.Rooms.Add(Ø20_603_0);
             parterreFloor.Rooms.Add(Ø20_601b_0);
