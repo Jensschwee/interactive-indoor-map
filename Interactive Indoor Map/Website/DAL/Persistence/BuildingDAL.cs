@@ -24,6 +24,8 @@ namespace Website.DAL.Persistence
                 //SaveFloor(floor);
             }
         }
+
+
         public Building GetBuilding(String buildingName)
         {
             using (BuildingDbContext context = new BuildingDbContext())
@@ -31,13 +33,38 @@ namespace Website.DAL.Persistence
                 var tempBuilding = context.Buildings.Where(b => b.Name == buildingName)
                     .Include(b => b.SmapEndpoints)
                     .Include(b => b.Floors)
-                    .Include(b => b.Floors.Select(r => r.Rooms));
+                    .Include(b => b.Floors.Select( f => f.SmapEndpoints))
+                    .Include(b => b.Floors.Select(f => f.Rooms));
                 return tempBuilding.First();
-
-
             }
-
         }
+
+
+        public SensorRoom GetSensorRoom(int id)
+        {
+            using (BuildingDbContext context = new BuildingDbContext())
+            {
+                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<SensorRoom>()
+                    .Include(r => r.Corners)
+                    .Include(r => r.Corners.BottomLeftCorner)
+                    .Include(r => r.Corners.BottomRightCorner)
+                    .Include(r => r.Corners.TopLeftCorner)
+                    .Include(r => r.Corners.TopRightCorner)
+                    .Include(r => r.SmapEndpoints);
+                return tempRoom.First();
+            }
+        }
+
+        public SensorlessRoom GetSensorLessRoom(int id)
+        {
+            using (BuildingDbContext context = new BuildingDbContext())
+            {
+                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<SensorlessRoom>()
+                    .Include(r => r.Coordinates);
+                return tempRoom.First();
+            }
+        }
+
 
         private void SaveFloor(Floor floor)
         {

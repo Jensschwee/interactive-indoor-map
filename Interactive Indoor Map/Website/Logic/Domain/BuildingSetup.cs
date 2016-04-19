@@ -91,19 +91,23 @@ namespace Website.Logic.Domain
         private SensorlessRoom firstLowerRightUtilities;
         private SensorlessRoom firstUpperLeftUtilities;
 
+        BuildingDAL buildingDAL = new BuildingDAL();
+
+
         public void SetupBuilding(Building building)
         {
-            BuildingDAL buildingDAL = new BuildingDAL();
-            building = buildingDAL.GetBuilding("Building 44");
+            //building = buildingDAL.GetBuilding("Building 44");
+            //getSensorRooms(building);
+            //getSensorLessRooms(building);
             this.building = building;
-            
-            //CreateFloors();
 
-            //CreateCellarFloorRooms();
-            //CreateParterreFloorRooms();
-            //CreateGroundFloorRooms();
-            //CreateGroundFloorSensorlessRooms();
-            //CreateFirstFloorRooms();
+            CreateFloors();
+
+            CreateCellarFloorRooms();
+            CreateParterreFloorRooms();
+            CreateGroundFloorRooms();
+            CreateGroundFloorSensorlessRooms();
+            CreateFirstFloorRooms();
 
             CreateFloors();
 
@@ -118,14 +122,36 @@ namespace Website.Logic.Domain
             CreateFirstFloorRooms();
             CreateFirstFloorSensorlessRooms();
 
-            //AssembleBuilding();
+            AssembleBuilding();
 
-            //buildingDAL.SaveBuilding(building);
             HttpContext.Current.Application["Building"] = building;
-            BuildingDAL buildingDAL = new BuildingDAL();
             //buildingDAL.SaveBuilding(building);
             //TestTimer();
-            //saveDataToDB();
+        }
+
+        private void getSensorRooms(Building building)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom sensorRoom in floor.Rooms.OfType<SensorRoom>())
+                {
+                    SensorRoom tempRoom = buildingDAL.GetSensorRoom(sensorRoom.Id);
+                    sensorRoom.Corners = tempRoom.Corners;
+                    sensorRoom.SmapEndpoints = tempRoom.SmapEndpoints;
+                }
+            }
+        }
+
+        private void getSensorLessRooms(Building building)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorlessRoom sensorlessRoom in floor.Rooms.OfType<SensorlessRoom>())
+                {
+                    SensorlessRoom tempRoom = buildingDAL.GetSensorLessRoom(sensorlessRoom.Id);
+                    sensorlessRoom.Coordinates = tempRoom.Coordinates;
+                }
+            }
         }
 
         public Building CreateBuilding()
