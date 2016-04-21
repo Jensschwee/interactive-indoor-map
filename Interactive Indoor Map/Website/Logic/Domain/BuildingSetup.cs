@@ -129,7 +129,7 @@ namespace Website.Logic.Domain
             //TestTimer();
         }
 
-        private void getSensorRooms(Building building)
+        private void GetSensorRooms(Building building)
         {
             foreach (Floor floor in building.Floors)
             {
@@ -142,7 +142,7 @@ namespace Website.Logic.Domain
             }
         }
 
-        private void getSensorLessRooms(Building building)
+        private void GetSensorLessRooms(Building building)
         {
             foreach (Floor floor in building.Floors)
             {
