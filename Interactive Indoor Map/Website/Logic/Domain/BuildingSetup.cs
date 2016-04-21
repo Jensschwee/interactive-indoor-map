@@ -90,10 +90,13 @@ namespace Website.Logic.Domain
         private SensorlessRoom firstLowerRightHallway;
         private SensorlessRoom firstLowerRightUtilities;
         private SensorlessRoom firstUpperLeftUtilities;
+        private SensorlessRoom firstLowerMidHallway;
         private SensorlessRoom firstMidStairs;
         private SensorlessRoom firstElevator;
         private SensorlessRoom firstUpperHallway;
         private SensorlessRoom firstUpperLeftHallway;
+        private SensorlessRoom firstUpperMidHallway;
+        private SensorlessRoom firstUpperRightHallway;
 
         BuildingDAL buildingDAL = new BuildingDAL();
 
@@ -1593,6 +1596,17 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Hallway
             };
 
+            firstLowerMidHallway = new SensorlessRoom("Lower Mid Hallways", new List<Coordinates>()
+            {
+                new Coordinates(10.430839222,55.3669899700001),
+                new Coordinates(10.430936988,55.366994199),
+                new Coordinates(10.4309448280001,55.366935654),
+                new Coordinates(10.4308470620001,55.3669314250001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
             firstLowerRightUtilities = new SensorlessRoom("Lower Right Utilities", new List<Coordinates>()
             {
                 new Coordinates(10.431131771,55.3669437400001),
@@ -1680,6 +1694,43 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Hallway
             };
 
+            firstUpperRightHallway = new SensorlessRoom("Upper Right Hallway", new List<Coordinates>()
+            {
+                //10.430969286,55.367535278 lower right
+                //10.430938998,55.367533968  lower left
+                //10.430936103,55.367555591 next
+                //10.4309010150001,55.3675540730001 next
+                //10.430898127,55.3675756480001 next
+                //10.4309332350001,55.367577166 next
+                //10.430921778,55.367662711 next
+                //10.4308459640001,55.367659432 next
+                //10.43084306,55.3676811170001 next
+                //10.4309490590001,55.3676857020001 upper right
+                new Coordinates(10.430969286,55.367535278),
+                new Coordinates(10.430938998,55.367533968),
+                new Coordinates(10.430936103,55.367555591),
+                new Coordinates(10.4309010150001,55.3675540730001),
+                new Coordinates(10.430898127,55.3675756480001),
+                new Coordinates(10.4309332350001,55.367577166),
+                new Coordinates(10.430921778,55.367662711),
+                new Coordinates(10.4308459640001,55.367659432),
+                new Coordinates(10.43084306,55.3676811170001),
+                new Coordinates(10.4309490590001,55.3676857020001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
+
+            firstUpperMidHallway = new SensorlessRoom("Upper Mid Hallway", new List<Coordinates>()
+            {
+                new Coordinates(10.4307420810001,55.3677140840001),
+                new Coordinates(10.4308380900001,55.367718236),
+                new Coordinates(10.430845956,55.367659491),
+                new Coordinates(10.430749948,55.3676553390001)
+            })
+            {
+                RoomType = RoomType.Hallway
+            };
 
         }
 
@@ -2016,6 +2067,9 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(firstElevator);
             firstFloor.Rooms.Add(firstUpperHallway);
             firstFloor.Rooms.Add(firstUpperLeftHallway);
+            firstFloor.Rooms.Add(firstLowerMidHallway);
+            firstFloor.Rooms.Add(firstUpperMidHallway);
+            firstFloor.Rooms.Add(firstUpperRightHallway);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(parterreFloor);
