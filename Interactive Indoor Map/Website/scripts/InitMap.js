@@ -41,7 +41,7 @@ function InitLeafletMap(jsonMap) {
 
     CreateSpatialButtons();
     CreateViewButtons();
-    //addLevel0();
+    //addLevel2();
 }
 
 function initMapSettings(geojson) {
