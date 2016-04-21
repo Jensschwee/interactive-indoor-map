@@ -6,12 +6,16 @@
         geoMap.removeLayer(roomLayers.pop());
 
     }
+    if (linesOnMap != null) {
+        geoMap.removeLayer(linesOnMap);
+    }
 
     //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
+    var jsonColumn;
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
-        var jsonColumn = {
+        jsonColumn = {
             type: "FeatureCollection",
             features: features
         };
@@ -51,7 +55,7 @@
                 maxValue = value.properties[ActiveViews[j].max];
             }
             var sensorValue = 0;
-            
+
             if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
                 sensorValue = value.properties[ActiveViews[j].value];
             }
@@ -108,6 +112,67 @@
         });
         column.push(jsonColumn);
     }
+
+    //LineString
+    var features2 = new Array();
+    var jsonLines = {
+        type: "FeatureCollection",
+        features: features2
+    }
+
+    $.each(colletionOfRooms.features, function (index, value) {
+        
+        //bottomRightVertex
+        var bottomRightVertex = value.geometry.coordinates[0][2];
+
+        //bottomLeftVertex
+        var bottomLeftVertex = value.geometry.coordinates[0][1];
+
+        ////topRightVertex
+        var topRightVertex = value.geometry.coordinates[0][3];
+
+        ////topLeftVertex
+        var topLeftVertex = value.geometry.coordinates[0][0];
+
+
+        for (var l = 1; l < 4; l++) {
+            var coordinate2 = new Array();
+            var coordinates2 = new Array();
+
+            coordinate2.push(coordinates2);
+            var geometry2 =
+            {
+                type: "LineString",
+                coordinates: coordinates2
+            };
+            var feature2 = {
+                type: "Feature",
+                geometry: geometry2
+            }
+            var point = [];
+            point.push(bottomLeftVertex[0] + (topLeftVertex[0] - bottomLeftVertex[0]) * 0.25 * l);
+            point.push(bottomLeftVertex[1] + (topLeftVertex[1] - bottomLeftVertex[1]) * 0.25 * l);
+            coordinates2.push(point);
+            point = [];
+            point.push(bottomRightVertex[0] + (topRightVertex[0] - bottomRightVertex[0]) * 0.25 * l);
+            point.push(bottomRightVertex[1] + (topRightVertex[1] - bottomRightVertex[1]) * 0.25 * l);
+            coordinates2.push(point);
+            features2.push(feature2);
+        }
+    });
+    console.log(jsonLines);
+    linesOnMap = L.geoJson(jsonLines, {
+        style: {
+            //Backgrund color
+            //border color
+            color: "#737373",
+            //Border thickness
+            opacity: "none",
+            fillOpacity: "none",
+            weight: "0.5px"
+        }
+    }).addTo(geoMap).bringToBack();
+
 
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();

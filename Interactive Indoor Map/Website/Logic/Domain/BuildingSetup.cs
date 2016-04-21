@@ -95,13 +95,23 @@ namespace Website.Logic.Domain
         private SensorlessRoom firstUpperHallway;
         private SensorlessRoom firstUpperLeftHallway;
 
+        BuildingDAL buildingDAL = new BuildingDAL();
+
+
         public void SetupBuilding(Building building)
         {
-            this.building = building;
-            
             //building = buildingDAL.GetBuilding("Building 44");
+            //getSensorRooms(building);
+            //getSensorLessRooms(building);
+            this.building = building;
 
-            //CreateBuilding();
+            CreateFloors();
+
+            CreateCellarFloorRooms();
+            CreateParterreFloorRooms();
+            CreateGroundFloorRooms();
+            CreateGroundFloorSensorlessRooms();
+            CreateFirstFloorRooms();
 
             CreateFloors();
 
@@ -116,14 +126,36 @@ namespace Website.Logic.Domain
             CreateFirstFloorRooms();
             CreateFirstFloorSensorlessRooms();
 
-            //AssembleBuilding();
             AssembleBuilding();
 
             HttpContext.Current.Application["Building"] = building;
-            BuildingDAL buildingDAL = new BuildingDAL();
             //buildingDAL.SaveBuilding(building);
             //TestTimer();
-            //saveDataToDB();
+        }
+
+        private void GetSensorRooms(Building building)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorRoom sensorRoom in floor.Rooms.OfType<SensorRoom>())
+                {
+                    SensorRoom tempRoom = buildingDAL.GetSensorRoom(sensorRoom.Id);
+                    sensorRoom.Corners = tempRoom.Corners;
+                    sensorRoom.SmapEndpoints = tempRoom.SmapEndpoints;
+                }
+            }
+        }
+
+        private void GetSensorLessRooms(Building building)
+        {
+            foreach (Floor floor in building.Floors)
+            {
+                foreach (SensorlessRoom sensorlessRoom in floor.Rooms.OfType<SensorlessRoom>())
+                {
+                    SensorlessRoom tempRoom = buildingDAL.GetSensorLessRoom(sensorlessRoom.Id);
+                    sensorlessRoom.Coordinates = tempRoom.Coordinates;
+                }
+            }
         }
 
         public Building CreateBuilding()
@@ -1492,7 +1524,7 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Hallway
             };
-
+            
             firstUpperRightStairs = new SensorlessRoom("Upper Right Stairs", new List<Coordinates>()
             {
                 new Coordinates(10.43084306,55.3676811170001),

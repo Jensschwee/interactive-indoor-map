@@ -8,6 +8,7 @@ var roomBackgroundLayer = null;
 var infoboxUpdate = null;
 var roomLayers = [];
 var ActiveViews = [];
+var linesOnMap = null;
 
 
 function DrawWorldMap() {

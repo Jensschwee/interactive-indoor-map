@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Website.Logic.BO.Utility;
 
 namespace Website.Logic.BO
 {
     public class Building
     {
         public List<Floor> Floors { get; set; }
-        
+
+        public SmapEndpoints SmapEndpoints { get; set; }
+
+
         [Key]
         public string Name { get; set; }
 
