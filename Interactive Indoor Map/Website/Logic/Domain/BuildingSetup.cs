@@ -97,6 +97,18 @@ namespace Website.Logic.Domain
         private SensorlessRoom firstUpperLeftHallway;
         private SensorlessRoom firstUpperMidHallway;
         private SensorlessRoom firstUpperRightHallway;
+        private SensorlessRoom firstUpperLeftOffices;
+        private SensorlessRoom firstUpperRightOffices;
+        private SensorlessRoom firstUpperLeftMidOffice;
+        private SensorlessRoom firstUpperRightMidOffice;
+        private SensorlessRoom firstUpperLeftMidOffices;
+        private SensorlessRoom firstUpperRightMidOffices;
+        private SensorlessRoom firstLowerLeftOffices;
+        private SensorlessRoom firstLowerRightOffices;
+        private SensorlessRoom firstLowerRightMidOffice;
+        private SensorlessRoom firstLowerRightMidOffices;
+        private SensorlessRoom firstLowerLeftMidOffice;
+        private SensorlessRoom firstLowerLeftMidOffices;
 
         BuildingDAL buildingDAL = new BuildingDAL();
 
@@ -1730,6 +1742,137 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Hallway
             };
 
+            firstUpperLeftOffices = new SensorlessRoom("Upper Left Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.4305581780001,55.367668795),
+                new Coordinates(10.4305783130001,55.3675184460001),
+                new Coordinates(10.430661061,55.367522024),
+                new Coordinates(10.4306409660001,55.367672376)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstUpperRightOffices = new SensorlessRoom("Upper Right Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.4309490590001,55.3676857020001),
+                new Coordinates(10.4310319250001,55.367689286),
+                new Coordinates(10.4310520710001,55.367538859),
+                new Coordinates(10.430969286,55.367535278)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstUpperLeftMidOffice = new SensorlessRoom("Upper Mid Left Office", new List<Coordinates>()
+            {
+                new Coordinates(10.430691305,55.3675233320001),
+                new Coordinates(10.4306884210001,55.367544878),
+                new Coordinates(10.4307644730001,55.3675481670001),
+                new Coordinates(10.430767358,55.36752662)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstUpperRightMidOffice = new SensorlessRoom("Upper Mid Right Office", new List<Coordinates>()
+            {
+                new Coordinates(10.430938998,55.367533968),
+                new Coordinates(10.430865135,55.3675307730001),
+                new Coordinates(10.430862239,55.3675523960001),
+                new Coordinates(10.430936103,55.367555591)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstUpperLeftMidOffices = new SensorlessRoom("Upper Mid Right Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.430674321,55.367652068),
+                new Coordinates(10.430749948,55.3676553390001),
+                new Coordinates(10.430761411,55.367569734),
+                new Coordinates(10.430685784,55.3675664630001),
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstUpperRightMidOffices = new SensorlessRoom("Upper Mid Right Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.4309332350001,55.367577166),
+                new Coordinates(10.4308574190001,55.367573887),
+                new Coordinates(10.4308459640001,55.367659432),
+                new Coordinates(10.430921778,55.367662711)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerLeftOffices = new SensorlessRoom("Lower Left Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.4306329070001,55.3671107960001),
+                new Coordinates(10.4307156990001,55.3671143770001),
+                new Coordinates(10.430735842,55.3669639510001),
+                new Coordinates(10.430653052,55.3669603700001)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerRightOffices = new SensorlessRoom("Lower Right Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.4311268000001,55.366980862),
+                new Coordinates(10.4310441710001,55.366977288),
+                new Coordinates(10.43102391,55.367127397),
+                new Coordinates(10.431106696,55.367130978)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerRightMidOffice = new SensorlessRoom("Lower Right Mid Office", new List<Coordinates>()
+            {
+                new Coordinates(10.430996726,55.3671047870001),
+                new Coordinates(10.4309226080001,55.367101581),
+                new Coordinates(10.4309197540001,55.3671228920001),
+                new Coordinates(10.430993872,55.367126098)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerLeftMidOffice = new SensorlessRoom("Lower Left Mid Office", new List<Coordinates>()
+            {
+                new Coordinates(10.430748851,55.3670940640001),
+                new Coordinates(10.4307459550001,55.367115685),
+                new Coordinates(10.430821947,55.3671189720001),
+                new Coordinates(10.430824842,55.367097351)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerLeftMidOffices = new SensorlessRoom("Lower Left Mid Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.430751609,55.3670727740001),
+                new Coordinates(10.430827692,55.367076065),
+                new Coordinates(10.4308392670001,55.3669896330001),
+                new Coordinates(10.4307631830001,55.3669863420001)
+            })
+            {
+                RoomType = RoomType.Office
+            };
+
+            firstLowerRightMidOffices = new SensorlessRoom("Lower Left Mid Offices", new List<Coordinates>()
+            {
+                new Coordinates(10.431011105,55.3669974040001),
+                new Coordinates(10.430936988,55.366994199),
+                new Coordinates(10.430925523,55.3670798140001),
+                new Coordinates(10.430999641,55.3670830200001),
+            })
+            {
+                RoomType = RoomType.Office
+            };
         }
 
         private void CreateFirstFloorRooms()
@@ -1748,21 +1891,21 @@ namespace Website.Logic.Domain
                 LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
-                HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                Temperature = 24.5,
+                CO2 = 375,
+                HardwareConsumption = 190,
+                VentilationConsumption = 320,
+                OtherConsumption = 110,
+                LightConsumption = 190,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
-                Lumen = 200,
+                Lumen = 150,
                 Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Occupants = 30,
+                WifiClients = 25,
                 SurfaceArea = 53
             };
 
@@ -1792,7 +1935,7 @@ namespace Website.Logic.Domain
                 VentilationConsumptionMax = 1000,
                 Light = true,
                 Lumen = 200,
-                Motion = false,
+                Motion = true,
                 Occupants = 5,
                 WifiClients = 8,
                 SurfaceArea = 139
@@ -1812,21 +1955,21 @@ namespace Website.Logic.Domain
                 LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
-                HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                Temperature = 21.5,
+                CO2 = 280,
+                HardwareConsumption = 380,
+                VentilationConsumption = 650,
+                OtherConsumption = 250,
+                LightConsumption = 620,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
                 Lumen = 200,
-                Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Motion = true,
+                Occupants = 38,
+                WifiClients = 42,
                 SurfaceArea = 98
             };
 
@@ -1842,23 +1985,23 @@ namespace Website.Logic.Domain
                 TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
-                OccupantsMax = 50,
-                WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
-                HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                OccupantsMax = 25,
+                WifiClientsMax = 40,
+                Temperature = 22,
+                CO2 = 340,
+                HardwareConsumption = 110,
+                VentilationConsumption = 135,
+                OtherConsumption = 95,
+                LightConsumption = 450,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
-                Lumen = 200,
-                Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Lumen = 100,
+                Motion = true,
+                Occupants = 15,
+                WifiClients = 20,
                 SurfaceArea = 53
             };
 
@@ -1874,23 +2017,23 @@ namespace Website.Logic.Domain
                 TemperatureMin = 20,
                 CO2Max = 1000,
                 LumenMax = 600,
-                OccupantsMax = 50,
-                WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
+                OccupantsMax = 25,
+                WifiClientsMax = 40,
+                Temperature = 21,
+                CO2 = 410,
                 HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                VentilationConsumption = 335,
+                OtherConsumption = 170,
+                LightConsumption = 365,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
                 Lumen = 200,
-                Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Motion = true,
+                Occupants = 3,
+                WifiClients = 5,
                 SurfaceArea = 53
             };
 
@@ -1909,21 +2052,21 @@ namespace Website.Logic.Domain
                 LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
-                HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                Temperature = 23,
+                CO2 = 415,
+                HardwareConsumption = 120,
+                VentilationConsumption = 130,
+                OtherConsumption = 85,
+                LightConsumption = 125,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
-                Lumen = 200,
+                Lumen = 120,
                 Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Occupants = 2,
+                WifiClients = 3,
                 SurfaceArea = 139
             };
 
@@ -1941,21 +2084,21 @@ namespace Website.Logic.Domain
                 LumenMax = 600,
                 OccupantsMax = 50,
                 WifiClientsMax = 75,
-                Temperature = 20,
-                CO2 = 350,
+                Temperature = 24,
+                CO2 = 650,
                 HardwareConsumption = 290,
-                VentilationConsumption = 310,
-                OtherConsumption = 90,
-                LightConsumption = 150,
+                VentilationConsumption = 750,
+                OtherConsumption = 365,
+                LightConsumption = 720,
                 HardwareConsumptionMax = 400,
                 LightConsumptionMax = 800,
                 OtherConsumptionMax = 500,
                 VentilationConsumptionMax = 1000,
                 Light = true,
                 Lumen = 200,
-                Motion = false,
-                Occupants = 5,
-                WifiClients = 8,
+                Motion = true,
+                Occupants = 40,
+                WifiClients = 60,
                 SurfaceArea = 139
             };
 
@@ -2068,6 +2211,18 @@ namespace Website.Logic.Domain
             firstFloor.Rooms.Add(firstLowerMidHallway);
             firstFloor.Rooms.Add(firstUpperMidHallway);
             firstFloor.Rooms.Add(firstUpperRightHallway);
+            firstFloor.Rooms.Add(firstUpperLeftOffices);
+            firstFloor.Rooms.Add(firstUpperRightOffices);
+            firstFloor.Rooms.Add(firstUpperLeftMidOffice);
+            firstFloor.Rooms.Add(firstUpperLeftMidOffices);
+            firstFloor.Rooms.Add(firstUpperRightMidOffice);
+            firstFloor.Rooms.Add(firstUpperRightMidOffices);
+            firstFloor.Rooms.Add(firstLowerLeftOffices);
+            firstFloor.Rooms.Add(firstLowerRightOffices);
+            firstFloor.Rooms.Add(firstLowerLeftMidOffice);
+            firstFloor.Rooms.Add(firstLowerLeftMidOffices);
+            firstFloor.Rooms.Add(firstLowerRightMidOffice);
+            firstFloor.Rooms.Add(firstLowerRightMidOffices);
 
             building.Floors.Add(cellarFloor);
             building.Floors.Add(parterreFloor);
