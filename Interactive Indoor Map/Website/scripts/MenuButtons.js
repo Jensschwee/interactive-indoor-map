@@ -1,4 +1,5 @@
 ﻿var buildingButton;
+var activeViewsMax = 6;
 
 function CreateSpatialButtons() {
     L.control.fullscreen({
@@ -144,7 +145,7 @@ function CreateViewButtons() {
                 title: 'Temperature',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var temperatureObj = {
                             name: "Temperature",
                             color: '#8ab1c4',
@@ -188,7 +189,7 @@ function CreateViewButtons() {
                 stateName: 'toggled',
                 title: 'CO2',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var co2Obj = {
                             name: "CO2",
                             color: '#c7b7ea',
@@ -232,7 +233,7 @@ function CreateViewButtons() {
                 title: 'Lumen',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var co2Obj = {
                             name: "Lumen",
                             color: '#ffe11d',
@@ -275,7 +276,7 @@ function CreateViewButtons() {
                 title: 'Total Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var totalPowerObj = {
                             name: "TotalPowerConsumption",
                             color: '#e74c3c',
@@ -319,7 +320,7 @@ function CreateViewButtons() {
                 title: 'Hardware Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var hardwareConsumptionObj = {
                             name: "HardwareConsumption",
                             color: '#f83e2d',
@@ -364,7 +365,7 @@ function CreateViewButtons() {
                 title: 'Light Power Consumption',
                 stateName: 'toggled',
                 onClick: function(btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var lightConsumptionObj = {
                             name: "LightConsumption",
                             color: '#fe4e35',
@@ -408,7 +409,7 @@ function CreateViewButtons() {
                 title: 'Ventilation Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var ventilationConsumptionObj = {
                             name: "VentilationConsumption",
                             color: '#d15258',
@@ -453,7 +454,7 @@ function CreateViewButtons() {
                 title: 'Other Power Consumption',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var otherConsumptionObj = {
                             name: "OtherConsumption",
                             color: '#ff8289',
@@ -497,7 +498,7 @@ function CreateViewButtons() {
                 title: 'Water Consumption',
                 stateName: 'toggled',
                 onClick: function (btn) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var waterConsumptionObj = {
                             name: "WaterConsumption",
                             color: '#3399cc',
@@ -538,7 +539,7 @@ function CreateViewButtons() {
                 title: 'Motion Detection',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var motionObj = {
                             name: "Motion",
                             color: '#b2d649',
@@ -580,7 +581,7 @@ function CreateViewButtons() {
                 title: 'Occupants',
                 stateName: 'toggled',
                 onClick: function (btn, map) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var occupantsObj = {
                             name: "Occupants",
                             color: '#2ecc71',
@@ -625,7 +626,7 @@ function CreateViewButtons() {
                 stateName: 'toggled',
                 title: 'Wifi Clients',
                 onClick: function (btn, map) {
-                    if (ActiveViews.length < 4) {
+                    if (ActiveViews.length < activeViewsMax) {
                         var wifiClientsObj = {
                             name: "WifiClients",
                             color: '#83bd1a',
