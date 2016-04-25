@@ -128,7 +128,10 @@
     <Content Include="Images\ventilationPowerIcon.png" />
     <Content Include="Images\waterConsumptionIcon.png" />
     <Content Include="Images\wifiIcon.png" />
+    <Content Include="scripts\External\bootstrap.min.js" />
+    <Content Include="scripts\External\d3.v3.min.js" />
     <Content Include="scripts\External\easy-button.js" />
+    <Content Include="scripts\External\Leaflet.fullscreen.min.js" />
     <Content Include="scripts\External\leaflet.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
@@ -157,8 +160,11 @@
     <Content Include="scripts\Controller\MenuButtons.js" />
     <Content Include="scripts\Room.js" />
     <Content Include="scripts\UpdateViewTimer.js" />
+    <Content Include="Style\External\bootstrap-theme.min.css" />
+    <Content Include="Style\External\bootstrap.min.css" />
     <Content Include="Style\External\easy-button.css" />
     <Content Include="Style\External\leaflet.css" />
+    <Content Include="Style\External\leaflet.fullscreen.css" />
     <Content Include="Style\IE-style.css" />
     <Content Include="Style\non-IE-Style.css" />
     <Content Include="Web.config" />
