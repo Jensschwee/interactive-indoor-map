@@ -8,7 +8,7 @@ namespace Website.Logic.BO
 {
     public class SensorRoom : Room
     {
-        public SmapEndpoints SmapEndpoints { get; set; }
+        public Endpoints Endpoints { get; set; }
 
         public Corners Corners { get; set; }
 

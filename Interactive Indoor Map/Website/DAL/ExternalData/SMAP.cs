@@ -67,13 +67,14 @@ namespace Website.DAL.ExternalData
         /// <param name="fromDate"></param>
         /// <param name="toDate"></param>
         /// <returns></returns>
-        public SMapSensorReading GetHistoricSensorValue(string uuid, DateTime fromDate, DateTime toDate)
+        public SMapSensorReading GetHistoricSensorValue(Endpoints endpoints, DateTime fromDate, DateTime toDate)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data in (");
             sb.Append("'" + fromDate.Date.ToString() + "'");
             sb.Append(", '" + toDate.Date.ToString() + "')");
-            sb.Append(" where uuid = '" + uuid + "'");
+            //endpoints.
+            //sb.Append(" where uuid = '" + endpoints + "'");
             return sendHTTPPost(ENDPOINT, sb.ToString());
         }
 
