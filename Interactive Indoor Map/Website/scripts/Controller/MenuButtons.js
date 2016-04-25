@@ -1,5 +1,5 @@
 ﻿var buildingButton;
-var activeViewsMax = 6;
+var activeViewsMax = 5;
 
 function CreateSpatialButtons() {
     L.control.fullscreen({
