@@ -43,7 +43,7 @@ namespace Website.DAL.ExternalData
         /// The number of reading returned
         /// </param>
         /// <returns></returns>
-        public double GetCurrentHourlyUse(string uuid, int limit =2)
+        public double GetCurrentHourlyUse(string uuid, int limit = 2)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now ");
@@ -55,27 +55,36 @@ namespace Website.DAL.ExternalData
             double reading1 = reading.Readings[0][1];
             double reading2 = reading.Readings[1][1];
 
-            TimeSpan timeBetween = dateConverter.ConvertDate((long)reading.Readings[1][0]) - dateConverter.ConvertDate((long) reading.Readings[0][0]);
+            TimeSpan timeBetween = dateConverter.ConvertDate((long)reading.Readings[1][0]) - dateConverter.ConvertDate((long)reading.Readings[0][0]);
 
-            return ((reading2 - reading1)/ timeBetween.TotalMinutes) *60;
+            return ((reading2 - reading1) / timeBetween.TotalMinutes) * 60;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="uuid"></param>
+        /// <param name="endpoints"></param>
         /// <param name="fromDate"></param>
         /// <param name="toDate"></param>
         /// <returns></returns>
         public SMapSensorReading GetHistoricSensorValue(Endpoints endpoints, DateTime fromDate, DateTime toDate)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("select data in (");
-            sb.Append("'" + fromDate.Date.ToString() + "'");
-            sb.Append(", '" + toDate.Date.ToString() + "')");
-            //endpoints.
-            //sb.Append(" where uuid = '" + endpoints + "'");
-            return sendHTTPPost(ENDPOINT, sb.ToString());
+            if (endpoints.SmapEndponts.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("select data in (");
+                sb.Append("'" + fromDate.Date.ToString() + "'");
+                sb.Append(", '" + toDate.Date.ToString() + "')");
+                sb.Append("where ");
+                foreach (var uuid in endpoints.SmapEndponts)
+                {
+                    sb.Append("uuid = ");
+                    sb.Append("'" + uuid.Value + "' or ");
+                }
+                sb.Remove(sb.Length, 3);
+                return sendHTTPPost(ENDPOINT, sb.ToString());
+            }
+            return null;
         }
 
         private SMapSensorReading sendHTTPPost(string endpoint, string body)
@@ -94,7 +103,7 @@ namespace Website.DAL.ExternalData
             }
 
             var response = (HttpWebResponse)request.GetResponse();
-                
+
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
             var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
