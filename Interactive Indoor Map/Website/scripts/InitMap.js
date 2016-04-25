@@ -3,7 +3,7 @@ var view;
 var currentFloorLevel = 1;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
-var roomForgroundLayer = null;
+var roomForegroundLayer = null;
 var roomBackgroundLayer = null;
 var infoboxUpdate = null;
 var roomLayers = [];
@@ -34,7 +34,7 @@ function InitLeafletMap(jsonMap) {
     var geojson = L.geoJson(jsonMap);
     initMapSettings(geojson);
 
-    getRoomsAndDrawBackgrund();
+    getRoomsAndDrawBackground();
     getRoomsAndDrawRoomsWithRoomOverlays();
 
     worldMap.addTo(geoMap);
