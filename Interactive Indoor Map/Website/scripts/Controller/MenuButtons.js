@@ -1,5 +1,6 @@
 ﻿var buildingButton;
 var activeViewsMax = 5;
+var notContained = -1;
 
 function CreateSpatialButtons() {
     L.control.fullscreen({
@@ -114,6 +115,47 @@ function CreateSpatialButtons() {
     }).addTo(geoMap);
 
     buildingButton.button.style.backgroundColor = '#8c8c8c';
+
+    var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
+
+    var toggleWaterConsumptionButton = L.easyButton({
+        states: [
+            {
+                icon: waterConsumptionIcon,
+                title: 'Water Consumption',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    var waterConsumptionObj = {
+                        name: "WaterConsumption",
+                        color: '#8c8c8c',
+                        icon: waterConsumptionIcon,
+                        value: 'WaterConsumption',
+                        button: toggleWaterConsumptionButton
+                    };
+                    btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
+                    ActiveFloorViews.push(waterConsumptionObj);
+                    reDrawItemsOnMap();
+                    btn.state('detoggled');
+                    infoboxUpdate();
+                }
+            }, {
+                icon: waterConsumptionIcon,
+                stateName: 'detoggled',
+                title: 'Water Consumption',
+                onClick: function (btn) {
+                    var index = findIndexOfFloorView("WaterConsumption");
+                    if (index !== notContained) {
+                        ActiveFloorViews.splice(index, 1);
+                        reDrawItemsOnMap();
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'bottomright'
+    }).addTo(geoMap);
 }
 
 function createIconForButton(imageSrc) {
@@ -134,9 +176,7 @@ function CreateViewButtons() {
     var motionIcon = createIconForButton("Images/motionIcon.png");
     var occupantsIcon = createIconForButton("Images/occupantsIcon.png");
     var wifiClientsIcon = createIconForButton("Images/wifiIcon.png");
-    var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
 
-    var notContained = -1;
 
     var toggleTempButton = L.easyButton({
         states: [
@@ -493,46 +533,7 @@ function CreateViewButtons() {
         position: 'topright'
     }).addTo(geoMap);;
 
-    var toggleWaterConsumptionButton = L.easyButton({
-        states: [
-            {
-                icon: waterConsumptionIcon,
-                title: 'Water Consumption',
-                stateName: 'toggled',
-                onClick: function (btn) {
-                    if (ActiveViews.length === activeViewsMax)
-                        ActiveViews[0].button.button.click();
-                    var waterConsumptionObj = {
-                        name: "WaterConsumption",
-                        color: '#3399cc',
-                        icon: waterConsumptionIcon,
-                        value: 'WaterConsumption',
-                        button: toggleWaterConsumptionButton
-                    };
-                    btn.button.style.backgroundColor = '#3399cc';
-                    ActiveViews.push(waterConsumptionObj);
-                    reDrawItemsOnMap();
-                    btn.state('detoggled');
-                    infoboxUpdate();
-                }
-            }, {
-                icon: waterConsumptionIcon,
-                stateName: 'detoggled',
-                title: 'Water Consumption',
-                onClick: function (btn) {
-                    var index = findIndexOfView("WaterConsumption");
-                    if (index !== notContained) {
-                        ActiveViews.splice(index, 1);
-                        reDrawItemsOnMap();
-                        btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
-                        infoboxUpdate();
-                    }
-                }
-            }
-        ],
-        position: 'topright'
-    }).addTo(geoMap);
+    
 
     var toggleMotionButton = L.easyButton({
         states: [
@@ -671,6 +672,15 @@ function reDrawItemsOnMap() {
 function findIndexOfView(name) {
     for (var i = 0; i < ActiveViews.length; i++) {
         if (ActiveViews[i].name === name) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function findIndexOfFloorView(name) {
+    for (var i = 0; i < ActiveFloorViews.length; i++) {
+        if (ActiveFloorViews[i].name === name) {
             return i;
         }
     }
