@@ -39,7 +39,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#48;',
+            icon: '&#80;', //P
             title: 'Parterre',
             onClick: function (btn) {
                 if (currentFloorLevel !== 0) {
@@ -59,7 +59,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#49;',
+            icon: '&#71;', //G
             title: 'Ground Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 1) {
@@ -81,7 +81,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#50;',
+            icon: '&#49;', //1
             title: 'First Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 2) {
@@ -634,7 +634,6 @@ function CreateViewButtons() {
                             max: 'WifiClientsMax',
                             value: 'WifiClients',
                             button: toggleWifiClientsButton
-
                         };
                         btn.button.style.backgroundColor = '#83bd1a';
                         ActiveViews.push(wifiClientsObj);
@@ -642,7 +641,6 @@ function CreateViewButtons() {
                         btn.state('detoggled');
                         infoboxUpdate();
                     }
-
                 }
             }, {
                 icon: wifiClientsIcon,
@@ -677,4 +675,14 @@ function findIndexOfView(name) {
         }
     }
     return -1;
+}
+
+function isMaxViewsActive() {
+    if (ActiveViews.length < activeViewsMax) {
+        return true;
+
+    } else {
+        return false;
+
+    }
 }

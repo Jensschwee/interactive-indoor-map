@@ -154,7 +154,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\External\L.D3SvgOverlay.min.js" />
     <Content Include="scripts\Legend.js" />
-    <Content Include="scripts\MenuButtons.js" />
+    <Content Include="scripts\Controller\MenuButtons.js" />
     <Content Include="scripts\Room.js" />
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="Style\External\easy-button.css" />

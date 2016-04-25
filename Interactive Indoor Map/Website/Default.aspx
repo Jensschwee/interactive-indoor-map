@@ -48,7 +48,7 @@
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/Legend.js'></script>
-    <script type='text/javascript' src='scripts/MenuButtons.js'></script>
+    <script type='text/javascript' src='scripts/Controller/MenuButtons.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
     <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>   
 </head>
