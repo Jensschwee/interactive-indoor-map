@@ -128,6 +128,8 @@
     <Content Include="Images\ventilationPowerIcon.png" />
     <Content Include="Images\waterConsumptionIcon.png" />
     <Content Include="Images\wifiIcon.png" />
+    <Content Include="scripts\Controllers\LegendController.js" />
+    <Content Include="scripts\Controllers\RoomController.js" />
     <Content Include="scripts\External\bootstrap.min.js" />
     <Content Include="scripts\External\d3.v3.min.js" />
     <Content Include="scripts\External\easy-button.js" />
@@ -153,11 +155,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\External\ai.0.15.0-build58334.js" />
+    <Content Include="scripts\External\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\External\L.D3SvgOverlay.min.js" />
     <Content Include="scripts\Legend.js" />
-    <Content Include="scripts\Controller\MenuButtons.js" />
+    <Content Include="scripts\Controllers\MenuButtonsController.js" />
     <Content Include="scripts\Room.js" />
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="Style\External\bootstrap-theme.min.css" />

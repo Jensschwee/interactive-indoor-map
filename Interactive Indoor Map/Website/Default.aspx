@@ -63,7 +63,9 @@
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/Legend.js'></script>
-    <script type='text/javascript' src='scripts/Controller/MenuButtons.js'></script>
+    <script type='text/javascript' src='scripts/Controllers/MenuButtonsController.js'></script>
+    <script type='text/javascript' src='scripts/Controllers/RoomController.js'></script>
+    <script type='text/javascript' src='scripts/Controllers/LegendController.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
     <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>
 </head>

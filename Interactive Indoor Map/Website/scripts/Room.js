@@ -197,11 +197,11 @@
 function getRoomsAndDrawRoomsWithRoomOverlays() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRoomsForground(colletionOfRoomsOnMap);
+        drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
-    getRoomsAndDrawBackgrund();
+    getRoomsAndDrawBackground();
 }
 
 function getRoomsAndDrawRooms() {
@@ -212,7 +212,7 @@ function getRoomsAndDrawRooms() {
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
 
-function getRoomsAndDrawBackgrund() {
+function getRoomsAndDrawBackground() {
     function onSuccess(response) {
         var roomsBackgrund = JSON.parse(response);
         drawRoomsBackgrund(roomsBackgrund);
@@ -225,14 +225,14 @@ function drawRoomsBackgrund(json) {
         geoMap.removeLayer(roomBackgroundLayer);
     }
     roomBackgroundLayer = L.geoJson(json, {
-        style: backgrundStyle
+        style: backgroundStyle
     });
     var backLayer = 0;
     roomBackgroundLayer.setZIndex(backLayer).addTo(geoMap);
     roomBackgroundLayer.bringToBack();
 }
 
-function backgrundStyle(feature) {
+function backgroundStyle(feature) {
     return {
         //Backgrund color
         fillColor: getRoomBackgrundColor(feature.properties.RoomType),
@@ -242,7 +242,7 @@ function backgrundStyle(feature) {
         fillOpacity: 1.0
     };
 }
-//fff8dc, D0D6DC
+
 function getRoomBackgrundColor(RoomType) {
     return RoomType === "Classroom" ? '#D0D6DC' :
            RoomType === "Studyzone" ? '#D0D6DC' :
@@ -267,10 +267,10 @@ function getRoomBorderColor(RoomType) {
            '#FFFFFF';
 }
 
-function drawRoomsForground(json) {
+function drawRoomsForeground(json) {
 
-    if (roomForgroundLayer != null) {
-        geoMap.removeLayer(roomForgroundLayer);
+    if (roomForegroundLayer != null) {
+        geoMap.removeLayer(roomForegroundLayer);
     }
 
     var roomOnClickEventHandler = function (feature, layer) {
@@ -279,7 +279,7 @@ function drawRoomsForground(json) {
         });
     };
 
-    roomForgroundLayer = L.geoJson(json, {
+    roomForegroundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
             fillColor: "#FFFFFF",
@@ -293,41 +293,10 @@ function drawRoomsForground(json) {
         onEachFeature: roomOnClickEventHandler
     });
     var frontLayer = 1;
-    roomForgroundLayer.setZIndex(frontLayer).addTo(geoMap);
+    roomForegroundLayer.setZIndex(frontLayer).addTo(geoMap);
 }
 
 function changeFloor() {
     roomArray = [];
     getRoomsAndDrawRoomsWithRoomOverlays();
-}
-
-function onRoomClicked(e) {
-    var layer = e.target;
-
-    if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
-        //Select room
-        layer.setStyle({
-            //border color
-            color: '#8c8c8c'
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera) {
-            layer.bringToFront();
-        }
-
-        roomArray.push(layer.feature.properties.Name);
-    } else {
-        roomArray = jQuery.grep(roomArray, function (value) {
-            return value != layer.feature.properties.Name;
-        });
-
-        //Deselect room
-        roomForgroundLayer.resetStyle(e.target);
-        infoBox.update();
-    }
-
-    buildingButton.button.style.backgroundColor = 'white';
-    drawRoomInfo();
-    infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
-    infoboxUpdate();
 }

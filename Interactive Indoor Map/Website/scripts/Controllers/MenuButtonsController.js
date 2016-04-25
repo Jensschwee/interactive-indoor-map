@@ -1,6 +1,17 @@
 ﻿var buildingButton;
 var activeViewsMax = 5;
 var notContained = -1;
+var TemperatureColor = "#8ab1c4";
+var CO2Color = "#c7b7ea";
+var LightColor = "#ffe11d";
+var MotionDetectionColor = "#b2d649";
+var WifiClientsColor = "#83bd1a";
+var OccupantsColor = "#2ecc71";
+var TotalPowerConsumptionColor = "#b30000";
+var HardwarePowerConsumptionColor = "#e60000";
+var LightPowerConsumptionColor = "#ff1a1a";
+var VentilationPowerConsumptionColor = "#ff4d4d";
+var OtherPowerConsumptionColor = "#ff8080";
 
 function CreateSpatialButtons() {
     L.control.fullscreen({
@@ -190,7 +201,7 @@ function CreateViewButtons() {
 
                     var temperatureObj = {
                         name: "Temperature",
-                        color: '#8ab1c4',
+                        color: TemperatureColor,
                         icon: temperatureIcon,
                         max: 'TemperatureMax',
                         value: 'Temperature',
@@ -198,7 +209,7 @@ function CreateViewButtons() {
                         button: toggleTempButton
                     };
 
-                    btn.button.style.backgroundColor = '#8ab1c4';
+                    btn.button.style.backgroundColor = TemperatureColor;
                     ActiveViews.push(temperatureObj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -235,14 +246,14 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var co2Obj = {
                         name: "CO2",
-                        color: '#c7b7ea',
+                        color: CO2Color,
                         icon: co2Icon,
                         max: 'CO2Max',
                         value: 'CO2',
                         min: "CO2Min",
                         button: toggleCO2Button
                     };
-                    btn.button.style.backgroundColor = '#c7b7ea';
+                    btn.button.style.backgroundColor = CO2Color;
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -279,13 +290,13 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var co2Obj = {
                         name: "Lumen",
-                        color: '#ffe11d',
+                        color: LightColor,
                         icon: lightIcon,
                         value: 'Lumen',
                         max: 'LumenMax',
                         button: toggleLightButton
                     };
-                    btn.button.style.backgroundColor = '#ffe11d';
+                    btn.button.style.backgroundColor = LightColor;
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -312,6 +323,134 @@ function CreateViewButtons() {
         position: 'topright'
     }).addTo(geoMap);
 
+    var toggleMotionButton = L.easyButton({
+        states: [
+            {
+                icon: motionIcon,
+                title: 'Motion Detection',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    if (ActiveViews.length === activeViewsMax)
+                        ActiveViews[0].button.button.click();
+                    var motionObj = {
+                        name: "Motion",
+                        color: MotionDetectionColor,
+                        icon: motionIcon,
+                        value: 'Motion',
+                        button: toggleMotionButton
+                    };
+                    btn.button.style.backgroundColor = MotionDetectionColor;
+                    ActiveViews.push(motionObj);
+                    reDrawItemsOnMap();
+                    btn.state('detoggled');
+                    infoboxUpdate();
+                }
+            }, {
+                icon: motionIcon,
+                title: 'Motion Detection',
+                stateName: 'detoggled',
+                onClick: function (btn) {
+                    var index = findIndexOfView("Motion");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        reDrawItemsOnMap();
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
+
+    var toggleWifiClientsButton = L.easyButton({
+        states: [
+            {
+                icon: wifiClientsIcon,
+
+                stateName: 'toggled',
+                title: 'Wifi Clients',
+                onClick: function (btn) {
+                    if (ActiveViews.length === activeViewsMax)
+                        ActiveViews[0].button.button.click();
+                    var wifiClientsObj = {
+                        name: "WifiClients",
+                        color: WifiClientsColor,
+                        icon: wifiClientsIcon,
+                        max: 'WifiClientsMax',
+                        value: 'WifiClients',
+                        button: toggleWifiClientsButton
+                    };
+                    btn.button.style.backgroundColor = WifiClientsColor;
+                    ActiveViews.push(wifiClientsObj);
+                    reDrawItemsOnMap();
+                    btn.state('detoggled');
+                    infoboxUpdate();
+                }
+            }, {
+                icon: wifiClientsIcon,
+                stateName: 'detoggled',
+                title: 'Wifi Clients',
+                onClick: function (btn) {
+                    var index = findIndexOfView("WifiClients");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        reDrawItemsOnMap();
+
+                        btn.state('toggled');
+                        btn.button.style.backgroundColor = 'white';
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
+
+    var toggleOccupantsButton = L.easyButton({
+        states: [
+            {
+                icon: occupantsIcon,
+                title: 'Occupants',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    if (ActiveViews.length === activeViewsMax)
+                        ActiveViews[0].button.button.click();
+                    var occupantsObj = {
+                        name: "Occupants",
+                        color: OccupantsColor,
+                        icon: occupantsIcon,
+                        max: 'OccupantsMax',
+                        value: 'Occupants',
+                        button: toggleOccupantsButton
+                    };
+                    btn.button.style.backgroundColor = OccupantsColor;
+                    ActiveViews.push(occupantsObj);
+                    reDrawItemsOnMap();
+                    btn.state('detoggled');
+                    infoboxUpdate();
+                }
+            }, {
+                icon: occupantsIcon,
+                stateName: 'detoggled',
+                title: 'Occupants',
+                onClick: function (btn) {
+                    var index = findIndexOfView("Occupants");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        reDrawItemsOnMap();
+
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
+
     var toggleTotalConsumptionButton = L.easyButton({
         states: [
             {
@@ -323,14 +462,14 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var totalPowerObj = {
                         name: "TotalPowerConsumption",
-                        color: '#e74c3c',
+                        color: TotalPowerConsumptionColor,
                         icon: totalConsumptionIcon,
                         max: 'TotalPowerConsumptionMax',
                         value: 'TotalPowerConsumption',
                         min: "TotalPowerConsumptionMin",
                         button: toggleTotalConsumptionButton
                     };
-                    btn.button.style.backgroundColor = '#e74c3c';
+                    btn.button.style.backgroundColor = TotalPowerConsumptionColor; //'#e74c3c'
                     ActiveViews.push(totalPowerObj);
                     reDrawItemsOnMap();
                     infoboxUpdate();
@@ -367,14 +506,14 @@ function CreateViewButtons() {
 
                     var hardwareConsumptionObj = {
                         name: "HardwareConsumption",
-                        color: '#f83e2d',
+                        color: HardwarePowerConsumptionColor,
                         icon: hardwareConsumptionIcon,
                         max: 'HardwareConsumptionMax',
                         value: 'HardwareConsumption',
                         min: "HardwareConsumptionMin",
                         button: toggleHardwareConsumptionButton
                     };
-                    btn.button.style.backgroundColor = '#f83e2d';
+                    btn.button.style.backgroundColor = HardwarePowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(hardwareConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -412,14 +551,14 @@ function CreateViewButtons() {
 
                     var lightConsumptionObj = {
                         name: "LightConsumption",
-                        color: '#fe4e35',
+                        color: LightPowerConsumptionColor,
                         icon: lightConsumptionIcon,
                         max: 'LightConsumptionMax',
                         value: 'LightConsumption',
                         min: "LightConsumptionMin",
                         button: toggleLightConsumptionButton
                     };
-                    btn.button.style.backgroundColor = '#f83e2d';
+                    btn.button.style.backgroundColor = LightPowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(lightConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -456,14 +595,14 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var ventilationConsumptionObj = {
                         name: "VentilationConsumption",
-                        color: '#d15258',
+                        color: VentilationPowerConsumptionColor,
                         icon: ventilationConsumptonIcon,
                         max: 'VentilationConsumptionMax',
                         value: 'VentilationConsumption',
                         min: "VentilationConsumptionMin",
                         button: toggleVentilationConsumptionButton
                     };
-                    btn.button.style.backgroundColor = '#d15258';
+                    btn.button.style.backgroundColor = VentilationPowerConsumptionColor; //'#d15258'
                     ActiveViews.push(ventilationConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -500,14 +639,14 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var otherConsumptionObj = {
                         name: "OtherConsumption",
-                        color: '#ff8289',
+                        color: OtherPowerConsumptionColor,
                         icon: otherConsumptionIcon,
                         max: 'OtherConsumptionMax',
                         value: 'OtherConsumption',
                         min: "OtherConsumptionMin",
                         button: toggleOtherConsumptionButton
                     };
-                    btn.button.style.backgroundColor = '#ff8289';
+                    btn.button.style.backgroundColor = OtherPowerConsumptionColor; //'#ff8289'
                     ActiveViews.push(otherConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('detoggled');
@@ -517,7 +656,7 @@ function CreateViewButtons() {
                 icon: otherConsumptionIcon,
                 title: 'Other Power Consumption',
                 stateName: 'detoggled',
-                onClick: function (btn, map) {
+                onClick: function (btn) {
                     var index = findIndexOfView("OtherConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
@@ -532,136 +671,6 @@ function CreateViewButtons() {
         ],
         position: 'topright'
     }).addTo(geoMap);;
-
-    
-
-    var toggleMotionButton = L.easyButton({
-        states: [
-            {
-                icon: motionIcon,
-                title: 'Motion Detection',
-                stateName: 'toggled',
-                onClick: function (btn) {
-                    if (ActiveViews.length === activeViewsMax)
-                        ActiveViews[0].button.button.click();
-                    var motionObj = {
-                        name: "Motion",
-                        color: '#b2d649',
-                        icon: motionIcon,
-                        value: 'Motion',
-                        button: toggleMotionButton
-                    };
-                    btn.button.style.backgroundColor = '#b2d649';
-                    ActiveViews.push(motionObj);
-                    reDrawItemsOnMap();
-                    btn.state('detoggled');
-                    infoboxUpdate();
-                }
-            }, {
-                icon: motionIcon,
-                title: 'Motion Detection',
-                stateName: 'detoggled',
-                onClick: function (btn) {
-                    var index = findIndexOfView("Motion");
-                    if (index !== notContained) {
-                        ActiveViews.splice(index, 1);
-                        reDrawItemsOnMap();
-                        btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
-                        infoboxUpdate();
-                    }
-                }
-            }
-        ],
-        position: 'topright'
-    }).addTo(geoMap);
-
-    var toggleOccupantsButton = L.easyButton({
-        states: [
-            {
-                icon: occupantsIcon,
-                title: 'Occupants',
-                stateName: 'toggled',
-                onClick: function (btn) {
-                    if (ActiveViews.length === activeViewsMax)
-                        ActiveViews[0].button.button.click();
-                    var occupantsObj = {
-                        name: "Occupants",
-                        color: '#2ecc71',
-                        icon: occupantsIcon,
-                        max: 'OccupantsMax',
-                        value: 'Occupants',
-                        button: toggleOccupantsButton
-                    };
-                    btn.button.style.backgroundColor = '#2ecc71';
-                    ActiveViews.push(occupantsObj);
-                    reDrawItemsOnMap();
-                    btn.state('detoggled');
-                    infoboxUpdate();
-                }
-            }, {
-                icon: occupantsIcon,
-                stateName: 'detoggled',
-                title: 'Occupants',
-                onClick: function (btn, map) {
-                    var index = findIndexOfView("Occupants");
-                    if (index !== notContained) {
-                        ActiveViews.splice(index, 1);
-                        reDrawItemsOnMap();
-
-                        btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
-                        infoboxUpdate();
-                    }
-                }
-            }
-        ],
-        position: 'topright'
-    }).addTo(geoMap);
-
-    var toggleWifiClientsButton = L.easyButton({
-        states: [
-            {
-                icon: wifiClientsIcon,
-
-                stateName: 'toggled',
-                title: 'Wifi Clients',
-                onClick: function (btn) {
-                    if (ActiveViews.length === activeViewsMax)
-                        ActiveViews[0].button.button.click();
-                    var wifiClientsObj = {
-                        name: "WifiClients",
-                        color: '#83bd1a',
-                        icon: wifiClientsIcon,
-                        max: 'WifiClientsMax',
-                        value: 'WifiClients',
-                        button: toggleWifiClientsButton
-                    };
-                    btn.button.style.backgroundColor = '#83bd1a';
-                    ActiveViews.push(wifiClientsObj);
-                    reDrawItemsOnMap();
-                    btn.state('detoggled');
-                    infoboxUpdate();
-                }
-            }, {
-                icon: wifiClientsIcon,
-                stateName: 'detoggled',
-                title: 'Wifi Clients',
-                onClick: function (btn, map) {
-                    var index = findIndexOfView("WifiClients");
-                    if (index !== notContained) {
-                        ActiveViews.splice(index, 1);
-                        reDrawItemsOnMap();
-
-                        btn.state('toggled');
-                        btn.button.style.backgroundColor = 'white';
-                        infoboxUpdate();
-                    }
-                }
-            }
-        ],
-        position: 'topright'
-    }).addTo(geoMap);
 }
 
 function reDrawItemsOnMap() {
