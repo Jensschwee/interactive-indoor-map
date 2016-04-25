@@ -42,7 +42,7 @@ function drawBuildingInfoBox() {
 function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
-            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorLevel + "</br>" +
+            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorName + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</div></span>'
@@ -55,7 +55,7 @@ function drawFloorInfoBox() {
         function onSuccess(response, userContext, methodName) {
             var json = jQuery.parseJSON(response);
             var floorInfo = {
-                FloorLevel: json.FloorLevel,
+                FloorName: json.FloorName,
                 SurfaceArea: json.SurfaceArea,
                 NumberOfRooms: json.NumberOfRooms,
                 HTML: ""
@@ -126,8 +126,7 @@ function drawSelectedRoomInfoBox() {
             HTML: ""
         };
 
-        roomArray.forEach(function (roomName, index)
-        {
+        roomArray.forEach(function (roomName, index) {
             var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
                 return roomName === value.properties.Name;
             });
@@ -184,6 +183,7 @@ function drawSensorValuesInfoBox(sensorData) {
         }
         html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(0) + ' lm <br/>';
     }
+
     if (findIndexOfView('TotalPowerConsumption') !== notContained) {
         html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(0) + ' kWh <br/>';
     }
@@ -199,6 +199,15 @@ function drawSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('OtherConsumption') !== notContained) {
         html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(0) + ' kWh <br/>';
     }
+    if (findIndexOfView('WaterConsumption') !== notContained) {
+        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
+            html += '<b>Cold Water Consumption</b>: ' + sensorData.ColdWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+        }
+        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
+            html += '<b>Hot Water Consumption</b>: ' + sensorData.HotWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+        }
+    }
+
     if (findIndexOfView('Motion') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';

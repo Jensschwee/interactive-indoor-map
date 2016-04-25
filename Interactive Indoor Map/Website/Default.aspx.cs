@@ -28,7 +28,7 @@ namespace Website
                 {
                     JsonConverter converter = new JsonConverter();
 
-                    string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 0);
+                    string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
                 }
@@ -54,6 +54,15 @@ namespace Website
             JsonConverter converter = new JsonConverter();
 
             return converter.ConvertRooms(floorLevel);
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static string DrawRoomsBackgrund(int floorLevel)
+        {
+            JsonConverter converter = new JsonConverter();
+
+            return converter.ConvertRoomsGeoJson(floorLevel);
         }
 
         [System.Web.Services.WebMethod]

@@ -14,37 +14,63 @@ namespace Website.Logic.BO
         public int Id { get; set; }
 
         public int FloorLevel { get; set; }
+
+        public string FloorName { get; set; }
     
         public List<Room> Rooms { get; set; }
     
         public double SurfaceArea { get; set; }
 
-        [NotMapped]
-        public double Temperature => (Rooms.Sum(room => room.Temperature) / Rooms.Count);
+        public SmapEndpoints SmapEndpoints { get; set; }
 
         [NotMapped]
-        public double TemperatureMax => (Rooms.Sum(room => room.TemperatureMax) / Rooms.Count);
+        public double Temperature
+            =>
+                (Rooms.Where(room => room.GetType() == typeof (SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.Temperature)/
+            Rooms.Count(room => room.GetType() == typeof (SensorRoom)));
 
         [NotMapped]
-        public double TemperatureMin => (Rooms.Sum(room => room.TemperatureMin) / Rooms.Count);
+        public double TemperatureMax => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.TemperatureMax) / Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
         [NotMapped]
-        public double CO2 => (Rooms.Sum(room => room.CO2) / Convert.ToDouble(Rooms.Count));
+        public double TemperatureMin => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.TemperatureMin) /
+            Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
         [NotMapped]
-        public double CO2Max => (Rooms.Sum(room => room.CO2Max) / Convert.ToDouble(Rooms.Count));
+        public double CO2 => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.CO2) /
+            Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
         [NotMapped]
-        public double CO2Min => (Rooms.Sum(room => room.CO2Min) / Convert.ToDouble(Rooms.Count));
+        public double CO2Max => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.CO2Max) /
+            Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
         [NotMapped]
-        public int Light => (Rooms.Where(room => room.Light)).Count();
+        public double CO2Min => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.CO2Min) /
+            Rooms.Count(room => room.GetType() == typeof(SensorRoom)));
 
         [NotMapped]
-        public double Lumen => (Rooms.Sum(room => room.Lumen) / Convert.ToDouble(Rooms.Count));
+        public int Light => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Where(room => room.Light)).Count();
 
         [NotMapped]
-        public double LumenMax => (Rooms.Sum(room => room.LumenMax) / Convert.ToDouble(Rooms.Count));
+        public double Lumen => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.Lumen) / 
+                    Convert.ToDouble(Rooms.Count(room => room.GetType() == typeof(SensorRoom))));
+
+        [NotMapped]
+        public double LumenMax => (Rooms.Where(room => room.GetType() == typeof(SensorRoom))
+                    .Cast<SensorRoom>()
+                    .Sum(room => room.LumenMax) / Convert.ToDouble(Rooms.Count(room => room.GetType() == typeof(SensorRoom))));
         
         [NotMapped]
         public double HardwareConsumption { get; set; }
@@ -83,8 +109,6 @@ namespace Website.Logic.BO
         [NotMapped]
         public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
 
-        public List<Sensor> Sensors { get; set; }
-
         [NotMapped]
         public double HotWaterConsumption { get; set; }
 
@@ -100,25 +124,26 @@ namespace Website.Logic.BO
         public double ColdWaterConsumptionMin { get; set; }
 
         [NotMapped]
-        public int Motion => (Rooms.Where(room => room.Motion)).Count();
+        public int Motion => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Where(room => room.Motion)).Count();
 
         [NotMapped]
-        public int WifiClients => (Rooms.Sum(room => room.WifiClients));
+        public int Occupants => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.Occupants));
 
         [NotMapped]
-        public double WifiClientsMax => (Rooms.Sum(room => room.WifiClientsMax));
+        public int WifiClients => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.WifiClients));
+
+        [NotMapped]
+        public double WifiClientsMax => (Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.WifiClientsMax));
 
         public Floor()
         {
             Rooms = new List<Room>();
-            Sensors = new List<Sensor>();
         }
 
         public Floor(int floorLevel)
         {
             FloorLevel = floorLevel;
             Rooms = new List<Room>();
-            Sensors = new List<Sensor>();
         }
     }
 }

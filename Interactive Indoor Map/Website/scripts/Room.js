@@ -1,4 +1,4 @@
-﻿function drawRooms(colletionOfRooms) {
+﻿function splitRoomsIntoBarchart(colletionOfRooms) {
     colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
 
     var numberOfLayers = roomLayers.length;
@@ -6,12 +6,16 @@
         geoMap.removeLayer(roomLayers.pop());
 
     }
+    if (linesOnMap != null) {
+        geoMap.removeLayer(linesOnMap);
+    }
 
     //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
+    var jsonColumn;
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
-        var jsonColumn = {
+        jsonColumn = {
             type: "FeatureCollection",
             features: features
         };
@@ -31,14 +35,17 @@
                 properties: value.properties
             }
             //bottomRightVertex
-            var D = value.geometry.coordinates[0][3];
+            var bottomRightVertex = value.geometry.coordinates[0][2];
+
             //bottomLeftVertex
-            var A = value.geometry.coordinates[0][2];
+            var bottomLeftVertex = value.geometry.coordinates[0][1];
 
             ////topRightVertex
-            var C = value.geometry.coordinates[0][0];
+            var topRightVertex = value.geometry.coordinates[0][3];
+
             ////topLeftVertex
-            var B = value.geometry.coordinates[0][1];
+            var topLeftVertex = value.geometry.coordinates[0][0];
+
             var minValue = 0;
             if (ActiveViews[j].hasOwnProperty("min")) {
                 minValue = value.properties[ActiveViews[j].min];
@@ -47,24 +54,26 @@
             if (ActiveViews[j].hasOwnProperty("max")) {
                 maxValue = value.properties[ActiveViews[j].max];
             }
+            var sensorValue = 0;
 
-            var sensorValue = value.properties[ActiveViews[j].value];
+            if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
+                sensorValue = value.properties[ActiveViews[j].value];
+            }
 
             var point = [];
             //Col A X
-            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * j);
+            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * j);
             //Col A y
-            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * j);
-
+            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * j);
 
             coordinates.push(point);
 
             point = [];
             //Col D X
-            point.push(A[0] + ((D[0] - A[0]) / ActiveViews.length) * (j + 1));
+            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * (j + 1));
 
             //Col D y
-            point.push(A[1] + ((D[1] - A[1]) / ActiveViews.length) * (j + 1));
+            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * (j + 1));
 
             coordinates.push(point);
 
@@ -75,36 +84,96 @@
             if (roomHeight < 0) {
                 roomHeight = 0;
             }
-            //If the room is to fill less then 0%
+                //If the room is to fill less then 0%
             else if (roomHeight > 1) {
                 roomHeight = 1;
             }
 
             point = [];
             //Col C X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j + 1) - ((B[0] - A[0]) * roomHeight));
+            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
 
             //Col C y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j + 1) - ((B[1] - A[1]) * roomHeight));
-
+            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
             coordinates.push(point);
 
             point = [];
             //Col B X
-            point.push(B[0] + ((C[0] - B[0]) / ActiveViews.length) * (j) - ((B[0] - A[0]) * roomHeight));
+            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
 
             //Col B y
-            point.push(B[1] + ((C[1] - B[1]) / ActiveViews.length) * (j) - ((B[1] - A[1]) * roomHeight));
+            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
 
             coordinates.push(point);
 
             coordinates.push(coordinates[0]);
 
             features.push(feature);
-
         });
         column.push(jsonColumn);
     }
+
+    //LineString
+    var features2 = new Array();
+    var jsonLines = {
+        type: "FeatureCollection",
+        features: features2
+    }
+
+    if (column.length > 0) {
+        $.each(colletionOfRooms.features, function (index, value) {
+
+            //bottomRightVertex
+            var bottomRightVertex = value.geometry.coordinates[0][2];
+
+            //bottomLeftVertex
+            var bottomLeftVertex = value.geometry.coordinates[0][1];
+
+            ////topRightVertex
+            var topRightVertex = value.geometry.coordinates[0][3];
+
+            ////topLeftVertex
+            var topLeftVertex = value.geometry.coordinates[0][0];
+
+
+            for (var l = 1; l < 4; l++) {
+                var coordinate2 = new Array();
+                var coordinates2 = new Array();
+
+                coordinate2.push(coordinates2);
+                var geometry2 =
+                {
+                    type: "LineString",
+                    coordinates: coordinates2
+                };
+                var feature2 = {
+                    type: "Feature",
+                    geometry: geometry2
+                }
+                var point = [];
+                point.push(bottomLeftVertex[0] + (topLeftVertex[0] - bottomLeftVertex[0]) * 0.25 * l);
+                point.push(bottomLeftVertex[1] + (topLeftVertex[1] - bottomLeftVertex[1]) * 0.25 * l);
+                coordinates2.push(point);
+                point = [];
+                point.push(bottomRightVertex[0] + (topRightVertex[0] - bottomRightVertex[0]) * 0.25 * l);
+                point.push(bottomRightVertex[1] + (topRightVertex[1] - bottomRightVertex[1]) * 0.25 * l);
+                coordinates2.push(point);
+                features2.push(feature2);
+            }
+        });
+        linesOnMap = L.geoJson(jsonLines, {
+            style: {
+                //Backgrund color
+                //border color
+                color: "#737373",
+                //Border thickness
+                opacity: "none",
+                fillOpacity: "none",
+                weight: "0.5px"
+            }
+        }).addTo(geoMap).bringToBack();
+    }
+
 
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
@@ -122,29 +191,86 @@
             }
         }).addTo(geoMap).bringToBack());
     }
+    roomBackgroundLayer.bringToBack();
 }
 
-function getRoomsAndDrawRoomsWithRoomOverlay() {
+function getRoomsAndDrawRoomsWithRoomOverlays() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRoomsBackgrund(colletionOfRoomsOnMap);
-        drawRooms(colletionOfRoomsOnMap);
+        drawRoomsForground(colletionOfRoomsOnMap);
+        splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+    getRoomsAndDrawBackgrund();
 }
 
 function getRoomsAndDrawRooms() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRooms(colletionOfRoomsOnMap);
+        splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
     PageMethods.DrawFloor(currentFloorLevel, onSuccess);
 }
 
+function getRoomsAndDrawBackgrund() {
+    function onSuccess(response) {
+        var roomsBackgrund = JSON.parse(response);
+        drawRoomsBackgrund(roomsBackgrund);
+    }
+    PageMethods.DrawRoomsBackgrund(currentFloorLevel, onSuccess);
+}
+
 function drawRoomsBackgrund(json) {
-    
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
+    }
+    roomBackgroundLayer = L.geoJson(json, {
+        style: backgrundStyle
+    });
+    var backLayer = 0;
+    roomBackgroundLayer.setZIndex(backLayer).addTo(geoMap);
+    roomBackgroundLayer.bringToBack();
+}
+
+function backgrundStyle(feature) {
+    return {
+        //Backgrund color
+        fillColor: getRoomBackgrundColor(feature.properties.RoomType),
+        //border color
+        color: getRoomBorderColor(feature.properties.RoomType),
+        //Border thickness
+        fillOpacity: 1.0
+    };
+}
+//fff8dc, D0D6DC
+function getRoomBackgrundColor(RoomType) {
+    return RoomType === "Classroom" ? '#D0D6DC' :
+           RoomType === "Studyzone" ? '#D0D6DC' :
+           RoomType === "Office" ? '#C2B49D' :
+           RoomType === "Hallway" ? '#C2B49D' :
+           RoomType === "Stairs" ? '#C2B49D' :
+           RoomType === "Elevator" ? '#C2B49D' :
+           RoomType === "Toilet" ? '#C2B49D' :
+           RoomType === "Utility" ? '#C2B49D' :
+           '#FFFFFF';
+}
+
+function getRoomBorderColor(RoomType) {
+    return RoomType === "Classroom" ? '#FFFFFF' :
+           RoomType === "Studyzone" ? '#FFFFFF' :
+           RoomType === "Office" ? '#C2B49D' :
+           RoomType === "Hallway" ? '#C2B49D' :
+           RoomType === "Stairs" ? '#C2B49D' :
+           RoomType === "Elevator" ? '#C2B49D' :
+           RoomType === "Toilet" ? '#C2B49D' :
+           RoomType === "Utility" ? '#C2B49D' :
+           '#FFFFFF';
+}
+
+function drawRoomsForground(json) {
+
+    if (roomForgroundLayer != null) {
+        geoMap.removeLayer(roomForgroundLayer);
     }
 
     var roomOnClickEventHandler = function (feature, layer) {
@@ -153,53 +279,55 @@ function drawRoomsBackgrund(json) {
         });
     };
 
-    roomBackgroundLayer = L.geoJson(json, {
+    roomForgroundLayer = L.geoJson(json, {
         style: {
             //Backgrund color
             fillColor: "#FFFFFF",
             //border color
             color: "#FFFFFF",
             //Border thickness
-            weight: 5,
+            weight: 3,
             opacity: 10,
-            fillOpacity: 0.2
+            fillOpacity: 0.0
         },
         onEachFeature: roomOnClickEventHandler
     });
     var frontLayer = 1;
-    roomBackgroundLayer.setZIndex(frontLayer).addTo(geoMap);
+    roomForgroundLayer.setZIndex(frontLayer).addTo(geoMap);
 }
 
 function changeFloor() {
     roomArray = [];
-    getRoomsAndDrawRoomsWithRoomOverlay();
+    getRoomsAndDrawRoomsWithRoomOverlays();
 }
 
 function onRoomClicked(e) {
     var layer = e.target;
 
     if ($.inArray(layer.feature.properties.Name, roomArray) === -1) {
+        //Select room
         layer.setStyle({
-            fillColor: "#FFFFFF",
             //border color
-            weight: 5,
             color: '#8c8c8c'
         });
 
         if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();
         }
-        drawRoomInfo();
+
         roomArray.push(layer.feature.properties.Name);
     } else {
         roomArray = jQuery.grep(roomArray, function (value) {
             return value != layer.feature.properties.Name;
         });
 
-        //diseleced room
-        roomBackgroundLayer.resetStyle(e.target);
+        //Deselect room
+        roomForgroundLayer.resetStyle(e.target);
         infoBox.update();
     }
+
+    buildingButton.button.style.backgroundColor = 'white';
+    drawRoomInfo();
     infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
     infoboxUpdate();
 }

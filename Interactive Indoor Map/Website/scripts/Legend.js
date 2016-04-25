@@ -15,6 +15,12 @@ function drawLegend() {
         else if (activeViews === 4) {
             imageStartPos = 4;
         }
+        else if (activeViews === 5) {
+            imageStartPos = 1;
+        }
+        else if (activeViews === 6) {
+            imageStartPos = 0;
+        }
 
         ActiveViews.forEach(function (view, i) {
             d3.select("#legend")

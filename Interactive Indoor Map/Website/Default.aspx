@@ -19,43 +19,53 @@
     <link rel="stylesheet" type="text/css" href="Style/non-IE-Style.css" />
     <% }%>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-
+    <script>
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/External/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
     <!-- Latest compiled and minified CSS -->
-    <%--<link rel="stylesheet" type="text/css" href="Style/bootstrap.min.css" />--%>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Style/External/bootstrap.min.css" />
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="Style/External/bootstrap-theme.min.css">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="scripts/External/bootstrap.min.js"></script>
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script>
+        if (typeof L == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/External/leaflet.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+
     <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+    <script>
+        if (typeof d3 == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/External/d3.v3.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+     <script>
+         if (typeof L.fullscreenEnabled == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/external//Leaflet.fullscreen.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+    <link href='Style/External/leaflet.fullscreen.css' rel='stylesheet' />
+
     <script src="scripts/External/L.D3SvgOverlay.min.js"></script>
 
     <script type='text/javascript' src='scripts/External/easy-button.js'></script>
-
-    <%--<script type='text/javascript' src='scripts/leaflet.js'></script>--%>
     <script type='text/javascript' src='scripts/InitMap.js'></script>
     <script type='text/javascript' src='scripts/InfoBox.js'></script>
     <script type='text/javascript' src='scripts/Legend.js'></script>
-    <script type='text/javascript' src='scripts/MenuButtons.js'></script>
+    <script type='text/javascript' src='scripts/Controller/MenuButtons.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
     <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>
-
-
-
-    <%--    <script type='text/javascript' src='scripts/Views/DefaultView.js'></script>
-    <script type='text/javascript' src='scripts/Views/TemperatureView.js'></script>--%>
-
-
-
-    <%--<script type="text/javascript" src="scripts/leaflet-realtime.js"></script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
