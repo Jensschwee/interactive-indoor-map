@@ -26,6 +26,5 @@ namespace Website.Logic.BO.Utility
         public string MotionDetectionUUID { get; set; }
         public string OccupantsUUID { get; set; }
         public string WifiClientsUUID { get; set; }
-
     }
 }
