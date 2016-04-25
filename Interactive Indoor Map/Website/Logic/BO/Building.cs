@@ -11,7 +11,7 @@ namespace Website.Logic.BO
     {
         public List<Floor> Floors { get; set; }
 
-        public SmapEndpoints SmapEndpoints { get; set; }
+        public Endpoints Endpoints { get; set; }
 
 
         [Key]
