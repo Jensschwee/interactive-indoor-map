@@ -163,6 +163,7 @@
     <Content Include="Style\External\bootstrap-theme.min.css" />
     <Content Include="Style\External\bootstrap.min.css" />
     <Content Include="Style\External\easy-button.css" />
+    <Content Include="Style\External\fullscreen.png" />
     <Content Include="Style\External\leaflet.css" />
     <Content Include="Style\External\leaflet.fullscreen.css" />
     <Content Include="Style\IE-style.css" />
