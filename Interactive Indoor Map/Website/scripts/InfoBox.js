@@ -18,7 +18,7 @@ function drawBuildingInfoBox() {
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</span>'
-            : 'Click to expand') + '</div>';
+            : '') + '</div>';
     };
     var buildingInfoBox = function () {
         PageMethods.DrawBuildingInfoBox(onSuccess);
@@ -47,7 +47,7 @@ function drawFloorInfoBox() {
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</div></span>'
-            : 'Click to expand') + '</div>';
+            : '') + '</div>';
     };
     var floorInfoBox = function () {
         PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
@@ -78,7 +78,7 @@ function drawRoomInfo() {
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             props.HTML +
             '</span></div>'
-            : 'Hover over a room to see info');
+            : '');
     };
 }
 

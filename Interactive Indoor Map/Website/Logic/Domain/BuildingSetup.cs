@@ -747,8 +747,7 @@ namespace Website.Logic.Domain
             {
                 Alias = "U175",
                 MaxTemperature = 25,
-                MinTemperature = 20,
-                MaxCO2 = 1000,
+                MaxCO2 = 800,
                 MaxLumen = 600,
                 MaxOccupants = 48,
                 MaxWifiClients = 25,
