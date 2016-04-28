@@ -193,6 +193,7 @@
     <Compile Include="Logic\BO\Utility\SensorType.cs" />
     <Compile Include="Logic\BO\Utility\Endpoints.cs" />
     <Compile Include="Logic\BO\Utility\SMapSensorReading.cs" />
+    <Compile Include="Logic\BO\Temporal\TemporalSummary.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
     <Compile Include="Logic\Domain\JsonConverter.cs" />
     <Compile Include="Logic\Domain\RealTimeUpdater.cs" />
@@ -210,9 +211,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\BO\Temporal\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
