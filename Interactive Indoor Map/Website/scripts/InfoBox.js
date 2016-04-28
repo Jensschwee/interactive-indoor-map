@@ -2,7 +2,7 @@
 var selectedLayers = [];
 
 function createInfoBox() {
-    infoBox.onAdd = function (map) {
+    infoBox.onAdd = function () {
         this._div = L.DomUtil.create('div');
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Building data</h4> Click to expand</div>';
         return this._div;
@@ -68,7 +68,6 @@ function drawFloorInfoBox() {
 
     infoboxUpdate = floorInfoBox;
     infoboxUpdate();
-
 }
 
 function drawRoomInfo() {
