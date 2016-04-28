@@ -737,39 +737,6 @@ namespace Website.Logic.Domain
 
         private void CreateGroundFloorRooms()
         {
-            Ø20_604b_1 = new LiveRoom("Ø20-604b-1", new Corners(new List<Coordinates>()
-            {
-                new Coordinates(10.430624295, 55.3671750980001),
-                new Coordinates(10.430809507, 55.3671831080001),
-                new Coordinates(10.430821, 55.3670972850001),
-                new Coordinates(10.4306357890001, 55.3670892740001)
-            }))
-            {
-                RoomType = RoomType.Studyzone,
-                MaxTemperature = 25,
-                MinTemperature = 20,
-                MaxCO2 = 1000,
-                MaxLumen = 600,
-                MaxOccupants = 50,
-                MaxWifiClients = 75,
-                Temperature = 24,
-                CO2 = 650,
-                HardwareConsumption = 4000,
-                VentilationConsumption = 2500,
-                OtherConsumption = 1000,
-                LightConsumption = 3000,
-                MaxHardwareConsumption = 5000,
-                MaxLightConsumption = 3000,
-                MaxOtherConsumption = 3000,
-                MaxVentilationConsumption = 5000,
-                Light = true,
-                Lumen = 400,
-                Motion = true,
-                Occupants = 15,
-                WifiClients = 10,
-                SurfaceArea = 125
-            };
-
             Ø22_603_1 = new LiveRoom("Ø22-603-1", new Corners(new List<Coordinates>()
             {
                 new Coordinates(10.430624295,55.3671750980001),
@@ -778,11 +745,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4306357890001,55.3670892740001)
             }))
             {
+                Alias = "U175",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 40,
+                MaxOccupants = 48,
                 MaxWifiClients = 25,
                 Temperature = 22,
                 CO2 = 600,
@@ -799,39 +767,7 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 17,
                 WifiClients = 26,
-                SurfaceArea = 80
-            };
-
-            Ø20_601b_1 = new LiveRoom("Ø20-601b-1", new Corners(new List<Coordinates>()
-            {
-                new Coordinates(10.430795946, 55.3672843740001),
-                new Coordinates(10.430610734, 55.367276363),
-                new Coordinates(10.430600079, 55.367355918),
-                new Coordinates(10.4307852920001, 55.3673639290001)
-            }))
-            {
-                MaxTemperature = 25,
-                MinTemperature = 20,
-                MaxCO2 = 1000,
-                MaxLumen = 600,
-                MaxOccupants = 50,
-                MaxWifiClients = 75,
-                Temperature = 23,
-                CO2 = 400,
-                HardwareConsumption = 4000,
-                VentilationConsumption = 2500,
-                OtherConsumption = 1000,
-                LightConsumption = 3000,
-                MaxHardwareConsumption = 5000,
-                MaxLightConsumption = 3000,
-                MaxOtherConsumption = 3000,
-                MaxVentilationConsumption = 5000,
-                Light = true,
-                Lumen = 200,
-                Motion = true,
-                Occupants = 25,
-                WifiClients = 26,
-                SurfaceArea = 111
+                SurfaceArea = 108
             };
 
             Ø20_510_1 = new LiveRoom("Ø20-510-1", new Corners(new List<Coordinates>()
@@ -842,12 +778,13 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430760623, 55.3675481330001)
             }))
             {
+                Alias = "U172",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
                 MaxOccupants = 20,
-                MaxWifiClients = 25,
+                MaxWifiClients = 36,
                 Temperature = 23,
                 CO2 = 600,
                 HardwareConsumption = 4000,
@@ -874,11 +811,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.43076928,55.36748349)
             }))
             {
+                Alias = "U170",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 20,
+                MaxOccupants = 120,
                 MaxWifiClients = 25,
                 Temperature = 24,
                 CO2 = 700,
@@ -907,11 +845,12 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 7",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 48,
                 MaxWifiClients = 25,
                 Temperature = 24,
                 CO2 = 400,
@@ -940,11 +879,12 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 8",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 48,
                 MaxWifiClients = 75,
                 Temperature = 24,
                 CO2 = 100,
@@ -972,11 +912,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4310491580001, 55.3675606140001)
             }))
             {
+                Alias = "U171",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 36,
                 MaxWifiClients = 75,
                 Temperature = 24,
                 CO2 = 100,
@@ -1004,11 +945,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4310861000001, 55.3672847620001)
             }))
             {
+                Alias = "U177",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 120,
                 MaxWifiClients = 75,
                 Temperature = 24,
                 CO2 = 100,
@@ -1046,12 +988,13 @@ namespace Website.Logic.Domain
                         { SensorType.MotionDetection,"460b49de-0ee6-5e78-83ae-f025e8dc1ef5"}
                     }
                 },
+                Alias = "Studiezone 6",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
-                MaxWifiClients = 75,
+                MaxOccupants = 48,
+                MaxWifiClients = 36,
                 Temperature = 24,
                 CO2 = 100,
                 HardwareConsumption = 4000,
@@ -1078,12 +1021,13 @@ namespace Website.Logic.Domain
                 new Coordinates(10.43078375,55.367095674)
             }))
             {
+                Alias = "Studiezone 5",
                 RoomType = RoomType.Studyzone,
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 48,
                 MaxWifiClients = 25,
                 Temperature = 23,
                 CO2 = 450,
@@ -1111,11 +1055,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430923427,55.367101694)
             }))
             {
+                Alias = "U176",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 20,
+                MaxOccupants = 36,
                 MaxWifiClients = 25,
                 Temperature = 22.5,
                 CO2 = 200,
@@ -1132,7 +1077,7 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 0,
                 WifiClients = 0,
-                SurfaceArea = 108
+                SurfaceArea = 80
             };
 
             Ø20_601b_1 = new LiveRoom("Ø20-601b-1", new Corners(new List<Coordinates>()
@@ -1143,11 +1088,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430624295,55.3671750980001)
             }))
             {
+                Alias = "U174",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 20,
+                MaxOccupants = 60,
                 MaxWifiClients = 25,
                 Temperature = 22,
                 CO2 = 280,
@@ -1175,11 +1121,12 @@ namespace Website.Logic.Domain
                 new Coordinates(10.431057781,55.3674962250001)
             }))
             {
+                Alias = "U173",
                 MaxTemperature = 25,
                 MinTemperature = 20,
                 MaxCO2 = 1000,
                 MaxLumen = 600,
-                MaxOccupants = 50,
+                MaxOccupants = 60,
                 MaxWifiClients = 75,
                 Temperature = 20,
                 CO2 = 350,
