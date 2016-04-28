@@ -9,6 +9,10 @@ namespace Website.Logic.BO.Floors
 {
     public class LiveFloor : Floor
     {
+
+        [NotMapped]
+        public double NumberOfLiveRoom => Rooms.Count(room => room.GetType() == typeof(LiveRoom));
+
         [NotMapped]
         public double Temperature
             =>
