@@ -13,7 +13,6 @@ namespace Website.Logic.Domain
     public class RealTimeUpdater
     {
         Building building = (Building)HttpContext.Current.Application["Building"];
-        private SMAP smap = new SMAP();
         private SmapManager smapManager;
         private int temperatureUpdateInterval = 5000;
         private int co2UpdateInterval = 5000;

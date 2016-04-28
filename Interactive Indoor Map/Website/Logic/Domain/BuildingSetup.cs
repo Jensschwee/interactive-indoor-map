@@ -156,7 +156,7 @@ namespace Website.Logic.Domain
                 {
                     SensorRoom tempRoom = buildingDAL.GetSensorRoom(sensorRoom.Id);
                     sensorRoom.Corners = tempRoom.Corners;
-                    sensorRoom.SmapEndpoints = tempRoom.SmapEndpoints;
+                    sensorRoom.Endpoints = tempRoom.Endpoints;
                 }
             }
         }
@@ -1030,13 +1030,14 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
-                SmapEndpoints = new SmapEndpoints()
-                {
-                    LumenUUID = "90feb785-c9a8-5027-950e-970920ae6d03",
-                    TemperatureUUID = "e89cde2f-6ddf-50d5-aa4f-bcffe259fa7f",
-                    CO2UUID = "1e46f446-4899-5c8d-ba2e-6189655f30ea",
-                    MotionDetectionUUID = "460b49de-0ee6-5e78-83ae-f025e8dc1ef5",
-
+                Endpoints = new Endpoints(){
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2,"1e46f446-4899-5c8d-ba2e-6189655f30ea"},
+                        { SensorType.Lumen,"90feb785-c9a8-5027-950e-970920ae6d03"},
+                        { SensorType.Temperature,"e89cde2f-6ddf-50d5-aa4f-bcffe259fa7f"},
+                        {SensorType.MotionDetection,"460b49de-0ee6-5e78-83ae-f025e8dc1ef5"}
+                    }
                 },
                 TemperatureMax = 25,
                 TemperatureMin = 20,
