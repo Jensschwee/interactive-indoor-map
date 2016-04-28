@@ -203,9 +203,9 @@ function CreateViewButtons() {
                         name: "Temperature",
                         color: TemperatureColor,
                         icon: temperatureIcon,
-                        max: 'TemperatureMax',
+                        max: 'MaxTemperature',
                         value: 'Temperature',
-                        min: "TemperatureMin",
+                        min: "MinTemperature",
                         button: toggleTempButton
                     };
 
@@ -248,9 +248,9 @@ function CreateViewButtons() {
                         name: "CO2",
                         color: CO2Color,
                         icon: co2Icon,
-                        max: 'CO2Max',
+                        max: 'MaxCO2',
                         value: 'CO2',
-                        min: "CO2Min",
+                        min: "MinCO2",
                         button: toggleCO2Button
                     };
                     btn.button.style.backgroundColor = CO2Color;
@@ -293,7 +293,7 @@ function CreateViewButtons() {
                         color: LightColor,
                         icon: lightIcon,
                         value: 'Lumen',
-                        max: 'LumenMax',
+                        max: 'MaxLumen',
                         button: toggleLightButton
                     };
                     btn.button.style.backgroundColor = LightColor;
@@ -378,7 +378,7 @@ function CreateViewButtons() {
                         name: "WifiClients",
                         color: WifiClientsColor,
                         icon: wifiClientsIcon,
-                        max: 'WifiClientsMax',
+                        max: 'MaxWifiClients',
                         value: 'WifiClients',
                         button: toggleWifiClientsButton
                     };
@@ -421,7 +421,7 @@ function CreateViewButtons() {
                         name: "Occupants",
                         color: OccupantsColor,
                         icon: occupantsIcon,
-                        max: 'OccupantsMax',
+                        max: 'MaxOccupants',
                         value: 'Occupants',
                         button: toggleOccupantsButton
                     };
@@ -464,9 +464,9 @@ function CreateViewButtons() {
                         name: "TotalPowerConsumption",
                         color: TotalPowerConsumptionColor,
                         icon: totalConsumptionIcon,
-                        max: 'TotalPowerConsumptionMax',
+                        max: 'MaxTotalPowerConsumption',
                         value: 'TotalPowerConsumption',
-                        min: "TotalPowerConsumptionMin",
+                        min: "MinTotalPowerConsumption",
                         button: toggleTotalConsumptionButton
                     };
                     btn.button.style.backgroundColor = TotalPowerConsumptionColor; //'#e74c3c'
@@ -508,9 +508,9 @@ function CreateViewButtons() {
                         name: "HardwareConsumption",
                         color: HardwarePowerConsumptionColor,
                         icon: hardwareConsumptionIcon,
-                        max: 'HardwareConsumptionMax',
+                        max: 'MaxHardwareConsumption',
                         value: 'HardwareConsumption',
-                        min: "HardwareConsumptionMin",
+                        min: "MinHardwareConsumption",
                         button: toggleHardwareConsumptionButton
                     };
                     btn.button.style.backgroundColor = HardwarePowerConsumptionColor; //'#f83e2d'
@@ -553,9 +553,9 @@ function CreateViewButtons() {
                         name: "LightConsumption",
                         color: LightPowerConsumptionColor,
                         icon: lightConsumptionIcon,
-                        max: 'LightConsumptionMax',
+                        max: 'MaxLightConsumption',
                         value: 'LightConsumption',
-                        min: "LightConsumptionMin",
+                        min: "MinLightConsumption",
                         button: toggleLightConsumptionButton
                     };
                     btn.button.style.backgroundColor = LightPowerConsumptionColor; //'#f83e2d'
@@ -597,9 +597,9 @@ function CreateViewButtons() {
                         name: "VentilationConsumption",
                         color: VentilationPowerConsumptionColor,
                         icon: ventilationConsumptonIcon,
-                        max: 'VentilationConsumptionMax',
+                        max: 'MaxVentilationConsumption',
                         value: 'VentilationConsumption',
-                        min: "VentilationConsumptionMin",
+                        min: "MinVentilationConsumption",
                         button: toggleVentilationConsumptionButton
                     };
                     btn.button.style.backgroundColor = VentilationPowerConsumptionColor; //'#d15258'
@@ -641,9 +641,9 @@ function CreateViewButtons() {
                         name: "OtherConsumption",
                         color: OtherPowerConsumptionColor,
                         icon: otherConsumptionIcon,
-                        max: 'OtherConsumptionMax',
+                        max: 'MaxOtherConsumption',
                         value: 'OtherConsumption',
-                        min: "OtherConsumptionMin",
+                        min: "MinOtherConsumption",
                         button: toggleOtherConsumptionButton
                     };
                     btn.button.style.backgroundColor = OtherPowerConsumptionColor; //'#ff8289'

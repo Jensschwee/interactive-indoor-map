@@ -5,6 +5,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using Website.Logic.BO;
+using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
 
 namespace Website.DAL.Persistence
@@ -40,11 +41,11 @@ namespace Website.DAL.Persistence
         }
 
 
-        public SensorRoom GetSensorRoom(int id)
+        public LiveRoom GetLiveRoom(int id)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<SensorRoom>()
+                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<LiveRoom>()
                     .Include(r => r.Corners)
                     .Include(r => r.Corners.BottomLeftCorner)
                     .Include(r => r.Corners.BottomRightCorner)
@@ -76,9 +77,9 @@ namespace Website.DAL.Persistence
 
             foreach (Room room in floor.Rooms)
             {
-                if (room.GetType() == typeof(SensorRoom))
+                if (room.GetType() == typeof(LiveRoom))
                 {
-                    SaveSensorRoom((SensorRoom)room);
+                    SaveLiveRoom((LiveRoom)room);
                 }
                 else if (room.GetType() == typeof(SensorlessRoom))
                 {
@@ -103,16 +104,16 @@ namespace Website.DAL.Persistence
             }
         }
 
-        private void SaveSensorRoom(SensorRoom sensorRoom)
+        private void SaveLiveRoom(LiveRoom liveRoom)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                context.SensorRoom.AddOrUpdate(sensorRoom);
+                context.SensorRoom.AddOrUpdate(liveRoom);
                 context.SaveChanges();
             }
-            SaveCorners(sensorRoom.Corners);
-            if (sensorRoom.Endpoints != null)
-                SaveSmapEndpoints(sensorRoom.Endpoints);
+            SaveCorners(liveRoom.Corners);
+            if (liveRoom.Endpoints != null)
+                SaveSmapEndpoints(liveRoom.Endpoints);
         }
 
         private void SaveCoordinates(Coordinates coordinates)

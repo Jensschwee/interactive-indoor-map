@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
 using Website.Logic.Domain;
 using JsonConverter = Website.Logic.Domain.JsonConverter;
 
@@ -28,7 +29,7 @@ namespace Website
                 {
                     JsonConverter converter = new JsonConverter();
 
-                    string jsonRooms = converter.ConvertRooms((Building)Application["Building"], 1);
+                    string jsonRooms = converter.ConvertRooms((LiveBuilding)Application["Building"], 1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
                 }

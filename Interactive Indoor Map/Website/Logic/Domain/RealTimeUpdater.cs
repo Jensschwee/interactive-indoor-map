@@ -6,13 +6,14 @@ using System.Timers;
 using System.Web;
 using Website.DAL.ExternalData;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
 using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
 {
     public class RealTimeUpdater
     {
-        Building building = (Building)HttpContext.Current.Application["Building"];
+        LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
         private SmapManager smapManager;
         private int temperatureUpdateInterval = 5000;
         private int co2UpdateInterval = 5000;
@@ -24,13 +25,13 @@ namespace Website.Logic.Domain
         private int occupantsUpdateInterval = 5000;
         private int wifiClientsUpdateInterval = 5000;
 
-        public RealTimeUpdater(Building building, SmapManager smapManager)
+        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager)
         {
             this.building = building;
             this.smapManager = smapManager;
         }
 
-        public RealTimeUpdater(Building building, SmapManager smapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int lumenUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, smapManager)
+        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int lumenUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, smapManager)
         {
             this.temperatureUpdateInterval = temperatureUpdateInterval;
             this.co2UpdateInterval = co2UpdateInterval;

@@ -8,6 +8,7 @@ using System.Web.SessionState;
 using Website.DAL.ExternalData;
 using Website.Logic;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
 using Website.Logic.Domain;
 
 namespace Website
@@ -19,7 +20,7 @@ namespace Website
         {
 
             BuildingSetup setup = new BuildingSetup();
-            Building building = setup.CreateBuilding();
+            LiveBuilding building = setup.CreateBuilding();
             setup.SetupBuilding(building);
 
             SMAP smapDal = new SMAP();

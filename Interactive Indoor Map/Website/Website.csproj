@@ -177,11 +177,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\BO\Building.cs" />
-    <Compile Include="Logic\BO\Floor.cs" />
-    <Compile Include="Logic\BO\SensorlessRoom.cs" />
-    <Compile Include="Logic\BO\SensorRoom.cs" />
-    <Compile Include="Logic\BO\Room.cs" />
+    <Compile Include="Logic\BO\Buildings\Building.cs" />
+    <Compile Include="Logic\BO\Buildings\LiveBuilding.cs" />
+    <Compile Include="Logic\BO\Buildings\TemporalBuilding.cs" />
+    <Compile Include="Logic\BO\Floors\Floor.cs" />
+    <Compile Include="Logic\BO\Floors\LiveFloor.cs" />
+    <Compile Include="Logic\BO\Floors\TemporalFloor.cs" />
+    <Compile Include="Logic\BO\Rooms\LiveRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\SensorlessRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\SensorRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\Room.cs" />
+    <Compile Include="Logic\BO\Rooms\TemporalRoom.cs" />
     <Compile Include="Logic\BO\Utility\Coordinates.cs" />
     <Compile Include="Logic\BO\Utility\Corners.cs" />
     <Compile Include="Logic\BO\Utility\SensorType.cs" />

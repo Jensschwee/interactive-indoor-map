@@ -1,6 +1,10 @@
 ﻿using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using Website.DAL.ExternalData;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
+using Website.Logic.BO.Floors;
+using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
@@ -13,7 +17,7 @@ namespace Website.Logic.Domain
             this.smapDal = smapDal;
         }
 
-        public void UpdateAllSensorss(Building building)
+        public void UpdateAllSensorss(LiveBuilding building)
         {
             TemperatureUpdate(building);
             Co2Update(building);
@@ -26,11 +30,11 @@ namespace Website.Logic.Domain
             WifiClientUpdate(building);
         }
 
-        public void TemperatureUpdate(Building building)
+        public void TemperatureUpdate(LiveBuilding building)
         {
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Temperature))
                         room.Temperature = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Temperature).Value);
@@ -38,11 +42,11 @@ namespace Website.Logic.Domain
             }
         }
 
-        public void Co2Update(Building building)
+        public void Co2Update(LiveBuilding building)
         {
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.CO2))
 
@@ -55,7 +59,7 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Light))
                         room.Light = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Light).Value).Equals(0.0);
@@ -67,7 +71,7 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Lumen))
                         room.Lumen = (int)smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Lumen).Value);
@@ -75,11 +79,11 @@ namespace Website.Logic.Domain
             }
         }
 
-        public void PowerConsumptionUpdate(Building building)
+        public void PowerConsumptionUpdate(LiveBuilding building)
         {
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null)
                     {
@@ -115,9 +119,9 @@ namespace Website.Logic.Domain
             }
         }
 
-        public void WaterUpdate(Building building)
+        public void WaterUpdate(LiveBuilding building)
         {
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
                 if (floor.Endpoints != null)
                 {
@@ -134,7 +138,7 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.MotionDetection))
                         room.Motion = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.MotionDetection).Value).Equals(1.0);
@@ -142,11 +146,11 @@ namespace Website.Logic.Domain
             }
         }
 
-        public void OccupantsUpdate(Building building)
+        public void OccupantsUpdate(LiveBuilding building)
         {
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Occupants))
                         room.Occupants = (int)smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Occupants).Value);
@@ -160,11 +164,11 @@ namespace Website.Logic.Domain
 
         }
 
-        public void WifiClientUpdate(Building building)
+        public void WifiClientUpdate(LiveBuilding building)
         {
             foreach (Floor floor in building.Floors)
             {
-                foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
+                foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
                 {
                     if (room.Endpoints != null && room.Endpoints.WifiEndpoint != null)
                         room.WifiClients = (int)smapDal.GetCurrentSensorValue(room.Endpoints.WifiEndpoint);
