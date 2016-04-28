@@ -32,7 +32,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.Temperature))
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Temperature))
                         room.Temperature = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Temperature).Value);
                 }
             }
@@ -44,7 +44,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.CO2))
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.CO2))
 
                         room.CO2 = (int)smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.CO2).Value);
                 }
@@ -57,7 +57,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.Light))
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Light))
                         room.Light = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Light).Value).Equals(0.0);
                 }
             }
@@ -69,7 +69,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.Lumen))
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Lumen))
                         room.Lumen = (int)smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Lumen).Value);
                 }
             }
@@ -81,6 +81,8 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
+                    if(room.Endpoints != null)
+                    { 
                     if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.HardwarePowerConsumption))
                         room.HardwareConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HardwarePowerConsumption).Value);
 
@@ -92,6 +94,8 @@ namespace Website.Logic.Domain
 
                     if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.OtherPowerConsumption))
                         room.OtherConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.OtherPowerConsumption).Value);
+
+                    }
                 }
             }
         }
@@ -100,11 +104,14 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
+                if(floor.Endpoints != null)
+                { 
                 if(floor.Endpoints.SmapEndponts.ContainsKey(SensorType.HotWater))
                     floor.HotWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HotWater).Value);
 
                 if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.ColdWater))
                     floor.ColdWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.ColdWater).Value);
+                }
             }
         }
 
@@ -114,8 +121,8 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.MotionDetection))
-                        room.Motion = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.MotionDetection).Value).Equals(0.0);
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.MotionDetection))
+                        room.Motion = smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.MotionDetection).Value).Equals(1.0);
                 }
             }
         }
@@ -126,12 +133,12 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.Occupants))
+                    if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsKey(SensorType.Occupants))
                         room.Occupants = (int)smapDal.GetCurrentSensorValue(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Occupants).Value);
                 }
             }
 
-            if (building.Endpoints.SmapEndponts.ContainsKey(SensorType.Occupants))
+            if (building.Endpoints != null && building.Endpoints.SmapEndponts.ContainsKey(SensorType.Occupants))
             {
                 building.Occupants = (int)smapDal.GetCurrentSensorValue(building.Endpoints.SmapEndponts.First(s => s.Key == SensorType.Occupants).Value);
             }
@@ -144,7 +151,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if(room.Endpoints.WifiEndpoint != null)
+                    if(room.Endpoints != null && room.Endpoints.WifiEndpoint != null)
                         room.WifiClients = (int)smapDal.GetCurrentSensorValue(room.Endpoints.WifiEndpoint);
                 }
             }

@@ -22,11 +22,10 @@ namespace Website
             Building building = setup.CreateBuilding();
             setup.SetupBuilding(building);
 
-            //Website.DAL.ExternalData.SMAP smapDal = new SMAP();
-            //SmapManager smapManager = new SmapManager(smapDal);
-            //smapManager.UpdateAllSensorss(building);
-            //RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building,smapManager);
-            //smapTimerUpdater.CreateUpdateTimers();
+            SMAP smapDal = new SMAP();
+            SmapManager smapManager = new SmapManager(smapDal);
+            RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building, smapManager);
+            smapTimerUpdater.CreateUpdateTimers();
         }
 
         protected void Session_Start(object sender, EventArgs e)

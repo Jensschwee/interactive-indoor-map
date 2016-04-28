@@ -31,9 +31,9 @@ namespace Website.DAL.Persistence
             using (BuildingDbContext context = new BuildingDbContext())
             {
                 var tempBuilding = context.Buildings.Where(b => b.Name == buildingName)
-                    .Include(b => b.SmapEndpoints)
+                    .Include(b => b.Endpoints)
                     .Include(b => b.Floors)
-                    .Include(b => b.Floors.Select( f => f.SmapEndpoints))
+                    .Include(b => b.Floors.Select( f => f.Endpoints))
                     .Include(b => b.Floors.Select(f => f.Rooms));
                 return tempBuilding.First();
             }
@@ -50,7 +50,7 @@ namespace Website.DAL.Persistence
                     .Include(r => r.Corners.BottomRightCorner)
                     .Include(r => r.Corners.TopLeftCorner)
                     .Include(r => r.Corners.TopRightCorner)
-                    .Include(r => r.SmapEndpoints);
+                    .Include(r => r.Endpoints);
                 return tempRoom.First();
             }
         }
@@ -111,8 +111,8 @@ namespace Website.DAL.Persistence
                 context.SaveChanges();
             }
             SaveCorners(sensorRoom.Corners);
-            if (sensorRoom.SmapEndpoints != null)
-                SaveSmapEndpoints(sensorRoom.SmapEndpoints);
+            if (sensorRoom.Endpoints != null)
+                SaveSmapEndpoints(sensorRoom.Endpoints);
         }
 
         private void SaveCoordinates(Coordinates coordinates)
@@ -133,11 +133,11 @@ namespace Website.DAL.Persistence
             }
         }
 
-        private void SaveSmapEndpoints(SmapEndpoints smapEndpoints)
+        private void SaveSmapEndpoints(Endpoints endpoints)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                context.SmapEndpoints.AddOrUpdate(smapEndpoints);
+                context.Endpoints.AddOrUpdate(endpoints);
                 context.SaveChanges();
             }
         }
