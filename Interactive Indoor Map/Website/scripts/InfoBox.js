@@ -20,22 +20,23 @@ function drawBuildingInfoBox() {
             '</span>'
             : 'Click to expand') + '</div>';
     };
-
-    infoboxUpdate = function () {
+    var buildingInfoBox = function () {
         PageMethods.DrawBuildingInfoBox(onSuccess);
-
         function onSuccess(response, userContext, methodName) {
-            var json = jQuery.parseJSON(response);
-            var buildingInfo = {
-                Name: json.Name,
-                SurfaceArea: json.SurfaceArea,
-                NumberOfRooms: json.NumberOfRooms,
-                HTML: ""
-            };
-            buildingInfo.HTML = drawSensorValuesInfoBox(json);
-            infoBox.update(buildingInfo);
+            if (buildingInfoBox === infoboxUpdate) {
+                var json = jQuery.parseJSON(response);
+                var buildingInfo = {
+                    Name: json.Name,
+                    SurfaceArea: json.SurfaceArea,
+                    NumberOfRooms: json.NumberOfRooms,
+                    HTML: ""
+                };
+                buildingInfo.HTML = drawSensorValuesInfoBox(json);
+                infoBox.update(buildingInfo);
+            }
         }
     };
+    infoboxUpdate = buildingInfoBox;
     infoboxUpdate();
 }
 
@@ -48,22 +49,24 @@ function drawFloorInfoBox() {
             '</div></span>'
             : 'Click to expand') + '</div>';
     };
-
-    infoboxUpdate = function () {
+    var floorInfoBox = function () {
         PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
-
         function onSuccess(response, userContext, methodName) {
-            var json = jQuery.parseJSON(response);
-            var floorInfo = {
-                FloorName: json.FloorName,
-                SurfaceArea: json.SurfaceArea,
-                NumberOfRooms: json.NumberOfRooms,
-                HTML: ""
-            };
-            floorInfo.HTML = drawSensorValuesInfoBox(json);
-            infoBox.update(floorInfo);
+            if (infoboxUpdate === floorInfoBox) {
+                var json = jQuery.parseJSON(response);
+                var floorInfo = {
+                    FloorName: json.FloorName,
+                    SurfaceArea: json.SurfaceArea,
+                    NumberOfRooms: json.NumberOfRooms,
+                    HTML: ""
+                };
+                floorInfo.HTML = drawSensorValuesInfoBox(json);
+                infoBox.update(floorInfo);
+            }
         }
     };
+
+    infoboxUpdate = floorInfoBox;
     infoboxUpdate();
 
 }
@@ -206,19 +209,19 @@ function drawSensorValuesInfoBox(sensorData) {
     }
 
     if (findIndexOfView('TotalPowerConsumption') !== notContained) {
-        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(0) + ' kWh <br/>';
+        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(2) + ' kWh <br/>';
     }
     if (findIndexOfView('HardwareConsumption') !== notContained) {
-        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(0) + ' kWh <br/>';
+        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(2) + ' kWh <br/>';
     }
     if (findIndexOfView('LightConsumption') !== notContained) {
-        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(0) + ' kWh <br/>';
+        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(2) + ' kWh <br/>';
     }
     if (findIndexOfView('VentilationConsumption') !== notContained) {
-        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(0) + ' kWh <br/>';
+        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(2) + ' kWh <br/>';
     }
     if (findIndexOfView('OtherConsumption') !== notContained) {
-        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(0) + ' kWh <br/>';
+        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(2) + ' kWh <br/>';
     }
 
     if (findIndexOfFloorView('WaterConsumption') !== notContained) {
