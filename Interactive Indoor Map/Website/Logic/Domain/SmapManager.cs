@@ -81,21 +81,36 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if(room.Endpoints != null)
-                    { 
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.HardwarePowerConsumption))
-                        room.HardwareConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HardwarePowerConsumption).Value);
+                    if (room.Endpoints != null)
+                    {
+                        if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.HardwarePowerConsumption))
+                            room.HardwareConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HardwarePowerConsumption).Value);
 
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.LightPowerConsumption))
-                        room.LightConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.LightPowerConsumption).Value);
+                        if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.LightPowerConsumption))
+                            room.LightConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.LightPowerConsumption).Value);
 
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.VentilationPowerConsumption))
-                        room.VentilationConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.VentilationPowerConsumption).Value);
+                        if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.VentilationPowerConsumption))
+                            room.VentilationConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.VentilationPowerConsumption).Value);
 
-                    if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.OtherPowerConsumption))
-                        room.OtherConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.OtherPowerConsumption).Value);
+                        if (room.Endpoints.SmapEndponts.ContainsKey(SensorType.OtherPowerConsumption))
+                            room.OtherConsumption = smapDal.GetCurrentHourlyUse(room.Endpoints.SmapEndponts.First(s => s.Key == SensorType.OtherPowerConsumption).Value);
 
                     }
+                }
+                if (floor.Endpoints != null)
+                {
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.HardwarePowerConsumption))
+                        floor.HardwareConsumption = smapDal.GetCurrentHourlyUse(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HardwarePowerConsumption).Value);
+
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.LightPowerConsumption))
+                        floor.LightConsumption = smapDal.GetCurrentHourlyUse(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.LightPowerConsumption).Value);
+
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.VentilationPowerConsumption))
+                        floor.VentilationConsumption = smapDal.GetCurrentHourlyUse(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.VentilationPowerConsumption).Value);
+
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.OtherPowerConsumption))
+                        floor.OtherConsumption = smapDal.GetCurrentHourlyUse(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.OtherPowerConsumption).Value);
+
                 }
             }
         }
@@ -104,13 +119,13 @@ namespace Website.Logic.Domain
         {
             foreach (Floor floor in building.Floors)
             {
-                if(floor.Endpoints != null)
-                { 
-                if(floor.Endpoints.SmapEndponts.ContainsKey(SensorType.HotWater))
-                    floor.HotWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HotWater).Value);
+                if (floor.Endpoints != null)
+                {
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.HotWater))
+                        floor.HotWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.HotWater).Value);
 
-                if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.ColdWater))
-                    floor.ColdWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.ColdWater).Value);
+                    if (floor.Endpoints.SmapEndponts.ContainsKey(SensorType.ColdWater))
+                        floor.ColdWaterConsumption = smapDal.GetCurrentSensorValue(floor.Endpoints.SmapEndponts.First(s => s.Key == SensorType.ColdWater).Value);
                 }
             }
         }
@@ -151,7 +166,7 @@ namespace Website.Logic.Domain
             {
                 foreach (SensorRoom room in floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>())
                 {
-                    if(room.Endpoints != null && room.Endpoints.WifiEndpoint != null)
+                    if (room.Endpoints != null && room.Endpoints.WifiEndpoint != null)
                         room.WifiClients = (int)smapDal.GetCurrentSensorValue(room.Endpoints.WifiEndpoint);
                 }
             }
