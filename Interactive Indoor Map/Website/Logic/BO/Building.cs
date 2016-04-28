@@ -104,18 +104,18 @@ namespace Website.Logic.BO
         public int WifiClientsMax => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(SensorRoom)).Cast<SensorRoom>().Sum(room => room.WifiClientsMax)));
 
         [NotMapped]
-        public double HotWaterConsumption { get; set; }
+        public double HotWaterConsumption => Floors.Sum(floor => floor.HotWaterConsumption);
 
-        public double HotWaterConsumptionMax { get; set; }
+        public double HotWaterConsumptionMax => Floors.Sum(floor => floor.HotWaterConsumptionMax);
 
-        public double HotWaterConsumptionMin { get; set; }
+        public double HotWaterConsumptionMin => Floors.Sum(floor => floor.HotWaterConsumptionMin);
 
         [NotMapped]
-        public double ColdWaterConsumption { get; set; }
+        public double ColdWaterConsumption => Floors.Sum(floor => floor.ColdWaterConsumption);
 
-        public double ColdWaterConsumptionMax { get; set; }
+        public double ColdWaterConsumptionMax => Floors.Sum(floor => floor.ColdWaterConsumptionMax);
 
-        public double ColdWaterConsumptionMin { get; set; }
+        public double ColdWaterConsumptionMin => Floors.Sum(floor => floor.ColdWaterConsumptionMin);
 
         public Building()
         {

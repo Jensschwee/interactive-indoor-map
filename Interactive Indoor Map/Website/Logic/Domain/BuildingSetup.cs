@@ -177,13 +177,13 @@ namespace Website.Logic.Domain
         {
             building = new Building
             {
-                ColdWaterConsumptionMax = 100000,
-                HotWaterConsumptionMax = 100000,
+                //ColdWaterConsumptionMax = 100000,
+                //HotWaterConsumptionMax = 100000,
                 OccupantsMax = 10000,
                 Name = "Building 44",
                 Occupants = 200,
-                ColdWaterConsumption = 2200,
-                HotWaterConsumption = 2100,
+                //ColdWaterConsumption = 2200,
+                //HotWaterConsumption = 2100,
             };
             return building;
         }
@@ -242,11 +242,15 @@ namespace Website.Logic.Domain
                 VentilationConsumption = 2500,
                 ColdWaterConsumption = 300,
                 HotWaterConsumption = 250,
-                //SmapEndpoints = new SmapEndpoints()
-                //{
-                //    LightPowerConsumptionUUID = "b04967eb-4e49-5ea4-b633-795ae052a705",
-                //    OtherPowerConsumptionUUID = "96935927-ae4f-58b0-93aa-11d17845af30",
-                //}
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.OtherPowerConsumption, "0d7f95ef-d7eb-5b54-b9c2-494c04c963be" }
+                        //{ SensorType.LightPowerConsumption,"b04967eb-4e49-5ea4-b633-795ae052a705"},
+                        //{ SensorType.OtherPowerConsumption,"96935927-ae4f-58b0-93aa-11d17845af30"},
+                    }
+                }
             };
 
             firstFloor = new Floor(2)
@@ -1036,7 +1040,7 @@ namespace Website.Logic.Domain
                         { SensorType.CO2,"1e46f446-4899-5c8d-ba2e-6189655f30ea"},
                         { SensorType.Lumen,"90feb785-c9a8-5027-950e-970920ae6d03"},
                         { SensorType.Temperature,"e89cde2f-6ddf-50d5-aa4f-bcffe259fa7f"},
-                        {SensorType.MotionDetection,"460b49de-0ee6-5e78-83ae-f025e8dc1ef5"}
+                        { SensorType.MotionDetection,"460b49de-0ee6-5e78-83ae-f025e8dc1ef5"}
                     }
                 },
                 TemperatureMax = 25,
