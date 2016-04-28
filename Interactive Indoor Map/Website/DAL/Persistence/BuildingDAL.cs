@@ -5,6 +5,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using Website.Logic.BO;
+using Website.Logic.BO.Floors;
 using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
 
@@ -20,7 +21,7 @@ namespace Website.DAL.Persistence
                 context.SaveChanges();
             }
 
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors)
             {
                 //SaveFloor(floor);
             }
@@ -67,7 +68,7 @@ namespace Website.DAL.Persistence
         }
 
 
-        private void SaveFloor(Floor floor)
+        private void SaveFloor(LiveFloor floor)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
