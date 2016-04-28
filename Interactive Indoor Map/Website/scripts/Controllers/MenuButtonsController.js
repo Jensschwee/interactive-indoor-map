@@ -1,12 +1,12 @@
 ﻿var buildingButton;
 var activeViewsMax = 5;
 var notContained = -1;
-var TemperatureColor = "#8ab1c4";
-var CO2Color = "#c7b7ea";
-var LightColor = "#ffe11d";
-var MotionDetectionColor = "#b2d649";
-var WifiClientsColor = "#83bd1a";
-var OccupantsColor = "#2ecc71";
+var TemperatureColor = "#1a53ff";  //"#8ab1c4"
+var CO2Color = "#4d79ff"; //"#c7b7ea"
+var LightColor = "#ffe11d"; //"#ffe11d"
+var MotionDetectionColor = "#009933"; //"#b2d649"
+var WifiClientsColor = "#00cc44"; //"#83bd1a"
+var OccupantsColor = "#1aff66"; //"#2ecc71"
 var TotalPowerConsumptionColor = "#b30000";
 var HardwarePowerConsumptionColor = "#e60000";
 var LightPowerConsumptionColor = "#ff1a1a";
