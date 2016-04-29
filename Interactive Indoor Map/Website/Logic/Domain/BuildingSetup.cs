@@ -182,9 +182,9 @@ namespace Website.Logic.Domain
             {
                 //MaxColdWaterConsumption = 100000,
                 //MaxHotWaterConsumption = 100000,
-                OccupantsMax = 10000,
+                OccupantsMax = 1000,
                 Name = "Building 44",
-                Occupants = 200,
+                Occupants = 400,
                 //ColdWaterConsumption = 2200,
                 //HotWaterConsumption = 2100,
             };
@@ -197,54 +197,54 @@ namespace Website.Logic.Domain
             {
                 FloorName = "Cellar",
                 SurfaceArea = 2400,
-                MaxHardwareConsumption = 10000,
-                MaxLightConsumption = 10000,
-                MaxVentilationConsumption = 10000,
-                OtherConsumptionMax = 10000,
-                MaxColdWaterConsumption = 10000,
-                MaxHotWaterConsumption = 10000,
-                HardwareConsumption = 3500,
-                LightConsumption = 2400,
-                OtherConsumption = 700,
-                VentilationConsumption = 1300,
-                ColdWaterConsumption = 500,
-                HotWaterConsumption = 400
+                MaxHardwareConsumption = 200,
+                MaxLightConsumption = 200,
+                MaxVentilationConsumption = 200,
+                MaxOtherConsumption = 200,
+                MaxColdWaterConsumption = 20,
+                MaxHotWaterConsumption = 20,
+                HardwareConsumption = 100,
+                LightConsumption = 90,
+                OtherConsumption = 50,
+                VentilationConsumption = 75,
+                ColdWaterConsumption = 5,
+                HotWaterConsumption = 3
             };
 
             parterreFloor = new LiveFloor(0)
             {
                 FloorName = "Parterre",
                 SurfaceArea = 2400,
-                MaxHardwareConsumption = 10000,
-                MaxLightConsumption = 10000,
-                MaxVentilationConsumption = 10000,
-                OtherConsumptionMax = 10000,
-                MaxColdWaterConsumption = 10000,
-                MaxHotWaterConsumption = 10000,
-                HardwareConsumption = 4000,
-                LightConsumption = 2000,
-                OtherConsumption = 500,
-                VentilationConsumption = 1500,
-                ColdWaterConsumption = 700,
-                HotWaterConsumption = 800
+                MaxHardwareConsumption = 200,
+                MaxLightConsumption = 200,
+                MaxVentilationConsumption = 200,
+                MaxOtherConsumption = 200,
+                MaxColdWaterConsumption = 20,
+                MaxHotWaterConsumption = 20,
+                HardwareConsumption = 100,
+                LightConsumption = 90,
+                OtherConsumption = 50,
+                VentilationConsumption = 75,
+                ColdWaterConsumption = 5,
+                HotWaterConsumption = 3
             };
 
             groundFloor = new LiveFloor(1)
             {
                 FloorName = "Ground Floor",
                 SurfaceArea = 2400,
-                MaxHardwareConsumption = 10000,
-                MaxLightConsumption = 10000,
-                MaxVentilationConsumption = 10000,
-                OtherConsumptionMax = 10000,
-                MaxColdWaterConsumption = 10000,
-                MaxHotWaterConsumption = 10000,
-                HardwareConsumption = 5000,
-                LightConsumption = 1500,
-                OtherConsumption = 1000,
-                VentilationConsumption = 2500,
-                ColdWaterConsumption = 300,
-                HotWaterConsumption = 250,
+                MaxHardwareConsumption = 200,
+                MaxLightConsumption = 200,
+                MaxVentilationConsumption = 200,
+                MaxOtherConsumption = 200,
+                MaxColdWaterConsumption = 20,
+                MaxHotWaterConsumption = 20,
+                HardwareConsumption = 100,
+                LightConsumption = 90,
+                OtherConsumption = 50,
+                VentilationConsumption = 75,
+                ColdWaterConsumption = 5,
+                HotWaterConsumption = 3,
                 Endpoints = new Endpoints()
                 {
                     SmapEndponts = new Dictionary<SensorType, string>()
@@ -260,18 +260,18 @@ namespace Website.Logic.Domain
             {
                 FloorName = "First Floor",
                 SurfaceArea = 2400,
-                MaxHardwareConsumption = 10000,
-                MaxLightConsumption = 10000,
-                MaxVentilationConsumption = 10000,
-                OtherConsumptionMax = 10000,
-                MaxColdWaterConsumption = 10000,
-                MaxHotWaterConsumption = 10000,
-                HardwareConsumption = 3200,
-                LightConsumption = 900,
-                OtherConsumption = 200,
-                VentilationConsumption = 1800,
-                ColdWaterConsumption = 1100,
-                HotWaterConsumption = 1000
+                MaxHardwareConsumption = 200,
+                MaxLightConsumption = 200,
+                MaxVentilationConsumption = 200,
+                MaxOtherConsumption = 200,
+                MaxColdWaterConsumption = 20,
+                MaxHotWaterConsumption = 20,
+                HardwareConsumption = 100,
+                LightConsumption = 90,
+                OtherConsumption = 50,
+                VentilationConsumption = 75,
+                ColdWaterConsumption = 5,
+                HotWaterConsumption = 3
             };
 
         }
