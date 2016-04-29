@@ -191,7 +191,8 @@
             }
         }).addTo(geoMap).bringToBack());
     }
-    roomBackgroundLayer.bringToBack();
+    if (roomBackgroundLayer != null)
+        roomBackgroundLayer.bringToBack();
 }
 
 function getRoomsAndDrawRoomsWithRoomOverlays() {
