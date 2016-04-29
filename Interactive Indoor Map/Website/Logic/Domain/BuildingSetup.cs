@@ -249,8 +249,8 @@ namespace Website.Logic.Domain
                 {
                     SmapEndponts = new Dictionary<SensorType, string>()
                     {
-                        { SensorType.OtherPowerConsumption, "0d7f95ef-d7eb-5b54-b9c2-494c04c963be" }
-                        //{ SensorType.LightPowerConsumption,"b04967eb-4e49-5ea4-b633-795ae052a705"},
+                        { SensorType.OtherPowerConsumption, "0d7f95ef-d7eb-5b54-b9c2-494c04c963be" },
+                        { SensorType.LightPowerConsumption,"b04967eb-4e49-5ea4-b633-795ae052a705"},
                         //{ SensorType.OtherPowerConsumption,"96935927-ae4f-58b0-93aa-11d17845af30"},
                     }
                 }
