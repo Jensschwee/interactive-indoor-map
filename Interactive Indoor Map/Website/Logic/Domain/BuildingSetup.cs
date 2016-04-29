@@ -766,7 +766,17 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 30,
                 WifiClients = 40,
-                SurfaceArea = 108
+                SurfaceArea = 108,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "52b533d9-ca2d-5b46-9d94-59e4ba98bce2" },
+                        { SensorType.MotionDetection, "2ac063fc-96f2-5e68-b277-3339f9eb89ff" },
+                        { SensorType.Temperature, "30721f0d-606d-5a07-8cdb-9f9b20380369" }
+
+                    }
+                }
             };
 
             Ø20_510_1 = new LiveRoom("Ø20-510-1", new Corners(new List<Coordinates>()
@@ -799,7 +809,17 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 0,
                 WifiClients = 0,
-                SurfaceArea = 80
+                SurfaceArea = 80,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "b7c51bf1-bd68-58d9-9cb1-d81fb2ee6f67" },
+                        { SensorType.MotionDetection, "53dfbf10-7aba-50f9-9aa5-6401993ffcee" },
+                        { SensorType.Temperature, "57ef0c6d-8801-5315-8916-c55cf4721e35" }
+
+                    }
+                }
             };
 
             Ø20_511_1 = new LiveRoom("Ø20-511-1", new Corners(new List<Coordinates>()
@@ -831,7 +851,17 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 60,
                 WifiClients = 76,
-                SurfaceArea = 97
+                SurfaceArea = 97,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "9a4de872-0414-5d2e-868d-fe649c06ee56" },
+                        { SensorType.MotionDetection, "535b9bf9-8a6a-56bb-b43a-31b2c2a090e3" },
+                        { SensorType.Temperature, "dbcdc366-a30e-52be-8940-5c4ee9cdaa29" }
+
+                    }
+                }
             };
 
             Ø20_508a_1 = new LiveRoom("Ø20-508a-1", new Corners(new List<Coordinates>()
@@ -864,7 +894,17 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 5,
                 WifiClients = 4,
-                SurfaceArea = 125
+                SurfaceArea = 125,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "bec6ad6b-753a-548d-bb8c-4e03f4d67b2e" },
+                        { SensorType.MotionDetection, "b4cb304d-1425-5165-b83d-f3dc985858a6" },
+                        { SensorType.Temperature, "411d6c5e-da82-526a-8825-c27c3db4137b" }
+
+                    }
+                }
             };
 
             Ø22_508_1 = new LiveRoom("Ø22-508-1", new Corners(new List<Coordinates>()
@@ -897,7 +937,16 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 16,
                 WifiClients = 20,
-                SurfaceArea = 125
+                SurfaceArea = 125,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "a19b2b8c-a4f0-5fc1-84af-d94e07329589" },
+                        { SensorType.MotionDetection, "34fb23ff-8d91-59ed-b30f-3a80d6262251" },
+                        { SensorType.Temperature, "b498b5ce-9084-57e6-905a-e0c15a8399f7" }
+                    }
+                }
             };
 
             Ø22_510_1 = new LiveRoom("Ø22-510-1", new Corners(new List<Coordinates>()
@@ -929,7 +978,16 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 15,
                 WifiClients = 20,
-                SurfaceArea = 80
+                SurfaceArea = 80,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "686e2e0c-294b-59c3-b1aa-a39d04044bfa" },
+                        { SensorType.MotionDetection, "30c18abd-3071-5283-95cd-341ad6b093f1" },
+                        { SensorType.Temperature, "b9dac0d2-0238-54e6-84e7-366e89610a61" }
+                    }
+                }
             };
 
             Ø22_601b_1 = new LiveRoom("Ø22-601b-1", new Corners(new List<Coordinates>()
@@ -961,7 +1019,16 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 100,
                 WifiClients = 90,
-                SurfaceArea = 139
+                SurfaceArea = 139,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "ad415c75-5ef9-5e34-93d0-7ddccfb85010" },
+                        { SensorType.MotionDetection, "830364bb-6728-532b-bf58-2786d3d5a274" },
+                        { SensorType.Temperature, "c4875c12-1198-5ca5-8a5d-23c81bf1701a" }
+                    }
+                }
             };
 
             Ø22_604_1 = new LiveRoom("Ø22-604-1", new Corners(new List<Coordinates>()
@@ -976,10 +1043,9 @@ namespace Website.Logic.Domain
                 Endpoints = new Endpoints(){
                     SmapEndponts = new Dictionary<SensorType, string>()
                     {
-                        { SensorType.CO2,"1e46f446-4899-5c8d-ba2e-6189655f30ea"},
-                        { SensorType.Lumen,"90feb785-c9a8-5027-950e-970920ae6d03"},
-                        { SensorType.Temperature,"e89cde2f-6ddf-50d5-aa4f-bcffe259fa7f"},
-                        { SensorType.MotionDetection,"460b49de-0ee6-5e78-83ae-f025e8dc1ef5"}
+                        { SensorType.CO2,"c936d681-c892-5dd8-9ce5-28b59b428c2f"},
+                        { SensorType.MotionDetection,"13650000-df43-5ba9-a909-ae918a3e1027"},
+                        { SensorType.Temperature,"e00a920b-31b7-5a99-a5e9-59eeeed69c9a"}
                     }
                 },
                 Alias = "Studiezone 6",
@@ -1036,7 +1102,16 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 35,
                 WifiClients = 50,
-                SurfaceArea = 125
+                SurfaceArea = 125,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "1b1fa3c0-a23f-5280-a221-e8bbb79210d4" },
+                        { SensorType.MotionDetection, "03db442e-b690-55a7-9cb4-a680bd27ba96" },
+                        { SensorType.Temperature, "d08b79ea-4145-5248-86a2-7cd61c772c65" }
+                    }
+                }
             };
 
             Ø20_603_1 = new LiveRoom("Ø20-603-1", new Corners(new List<Coordinates>()
@@ -1068,7 +1143,17 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 0,
                 WifiClients = 0,
-                SurfaceArea = 80
+                SurfaceArea = 80,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "8b4072ba-6ce4-5e73-a643-12dfb6e0ec2f" },
+                        { SensorType.MotionDetection, "25c972e7-897a-5073-991c-1830b87f79fc" },
+                        { SensorType.Temperature, "7ab3149f-d9ee-57d0-8917-5a20e0b38660" }
+
+                    }
+                }
             };
 
             Ø20_601b_1 = new LiveRoom("Ø20-601b-1", new Corners(new List<Coordinates>()
@@ -1100,7 +1185,17 @@ namespace Website.Logic.Domain
                 Motion = true,
                 Occupants = 24,
                 WifiClients = 28,
-                SurfaceArea = 111
+                SurfaceArea = 111,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "4655c0eb-25b9-5652-816a-933e50e6e296" },
+                        { SensorType.MotionDetection, "bdb11d16-75bc-55c4-8aef-2cd2c9972973" },
+                        { SensorType.Temperature, "7c4fc2e8-47ea-56b1-a1a7-58c2b8f6ef5a" }
+
+                    }
+                }
             };
 
             Ø22_511_1 = new LiveRoom("Ø22-511-1", new Corners(new List<Coordinates>()
@@ -1132,7 +1227,16 @@ namespace Website.Logic.Domain
                 Motion = false,
                 Occupants = 20,
                 WifiClients = 16,
-                SurfaceArea = 139
+                SurfaceArea = 139,
+                Endpoints = new Endpoints()
+                {
+                    SmapEndponts = new Dictionary<SensorType, string>()
+                    {
+                        { SensorType.CO2, "e7f08bd3-4096-5b76-a90b-ccaac7451730" },
+                        { SensorType.MotionDetection, "208d2238-69cd-5b3f-9469-cc94e2c089e3" },
+                        { SensorType.Temperature, "4782fdad-a676-54e3-a70b-eeffd5491d13" }
+                    }
+                }
             };
         }
 
