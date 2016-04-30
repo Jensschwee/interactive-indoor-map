@@ -49,7 +49,7 @@ namespace Website.Logic.BO.Floors
         public double OtherConsumption { get; set; }
 
         [NotMapped]
-        public double TotalPowerConsumption => VentilationConsumption + LightConsumption + HardwareConsumption + OtherConsumption;
+        public double TotalPowerConsumption { get; set; }
 
         [NotMapped]
         public double HotWaterConsumption { get; set; }

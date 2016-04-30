@@ -13,7 +13,7 @@ namespace Website.Logic.BO.Utility
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public Dictionary <SensorType, string> SmapEndponts { get; set; }
+        public Dictionary <string, SensorType> SmapEndponts { get; set; }
 
         public string WifiEndpoint { get; set; }
 
