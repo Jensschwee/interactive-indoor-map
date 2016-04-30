@@ -126,47 +126,6 @@ function CreateSpatialButtons() {
     }).addTo(geoMap);
 
     buildingButton.button.style.backgroundColor = '#8c8c8c';
-
-    var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
-
-    var toggleWaterConsumptionButton = L.easyButton({
-        states: [
-            {
-                icon: waterConsumptionIcon,
-                title: 'Water Consumption',
-                stateName: 'toggled',
-                onClick: function (btn) {
-                    var waterConsumptionObj = {
-                        name: "WaterConsumption",
-                        color: '#8c8c8c',
-                        icon: waterConsumptionIcon,
-                        value: 'WaterConsumption',
-                        button: toggleWaterConsumptionButton
-                    };
-                    btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
-                    ActiveFloorViews.push(waterConsumptionObj);
-                    reDrawItemsOnMap();
-                    btn.state('detoggled');
-                    infoboxUpdate();
-                }
-            }, {
-                icon: waterConsumptionIcon,
-                stateName: 'detoggled',
-                title: 'Water Consumption',
-                onClick: function (btn) {
-                    var index = findIndexOfFloorView("WaterConsumption");
-                    if (index !== notContained) {
-                        ActiveFloorViews.splice(index, 1);
-                        reDrawItemsOnMap();
-                        btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
-                        infoboxUpdate();
-                    }
-                }
-            }
-        ],
-        position: 'bottomright'
-    }).addTo(geoMap);
 }
 
 function createIconForButton(imageSrc) {
@@ -187,6 +146,8 @@ function CreateViewButtons() {
     var motionIcon = createIconForButton("Images/motionIcon.png");
     var occupantsIcon = createIconForButton("Images/occupantsIcon.png");
     var wifiClientsIcon = createIconForButton("Images/wifiIcon.png");
+    var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
+
 
 
     var toggleTempButton = L.easyButton({
@@ -671,6 +632,45 @@ function CreateViewButtons() {
         ],
         position: 'topright'
     }).addTo(geoMap);;
+
+    var toggleWaterConsumptionButton = L.easyButton({
+        states: [
+            {
+                icon: waterConsumptionIcon,
+                title: 'Water Consumption',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    var waterConsumptionObj = {
+                        name: "WaterConsumption",
+                        color: '#8c8c8c',
+                        icon: waterConsumptionIcon,
+                        value: 'WaterConsumption',
+                        button: toggleWaterConsumptionButton
+                    };
+                    btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
+                    ActiveFloorViews.push(waterConsumptionObj);
+                    reDrawItemsOnMap();
+                    btn.state('detoggled');
+                    infoboxUpdate();
+                }
+            }, {
+                icon: waterConsumptionIcon,
+                stateName: 'detoggled',
+                title: 'Water Consumption',
+                onClick: function (btn) {
+                    var index = findIndexOfFloorView("WaterConsumption");
+                    if (index !== notContained) {
+                        ActiveFloorViews.splice(index, 1);
+                        reDrawItemsOnMap();
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('toggled');
+                        infoboxUpdate();
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
 }
 
 function reDrawItemsOnMap() {
