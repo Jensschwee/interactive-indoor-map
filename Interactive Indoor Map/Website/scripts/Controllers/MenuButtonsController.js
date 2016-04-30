@@ -51,7 +51,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#80;', //P
+            icon: "&#48;",//'&#80;', //P
             title: 'Parterre',
             onClick: function (btn) {
                 if (currentFloorLevel !== 0) {
@@ -71,7 +71,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#71;', //G
+            icon:"&#49;",// '&#71;', //G
             title: 'Ground Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 1) {
@@ -93,7 +93,7 @@ function CreateSpatialButtons() {
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: '&#49;', //1
+            icon:"&#50;",// '&#49;', //1
             title: 'First Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 2) {
