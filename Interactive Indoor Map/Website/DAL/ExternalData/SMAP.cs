@@ -53,7 +53,7 @@ namespace Website.DAL.ExternalData
             SMapSensorReading reading = sendHTTPPost(ENDPOINT, sb.ToString());
 
             double reading1 = reading.Readings[0][1];
-            double reading2 = reading.Readings[1][1];
+            double reading2 = reading.Readings[1][1];   
 
             TimeSpan timeBetween = dateConverter.ConvertDate((long)reading.Readings[1][0]) - dateConverter.ConvertDate((long)reading.Readings[0][0]);
 
@@ -67,22 +67,22 @@ namespace Website.DAL.ExternalData
         /// <param name="fromDate"></param>
         /// <param name="toDate"></param>
         /// <returns></returns>
-        public SMapSensorReading GetHistoricSensorValue(Endpoints endpoints, DateTime fromDate, DateTime toDate)
+        public List<SMapSensorReading> GetHistoricSensorValue(IEnumerable<KeyValuePair<string, SensorType>> endpoints, DateTime fromDate, DateTime toDate)
         {
-            if (endpoints.SmapEndponts.Count > 0)
+            if (endpoints.Any())
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("select data in (");
                 sb.Append("'" + fromDate.Date.ToString() + "'");
                 sb.Append(", '" + toDate.Date.ToString() + "')");
                 sb.Append("where ");
-                foreach (var uuid in endpoints.SmapEndponts)
+                foreach (var uuid in endpoints)
                 {
                     sb.Append("uuid = ");
                     sb.Append("'" + uuid.Key + "' or ");
                 }
                 sb.Remove(sb.Length, 3);
-                return sendHTTPPost(ENDPOINT, sb.ToString());
+                return sendHTTPPostMultipolEndpoints(ENDPOINT, sb.ToString());
             }
             return null;
         }
@@ -120,6 +120,29 @@ namespace Website.DAL.ExternalData
 
             var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
             return jsonObj[0];
+        }
+
+        private List<SMapSensorReading> sendHTTPPostMultipolEndpoints(string endpoint, string body)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(endpoint);
+
+            var data = Encoding.ASCII.GetBytes(body);
+
+            request.Method = "POST";
+            request.ContentType = "application/raw";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
+            return jsonObj;
         }
     }
 }
