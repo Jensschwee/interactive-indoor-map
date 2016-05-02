@@ -165,11 +165,12 @@
             style: {
                 //Backgrund color
                 //border color
-                color: "#737373",
+                color: "black",//"#737373",
                 //Border thickness
                 opacity: "none",
                 fillOpacity: "none",
-                weight: "0.5px"
+                weight: "0.75px",
+                dashArray:"12,6"
             }
         }).addTo(geoMap).bringToBack();
     }
