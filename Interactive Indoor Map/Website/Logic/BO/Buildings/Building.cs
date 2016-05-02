@@ -59,7 +59,6 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public double MinVentilationConsumption => Floors.Sum(floor => floor.MinVentilationConsumption);
-
         
         [NotMapped]
         public double MaxTotalPowerConsumption => Floors.Sum(floor => floor.MaxTotalPowerConsumption);
@@ -74,10 +73,14 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public double MaxHotWaterConsumption => Floors.Sum(floor => floor.MaxHotWaterConsumption);
+
+        [NotMapped]
         public double MinHotWaterConsumption => Floors.Sum(floor => floor.MinHotWaterConsumption);
 
         [NotMapped]
         public double MaxColdWaterConsumption => Floors.Sum(floor => floor.MaxColdWaterConsumption);
+
+        [NotMapped]
         public double MinColdWaterConsumption => Floors.Sum(floor => floor.MinColdWaterConsumption);
     }
 }
