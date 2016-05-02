@@ -12,16 +12,18 @@ namespace Website.Logic.Domain
     public class TemporalManager
     {
         private SMapManagerTemporalt sMapManagerTemporal;
+        private JsonConverterTemporal jsonConverterTemporal;
         public TemporalManager(SMapManagerTemporalt sMapManagerTemporal)
         {
             this.sMapManagerTemporal = sMapManagerTemporal;
+            jsonConverterTemporal = new JsonConverterTemporal();
         }
 
         private TemporalFloor GetTemporalFloor(LiveFloor liveFloor)
         {
             TemporalFloor floor = (TemporalFloor)liveFloor;
 
-            List<Room> liveRooms = floor.Rooms.Where(room => room.GetType() == typeof (LiveRoom)).ToList();
+            List<Room> liveRooms = floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).ToList();
 
             foreach (Room room in liveRooms)
             {
@@ -60,7 +62,7 @@ namespace Website.Logic.Domain
             TemporalBuilding building = GetTemporalBuilding(liveBuilding);
             sMapManagerTemporal.TemporalUpdateAll(building, timeFrom, timeTo);
             return building;
-            }
+        }
 
         public TemporalFloor GetTemporalFloorReadings(LiveFloor liveFloor, DateTime timeFrom,
             DateTime timeTo)
@@ -76,6 +78,32 @@ namespace Website.Logic.Domain
             TemporalRoom room = GetTemporalRoom(liveRoom);
             sMapManagerTemporal.TemporalUpdateAll(room, timeFrom, timeTo);
             return room;
+        }
+
+        public string GetDrawableTemporalFloorReadings(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
+           DateTime timeTo)
+        {
+            TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());
+            sMapManagerTemporal.TemporalUpdateAll(floor, timeFrom, timeTo);
+            return jsonConverterTemporal.GetDrawableFloor(floor);
+        }
+
+        public string GetTemporalFloorInfoBox(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
+            DateTime timeTo)
+        {
+            TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());
+            sMapManagerTemporal.TemporalUpdateAll(floor, timeFrom, timeTo);
+            return jsonConverterTemporal.ConvertFloor(floor);
+
+        }
+
+        public string GetTemporalBuildingInfoBox(LiveBuilding liveBuilding, DateTime timeFrom,
+          DateTime timeTo)
+        {
+            TemporalBuilding building = GetTemporalBuilding(liveBuilding);
+            sMapManagerTemporal.TemporalUpdateAll(building, timeFrom, timeTo);
+
+            return jsonConverterTemporal.ConvertBuilding(building);
         }
 
     }
