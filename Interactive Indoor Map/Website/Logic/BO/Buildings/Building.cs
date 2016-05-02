@@ -62,10 +62,10 @@ namespace Website.Logic.BO
 
         
         [NotMapped]
-        public double TotalPowerConsumptionMax => VentilationConsumptionMax + LightConsumptionMax + HardwareConsumptionMax + OtherConsumptionMax;
+        public double TotalPowerConsumptionMax => Floors.Sum(floor => floor.MaxTotalPowerConsumption);
 
         [NotMapped]
-        public double TotalPowerConsumptionMin => VentilationConsumptionMin + LightConsumptionMin + HardwareConsumptionMin + OtherConsumptionMin;
+        public double TotalPowerConsumptionMin => Floors.Sum(floor => floor.MinTotalPowerConsumption);
 
         public int OccupantsMax { get; set; }
         

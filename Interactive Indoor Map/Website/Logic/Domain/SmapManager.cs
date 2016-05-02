@@ -90,6 +90,7 @@ namespace Website.Logic.Domain
                     {
                         if (room.Endpoints.SmapEndponts.ContainsValue(SensorType.HardwarePowerConsumption))
                             room.HardwareConsumption = GetPoweruser(room.Endpoints.SmapEndponts, SensorType.HardwarePowerConsumption);
+
                         if (room.Endpoints.SmapEndponts.ContainsValue(SensorType.LightPowerConsumption))
                             room.LightConsumption = GetPoweruser(room.Endpoints.SmapEndponts, SensorType.LightPowerConsumption);
 
@@ -99,6 +100,9 @@ namespace Website.Logic.Domain
 
                         if (room.Endpoints.SmapEndponts.ContainsValue(SensorType.OtherPowerConsumption))
                             room.OtherConsumption = GetPoweruser(room.Endpoints.SmapEndponts, SensorType.OtherPowerConsumption);
+
+                        if (room.Endpoints.SmapEndponts.ContainsValue(SensorType.TotalPowerConsumption))
+                            room.TotalPowerConsumption = GetPoweruser(room.Endpoints.SmapEndponts, SensorType.TotalPowerConsumption);
 
                     }
                 }
