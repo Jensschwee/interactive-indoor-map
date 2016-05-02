@@ -75,7 +75,7 @@ namespace Website.Logic.BO.Floors
 
         public TemporalFloor()
         {
-            Rooms = new List<TemporalRoom>();
+            Rooms = new List<Room>();
         }
 
         public TemporalFloor(int floorLevel) : this()

@@ -1,4 +1,4 @@
 ﻿setInterval(function () {
     getRoomsAndDrawRooms();
-    infoboxUpdate();
+    //infoboxUpdate();
 }, 3000);

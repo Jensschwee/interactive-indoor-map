@@ -150,7 +150,6 @@ function CreateSpatialButtons() {
             }
         }]
     }).addTo(geoMap);
-
 }
 
 function createIconForButton(imageSrc) {
