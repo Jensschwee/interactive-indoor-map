@@ -74,7 +74,8 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 groundFloorButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
-                buildingButton.button.style.backgroundColor = 'white';
+                if (buildingButton.state('detoggled'))
+                    buildingButton.button.click();
             }
         }]
     }).addTo(geoMap);
@@ -95,7 +96,8 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
-                buildingButton.button.style.backgroundColor = 'white';
+                if (buildingButton.state('detoggled'))
+                    buildingButton.button.click();
             }
         }]
     }).addTo(geoMap);
@@ -118,7 +120,8 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
-                buildingButton.button.style.backgroundColor = 'white';
+                if (buildingButton.state('detoggled'))
+                    buildingButton.button.click();
             }
         }]
     }).addTo(geoMap);
@@ -128,18 +131,26 @@ function CreateSpatialButtons() {
         id: 'easy-button',
         position: 'bottomright',
         states: [{
-            stateName: 'None',
+            stateName: 'toggled',
             icon: buildingIcon,
             title: 'Building',
             onClick: function (btn) {
                 drawBuildingInfoBox();
                 btn.button.style.backgroundColor = '#8c8c8c';
-
+                btn.state('detoggled');
+            }
+        }, {
+            stateName: 'detoggled',
+            icon: buildingIcon,
+            title: 'Building',
+            onClick: function (btn) {
+                drawFloorInfoBox();
+                btn.button.style.backgroundColor = 'white';
+                btn.state('toggled');
             }
         }]
     }).addTo(geoMap);
 
-    buildingButton.button.style.backgroundColor = '#8c8c8c';
 }
 
 function createIconForButton(imageSrc) {

@@ -11,7 +11,7 @@ namespace Website.Logic.Domain
 
         public TemporalFloor GeTemporalFloor(LiveFloor floor)
         {
-
+            return null;
         }
 
     }

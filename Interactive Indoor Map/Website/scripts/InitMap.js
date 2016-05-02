@@ -39,10 +39,12 @@ function InitLeafletMap(jsonMap) {
 
     worldMap.addTo(geoMap);
 
-    createInfoBox();
 
     CreateSpatialButtons();
     CreateViewButtons();
+    buildingButton.button.click();
+
+    createInfoBox();
     //addLevel2();
 }
 
