@@ -182,7 +182,7 @@ namespace Website.Logic.Domain
             {
                 //MaxColdWaterConsumption = 100000,
                 //MaxHotWaterConsumption = 100000,
-                OccupantsMax = 1000,
+                MaxOccupants = 1000,
                 Name = "Building 44",
                 Occupants = 400,
                 //ColdWaterConsumption = 2200,

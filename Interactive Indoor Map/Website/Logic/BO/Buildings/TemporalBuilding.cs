@@ -75,7 +75,5 @@ namespace Website.Logic.BO.Buildings
         {
             Floors = new List<Floor>();
         }
-
-
     }
 }

@@ -23,12 +23,12 @@ namespace Website.Logic.Domain
             sb.Append("\"AverageTemperature\":" + JsonConvert.SerializeObject(building.AverageTemperature) + ",");
             sb.Append("\"MaxObservedTemperature\":" + JsonConvert.SerializeObject(building.MaxObservedTemperature) + ",");
             sb.Append("\"MinObservedTemperature\":" + JsonConvert.SerializeObject(building.MinObservedTemperature) + ",");
-            sb.Append("\"MaxTemperature\":" + JsonConvert.SerializeObject(building.TemperatureMax) + ",");
+            sb.Append("\"MaxTemperature\":" + JsonConvert.SerializeObject(building.MaxTemperature) + ",");
 
             sb.Append("\"AverageCO2\":" + JsonConvert.SerializeObject(building.AverageCO2) + ",");
             sb.Append("\"MaxObservedCO2\":" + JsonConvert.SerializeObject(building.MaxObservedCO2) + ",");
             sb.Append("\"MinObservedCO2\":" + JsonConvert.SerializeObject(building.MinObservedCO2) + ",");
-            sb.Append("\"MaxCO2\":" + JsonConvert.SerializeObject(building.CO2Max) + ",");
+            sb.Append("\"MaxCO2\":" + JsonConvert.SerializeObject(building.MaxCO2) + ",");
 
 
             sb.Append("\"AverageLight\":" + JsonConvert.SerializeObject(building.AverageLight) + ",");
@@ -38,7 +38,7 @@ namespace Website.Logic.Domain
             sb.Append("\"AverageLumen\":" + JsonConvert.SerializeObject(building.AverageLumen) + ",");
             sb.Append("\"MaxObservedLumen\":" + JsonConvert.SerializeObject(building.MaxObservedLumen) + ",");
             sb.Append("\"MinObservedLumen\":" + JsonConvert.SerializeObject(building.MinObservedLumen) + ",");
-            sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(building.LumenMax) + ",");
+            sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(building.MaxLumen) + ",");
 
             sb.Append("\"AverageHardwareConsumption\":" +
                       JsonConvert.SerializeObject(building.AverageHardwareConsumption) + ",");
@@ -46,7 +46,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedHardwareConsumption) + ",");
             sb.Append("\"MinObservedHardwareConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedHardwareConsumption) + ",");
-            sb.Append("\"MaxHardwareConsumption\":" + JsonConvert.SerializeObject(building.HardwareConsumptionMax) + ",");
+            sb.Append("\"MaxHardwareConsumption\":" + JsonConvert.SerializeObject(building.MaxHardwareConsumption) + ",");
 
             sb.Append("\"AverageLightConsumption\":" + JsonConvert.SerializeObject(building.AverageLightConsumption) +
                       ",");
@@ -54,7 +54,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedLightConsumption) + ",");
             sb.Append("\"MinObservedLightConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedLightConsumption) + ",");
-            sb.Append("\"MaxLightConsumption\":" + JsonConvert.SerializeObject(building.LightConsumptionMax) + ",");
+            sb.Append("\"MaxLightConsumption\":" + JsonConvert.SerializeObject(building.MaxLightConsumption) + ",");
 
             sb.Append("\"AverageVentilationConsumption\":" +
                       JsonConvert.SerializeObject(building.AverageVentilationConsumption) + ",");
@@ -62,7 +62,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedVentilationConsumption) + ",");
             sb.Append("\"MinObservedVentilationConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedVentilationConsumption) + ",");
-            sb.Append("\"MaxVentilationConsumption\":" + JsonConvert.SerializeObject(building.VentilationConsumptionMax) +
+            sb.Append("\"MaxVentilationConsumption\":" + JsonConvert.SerializeObject(building.MaxVentilationConsumption) +
                       ",");
 
             sb.Append("\"AverageOtherConsumption\":" + JsonConvert.SerializeObject(building.AverageOtherConsumption) +
@@ -71,7 +71,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedOtherConsumption) + ",");
             sb.Append("\"MinObservedOtherConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedOtherConsumption) + ",");
-            sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(building.OtherConsumptionMax) + ",");
+            sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(building.MaxOtherConsumption) + ",");
 
 
             sb.Append("\"AverageTotalPowerConsumption\":" +
@@ -80,7 +80,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedTotalPowerConsumption) + ",");
             sb.Append("\"MinObservedTotalPowerConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedTotalPowerConsumption) + ",");
-            sb.Append("\"MaxTotalPowerConsumption\":" + JsonConvert.SerializeObject(building.TotalPowerConsumptionMax) +
+            sb.Append("\"MaxTotalPowerConsumption\":" + JsonConvert.SerializeObject(building.MaxTotalPowerConsumption) +
                       ",");
 
             sb.Append("\"AverageColdWaterConsumption\":" +
@@ -89,7 +89,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedColdWaterConsumption) + ",");
             sb.Append("\"MinObservedColdWaterConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedColdWaterConsumption) + ",");
-            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.ColdWaterConsumptionMax) +
+            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxColdWaterConsumption) +
                       ",");
 
             sb.Append("\"AverageHotWaterConsumption\":" +
@@ -98,7 +98,7 @@ namespace Website.Logic.Domain
                       JsonConvert.SerializeObject(building.MaxObservedHotWaterConsumption) + ",");
             sb.Append("\"MinObservedHotWaterConsumption\":" +
                       JsonConvert.SerializeObject(building.MinObservedHotWaterConsumption) + ",");
-            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.HotWaterConsumptionMax) + ",");
+            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxHotWaterConsumption) + ",");
 
             sb.Append("\"AverageMotion\":" + JsonConvert.SerializeObject(building.AverageMotion) + ",");
             sb.Append("\"MaxObservedMotion\":" + JsonConvert.SerializeObject(building.MaxObservedMotion) + ",");
@@ -107,12 +107,12 @@ namespace Website.Logic.Domain
             sb.Append("\"AverageOccupants\":" + JsonConvert.SerializeObject(building.AverageOccupants) + ",");
             sb.Append("\"MaxObservedOccupants\":" + JsonConvert.SerializeObject(building.MaxObservedOccupants) + ",");
             sb.Append("\"MinObservedOccupants\":" + JsonConvert.SerializeObject(building.MinObservedOccupants) + ",");
-            sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(building.OccupantsMax) + ",");
+            sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(building.MaxOccupants) + ",");
 
             sb.Append("\"AverageWifiClients\":" + JsonConvert.SerializeObject(building.AverageWifiClients) + ",");
             sb.Append("\"MaxObservedWifiClients\":" + JsonConvert.SerializeObject(building.MaxObservedWifiClients) + ",");
             sb.Append("\"MinObservedWifiClients\":" + JsonConvert.SerializeObject(building.MinObservedWifiClients) + ",");
-            sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(building.WifiClientsMax));
+            sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(building.MaxWifiClients));
 
             return sb.ToString();
         }
