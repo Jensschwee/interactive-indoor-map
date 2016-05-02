@@ -46,7 +46,7 @@ function drawFloorInfoBox() {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorName + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
-            '<table>' +
+            '<table class="tg">' +
             props.HTML +
             '</table></div></span>'
             : '') + '</div>';
@@ -78,7 +78,7 @@ function drawRoomInfo() {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
-            '<table>' +
+            '<table class="tg">' +
             props.HTML +
             '</table></span></div>'
             : '');
