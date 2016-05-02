@@ -21,6 +21,43 @@ namespace Website.Logic.Domain
             calcMinMaxMean = new CalcMinMaxMean();
         }
 
+        public void TemporalUpdateAll(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            TemporalTemperatureUpdate(building, timeFrom, timeTo);
+            TemporalCO2Update(building, timeFrom, timeTo);
+            TemporalLumenUpdate(building, timeFrom, timeTo);
+            TemporalLightUpdate(building, timeFrom, timeTo);
+            TemporalLightUpdate(building, timeFrom, timeTo);
+            TemporalWifiClientUpdate(building, timeFrom, timeTo);
+            TemporalOccupantsUpdate(building, timeFrom, timeTo);
+            TemporalColdWaterUpdate(building, timeFrom, timeTo);
+            TemporalHotWaterUpdate(building, timeFrom, timeTo);
+        }
+
+        public void TemporalUpdateAll(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        {
+            TemporalTemperatureUpdate(floor, timeFrom, timeTo);
+            TemporalCO2Update(floor, timeFrom, timeTo);
+            TemporalLumenUpdate(floor, timeFrom, timeTo);
+            TemporalLightUpdate(floor, timeFrom, timeTo);
+            TemporalLightUpdate(floor, timeFrom, timeTo);
+            TemporalWifiClientUpdate(floor, timeFrom, timeTo);
+            TemporalOccupantsUpdate(floor, timeFrom, timeTo);
+            TemporalColdWaterUpdate(floor, timeFrom, timeTo);
+            TemporalHotWaterUpdate(floor, timeFrom, timeTo);
+        }
+
+        public void TemporalUpdateAll(TemporalRoom room, DateTime timeFrom, DateTime timeTo)
+        {
+            TemporalTemperatureUpdate(room, timeFrom, timeTo);
+            TemporalCO2Update(room, timeFrom, timeTo);
+            TemporalLumenUpdate(room, timeFrom, timeTo);
+            TemporalLightUpdate(room, timeFrom, timeTo);
+            TemporalLightUpdate(room, timeFrom, timeTo);
+            TemporalWifiClientUpdate(room, timeFrom, timeTo);
+            TemporalOccupantsUpdate(room, timeFrom, timeTo);
+        }
+
         public void TemporalTemperatureUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
             foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
