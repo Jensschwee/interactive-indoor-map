@@ -78,6 +78,6 @@ namespace Website.Logic.BO
         public double MinColdWaterConsumption = 0;
 
         [NotMapped]
-        public double MaxWifiClients => (Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxWifiClients));
+        public int MaxWifiClients => Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxWifiClients);
     }
 }
