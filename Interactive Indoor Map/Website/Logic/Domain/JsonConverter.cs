@@ -199,7 +199,7 @@ namespace Website.Logic.Domain
 
                         sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.VentilationConsumption) + ",");
                         sb.Append("\"MaxVentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxVentilationConsumption) + ",");
-                        sb.Append("\"MinVentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.VentilationConsumptionMin) + ",");
+                        sb.Append("\"MinVentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinVentilationConsumption) + ",");
 
                         sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(currentRoom.OtherConsumption) + ",");
                         sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxOtherConsumption) + ",");

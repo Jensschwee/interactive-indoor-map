@@ -14,9 +14,19 @@ var VentilationPowerConsumptionColor = "#ff4d4d";
 var OtherPowerConsumptionColor = "#ff8080";
 
 function CreateSpatialButtons() {
+    var buildingIcon = createIconForButton("Images/buildingIcon4.png");
+    var zeroIcon = createIconForButton("Images/0Icon.png");
+    var oneIcon = createIconForButton("Images/1Icon.png");
+    var twoIcon = createIconForButton("Images/2Icon.png");
+
+
     L.control.fullscreen({
         position: 'bottomright'
     }).addTo(geoMap);
+
+    //fullscreenButton.button.style.width = '30px';
+    //fullscreenButton.button.style.height = '30px';
+    //fullscreenButton.addTo(geoMap)
 
     geoMap.on('fullscreenchange', function () {
         if (geoMap.isFullscreen()) {
@@ -27,6 +37,7 @@ function CreateSpatialButtons() {
     });
 
     /*var cellarButton = L.easyButton({
+        id: 'easy-button',
         position: 'bottomright',
         states: [{
             stateName: 'None',
@@ -48,10 +59,11 @@ function CreateSpatialButtons() {
     }).addTo(geoMap);*/
 
     var parterreButton = L.easyButton({
+        id: 'easy-button',
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon: "&#48;",//'&#80;', //P
+            icon: zeroIcon,
             title: 'Parterre',
             onClick: function (btn) {
                 if (currentFloorLevel !== 0) {
@@ -68,10 +80,11 @@ function CreateSpatialButtons() {
     }).addTo(geoMap);
 
     var groundFloorButton = L.easyButton({
+        id: 'easy-button',
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon:"&#49;",// '&#71;', //G
+            icon: oneIcon,
             title: 'Ground Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 1) {
@@ -90,10 +103,11 @@ function CreateSpatialButtons() {
     groundFloorButton.button.style.backgroundColor = '#8c8c8c';
 
     var firstFloorButton = L.easyButton({
+        id: 'easy-button',
         position: 'bottomright',
         states: [{
             stateName: 'None',
-            icon:"&#50;",// '&#49;', //1
+            icon: twoIcon,
             title: 'First Floor',
             onClick: function (btn) {
                 if (currentFloorLevel !== 2) {
@@ -109,9 +123,9 @@ function CreateSpatialButtons() {
         }]
     }).addTo(geoMap);
 
-    var buildingIcon = createIconForButton("Images/buildingIcon.png");
 
     buildingButton = L.easyButton({
+        id: 'easy-button',
         position: 'bottomright',
         states: [{
             stateName: 'None',
@@ -129,8 +143,8 @@ function CreateSpatialButtons() {
 }
 
 function createIconForButton(imageSrc) {
-    var height = 25;
-    var width = 25;
+    var height = 30;
+    var width = 30;
     return '<div><img src="' + imageSrc + '" width="' + width + '" height="' + height + '"/></div>';
 }
 
@@ -149,8 +163,8 @@ function CreateViewButtons() {
     var waterConsumptionIcon = createIconForButton("Images/waterConsumptionIcon.png");
 
 
-
     var toggleTempButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: temperatureIcon,
@@ -197,6 +211,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleCO2Button = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: co2Icon,
@@ -241,6 +256,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleLightButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: lightIcon,
@@ -285,6 +301,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleMotionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: motionIcon,
@@ -326,6 +343,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleWifiClientsButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: wifiClientsIcon,
@@ -370,6 +388,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleOccupantsButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: occupantsIcon,
@@ -413,6 +432,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleTotalConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: totalConsumptionIcon,
@@ -456,6 +476,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 
     var toggleHardwareConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: hardwareConsumptionIcon,
@@ -501,6 +522,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);;
 
     var toggleLightConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: lightConsumptionIcon,
@@ -546,6 +568,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);;
 
     var toggleVentilationConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: ventilationConsumptonIcon,
@@ -590,6 +613,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);;
 
     var toggleOtherConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: otherConsumptionIcon,
@@ -634,6 +658,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);;
 
     var toggleWaterConsumptionButton = L.easyButton({
+        id: 'easy-button',
         states: [
             {
                 icon: waterConsumptionIcon,

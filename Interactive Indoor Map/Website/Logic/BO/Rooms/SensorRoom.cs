@@ -30,16 +30,19 @@ namespace Website.Logic.BO
         public double MinLightConsumption = 0;
 
         public double MaxVentilationConsumption { get; set; }
-        public double VentilationConsumptionMin = 0;
+        public double MinVentilationConsumption = 0;
 
         public double MaxOtherConsumption { get; set; }
         public double MinOtherConsumption = 0;
 
         [NotMapped]
+        public double TotalPowerConsumption { get; set; }
+
+        [NotMapped]
         public double MaxTotalPowerConsumption => MaxVentilationConsumption + MaxLightConsumption + MaxHardwareConsumption + MaxOtherConsumption;
 
         [NotMapped]
-        public double MinTotalPowerConsumption => VentilationConsumptionMin + MinLightConsumption + MinHardwareConsumption + MinOtherConsumption;
+        public double MinTotalPowerConsumption => MinVentilationConsumption + MinLightConsumption + MinHardwareConsumption + MinOtherConsumption;
 
         public int MaxOccupants { get; set; }
         public int MinOccupants = 0;
