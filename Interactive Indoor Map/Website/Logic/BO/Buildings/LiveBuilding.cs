@@ -10,7 +10,6 @@ namespace Website.Logic.BO.Buildings
 {
     public class LiveBuilding : Building
     {
-
         [NotMapped]
         public double Temperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Temperature)) / NumberOfLiveRoom);
 
@@ -40,7 +39,6 @@ namespace Website.Logic.BO.Buildings
 
         [NotMapped]
         public int Motion => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.Motion);
-
 
         [NotMapped]
         public int Occupants { get; set; }

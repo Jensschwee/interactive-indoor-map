@@ -40,9 +40,9 @@ namespace Website.Logic.Domain
             sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(building.TotalPowerConsumption) + ",");
 
             sb.Append("\"ColdWaterConsumption\":" + JsonConvert.SerializeObject(building.ColdWaterConsumption) + ",");
-            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.ColdWaterConsumptionMax) + ",");
+            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxColdWaterConsumption) + ",");
             sb.Append("\"HotWaterConsumption\":" + JsonConvert.SerializeObject(building.HotWaterConsumption) + ",");
-            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.HotWaterConsumptionMax) + ",");
+            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxHotWaterConsumption) + ",");
 
             sb.Append("\"Motion\":" + JsonConvert.SerializeObject(building.Motion) + ",");
             sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.Occupants) + ",");

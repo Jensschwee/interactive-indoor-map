@@ -73,11 +73,11 @@ namespace Website.Logic.BO
         public int MaxWifiClients => Floors.Sum(floor => floor.MaxWifiClients);
 
         [NotMapped]
-        public double HotWaterConsumptionMax => Floors.Sum(floor => floor.MaxHotWaterConsumption);
-        public double HotWaterConsumptionMin => Floors.Sum(floor => floor.MinHotWaterConsumption);
+        public double MaxHotWaterConsumption => Floors.Sum(floor => floor.MaxHotWaterConsumption);
+        public double MinHotWaterConsumption => Floors.Sum(floor => floor.MinHotWaterConsumption);
 
         [NotMapped]
-        public double ColdWaterConsumptionMax => Floors.Sum(floor => floor.MaxColdWaterConsumption);
-        public double ColdWaterConsumptionMin => Floors.Sum(floor => floor.MinColdWaterConsumption);
+        public double MaxColdWaterConsumption => Floors.Sum(floor => floor.MaxColdWaterConsumption);
+        public double MinColdWaterConsumption => Floors.Sum(floor => floor.MinColdWaterConsumption);
     }
 }
