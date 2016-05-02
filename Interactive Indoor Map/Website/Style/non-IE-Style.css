@@ -2,6 +2,10 @@
     color: black;
 }
 
+#easy-button {
+    width: 30px;
+    height: 30px;
+}
 
 .info {
     padding: 6px 8px;

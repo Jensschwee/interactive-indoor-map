@@ -34,9 +34,6 @@ namespace Website.Logic.BO.Rooms
         public double OtherConsumption { get; set; }
 
         [NotMapped]
-        public double TotalPowerConsumption { get; set; }
-
-        [NotMapped]
         public bool Motion { get; set; }
 
         [NotMapped]

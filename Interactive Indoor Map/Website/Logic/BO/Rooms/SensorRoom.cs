@@ -36,6 +36,9 @@ namespace Website.Logic.BO
         public double MinOtherConsumption = 0;
 
         [NotMapped]
+        public double TotalPowerConsumption { get; set; }
+
+        [NotMapped]
         public double MaxTotalPowerConsumption => MaxVentilationConsumption + MaxLightConsumption + MaxHardwareConsumption + MaxOtherConsumption;
 
         [NotMapped]

@@ -114,7 +114,13 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\0Icon.png" />
+    <Content Include="Images\1Icon.png" />
+    <Content Include="Images\2Icon.png" />
     <Content Include="Images\buildingIcon.png" />
+    <Content Include="Images\buildingIcon2.png" />
+    <Content Include="Images\buildingIcon3.png" />
+    <Content Include="Images\buildingIcon4.png" />
     <Content Include="Images\co2Icon.png" />
     <Content Include="Images\hardwarePowerIcon.png" />
     <Content Include="Images\lightIcon.png" />
