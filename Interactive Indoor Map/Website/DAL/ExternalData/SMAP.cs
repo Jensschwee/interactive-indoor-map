@@ -79,12 +79,24 @@ namespace Website.DAL.ExternalData
                 foreach (var uuid in endpoints.SmapEndponts)
                 {
                     sb.Append("uuid = ");
-                    sb.Append("'" + uuid.Value + "' or ");
+                    sb.Append("'" + uuid.Key + "' or ");
                 }
                 sb.Remove(sb.Length, 3);
                 return sendHTTPPost(ENDPOINT, sb.ToString());
             }
             return null;
+        }
+
+        public SMapSensorReading GetHistoricSensorValue(string endpoints, DateTime fromDate, DateTime toDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select data in (");
+            sb.Append("'" + fromDate.Date.ToString() + "'");
+            sb.Append(", '" + toDate.Date.ToString() + "')");
+            sb.Append("where ");
+            sb.Append("uuid = ");
+            sb.Append("'" + endpoints + "'");
+            return sendHTTPPost(ENDPOINT, sb.ToString());
         }
 
         private SMapSensorReading sendHTTPPost(string endpoint, string body)

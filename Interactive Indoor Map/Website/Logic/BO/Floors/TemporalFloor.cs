@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Website.Logic.BO.Rooms;
 
 namespace Website.Logic.BO.Floors
 {
     [NotMapped]
     public class TemporalFloor : Floor
     {
+
+        public override List<Room> Rooms { get; set; }
+
         public double AverageTemperature { get; set; }
         public double MaxObservedTemperature { get; set; }
         public double MinObservedTemperature { get; set; }
@@ -71,7 +75,7 @@ namespace Website.Logic.BO.Floors
 
         public TemporalFloor()
         {
-            Rooms = new List<Room>();
+            Rooms = new List<TemporalRoom>();
         }
 
         public TemporalFloor(int floorLevel) : this()
