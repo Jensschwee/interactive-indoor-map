@@ -21,7 +21,7 @@ namespace Website.Logic.BO
         [NotMapped]
         public double NumberOfLiveRoom => Rooms.Count(room => room.GetType() == typeof(LiveRoom));
 
-        public List<Room> Rooms { get; set; }
+        public virtual List<Room> Rooms { get; set; }
     
         public double SurfaceArea { get; set; }
 
