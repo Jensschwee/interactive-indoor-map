@@ -78,5 +78,33 @@ namespace Website.Logic.BO.Floors
         {
             FloorLevel = floorLevel;
         }
+
+        public static explicit operator TemporalFloor(LiveFloor floor)
+        {
+            TemporalFloor temporalFloor = new TemporalFloor
+            {
+                Id = floor.Id,
+                FloorName = floor.FloorName,
+                FloorLevel = floor.FloorLevel,
+                Endpoints = floor.Endpoints,
+                Rooms = floor.Rooms,
+                SurfaceArea = floor.SurfaceArea,
+                MinColdWaterConsumption = floor.MinColdWaterConsumption,
+                MaxColdWaterConsumption = floor.MaxColdWaterConsumption,
+                MinHotWaterConsumption = floor.MinHotWaterConsumption,
+                MaxHotWaterConsumption = floor.MaxHotWaterConsumption,
+                MinOtherConsumption = floor.MinOtherConsumption,
+                MaxOtherConsumption = floor.MaxOtherConsumption,
+                MinVentilationConsumption = floor.MinVentilationConsumption,
+                MaxVentilationConsumption = floor.MaxVentilationConsumption,
+                MinLightConsumption = floor.MinLightConsumption,
+                MaxLightConsumption = floor.MaxLightConsumption,
+                MinHardwareConsumption = floor.MinHardwareConsumption,
+                MaxHardwareConsumption = floor.MaxHardwareConsumption,
+                MinLumen = floor.MinLumen
+            };
+
+            return temporalFloor;
+        }
     }
 }

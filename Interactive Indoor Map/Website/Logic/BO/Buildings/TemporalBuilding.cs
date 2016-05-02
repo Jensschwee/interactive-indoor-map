@@ -75,5 +75,17 @@ namespace Website.Logic.BO.Buildings
         {
             Floors = new List<Floor>();
         }
+
+        public static explicit operator TemporalBuilding(LiveBuilding building)
+        {
+            TemporalBuilding temporalBuilding = new TemporalBuilding
+            {
+                Name = building.Name,
+                Floors = building.Floors,
+                Endpoints = building.Endpoints,
+                MaxOccupants = building.MaxOccupants
+            };
+            return temporalBuilding;
+        }
     }
 }
