@@ -66,5 +66,47 @@ namespace Website.Logic.BO.Rooms
             Corners = corners;
             RoomType = RoomType.Classroom;
         }
+
+        public static explicit operator TemporalRoom(LiveRoom room)
+        {
+            TemporalRoom temporalRoom = new TemporalRoom();
+            temporalRoom.Id = room.Id;
+            temporalRoom.Name = room.Name;
+            temporalRoom.Alias = room.Alias;
+            temporalRoom.Endpoints = room.Endpoints;
+            temporalRoom.SurfaceArea = room.SurfaceArea;
+            temporalRoom.RoomType = room.RoomType;
+            temporalRoom.Corners = room.Corners;
+            temporalRoom.MaxTemperature = room.MaxTemperature;
+            temporalRoom.MinTemperature = room.MinTemperature;
+            temporalRoom.MaxCO2 = room.MaxCO2;
+            temporalRoom.MinCO2 = room.MinCO2;
+            temporalRoom.MinOtherConsumption = room.MinOtherConsumption;
+            temporalRoom.MaxOtherConsumption = room.MaxOtherConsumption;
+            temporalRoom.MaxLumen = room.MaxLumen;
+            temporalRoom.MaxLumen = room.MaxLumen;
+
+            temporalRoom.MaxHardwareConsumption = room.MaxHardwareConsumption;
+            temporalRoom.MinHardwareConsumption = room.MinHardwareConsumption;
+
+            temporalRoom.MaxLightConsumption = room.MaxLightConsumption;
+            temporalRoom.MinLightConsumption = room.MinLightConsumption;
+
+            temporalRoom.MaxVentilationConsumption = room.MaxVentilationConsumption;
+            temporalRoom.MinVentilationConsumption = room.MinVentilationConsumption;
+
+            temporalRoom.MaxOtherConsumption = room.MaxOtherConsumption;
+            temporalRoom.MinOtherConsumption = room.MinOtherConsumption;
+
+            temporalRoom.MaxOccupants = room.MaxOccupants;
+            temporalRoom.MinOccupants = room.MinOccupants;
+
+            temporalRoom.MaxWifiClients = room.MaxWifiClients;
+            temporalRoom.MinWifiClients = room.MinWifiClients;
+
+            temporalRoom.MinLumen = room.MinLumen;
+
+            return temporalRoom;
+        }
     }
 }

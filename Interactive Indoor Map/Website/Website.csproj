@@ -204,6 +204,7 @@
     <Compile Include="Logic\Domain\JsonConverter.cs" />
     <Compile Include="Logic\Domain\JsonConverterTemporal.cs" />
     <Compile Include="Logic\Domain\RealTimeUpdater.cs" />
+    <Compile Include="Logic\Domain\TemporalManager.cs" />
     <Compile Include="Logic\Helpers\CalcMinMaxMean.cs" />
     <Compile Include="Logic\Helpers\DateConverter.cs" />
     <Compile Include="DAL\Persistence\BuildingDAL.cs" />

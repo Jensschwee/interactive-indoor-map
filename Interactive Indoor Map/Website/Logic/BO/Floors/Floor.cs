@@ -17,7 +17,10 @@ namespace Website.Logic.BO
         public int FloorLevel { get; set; }
 
         public string FloorName { get; set; }
-    
+
+        [NotMapped]
+        public double NumberOfLiveRoom => Rooms.Count(room => room.GetType() == typeof(LiveRoom));
+
         public List<Room> Rooms { get; set; }
     
         public double SurfaceArea { get; set; }
@@ -25,30 +28,30 @@ namespace Website.Logic.BO
         public Endpoints Endpoints { get; set; }
 
         [NotMapped]
-        public double MaxTemperature => (Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxTemperature) / Rooms.Count(room => room.GetType() == typeof(LiveRoom)));
+        public double MaxTemperature => (
+            Rooms.Where(room => room.GetType() == typeof(LiveRoom)).
+            Cast<LiveRoom>().
+            Sum(room => room.MaxTemperature) / Convert.ToDouble(NumberOfLiveRoom));
 
         [NotMapped]
         public double MinTemperature => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MinTemperature) /
-            Rooms.Count(room => room.GetType() == typeof(LiveRoom)));
+                    .Sum(room => room.MinTemperature) / Convert.ToDouble(NumberOfLiveRoom));
 
         [NotMapped]
         public double MaxCO2 => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MaxCO2) /
-            Rooms.Count(room => room.GetType() == typeof(LiveRoom)));
+                    .Sum(room => room.MaxCO2) / Convert.ToDouble(NumberOfLiveRoom));
 
         [NotMapped]
         public double MinCO2 => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MinCO2) /
-            Rooms.Count(room => room.GetType() == typeof(LiveRoom)));
+                    .Sum(room => room.MinCO2) / Convert.ToDouble(NumberOfLiveRoom));
 
         [NotMapped]
         public double MaxLumen => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MaxLumen) / Convert.ToDouble(Rooms.Count(room => room.GetType() == typeof(LiveRoom))));
+                    .Sum(room => room.MaxLumen) / Convert.ToDouble(NumberOfLiveRoom));
 
         public double MinLumen = 0;
 
@@ -66,11 +69,17 @@ namespace Website.Logic.BO
         public double MinOtherConsumption = 0;
 
         [NotMapped]
-        public double MaxTotalPowerConsumption => MaxVentilationConsumption + MaxLightConsumption + MaxHardwareConsumption + MaxOtherConsumption;
+        public double MaxTotalPowerConsumption => 
+            MaxVentilationConsumption + MaxLightConsumption + MaxHardwareConsumption + MaxOtherConsumption;
 
         [NotMapped]
-        public double MinTotalPowerConsumption => MinVentilationConsumption + MinLightConsumption + MinHardwareConsumption + MinOtherConsumption;
+        public double MinTotalPowerConsumption => 
+            MinVentilationConsumption + MinLightConsumption + MinHardwareConsumption + MinOtherConsumption;
 
+        public double MaxOccupants => (Rooms.
+            Where(room => room.GetType() == typeof(LiveRoom)).
+            Cast<LiveRoom>().
+            Sum(room => room.MaxOccupants));
 
         public double MaxHotWaterConsumption { get; set; }
         public double MinHotWaterConsumption = 0;
@@ -79,6 +88,9 @@ namespace Website.Logic.BO
         public double MinColdWaterConsumption = 0;
 
         [NotMapped]
-        public int MaxWifiClients => Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxWifiClients);
+        public int MaxWifiClients => Rooms.
+            Where(room => room.GetType() == typeof(LiveRoom)).
+            Cast<LiveRoom>().
+            Sum(room => room.MaxWifiClients);
     }
 }
