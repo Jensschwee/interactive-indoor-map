@@ -60,7 +60,7 @@ namespace Website.Logic.Domain
             TemporalBuilding building = GetTemporalBuilding(liveBuilding);
             sMapManagerTemporal.TemporalUpdateAll(building, timeFrom, timeTo);
             return building;
-        }
+            }
 
         public TemporalFloor GetTemporalFloorReadings(LiveFloor liveFloor, DateTime timeFrom,
             DateTime timeTo)

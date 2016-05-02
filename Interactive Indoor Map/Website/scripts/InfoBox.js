@@ -16,8 +16,9 @@ function drawBuildingInfoBox() {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+            '<table>' +
             props.HTML +
-            '</span>'
+            '</table></span></div>'
             : '') + '</div>';
     };
     var buildingInfoBox = function () {
@@ -45,8 +46,9 @@ function drawFloorInfoBox() {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorName + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+            '<table>' +
             props.HTML +
-            '</div></span>'
+            '</table></div></span>'
             : '') + '</div>';
     };
     var floorInfoBox = function () {
@@ -76,8 +78,9 @@ function drawRoomInfo() {
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
             props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+            '<table>' +
             props.HTML +
-            '</span></div>'
+            '</table></span></div>'
             : '');
     };
 }
@@ -167,68 +170,68 @@ function drawSensorValuesInfoBox(sensorData) {
     }
 
     if (findIndexOfView('Temperature') !== notContained) {
-        html += '<b>Temperature</b>: ' + sensorData.Temperature.toFixed(1) + ' &#8451 <br/>';
+        html += '<tr><td><b>Temperature:</b></td><td> ' + sensorData.Temperature.toFixed(1) + ' &#8451 </td></tr><br/>';
     }
     if (findIndexOfView('CO2') !== notContained) {
-        html += '<b>CO2</b>: ' + sensorData.CO2.toFixed(0) + ' PPM <br/>';
+        html += '<tr><td><b>CO2</b></td><td>: ' + sensorData.CO2.toFixed(0) + ' PPM </td></tr><br/>';
     }
     if (findIndexOfView('Lumen') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
-            html += '<b>Light</b>: ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '<br/>';
+            html += '<tr><td><b>Light</b></td><td>: ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '</td></tr><br/>';
         } else {
             if (sensorData.Light) {
-                html += '<b>Light</b>: On<br/>';
+                html += '<tr><td><b>Light</b></tdt><td>: On</td></tr><br/>';
 
             } else {
-                html += '<b>Light</b>: Off<br/>';
+                html += '<tr><td><b>Light</b></td><td>: Off</td></tr><br/>';
             }
         }
-        html += '<b>Lumen</b>: ' + sensorData.Lumen.toFixed(0) + ' lm <br/>';
+        html += '<tr><td><b>Lumen</b></td><td>: ' + sensorData.Lumen.toFixed(0) + ' lm </td></tr><br/>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
-            html += '<b>Motion</b>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '<br/>';
+            html += '<tr><td><b>Motion</b></td><td>: ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '</td></tr><br/>';
         } else {
             if (sensorData.Motion) {
-                html += '<b>Motion</b>: Detected<br/>';
+                html += '<tr><td><b>Motion</b></td><td>: Detected</td></tr><br/>';
 
             } else {
-                html += '<b>Motion</b>: None<br/>';
+                html += '<tr><td><b>Motion</b></td><td>: None</td></tr><br/>';
             }
         }
     }
 
     if (findIndexOfView('WifiClients') !== notContained) {
-        html += '<b>Wifi Clients</b>: ' + sensorData.WifiClients + '<br/>';
+        html += '<tr><td><b>Wifi Clients</b></td><td>: ' + sensorData.WifiClients + '</td></tr><br/>';
     }
 
     if (findIndexOfView('Occupants') !== notContained) {
-        html += '<b>Occupants</b>: ' + sensorData.Occupants + '<br/>';
+        html += '<tr><td><b>Occupants</b></td><td>: ' + sensorData.Occupants + '</td></tr><br/>';
     }
 
     if (findIndexOfView('TotalPowerConsumption') !== notContained) {
-        html += '<b>Total Power Consumption</b>: ' + sensorData.TotalPowerConsumption.toFixed(2) + ' kWh <br/>';
+        html += '<tr><td><b>Total Power Consumption</b></td><td>: ' + sensorData.TotalPowerConsumption.toFixed(2) + ' kWh </td></tr><br/>';
     }
     if (findIndexOfView('HardwareConsumption') !== notContained) {
-        html += '<b>Hardware Consumption</b>: ' + sensorData.HardwareConsumption.toFixed(2) + ' kWh <br/>';
+        html += '<tr><td><b>Hardware Consumption</b></td><td>: ' + sensorData.HardwareConsumption.toFixed(2) + ' kWh </td></tr><br/>';
     }
     if (findIndexOfView('LightConsumption') !== notContained) {
-        html += '<b>Light Consumption</b>: ' + sensorData.LightConsumption.toFixed(2) + ' kWh <br/>';
+        html += '<tr><td><b>Light Consumption</b></td><td>: ' + sensorData.LightConsumption.toFixed(2) + ' kWh </td></tr><br/>';
     }
     if (findIndexOfView('VentilationConsumption') !== notContained) {
-        html += '<b>Ventilation Consumption</b>: ' + sensorData.VentilationConsumption.toFixed(2) + ' kWh <br/>';
+        html += '<tr><td><b>Ventilation Consumption</b></td><td>: ' + sensorData.VentilationConsumption.toFixed(2) + ' kWh </td></tr><br/>';
     }
     if (findIndexOfView('OtherConsumption') !== notContained) {
-        html += '<b>Other Consumption</b>: ' + sensorData.OtherConsumption.toFixed(2) + ' kWh <br/>';
+        html += '<tr><td><b>Other Consumption</b></td><td>: ' + sensorData.OtherConsumption.toFixed(2) + ' kWh </td></tr><br/>';
     }
 
     if (findIndexOfFloorView('WaterConsumption') !== notContained) {
         if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
-            html += '<b>Cold Water Consumption</b>: ' + sensorData.ColdWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+            html += '<tr><td><b>Cold Water Consumption</b></td><td>: ' + sensorData.ColdWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr><br/>';
         }
         if (sensorData.hasOwnProperty("HotWaterConsumption")) {
-            html += '<b>Hot Water Consumption</b>: ' + sensorData.HotWaterConsumption.toFixed(0) + ' m<sup>3</sup><br/>';
+            html += '<tr><td><b>Hot Water Consumption</b></td><td>: ' + sensorData.HotWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr><br/>';
         }
     }
 
