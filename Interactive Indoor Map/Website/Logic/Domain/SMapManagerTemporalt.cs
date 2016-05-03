@@ -15,6 +15,7 @@ namespace Website.Logic.Domain
     {
         private CalcMinMaxMean calcMinMaxMean;
         private SMAP smapDal;
+
         public SMapManagerTemporalt(SMAP smapDal)
         {
             this.smapDal = smapDal;
@@ -32,6 +33,12 @@ namespace Website.Logic.Domain
             TemporalOccupantsUpdate(building, timeFrom, timeTo);
             TemporalColdWaterUpdate(building, timeFrom, timeTo);
             TemporalHotWaterUpdate(building, timeFrom, timeTo);
+            TemporalVentilationPowerConsumptionUpdate(building, timeFrom, timeTo);
+            TemporalHardwarePowerConsumptionUpdate(building, timeFrom, timeTo);
+            TemporalLightPowerConsumptionUpdate(building, timeFrom, timeTo);
+            TemporalOtherPowerConsumptionUpdate(building, timeFrom, timeTo);
+            TemporalTotalPowerConsumptionUpdate(building, timeFrom, timeTo);
+
         }
 
         public void TemporalUpdateAll(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
@@ -45,6 +52,11 @@ namespace Website.Logic.Domain
             TemporalOccupantsUpdate(floor, timeFrom, timeTo);
             TemporalColdWaterUpdate(floor, timeFrom, timeTo);
             TemporalHotWaterUpdate(floor, timeFrom, timeTo);
+            TemporalVentilationPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            TemporalHardwarePowerConsumptionUpdate(floor, timeFrom, timeTo);
+            TemporalLightPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            TemporalOtherPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            TemporalTotalPowerConsumptionUpdate(floor, timeFrom, timeTo);
         }
 
         public void TemporalUpdateAll(TemporalRoom room, DateTime timeFrom, DateTime timeTo)
@@ -60,7 +72,9 @@ namespace Website.Logic.Domain
 
         public void TemporalTemperatureUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                var floor in
+                    building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalTemperatureUpdate(floor, timeFrom, timeTo);
             }
@@ -68,7 +82,8 @@ namespace Website.Logic.Domain
 
         public void TemporalTemperatureUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>())
+            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>()
+                )
             {
                 TemporalTemperatureUpdate(room, timeFrom, timeTo);
             }
@@ -93,7 +108,9 @@ namespace Website.Logic.Domain
 
         public void TemporalCO2Update(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                var floor in
+                    building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalCO2Update(floor, timeFrom, timeTo);
             }
@@ -126,7 +143,9 @@ namespace Website.Logic.Domain
 
         public void TemporalOccupantsUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                var floor in
+                    building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalOccupantsUpdate(floor, timeFrom, timeTo);
             }
@@ -147,7 +166,8 @@ namespace Website.Logic.Domain
 
         public void TemporalOccupantsUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>())
+            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>()
+                )
             {
                 TemporalOccupantsUpdate(room, timeFrom, timeTo);
             }
@@ -168,9 +188,12 @@ namespace Website.Logic.Domain
                 room.MaxObservedOccupants = temporalSummary.MaxValue;
             }
         }
+
         public void TemporalWifiClientUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                var floor in
+                    building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalWifiClientUpdate(floor, timeFrom, timeTo);
             }
@@ -198,7 +221,9 @@ namespace Website.Logic.Domain
 
         public void TemporalLightUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var floor in building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                var floor in
+                    building.Floors.Where(room => room.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalLightUpdate(floor, timeFrom, timeTo);
             }
@@ -206,7 +231,8 @@ namespace Website.Logic.Domain
 
         public void TemporalLightUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>())
+            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>()
+                )
             {
                 TemporalLightUpdate(room, timeFrom, timeTo);
             }
@@ -247,7 +273,8 @@ namespace Website.Logic.Domain
 
         public void TemporalLumenUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>())
+            foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>()
+                )
             {
                 TemporalLumenUpdate(room, timeFrom, timeTo);
             }
@@ -255,7 +282,9 @@ namespace Website.Logic.Domain
 
         public void TemporalLumenUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                TemporalFloor floor in
+                    building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalLumenUpdate(floor, timeFrom, timeTo);
             }
@@ -263,7 +292,9 @@ namespace Website.Logic.Domain
 
         public void TemporalHotWaterUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                TemporalFloor floor in
+                    building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalHotWaterUpdate(floor, timeFrom, timeTo);
             }
@@ -274,11 +305,11 @@ namespace Website.Logic.Domain
             if (floor.Endpoints != null && floor.Endpoints.SmapEndponts.ContainsValue(SensorType.HotWater))
             {
                 TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMean(
-                            smapDal.GetHistoricSensorValue(
-                                floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.HotWater).Key, timeFrom,
-                                timeTo), timeFrom,
-                            timeTo);
+                    calcMinMaxMean.CalcSMapMinMaxMean(
+                        smapDal.GetHistoricSensorValue(
+                            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.HotWater).Key, timeFrom,
+                            timeTo), timeFrom,
+                        timeTo);
                 floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
                 floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
                 floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
@@ -287,7 +318,9 @@ namespace Website.Logic.Domain
 
         public void TemporalColdWaterUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
-            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            foreach (
+                TemporalFloor floor in
+                    building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
                 TemporalColdWaterUpdate(floor, timeFrom, timeTo);
             }
@@ -298,85 +331,154 @@ namespace Website.Logic.Domain
             if (floor.Endpoints != null && floor.Endpoints.SmapEndponts.ContainsValue(SensorType.ColdWater))
             {
                 TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMean(
-                            smapDal.GetHistoricSensorValue(
-                                floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.ColdWater).Key, timeFrom,
-                                timeTo), timeFrom,
-                            timeTo);
+                    calcMinMaxMean.CalcSMapMinMaxMean(
+                        smapDal.GetHistoricSensorValue(
+                            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.ColdWater).Key, timeFrom,
+                            timeTo), timeFrom,
+                        timeTo);
                 floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
                 floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
                 floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
             }
         }
 
-        public void TemporalPowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        public void TemporalTotalPowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
             if (floor.Endpoints != null)
             {
                 if (floor.Endpoints.SmapEndponts.ContainsValue(SensorType.TotalPowerConsumption))
                 {
-                    //TemporalSummary temporalSummary =
-                    //    calcMinMaxMean.CalcSMapMinMaxMean(
-                    //        smapDal.GetHistoricSensorValue(
-                    //            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.ColdWater).Key, timeFrom,
-                    //            timeTo), timeFrom,
-                    //        timeTo);
-                    //floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
-                    //floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
-                    //floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
-                }
 
+                    var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.TotalPowerConsumption);
+
+                    TemporalSummary temporalSummary =
+                        calcMinMaxMean.CalcSMapMinMaxMeanHouerliy(
+                            smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo), timeFrom, timeTo);
+
+                    floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
+                    floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
+                    floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
+                }
+            }
+        }
+
+        public void TemporalTotalPowerConsumptionUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            {
+                TemporalTotalPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            }
+        }
+
+        public void TemporalHardwarePowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        {
+            if (floor.Endpoints != null)
+            {
                 if (floor.Endpoints.SmapEndponts.ContainsValue(SensorType.HardwarePowerConsumption))
                 {
-                    //TemporalSummary temporalSummary =
-                    //    calcMinMaxMean.CalcSMapMinMaxMean(
-                    //        smapDal.GetHistoricSensorValue(
-                    //            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.HardwarePowerConsumption).Key, timeFrom,
-                    //            timeTo), timeFrom,
-                    //        timeTo);
-                    //floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
-                    //floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
-                    //floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
-                }
 
+                    var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.HardwarePowerConsumption);
+
+                    TemporalSummary temporalSummary =
+                        calcMinMaxMean.CalcSMapMinMaxMeanHouerliy(
+                            smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo), timeFrom, timeTo);
+
+                    floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
+                    floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
+                    floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
+                }
+            }
+        }
+
+        public void TemporalHardwarePowerConsumptionUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            {
+                TemporalHardwarePowerConsumptionUpdate(floor, timeFrom, timeTo);
+            }
+        }
+
+        public void TemporalLightPowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        {
+            if (floor.Endpoints != null)
+            {
                 if (floor.Endpoints.SmapEndponts.ContainsValue(SensorType.LightPowerConsumption))
                 {
-                    //TemporalSummary temporalSummary =
-                    //    calcMinMaxMean.CalcSMapMinMaxMean(
-                    //        smapDal.GetHistoricSensorValue(
-                    //            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.LightPowerConsumption).Key, timeFrom,
-                    //            timeTo), timeFrom,
-                    //        timeTo);
-                    //floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
-                    //floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
-                    //floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
-                }
 
+                    var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.LightPowerConsumption);
+
+                    TemporalSummary temporalSummary =
+                        calcMinMaxMean.CalcSMapMinMaxMeanHouerliy(
+                            smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo), timeFrom, timeTo);
+
+                    floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
+                    floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
+                    floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
+                }
+            }
+        }
+
+        public void TemporalLightPowerConsumptionUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            {
+                TemporalLightPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            }
+        }
+
+        public void TemporalOtherPowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        {
+            if (floor.Endpoints != null)
+            {
                 if (floor.Endpoints.SmapEndponts.ContainsValue(SensorType.OtherPowerConsumption))
                 {
-                    //TemporalSummary temporalSummary =
-                    //    calcMinMaxMean.CalcSMapMinMaxMean(
-                    //        smapDal.GetHistoricSensorValue(
-                    //            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.OtherPowerConsumption).Key, timeFrom,
-                    //            timeTo), timeFrom,
-                    //        timeTo);
-                    //floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
-                    //floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
-                    //floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
-                }
 
+                    var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.OtherPowerConsumption);
+
+                    TemporalSummary temporalSummary =
+                        calcMinMaxMean.CalcSMapMinMaxMeanHouerliy(
+                            smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo), timeFrom, timeTo);
+
+                    floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
+                    floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
+                    floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
+                }
+            }
+        }
+
+        public void TemporalOtherPowerConsumptionUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            {
+                TemporalOtherPowerConsumptionUpdate(floor, timeFrom, timeTo);
+            }
+        }
+
+        public void TemporalVentilationPowerConsumptionUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        {
+            if (floor.Endpoints != null)
+            {
                 if (floor.Endpoints.SmapEndponts.ContainsValue(SensorType.VentilationPowerConsumption))
                 {
-                    //TemporalSummary temporalSummary =
-                    //    calcMinMaxMean.CalcSMapMinMaxMean(
-                    //        smapDal.GetHistoricSensorValue(
-                    //            floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.VentilationPowerConsumption).Key, timeFrom,
-                    //            timeTo), timeFrom,
-                    //        timeTo);
-                    //floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
-                    //floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
-                    //floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
+
+                    var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.VentilationPowerConsumption);
+
+                    TemporalSummary temporalSummary =
+                        calcMinMaxMean.CalcSMapMinMaxMeanHouerliy(
+                            smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo), timeFrom, timeTo);
+
+                    floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
+                    floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
+                    floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
                 }
+            }
+        }
+
+        public void TemporalVentilationPowerConsumptionUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        {
+            foreach (TemporalFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
+            {
+                TemporalVentilationPowerConsumptionUpdate(floor, timeFrom, timeTo);
             }
         }
     }

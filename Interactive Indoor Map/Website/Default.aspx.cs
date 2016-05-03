@@ -19,11 +19,11 @@ namespace Website
         //private string testJson;
         //private static Building building = null;
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+
                 Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
@@ -80,6 +80,24 @@ namespace Website
             JsonConverter converter = new JsonConverter();
 
             return converter.ConvertBuilding();
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetTemporalBuildingInfoBox(DateTime timeFrom, DateTime timeTo)
+        {
+            return TemporalFacade.Instance.GetTemporalBuildingInfoBox(timeFrom, timeTo);
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetTemporalFloorInfoBox(int floorLevel,DateTime timeFrom, DateTime timeTo)
+        {
+            return TemporalFacade.Instance.GetTemporalFloorInfoBox(floorLevel, timeFrom, timeTo);
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetDrawableTemporalFloorReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
+        {
+            return TemporalFacade.Instance.GetDrawableTemporalFloorReadings(floorLeel, timeFrom, timeTo);
         }
     }
 }
