@@ -18,8 +18,8 @@ namespace Website.Logic.Helpers
         {
             TemporalSummary temporalSummary = new TemporalSummary
             {
-                MinValue = double.MinValue,
-                MaxValue = double.MaxValue,
+                MinValue = double.MaxValue,
+                MaxValue = double.MinValue,
                 MeanValue = 0
             };
             TimeSpan? timeSpan = null;
@@ -28,16 +28,18 @@ namespace Website.Logic.Helpers
                 timeSpan = toTime - fromTime;
             }
 
-            for (int i = 0; i < reading.Readings.Count; i++)
+            for (int i = 0; i < reading.Readings.Count-1; i++)
             {
-                List<double> readings = reading.Readings[i];
+                List<double> readings = new List<double>();
+                readings.AddRange(reading.Readings[i]);
 
                 double readingsValue = readings[1];
                 if (temporalSummary.MinValue > readingsValue)
                 {
                     temporalSummary.MinValue = readingsValue;
                 }
-                else if (temporalSummary.MaxValue < readingsValue)
+
+                if (temporalSummary.MaxValue < readingsValue)
                 {
                     temporalSummary.MaxValue = readingsValue;
                 }
