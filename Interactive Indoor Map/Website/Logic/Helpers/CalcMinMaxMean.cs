@@ -70,16 +70,20 @@ namespace Website.Logic.Helpers
         {
             TemporalSummary temporalSummary = new TemporalSummary
             {
-                MinValue = double.MinValue,
-                MaxValue = double.MaxValue,
+                MinValue = double.MaxValue,
+                MaxValue = double.MinValue,
                 MeanValue = 0
             };
             TimeSpan timeSpan = toTime - fromTime;
 
             for (int i = 0; i < reading[0].Readings.Count - 1; i++)
             {
-                List<double> readings1 = reading[0].Readings[i];
-                List<double> readings2 = reading[0].Readings[i +1];
+                List<double> readings1 = new List<double>();
+                readings1.AddRange(reading[0].Readings[i]);
+
+                List<double> readings2 =
+                    new List<double>();
+                readings2.AddRange(reading[0].Readings[i + 1]);
 
                 for (int j = 1; j < reading.Count; j++)
                 {

@@ -73,8 +73,8 @@ namespace Website.DAL.ExternalData
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("select data in (");
-                sb.Append("'" + fromDate.Date.ToString() + "'");
-                sb.Append(", '" + toDate.Date.ToString() + "')");
+                sb.Append("'" + fromDate.Date.ToShortDateString().Replace("-", "/") + " " + fromDate.ToShortTimeString() + "'");
+                sb.Append(",'" + toDate.Date.ToShortDateString().Replace("-", "/") + " " + toDate.ToShortTimeString() + "')");
                 sb.Append("where ");
                 foreach (var uuid in endpoints)
                 {
