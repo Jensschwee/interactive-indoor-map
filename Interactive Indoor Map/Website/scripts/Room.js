@@ -237,7 +237,7 @@ function drawRoomsBackgrund(json) {
 function backgroundStyle(feature) {
     return {
         //Backgrund color
-        fillColor: getRoomBackgrundColor(feature.properties.RoomType),
+        fillColor: getRoomBackgroundColor(feature.properties.RoomType),
         //border color
         color: getRoomBorderColor(feature.properties.RoomType),
         //Border thickness
@@ -245,7 +245,7 @@ function backgroundStyle(feature) {
     };
 }
 
-function getRoomBackgrundColor(RoomType) {
+function getRoomBackgroundColor(RoomType) {
     return RoomType === "Classroom" ? '#D0D6DC' :
            RoomType === "Studyzone" ? '#D0D6DC' :
            RoomType === "Office" ? '#C2B49D' :

@@ -5,13 +5,40 @@
 #easy-button {
     width: 30px;
     height: 30px;
+    /*Makes the easy buttons unselectable*/
+    -ms-user-select: none; /* IE10+ */
 }
 
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-yw4l{vertical-align:top}
-tr:nth-child(even){background-color: #f2f2f2}
+.tg {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-color:#FFFFFF
+}
+.tg td {
+    font-family:Arial, sans-serif;
+    font-size:14px;padding:10px 5px;
+    border-style:solid;
+    border-width: 0px;
+    overflow:hidden;
+    word-break:normal;
+}
+.tg th {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-color: #FFFFFF;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+}
+.tg .tg-yw4l {
+    vertical-align:top
+}
+tr:nth-child(even) {
+    background-color: #D0D6DC
+}
 
 .info {
     padding: 6px 8px;
@@ -25,6 +52,8 @@ tr:nth-child(even){background-color: #f2f2f2}
     border-radius: 5px;
     float: none;
     display: inline-block;
+    /*Makes the text unselectable*/
+    -ms-user-select: none; /* IE10+ */
 }
 
     .info h4 {
