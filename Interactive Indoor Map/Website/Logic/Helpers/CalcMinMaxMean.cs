@@ -27,8 +27,9 @@ namespace Website.Logic.Helpers
             {
                 timeSpan = toTime - fromTime;
             }
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
 
-            for (int i = 0; i < reading.Readings.Count-1; i++)
+            for (int i = 0; i < reading.Readings.Count; i++)
             {
                 List<double> readings = new List<double>();
                 readings.AddRange(reading.Readings[i]);
@@ -48,9 +49,15 @@ namespace Website.Logic.Helpers
                 {
                     DateTime time = dateConverter.ConvertDate((long) readings[0]);
                     TimeSpan? timeDif = null;
-                    if (reading.Readings.Count == i)
+                    if (reading.Readings.Count == i+1)
                     {
-                        timeDif = toTime - time;
+                        DateTime newTime = TimeZoneInfo.ConvertTimeToUtc(toTime.Value, timeZoneInfo);
+                        timeDif = newTime.ToLocalTime() - time;
+                    }
+                    else if(i == 0)
+                    {
+                        DateTime newTime = TimeZoneInfo.ConvertTimeToUtc(fromTime.Value, timeZoneInfo);
+                        timeDif = dateConverter.ConvertDate((long)reading.Readings[i + 1][0]) - newTime.ToLocalTime();
                     }
                     else
                     {
@@ -77,6 +84,7 @@ namespace Website.Logic.Helpers
                 MeanValue = 0
             };
             TimeSpan timeSpan = toTime - fromTime;
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
 
             for (int i = 0; i < reading[0].Readings.Count - 1; i++)
             {
@@ -92,10 +100,25 @@ namespace Website.Logic.Helpers
                     readings1[1] += reading[j].Readings[i][1];
                     readings2[1] += reading[j].Readings[i+1][1];
                 }
+                DateTime time = dateConverter.ConvertDate((long) reading[0].Readings[i][0]);
+                TimeSpan ? timeBetween = null;
+                    if (reading[0].Readings.Count == i + 1)
+                {
+                    DateTime newTime = TimeZoneInfo.ConvertTimeToUtc(toTime, timeZoneInfo);
 
-                TimeSpan timeBetween = dateConverter.ConvertDate((long) reading[0].Readings[i+1][0]) - dateConverter.ConvertDate((long)reading[0].Readings[i][0]);
+                    timeBetween = newTime.ToLocalTime() - time;
+                }
+                else if (i == 0)
+                {
+                    DateTime newTime = TimeZoneInfo.ConvertTimeToUtc(fromTime, timeZoneInfo);
+                    timeBetween = dateConverter.ConvertDate((long)reading[0].Readings[i + 1][0]) - newTime.ToLocalTime();
+                }
+                else
+                {
+                    timeBetween = dateConverter.ConvertDate((long)reading[0].Readings[i + 1][0]) - time;
+                }
 
-                double readingsValue = ((readings2[1] - readings1[1]) / timeBetween.TotalMinutes) * 60;
+                double readingsValue = ((readings2[1] - readings1[1]) / timeBetween.Value.TotalMinutes) * 60;
 
                 if (temporalSummary.MinValue > readingsValue)
                 {
@@ -106,7 +129,7 @@ namespace Website.Logic.Helpers
                     temporalSummary.MaxValue = readingsValue;
                 }
 
-                temporalSummary.MeanValue += (readingsValue * (timeBetween.TotalMinutes / timeSpan.TotalMinutes));
+                temporalSummary.MeanValue += (readingsValue * (timeBetween.Value.TotalMinutes / timeSpan.TotalMinutes));
 
             }
             return temporalSummary;
