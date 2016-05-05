@@ -80,22 +80,13 @@ tr:nth-child(even) {
     display: none;
 }
 
-/*#legend {
-    max-width: 150px;
-    position: absolute;
-    bottom: 57px;
-    left: 92%;
-    margin-right: 10px;
-}*/
-
 #legend {
     max-width: 150px;
     position: absolute;
     left: 0%;
     margin-left: 10px;
     bottom: 0px;
-    margin-bottom: 10px;
-    /*margin-bottom: 35px;*/
+    margin-bottom: 6px;
     z-index: 5;
 }
 
