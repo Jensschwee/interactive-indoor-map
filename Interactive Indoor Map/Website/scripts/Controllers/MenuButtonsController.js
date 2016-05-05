@@ -200,8 +200,20 @@ function CreateTemporalButtons() {
         });
     });
 
-    $('#daterangepicker').on('apply.daterangepicker', function(ev, picker) {
-        console.log(document.getElementById("daterangepicker").value);
+    $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
+        function onSuccess(response) {
+            colletionOfRoomsOnMap = JSON.parse(response);
+            drawRoomsForeground(colletionOfRoomsOnMap);
+            splitRoomsIntoBarchart(colletionOfRoomsOnMap);
+        }
+
+        var dateResult = document.getElementById("daterangepicker").value;
+        var dateResultArray = dateResult.split(" - ");
+
+        var fromDate = dateResultArray[0];
+        var toDate = dateResultArray[1];
+
+        PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, fromDate, toDate, onSuccess);
     });
 }
 

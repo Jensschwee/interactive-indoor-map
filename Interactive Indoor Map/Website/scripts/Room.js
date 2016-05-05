@@ -246,13 +246,13 @@ function getRoomsAndDrawRooms() {
 
 function getRoomsAndDrawBackground() {
     function onSuccess(response) {
-        var roomsBackgrund = JSON.parse(response);
-        drawRoomsBackgrund(roomsBackgrund);
+        var roomsBackground = JSON.parse(response);
+        drawRoomsBackground(roomsBackground);
     }
-    PageMethods.DrawRoomsBackgrund(currentFloorLevel, onSuccess);
+    PageMethods.DrawRoomsBackground(currentFloorLevel, onSuccess);
 }
 
-function drawRoomsBackgrund(json) {
+function drawRoomsBackground(json) {
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
     }
@@ -266,7 +266,7 @@ function drawRoomsBackgrund(json) {
 
 function backgroundStyle(feature) {
     return {
-        //Backgrund color
+        //Background color
         fillColor: getRoomBackgroundColor(feature.properties.RoomType),
         //border color
         color: getRoomBorderColor(feature.properties.RoomType),
