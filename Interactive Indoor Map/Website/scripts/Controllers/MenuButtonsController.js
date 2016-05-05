@@ -189,14 +189,19 @@ function CreateTemporalButtons() {
         $('input[name="daterangepicker"]').daterangepicker({
             drops: "up",
             opens: "left",
+            timePicker24Hour: true,
             linkedCalendars: false,
             timePicker: true,
-            timePickerIncrement: 30,
+            timePickerIncrement: 15,
             locale: {
-                format: ' DD/MM/YYYY'
+                format: 'DD/MM/YYYY h:mm'
                 //format: 'DD/MM/YYYY h:mm A'
             }
         });
+    });
+
+    $('#daterangepicker').on('apply.daterangepicker', function(ev, picker) {
+        console.log(document.getElementById("daterangepicker").value);
     });
 }
 

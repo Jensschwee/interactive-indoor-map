@@ -6,40 +6,45 @@
     width: 30px;
     height: 30px;
     /*Makes the easy buttons unselectable*/
-    -webkit-user-select: none; /* Chrome/Safari */        
+    -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
 }
 
 .tg {
-    border-collapse:collapse;
-    border-spacing:0;
-    border-color:#FFFFFF
-}
-.tg td {
-    font-family:Arial, sans-serif;
-    font-size:14px;padding:10px 5px;
-    border-style:solid;
-    border-width: 0px;
-    overflow:hidden;
-    word-break:normal;
-}
-.tg th {
-    font-family:Arial, sans-serif;
-    font-size:14px;
-    font-weight:normal;
-    padding:10px 5px;
-    border-style:solid;
+    border-collapse: collapse;
+    border-spacing: 0;
     border-color: #FFFFFF;
-    border-width:1px;
-    overflow:hidden;
-    word-break:normal;
 }
-.tg .tg-yw4l {
-    vertical-align:top
-}
+
+    .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 0px;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-color: #FFFFFF;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg .tg-yw4l {
+        vertical-align: top;
+    }
+
 tr:nth-child(even) {
-    background-color: #D0D6DC
+    background-color: #D0D6DC;
 }
 
 .info {
@@ -55,7 +60,7 @@ tr:nth-child(even) {
     float: none;
     display: inline-block;
     /*Makes the text unselectable*/
-    -webkit-user-select: none; /* Chrome/Safari */        
+    -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
 }
@@ -100,6 +105,11 @@ tr:nth-child(even) {
     right: 0;
     bottom: 0;
     margin-bottom: 228px;
-    margin-right: 45px;
+    /*margin-right: 45px;*/
+    margin-right: 105px;
     z-index: 5;
+}
+
+#daterangepicker {
+    width: 206px;
 }
