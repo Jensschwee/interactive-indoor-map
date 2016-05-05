@@ -280,7 +280,8 @@ namespace Website.Logic.Domain
                     calcMinMaxMean.CalcSMapMinMaxMean(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Light).Key, timeFrom,
-                            timeTo));
+                            timeTo), timeFrom,
+                            timeTo);
                 room.AverageLight = temporalSummary.MeanValue;
                 room.MinObservedLight = temporalSummary.MinValue;
                 room.MaxObservedLight = temporalSummary.MaxValue;
