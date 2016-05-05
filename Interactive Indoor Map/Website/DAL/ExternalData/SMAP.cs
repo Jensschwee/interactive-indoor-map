@@ -53,7 +53,7 @@ namespace Website.DAL.ExternalData
             SMapSensorReading reading = sendHTTPPost(ENDPOINT, sb.ToString());
 
             double reading1 = reading.Readings[0][1];
-            double reading2 = reading.Readings[1][1];   
+            double reading2 = reading.Readings[1][1];
 
             TimeSpan timeBetween = dateConverter.ConvertDate((long)reading.Readings[1][0]) - dateConverter.ConvertDate((long)reading.Readings[0][0]);
 
@@ -71,10 +71,14 @@ namespace Website.DAL.ExternalData
         {
             if (endpoints.Any())
             {
+                toDate = dateConverter.ConvertToLaDate(toDate);
+                fromDate = dateConverter.ConvertToLaDate(fromDate);
+
                 StringBuilder sb = new StringBuilder();
                 sb.Append("select data in (");
-                sb.Append("'" + fromDate.Date.ToShortDateString().Replace("-", "/") + " " + fromDate.ToShortTimeString() + "'");
-                sb.Append(",'" + toDate.Date.ToShortDateString().Replace("-", "/") + " " + toDate.ToShortTimeString() + "')");
+                sb.Append("'" + fromDate.Month + "/" + fromDate.Day + "/" + fromDate.Year + " " + fromDate.ToShortTimeString() +
+                     "'");
+                sb.Append(",'" + toDate.Month + "/" + toDate.Day + "/" + toDate.Year + " " + toDate.ToShortTimeString() + "')");
                 sb.Append("where ");
                 foreach (var uuid in endpoints)
                 {
@@ -89,10 +93,15 @@ namespace Website.DAL.ExternalData
 
         public SMapSensorReading GetHistoricSensorValue(string endpoints, DateTime fromDate, DateTime toDate)
         {
+
+            fromDate = dateConverter.ConvertToLaDate(fromDate);
+            toDate = dateConverter.ConvertToLaDate(toDate);
+
             StringBuilder sb = new StringBuilder();
             sb.Append("select data in (");
-            sb.Append("'" + fromDate.Date.ToString() + "'");
-            sb.Append(", '" + toDate.Date.ToString() + "')");
+            sb.Append("'" + fromDate.Month + "/" + fromDate.Day + "/" + fromDate.Year + " " + fromDate.ToShortTimeString() +
+                     "'");
+            sb.Append(",'" + toDate.Month + "/" + toDate.Day + "/" + toDate.Year + " " + toDate.ToShortTimeString() + "')");
             sb.Append("where ");
             sb.Append("uuid = ");
             sb.Append("'" + endpoints + "'");
