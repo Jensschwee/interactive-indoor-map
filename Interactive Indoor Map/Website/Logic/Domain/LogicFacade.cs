@@ -1,37 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using System.Web;
 using Website.DAL.ExternalData;
 using Website.Logic.BO.Buildings;
-using Website.Logic.BO.Floors;
 
 namespace Website.Logic.Domain
 {
-    public class TemporalFacade
+    public class LogicFacade
     {
+
         private TemporalManager temporalManager;
+        private JsonConverter jsonLiveConverter;
 
-        private static TemporalFacade _instance;
 
-        private TemporalFacade()
+        private static LogicFacade _instance;
+
+        private LogicFacade()
         {
             temporalManager = new TemporalManager(new SMapManagerTemporalt(new SMAP()));
-
+            jsonLiveConverter = new JsonConverter();
         }
 
-        public static TemporalFacade Instance
+        public static LogicFacade Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new TemporalFacade();
+                    _instance = new LogicFacade();
                 }
                 return _instance;
             }
         }
+
+        public string ConvertBuilding()
+        {
+            return jsonLiveConverter.ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
+        }
+
+        public string ConvertBuilding(LiveBuilding building)
+        {
+            return jsonLiveConverter.ConvertBuilding(building);
+        }
+
+        public string ConvertFloors(int floorLevel)
+        {
+            return jsonLiveConverter.ConvertFloors(floorLevel);
+        }
+
+        public string ConvertRoomsGeoJson(int floorLevel)
+        {
+            return jsonLiveConverter.ConvertRoomsGeoJson(floorLevel);
+        }
+
+        public string ConvertRooms(int? floorLevel = null)
+        {
+            return jsonLiveConverter.ConvertRooms(floorLevel);
+        }
+
+
 
         public string GetTemporalFloorInfoBox(int floorLevel, DateTime timeFrom,
             DateTime timeTo)
