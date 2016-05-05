@@ -48,7 +48,6 @@ function InitLeafletMap(jsonMap) {
     buildingButton.button.click();
 
     createInfoBox();
-    //addLevel2();
 }
 
 function initMapSettings(geojson) {

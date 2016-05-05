@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using Website.Logic.BO;
 
@@ -78,14 +79,14 @@ namespace Website.Logic.BO.Buildings
 
         public static explicit operator TemporalBuilding(LiveBuilding building)
         {
-            TemporalBuilding temporalBuilding = new TemporalBuilding
-            {
-                Name = building.Name,
-                Floors = building.Floors,
-                Endpoints = building.Endpoints,
-                MaxOccupants = building.MaxOccupants
-            };
-            return temporalBuilding;
+                TemporalBuilding temporalBuilding = new TemporalBuilding
+                {
+                    Name = building.Name,
+                    Floors = building.Floors.ToList(),
+                    Endpoints = building.Endpoints,
+                    MaxOccupants = building.MaxOccupants
+                };
+                return temporalBuilding;
         }
     }
 }

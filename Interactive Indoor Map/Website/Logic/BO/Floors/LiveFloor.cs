@@ -9,9 +9,6 @@ namespace Website.Logic.BO.Floors
 {
     public class LiveFloor : Floor
     {
-
-        
-
         [NotMapped]
         public double Temperature
             =>
