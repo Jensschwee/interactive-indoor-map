@@ -158,6 +158,7 @@
     <Content Include="Map\ou44_geometry.geojson" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
+    <Content Include="Style\External\bootstrap.css" />
     <Content Include="Style\External\daterangepicker.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
