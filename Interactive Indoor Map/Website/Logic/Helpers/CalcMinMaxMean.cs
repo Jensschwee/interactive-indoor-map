@@ -25,7 +25,7 @@ namespace Website.Logic.Helpers
             if (reading.Readings.Count > 1)
             {
                 DateTime fromTime = dateConverter.ConvertDate((long)reading.Readings[0][0]);
-                DateTime toTime = dateConverter.ConvertDate((long)reading.Readings[0][reading.Readings[0].Count - 1]);
+                DateTime toTime = dateConverter.ConvertDate((long)reading.Readings[reading.Readings.Count - 1][0]);
                 TimeSpan timeSpan = toTime - fromTime;
 
                 for (int i = 0; i < reading.Readings.Count - 1; i++)
