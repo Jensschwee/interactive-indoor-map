@@ -168,7 +168,6 @@ function CreateTemporalButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
                 btn.state('detoggled');
-                temporalActive = true;
             }
         }, {
             stateName: 'detoggled',
@@ -195,12 +194,13 @@ function CreateTemporalButtons() {
             timePickerIncrement: 15,
             locale: {
                 format: 'DD/MM/YYYY h:mm'
-                //format: 'DD/MM/YYYY h:mm A'
             }
         });
     });
 
     $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
+        temporalActive = true;
+
         function onSuccess(response) {
             colletionOfRoomsOnMap = JSON.parse(response);
             drawRoomsForeground(colletionOfRoomsOnMap);
