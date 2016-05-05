@@ -237,6 +237,7 @@ namespace Website.Logic.Domain
                 sb.Append("{ \"type\": \"Feature\", \"properties\": {");
                 sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
                 sb.Append("\"SurfaceArea\":" + JsonConvert.SerializeObject(room.SurfaceArea) + ",");
+                sb.Append("\"Alias\":" + JsonConvert.SerializeObject(room.Alias) + ",");
 
                 sb.Append("\"AverageTemperature\":" + JsonConvert.SerializeObject(room.AverageTemperature) + ",");
                 sb.Append("\"MaxObservedTemperature\":" + JsonConvert.SerializeObject(room.MaxObservedTemperature) + ",");
@@ -283,7 +284,9 @@ namespace Website.Logic.Domain
                 sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(room.MaxOtherConsumption) + ",");
                 sb.Append("\"MinOtherConsumption\":" + JsonConvert.SerializeObject(room.MinOtherConsumption) + ",");
 
-                sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(room.TotalPowerConsumption) + ",");
+                sb.Append("\"AverageTotalPowerConsumption\":" + JsonConvert.SerializeObject(room.AverageTotalPowerConsumption) + ",");
+                sb.Append("\"MaxObservedTotalPowerConsumption\":" + JsonConvert.SerializeObject(room.MaxObservedTotalPowerConsumption) + ",");
+                sb.Append("\"MinObservedTotalPowerConsumption\":" + JsonConvert.SerializeObject(room.MinObservedTotalPowerConsumption) + ",");
                 sb.Append("\"MaxTotalPowerConsumption\":" + JsonConvert.SerializeObject(room.MaxTotalPowerConsumption) + ",");
                 sb.Append("\"MinTotalPowerConsumption\":" + JsonConvert.SerializeObject(room.MinTotalPowerConsumption) + ",");
 

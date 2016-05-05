@@ -59,6 +59,10 @@
             if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
                 sensorValue = value.properties[ActiveViews[j].value];
             }
+            if (temporalActive) {
+                sensorValue = value.properties[ActiveViews[j].average];
+                console.log(sensorValue);
+            }
 
             var point = [];
             //Col A X
@@ -202,12 +206,11 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
         drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
-    if (!temporalActive)
-    {
+    if (!temporalActive) {
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
     } else {
         var today = new Date();
-        var dd = today.getDate();
+        var dd = today.getDate() -1; 
         var mm = today.getMonth() + 1; //January is 0!
         var yyyy = today.getFullYear();
 
@@ -218,13 +221,16 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
         if (mm < 10) {
             mm = '0' + mm;
         }
-
+        var dd2 = today.getDate();
+        if (dd2 < 10) {
+            dd2 = '0' + dd2;
+        }
         today = mm + '/' + dd + '/' + yyyy;
-        var newtoday = mm + '/' + dd + '/' + yyyy;
+        var newtoday = mm + '/' + dd2 + '/' + yyyy;
         console.log(today);
         console.log(newtoday);
 
-        PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, newtoday, today, onSuccess);
+        PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, today, newtoday, onSuccess);
     }
 
     getRoomsAndDrawBackground();

@@ -239,6 +239,9 @@ function CreateViewButtons() {
                         max: 'MaxTemperature',
                         value: 'Temperature',
                         min: "MinTemperature",
+                        average: "AverageTemperature",
+                        maxObserved: "MaxObservedTemperature",
+                        minObservedTemperature: "MinObservedTemperature",
                         button: toggleTempButton
                     };
 
@@ -285,6 +288,9 @@ function CreateViewButtons() {
                         max: 'MaxCO2',
                         value: 'CO2',
                         min: "MinCO2",
+                        average: "AverageCO2",
+                        maxObserved: "MaxObservedCO2",
+                        minObservedTemperature: "MinObservedCO2",
                         button: toggleCO2Button
                     };
                     btn.button.style.backgroundColor = CO2Color;
@@ -329,6 +335,9 @@ function CreateViewButtons() {
                         icon: lightIcon,
                         value: 'Lumen',
                         max: 'MaxLumen',
+                        average: "AverageLumen",
+                        maxObserved: "MaxObservedLumen",
+                        minObservedTemperature: "MinObservedLumen",
                         button: toggleLightButton
                     };
                     btn.button.style.backgroundColor = LightColor;
@@ -373,6 +382,9 @@ function CreateViewButtons() {
                         color: MotionDetectionColor,
                         icon: motionIcon,
                         value: 'Motion',
+                        average: "AverageMotion",
+                        maxObserved: "MaxObservedMotion",
+                        minObservedTemperature: "MinObservedMotion",
                         button: toggleMotionButton
                     };
                     btn.button.style.backgroundColor = MotionDetectionColor;
@@ -417,6 +429,9 @@ function CreateViewButtons() {
                         icon: wifiClientsIcon,
                         max: 'MaxWifiClients',
                         value: 'WifiClients',
+                        average: "AverageWifiClients",
+                        maxObserved: "MaxObservedWifiClients",
+                        minObservedTemperature: "MinObservedWifiClients",
                         button: toggleWifiClientsButton
                     };
                     btn.button.style.backgroundColor = WifiClientsColor;
@@ -461,6 +476,9 @@ function CreateViewButtons() {
                         icon: occupantsIcon,
                         max: 'MaxOccupants',
                         value: 'Occupants',
+                        average: "AverageOccupants",
+                        maxObserved: "MaxObservedOccupants",
+                        minObservedTemperature: "MinObservedOccupants",
                         button: toggleOccupantsButton
                     };
                     btn.button.style.backgroundColor = OccupantsColor;
@@ -506,6 +524,9 @@ function CreateViewButtons() {
                         max: 'MaxTotalPowerConsumption',
                         value: 'TotalPowerConsumption',
                         min: "MinTotalPowerConsumption",
+                        average: "AverageTotalPowerConsumption",
+                        maxObserved: "MaxObservedTotalPowerConsumption",
+                        minObservedTemperature: "MinObservedTotalPowerConsumption",
                         button: toggleTotalConsumptionButton
                     };
                     btn.button.style.backgroundColor = TotalPowerConsumptionColor; //'#e74c3c'
@@ -551,6 +572,9 @@ function CreateViewButtons() {
                         max: 'MaxHardwareConsumption',
                         value: 'HardwareConsumption',
                         min: "MinHardwareConsumption",
+                        average: "AverageHardwareConsumption",
+                        maxObserved: "MaxObservedHardwareConsumption",
+                        minObservedTemperature: "MinObservedHardwareConsumption",
                         button: toggleHardwareConsumptionButton
                     };
                     btn.button.style.backgroundColor = HardwarePowerConsumptionColor; //'#f83e2d'
@@ -597,6 +621,9 @@ function CreateViewButtons() {
                         max: 'MaxLightConsumption',
                         value: 'LightConsumption',
                         min: "MinLightConsumption",
+                        average: "AverageLightConsumption",
+                        maxObserved: "MaxObservedLightConsumption",
+                        minObservedTemperature: "MinObservedLightConsumption",
                         button: toggleLightConsumptionButton
                     };
                     btn.button.style.backgroundColor = LightPowerConsumptionColor; //'#f83e2d'
@@ -642,6 +669,9 @@ function CreateViewButtons() {
                         max: 'MaxVentilationConsumption',
                         value: 'VentilationConsumption',
                         min: "MinVentilationConsumption",
+                        average: "AverageVentilationConsumption",
+                        maxObserved: "MaxObservedVentilationConsumption",
+                        minObservedTemperature: "MinObservedVentilationConsumption",
                         button: toggleVentilationConsumptionButton
                     };
                     btn.button.style.backgroundColor = VentilationPowerConsumptionColor; //'#d15258'
@@ -687,6 +717,9 @@ function CreateViewButtons() {
                         max: 'MaxOtherConsumption',
                         value: 'OtherConsumption',
                         min: "MinOtherConsumption",
+                        average: "AverageOtherConsumption",
+                        maxObserved: "MaxObservedOtherConsumption",
+                        minObservedTemperature: "MinObservedOtherConsumption",
                         button: toggleOtherConsumptionButton
                     };
                     btn.button.style.backgroundColor = OtherPowerConsumptionColor; //'#ff8289'
@@ -728,6 +761,9 @@ function CreateViewButtons() {
                         color: '#8c8c8c',
                         icon: waterConsumptionIcon,
                         value: 'WaterConsumption',
+                        average: "AverageWaterConsumption",
+                        maxObserved: "MaxObservedWaterConsumption",
+                        minObservedTemperature: "MinObservedWaterConsumption",
                         button: toggleWaterConsumptionButton
                     };
                     btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
