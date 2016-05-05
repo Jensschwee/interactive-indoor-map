@@ -168,6 +168,7 @@ function CreateTemporalButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
                 btn.state('detoggled');
+                temporalActive = true;
             }
         }, {
             stateName: 'detoggled',
@@ -176,7 +177,8 @@ function CreateTemporalButtons() {
             onClick: function (btn) {
                 btn.button.style.backgroundColor = 'white';
                $("#DRP").hide();
-                btn.state('toggled');
+               btn.state('toggled');
+               temporalActive = false;
             }
         }]
     }).addTo(geoMap);
