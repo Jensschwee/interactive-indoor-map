@@ -75,13 +75,16 @@ function drawFloorInfoBox() {
 function drawRoomInfo() {
     // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
-        this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Room data</h4>' + (props ?
-            props.Name + "</br>" +
-            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
-            '<table class="tg">' +
-            props.HTML +
-            '</table></span></div>'
-            : '');
+        if (props != null) {
+            var html = '<div class="info" id="InfoBox"><h4>Room data</h4>' + props.Name + "</br>" +
+                '<b>Surface Area: </b>' + props.SurfaceArea + ' m<sup>2</sup>';
+                if (props.hasOwnProperty("Alias")) {
+                    html += '</br><b>Alias: </b>' + props.Alias;
+                }
+                html += '<table class="tg">' + props.HTML + '</table></span></div>';
+
+            this._div.innerHTML = html;
+        }
     };
 }
 
@@ -103,6 +106,7 @@ function drawSelectedRoomInfoBox() {
         var roomInfo = {
             Name: '<span style="line-height:100%"><b>Name: </b>' + roomArray[0],
             SurfaceArea: room[0].properties.SurfaceArea,
+            Alias: room[0].properties.Alias,
             HTML: ''
         };
         roomInfo.HTML += drawSensorValuesInfoBox(room[0].properties);
