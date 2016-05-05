@@ -175,6 +175,7 @@ namespace Website.Logic.Domain
                         sb.Append("{ \"type\": \"Feature\", \"properties\": {");
                         sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
                         sb.Append("\"SurfaceArea\":" + JsonConvert.SerializeObject(currentRoom.SurfaceArea) + ",");
+                        sb.Append("\"Alias\":" + JsonConvert.SerializeObject(currentRoom.Alias) + ",");
 
                         sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(currentRoom.Temperature) + ",");
                         sb.Append("\"MaxTemperature\":" + JsonConvert.SerializeObject(currentRoom.MaxTemperature) + ",");
