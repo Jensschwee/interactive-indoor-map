@@ -41,6 +41,7 @@ function InitLeafletMap(jsonMap) {
 
 
     CreateSpatialButtons();
+    CreateTemporalButtons();
     CreateViewButtons();
     buildingButton.button.click();
 

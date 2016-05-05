@@ -150,6 +150,52 @@ function CreateSpatialButtons() {
             }
         }]
     }).addTo(geoMap);
+
+    
+}
+
+function CreateTemporalButtons() {
+    var temporalIcon = createIconForButton("Images/temporalIcon2.png");
+
+    var temporalButton = L.easyButton({
+        id: 'easy-button',
+        position: 'bottomright',
+        states: [{
+            stateName: 'toggled',
+            icon: temporalIcon,
+            title: 'Temporal',
+            onClick: function (btn) {
+                btn.button.style.backgroundColor = '#8c8c8c';
+                $("#DRP").show();
+                btn.state('detoggled');
+            }
+        }, {
+            stateName: 'detoggled',
+            icon: temporalIcon,
+            title: 'Temporal',
+            onClick: function (btn) {
+                btn.button.style.backgroundColor = 'white';
+               $("#DRP").hide();
+                btn.state('toggled');
+            }
+        }]
+    }).addTo(geoMap);
+
+    $("#DRP").hide();
+
+    $(function () {
+        $('input[name="daterangepicker"]').daterangepicker({
+            drops: "up",
+            opens: "left",
+            linkedCalendars: false,
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: ' DD/MM/YYYY'
+                //format: 'DD/MM/YYYY h:mm A'
+            }
+        });
+    });
 }
 
 function createIconForButton(imageSrc) {

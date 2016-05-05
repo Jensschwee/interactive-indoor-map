@@ -95,12 +95,20 @@ tr:nth-child(even) {
     margin-left: 10px;
     bottom: 0px;
     margin-bottom: 10px;
-}
-
-#legend {
+    /*margin-bottom: 35px;*/
     z-index: 5;
 }
 
 .IconImage {
     position: absolute;
+}
+
+#DRP {
+    max-width: 150px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 228px;
+    margin-right: 45px;
+    z-index: 5;
 }

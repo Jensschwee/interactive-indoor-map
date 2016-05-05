@@ -130,6 +130,8 @@
     <Content Include="Images\otherPowerIcon.png" />
     <Content Include="Images\temperature.png" />
     <Content Include="Images\temperatureIcon.png" />
+    <Content Include="Images\temporalIcon.png" />
+    <Content Include="Images\temporalIcon2.png" />
     <Content Include="Images\totalPowerIcon.png" />
     <Content Include="Images\ventilationPowerIcon.png" />
     <Content Include="Images\waterConsumptionIcon.png" />
@@ -138,9 +140,12 @@
     <Content Include="scripts\Controllers\RoomController.js" />
     <Content Include="scripts\External\bootstrap.min.js" />
     <Content Include="scripts\External\d3.v3.min.js" />
+    <Content Include="scripts\External\daterangepicker.js" />
     <Content Include="scripts\External\easy-button.js" />
     <Content Include="scripts\External\Leaflet.fullscreen.min.js" />
     <Content Include="scripts\External\leaflet.js" />
+    <Content Include="scripts\External\moment.js" />
+    <Content Include="scripts\External\moment.min.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
     <Content Include="packages.config" />
@@ -153,6 +158,7 @@
     <Content Include="Map\ou44_geometry.geojson" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
+    <Content Include="Style\External\daterangepicker.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,6 +176,7 @@
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="Style\External\bootstrap-theme.min.css" />
     <Content Include="Style\External\bootstrap.min.css" />
+    <Content Include="Style\External\daterangepicker.css" />
     <Content Include="Style\External\easy-button.css" />
     <Content Include="Style\External\fullscreen.png" />
     <Content Include="Style\External\leaflet.css" />
