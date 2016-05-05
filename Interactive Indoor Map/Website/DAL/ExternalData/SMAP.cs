@@ -79,13 +79,13 @@ namespace Website.DAL.ExternalData
                 sb.Append("'" + fromDate.Month + "/" + fromDate.Day + "/" + fromDate.Year + " " + fromDate.ToShortTimeString() +
                      "'");
                 sb.Append(",'" + toDate.Month + "/" + toDate.Day + "/" + toDate.Year + " " + toDate.ToShortTimeString() + "')");
-                sb.Append("where ");
+                sb.Append(" where ");
                 foreach (var uuid in endpoints)
                 {
                     sb.Append("uuid = ");
                     sb.Append("'" + uuid.Key + "' or ");
                 }
-                sb.Remove(sb.Length, 3);
+                sb.Remove(sb.Length-3, 3);
                 return sendHTTPPostMultipolEndpoints(ENDPOINT, sb.ToString());
             }
             return null;

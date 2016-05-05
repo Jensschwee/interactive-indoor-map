@@ -46,7 +46,6 @@ namespace Website.Logic.Domain
         {
             TemporalTemperatureUpdate(floor, timeFrom, timeTo);
             TemporalMotionDetectionUpdate(floor, timeFrom, timeTo);
-
             TemporalCO2Update(floor, timeFrom, timeTo);
             TemporalLumenUpdate(floor, timeFrom, timeTo);
             TemporalLightUpdate(floor, timeFrom, timeTo);
