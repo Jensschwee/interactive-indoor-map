@@ -10,6 +10,8 @@ var roomLayers = [];
 var ActiveViews = [];
 var ActiveFloorViews = [];
 var linesOnMap = null;
+var temporalActive = false;
+
 
 
 function DrawWorldMap() {
