@@ -138,6 +138,7 @@
     <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\Controllers\LegendController.js" />
     <Content Include="scripts\Controllers\RoomController.js" />
+    <Content Include="scripts\Controllers\TemporalController.js" />
     <Content Include="scripts\External\bootstrap.min.js" />
     <Content Include="scripts\External\d3.v3.min.js" />
     <Content Include="scripts\External\daterangepicker.js" />

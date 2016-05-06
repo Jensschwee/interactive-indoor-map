@@ -163,7 +163,7 @@ function CreateTemporalButtons() {
         states: [{
             stateName: 'toggled',
             icon: temporalIcon,
-            title: 'Temporal',
+            title: 'TemporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
@@ -173,7 +173,7 @@ function CreateTemporalButtons() {
         }, {
             stateName: 'detoggled',
             icon: temporalIcon,
-            title: 'Temporal',
+            title: 'TemporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = 'white';
                $("#DRP").hide();
@@ -183,38 +183,6 @@ function CreateTemporalButtons() {
         }]
     }).addTo(geoMap);
 
-    $("#DRP").hide();
-
-    $(function () {
-        $('input[name="daterangepicker"]').daterangepicker({
-            drops: "up",
-            opens: "left",
-            timePicker24Hour: true,
-            linkedCalendars: false,
-            timePicker: true,
-            timePickerIncrement: 15,
-            startDate: "24/03/2016 00:00",
-            locale: {
-                format: 'DD/MM/YYYY h:mm'
-            }
-        });
-    });
-
-    $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
-        function onSuccess(response) {
-            colletionOfRoomsOnMap = JSON.parse(response);
-            drawRoomsForeground(colletionOfRoomsOnMap);
-            splitRoomsIntoBarchart(colletionOfRoomsOnMap);
-        }
-
-        var dateResult = document.getElementById("daterangepicker").value;
-        var dateResultArray = dateResult.split(" - ");
-
-        var fromDate = dateResultArray[0];
-        var toDate = dateResultArray[1];
-
-        PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, fromDate, toDate, onSuccess);
-    });
 }
 
 function createIconForButton(imageSrc) {
