@@ -39,7 +39,7 @@ namespace Website
 
 
         [System.Web.Services.WebMethod]
-        public static string DrawRoomsBackgrund(int floorLevel)
+        public static string DrawRoomsBackground(int floorLevel)
         {
             return LogicFacade.Instance.ConvertRoomsGeoJson(floorLevel);
         }

@@ -193,15 +193,27 @@ function CreateTemporalButtons() {
             linkedCalendars: false,
             timePicker: true,
             timePickerIncrement: 15,
+            startDate: "24/03/2016 00:00",
             locale: {
                 format: 'DD/MM/YYYY h:mm'
-                //format: 'DD/MM/YYYY h:mm A'
             }
         });
     });
 
-    $('#daterangepicker').on('apply.daterangepicker', function(ev, picker) {
-        console.log(document.getElementById("daterangepicker").value);
+    $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
+        function onSuccess(response) {
+            colletionOfRoomsOnMap = JSON.parse(response);
+            drawRoomsForeground(colletionOfRoomsOnMap);
+            splitRoomsIntoBarchart(colletionOfRoomsOnMap);
+        }
+
+        var dateResult = document.getElementById("daterangepicker").value;
+        var dateResultArray = dateResult.split(" - ");
+
+        var fromDate = dateResultArray[0];
+        var toDate = dateResultArray[1];
+
+        PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, fromDate, toDate, onSuccess);
     });
 }
 
