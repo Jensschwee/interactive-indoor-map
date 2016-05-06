@@ -15,10 +15,14 @@ namespace Website.Logic.Helpers
         public DateTime ConvertToLaDate(DateTime time)
         {
             TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+            TimeZoneInfo timeZoneCTE = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
+
 
             TimeSpan newDateTime = timeZoneInfo.GetUtcOffset(time);
 
-            return time.AddHours(newDateTime.Hours);
+            TimeSpan timeSpan = timeZoneCTE.GetUtcOffset(DateTime.Now);
+
+            return time.AddHours(newDateTime.Hours).AddHours(-timeSpan.Hours);
         }
     }
 }
