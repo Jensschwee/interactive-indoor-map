@@ -168,6 +168,7 @@ function CreateTemporalButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
                 btn.state('detoggled');
+                temporalActive = true;
             }
         }, {
             stateName: 'detoggled',
@@ -192,6 +193,7 @@ function CreateTemporalButtons() {
             linkedCalendars: false,
             timePicker: true,
             timePickerIncrement: 15,
+            startDate: "24/03/2016 00:00",
             locale: {
                 format: 'DD/MM/YYYY h:mm'
             }
@@ -199,8 +201,6 @@ function CreateTemporalButtons() {
     });
 
     $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
-        temporalActive = true;
-
         function onSuccess(response) {
             colletionOfRoomsOnMap = JSON.parse(response);
             drawRoomsForeground(colletionOfRoomsOnMap);
