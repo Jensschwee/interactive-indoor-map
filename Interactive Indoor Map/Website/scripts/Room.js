@@ -61,7 +61,6 @@
             }
             if (temporalActive) {
                 sensorValue = value.properties[ActiveViews[j].average];
-                console.log(sensorValue);
             }
 
             var point = [];
