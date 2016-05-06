@@ -103,7 +103,7 @@ namespace Website.Logic.Helpers
                     readings2 = new List<double>();
                     readings2.AddRange(reading[0].Readings[i + 1]);
 
-                    for (int j = 1; j < reading.Count; j++)
+                    for (int j = 1; j < reading.Count-1; j++)
                     {
                         readings1[1] += reading[j].Readings[i][1];
                         readings2[1] += reading[j].Readings[i + 1][1];
