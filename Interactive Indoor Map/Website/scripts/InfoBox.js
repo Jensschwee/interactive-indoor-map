@@ -188,13 +188,13 @@ function getTemporalSensorValuesInfoBox(sensorData) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
     }
     if (findIndexOfView('Lumen') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + ' </td><td> ' + sensorData.AverageLight.toFixed(0) + ' </td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + ' </td><td> ' + ((sensorData.AverageLight)*100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '</td></tr>';
 
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLumen.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLumen.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLumen.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '</td><td class="tg-yw4l"> ' + sensorData.AverageMotion + '</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion)*100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '</td></tr>';
     }
 
     if (findIndexOfView('WifiClients') !== notContained) {

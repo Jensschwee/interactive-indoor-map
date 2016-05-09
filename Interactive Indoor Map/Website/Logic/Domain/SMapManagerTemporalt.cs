@@ -156,7 +156,7 @@ namespace Website.Logic.Domain
                 TemporalSummary temporalSummary =
                     calcMinMaxMean.CalcSMapMinMaxMean(
                         smapDal.GetHistoricSensorValue(
-                            building.Endpoints.SmapEndponts.First(s => s.Value == SensorType.CO2).Key, timeFrom,
+                            building.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Occupants).Key, timeFrom,
                             timeTo));
                 building.AverageOccupants = temporalSummary.MeanValue;
                 building.MinObservedOccupants = temporalSummary.MinValue;
@@ -216,9 +216,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.MotionDetection).Key, timeFrom,
                             timeTo),timeFrom,timeTo);
-                room.AverageOccupants = temporalSummary.MeanValue;
-                room.MinObservedOccupants = temporalSummary.MinValue;
-                room.MaxObservedOccupants = temporalSummary.MaxValue;
+                room.AverageMotion = temporalSummary.MeanValue;
+                room.MinObservedMotion = temporalSummary.MinValue;
+                room.MaxObservedMotion = temporalSummary.MaxValue;
             }
         }
 
