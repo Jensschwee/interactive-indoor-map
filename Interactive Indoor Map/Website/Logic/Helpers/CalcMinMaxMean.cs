@@ -103,7 +103,7 @@ namespace Website.Logic.Helpers
                     readings2 = new List<double>();
                     readings2.AddRange(reading[0].Readings[i + 1]);
 
-                    for (int j = 1; j < reading.Count-1; j++)
+                    for (int j = 1; j < reading.Count - 1; j++)
                     {
                         readings1[1] += reading[j].Readings[i][1];
                         readings2[1] += reading[j].Readings[i + 1][1];
@@ -160,8 +160,22 @@ namespace Website.Logic.Helpers
                     }
                     else //i = 0
                     {
-                        TimeSpan timeBeetween = timeCurrent - timeFrom;
-                        temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
+                        DateTime timeNext = dateConverter.ConvertDate((long)reading.Readings[i + 1][0]);
+                        //if state = 0, then all values before was 1
+                        if (state.Equals(0.0))
+                        {
+                            TimeSpan timeFromStart = timeCurrent - timeFrom;
+                            temporalSummary.MeanValue += 1 * (timeFromStart.TotalSeconds / timeSpan.TotalSeconds);
+                        }
+                        else
+                        {
+                            TimeSpan timeBeetween = timeNext - timeCurrent;
+                            temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
+
+                        }
+
+
+
                     }
                 }
             }
