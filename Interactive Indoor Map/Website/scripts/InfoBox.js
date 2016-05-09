@@ -174,9 +174,9 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     }
 
     if (findIndexOfView('Temperature') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Temperature</b></td><td class="tg-yw4l"> ' + sensorData.AverageTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
-        html += '<tr><td class="tg-yw4l"><b>Max Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MaxObservedTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
-        html += '<tr><td class="tg-yw4l"><b>Min Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
+        html += '<tr><td class="tg-yw4l"><b>Average Temperature</b></td><td class="tg-yw4l"> ' + sensorData.AverageTemperature.toFixed(1) + ' &#8451 </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Max Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MaxObservedTemperature.toFixed(1) + ' &#8451 </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Min Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedTemperature.toFixed(1) + ' &#8451 </td></tr>';
     }
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>Average CO2</b></td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td></tr>';
