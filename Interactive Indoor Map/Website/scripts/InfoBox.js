@@ -22,7 +22,26 @@ function drawBuildingInfoBox() {
             : '') + '</div>';
     };
     var buildingInfoBox = function () {
-        PageMethods.DrawBuildingInfoBox(onSuccess);
+        if (!temporalActive)
+            {
+            PageMethods.DrawBuildingInfoBox(onSuccess);
+        } else {
+            var dateResult = document.getElementById("daterangepicker").value;
+            var dateResultArray = dateResult.split(" - ");
+            var fromDateResult = dateResultArray[0].split("/");
+            var toDateResult = dateResultArray[1].split("/");
+
+            var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
+            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];  var dateResult = document.getElementById("daterangepicker").value;
+            var dateResultArray = dateResult.split(" - ");
+            var fromDateResult = dateResultArray[0].split("/");
+            var toDateResult = dateResultArray[1].split("/");
+
+            var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
+            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
+
+            PageMethods.GetTemporalBuildingInfoBox(fromDate, toDate, onSuccess);
+        }
         function onSuccess(response, userContext, methodName) {
             if (buildingInfoBox === infoboxUpdate) {
                 var json = jQuery.parseJSON(response);
@@ -32,7 +51,13 @@ function drawBuildingInfoBox() {
                     NumberOfRooms: json.NumberOfRooms,
                     HTML: ""
                 };
-                buildingInfo.HTML = getLiveSensorValuesInfoBox(json);
+                if (!temporalActive)
+                    {
+                    buildingInfo.HTML = getLiveSensorValuesInfoBox(json);
+                } else {
+                    buildingInfo.HTML = getTemporalSensorValuesInfoBox(json);
+
+                }
                 infoBox.update(buildingInfo);
             }
         }
@@ -44,7 +69,7 @@ function drawBuildingInfoBox() {
 function drawFloorInfoBox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
-            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.FloorName + "</br>" +
+            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
             '<table class="tg">' +
             props.HTML +
@@ -52,17 +77,32 @@ function drawFloorInfoBox() {
             : '') + '</div>';
     };
     var floorInfoBox = function () {
-        PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+        if (!temporalActive) {
+            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+        } else {
+            var dateResult = document.getElementById("daterangepicker").value;
+            var dateResultArray = dateResult.split(" - ");
+            var fromDateResult = dateResultArray[0].split("/");
+            var toDateResult = dateResultArray[1].split("/");
+
+            var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
+            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
+            PageMethods.GetTemporalFloorInfoBox(currentFloorLevel, fromDate, toDate, onSuccess);
+        }
         function onSuccess(response, userContext, methodName) {
             if (infoboxUpdate === floorInfoBox) {
                 var json = jQuery.parseJSON(response);
                 var floorInfo = {
-                    FloorName: json.FloorName,
+                    Name: json.Name,
                     SurfaceArea: json.SurfaceArea,
                     NumberOfRooms: json.NumberOfRooms,
                     HTML: ""
                 };
-                floorInfo.HTML = getLiveSensorValuesInfoBox(json);
+                if (!temporalActive) {
+                    floorInfo.HTML = getLiveSensorValuesInfoBox(json);
+                } else {
+                    floorInfo.HTML = getTemporalSensorValuesInfoBox(json);
+                }
                 infoBox.update(floorInfo);
             }
         }

@@ -114,6 +114,7 @@ namespace Website.Logic.Domain
             sb.Append("\"MaxObservedWifiClients\":" + JsonConvert.SerializeObject(building.MaxObservedWifiClients) + ",");
             sb.Append("\"MinObservedWifiClients\":" + JsonConvert.SerializeObject(building.MinObservedWifiClients) + ",");
             sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(building.MaxWifiClients));
+            sb.Append("}");
 
             return sb.ToString();
         }
@@ -223,6 +224,7 @@ namespace Website.Logic.Domain
             sb.Append("\"MaxObservedWifiClients\":" + JsonConvert.SerializeObject(floor.MaxObservedWifiClients) + ",");
             sb.Append("\"MinObservedWifiClients\":" + JsonConvert.SerializeObject(floor.MinObservedWifiClients) + ",");
             sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(floor.MaxWifiClients));
+            sb.Append("}");
 
             return sb.ToString();
         }

@@ -68,7 +68,7 @@ namespace Website.Logic.Domain
             {
                 if (floor.FloorLevel == floorLevel)
                 {
-                    sb.Append("\"FloorName\":\"" + floor.FloorName + "\",");
+                    sb.Append("\"Name\":\"" + floor.FloorName + "\",");
                     sb.Append("\"FloorLevel\":" + floor.FloorLevel + ",");
                     sb.Append("\"SurfaceArea\":" + floor.SurfaceArea + ",");
                     sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.NumberOfLiveRoom) + ",");
