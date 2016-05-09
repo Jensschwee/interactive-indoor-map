@@ -25,7 +25,7 @@ namespace Website.Logic.BO
         public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
 
         [NotMapped]
-        public double NumberOfSensorRooms => Floors.Sum(floor => floor.NumberOfLiveRoom);
+        public double NumberOfSensorRooms => Floors.Sum(floor => floor.NumberOfSensorRooms);
 
         [NotMapped]
         public double MaxTemperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxTemperature)) / NumberOfSensorRooms);
