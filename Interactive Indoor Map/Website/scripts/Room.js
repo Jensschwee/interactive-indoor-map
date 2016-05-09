@@ -13,11 +13,17 @@
     //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     var jsonColumn;
+    var jsonMinMaxLines;
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
         jsonColumn = {
             type: "FeatureCollection",
             features: features
+        };
+        var featuresLines = new Array();
+        jsonMinMaxLines = {
+            type: "FeatureCollection",
+            features: featuresLines
         };
         $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
@@ -59,8 +65,10 @@
             if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
                 sensorValue = value.properties[ActiveViews[j].value];
             }
+
             if (temporalActive) {
                 sensorValue = value.properties[ActiveViews[j].average];
+                drawMinMaxObservedLines(featuresLines, j, value.properties[ActiveViews[j].minObserved], value.properties[ActiveViews[j].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
 
             var point = [];
@@ -176,12 +184,15 @@
                 //,dashArray:"12,6"
             }
         }).addTo(geoMap).bringToBack();
+        if (temporalActive) {
+            //console.log(jsonMinMaxLines);
+            L.geoJson(jsonMinMaxLines).addTo(geoMap).bringToFront();
+        }
     }
 
 
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
-
         roomLayers.push(L.geoJson(roomColumn, {
             style: {
                 //Backgrund color
@@ -212,6 +223,57 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
     }
 
     getRoomsAndDrawBackground();
+}
+
+function drawMinMaxObservedLines(featuresLines, columNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
+    //calc the hight for the min line
+    var roomHeightMin = (1 - (roomObservedMin - roomMin) / (roomMax - roomMin));
+    if (roomHeightMin < 0) {
+        roomHeightMin = 0;
+    }
+    else if (roomHeightMin > 1) {
+        roomHeightMin = 1;
+    }
+
+    //calc the hight for the min line
+    var roomHeightMax = (1 - (roomObservedMax - roomMin) / (roomMax - roomMin));
+
+    if (roomHeightMax < 0) {
+        roomHeightMax = 0;
+    }
+    else if (roomHeightMax > 1) {
+        roomHeightMax = 1;
+    }
+
+    drawlines = function (value, columNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
+        var coordinate = new Array();
+        var coordinates = new Array();
+
+        coordinate.push(coordinates);
+        var geometry =
+            {
+                type: "LineString",
+                coordinates: coordinate
+            };
+        var feature = {
+            type: "Feature",
+            geometry: geometry
+        }
+
+        var point = [];
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columNumber) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        coordinates.push(point);
+
+        point = [];
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columNumber + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columNumber + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        coordinates.push(point);
+
+        featuresLines.push(feature);
+    }
+    drawlines(roomHeightMin, columNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+    drawlines(roomHeightMax, columNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
 }
 
 function getRoomsAndDrawRooms() {
