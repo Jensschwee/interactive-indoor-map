@@ -254,7 +254,7 @@ function getLiveSensorValuesInfoBox(sensorData) {
     }
 
     if (findIndexOfView('Temperature') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Temperature</b></td><td class="tg-yw4l"> ' + sensorData.Temperature.toFixed(1) + ' &#8451 </td></tr><br/>';
+        html += '<tr><td class="tg-yw4l"><b>Temperature</b></td><td class="tg-yw4l"> ' + sensorData.Temperature.toFixed(1) + ' &#8451 </td></tr>';
     }
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.CO2.toFixed(0) + ' PPM </td></tr>';
