@@ -32,7 +32,6 @@ namespace Website.Logic.Domain
             sb.Append("\"MinObservedCO2\":" + JsonConvert.SerializeObject(building.MinObservedCO2) + ",");
             sb.Append("\"MaxCO2\":" + JsonConvert.SerializeObject(building.MaxCO2) + ",");
 
-
             sb.Append("\"AverageLight\":" + JsonConvert.SerializeObject(building.AverageLight) + ",");
             sb.Append("\"MaxObservedLight\":" + JsonConvert.SerializeObject(building.MaxObservedLight) + ",");
             sb.Append("\"MinObservedLight\":" + JsonConvert.SerializeObject(building.MinObservedLight) + ",");
