@@ -71,7 +71,7 @@ namespace Website.Logic.Domain
                     sb.Append("\"Name\":\"" + floor.FloorName + "\",");
                     sb.Append("\"FloorLevel\":" + floor.FloorLevel + ",");
                     sb.Append("\"SurfaceArea\":" + floor.SurfaceArea + ",");
-                    sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.NumberOfLiveRoom) + ",");
+                    sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.NumberOfSensorRooms) + ",");
 
                     sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(floor.Temperature) + ",");
                     sb.Append("\"CO2\":" + JsonConvert.SerializeObject(floor.CO2) + ",");

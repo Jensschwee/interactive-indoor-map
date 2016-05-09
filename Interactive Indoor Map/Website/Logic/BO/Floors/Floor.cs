@@ -19,7 +19,7 @@ namespace Website.Logic.BO
         public string FloorName { get; set; }
 
         [NotMapped]
-        public double NumberOfLiveRoom => Rooms.Count(room => room.GetType() == typeof(LiveRoom));
+        public double NumberOfSensorRooms => Rooms.Count(room => room.GetType().IsSubclassOf(typeof(SensorRoom)));
 
         public virtual List<Room> Rooms { get; set; }
     
@@ -31,27 +31,27 @@ namespace Website.Logic.BO
         public double MaxTemperature => (
             Rooms.Where(room => room.GetType() == typeof(LiveRoom)).
             Cast<LiveRoom>().
-            Sum(room => room.MaxTemperature) / Convert.ToDouble(NumberOfLiveRoom));
+            Sum(room => room.MaxTemperature) / Convert.ToDouble(NumberOfSensorRooms));
 
         [NotMapped]
         public double MinTemperature => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MinTemperature) / Convert.ToDouble(NumberOfLiveRoom));
+                    .Sum(room => room.MinTemperature) / Convert.ToDouble(NumberOfSensorRooms));
 
         [NotMapped]
         public double MaxCO2 => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MaxCO2) / Convert.ToDouble(NumberOfLiveRoom));
+                    .Sum(room => room.MaxCO2) / Convert.ToDouble(NumberOfSensorRooms));
 
         [NotMapped]
         public double MinCO2 => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MinCO2) / Convert.ToDouble(NumberOfLiveRoom));
+                    .Sum(room => room.MinCO2) / Convert.ToDouble(NumberOfSensorRooms));
 
         [NotMapped]
         public double MaxLux => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MaxLux) / Convert.ToDouble(NumberOfLiveRoom));
+                    .Sum(room => room.MaxLux) / Convert.ToDouble(NumberOfSensorRooms));
 
         public double MinLux = 0;
 
