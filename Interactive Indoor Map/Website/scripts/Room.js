@@ -291,7 +291,7 @@ function drawRoomsForeground(json) {
 
     roomForegroundLayer = L.geoJson(json, {
         style: {
-            //Backgrund color
+            //Background color
             fillColor: "#FFFFFF",
             //border color
             color: "#FFFFFF",
