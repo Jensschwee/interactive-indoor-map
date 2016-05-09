@@ -20,7 +20,7 @@ namespace Website.Logic.BO.Buildings
         public int Light => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.Light);
 
         [NotMapped]
-        public double Lumen => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Lumen)) / NumberOfLiveRoom);
+        public double Lux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Lux)) / NumberOfLiveRoom);
 
         [NotMapped]
         public double HardwareConsumption => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.HardwareConsumption);

@@ -19,7 +19,7 @@ namespace Website.Logic.BO.Rooms
         public bool Light { get; set; }
 
         [NotMapped]
-        public int Lumen { get; set; }
+        public int Lux { get; set; }
 
         [NotMapped]
         public double HardwareConsumption { get; set; }

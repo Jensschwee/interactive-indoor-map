@@ -27,9 +27,9 @@ namespace Website.Logic.BO.Floors
         public int Light => (Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Where(room => room.Light)).Count();
 
         [NotMapped]
-        public double Lumen => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
+        public double Lux => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.Lumen) /
+                    .Sum(room => room.Lux) /
                     Convert.ToDouble(Rooms.Count(room => room.GetType() == typeof(LiveRoom))));
 
         [NotMapped]
