@@ -293,9 +293,9 @@ namespace Website.Logic.Domain
                 sb.Append("\"MaxObservedMotion\":" + JsonConvert.SerializeObject(room.MaxObservedMotion) + ",");
                 sb.Append("\"MinObservedMotion\":" + JsonConvert.SerializeObject(room.MinObservedMotion) + ",");
 
-                sb.Append("\"AverageMotion\":" + JsonConvert.SerializeObject(room.AverageOccupants) + ",");
-                sb.Append("\"MaxObservedMotion\":" + JsonConvert.SerializeObject(room.MaxObservedOccupants) + ",");
-                sb.Append("\"MinObservedMotion\":" + JsonConvert.SerializeObject(room.MinObservedOccupants) + ",");
+                sb.Append("\"AverageOccupants\":" + JsonConvert.SerializeObject(room.AverageOccupants) + ",");
+                sb.Append("\"MaxObservedOccupants\":" + JsonConvert.SerializeObject(room.MaxObservedOccupants) + ",");
+                sb.Append("\"MinObservedOccupants\":" + JsonConvert.SerializeObject(room.MinObservedOccupants) + ",");
                 sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(room.MaxOccupants) + ",");
 
                 sb.Append("\"AverageWifiClients\":" + JsonConvert.SerializeObject(room.AverageWifiClients) + ",");

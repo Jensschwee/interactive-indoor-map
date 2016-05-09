@@ -141,6 +141,8 @@ namespace Website.Logic.Helpers
             };
             if (reading.Readings.Count > 1)
             {
+                temporalSummary.MaxValue = 1;
+                temporalSummary.MinValue = 0;
                 TimeSpan timeSpan = timeTo - timeFrom;
                 for (int i = 0; i < reading.Readings.Count - 1; i++)
                 {
