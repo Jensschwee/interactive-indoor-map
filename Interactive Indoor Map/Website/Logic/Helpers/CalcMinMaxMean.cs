@@ -144,25 +144,24 @@ namespace Website.Logic.Helpers
                 TimeSpan timeSpan = timeTo - timeFrom;
                 for (int i = 0; i < reading.Readings.Count - 1; i++)
                 {
+                    DateTime timeCurrent = dateConverter.ConvertDate((long)reading.Readings[i][0]);
+                    double state = reading.Readings[i][1];
+
                     if (i + 1 > reading.Readings.Count)
                     {
-                        DateTime timeCurrent = dateConverter.ConvertDate((long)reading.Readings[i][0]);
                         TimeSpan timeBeetween = timeTo - timeCurrent;
-                        double state = reading.Readings[i][1];
                         temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
                     }
                     else if (i != 0)
                     {
-                        DateTime timeCurrent = dateConverter.ConvertDate((long)reading.Readings[i][0]);
                         DateTime timeNext = dateConverter.ConvertDate((long)reading.Readings[i + 1][0]);
                         TimeSpan timeBeetween = timeNext - timeCurrent;
-                        double state = reading.Readings[i][1];
                         temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
                     }
                     else //i = 0
                     {
-                        DateTime time = dateConverter.ConvertDate((long)reading.Readings[i][0]);
-                        CalcSMapMinMaxMeanCase(reading, timeFrom, time, temporalSummary);
+                        TimeSpan timeBeetween = timeCurrent - timeFrom;
+                        temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
                     }
                 }
             }
