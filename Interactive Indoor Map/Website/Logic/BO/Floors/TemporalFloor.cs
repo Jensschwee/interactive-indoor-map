@@ -80,13 +80,26 @@ namespace Website.Logic.BO.Floors
         public double MaxObservedTotalPowerConsumption { get; set; }
         public double MinObservedTotalPowerConsumption { get; set; }
 
-        public double AverageMotion { get; set; }
+        public double AverageMotion =>
+                (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
+                    .Cast<TemporalRoom>()
+                    .Sum(room => room.AverageMotion) /
+            Rooms.Count(room => room.GetType() == typeof(TemporalRoom)));
         public double MaxObservedMotion = 1;
         public double MinObservedMotion = 0;
 
-        public double AverageOccupants { get; set; }
-        public double MaxObservedOccupants { get; set; }
-        public double MinObservedOccupants { get; set; }
+        public double AverageOccupants =>
+                (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
+                    .Cast<TemporalRoom>()
+                    .Sum(room => room.AverageOccupants));
+        public double MaxObservedOccupants =>
+                (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
+                    .Cast<TemporalRoom>()
+                    .Sum(room => room.MaxObservedOccupants));
+        public double MinObservedOccupants =>
+                (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
+                    .Cast<TemporalRoom>()
+                    .Sum(room => room.MinObservedOccupants));
 
         public double AverageWifiClients { get; set; }
         public double MaxObservedWifiClients { get; set; }
