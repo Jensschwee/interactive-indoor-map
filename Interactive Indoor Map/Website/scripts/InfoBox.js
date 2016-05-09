@@ -32,7 +32,7 @@ function drawBuildingInfoBox() {
                     NumberOfRooms: json.NumberOfRooms,
                     HTML: ""
                 };
-                buildingInfo.HTML = drawSensorValuesInfoBox(json);
+                buildingInfo.HTML = getLiveSensorValuesInfoBox(json);
                 infoBox.update(buildingInfo);
             }
         }
@@ -62,7 +62,7 @@ function drawFloorInfoBox() {
                     NumberOfRooms: json.NumberOfRooms,
                     HTML: ""
                 };
-                floorInfo.HTML = drawSensorValuesInfoBox(json);
+                floorInfo.HTML = getLiveSensorValuesInfoBox(json);
                 infoBox.update(floorInfo);
             }
         }
@@ -109,7 +109,7 @@ function drawSelectedRoomInfoBox() {
             Alias: room[0].properties.Alias,
             HTML: ''
         };
-        roomInfo.HTML += drawSensorValuesInfoBox(room[0].properties);
+        roomInfo.HTML += getLiveSensorValuesInfoBox(room[0].properties);
         infoBox.update(roomInfo);
     } else if (roomArray.length > 1) {
         calculateAverageSensorValues();
@@ -160,13 +160,93 @@ function drawSelectedRoomInfoBox() {
             roomInfo.WifiClients += room[0].properties.WifiClients;
         });
 
-        roomInfo.HTML += drawSensorValuesInfoBox(roomInfo);
+        roomInfo.HTML += getLiveSensorValuesInfoBox(roomInfo);
 
         infoBox.update(roomInfo);
     }
 }
 
-function drawSensorValuesInfoBox(sensorData) {
+function getTemporalSensorValuesInfoBox(sensorData) {
+    var notContained = -1;
+    var html = "<br/>";
+    if (ActiveViews.length !== 0) {
+        html += "<br/>";
+    }
+
+    if (findIndexOfView('Temperature') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Average Temperature</b></td><td class="tg-yw4l"> ' + sensorData.AverageTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
+        html += '<tr><td class="tg-yw4l"><b>Max Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MaxObservedTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
+        html += '<tr><td class="tg-yw4l"><b>Min Observed Temperature</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedTemperature.toFixed(1) + ' &#8451 </td></tr><br/>';
+    }
+    if (findIndexOfView('CO2') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Average CO2</b></td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Max Observed CO2</b></td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Min  ObservedCO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td></tr>';
+    }
+    if (findIndexOfView('Lumen') !== notContained) {
+        if (sensorData.hasOwnProperty("NumberOfRooms")) {
+            html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '</td></tr>';
+        } else {
+            if (sensorData.Light) {
+                html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> On</td></tr>';
+
+            } else {
+                html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> Off</td></tr>';
+            }
+        }
+        html += '<tr><td class="tg-yw4l"><b>Lumen</b></td><td class="tg-yw4l"> ' + sensorData.Lumen.toFixed(0) + ' lm </td></tr>';
+    }
+
+    if (findIndexOfView('Motion') !== notContained) {
+        if (sensorData.hasOwnProperty("NumberOfRooms")) {
+            html += '<tr><td class="tg-yw4l"><b>Motion</b></td><td class="tg-yw4l"> ' + sensorData.Motion + " / " + sensorData.NumberOfRooms + '</td></tr>';
+        } else {
+            if (sensorData.Motion) {
+                html += '<tr><td class="tg-yw4l"><b>Motion</b></td><td class="tg-yw4l"> Detected</td></tr>';
+
+            } else {
+                html += '<tr><td class="tg-yw4l"><b>Motion</b></td class="tg-yw4l"><td> None</td></tr>';
+            }
+        }
+    }
+
+    if (findIndexOfView('WifiClients') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Wifi Clients</b></td><td class="tg-yw4l"> ' + sensorData.WifiClients + '</td></tr>';
+    }
+
+    if (findIndexOfView('Occupants') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Occupants</b></td><td class="tg-yw4l"> ' + sensorData.Occupants + '</td></tr>';
+    }
+
+    if (findIndexOfView('TotalPowerConsumption') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Total Power Consumption</b></td><td class="tg-yw4l"> ' + sensorData.TotalPowerConsumption.toFixed(2) + ' kWh </td></tr>';
+    }
+    if (findIndexOfView('HardwareConsumption') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Hardware Consumption</b></td><td class="tg-yw4l"> ' + sensorData.HardwareConsumption.toFixed(2) + ' kWh </td></tr>';
+    }
+    if (findIndexOfView('LightConsumption') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Light Consumption</b></td><td class="tg-yw4l"> ' + sensorData.LightConsumption.toFixed(2) + ' kWh </td></tr>';
+    }
+    if (findIndexOfView('VentilationConsumption') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Ventilation Consumption</b></td><td class="tg-yw4l"> ' + sensorData.VentilationConsumption.toFixed(2) + ' kWh </td></tr>';
+    }
+    if (findIndexOfView('OtherConsumption') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Other Consumption</b></td><td class="tg-yw4l"> ' + sensorData.OtherConsumption.toFixed(2) + ' kWh </td></tr>';
+    }
+
+    if (findIndexOfFloorView('WaterConsumption') !== notContained) {
+        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
+            html += '<tr><td class="tg-yw4l"><b>Cold Water Consumption</b></td><td class="tg-yw4l"> ' + sensorData.ColdWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr>';
+        }
+        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
+            html += '<tr><td class="tg-yw4l"><b>Hot Water Consumption</b></td><td class="tg-yw4l"> ' + sensorData.HotWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr>';
+        }
+    }
+
+    return html;
+}
+
+function getLiveSensorValuesInfoBox(sensorData) {
     var notContained = -1;
     var html = "<br/>";
     if (ActiveViews.length !== 0) {
