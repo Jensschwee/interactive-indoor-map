@@ -309,20 +309,20 @@ function CreateViewButtons() {
         states: [
             {
                 icon: lightIcon,
-                title: 'Lumen',
+                title: 'Lux',
                 stateName: 'toggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
                     var co2Obj = {
-                        name: "Lumen",
+                        name: "Lux",
                         color: LightColor,
                         icon: lightIcon,
-                        value: 'Lumen',
-                        max: 'MaxLumen',
-                        average: "AverageLumen",
-                        maxObserved: "MaxObservedLumen",
-                        minObservedTemperature: "MinObservedLumen",
+                        value: 'Lux',
+                        max: 'MaxLux',
+                        average: "AverageLux",
+                        maxObserved: "MaxObservedLux",
+                        minObservedTemperature: "MinObservedLux",
                         button: toggleLightButton
                     };
                     btn.button.style.backgroundColor = LightColor;
@@ -334,10 +334,10 @@ function CreateViewButtons() {
                 }
             }, {
                 icon: lightIcon,
-                title: 'Lumen',
+                title: 'Lux',
                 stateName: 'detoggled',
                 onClick: function (btn) {
-                    var index = findIndexOfView("Lumen");
+                    var index = findIndexOfView("Lux");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();

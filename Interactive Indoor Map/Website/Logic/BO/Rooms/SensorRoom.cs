@@ -20,8 +20,8 @@ namespace Website.Logic.BO
         public int MaxCO2 { get; set; }
         public int MinCO2 = 0;
         
-        public int MaxLumen { get; set; }
-        public int MinLumen = 0;
+        public int MaxLux { get; set; }
+        public int MinLux = 0;
 
         public double MaxHardwareConsumption { get; set; }
         public double MinHardwareConsumption = 0;

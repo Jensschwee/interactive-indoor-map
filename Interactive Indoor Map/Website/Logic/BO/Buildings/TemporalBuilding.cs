@@ -24,9 +24,9 @@ namespace Website.Logic.BO.Buildings
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
 
-        public double AverageLumen { get; set; }
-        public double MaxObservedLumen { get; set; }
-        public double MinObservedLumen { get; set; }
+        public double AverageLux { get; set; }
+        public double MaxObservedLux { get; set; }
+        public double MinObservedLux { get; set; }
 
         public double AverageHardwareConsumption { get; set; }
         public double MaxObservedHardwareConsumption { get; set; }

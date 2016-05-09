@@ -27,7 +27,7 @@ namespace Website.Logic.Domain
             TemporalTemperatureUpdate(building, timeFrom, timeTo);
             TemporalCO2Update(building, timeFrom, timeTo);
             TemporalMotionDetectionUpdate(building, timeFrom, timeTo);
-            TemporalLumenUpdate(building, timeFrom, timeTo);
+            TemporalLuxUpdate(building, timeFrom, timeTo);
             TemporalLightUpdate(building, timeFrom, timeTo);
             TemporalLightUpdate(building, timeFrom, timeTo);
             TemporalWifiClientUpdate(building, timeFrom, timeTo);
@@ -47,7 +47,7 @@ namespace Website.Logic.Domain
             TemporalTemperatureUpdate(floor, timeFrom, timeTo);
             TemporalMotionDetectionUpdate(floor, timeFrom, timeTo);
             TemporalCO2Update(floor, timeFrom, timeTo);
-            TemporalLumenUpdate(floor, timeFrom, timeTo);
+            TemporalLuxUpdate(floor, timeFrom, timeTo);
             TemporalLightUpdate(floor, timeFrom, timeTo);
             TemporalLightUpdate(floor, timeFrom, timeTo);
             TemporalWifiClientUpdate(floor, timeFrom, timeTo);
@@ -66,7 +66,7 @@ namespace Website.Logic.Domain
             TemporalTemperatureUpdate(room, timeFrom, timeTo);
             TemporalMotionDetectionUpdate(room, timeFrom, timeTo);
             TemporalCO2Update(room, timeFrom, timeTo);
-            TemporalLumenUpdate(room, timeFrom, timeTo);
+            TemporalLuxUpdate(room, timeFrom, timeTo);
             TemporalLightUpdate(room, timeFrom, timeTo);
             TemporalLightUpdate(room, timeFrom, timeTo);
             TemporalWifiClientUpdate(room, timeFrom, timeTo);
@@ -288,37 +288,37 @@ namespace Website.Logic.Domain
         }
 
 
-        public void TemporalLumenUpdate(TemporalRoom room, DateTime timeFrom, DateTime timeTo)
+        public void TemporalLuxUpdate(TemporalRoom room, DateTime timeFrom, DateTime timeTo)
         {
-            if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Lumen))
+            if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Lux))
             {
                 TemporalSummary temporalSummary =
                     calcMinMaxMean.CalcSMapMinMaxMean(
                         smapDal.GetHistoricSensorValue(
-                            room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lumen).Key, timeFrom,
+                            room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lux).Key, timeFrom,
                             timeTo));
-                room.AverageLumen = temporalSummary.MeanValue;
-                room.MinObservedLumen = temporalSummary.MinValue;
-                room.MaxObservedLumen = temporalSummary.MaxValue;
+                room.AverageLux = temporalSummary.MeanValue;
+                room.MinObservedLux = temporalSummary.MinValue;
+                room.MaxObservedLux = temporalSummary.MaxValue;
             }
         }
 
-        public void TemporalLumenUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
+        public void TemporalLuxUpdate(TemporalFloor floor, DateTime timeFrom, DateTime timeTo)
         {
             foreach (var room in floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>()
                 )
             {
-                TemporalLumenUpdate(room, timeFrom, timeTo);
+                TemporalLuxUpdate(room, timeFrom, timeTo);
             }
         }
 
-        public void TemporalLumenUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
+        public void TemporalLuxUpdate(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
         {
             foreach (
                 TemporalFloor floor in
                     building.Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>())
             {
-                TemporalLumenUpdate(floor, timeFrom, timeTo);
+                TemporalLuxUpdate(floor, timeFrom, timeTo);
             }
         }
 

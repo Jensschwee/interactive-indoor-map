@@ -25,9 +25,9 @@ namespace Website.Logic.BO.Floors
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
 
-        public double AverageLumen { get; set; }
-        public double MaxObservedLumen { get; set; }
-        public double MinObservedLumen { get; set; }
+        public double AverageLux { get; set; }
+        public double MaxObservedLux { get; set; }
+        public double MinObservedLux { get; set; }
 
         public double AverageHardwareConsumption { get; set; }
         public double MaxObservedHardwareConsumption { get; set; }
@@ -105,7 +105,7 @@ namespace Website.Logic.BO.Floors
                     MaxLightConsumption = floor.MaxLightConsumption,
                     MinHardwareConsumption = floor.MinHardwareConsumption,
                     MaxHardwareConsumption = floor.MaxHardwareConsumption,
-                    MinLumen = floor.MinLumen
+                    MinLux = floor.MinLux
                 };
                 return temporalFloor;
         }

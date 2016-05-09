@@ -26,7 +26,7 @@ namespace Website.Logic.Domain
             TemperatureUpdate(building);
             Co2Update(building);
             LightUpdate(building);
-            LumenUpdate(building);
+            LuxUpdate(building);
             PowerConsumptionUpdate(building);
             WaterUpdate(building);
             OccupantsUpdate(building);
@@ -38,7 +38,7 @@ namespace Website.Logic.Domain
             TemperatureUpdate(building);
             Co2Update(building);
             LightUpdate(building);
-            LumenUpdate(building);
+            LuxUpdate(building);
             PowerConsumptionUpdate(building);
             WaterUpdate(building);
             WaterUpdate(building);
@@ -112,29 +112,29 @@ namespace Website.Logic.Domain
             }
         }
 
-        public void LumenUpdate(LiveBuilding building)
+        public void LuxUpdate(LiveBuilding building)
         {
             foreach (LiveFloor floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
-                LumenUpdate(floor);
+                LuxUpdate(floor);
             }
         }
 
-        public void LumenUpdate(LiveFloor floor)
+        public void LuxUpdate(LiveFloor floor)
         {
             foreach (LiveRoom room in floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>())
             {
-                LumenUpdate(room);
+                LuxUpdate(room);
             }
         }
 
-        public void LumenUpdate(LiveRoom room)
+        public void LuxUpdate(LiveRoom room)
         {
-            if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Lumen))
-                room.Lumen =
+            if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Lux))
+                room.Lux =
                     (int)
                         smapDal.GetCurrentSensorValue(
-                            room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lumen).Key);
+                            room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lux).Key);
         }
 
 

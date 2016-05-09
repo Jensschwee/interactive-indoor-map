@@ -31,7 +31,7 @@ namespace Website.Logic.Domain
             sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(building.Temperature) + ",");
             sb.Append("\"CO2\":" + JsonConvert.SerializeObject(building.CO2) + ",");
             sb.Append("\"Light\":" + JsonConvert.SerializeObject(building.Light) + ",");
-            sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(building.Lumen) + ",");
+            sb.Append("\"Lux\":" + JsonConvert.SerializeObject(building.Lux) + ",");
 
             sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(building.HardwareConsumption) + ",");
             sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(building.LightConsumption) + ",");
@@ -76,7 +76,7 @@ namespace Website.Logic.Domain
                     sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(floor.Temperature) + ",");
                     sb.Append("\"CO2\":" + JsonConvert.SerializeObject(floor.CO2) + ",");
                     sb.Append("\"Light\":" + JsonConvert.SerializeObject(floor.Light) + ",");
-                    sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(floor.Lumen) + ",");
+                    sb.Append("\"Lux\":" + JsonConvert.SerializeObject(floor.Lux) + ",");
 
                     sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(floor.HardwareConsumption) + ",");
                     sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(floor.LightConsumption) + ",");
@@ -187,8 +187,8 @@ namespace Website.Logic.Domain
 
                         sb.Append("\"Light\":" + JsonConvert.SerializeObject(currentRoom.Light) + ",");
 
-                        sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(currentRoom.Lumen) + ",");
-                        sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(currentRoom.MaxLumen) + ",");
+                        sb.Append("\"Lux\":" + JsonConvert.SerializeObject(currentRoom.Lux) + ",");
+                        sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(currentRoom.MaxLux) + ",");
 
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(currentRoom.HardwareConsumption) + ",");
                         sb.Append("\"MaxHardwareConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxHardwareConsumption) + ",");

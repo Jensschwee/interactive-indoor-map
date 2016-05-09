@@ -20,7 +20,7 @@ namespace Website.Logic.BO.Utility
         //public string TemperatureUUID { get; set; }
         //public string CO2UUID { get; set; }
         //public string LightUUID { get; set; }
-        //public string LumenUUID { get; set; }
+        //public string LuxUUID { get; set; }
         ////public string TotalPowerConsumptionUUID { get; set; }
         //public string HardwarePowerConsumptionUUID { get; set; }
         //public string LightPowerConsumptionUUID { get; set; }

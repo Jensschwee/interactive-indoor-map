@@ -34,7 +34,7 @@ namespace Website.Logic.BO
         public double MaxCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxCO2)) / NumberOfLiveRoom);
         
         [NotMapped]
-        public double MaxLumen => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxLumen)) / NumberOfLiveRoom);
+        public double MaxLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxLux)) / NumberOfLiveRoom);
         
         [NotMapped]
         public double MaxHardwareConsumption => Floors.Sum(floor => floor.MaxHardwareConsumption);

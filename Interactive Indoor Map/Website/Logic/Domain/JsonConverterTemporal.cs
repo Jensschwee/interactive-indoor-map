@@ -36,10 +36,10 @@ namespace Website.Logic.Domain
             sb.Append("\"MaxObservedLight\":" + JsonConvert.SerializeObject(building.MaxObservedLight) + ",");
             sb.Append("\"MinObservedLight\":" + JsonConvert.SerializeObject(building.MinObservedLight) + ",");
 
-            sb.Append("\"AverageLumen\":" + JsonConvert.SerializeObject(building.AverageLumen) + ",");
-            sb.Append("\"MaxObservedLumen\":" + JsonConvert.SerializeObject(building.MaxObservedLumen) + ",");
-            sb.Append("\"MinObservedLumen\":" + JsonConvert.SerializeObject(building.MinObservedLumen) + ",");
-            sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(building.MaxLumen) + ",");
+            sb.Append("\"AverageLux\":" + JsonConvert.SerializeObject(building.AverageLux) + ",");
+            sb.Append("\"MaxObservedLux\":" + JsonConvert.SerializeObject(building.MaxObservedLux) + ",");
+            sb.Append("\"MinObservedLux\":" + JsonConvert.SerializeObject(building.MinObservedLux) + ",");
+            sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(building.MaxLux) + ",");
 
             sb.Append("\"AverageHardwareConsumption\":" +
                       JsonConvert.SerializeObject(building.AverageHardwareConsumption) + ",");
@@ -145,10 +145,10 @@ namespace Website.Logic.Domain
             sb.Append("\"MaxObservedLight\":" + JsonConvert.SerializeObject(floor.MaxObservedLight) + ",");
             sb.Append("\"MinObservedLight\":" + JsonConvert.SerializeObject(floor.MinObservedLight) + ",");
 
-            sb.Append("\"AverageLumen\":" + JsonConvert.SerializeObject(floor.AverageLumen) + ",");
-            sb.Append("\"MaxObservedLumen\":" + JsonConvert.SerializeObject(floor.MaxObservedLumen) + ",");
-            sb.Append("\"MinObservedLumen\":" + JsonConvert.SerializeObject(floor.MinObservedLumen) + ",");
-            sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(floor.MaxLumen) + ",");
+            sb.Append("\"AverageLux\":" + JsonConvert.SerializeObject(floor.AverageLux) + ",");
+            sb.Append("\"MaxObservedLux\":" + JsonConvert.SerializeObject(floor.MaxObservedLux) + ",");
+            sb.Append("\"MinObservedLux\":" + JsonConvert.SerializeObject(floor.MinObservedLux) + ",");
+            sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(floor.MaxLux) + ",");
 
             sb.Append("\"AverageHardwareConsumption\":" +
                       JsonConvert.SerializeObject(floor.AverageHardwareConsumption) + ",");
@@ -254,10 +254,10 @@ namespace Website.Logic.Domain
                 sb.Append("\"MaxObservedLight\":" + JsonConvert.SerializeObject(room.MaxObservedLight) + ",");
                 sb.Append("\"MinObservedLight\":" + JsonConvert.SerializeObject(room.MinObservedLight) + ",");
 
-                sb.Append("\"AverageLumen\":" + JsonConvert.SerializeObject(room.AverageLumen) + ",");
-                sb.Append("\"MaxObservedLumen\":" + JsonConvert.SerializeObject(room.MaxObservedLumen) + ",");
-                sb.Append("\"MinObservedLumen\":" + JsonConvert.SerializeObject(room.MinObservedLumen) + ",");
-                sb.Append("\"MaxLumen\":" + JsonConvert.SerializeObject(room.MaxLumen) + ",");
+                sb.Append("\"AverageLux\":" + JsonConvert.SerializeObject(room.AverageLux) + ",");
+                sb.Append("\"MaxObservedLux\":" + JsonConvert.SerializeObject(room.MaxObservedLux) + ",");
+                sb.Append("\"MinObservedLux\":" + JsonConvert.SerializeObject(room.MinObservedLux) + ",");
+                sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(room.MaxLux) + ",");
 
                 sb.Append("\"AverageHardwareConsumption\":" + JsonConvert.SerializeObject(room.AverageHardwareConsumption) + ",");
                 sb.Append("\"MaxObservedHardwareConsumption\":" + JsonConvert.SerializeObject(room.MaxObservedHardwareConsumption) + ",");

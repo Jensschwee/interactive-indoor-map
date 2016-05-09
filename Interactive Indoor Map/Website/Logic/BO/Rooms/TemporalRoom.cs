@@ -22,9 +22,9 @@ namespace Website.Logic.BO.Rooms
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
 
-        public double AverageLumen { get; set; }
-        public double MaxObservedLumen { get; set; }
-        public double MinObservedLumen { get; set; }
+        public double AverageLux { get; set; }
+        public double MaxObservedLux { get; set; }
+        public double MinObservedLux { get; set; }
 
         public double AverageHardwareConsumption { get; set; }
         public double MaxObservedHardwareConsumption { get; set; }
@@ -83,8 +83,8 @@ namespace Website.Logic.BO.Rooms
                 temporalRoom.MinCO2 = room.MinCO2;
                 temporalRoom.MinOtherConsumption = room.MinOtherConsumption;
                 temporalRoom.MaxOtherConsumption = room.MaxOtherConsumption;
-                temporalRoom.MaxLumen = room.MaxLumen;
-                temporalRoom.MaxLumen = room.MaxLumen;
+                temporalRoom.MaxLux = room.MaxLux;
+                temporalRoom.MaxLux = room.MaxLux;
 
                 temporalRoom.MaxHardwareConsumption = room.MaxHardwareConsumption;
                 temporalRoom.MinHardwareConsumption = room.MinHardwareConsumption;
@@ -104,7 +104,7 @@ namespace Website.Logic.BO.Rooms
                 temporalRoom.MaxWifiClients = room.MaxWifiClients;
                 temporalRoom.MinWifiClients = room.MinWifiClients;
 
-                temporalRoom.MinLumen = room.MinLumen;
+                temporalRoom.MinLux = room.MinLux;
 
                 return temporalRoom;
         }

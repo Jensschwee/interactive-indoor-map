@@ -49,11 +49,11 @@ namespace Website.Logic.BO
                     .Sum(room => room.MinCO2) / Convert.ToDouble(NumberOfLiveRoom));
 
         [NotMapped]
-        public double MaxLumen => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
+        public double MaxLux => (Rooms.Where(room => room.GetType() == typeof(LiveRoom))
                     .Cast<LiveRoom>()
-                    .Sum(room => room.MaxLumen) / Convert.ToDouble(NumberOfLiveRoom));
+                    .Sum(room => room.MaxLux) / Convert.ToDouble(NumberOfLiveRoom));
 
-        public double MinLumen = 0;
+        public double MinLux = 0;
 
         public double MaxHardwareConsumption { get; set; }
         public double MinHardwareConsumption = 0;

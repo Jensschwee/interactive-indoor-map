@@ -129,7 +129,7 @@ function drawSelectedRoomInfoBox() {
             Temperature: 0,
             CO2: 0,
             Light: 0,
-            Lumen: 0,
+            Lux: 0,
             TotalPowerConsumption: 0,
             HardwareConsumption: 0,
             LightConsumption: 0,
@@ -156,7 +156,7 @@ function drawSelectedRoomInfoBox() {
             }
 
             roomInfo.CO2 += room[0].properties.CO2 / roomArray.length;
-            roomInfo.Lumen += room[0].properties.Lumen / roomArray.length;
+            roomInfo.Lux += room[0].properties.Lux / roomArray.length;
             roomInfo.TotalPowerConsumption += room[0].properties.TotalPowerConsumption;
             roomInfo.HardwareConsumption += room[0].properties.HardwareConsumption;
             roomInfo.LightConsumption += room[0].properties.LightConsumption;
@@ -187,10 +187,10 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lumen') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + ' </td><td> ' + ((sensorData.AverageLight)*100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '</td></tr>';
+    if (findIndexOfView('Lux') !== notContained) {
+        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + ' </td><td> ' + ((sensorData.AverageLight) * 100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '</td></tr>';
 
-        html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLumen.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLumen.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLumen.toFixed(0) + ' lx </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLux.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
@@ -248,7 +248,7 @@ function getLiveSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.CO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lumen') !== notContained) {
+    if (findIndexOfView('Lux') !== notContained) {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '</td></tr>';
         } else {
@@ -259,7 +259,7 @@ function getLiveSensorValuesInfoBox(sensorData) {
                 html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> Off</td></tr>';
             }
         }
-        html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.Lumen.toFixed(0) + ' lx </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.Lux.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
