@@ -25,16 +25,16 @@ namespace Website.Logic.BO
         public double NumberOfRooms => Floors.Sum(floor => floor.Rooms.Count);
 
         [NotMapped]
-        public double NumberOfLiveRoom => Floors.Sum(floor => floor.Rooms.Count(room => room.GetType() == typeof(LiveRoom)));
+        public double NumberOfSensorRooms => Floors.Sum(floor => floor.NumberOfLiveRoom);
 
         [NotMapped]
-        public double MaxTemperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxTemperature)) / NumberOfLiveRoom);
+        public double MaxTemperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxTemperature)) / NumberOfSensorRooms);
 
         [NotMapped]
-        public double MaxCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxCO2)) / NumberOfLiveRoom);
+        public double MaxCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxCO2)) / NumberOfSensorRooms);
         
         [NotMapped]
-        public double MaxLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxLux)) / NumberOfLiveRoom);
+        public double MaxLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxLux)) / NumberOfSensorRooms);
         
         [NotMapped]
         public double MaxHardwareConsumption => Floors.Sum(floor => floor.MaxHardwareConsumption);

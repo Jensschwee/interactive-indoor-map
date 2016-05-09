@@ -11,16 +11,16 @@ namespace Website.Logic.BO.Buildings
     public class LiveBuilding : Building
     {
         [NotMapped]
-        public double Temperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Temperature)) / NumberOfLiveRoom);
+        public double Temperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Temperature)) / NumberOfSensorRooms);
 
         [NotMapped]
-        public double CO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.CO2)) / NumberOfLiveRoom);
+        public double CO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.CO2)) / NumberOfSensorRooms);
 
         [NotMapped]
         public int Light => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.Light);
 
         [NotMapped]
-        public double Lux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Lux)) / NumberOfLiveRoom);
+        public double Lux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.Lux)) / NumberOfSensorRooms);
 
         [NotMapped]
         public double HardwareConsumption => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.HardwareConsumption);
@@ -44,7 +44,7 @@ namespace Website.Logic.BO.Buildings
         public int Occupants { get; set; }
 
         [NotMapped]
-        public int WifiClients => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.WifiClients)));
+        public int WifiClients => Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.WifiClients));
 
         [NotMapped]
         public double HotWaterConsumption => Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>().Sum(floor => floor.HotWaterConsumption);
