@@ -23,7 +23,7 @@
         infoBox.update();
     }
 
-    if (buildingButton.state('detoggled'))
+    if (buildingButton._currentState.stateName === "toggled")
         buildingButton.button.click();
 
     drawRoomInfo();

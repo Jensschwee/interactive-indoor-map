@@ -401,10 +401,10 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     }
 
     if (findIndexOfFloorView('WaterConsumption') !== notContained) {
-        if (sensorData.hasOwnProperty("ColdWaterConsumption")) {
+        if (sensorData.hasOwnProperty("MinObservedColdWaterConsumption")) {
             html += '<tr><td class="tg-yw4l"><b>Cold Water Consumption</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedColdWaterConsumption.toFixed(0) + ' m<sup>3</sup></td><td class="tg-yw4l"> ' + sensorData.AverageColdWaterConsumption.toFixed(0) + ' m<sup>3</sup></td><td class="tg-yw4l"> ' + sensorData.MaxObservedColdWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr>';
         }
-        if (sensorData.hasOwnProperty("HotWaterConsumption")) {
+        if (sensorData.hasOwnProperty("MinObservedHotWaterConsumption")) {
             html += '<tr><td class="tg-yw4l"><b>Hot Water Consumption</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedHotWaterConsumption.toFixed(0) + ' m<sup>3</sup></td><td class="tg-yw4l"> ' + sensorData.AverageHotWaterConsumption.toFixed(0) + ' m<sup>3</sup></td><td class="tg-yw4l"> ' + sensorData.MaxObservedHotWaterConsumption.toFixed(0) + ' m<sup>3</sup></td></tr>';
         }
     }
