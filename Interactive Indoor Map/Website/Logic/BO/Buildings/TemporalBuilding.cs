@@ -36,7 +36,7 @@ namespace Website.Logic.BO.Buildings
 
         public double AverageLightConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.AverageLightConsumption);
         public double MaxObservedLightConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.MaxObservedLightConsumption);
-        public double MinObservedLightConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.MinObservedTemperature);
+        public double MinObservedLightConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.MinObservedLightConsumption);
 
         public double AverageVentilationConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.AverageVentilationConsumption);
         public double MaxObservedVentilationConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.MaxObservedVentilationConsumption);

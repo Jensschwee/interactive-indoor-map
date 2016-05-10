@@ -94,7 +94,7 @@ namespace Website.Logic.Helpers
                     readings2[1] += reading[j].Readings[reading[j].Readings.Count - 1][1];
                 }
 
-                temporalSummary.MeanValue = (readings2[1] - readings1[1]) / (timeSpan.Value.Hours);
+                temporalSummary.MeanValue = (readings2[1] - readings1[1]) / (timeSpan.Value.TotalHours);
                 #endregion
                 for (int i = 0; i < reading[0].Readings.Count - 1; i++)
                 {
