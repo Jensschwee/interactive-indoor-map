@@ -38,4 +38,10 @@ function TemporalUpdater() {
     var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
 
     PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, fromDate, toDate, onSuccess);
+
+    if (buildingButton._currentState.stateName === "toggled") {
+        drawBuildingInfoBox();
+    } else {
+        drawFloorInfoBox(currentFloorLevel);
+    }
 }
