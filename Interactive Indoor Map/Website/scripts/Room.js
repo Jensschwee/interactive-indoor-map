@@ -237,7 +237,7 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
 
 function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
     //calc the hight for the min line
-    var roomHeightMin = ((roomObservedMin - roomMin) / (roomMax - roomMin));
+    var roomHeightMin = (1-(roomObservedMin - roomMin) / (roomMax - roomMin));
     if (roomHeightMin < 0) {
         roomHeightMin = 0;
     }
@@ -246,7 +246,7 @@ function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, r
     }
 
     //calc the hight for the min line
-    var roomHeightMax = ((roomObservedMax - roomMin) / (roomMax - roomMin));
+    var roomHeightMax = (1-(roomObservedMax - roomMin) / (roomMax - roomMin));
 
     if (roomHeightMax < 0) {
         roomHeightMax = 0;
