@@ -12,17 +12,15 @@ namespace Website.Logic.Helpers
             return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(msSince1970).ToLocalTime();
         }
 
-        public DateTime ConvertToLaDate(DateTime time)
+        public DateTime ConvertToLADate(DateTime time)
         {
-            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
-            TimeZoneInfo timeZoneCTE = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
+            TimeZoneInfo timeZonePST = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+            TimeZoneInfo timeZoneCET = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
 
+            TimeSpan timeSpanPSTMinusUTC = timeZonePST.GetUtcOffset(time);
+            TimeSpan timeSpanCETMinusUTC = timeZoneCET.GetUtcOffset(DateTime.Now);
 
-            TimeSpan newDateTime = timeZoneInfo.GetUtcOffset(time);
-
-            TimeSpan timeSpan = timeZoneCTE.GetUtcOffset(DateTime.Now);
-
-            return time.AddHours(newDateTime.Hours).AddHours(-timeSpan.Hours);
+            return time.AddHours(timeSpanPSTMinusUTC.Hours).AddHours(-timeSpanCETMinusUTC.Hours);
         }
     }
 }

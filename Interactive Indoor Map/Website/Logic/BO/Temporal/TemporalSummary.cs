@@ -8,11 +8,7 @@ namespace Website.Logic.BO.Utility
     public class TemporalSummary
     {
         public double MaxValue { get; set; }
-
         public double MinValue { get; set; }
-
         public double MeanValue { get; set; }
-
-
     }
 }

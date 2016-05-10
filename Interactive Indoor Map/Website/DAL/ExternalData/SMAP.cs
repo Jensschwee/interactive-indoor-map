@@ -71,8 +71,8 @@ namespace Website.DAL.ExternalData
         {
             if (endpoints.Any())
             {
-                toDate = dateConverter.ConvertToLaDate(toDate);
-                fromDate = dateConverter.ConvertToLaDate(fromDate);
+                toDate = dateConverter.ConvertToLADate(toDate);
+                fromDate = dateConverter.ConvertToLADate(fromDate);
 
                 StringBuilder sb = new StringBuilder();
                 sb.Append("select data in (");
@@ -94,8 +94,8 @@ namespace Website.DAL.ExternalData
         public SMapSensorReading GetHistoricSensorValue(string endpoints, DateTime fromDate, DateTime toDate)
         {
 
-            fromDate = dateConverter.ConvertToLaDate(fromDate);
-            toDate = dateConverter.ConvertToLaDate(toDate);
+            fromDate = dateConverter.ConvertToLADate(fromDate);
+            toDate = dateConverter.ConvertToLADate(toDate);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("select data in (");

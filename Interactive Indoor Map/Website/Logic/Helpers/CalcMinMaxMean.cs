@@ -9,6 +9,7 @@ namespace Website.Logic.Helpers
     public class CalcMinMaxMean
     {
         private DateConverter dateConverter;
+
         public CalcMinMaxMean()
         {
             dateConverter = new DateConverter();
@@ -65,7 +66,7 @@ namespace Website.Logic.Helpers
             return temporalSummary;
         }
 
-        public TemporalSummary CalcSMapMinMaxMeanHouerliy(List<SMapSensorReading> reading)
+        public TemporalSummary CalcSMapMinMaxMeanHourly(List<SMapSensorReading> reading)
         {
             TemporalSummary temporalSummary = new TemporalSummary
             {
@@ -175,9 +176,6 @@ namespace Website.Logic.Helpers
                             temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
 
                         }
-
-
-
                     }
                 }
             }
