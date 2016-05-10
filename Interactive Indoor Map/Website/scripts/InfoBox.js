@@ -354,7 +354,7 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     var html = "<br/>";
     if (ActiveViews.length !== 0) {
         html += "<br/>";
-        html += '<tr><th>Sensor Type</th><th>Min</th><th>Avg</th><th>Max</th></tr>';
+        html += '<tr><th>Sensor Type</th><th>Minimum</th><th>Average</th><th>Maximum</th></tr>';
 
     }
 
@@ -365,13 +365,13 @@ function getTemporalSensorValuesInfoBox(sensorData) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
     }
     if (findIndexOfView('Lux') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + ' </td><td> ' + ((sensorData.AverageLight) * 100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + '%</td><td> ' + ((sensorData.AverageLight) * 100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '00%</td></tr>';
 
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLux.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion)*100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '%</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion)*100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '00%</td></tr>';
     }
 
     if (findIndexOfView('WifiClients') !== notContained) {
