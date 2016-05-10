@@ -74,7 +74,7 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 groundFloorButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
-                if (buildingButton.state('detoggled'))
+                if (buildingButton._currentState.stateName === "toggled")
                     buildingButton.button.click();
             }
         }]
@@ -96,7 +96,7 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
-                if (buildingButton.state('detoggled'))
+                if (buildingButton._currentState.stateName === "toggled")
                     buildingButton.button.click();
             }
         }]
@@ -120,7 +120,7 @@ function CreateSpatialButtons() {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
-                if (buildingButton.state('detoggled'))
+                if (buildingButton._currentState.stateName === "toggled")
                     buildingButton.button.click();
             }
         }]
@@ -131,27 +131,25 @@ function CreateSpatialButtons() {
         id: 'easy-button',
         position: 'bottomright',
         states: [{
-            stateName: 'toggled',
+            stateName: 'detoggled',
             icon: buildingIcon,
             title: 'Building',
             onClick: function (btn) {
                 drawBuildingInfoBox();
                 btn.button.style.backgroundColor = '#8c8c8c';
-                btn.state('detoggled');
+                btn.state('toggled');
             }
         }, {
-            stateName: 'detoggled',
+            stateName: 'toggled',
             icon: buildingIcon,
             title: 'Building',
             onClick: function (btn) {
                 drawFloorInfoBox();
                 btn.button.style.backgroundColor = 'white';
-                btn.state('toggled');
+                btn.state('detoggled');
             }
         }]
     }).addTo(geoMap);
-
-    
 }
 
 function CreateTemporalButtons() {
@@ -161,23 +159,23 @@ function CreateTemporalButtons() {
         id: 'easy-button',
         position: 'bottomright',
         states: [{
-            stateName: 'toggled',
+            stateName: 'detoggled',
             icon: temporalIcon,
             title: 'TemporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
-                btn.state('detoggled');
+                btn.state('toggled');
                 temporalActive = true;
             }
         }, {
-            stateName: 'detoggled',
+            stateName: 'toggled',
             icon: temporalIcon,
             title: 'TemporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = 'white';
                $("#DRP").hide();
-               btn.state('toggled');
+               btn.state('detoggled');
                temporalActive = false;
             }
         }]
@@ -212,7 +210,7 @@ function CreateViewButtons() {
             {
                 icon: temperatureIcon,
                 title: 'Temperature',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -233,12 +231,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = TemperatureColor;
                     ActiveViews.push(temperatureObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: temperatureIcon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'Temperature',
                 onClick: function (btn) {
                     var index = findIndexOfView("Temperature");
@@ -247,7 +245,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -261,7 +259,7 @@ function CreateViewButtons() {
         states: [
             {
                 icon: co2Icon,
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 title: 'CO2',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
@@ -281,12 +279,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = CO2Color;
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: co2Icon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'CO2',
                 onClick: function (btn) {
                     var index = findIndexOfView("CO2");
@@ -295,7 +293,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -310,7 +308,7 @@ function CreateViewButtons() {
             {
                 icon: lightIcon,
                 title: 'Lux',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -328,14 +326,14 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = LightColor;
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
 
                 }
             }, {
                 icon: lightIcon,
                 title: 'Lux',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("Lux");
                     if (index !== notContained) {
@@ -343,7 +341,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -358,7 +356,7 @@ function CreateViewButtons() {
             {
                 icon: motionIcon,
                 title: 'Motion Detection',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -375,20 +373,20 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = MotionDetectionColor;
                     ActiveViews.push(motionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: motionIcon,
                 title: 'Motion Detection',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("Motion");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -403,7 +401,7 @@ function CreateViewButtons() {
             {
                 icon: wifiClientsIcon,
 
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 title: 'Wifi Clients',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
@@ -422,12 +420,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = WifiClientsColor;
                     ActiveViews.push(wifiClientsObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: wifiClientsIcon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'Wifi Clients',
                 onClick: function (btn) {
                     var index = findIndexOfView("WifiClients");
@@ -435,7 +433,7 @@ function CreateViewButtons() {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
 
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         btn.button.style.backgroundColor = 'white';
                         infoboxUpdate();
                     }
@@ -451,7 +449,7 @@ function CreateViewButtons() {
             {
                 icon: occupantsIcon,
                 title: 'Occupants',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -469,12 +467,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = OccupantsColor;
                     ActiveViews.push(occupantsObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: occupantsIcon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'Occupants',
                 onClick: function (btn) {
                     var index = findIndexOfView("Occupants");
@@ -483,7 +481,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -498,7 +496,7 @@ function CreateViewButtons() {
             {
                 icon: totalConsumptionIcon,
                 title: 'Total Power Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -518,19 +516,19 @@ function CreateViewButtons() {
                     ActiveViews.push(totalPowerObj);
                     reDrawItemsOnMap();
                     infoboxUpdate();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                 }
             }, {
                 icon: totalConsumptionIcon,
                 title: 'Total Power Consumption',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("TotalPowerConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -545,7 +543,7 @@ function CreateViewButtons() {
             {
                 icon: hardwareConsumptionIcon,
                 title: 'Hardware Power Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -565,13 +563,13 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = HardwarePowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(hardwareConsumptionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: hardwareConsumptionIcon,
                 title: 'Hardware Power Consumption',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("HardwareConsumption");
                     if (index !== notContained) {
@@ -579,7 +577,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -594,7 +592,7 @@ function CreateViewButtons() {
             {
                 icon: lightConsumptionIcon,
                 title: 'Light Power Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -614,13 +612,13 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = LightPowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(lightConsumptionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: lightConsumptionIcon,
                 title: 'Light Power Consumption',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("LightConsumption");
                     if (index !== notContained) {
@@ -628,7 +626,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -643,7 +641,7 @@ function CreateViewButtons() {
             {
                 icon: ventilationConsumptonIcon,
                 title: 'Ventilation Power Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -662,12 +660,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = VentilationPowerConsumptionColor; //'#d15258'
                     ActiveViews.push(ventilationConsumptionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: ventilationConsumptonIcon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'Ventilation Power Consumption',
                 onClick: function (btn) {
                     var index = findIndexOfView("VentilationConsumption");
@@ -676,7 +674,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -691,7 +689,7 @@ function CreateViewButtons() {
             {
                 icon: otherConsumptionIcon,
                 title: 'Other Power Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
@@ -710,13 +708,13 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = OtherPowerConsumptionColor; //'#ff8289'
                     ActiveViews.push(otherConsumptionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: otherConsumptionIcon,
                 title: 'Other Power Consumption',
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 onClick: function (btn) {
                     var index = findIndexOfView("OtherConsumption");
                     if (index !== notContained) {
@@ -724,7 +722,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
 
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }
@@ -739,7 +737,7 @@ function CreateViewButtons() {
             {
                 icon: waterConsumptionIcon,
                 title: 'Water Consumption',
-                stateName: 'toggled',
+                stateName: 'detoggled',
                 onClick: function (btn) {
                     var waterConsumptionObj = {
                         name: "WaterConsumption",
@@ -754,12 +752,12 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
                     ActiveFloorViews.push(waterConsumptionObj);
                     reDrawItemsOnMap();
-                    btn.state('detoggled');
+                    btn.state('toggled');
                     infoboxUpdate();
                 }
             }, {
                 icon: waterConsumptionIcon,
-                stateName: 'detoggled',
+                stateName: 'toggled',
                 title: 'Water Consumption',
                 onClick: function (btn) {
                     var index = findIndexOfFloorView("WaterConsumption");
@@ -767,7 +765,7 @@ function CreateViewButtons() {
                         ActiveFloorViews.splice(index, 1);
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
-                        btn.state('toggled');
+                        btn.state('detoggled');
                         infoboxUpdate();
                     }
                 }

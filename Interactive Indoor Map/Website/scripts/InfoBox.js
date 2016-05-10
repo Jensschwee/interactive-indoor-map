@@ -22,8 +22,7 @@ function drawBuildingInfoBox() {
             : '') + '</div>';
     };
     var buildingInfoBox = function () {
-        if (!temporalActive)
-            {
+        if (!temporalActive) {
             PageMethods.DrawBuildingInfoBox(onSuccess);
         } else {
             var dateResult = document.getElementById("daterangepicker").value;
@@ -355,7 +354,7 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     var html = "<br/>";
     if (ActiveViews.length !== 0) {
         html += "<br/>";
-        html += '<tr><th>Sensor Name</th><th>Min</th><th>Avg</th><th>Max</th></tr>';
+        html += '<tr><th>Sensor Type</th><th>Min</th><th>Avg</th><th>Max</th></tr>';
 
     }
 
