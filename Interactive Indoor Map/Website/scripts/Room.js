@@ -4,27 +4,30 @@
     var numberOfLayers = roomLayers.length;
     for (var k = 0; k < numberOfLayers; k++) {
         geoMap.removeLayer(roomLayers.pop());
-
     }
     if (linesOnMap != null) {
         geoMap.removeLayer(linesOnMap);
+    }
+    if (linesMinMaxOnMap != null) {
+        geoMap.removeLayer(linesMinMaxOnMap);
     }
 
     //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     var jsonColumn;
     var jsonMinMaxLines;
+    var featuresLines = new Array();
+    jsonMinMaxLines = {
+        type: "FeatureCollection",
+        features: featuresLines
+    };
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
         jsonColumn = {
             type: "FeatureCollection",
             features: features
         };
-        var featuresLines = new Array();
-        jsonMinMaxLines = {
-            type: "FeatureCollection",
-            features: featuresLines
-        };
+        
         $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
@@ -185,7 +188,7 @@
             }
         }).addTo(geoMap).bringToBack();
         if (temporalActive) {
-            L.geoJson(jsonMinMaxLines, {
+            linesMinMaxOnMap =  L.geoJson(jsonMinMaxLines, {
                 style: {
                     //Backgrund color
                     //border color
