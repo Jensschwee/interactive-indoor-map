@@ -352,7 +352,7 @@ function drawSelectedRoomInfoBox() {
 function getTemporalSensorValuesInfoBox(sensorData) {
     var notContained = -1;
     var html = "<br/>";
-    if (ActiveViews.length !== 0) {
+    if (ActiveViews.length !== 0 || ActiveFloorViews.length !== 0) {
         html += "<br/>";
         html += '<tr><th>Sensor Type</th><th>Minimum</th><th>Average</th><th>Maximum</th></tr>';
 
