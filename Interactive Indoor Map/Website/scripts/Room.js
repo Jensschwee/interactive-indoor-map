@@ -172,6 +172,7 @@
                 features2.push(feature2);
             }
         });
+        console.log(jsonLines);
         linesOnMap = L.geoJson(jsonLines, {
             style: {
                 //Backgrund color
@@ -185,8 +186,19 @@
             }
         }).addTo(geoMap).bringToBack();
         if (temporalActive) {
-            //console.log(jsonMinMaxLines);
-            L.geoJson(jsonMinMaxLines).addTo(geoMap).bringToFront();
+            console.log(jsonMinMaxLines);
+            L.geoJson(jsonMinMaxLines, {
+                style: {
+                    //Backgrund color
+                    //border color
+                    color: "black",//"#737373",
+                    //Border thickness
+                    opacity: "none",
+                    fillOpacity: "none",
+                    weight: "1px"
+                    //,dashArray:"12,6"
+                }
+            }).addTo(geoMap).bringToFront();
         }
     }
 
@@ -225,7 +237,7 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
     getRoomsAndDrawBackground();
 }
 
-function drawMinMaxObservedLines(featuresLines, columNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
+function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
     //calc the hight for the min line
     var roomHeightMin = (1 - (roomObservedMin - roomMin) / (roomMax - roomMin));
     if (roomHeightMin < 0) {
@@ -245,15 +257,13 @@ function drawMinMaxObservedLines(featuresLines, columNumber, roomObservedMin, ro
         roomHeightMax = 1;
     }
 
-    drawlines = function (value, columNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
-        var coordinate = new Array();
+    drawlines = function (value, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
         var coordinates = new Array();
 
-        coordinate.push(coordinates);
         var geometry =
             {
                 type: "LineString",
-                coordinates: coordinate
+                coordinates: coordinates
             };
         var feature = {
             type: "Feature",
@@ -261,19 +271,19 @@ function drawMinMaxObservedLines(featuresLines, columNumber, roomObservedMin, ro
         }
 
         var point = [];
-        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
-        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columNumber) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
         coordinates.push(point);
 
         point = [];
-        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columNumber + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
-        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columNumber + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
         coordinates.push(point);
 
         featuresLines.push(feature);
     }
-    drawlines(roomHeightMin, columNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
-    drawlines(roomHeightMax, columNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+    drawlines(roomHeightMin, columnNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+    drawlines(roomHeightMax, columnNumber, bottomRightVertex, bottomRightVertex, topLeftVertex, topRightVertex);
 }
 
 function getRoomsAndDrawRooms() {
