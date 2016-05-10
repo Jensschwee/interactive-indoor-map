@@ -10,6 +10,7 @@ var roomLayers = [];
 var ActiveViews = [];
 var ActiveFloorViews = [];
 var linesOnMap = null;
+var linesMinMaxOnMap = null;
 var temporalActive = false;
 
 
