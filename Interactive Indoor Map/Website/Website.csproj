@@ -221,6 +221,7 @@
     <Compile Include="DAL\Persistence\BuildingDAL.cs" />
     <Compile Include="DAL\Persistence\BuildingDbContext.cs" />
     <Compile Include="Logic\Domain\SmapManager.cs" />
+    <Compile Include="Logic\Helpers\TemporalValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

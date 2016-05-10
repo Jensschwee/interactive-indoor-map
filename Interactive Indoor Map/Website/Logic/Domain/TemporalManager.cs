@@ -6,6 +6,7 @@ using Website.Logic.BO;
 using Website.Logic.BO.Buildings;
 using Website.Logic.BO.Floors;
 using Website.Logic.BO.Rooms;
+using Website.Logic.Helpers;
 
 namespace Website.Logic.Domain
 {
@@ -84,6 +85,8 @@ namespace Website.Logic.Domain
            DateTime timeTo)
         {
             TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());
+            timeFrom = TemporalValidator.ValidateDate(timeFrom);
+            timeTo = TemporalValidator.ValidateDate(timeTo);
             sMapManagerTemporal.TemporalUpdateAll(floor, timeFrom, timeTo);
             return jsonConverterTemporal.GetDrawableFloor(floor);
         }
@@ -92,6 +95,8 @@ namespace Website.Logic.Domain
             DateTime timeTo)
         {
             TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());
+            timeFrom = TemporalValidator.ValidateDate(timeFrom);
+            timeTo = TemporalValidator.ValidateDate(timeTo);
             sMapManagerTemporal.TemporalUpdateAll(floor, timeFrom, timeTo);
             return jsonConverterTemporal.ConvertFloor(floor);
 
@@ -101,10 +106,11 @@ namespace Website.Logic.Domain
           DateTime timeTo)
         {
             TemporalBuilding building = GetTemporalBuilding(liveBuilding);
+            timeFrom = TemporalValidator.ValidateDate(timeFrom);
+            timeTo = TemporalValidator.ValidateDate(timeTo);
             sMapManagerTemporal.TemporalUpdateAll(building, timeFrom, timeTo);
 
             return jsonConverterTemporal.ConvertBuilding(building);
         }
-
     }
 }
