@@ -172,7 +172,6 @@
                 features2.push(feature2);
             }
         });
-        console.log(jsonLines);
         linesOnMap = L.geoJson(jsonLines, {
             style: {
                 //Backgrund color
@@ -186,7 +185,6 @@
             }
         }).addTo(geoMap).bringToBack();
         if (temporalActive) {
-            console.log(jsonMinMaxLines);
             L.geoJson(jsonMinMaxLines, {
                 style: {
                     //Backgrund color
@@ -269,12 +267,6 @@ function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, r
             type: "Feature",
             geometry: geometry
         }
-        //console.log("topLeftVertex: " +  topLeftVertex[0]);
-        //console.log("bottomLeftVertex: " + bottomLeftVertex[0]);
-        console.log("value: " + value);
-        //console.log((topLeftVertex[0] - bottomLeftVertex[0]));
-        //console.log(((topLeftVertex[0] - bottomLeftVertex[0]) * value));
-        //console.log(bottomLeftVertex[0] + ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
 
         var point = [];
         point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
