@@ -11,7 +11,7 @@ using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
 {
-    public class LiveJsonConverter
+    public class LiveJsonConverter : JsonConverter
     {
         public string ConvertBuilding()
         {
@@ -21,12 +21,9 @@ namespace Website.Logic.Domain
         public string ConvertBuilding(LiveBuilding building)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("{");
-
-            sb.Append("\"Name\":\"" + building.Name + "\",");
-            sb.Append("\"SurfaceArea\":" + building.SurfaceArea + ",");
-
-            sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(building.NumberOfSensorRooms) + ",");
+            WriteFirstAttribute(sb, "Name", building.Name);
+            WriteAttribute(sb, "SurfaceArea", building.SurfaceArea);
+            WriteAttribute(sb, "NumberOfRooms", building.NumberOfSensorRooms);
 
             sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(building.Temperature) + ",");
             sb.Append("\"CO2\":" + JsonConvert.SerializeObject(building.CO2) + ",");

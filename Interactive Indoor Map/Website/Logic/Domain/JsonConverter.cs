@@ -44,7 +44,7 @@ namespace Website.Logic.Domain
 
         public void WriteGeoJsonFooter(StringBuilder sb)
         {
-            sb.Append("]}");
+            sb.Append("]}");    
         }
 
         public void WriteGeoJsonPropertiesHeader(StringBuilder sb)
