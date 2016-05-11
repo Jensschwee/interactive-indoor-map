@@ -216,7 +216,7 @@
     <Compile Include="Logic\Domain\RealTimeUpdater.cs" />
     <Compile Include="Logic\Domain\TemporalSMapManager.cs" />
     <Compile Include="Logic\Domain\TemporalManager.cs" />
-    <Compile Include="Logic\Helpers\CalcMinMaxMean.cs" />
+    <Compile Include="Logic\Helpers\CalculateTemporalSummary.cs" />
     <Compile Include="Logic\Helpers\DateConverter.cs" />
     <Compile Include="DAL\Persistence\BuildingDAL.cs" />
     <Compile Include="DAL\Persistence\BuildingDbContext.cs" />
