@@ -73,21 +73,29 @@
                 sensorValue = value.properties[ActiveViews[j].average];
                 drawMinMaxObservedLines(featuresLines, j, value.properties[ActiveViews[j].minObserved], value.properties[ActiveViews[j].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
+            var roomColumnWidthX = ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length);
+            var roomColumnWidthY = ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length);
+
+            var roomBottomLeftColumnOffsetX = roomColumnWidthX * j;
+            var roomBottomLeftColumnOffsetY = roomColumnWidthY * j;
 
             var point = [];
-            //Col A X
-            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * j);
-            //Col A y
-            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * j);
+            //Column bottomLeftVertex X
+            point.push(bottomLeftVertex[0] + roomBottomLeftColumnOffsetX);
+            //Column bottomLeftVertex Y
+            point.push(bottomLeftVertex[1] + roomBottomLeftColumnOffsetY);
 
             coordinates.push(point);
 
             point = [];
-            //Col D X
-            point.push(bottomLeftVertex[0] + ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length) * (j + 1));
 
-            //Col D y
-            point.push(bottomLeftVertex[1] + ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length) * (j + 1));
+            //Column bottomRightVertex X
+            var roomBottomRightColumnOffsetX = roomColumnWidthX * (j+1);
+            var roomBottomRightColumnOffsetY = roomColumnWidthY * (j+1);
+            point.push(bottomLeftVertex[0] + roomBottomRightColumnOffsetX);
+
+            //Column bottomRightVertex Y
+            point.push(bottomLeftVertex[1] + roomBottomRightColumnOffsetY);
 
             coordinates.push(point);
 
@@ -103,20 +111,27 @@
                 roomHeight = 1;
             }
 
-            point = [];
-            //Col C X
-            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
+            var roomHeightX = ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight);
+            var roomHeightY = ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight);
 
-            //Col C y
-            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
+            var roomTopRightColumnOffsetX = roomColumnWidthX * (j + 1);
+            var roomTopRightColumnOffsetY = roomColumnWidthY * (j + 1);
+
+            point = [];
+            //Column TopRightVertex X
+            point.push(topLeftVertex[0] + roomTopRightColumnOffsetX - roomHeightX);
+            //Column TopRightVertex Y
+            point.push(topLeftVertex[1] + roomTopRightColumnOffsetY - roomHeightY);
             coordinates.push(point);
 
             point = [];
-            //Col B X
-            point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (j) - ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight));
+            var roomTopLeftColumnOffsetX = roomColumnWidthX * j;
+            var roomTopLeftColumnOffsetY = roomColumnWidthY * j;
 
-            //Col B y
-            point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (j) - ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight));
+            //Column TopLeftVertex X
+            point.push(topLeftVertex[0] + roomTopLeftColumnOffsetX - roomHeightX);
+            //Column TopLeftVertex Y
+            point.push(topLeftVertex[1] + roomTopLeftColumnOffsetY - roomHeightY);
 
             coordinates.push(point);
 
