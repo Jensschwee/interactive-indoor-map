@@ -25,29 +25,27 @@ namespace Website.Logic.Domain
             WriteAttribute(sb, "SurfaceArea", building.SurfaceArea);
             WriteAttribute(sb, "NumberOfRooms", building.NumberOfSensorRooms);
 
-            sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(building.Temperature) + ",");
-            sb.Append("\"CO2\":" + JsonConvert.SerializeObject(building.CO2) + ",");
-            sb.Append("\"Light\":" + JsonConvert.SerializeObject(building.Light) + ",");
-            sb.Append("\"Lux\":" + JsonConvert.SerializeObject(building.Lux) + ",");
+            WriteAttribute(sb, "Temperature", building.Temperature);
+            WriteAttribute(sb, "CO2", building.CO2);
+            WriteAttribute(sb, "Light", building.Light);
+            WriteAttribute(sb, "Lux", building.Lux);
 
-            sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(building.HardwareConsumption) + ",");
-            sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(building.LightConsumption) + ",");
-            sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(building.VentilationConsumption) + ",");
-            sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(building.OtherConsumption) + ",");
-            sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(building.TotalPowerConsumption) + ",");
+            WriteAttribute(sb, "HardwareConsumption", building.HardwareConsumption);
+            WriteAttribute(sb, "LightConsumption", building.LightConsumption);
+            WriteAttribute(sb, "VentilationConsumption", building.VentilationConsumption);
+            WriteAttribute(sb, "OtherConsumption", building.OtherConsumption);
+            WriteAttribute(sb, "TotalPowerConsumption", building.TotalPowerConsumption);
 
-            sb.Append("\"ColdWaterConsumption\":" + JsonConvert.SerializeObject(building.ColdWaterConsumption) + ",");
-            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxColdWaterConsumption) + ",");
-            sb.Append("\"HotWaterConsumption\":" + JsonConvert.SerializeObject(building.HotWaterConsumption) + ",");
-            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxHotWaterConsumption) + ",");
+            WriteAttribute(sb, "ColdWaterConsumption", building.ColdWaterConsumption);
+            WriteAttribute(sb, "MaxColdWaterConsumption", building.MaxColdWaterConsumption);
+            WriteAttribute(sb, "HotWaterConsumption", building.HotWaterConsumption);
+            WriteAttribute(sb, "MaxHotWaterConsumption", building.MaxHotWaterConsumption);
 
-            sb.Append("\"Motion\":" + JsonConvert.SerializeObject(building.Motion) + ",");
-            sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.Occupants) + ",");
-            sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(building.MaxOccupants) + ",");
-            sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(building.WifiClients) + ",");
-            sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(building.MaxWifiClients));
-            sb.Append("}");
-
+            WriteAttribute(sb, "Motion", building.Motion);
+            WriteAttribute(sb, "Occupants", building.Occupants);
+            WriteAttribute(sb, "MaxOccupants", building.MaxOccupants);
+            WriteAttribute(sb, "WifiClients", building.WifiClients);
+            WriteLastAttribute(sb, "MaxWifiClients", building.MaxWifiClients);
             return sb.ToString();
         }
 
