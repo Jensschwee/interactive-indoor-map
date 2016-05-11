@@ -3,12 +3,16 @@ var view;
 var currentFloorLevel = 1;
 var roomArray = new Array;
 var colletionOfRoomsOnMap = null;
-var roomForgroundLayer = null;
+var roomForegroundLayer = null;
 var roomBackgroundLayer = null;
 var infoboxUpdate = null;
 var roomLayers = [];
 var ActiveViews = [];
+var ActiveFloorViews = [];
 var linesOnMap = null;
+var linesMinMaxOnMap = null;
+var temporalActive = false;
+
 
 
 function DrawWorldMap() {
@@ -33,16 +37,19 @@ function InitLeafletMap(jsonMap) {
     var geojson = L.geoJson(jsonMap);
     initMapSettings(geojson);
 
-    getRoomsAndDrawBackgrund();
+    getRoomsAndDrawBackground();
     getRoomsAndDrawRoomsWithRoomOverlays();
 
     worldMap.addTo(geoMap);
 
-    createInfoBox();
 
     CreateSpatialButtons();
+    CreateTemporalButtons();
+    TemporalDateRangePicker();
     CreateViewButtons();
-    //addLevel2();
+    buildingButton.button.click();
+
+    createInfoBox();
 }
 
 function initMapSettings(geojson) {

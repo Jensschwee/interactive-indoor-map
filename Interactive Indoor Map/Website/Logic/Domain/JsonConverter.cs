@@ -4,6 +4,9 @@ using System.Text;
 using System.Web;
 using Newtonsoft.Json;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
+using Website.Logic.BO.Floors;
+using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
@@ -12,10 +15,10 @@ namespace Website.Logic.Domain
     {
         public string ConvertBuilding()
         {
-            return ConvertBuilding((Building)HttpContext.Current.Application["Building"]);
+            return ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
         }
 
-        public string ConvertBuilding(Building building)
+        public string ConvertBuilding(LiveBuilding building)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{");
@@ -23,29 +26,29 @@ namespace Website.Logic.Domain
             sb.Append("\"Name\":\"" + building.Name + "\",");
             sb.Append("\"SurfaceArea\":" + building.SurfaceArea + ",");
 
-            sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(building.NumberOfSensorRoom) + ",");
+            sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(building.NumberOfSensorRooms) + ",");
 
             sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(building.Temperature) + ",");
             sb.Append("\"CO2\":" + JsonConvert.SerializeObject(building.CO2) + ",");
             sb.Append("\"Light\":" + JsonConvert.SerializeObject(building.Light) + ",");
-            sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(building.Lumen) + ",");
+            sb.Append("\"Lux\":" + JsonConvert.SerializeObject(building.Lux) + ",");
 
-            sb.Append("\"HardwareConsumption\":" + building.HardwareConsumption + ",");
-            sb.Append("\"LightConsumption\":" + building.LightConsumption + ",");
-            sb.Append("\"VentilationConsumption\":" + building.VentilationConsumption + ",");
-            sb.Append("\"OtherConsumption\":" + building.OtherConsumption + ",");
-            sb.Append("\"TotalPowerConsumption\":" + building.TotalPowerConsumption + ",");
+            sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(building.HardwareConsumption) + ",");
+            sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(building.LightConsumption) + ",");
+            sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(building.VentilationConsumption) + ",");
+            sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(building.OtherConsumption) + ",");
+            sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(building.TotalPowerConsumption) + ",");
 
-            sb.Append("\"ColdWaterConsumption\":" + building.ColdWaterConsumption + ",");
-            sb.Append("\"ColdWaterConsumptionMax\":" + building.ColdWaterConsumptionMax + ",");
-            sb.Append("\"HotWaterConsumption\":" + building.HotWaterConsumption + ",");
-            sb.Append("\"HotWaterConsumptionMax\":" + building.HotWaterConsumptionMax + ",");
+            sb.Append("\"ColdWaterConsumption\":" + JsonConvert.SerializeObject(building.ColdWaterConsumption) + ",");
+            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxColdWaterConsumption) + ",");
+            sb.Append("\"HotWaterConsumption\":" + JsonConvert.SerializeObject(building.HotWaterConsumption) + ",");
+            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(building.MaxHotWaterConsumption) + ",");
 
             sb.Append("\"Motion\":" + JsonConvert.SerializeObject(building.Motion) + ",");
             sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(building.Occupants) + ",");
-            sb.Append("\"OccupantsMax\":" + JsonConvert.SerializeObject(building.OccupantsMax) + ",");
+            sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(building.MaxOccupants) + ",");
             sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(building.WifiClients) + ",");
-            sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(building.WifiClientsMax));
+            sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(building.MaxWifiClients));
             sb.Append("}");
 
             return sb.ToString();
@@ -53,43 +56,43 @@ namespace Website.Logic.Domain
 
         public string ConvertFloors(int floorLevel)
         {
-            return ConvertFloors((Building)HttpContext.Current.Application["Building"], floorLevel);
+            return ConvertFloors((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
         }
 
-        public string ConvertFloors(Building building, int floorLevel)
+        public string ConvertFloors(LiveBuilding building, int floorLevel)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{");
 
-            foreach (var floor in building.Floors)
+            foreach (var floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
                 if (floor.FloorLevel == floorLevel)
                 {
-                    sb.Append("\"FloorName\":\"" + floor.FloorName + "\",");
+                    sb.Append("\"Name\":\"" + floor.FloorName + "\",");
                     sb.Append("\"FloorLevel\":" + floor.FloorLevel + ",");
                     sb.Append("\"SurfaceArea\":" + floor.SurfaceArea + ",");
-                    sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.Rooms.Count(room => room.GetType() == typeof(SensorRoom))) + ",");
+                    sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.NumberOfSensorRooms) + ",");
 
                     sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(floor.Temperature) + ",");
                     sb.Append("\"CO2\":" + JsonConvert.SerializeObject(floor.CO2) + ",");
                     sb.Append("\"Light\":" + JsonConvert.SerializeObject(floor.Light) + ",");
-                    sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(floor.Lumen) + ",");
+                    sb.Append("\"Lux\":" + JsonConvert.SerializeObject(floor.Lux) + ",");
 
-                    sb.Append("\"HardwareConsumption\":" + floor.HardwareConsumption + ",");
-                    sb.Append("\"LightConsumption\":" + floor.LightConsumption + ",");
-                    sb.Append("\"VentilationConsumption\":" + floor.VentilationConsumption + ",");
-                    sb.Append("\"OtherConsumption\":" + floor.OtherConsumption + ",");
-                    sb.Append("\"TotalPowerConsumption\":" + floor.TotalPowerConsumption + ",");
+                    sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(floor.HardwareConsumption) + ",");
+                    sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(floor.LightConsumption) + ",");
+                    sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(floor.VentilationConsumption) + ",");
+                    sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(floor.OtherConsumption) + ",");
+                    sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(floor.TotalPowerConsumption) + ",");
 
-                    sb.Append("\"ColdWaterConsumption\":" + floor.ColdWaterConsumption + ",");
-                    sb.Append("\"ColdWaterConsumptionMax\":" + floor.ColdWaterConsumptionMax + ",");
-                    sb.Append("\"HotWaterConsumption\":" + floor.HotWaterConsumption + ",");
-                    sb.Append("\"HotWaterConsumptionMax\":" + floor.HotWaterConsumptionMax + ",");
+                    sb.Append("\"ColdWaterConsumption\":" + JsonConvert.SerializeObject(floor.ColdWaterConsumption) + ",");
+                    sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(floor.MaxColdWaterConsumption) + ",");
+                    sb.Append("\"HotWaterConsumption\":" + JsonConvert.SerializeObject(floor.HotWaterConsumption) + ",");
+                    sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(floor.MaxHotWaterConsumption) + ",");
 
                     sb.Append("\"Motion\":" + JsonConvert.SerializeObject(floor.Motion) + ",");
                     sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(floor.Occupants) + ",");
                     sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(floor.WifiClients) + ",");
-                    sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(floor.WifiClientsMax));
+                    sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(floor.MaxWifiClients));
                     break;
                 }
             }
@@ -101,18 +104,18 @@ namespace Website.Logic.Domain
 
         public string ConvertRoomsGeoJson(int floorLevel)
         {
-            Building building = (Building)HttpContext.Current.Application["Building"];
+            LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors)
             {
                 if (floor.FloorLevel == floorLevel)
                 {
-                    foreach (Room room in floor.Rooms)
+                    foreach (var room in floor.Rooms)
                     {
-                        if (room.GetType() == typeof(SensorRoom))
+                        if (room.GetType() == typeof(LiveRoom))
                         {
-                            SensorRoom currentRoom = (SensorRoom)room;
+                            LiveRoom currentRoom = (LiveRoom)room;
                             sb.Append("{ \"type\": \"Feature\", \"properties\": {");
                             sb.Append("\"RoomType\":" + JsonConvert.SerializeObject(currentRoom.RoomType.ToString()));
                             sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
@@ -147,23 +150,23 @@ namespace Website.Logic.Domain
 
         public string ConvertRooms(int? floorLevel = null)
         {
-            return ConvertRooms((Building)HttpContext.Current.Application["Building"], floorLevel);
+            return ConvertRooms((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
         }
 
-        public string ConvertRooms(Building building, int? floorLevel = null)
+        public string ConvertRooms(LiveBuilding building, int? floorLevel = null)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
-            foreach (Floor floor in building.Floors)
+            foreach (var floor in building.Floors.Where(floor => floor.GetType() == typeof(LiveFloor)).Cast<LiveFloor>())
             {
                 if (floor.FloorLevel == floorLevel)
                 {
                     foreach (Room room in floor.Rooms)
                     {
-                        SensorRoom currentRoom = null;
-                        if (typeof(SensorRoom) == room.GetType())
+                        LiveRoom currentRoom = null;
+                        if (typeof(LiveRoom) == room.GetType())
                         {
-                            currentRoom = (SensorRoom)room;
+                            currentRoom = (LiveRoom)room;
                         }
                         else
                         {
@@ -172,47 +175,48 @@ namespace Website.Logic.Domain
                         sb.Append("{ \"type\": \"Feature\", \"properties\": {");
                         sb.Append("\"Name\":" + JsonConvert.SerializeObject(room.Name) + ",");
                         sb.Append("\"SurfaceArea\":" + JsonConvert.SerializeObject(currentRoom.SurfaceArea) + ",");
+                        sb.Append("\"Alias\":" + JsonConvert.SerializeObject(currentRoom.Alias) + ",");
 
                         sb.Append("\"Temperature\":" + JsonConvert.SerializeObject(currentRoom.Temperature) + ",");
-                        sb.Append("\"TemperatureMax\":" + JsonConvert.SerializeObject(currentRoom.TemperatureMax) + ",");
-                        sb.Append("\"TemperatureMin\":" + JsonConvert.SerializeObject(currentRoom.TemperatureMin) + ",");
+                        sb.Append("\"MaxTemperature\":" + JsonConvert.SerializeObject(currentRoom.MaxTemperature) + ",");
+                        sb.Append("\"MinTemperature\":" + JsonConvert.SerializeObject(currentRoom.MinTemperature) + ",");
 
                         sb.Append("\"CO2\":" + JsonConvert.SerializeObject(currentRoom.CO2) + ",");
-                        sb.Append("\"CO2Max\":" + JsonConvert.SerializeObject(currentRoom.CO2Max) + ",");
-                        sb.Append("\"CO2Min\":" + JsonConvert.SerializeObject(currentRoom.CO2Min) + ",");
+                        sb.Append("\"MaxCO2\":" + JsonConvert.SerializeObject(currentRoom.MaxCO2) + ",");
+                        sb.Append("\"MinCO2\":" + JsonConvert.SerializeObject(currentRoom.MinCO2) + ",");
 
                         sb.Append("\"Light\":" + JsonConvert.SerializeObject(currentRoom.Light) + ",");
 
-                        sb.Append("\"Lumen\":" + JsonConvert.SerializeObject(currentRoom.Lumen) + ",");
-                        sb.Append("\"LumenMax\":" + JsonConvert.SerializeObject(currentRoom.LumenMax) + ",");
+                        sb.Append("\"Lux\":" + JsonConvert.SerializeObject(currentRoom.Lux) + ",");
+                        sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(currentRoom.MaxLux) + ",");
 
                         sb.Append("\"HardwareConsumption\":" + JsonConvert.SerializeObject(currentRoom.HardwareConsumption) + ",");
-                        sb.Append("\"HardwareConsumptionMax\":" + JsonConvert.SerializeObject(currentRoom.HardwareConsumptionMax) + ",");
-                        sb.Append("\"HardwareConsumptionMin\":" + JsonConvert.SerializeObject(currentRoom.HardwareConsumptionMin) + ",");
+                        sb.Append("\"MaxHardwareConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxHardwareConsumption) + ",");
+                        sb.Append("\"MinHardwareConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinHardwareConsumption) + ",");
 
                         sb.Append("\"LightConsumption\":" + JsonConvert.SerializeObject(currentRoom.LightConsumption) + ",");
-                        sb.Append("\"LightConsumptionMax\":" + JsonConvert.SerializeObject(currentRoom.LightConsumptionMax) + ",");
-                        sb.Append("\"LightConsumptionMin\":" + JsonConvert.SerializeObject(currentRoom.LightConsumptionMin) + ",");
+                        sb.Append("\"MaxLightConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxLightConsumption) + ",");
+                        sb.Append("\"MinLightConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinLightConsumption) + ",");
 
                         sb.Append("\"VentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.VentilationConsumption) + ",");
-                        sb.Append("\"VentilationConsumptionMax\":" + JsonConvert.SerializeObject(currentRoom.VentilationConsumptionMax) + ",");
-                        sb.Append("\"VentilationConsumptionMin\":" + JsonConvert.SerializeObject(currentRoom.VentilationConsumptionMin) + ",");
+                        sb.Append("\"MaxVentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxVentilationConsumption) + ",");
+                        sb.Append("\"MinVentilationConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinVentilationConsumption) + ",");
 
                         sb.Append("\"OtherConsumption\":" + JsonConvert.SerializeObject(currentRoom.OtherConsumption) + ",");
-                        sb.Append("\"OtherConsumptionMax\":" + JsonConvert.SerializeObject(currentRoom.OtherConsumptionMax) + ",");
-                        sb.Append("\"OtherConsumptionMin\":" + JsonConvert.SerializeObject(currentRoom.OtherConsumptionMin) + ",");
+                        sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxOtherConsumption) + ",");
+                        sb.Append("\"MinOtherConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinOtherConsumption) + ",");
 
                         sb.Append("\"TotalPowerConsumption\":" + JsonConvert.SerializeObject(currentRoom.TotalPowerConsumption) + ",");
-                        sb.Append("\"TotalPowerConsumptionMax\":" + JsonConvert.SerializeObject(currentRoom.TotalPowerConsumptionMax) + ",");
-                        sb.Append("\"TotalPowerConsumptionMin\":" + JsonConvert.SerializeObject(currentRoom.TotalPowerConsumptionMin) + ",");
+                        sb.Append("\"MaxTotalPowerConsumption\":" + JsonConvert.SerializeObject(currentRoom.MaxTotalPowerConsumption) + ",");
+                        sb.Append("\"MinTotalPowerConsumption\":" + JsonConvert.SerializeObject(currentRoom.MinTotalPowerConsumption) + ",");
 
                         sb.Append("\"Motion\":" + JsonConvert.SerializeObject(currentRoom.Motion) + ",");
 
                         sb.Append("\"Occupants\":" + JsonConvert.SerializeObject(currentRoom.Occupants) + ",");
-                        sb.Append("\"OccupantsMax\":" + JsonConvert.SerializeObject(currentRoom.OccupantsMax) + ",");
+                        sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(currentRoom.MaxOccupants) + ",");
 
                         sb.Append("\"WifiClients\":" + JsonConvert.SerializeObject(currentRoom.WifiClients) + ",");
-                        sb.Append("\"WifiClientsMax\":" + JsonConvert.SerializeObject(currentRoom.WifiClientsMax));
+                        sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(currentRoom.MaxWifiClients));
 
                         sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
                         sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.YCoordinate) + "],");
