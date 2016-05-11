@@ -10,6 +10,9 @@ var roomLayers = [];
 var ActiveViews = [];
 var ActiveFloorViews = [];
 var linesOnMap = null;
+var linesMinMaxOnMap = null;
+var temporalActive = false;
+
 
 
 function DrawWorldMap() {
@@ -39,11 +42,14 @@ function InitLeafletMap(jsonMap) {
 
     worldMap.addTo(geoMap);
 
-    createInfoBox();
 
     CreateSpatialButtons();
+    CreateTemporalButtons();
+    TemporalDateRangePicker();
     CreateViewButtons();
-    //addLevel2();
+    buildingButton.button.click();
+
+    createInfoBox();
 }
 
 function initMapSettings(geojson) {

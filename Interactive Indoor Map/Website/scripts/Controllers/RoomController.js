@@ -23,7 +23,9 @@
         infoBox.update();
     }
 
-    buildingButton.button.style.backgroundColor = 'white';
+    if (buildingButton._currentState.stateName === "toggled")
+        buildingButton.button.click();
+
     drawRoomInfo();
     infoboxUpdate = function () { drawSelectedRoomInfoBox(); };
     infoboxUpdate();

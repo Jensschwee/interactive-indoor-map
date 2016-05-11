@@ -67,24 +67,45 @@ namespace Website.DAL.ExternalData
         /// <param name="fromDate"></param>
         /// <param name="toDate"></param>
         /// <returns></returns>
-        public SMapSensorReading GetHistoricSensorValue(Endpoints endpoints, DateTime fromDate, DateTime toDate)
+        public List<SMapSensorReading> GetHistoricSensorValue(IEnumerable<KeyValuePair<string, SensorType>> endpoints, DateTime fromDate, DateTime toDate)
         {
-            if (endpoints.SmapEndponts.Count > 0)
+            if (endpoints.Any())
             {
+                toDate = dateConverter.ConvertToLADate(toDate);
+                fromDate = dateConverter.ConvertToLADate(fromDate);
+
                 StringBuilder sb = new StringBuilder();
                 sb.Append("select data in (");
-                sb.Append("'" + fromDate.Date.ToString() + "'");
-                sb.Append(", '" + toDate.Date.ToString() + "')");
-                sb.Append("where ");
-                foreach (var uuid in endpoints.SmapEndponts)
+                sb.Append("'" + fromDate.Month + "/" + fromDate.Day + "/" + fromDate.Year + " " + fromDate.ToShortTimeString() +
+                     "'");
+                sb.Append(",'" + toDate.Month + "/" + toDate.Day + "/" + toDate.Year + " " + toDate.ToShortTimeString() + "')");
+                sb.Append(" where ");
+                foreach (var uuid in endpoints)
                 {
                     sb.Append("uuid = ");
-                    sb.Append("'" + uuid.Value + "' or ");
+                    sb.Append("'" + uuid.Key + "' or ");
                 }
-                sb.Remove(sb.Length, 3);
-                return sendHTTPPost(ENDPOINT, sb.ToString());
+                sb.Remove(sb.Length-3, 3);
+                return sendHTTPPostMultipolEndpoints(ENDPOINT, sb.ToString());
             }
             return null;
+        }
+
+        public SMapSensorReading GetHistoricSensorValue(string endpoints, DateTime fromDate, DateTime toDate)
+        {
+
+            fromDate = dateConverter.ConvertToLADate(fromDate);
+            toDate = dateConverter.ConvertToLADate(toDate);
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select data in (");
+            sb.Append("'" + fromDate.Month + "/" + fromDate.Day + "/" + fromDate.Year + " " + fromDate.ToShortTimeString() +
+                     "'");
+            sb.Append(",'" + toDate.Month + "/" + toDate.Day + "/" + toDate.Year + " " + toDate.ToShortTimeString() + "')");
+            sb.Append("where ");
+            sb.Append("uuid = ");
+            sb.Append("'" + endpoints + "'");
+            return sendHTTPPost(ENDPOINT, sb.ToString());
         }
 
         private SMapSensorReading sendHTTPPost(string endpoint, string body)
@@ -108,6 +129,29 @@ namespace Website.DAL.ExternalData
 
             var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
             return jsonObj[0];
+        }
+
+        private List<SMapSensorReading> sendHTTPPostMultipolEndpoints(string endpoint, string body)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(endpoint);
+
+            var data = Encoding.ASCII.GetBytes(body);
+
+            request.Method = "POST";
+            request.ContentType = "application/raw";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            var jsonObj = JsonConvert.DeserializeObject<List<SMapSensorReading>>(responseString.ToString());
+            return jsonObj;
         }
     }
 }

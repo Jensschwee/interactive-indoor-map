@@ -4,21 +4,30 @@
     var numberOfLayers = roomLayers.length;
     for (var k = 0; k < numberOfLayers; k++) {
         geoMap.removeLayer(roomLayers.pop());
-
     }
     if (linesOnMap != null) {
         geoMap.removeLayer(linesOnMap);
+    }
+    if (linesMinMaxOnMap != null) {
+        geoMap.removeLayer(linesMinMaxOnMap);
     }
 
     //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     var jsonColumn;
+    var jsonMinMaxLines;
+    var featuresLines = new Array();
+    jsonMinMaxLines = {
+        type: "FeatureCollection",
+        features: featuresLines
+    };
     for (var j = 0; j < ActiveViews.length; j++) {
         var features = new Array();
         jsonColumn = {
             type: "FeatureCollection",
             features: features
         };
+        
         $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
@@ -58,6 +67,11 @@
 
             if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
                 sensorValue = value.properties[ActiveViews[j].value];
+            }
+
+            if (temporalActive) {
+                sensorValue = value.properties[ActiveViews[j].average];
+                drawMinMaxObservedLines(featuresLines, j, value.properties[ActiveViews[j].minObserved], value.properties[ActiveViews[j].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
 
             var point = [];
@@ -165,19 +179,33 @@
             style: {
                 //Backgrund color
                 //border color
-                color: "#737373",
+                color: "white",//"#737373",
                 //Border thickness
                 opacity: "none",
                 fillOpacity: "none",
-                weight: "0.5px"
+                weight: "1px"
+                //,dashArray:"12,6"
             }
         }).addTo(geoMap).bringToBack();
+        if (temporalActive) {
+            linesMinMaxOnMap =  L.geoJson(jsonMinMaxLines, {
+                style: {
+                    //Backgrund color
+                    //border color
+                    color: "black",//"#737373",
+                    //Border thickness
+                    opacity: "none",
+                    fillOpacity: "none",
+                    weight: "2px"
+                    //,dashArray:"12,6"
+                }
+            }).addTo(geoMap).bringToFront();
+        }
     }
 
 
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();
-
         roomLayers.push(L.geoJson(roomColumn, {
             style: {
                 //Backgrund color
@@ -191,7 +219,8 @@
             }
         }).addTo(geoMap).bringToBack());
     }
-    roomBackgroundLayer.bringToBack();
+    if (roomBackgroundLayer != null)
+        roomBackgroundLayer.bringToBack();
 }
 
 function getRoomsAndDrawRoomsWithRoomOverlays() {
@@ -200,8 +229,62 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
         drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
-    PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+    if (!temporalActive) {
+        PageMethods.DrawFloor(currentFloorLevel, onSuccess);
+    } else {
+        TemporalUpdater();
+    }
+
     getRoomsAndDrawBackground();
+}
+
+function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
+    //calc the hight for the min line
+    var roomHeightMin = (1-(roomObservedMin - roomMin) / (roomMax - roomMin));
+    if (roomHeightMin < 0) {
+        roomHeightMin = 0;
+    }
+    else if (roomHeightMin > 1) {
+        roomHeightMin = 1;
+    }
+
+    //calc the hight for the min line
+    var roomHeightMax = (1-(roomObservedMax - roomMin) / (roomMax - roomMin));
+
+    if (roomHeightMax < 0) {
+        roomHeightMax = 0;
+    }
+    else if (roomHeightMax > 1) {
+        roomHeightMax = 1;
+    }
+
+    drawlines = function (value, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
+        var coordinates = new Array();
+
+        var geometry =
+            {
+                type: "LineString",
+                coordinates: coordinates
+            };
+        var feature = {
+            type: "Feature",
+            geometry: geometry
+        }
+
+        var point = [];
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        coordinates.push(point);
+
+        point = [];
+        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
+        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        coordinates.push(point);
+
+        featuresLines.push(feature);
+    }
+    drawlines(roomHeightMin, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+    drawlines(roomHeightMax, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
 }
 
 function getRoomsAndDrawRooms() {
@@ -214,13 +297,13 @@ function getRoomsAndDrawRooms() {
 
 function getRoomsAndDrawBackground() {
     function onSuccess(response) {
-        var roomsBackgrund = JSON.parse(response);
-        drawRoomsBackgrund(roomsBackgrund);
+        var roomsBackground = JSON.parse(response);
+        drawRoomsBackground(roomsBackground);
     }
-    PageMethods.DrawRoomsBackgrund(currentFloorLevel, onSuccess);
+    PageMethods.DrawRoomsBackground(currentFloorLevel, onSuccess);
 }
 
-function drawRoomsBackgrund(json) {
+function drawRoomsBackground(json) {
     if (roomBackgroundLayer != null) {
         geoMap.removeLayer(roomBackgroundLayer);
     }
@@ -234,8 +317,8 @@ function drawRoomsBackgrund(json) {
 
 function backgroundStyle(feature) {
     return {
-        //Backgrund color
-        fillColor: getRoomBackgrundColor(feature.properties.RoomType),
+        //Background color
+        fillColor: getRoomBackgroundColor(feature.properties.RoomType),
         //border color
         color: getRoomBorderColor(feature.properties.RoomType),
         //Border thickness
@@ -243,7 +326,7 @@ function backgroundStyle(feature) {
     };
 }
 
-function getRoomBackgrundColor(RoomType) {
+function getRoomBackgroundColor(RoomType) {
     return RoomType === "Classroom" ? '#D0D6DC' :
            RoomType === "Studyzone" ? '#D0D6DC' :
            RoomType === "Office" ? '#C2B49D' :
@@ -281,7 +364,7 @@ function drawRoomsForeground(json) {
 
     roomForegroundLayer = L.geoJson(json, {
         style: {
-            //Backgrund color
+            //Background color
             fillColor: "#FFFFFF",
             //border color
             color: "#FFFFFF",

@@ -114,7 +114,13 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\0Icon.png" />
+    <Content Include="Images\1Icon.png" />
+    <Content Include="Images\2Icon.png" />
     <Content Include="Images\buildingIcon.png" />
+    <Content Include="Images\buildingIcon2.png" />
+    <Content Include="Images\buildingIcon3.png" />
+    <Content Include="Images\buildingIcon4.png" />
     <Content Include="Images\co2Icon.png" />
     <Content Include="Images\hardwarePowerIcon.png" />
     <Content Include="Images\lightIcon.png" />
@@ -124,17 +130,23 @@
     <Content Include="Images\otherPowerIcon.png" />
     <Content Include="Images\temperature.png" />
     <Content Include="Images\temperatureIcon.png" />
+    <Content Include="Images\temporalIcon.png" />
+    <Content Include="Images\temporalIcon2.png" />
     <Content Include="Images\totalPowerIcon.png" />
     <Content Include="Images\ventilationPowerIcon.png" />
     <Content Include="Images\waterConsumptionIcon.png" />
     <Content Include="Images\wifiIcon.png" />
     <Content Include="scripts\Controllers\LegendController.js" />
     <Content Include="scripts\Controllers\RoomController.js" />
+    <Content Include="scripts\Controllers\TemporalController.js" />
     <Content Include="scripts\External\bootstrap.min.js" />
     <Content Include="scripts\External\d3.v3.min.js" />
+    <Content Include="scripts\External\daterangepicker.js" />
     <Content Include="scripts\External\easy-button.js" />
     <Content Include="scripts\External\Leaflet.fullscreen.min.js" />
     <Content Include="scripts\External\leaflet.js" />
+    <Content Include="scripts\External\moment.js" />
+    <Content Include="scripts\External\moment.min.js" />
     <Content Include="scripts\InfoBox.js" />
     <Content Include="scripts\InitMap.js" />
     <Content Include="packages.config" />
@@ -147,6 +159,8 @@
     <Content Include="Map\ou44_geometry.geojson" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
+    <Content Include="Style\External\bootstrap.css" />
+    <Content Include="Style\External\daterangepicker.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,6 +178,7 @@
     <Content Include="scripts\UpdateViewTimer.js" />
     <Content Include="Style\External\bootstrap-theme.min.css" />
     <Content Include="Style\External\bootstrap.min.css" />
+    <Content Include="Style\External\daterangepicker.css" />
     <Content Include="Style\External\easy-button.css" />
     <Content Include="Style\External\fullscreen.png" />
     <Content Include="Style\External\leaflet.css" />
@@ -177,24 +192,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\BO\Building.cs" />
-    <Compile Include="Logic\BO\Floor.cs" />
-    <Compile Include="Logic\BO\SensorlessRoom.cs" />
-    <Compile Include="Logic\BO\SensorRoom.cs" />
-    <Compile Include="Logic\BO\Room.cs" />
+    <Compile Include="Logic\BO\Buildings\Building.cs" />
+    <Compile Include="Logic\BO\Buildings\LiveBuilding.cs" />
+    <Compile Include="Logic\BO\Buildings\TemporalBuilding.cs" />
+    <Compile Include="Logic\BO\Floors\Floor.cs" />
+    <Compile Include="Logic\BO\Floors\LiveFloor.cs" />
+    <Compile Include="Logic\BO\Floors\TemporalFloor.cs" />
+    <Compile Include="Logic\BO\Rooms\LiveRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\SensorlessRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\SensorRoom.cs" />
+    <Compile Include="Logic\BO\Rooms\Room.cs" />
+    <Compile Include="Logic\BO\Rooms\TemporalRoom.cs" />
     <Compile Include="Logic\BO\Utility\Coordinates.cs" />
     <Compile Include="Logic\BO\Utility\Corners.cs" />
     <Compile Include="Logic\BO\Utility\SensorType.cs" />
     <Compile Include="Logic\BO\Utility\Endpoints.cs" />
     <Compile Include="Logic\BO\Utility\SMapSensorReading.cs" />
+    <Compile Include="Logic\BO\Temporal\TemporalSummary.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
     <Compile Include="Logic\Domain\JsonConverter.cs" />
+    <Compile Include="Logic\Domain\JsonConverterTemporal.cs" />
+    <Compile Include="Logic\Domain\LogicFacade.cs" />
     <Compile Include="Logic\Domain\RealTimeUpdater.cs" />
+    <Compile Include="Logic\Domain\SMapManagerTemporalt.cs" />
+    <Compile Include="Logic\Domain\TemporalManager.cs" />
     <Compile Include="Logic\Helpers\CalcMinMaxMean.cs" />
     <Compile Include="Logic\Helpers\DateConverter.cs" />
     <Compile Include="DAL\Persistence\BuildingDAL.cs" />
     <Compile Include="DAL\Persistence\BuildingDbContext.cs" />
     <Compile Include="Logic\Domain\SmapManager.cs" />
+    <Compile Include="Logic\Helpers\TemporalValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -204,9 +231,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\BO\Temporal\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

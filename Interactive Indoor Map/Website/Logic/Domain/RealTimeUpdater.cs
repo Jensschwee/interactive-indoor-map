@@ -6,36 +6,37 @@ using System.Timers;
 using System.Web;
 using Website.DAL.ExternalData;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
 using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
 {
     public class RealTimeUpdater
     {
-        Building building = (Building)HttpContext.Current.Application["Building"];
+        LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
         private SmapManager smapManager;
         private int temperatureUpdateInterval = 5000;
         private int co2UpdateInterval = 5000;
         private int lightUpdateInterval = 5000;
-        private int lumenUpdateInterval = 5000;
+        private int luxUpdateInterval = 5000;
         private int powerConsumptionInterval = 5000;
         private int waterUpdateInterval = 5000;
         private int motionDetectedUpdateInterval = 5000;
         private int occupantsUpdateInterval = 5000;
         private int wifiClientsUpdateInterval = 5000;
 
-        public RealTimeUpdater(Building building, SmapManager smapManager)
+        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager)
         {
             this.building = building;
             this.smapManager = smapManager;
         }
 
-        public RealTimeUpdater(Building building, SmapManager smapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int lumenUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, smapManager)
+        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int luxUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, smapManager)
         {
             this.temperatureUpdateInterval = temperatureUpdateInterval;
             this.co2UpdateInterval = co2UpdateInterval;
             this.lightUpdateInterval = lightUpdateInterval;
-            this.lumenUpdateInterval = lumenUpdateInterval;
+            this.luxUpdateInterval = luxUpdateInterval;
             this.powerConsumptionInterval = powerConsumptionInterval;
             this.waterUpdateInterval = waterUpdateInterval;
             this.motionDetectedUpdateInterval = motionDetectedUpdateInterval;
@@ -61,10 +62,10 @@ namespace Website.Logic.Domain
             lightUpdater.Interval = lightUpdateInterval;
             lightUpdater.Enabled = true;
 
-            Timer lumenUpdater = new Timer();
-            lumenUpdater.Elapsed += new ElapsedEventHandler(OnLumenTimedEvent);
-            lumenUpdater.Interval = lumenUpdateInterval;
-            lumenUpdater.Enabled = true;
+            Timer luxUpdater = new Timer();
+            luxUpdater.Elapsed += new ElapsedEventHandler(OnLuxTimedEvent);
+            luxUpdater.Interval = luxUpdateInterval;
+            luxUpdater.Enabled = true;
 
             Timer powerConsumptionUpdater = new Timer();
             powerConsumptionUpdater.Elapsed += new ElapsedEventHandler(OnPowerConsumptionTimedEvent);
@@ -107,10 +108,10 @@ namespace Website.Logic.Domain
             smapManager.LightUpdate(building);
         }
 
-        private void OnLumenTimedEvent(object source, ElapsedEventArgs e)
+        private void OnLuxTimedEvent(object source, ElapsedEventArgs e)
         {
 
-            smapManager.LumenUpdate(building);
+            smapManager.LuxUpdate(building);
         }
 
         private void OnPowerConsumptionTimedEvent(object source, ElapsedEventArgs e)

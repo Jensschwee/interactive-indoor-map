@@ -50,11 +50,27 @@
     </script>
 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-     <script>
-         if (typeof L.fullscreenEnabled == 'undefined') {
+    <script>
+        if (typeof L.fullscreenEnabled == 'undefined') {
             document.write(unescape("%3Cscript src='/scripts/external//Leaflet.fullscreen.min.js' type='text/javascript'%3E%3C/script%3E"));
         }
     </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script>
+        if (typeof momentjs == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/External/moment.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script>
+        if (typeof DateRangePicker == 'undefined') {
+            document.write(unescape("%3Cscript src='/scripts/External/daterangepicker.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+    <link type="text/css" href='Style/External/daterangepicker.css' rel='stylesheet' />
+    
     <link href='Style/External/leaflet.fullscreen.css' rel='stylesheet' />
 
     <script src="scripts/External/L.D3SvgOverlay.min.js"></script>
@@ -66,6 +82,7 @@
     <script type='text/javascript' src='scripts/Controllers/MenuButtonsController.js'></script>
     <script type='text/javascript' src='scripts/Controllers/RoomController.js'></script>
     <script type='text/javascript' src='scripts/Controllers/LegendController.js'></script>
+    <script type='text/javascript' src='scripts/Controllers/TemporalController.js'></script>
     <script type='text/javascript' src='scripts/Room.js'></script>
     <script type='text/javascript' src='scripts/UpdateViewTimer.js'></script>
 </head>
@@ -79,6 +96,9 @@
                 <%--<div id="rooms">
                 </div>--%>
                 <div id="legend">
+                </div>
+                <div id="DRP">
+                    <input name="daterangepicker" type="text" id="daterangepicker"/>
                 </div>
             </div>
         </div>

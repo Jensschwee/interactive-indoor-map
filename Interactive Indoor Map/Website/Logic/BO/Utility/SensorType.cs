@@ -7,7 +7,7 @@ namespace Website.Logic.BO.Utility
 {
     public enum SensorType
     {
-        Temperature, CO2, Light, Lumen, TotalPowerConsumption, HardwarePowerConsumption, LightPowerConsumption, VentilationPowerConsumption,
+        Temperature, CO2, Light, Lux, TotalPowerConsumption, HardwarePowerConsumption, LightPowerConsumption, VentilationPowerConsumption,
         OtherPowerConsumption, MotionDetection, Occupants, WifiClients, HotWater, ColdWater
     }
 }
