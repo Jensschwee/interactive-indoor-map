@@ -34,27 +34,27 @@ namespace Website.Logic.Domain
 
         public string ConvertBuilding()
         {
-            return liveJsonLiveConverter.ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
+            return liveJsonLiveConverter.GetBuildingInfobox((LiveBuilding)HttpContext.Current.Application["Building"]);
         }
 
         public string ConvertBuilding(LiveBuilding building)
         {
-            return liveJsonLiveConverter.ConvertBuilding(building);
+            return liveJsonLiveConverter.GetBuildingInfobox(building);
         }
 
         public string ConvertFloors(int floorLevel)
         {
-            return liveJsonLiveConverter.ConvertFloors(floorLevel);
+            return liveJsonLiveConverter.GetFloorInfobox(floorLevel);
         }
 
         public string ConvertRoomsGeoJson(int floorLevel)
         {
-            return liveJsonLiveConverter.ConvertRoomsGeoJson(floorLevel);
+            return liveJsonLiveConverter.GetDrawableRooms(floorLevel);
         }
 
         public string ConvertRooms(int? floorLevel = null)
         {
-            return liveJsonLiveConverter.ConvertRooms(floorLevel);
+            return liveJsonLiveConverter.GetDrawableSensorRooms(floorLevel);
         }
 
 

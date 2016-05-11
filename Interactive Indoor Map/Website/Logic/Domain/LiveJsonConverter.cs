@@ -13,12 +13,12 @@ namespace Website.Logic.Domain
 {
     public class LiveJsonConverter : JsonConverter
     {
-        public string ConvertBuilding()
+        public string GetBuildingInfobox()
         {
-            return ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
+            return GetBuildingInfobox((LiveBuilding)HttpContext.Current.Application["Building"]);
         }
 
-        public string ConvertBuilding(LiveBuilding building)
+        public string GetBuildingInfobox(LiveBuilding building)
         {
             StringBuilder sb = new StringBuilder();
             WriteFirstAttribute(sb, "Name", building.Name);
@@ -49,12 +49,12 @@ namespace Website.Logic.Domain
             return sb.ToString();
         }
 
-        public string ConvertFloors(int floorLevel)
+        public string GetFloorInfobox(int floorLevel)
         {
-            return ConvertFloors((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
+            return GetFloorInfobox((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
         }
 
-        public string ConvertFloors(LiveBuilding building, int floorLevel)
+        public string GetFloorInfobox(LiveBuilding building, int floorLevel)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -93,58 +93,61 @@ namespace Website.Logic.Domain
             return sb.ToString();
         }
 
-        public string ConvertRoomsGeoJson(int floorLevel)
+        public string GetDrawableRooms(int floorLevel)
         {
-            LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
+          return GetDrawableRooms(floorLevel, (LiveBuilding)HttpContext.Current.Application["Building"]);
+        }
+
+        public string GetDrawableRooms(int floorLevel, LiveBuilding building)
+        {
             StringBuilder sb = new StringBuilder();
-            sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
+            WriteGeoJsonHeader(sb);
+
             foreach (var floor in building.Floors)
             {
                 if (floor.FloorLevel == floorLevel)
                 {
                     foreach (var room in floor.Rooms)
                     {
+                        WriteGeoJsonPropertiesHeader(sb);
+                        WriteFirstAndLastAttribute(sb, "RoomType", room.RoomType.ToString());
+                        WriteGeoJsonPropertiesFooter(sb);
                         if (room.GetType() == typeof(LiveRoom))
                         {
                             LiveRoom currentRoom = (LiveRoom)room;
-                            sb.Append("{ \"type\": \"Feature\", \"properties\": {");
-                            sb.Append("\"RoomType\":" + JsonConvert.SerializeObject(currentRoom.RoomType.ToString()));
-                            sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
-                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.TopLeftCorner.YCoordinate) + "],");
-                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.BottomLeftCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.BottomLeftCorner.YCoordinate) + "],");
-                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.BottomRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.BottomRightCorner.YCoordinate) + "],");
-                            sb.Append("[" + JsonConvert.SerializeObject(currentRoom.Corners.TopRightCorner.XCoordinate) + "," + JsonConvert.SerializeObject(currentRoom.Corners.TopRightCorner.YCoordinate) + "],");
-                            sb.Remove(sb.Length - 1, 1);
-                            sb.Append("]]}},");
+                            WriteGeoJsonGeometryHeader(sb);
+                            WriteGeoJsonCoordinates(sb, currentRoom.Corners.TopLeftCorner.XCoordinate, currentRoom.Corners.TopLeftCorner.YCoordinate);
+                            WriteGeoJsonCoordinates(sb, currentRoom.Corners.BottomLeftCorner.XCoordinate, currentRoom.Corners.BottomLeftCorner.YCoordinate);
+                            WriteGeoJsonCoordinates(sb, currentRoom.Corners.BottomRightCorner.XCoordinate, currentRoom.Corners.BottomRightCorner.YCoordinate);
+                            WriteGeoJsonCoordinatesLast(sb, currentRoom.Corners.TopRightCorner.XCoordinate, currentRoom.Corners.TopRightCorner.YCoordinate);
+                            WriteGeoJsonGeometryFooter(sb);
                         }
                         else if (room.GetType() == typeof(SensorlessRoom))
                         {
                             SensorlessRoom currentRoom = (SensorlessRoom)room;
-                            sb.Append("{ \"type\": \"Feature\", \"properties\": {");
-                            sb.Append("\"RoomType\":" + JsonConvert.SerializeObject(currentRoom.RoomType.ToString()));
-                            sb.Append("},\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
+                            WriteGeoJsonGeometryHeader(sb);
                             foreach (Coordinates coordinates in currentRoom.Coordinates)
                             {
-                                sb.Append("[" + JsonConvert.SerializeObject(coordinates.XCoordinate) + "," + JsonConvert.SerializeObject(coordinates.YCoordinate) + "],");
+                                WriteGeoJsonCoordinates(sb, coordinates.XCoordinate, coordinates.YCoordinate);
                             }
                             sb.Remove(sb.Length - 1, 1);
-                            sb.Append("]]}},");
+                            WriteGeoJsonGeometryFooter(sb);
                         }
                     }
                     sb.Remove(sb.Length - 1, 1);
                     break;
                 }
             }
-            sb.Append("]}");
+            WriteGeoJsonFooter(sb);
             return sb.ToString();
         }
 
-        public string ConvertRooms(int? floorLevel = null)
+        public string GetDrawableSensorRooms(int? floorLevel = null)
         {
-            return ConvertRooms((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
+            return GetDrawableSensorRooms((LiveBuilding)HttpContext.Current.Application["Building"], floorLevel);
         }
 
-        public string ConvertRooms(LiveBuilding building, int? floorLevel = null)
+        public string GetDrawableSensorRooms(LiveBuilding building, int? floorLevel = null)
         {
             StringBuilder sb = new StringBuilder();
             WriteGeoJsonHeader(sb);
@@ -201,7 +204,7 @@ namespace Website.Logic.Domain
 
                             WriteAttribute(sb, "WifiClients", currentRoom.WifiClients);
                             WriteAttribute(sb, "MaxOccupants", currentRoom.MaxOccupants);
-                            WriteAttribute(sb, "MaxWifiClients", currentRoom.MaxWifiClients);
+                            WriteLastAttribute(sb, "MaxWifiClients", currentRoom.MaxWifiClients);
 
                             WriteGeoJsonPropertiesFooter(sb);
 

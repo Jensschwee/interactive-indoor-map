@@ -34,6 +34,12 @@ namespace Website.Logic.Domain
             sb.Append("{");
             WriteAttribute(sb, attributeName, attributeValue);
         }
+        public void WriteFirstAndLastAttribute(StringBuilder sb, string attributeName, object attributeValue)
+        {
+            sb.Append("{");
+            WriteAttributeDefault(sb, attributeName, attributeValue);
+            sb.Append("}");
+        }
 
         public void WriteGeoJsonHeader(StringBuilder sb)
         {
@@ -53,7 +59,7 @@ namespace Website.Logic.Domain
 
         public void WriteGeoJsonPropertiesFooter(StringBuilder sb)
         {
-            sb.Append("},");
+            sb.Append(",");
         }
 
         public void WriteGeoJsonGeometryHeader(StringBuilder sb)
