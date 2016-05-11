@@ -6,16 +6,16 @@ using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Helpers
 {
-    public class CalcMinMaxMean
+    public class CalculateTemporalSummary
     {
         private DateConverter dateConverter;
 
-        public CalcMinMaxMean()
+        public CalculateTemporalSummary()
         {
             dateConverter = new DateConverter();
         }
 
-        public TemporalSummary CalcSMapMinMaxMean(SMapSensorReading reading)
+        public TemporalSummary CalcValues(SMapSensorReading reading)
         {
             TemporalSummary temporalSummary = new TemporalSummary
             {
@@ -25,38 +25,11 @@ namespace Website.Logic.Helpers
             };
             if (reading.Readings.Count > 1)
             {
-                DateTime fromTime = dateConverter.ConvertDate((long)reading.Readings[0][0]);
-                DateTime toTime = dateConverter.ConvertDate((long)reading.Readings[reading.Readings.Count - 1][0]);
-                TimeSpan timeSpan = toTime - fromTime;
-
-                for (int i = 0; i < reading.Readings.Count - 1; i++)
-                {
-                    List<double> readings = new List<double>();
-                    readings.AddRange(reading.Readings[i]);
-
-                    double readingsValue = readings[1];
-                    if (temporalSummary.MinValue > readingsValue)
-                    {
-                        temporalSummary.MinValue = readingsValue;
-                    }
-
-                    if (temporalSummary.MaxValue < readingsValue)
-                    {
-                        temporalSummary.MaxValue = readingsValue;
-                    }
-
-                    DateTime time = dateConverter.ConvertDate((long)readings[0]);
-                    TimeSpan? timeDif = dateConverter.ConvertDate((long)reading.Readings[i + 1][0]) - time;
-                    temporalSummary.MeanValue += readingsValue * (timeDif.Value.TotalSeconds / timeSpan.TotalSeconds);
-                }
+                SetMinMaxMeanValues(reading, temporalSummary);
             }
             else if (reading.Readings.Count == 1)
             {
-                double readingsValue = reading.Readings[0][0];
-                temporalSummary.MinValue = readingsValue;
-
-                temporalSummary.MaxValue = readingsValue;
-                temporalSummary.MeanValue = readingsValue;
+                SetSingleMinMaxMeanValues(reading, temporalSummary);
             }
             else
             {
@@ -64,6 +37,35 @@ namespace Website.Logic.Helpers
                 temporalSummary.MinValue = 0;
             }
             return temporalSummary;
+        }
+
+        private static void SetSingleMinMaxMeanValues(SMapSensorReading reading, TemporalSummary temporalSummary)
+        {
+            double readingsValue = reading.Readings[0][0];
+            temporalSummary.MinValue = readingsValue;
+
+            temporalSummary.MaxValue = readingsValue;
+            temporalSummary.MeanValue = readingsValue;
+        }
+
+        private void SetMinMaxMeanValues(SMapSensorReading reading, TemporalSummary temporalSummary)
+        {
+            DateTime fromTime = dateConverter.ConvertDate((long) reading.Readings[0][0]);
+            DateTime toTime = dateConverter.ConvertDate((long) reading.Readings[reading.Readings.Count - 1][0]);
+            TimeSpan timeSpan = toTime - fromTime;
+
+            for (int i = 0; i < reading.Readings.Count - 1; i++)
+            {
+                List<double> readings = new List<double>();
+                readings.AddRange(reading.Readings[i]);
+
+                double readingsValue = readings[1];
+                SetMinAndMaxValues(temporalSummary, readingsValue);
+
+                DateTime time = dateConverter.ConvertDate((long) readings[0]);
+                TimeSpan? timeDif = dateConverter.ConvertDate((long) reading.Readings[i + 1][0]) - time;
+                temporalSummary.MeanValue += readingsValue*(timeDif.Value.TotalSeconds/timeSpan.TotalSeconds);
+            }
         }
 
         public TemporalSummary CalcSMapMinMaxMeanHourly(List<SMapSensorReading> reading)
@@ -78,25 +80,12 @@ namespace Website.Logic.Helpers
 
             if (reading[0].Readings.Count > 1)
             {
+                DateTime timeFrom;
+                DateTime timeTo;
+                List<double> readings1;
+                List<double> readings2;
+                SetHourlyMeanValue(reading, temporalSummary);
 
-                #region calcMean
-                DateTime timeFrom = dateConverter.ConvertDate((long)reading[0].Readings[1][0]);
-                DateTime timeTo = dateConverter.ConvertDate((long)reading[0].Readings[reading[0].Readings.Count - 1][0]);
-                timeSpan = timeTo - timeFrom;
-
-                List<double> readings1 = new List<double>();
-                readings1.AddRange(reading[0].Readings[0]);
-                List<double> readings2 = new List<double>();
-                readings2.AddRange(reading[0].Readings[reading[0].Readings.Count - 1]);
-
-                for (int j = 1; j < reading.Count; j++)
-                {
-                    readings1[1] += reading[j].Readings[0][1];
-                    readings2[1] += reading[j].Readings[reading[j].Readings.Count - 1][1];
-                }
-
-                temporalSummary.MeanValue = (readings2[1] - readings1[1]) / (timeSpan.Value.TotalHours);
-                #endregion
                 for (int i = 0; i < reading[0].Readings.Count - 1; i++)
                 {
                     readings1 = new List<double>();
@@ -117,22 +106,48 @@ namespace Website.Logic.Helpers
 
                     double readingsValue = ((readings2[1] - readings1[1]) / timeBetween.TotalMinutes) * 60;
 
-                    if (temporalSummary.MinValue > readingsValue)
-                    {
-                        temporalSummary.MinValue = readingsValue;
-                    }
-
-                    if (temporalSummary.MaxValue < readingsValue)
-                    {
-                        temporalSummary.MaxValue = readingsValue;
-                    }
+                    SetMinAndMaxValues(temporalSummary, readingsValue);
                 }
             }
 
             return temporalSummary;
         }
 
-        public TemporalSummary CalcSMapMinMaxMean(SMapSensorReading reading, DateTime timeFrom, DateTime timeTo)
+        private static void SetMinAndMaxValues(TemporalSummary temporalSummary, double readingsValue)
+        {
+            if (temporalSummary.MinValue > readingsValue)
+            {
+                temporalSummary.MinValue = readingsValue;
+            }
+
+            if (temporalSummary.MaxValue < readingsValue)
+            {
+                temporalSummary.MaxValue = readingsValue;
+            }
+        }
+
+        private void SetHourlyMeanValue(List<SMapSensorReading> reading, TemporalSummary temporalSummary)
+        {
+            TimeSpan? timeSpan;
+            DateTime timeFrom = dateConverter.ConvertDate((long) reading[0].Readings[1][0]);
+            DateTime timeTo = dateConverter.ConvertDate((long) reading[0].Readings[reading[0].Readings.Count - 1][0]);
+            timeSpan = timeTo - timeFrom;
+
+            List<double> readings1 = new List<double>();
+            readings1.AddRange(reading[0].Readings[0]);
+            List<double> readings2 = new List<double>();
+            readings2.AddRange(reading[0].Readings[reading[0].Readings.Count - 1]);
+
+            for (int j = 1; j < reading.Count; j++)
+            {
+                readings1[1] += reading[j].Readings[0][1];
+                readings2[1] += reading[j].Readings[reading[j].Readings.Count - 1][1];
+            }
+
+            temporalSummary.MeanValue = (readings2[1] - readings1[1])/(timeSpan.Value.TotalHours);
+        }
+
+        public TemporalSummary CalcBooleanEventbasedValues(SMapSensorReading reading, DateTime timeFrom, DateTime timeTo)
         {
             TemporalSummary temporalSummary = new TemporalSummary
             {
@@ -174,14 +189,13 @@ namespace Website.Logic.Helpers
                         {
                             TimeSpan timeBeetween = timeNext - timeCurrent;
                             temporalSummary.MeanValue += state * (timeBeetween.TotalSeconds / timeSpan.TotalSeconds);
-
                         }
                     }
                 }
             }
             else if (reading.Readings.Count == 1)
             {
-                CalcSMapMinMaxMeanCase(reading, timeFrom, timeTo, temporalSummary);
+                SetSingleCaseValue(reading, timeFrom, timeTo, temporalSummary);
             }
             else
             {
@@ -191,7 +205,7 @@ namespace Website.Logic.Helpers
             return temporalSummary;
         }
 
-        private void CalcSMapMinMaxMeanCase(SMapSensorReading reading, DateTime timeFrom, DateTime timeTo,
+        private void SetSingleCaseValue(SMapSensorReading reading, DateTime timeFrom, DateTime timeTo,
             TemporalSummary temporalSummary)
         {
             TimeSpan timeSpan = timeTo - timeFrom;

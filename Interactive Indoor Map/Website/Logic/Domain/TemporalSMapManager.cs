@@ -13,13 +13,13 @@ namespace Website.Logic.Domain
 {
     public class TemporalSMapManager
     {
-        private CalcMinMaxMean calcMinMaxMean;
+        private CalculateTemporalSummary calculateTemporalSummary;
         private SMAP smapDal;
 
         public TemporalSMapManager(SMAP smapDal)
         {
             this.smapDal = smapDal;
-            calcMinMaxMean = new CalcMinMaxMean();
+            calculateTemporalSummary = new CalculateTemporalSummary();
         }
 
         public void TemporalUpdateAll(TemporalBuilding building, DateTime timeFrom, DateTime timeTo)
@@ -97,7 +97,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Temperature))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Temperature).Key,
                             timeFrom,
@@ -132,7 +132,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.CO2))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.CO2).Key, timeFrom,
                             timeTo));
@@ -154,7 +154,7 @@ namespace Website.Logic.Domain
             if (building.Endpoints != null && building.Endpoints.SmapEndponts.ContainsValue(SensorType.Occupants))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             building.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Occupants).Key, timeFrom,
                             timeTo));
@@ -178,7 +178,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Occupants))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Occupants).Key, timeFrom,
                             timeTo));
@@ -212,7 +212,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.MotionDetection))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcBooleanEventbasedValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.MotionDetection).Key, timeFrom,
                             timeTo),timeFrom,timeTo);
@@ -276,7 +276,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Light))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcBooleanEventbasedValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Light).Key, timeFrom,
                             timeTo), timeFrom,
@@ -293,7 +293,7 @@ namespace Website.Logic.Domain
             if (room.Endpoints != null && room.Endpoints.SmapEndponts.ContainsValue(SensorType.Lux))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lux).Key, timeFrom,
                             timeTo));
@@ -337,7 +337,7 @@ namespace Website.Logic.Domain
             if (floor.Endpoints != null && floor.Endpoints.SmapEndponts.ContainsValue(SensorType.HotWater))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.HotWater).Key, timeFrom,
                             timeTo));
@@ -362,7 +362,7 @@ namespace Website.Logic.Domain
             if (floor.Endpoints != null && floor.Endpoints.SmapEndponts.ContainsValue(SensorType.ColdWater))
             {
                 TemporalSummary temporalSummary =
-                    calcMinMaxMean.CalcSMapMinMaxMean(
+                    calculateTemporalSummary.CalcValues(
                         smapDal.GetHistoricSensorValue(
                             floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.ColdWater).Key, timeFrom,
                             timeTo));
@@ -382,7 +382,7 @@ namespace Website.Logic.Domain
                     var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.TotalPowerConsumption);
 
                     TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMeanHourly(
+                        calculateTemporalSummary.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
                     floor.AverageTotalPowerConsumption = temporalSummary.MeanValue;
@@ -410,7 +410,7 @@ namespace Website.Logic.Domain
                     var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.HardwarePowerConsumption);
 
                     TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMeanHourly(
+                        calculateTemporalSummary.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
                     floor.AverageHardwareConsumption = temporalSummary.MeanValue;
@@ -438,7 +438,7 @@ namespace Website.Logic.Domain
                     var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.LightPowerConsumption);
 
                     TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMeanHourly(
+                        calculateTemporalSummary.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
                     floor.AverageLightConsumption= temporalSummary.MeanValue;
@@ -466,7 +466,7 @@ namespace Website.Logic.Domain
                     var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.OtherPowerConsumption);
 
                     TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMeanHourly(
+                        calculateTemporalSummary.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
                     floor.AverageOtherConsumption = temporalSummary.MeanValue;
@@ -494,7 +494,7 @@ namespace Website.Logic.Domain
                     var endpoints = floor.Endpoints.SmapEndponts.Where(s => s.Value == SensorType.VentilationPowerConsumption);
 
                     TemporalSummary temporalSummary =
-                        calcMinMaxMean.CalcSMapMinMaxMeanHourly(
+                        calculateTemporalSummary.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
                     floor.AverageVentilationConsumption = temporalSummary.MeanValue;
