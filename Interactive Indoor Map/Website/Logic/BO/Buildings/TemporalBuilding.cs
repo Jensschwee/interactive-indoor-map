@@ -22,7 +22,7 @@ namespace Website.Logic.BO.Buildings
         public double MaxObservedCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.MaxObservedCO2)) / NumberOfSensorRooms);
         public double MinObservedCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.MinObservedCO2)) / NumberOfSensorRooms);
 
-        public double AverageLight => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.AverageLux)) / NumberOfSensorRooms);
+        public double AverageLight => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.AverageLight)) / NumberOfSensorRooms);
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
 
