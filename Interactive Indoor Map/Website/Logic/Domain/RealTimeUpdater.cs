@@ -25,13 +25,13 @@ namespace Website.Logic.Domain
         private int occupantsUpdateInterval = 5000;
         private int wifiClientsUpdateInterval = 5000;
 
-        public RealTimeUpdater(LiveBuilding building, LiveSmapManager _liveSmapManager)
+        public RealTimeUpdater(LiveBuilding building, LiveSmapManager liveSmapManager)
         {
             this.building = building;
-            this.liveSmapManager = _liveSmapManager;
+            this.liveSmapManager = liveSmapManager;
         }
 
-        public RealTimeUpdater(LiveBuilding building, LiveSmapManager _liveSmapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int luxUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, _liveSmapManager)
+        public RealTimeUpdater(LiveBuilding building, LiveSmapManager liveSmapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int luxUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, liveSmapManager)
         {
             this.temperatureUpdateInterval = temperatureUpdateInterval;
             this.co2UpdateInterval = co2UpdateInterval;

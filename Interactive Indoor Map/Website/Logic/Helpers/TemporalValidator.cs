@@ -7,7 +7,6 @@ namespace Website.Logic.Helpers
 {
     public class TemporalValidator
     {
-
         public static DateTime ValidateDate(DateTime date)
         {
             if (date > DateTime.Now)

@@ -86,7 +86,7 @@ tr:nth-child(even) {
 }
 
 #legend {
-    max-width: 150px;
+    max-width: 175px;
     position: absolute;
     left: 0%;
     margin-left: 10px;
