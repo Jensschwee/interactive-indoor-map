@@ -28,15 +28,6 @@ namespace Website.Logic.BO
         public double NumberOfSensorRooms => Floors.Sum(floor => floor.NumberOfSensorRooms);
 
         [NotMapped]
-        public double MaxTemperature => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxTemperature)) / NumberOfSensorRooms);
-
-        [NotMapped]
-        public double MaxCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxCO2)) / NumberOfSensorRooms);
-        
-        [NotMapped]
-        public double MaxLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(LiveRoom)).Cast<LiveRoom>().Sum(room => room.MaxLux)) / NumberOfSensorRooms);
-        
-        [NotMapped]
         public double MaxHardwareConsumption => Floors.Sum(floor => floor.MaxHardwareConsumption);
 
         [NotMapped]
@@ -65,7 +56,6 @@ namespace Website.Logic.BO
 
         [NotMapped]
         public double MinTotalPowerConsumption => Floors.Sum(floor => floor.MinTotalPowerConsumption);
-
 
         public int MaxOccupants { get; set; }
         

@@ -110,7 +110,7 @@ namespace Website.Logic.Domain
             timeTo = TemporalValidator.ValidateDate(timeTo);
             temporalSMapManagerTemporal.TemporalUpdateAll(building, timeFrom, timeTo);
 
-            return temporalJsonConverter.ConvertBuilding(building);
+            return temporalJsonConverter.GetBuildingInfobox(building);
         }
     }
 }

@@ -44,7 +44,6 @@ namespace Website.Logic.Domain
         public void WriteGeoJsonHeader(StringBuilder sb)
         {
             sb.Append("{\"type\": \"FeatureCollection\", \"features\": [");
-
         }
 
         public void WriteGeoJsonFooter(StringBuilder sb)
@@ -75,7 +74,6 @@ namespace Website.Logic.Domain
 
         public void WriteGeoJsonCoordinatesLast(StringBuilder sb, double XCoordinate, double YCoordinate)
         {
-
             sb.Append("[");
             sb.Append(JsonConvert.SerializeObject(XCoordinate));
             sb.Append(",");
