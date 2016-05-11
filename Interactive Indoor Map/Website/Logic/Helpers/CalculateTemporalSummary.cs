@@ -80,11 +80,22 @@ namespace Website.Logic.Helpers
 
             if (reading[0].Readings.Count > 1)
             {
-                DateTime timeFrom;
-                DateTime timeTo;
-                List<double> readings1;
-                List<double> readings2;
-                SetHourlyMeanValue(reading, temporalSummary);
+                DateTime timeFrom = dateConverter.ConvertDate((long)reading[0].Readings[1][0]);
+                DateTime timeTo = dateConverter.ConvertDate((long)reading[0].Readings[reading[0].Readings.Count - 1][0]);
+                timeSpan = timeTo - timeFrom;
+
+                List<double> readings1 = new List<double>();
+                readings1.AddRange(reading[0].Readings[0]);
+                List<double> readings2 = new List<double>();
+                readings2.AddRange(reading[0].Readings[reading[0].Readings.Count - 1]);
+
+                for (int j = 1; j < reading.Count; j++)
+                {
+                    readings1[1] += reading[j].Readings[0][1];
+                    readings2[1] += reading[j].Readings[reading[j].Readings.Count - 1][1];
+                }
+
+                temporalSummary.MeanValue = (readings2[1] - readings1[1]) / (timeSpan.Value.TotalHours);
 
                 for (int i = 0; i < reading[0].Readings.Count - 1; i++)
                 {
@@ -109,7 +120,6 @@ namespace Website.Logic.Helpers
                     SetMinAndMaxValues(temporalSummary, readingsValue);
                 }
             }
-
             return temporalSummary;
         }
 
@@ -124,27 +134,6 @@ namespace Website.Logic.Helpers
             {
                 temporalSummary.MaxValue = readingsValue;
             }
-        }
-
-        private void SetHourlyMeanValue(List<SMapSensorReading> reading, TemporalSummary temporalSummary)
-        {
-            TimeSpan? timeSpan;
-            DateTime timeFrom = dateConverter.ConvertDate((long) reading[0].Readings[1][0]);
-            DateTime timeTo = dateConverter.ConvertDate((long) reading[0].Readings[reading[0].Readings.Count - 1][0]);
-            timeSpan = timeTo - timeFrom;
-
-            List<double> readings1 = new List<double>();
-            readings1.AddRange(reading[0].Readings[0]);
-            List<double> readings2 = new List<double>();
-            readings2.AddRange(reading[0].Readings[reading[0].Readings.Count - 1]);
-
-            for (int j = 1; j < reading.Count; j++)
-            {
-                readings1[1] += reading[j].Readings[0][1];
-                readings2[1] += reading[j].Readings[reading[j].Readings.Count - 1][1];
-            }
-
-            temporalSummary.MeanValue = (readings2[1] - readings1[1])/(timeSpan.Value.TotalHours);
         }
 
         public TemporalSummary CalcBooleanEventbasedValues(SMapSensorReading reading, DateTime timeFrom, DateTime timeTo)

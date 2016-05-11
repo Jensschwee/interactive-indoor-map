@@ -13,8 +13,6 @@ var linesOnMap = null;
 var linesMinMaxOnMap = null;
 var temporalActive = false;
 
-
-
 function DrawWorldMap() {
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -30,18 +28,14 @@ function DrawWorldMap() {
 }
 
 function InitLeafletMap(jsonMap) {
-
     var worldMap = DrawWorldMap();
 
-    //Reads the JSON input
     var geojson = L.geoJson(jsonMap);
     initMapSettings(geojson);
+    worldMap.addTo(geoMap);
 
     getRoomsAndDrawBackground();
     getRoomsAndDrawRoomsWithRoomOverlays();
-
-    worldMap.addTo(geoMap);
-
 
     CreateSpatialButtons();
     CreateTemporalButtons();
