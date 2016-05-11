@@ -210,6 +210,7 @@
     <Compile Include="Logic\BO\Utility\SMapSensorReading.cs" />
     <Compile Include="Logic\BO\Utility\TemporalSummary.cs" />
     <Compile Include="Logic\Domain\BuildingSetup.cs" />
+    <Compile Include="Logic\Domain\JsonConverter.cs" />
     <Compile Include="Logic\Domain\LiveJsonConverter.cs" />
     <Compile Include="Logic\Domain\TemporalJsonConverter.cs" />
     <Compile Include="Logic\Domain\Facade.cs" />
