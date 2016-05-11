@@ -73,8 +73,8 @@
                 sensorValue = value.properties[ActiveViews[j].average];
                 drawMinMaxObservedLines(featuresLines, j, value.properties[ActiveViews[j].minObserved], value.properties[ActiveViews[j].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
-            var roomColumnWidthX = ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length);
-            var roomColumnWidthY = ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length);
+            var roomColumnWidthX = ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length);
+            var roomColumnWidthY = ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length);
 
             var roomBottomLeftColumnOffsetX = roomColumnWidthX * j;
             var roomBottomLeftColumnOffsetY = roomColumnWidthY * j;
@@ -100,7 +100,7 @@
             coordinates.push(point);
 
             //calc the hight of the room
-            var roomHeight = (1 - (sensorValue - minValue) / (maxValue - minValue));
+            var roomHeight = ((sensorValue - minValue) / (maxValue - minValue));
 
             //If the room is to fill more then 100%
             if (roomHeight < 0) {
@@ -119,9 +119,9 @@
 
             point = [];
             //Column TopRightVertex X
-            point.push(topLeftVertex[0] + roomTopRightColumnOffsetX - roomHeightX);
+            point.push(bottomLeftVertex[0] + roomTopRightColumnOffsetX + roomHeightX);
             //Column TopRightVertex Y
-            point.push(topLeftVertex[1] + roomTopRightColumnOffsetY - roomHeightY);
+            point.push(bottomLeftVertex[1] + roomTopRightColumnOffsetY + roomHeightY);
             coordinates.push(point);
 
             point = [];
@@ -129,9 +129,9 @@
             var roomTopLeftColumnOffsetY = roomColumnWidthY * j;
 
             //Column TopLeftVertex X
-            point.push(topLeftVertex[0] + roomTopLeftColumnOffsetX - roomHeightX);
+            point.push(bottomLeftVertex[0] + roomTopLeftColumnOffsetX + roomHeightX);
             //Column TopLeftVertex Y
-            point.push(topLeftVertex[1] + roomTopLeftColumnOffsetY - roomHeightY);
+            point.push(bottomLeftVertex[1] + roomTopLeftColumnOffsetY + roomHeightY);
 
             coordinates.push(point);
 
