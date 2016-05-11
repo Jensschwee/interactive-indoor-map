@@ -12,16 +12,14 @@
         geoMap.removeLayer(linesMinMaxOnMap);
     }
 
-    //d3.select("body").selectAll("div.leaflet-overlay-pane").selectAll("svg.rooms").remove();
     var column = new Array();
     var jsonColumn;
-    var jsonMinMaxLines;
     var featuresLines = new Array();
-    jsonMinMaxLines = {
+    var jsonMinMaxLines = {
         type: "FeatureCollection",
         features: featuresLines
     };
-    for (var j = 0; j < ActiveViews.length; j++) {
+    for (var columnNumber = 0; columnNumber < ActiveViews.length; columnNumber++) {
         var features = new Array();
         jsonColumn = {
             type: "FeatureCollection",
@@ -56,28 +54,28 @@
             var topLeftVertex = value.geometry.coordinates[0][0];
 
             var minValue = 0;
-            if (ActiveViews[j].hasOwnProperty("min")) {
-                minValue = value.properties[ActiveViews[j].min];
+            if (ActiveViews[columnNumber].hasOwnProperty("min")) {
+                minValue = value.properties[ActiveViews[columnNumber].min];
             }
             var maxValue = 1;
-            if (ActiveViews[j].hasOwnProperty("max")) {
-                maxValue = value.properties[ActiveViews[j].max];
+            if (ActiveViews[columnNumber].hasOwnProperty("max")) {
+                maxValue = value.properties[ActiveViews[columnNumber].max];
             }
             var sensorValue = 0;
 
-            if (value.properties.hasOwnProperty(ActiveViews[j].value)) {
-                sensorValue = value.properties[ActiveViews[j].value];
+            if (value.properties.hasOwnProperty(ActiveViews[columnNumber].value)) {
+                sensorValue = value.properties[ActiveViews[columnNumber].value];
             }
 
             if (temporalActive) {
-                sensorValue = value.properties[ActiveViews[j].average];
-                drawMinMaxObservedLines(featuresLines, j, value.properties[ActiveViews[j].minObserved], value.properties[ActiveViews[j].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
+                sensorValue = value.properties[ActiveViews[columnNumber].average];
+                drawMinMaxObservedLines(featuresLines, columnNumber, value.properties[ActiveViews[columnNumber].minObserved], value.properties[ActiveViews[columnNumber].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
             var roomColumnWidthX = ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length);
             var roomColumnWidthY = ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length);
 
-            var roomBottomLeftColumnOffsetX = roomColumnWidthX * j;
-            var roomBottomLeftColumnOffsetY = roomColumnWidthY * j;
+            var roomBottomLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+            var roomBottomLeftColumnOffsetY = roomColumnWidthY * columnNumber;
 
             var point = [];
             //Column bottomLeftVertex X
@@ -89,9 +87,9 @@
 
             point = [];
 
+            var roomBottomRightColumnOffsetX = roomColumnWidthX * (columnNumber+1);
+            var roomBottomRightColumnOffsetY = roomColumnWidthY * (columnNumber+1);
             //Column bottomRightVertex X
-            var roomBottomRightColumnOffsetX = roomColumnWidthX * (j+1);
-            var roomBottomRightColumnOffsetY = roomColumnWidthY * (j+1);
             point.push(bottomLeftVertex[0] + roomBottomRightColumnOffsetX);
 
             //Column bottomRightVertex Y
@@ -114,8 +112,8 @@
             var roomHeightX = ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight);
             var roomHeightY = ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight);
 
-            var roomTopRightColumnOffsetX = roomColumnWidthX * (j + 1);
-            var roomTopRightColumnOffsetY = roomColumnWidthY * (j + 1);
+            var roomTopRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1);
+            var roomTopRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1);
 
             point = [];
             //Column TopRightVertex X
@@ -125,8 +123,8 @@
             coordinates.push(point);
 
             point = [];
-            var roomTopLeftColumnOffsetX = roomColumnWidthX * j;
-            var roomTopLeftColumnOffsetY = roomColumnWidthY * j;
+            var roomTopLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+            var roomTopLeftColumnOffsetY = roomColumnWidthY * columnNumber;
 
             //Column TopLeftVertex X
             point.push(bottomLeftVertex[0] + roomTopLeftColumnOffsetX + roomHeightX);
@@ -192,27 +190,17 @@
         });
         linesOnMap = L.geoJson(jsonLines, {
             style: {
-                //Backgrund color
-                //border color
-                color: "white",//"#737373",
-                //Border thickness
-                opacity: "none",
-                fillOpacity: "none",
-                weight: "1px"
-                //,dashArray:"12,6"
+                color: "white", //border color
+                opacity: "none", 
+                weight: "1px" //Border thickness
             }
         }).addTo(geoMap).bringToBack();
         if (temporalActive) {
             linesMinMaxOnMap =  L.geoJson(jsonMinMaxLines, {
                 style: {
-                    //Backgrund color
-                    //border color
-                    color: "black",//"#737373",
-                    //Border thickness
-                    opacity: "none",
-                    fillOpacity: "none",
-                    weight: "2px"
-                    //,dashArray:"12,6"
+                    color: "black", //border color
+                    opacity: "none", 
+                    weight: "2px" //Border thickness
                 }
             }).addTo(geoMap).bringToFront();
         }
