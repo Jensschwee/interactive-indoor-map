@@ -12,27 +12,8 @@ namespace Website.Logic.BO.Utility
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
+        
         public Dictionary <string, SensorType> SmapEndponts { get; set; }
-
         public string WifiEndpoint { get; set; }
-
-        //public string TemperatureUUID { get; set; }
-        //public string CO2UUID { get; set; }
-        //public string LightUUID { get; set; }
-        //public string LuxUUID { get; set; }
-        ////public string TotalPowerConsumptionUUID { get; set; }
-        //public string HardwarePowerConsumptionUUID { get; set; }
-        //public string LightPowerConsumptionUUID { get; set; }
-        //public string VentilationPowerConsumptionUUID { get; set; }
-        //public string OtherPowerConsumptionUUID { get; set; }
-        //public string HotWaterConsumptionUUID { get; set; }
-        //public string ColdWaterConsumptionUUID { get; set; }
-        //public string MotionDetectionUUID { get; set; }
-        //public string OccupantsUUID { get; set; }
-        //public string WifiClientsUUID { get; set; }
-
-        //public SensorType Type { get; set; }
-
     }
 }

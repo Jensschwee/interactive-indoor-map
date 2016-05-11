@@ -14,7 +14,7 @@ namespace Website.Logic.Domain
     public class RealTimeUpdater
     {
         LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
-        private SmapManager smapManager;
+        private LiveSmapManager liveSmapManager;
         private int temperatureUpdateInterval = 5000;
         private int co2UpdateInterval = 5000;
         private int lightUpdateInterval = 5000;
@@ -25,13 +25,13 @@ namespace Website.Logic.Domain
         private int occupantsUpdateInterval = 5000;
         private int wifiClientsUpdateInterval = 5000;
 
-        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager)
+        public RealTimeUpdater(LiveBuilding building, LiveSmapManager _liveSmapManager)
         {
             this.building = building;
-            this.smapManager = smapManager;
+            this.liveSmapManager = _liveSmapManager;
         }
 
-        public RealTimeUpdater(LiveBuilding building, SmapManager smapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int luxUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, smapManager)
+        public RealTimeUpdater(LiveBuilding building, LiveSmapManager _liveSmapManager, int temperatureUpdateInterval, int co2UpdateInterval, int lightUpdateInterval, int luxUpdateInterval, int powerConsumptionInterval, int waterUpdateInterval, int motionDetectedUpdateInterval, int occupantsUpdateInterval, int wifiClientsUpdateInterval) : this(building, _liveSmapManager)
         {
             this.temperatureUpdateInterval = temperatureUpdateInterval;
             this.co2UpdateInterval = co2UpdateInterval;
@@ -95,48 +95,48 @@ namespace Website.Logic.Domain
 
         private void OnTemperatureTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.TemperatureUpdate(building);
+            liveSmapManager.TemperatureUpdate(building);
         }
 
         private void OnCO2TimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.Co2Update(building);
+            liveSmapManager.Co2Update(building);
         }
 
         private void OnLightTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.LightUpdate(building);
+            liveSmapManager.LightUpdate(building);
         }
 
         private void OnLuxTimedEvent(object source, ElapsedEventArgs e)
         {
 
-            smapManager.LuxUpdate(building);
+            liveSmapManager.LuxUpdate(building);
         }
 
         private void OnPowerConsumptionTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.PowerConsumptionUpdate(building);
+            liveSmapManager.PowerConsumptionUpdate(building);
         }
 
         private void OnWaterTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.WaterUpdate(building);
+            liveSmapManager.WaterUpdate(building);
         }
 
         private void OnMotionTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.MotionUpdate(building);
+            liveSmapManager.MotionUpdate(building);
         }
 
         private void OnOccupantsTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.OccupantsUpdate(building);
+            liveSmapManager.OccupantsUpdate(building);
         }
 
         private void OnWifiClientsTimedEvent(object source, ElapsedEventArgs e)
         {
-            smapManager.WifiClientUpdate(building);
+            liveSmapManager.WifiClientUpdate(building);
         }
     }
 }

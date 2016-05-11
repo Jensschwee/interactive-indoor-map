@@ -10,10 +10,7 @@ namespace Website.DAL.Persistence
 
     public partial class BuildingDbContext : DbContext
     {
-        public BuildingDbContext()
-            : base("name=BuildingDbContext")
-        {
-        }
+        public BuildingDbContext() : base("name=BuildingDbContext") {}
 
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Floor> Floors { get; set; }

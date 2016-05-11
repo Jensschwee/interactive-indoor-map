@@ -18,27 +18,22 @@ namespace Website.Logic.BO.Utility
         public Coordinates BottomRightCorner { get; set; }
         public Coordinates TopRightCorner { get; set; }
 
-        private double _xSum;
-        private double _ySum;
+        private double xSum;
+        private double ySum;
 
         public Corners() { }
 
         public Corners(List<Coordinates> cornerCoordinates)
         {
             MatchCoordinatesToCorners(cornerCoordinates);
-
-            //TopLeftCorner = cornerCoordinates[0];
-            //BottomLeftCorner = cornerCoordinates[1];
-            //BottomRightCorner = cornerCoordinates[2];
-            //TopRightCorner = cornerCoordinates[3];
         }
 
         private void MatchCoordinatesToCorners(List<Coordinates> cornerCoordinates)
         {
             foreach (var coordinateSet in cornerCoordinates)
             {
-                _xSum += coordinateSet.XCoordinate;
-                _ySum += coordinateSet.YCoordinate;
+                xSum += coordinateSet.XCoordinate;
+                ySum += coordinateSet.YCoordinate;
             }
 
             SetCorners(cornerCoordinates);
@@ -46,8 +41,8 @@ namespace Website.Logic.BO.Utility
 
         private void SetCorners(List<Coordinates> cornerCoordinates)
         {
-            var averageX = _xSum/4;
-            var averageY = _ySum/4;
+            var averageX = xSum/4;
+            var averageY = ySum/4;
 
             foreach (var coordinateSet in cornerCoordinates)
             {

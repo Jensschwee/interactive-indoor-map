@@ -10,7 +10,7 @@ using Website.Logic.BO.Rooms;
 
 namespace Website.Logic.Domain
 {
-    public class JsonConverterTemporal
+    public class TemporalJsonConverter
     {
         public string ConvertBuilding(TemporalBuilding building)
         {

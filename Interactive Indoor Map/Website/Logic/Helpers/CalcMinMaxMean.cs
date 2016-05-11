@@ -212,5 +212,4 @@ namespace Website.Logic.Helpers
             temporalSummary.MeanValue += state * (timeToEnd.TotalSeconds / timeSpan.TotalSeconds);
         }
     }
-
 }

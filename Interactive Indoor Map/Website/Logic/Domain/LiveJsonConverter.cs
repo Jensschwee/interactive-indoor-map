@@ -11,7 +11,7 @@ using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Domain
 {
-    public class JsonConverter
+    public class LiveJsonConverter
     {
         public string ConvertBuilding()
         {

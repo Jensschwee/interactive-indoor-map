@@ -12,11 +12,11 @@ using Website.Logic.Helpers;
 
 namespace Website.Logic.Domain
 {
-    public class SmapManager
+    public class LiveSmapManager
     {
         private SMAP smapDal;
 
-        public SmapManager(SMAP smapDal)
+        public LiveSmapManager(SMAP smapDal)
         {
             this.smapDal = smapDal;
         }

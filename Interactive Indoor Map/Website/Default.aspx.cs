@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using Website.Logic.BO;
 using Website.Logic.BO.Buildings;
 using Website.Logic.Domain;
-using JsonConverter = Website.Logic.Domain.JsonConverter;
 
 namespace Website
 {
@@ -23,7 +22,7 @@ namespace Website
                 Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
-                    string jsonRooms = LogicFacade.Instance.ConvertRooms(1);
+                    string jsonRooms = Facade.Instance.ConvertRooms(1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
                 }
@@ -34,44 +33,44 @@ namespace Website
         [System.Web.Services.WebMethod]
         public static string DrawFloor(int floorLevel)
         {
-            return LogicFacade.Instance.ConvertRooms(floorLevel);
+            return Facade.Instance.ConvertRooms(floorLevel);
         }
 
 
         [System.Web.Services.WebMethod]
         public static string DrawRoomsBackground(int floorLevel)
         {
-            return LogicFacade.Instance.ConvertRoomsGeoJson(floorLevel);
+            return Facade.Instance.ConvertRoomsGeoJson(floorLevel);
         }
 
         [System.Web.Services.WebMethod]
         public static string DrawFloorInfoBox(int floorLevel)
         {
-            return LogicFacade.Instance.ConvertFloors(floorLevel);
+            return Facade.Instance.ConvertFloors(floorLevel);
         }
 
         [System.Web.Services.WebMethod]
         public static string DrawBuildingInfoBox()
         {
-            return LogicFacade.Instance.ConvertBuilding();
+            return Facade.Instance.ConvertBuilding();
         }
 
         [System.Web.Services.WebMethod]
         public static string GetTemporalBuildingInfoBox(DateTime timeFrom, DateTime timeTo)
         {
-            return LogicFacade.Instance.GetTemporalBuildingInfoBox(timeFrom, timeTo);
+            return Facade.Instance.GetTemporalBuildingInfoBox(timeFrom, timeTo);
         }
 
         [System.Web.Services.WebMethod]
         public static string GetTemporalFloorInfoBox(int floorLevel,DateTime timeFrom, DateTime timeTo)
         {
-            return LogicFacade.Instance.GetTemporalFloorInfoBox(floorLevel, timeFrom, timeTo);
+            return Facade.Instance.GetTemporalFloorInfoBox(floorLevel, timeFrom, timeTo);
         }
 
         [System.Web.Services.WebMethod]
         public static string GetDrawableTemporalFloorReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
         {
-            return LogicFacade.Instance.GetDrawableTemporalFloorReadings(floorLeel, timeFrom, timeTo);
+            return Facade.Instance.GetDrawableTemporalFloorReadings(floorLeel, timeFrom, timeTo);
         }
     }
 }

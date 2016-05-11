@@ -11,12 +11,12 @@ using Website.Logic.Helpers;
 
 namespace Website.Logic.Domain
 {
-    public class SMapManagerTemporalt
+    public class TemporalSMapManager
     {
         private CalcMinMaxMean calcMinMaxMean;
         private SMAP smapDal;
 
-        public SMapManagerTemporalt(SMAP smapDal)
+        public TemporalSMapManager(SMAP smapDal)
         {
             this.smapDal = smapDal;
             calcMinMaxMean = new CalcMinMaxMean();

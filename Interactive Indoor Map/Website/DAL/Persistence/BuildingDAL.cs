@@ -20,13 +20,7 @@ namespace Website.DAL.Persistence
                 context.Buildings.AddOrUpdate(building);
                 context.SaveChanges();
             }
-
-            foreach (var floor in building.Floors)
-            {
-                //SaveFloor(floor);
-            }
         }
-
 
         public Building GetBuilding(String buildingName)
         {
@@ -40,7 +34,6 @@ namespace Website.DAL.Persistence
                 return tempBuilding.First();
             }
         }
-
 
         public LiveRoom GetLiveRoom(int id)
         {
@@ -67,7 +60,6 @@ namespace Website.DAL.Persistence
             }
         }
 
-
         private void SaveFloor(LiveFloor floor)
         {
             using (BuildingDbContext context = new BuildingDbContext())
@@ -89,7 +81,6 @@ namespace Website.DAL.Persistence
             }
 
         }
-
 
         private void SaveSensorlessRoom(SensorlessRoom sensorlessRoom)
         {
@@ -143,9 +134,5 @@ namespace Website.DAL.Persistence
                 context.SaveChanges();
             }
         }
-
-
-
-
     }
 }

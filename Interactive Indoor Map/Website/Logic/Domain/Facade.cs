@@ -7,28 +7,26 @@ using Website.Logic.BO.Buildings;
 
 namespace Website.Logic.Domain
 {
-    public class LogicFacade
+    public class Facade
     {
-
         private TemporalManager temporalManager;
-        private JsonConverter jsonLiveConverter;
+        private LiveJsonConverter liveJsonLiveConverter;
 
+        private static Facade _instance;
 
-        private static LogicFacade _instance;
-
-        private LogicFacade()
+        private Facade()
         {
-            temporalManager = new TemporalManager(new SMapManagerTemporalt(new SMAP()));
-            jsonLiveConverter = new JsonConverter();
+            temporalManager = new TemporalManager(new TemporalSMapManager(new SMAP()));
+            liveJsonLiveConverter = new LiveJsonConverter();
         }
 
-        public static LogicFacade Instance
+        public static Facade Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new LogicFacade();
+                    _instance = new Facade();
                 }
                 return _instance;
             }
@@ -36,29 +34,28 @@ namespace Website.Logic.Domain
 
         public string ConvertBuilding()
         {
-            return jsonLiveConverter.ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
+            return liveJsonLiveConverter.ConvertBuilding((LiveBuilding)HttpContext.Current.Application["Building"]);
         }
 
         public string ConvertBuilding(LiveBuilding building)
         {
-            return jsonLiveConverter.ConvertBuilding(building);
+            return liveJsonLiveConverter.ConvertBuilding(building);
         }
 
         public string ConvertFloors(int floorLevel)
         {
-            return jsonLiveConverter.ConvertFloors(floorLevel);
+            return liveJsonLiveConverter.ConvertFloors(floorLevel);
         }
 
         public string ConvertRoomsGeoJson(int floorLevel)
         {
-            return jsonLiveConverter.ConvertRoomsGeoJson(floorLevel);
+            return liveJsonLiveConverter.ConvertRoomsGeoJson(floorLevel);
         }
 
         public string ConvertRooms(int? floorLevel = null)
         {
-            return jsonLiveConverter.ConvertRooms(floorLevel);
+            return liveJsonLiveConverter.ConvertRooms(floorLevel);
         }
-
 
 
         public string GetTemporalFloorInfoBox(int floorLevel, DateTime timeFrom,
