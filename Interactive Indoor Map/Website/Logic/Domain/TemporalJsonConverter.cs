@@ -78,112 +78,69 @@ namespace Website.Logic.Domain
             return sb.ToString();
         }
 
-        public string ConvertFloor(TemporalFloor floor)
+        public string GetFloorInfobox(TemporalFloor floor)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("{");
+            WriteFirstAttribute(sb,"Level", floor.FloorLevel);
+            WriteAttribute(sb, "Name", floor.FloorName);
+            WriteAttribute(sb, "SurfaceArea", floor.SurfaceArea);
+            WriteAttribute(sb, "NumberOfRooms", floor.NumberOfSensorRooms);
 
-            sb.Append("\"Level\":\"" + floor.FloorLevel + "\",");
+            WriteAttribute(sb, "AverageTemperature", floor.AverageTemperature);
+            WriteAttribute(sb, "MaxObservedTemperature", floor.MaxObservedTemperature);
+            WriteAttribute(sb, "MinObservedTemperature", floor.MinObservedTemperature);
 
-            sb.Append("\"Name\":\"" + floor.FloorName + "\",");
-            sb.Append("\"SurfaceArea\":" + floor.SurfaceArea + ",");
+            WriteAttribute(sb, "AverageCO2", floor.AverageCO2);
+            WriteAttribute(sb, "MaxObservedCO2", floor.MaxObservedCO2);
+            WriteAttribute(sb, "MinObservedCO2", floor.MinObservedCO2);
 
-            sb.Append("\"NumberOfRooms\":" + JsonConvert.SerializeObject(floor.NumberOfSensorRooms) + ",");
+            WriteAttribute(sb, "AverageLight", floor.AverageLight);
+            WriteAttribute(sb, "MaxObservedLight", floor.MaxObservedLight);
+            WriteAttribute(sb, "MinObservedLight", floor.MinObservedLight);
 
-            sb.Append("\"AverageTemperature\":" + JsonConvert.SerializeObject(floor.AverageTemperature) + ",");
-            sb.Append("\"MaxObservedTemperature\":" + JsonConvert.SerializeObject(floor.MaxObservedTemperature) + ",");
-            sb.Append("\"MinObservedTemperature\":" + JsonConvert.SerializeObject(floor.MinObservedTemperature) + ",");
-            sb.Append("\"MaxTemperature\":" + JsonConvert.SerializeObject(floor.MaxTemperature) + ",");
+            WriteAttribute(sb, "AverageLux", floor.AverageLux);
+            WriteAttribute(sb, "MaxObservedLux", floor.MaxObservedLux);
+            WriteAttribute(sb, "MinObservedLux", floor.MinObservedLux);
 
-            sb.Append("\"AverageCO2\":" + JsonConvert.SerializeObject(floor.AverageCO2) + ",");
-            sb.Append("\"MaxObservedCO2\":" + JsonConvert.SerializeObject(floor.MaxObservedCO2) + ",");
-            sb.Append("\"MinObservedCO2\":" + JsonConvert.SerializeObject(floor.MinObservedCO2) + ",");
-            sb.Append("\"MaxCO2\":" + JsonConvert.SerializeObject(floor.MaxCO2) + ",");
+            WriteAttribute(sb, "AverageHardwareConsumption", floor.AverageHardwareConsumption);
+            WriteAttribute(sb, "MaxObservedHardwareConsumption", floor.MaxObservedHardwareConsumption);
+            WriteAttribute(sb, "MinObservedHardwareConsumption", floor.MinObservedHardwareConsumption);
 
+            WriteAttribute(sb, "AverageLightConsumption", floor.AverageLightConsumption);
+            WriteAttribute(sb, "MaxObservedLightConsumption", floor.MaxObservedLightConsumption);
+            WriteAttribute(sb, "MinObservedLightConsumption", floor.MinObservedLightConsumption);
 
-            sb.Append("\"AverageLight\":" + JsonConvert.SerializeObject(floor.AverageLight) + ",");
-            sb.Append("\"MaxObservedLight\":" + JsonConvert.SerializeObject(floor.MaxObservedLight) + ",");
-            sb.Append("\"MinObservedLight\":" + JsonConvert.SerializeObject(floor.MinObservedLight) + ",");
+            WriteAttribute(sb, "AverageVentilationConsumption", floor.AverageVentilationConsumption);
+            WriteAttribute(sb, "MaxObservedVentilationConsumption", floor.MaxObservedVentilationConsumption);
+            WriteAttribute(sb, "MinObservedVentilationConsumption", floor.MinObservedVentilationConsumption);
 
-            sb.Append("\"AverageLux\":" + JsonConvert.SerializeObject(floor.AverageLux) + ",");
-            sb.Append("\"MaxObservedLux\":" + JsonConvert.SerializeObject(floor.MaxObservedLux) + ",");
-            sb.Append("\"MinObservedLux\":" + JsonConvert.SerializeObject(floor.MinObservedLux) + ",");
-            sb.Append("\"MaxLux\":" + JsonConvert.SerializeObject(floor.MaxLux) + ",");
+            WriteAttribute(sb, "AverageOtherConsumption", floor.AverageOtherConsumption);
+            WriteAttribute(sb, "MaxObservedOtherConsumption", floor.MaxObservedOtherConsumption);
+            WriteAttribute(sb, "MinObservedOtherConsumption", floor.MinObservedOtherConsumption);
 
-            sb.Append("\"AverageHardwareConsumption\":" +
-                      JsonConvert.SerializeObject(floor.AverageHardwareConsumption) + ",");
-            sb.Append("\"MaxObservedHardwareConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedHardwareConsumption) + ",");
-            sb.Append("\"MinObservedHardwareConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedHardwareConsumption) + ",");
-            sb.Append("\"MaxHardwareConsumption\":" + JsonConvert.SerializeObject(floor.MaxHardwareConsumption) + ",");
+            WriteAttribute(sb, "AverageTotalPowerConsumption", floor.AverageTotalPowerConsumption);
+            WriteAttribute(sb, "MaxObservedTotalPowerConsumption", floor.MaxObservedTotalPowerConsumption);
+            WriteAttribute(sb, "MinObservedTotalPowerConsumption", floor.MinObservedTotalPowerConsumption);
 
-            sb.Append("\"AverageLightConsumption\":" + JsonConvert.SerializeObject(floor.AverageLightConsumption) +
-                      ",");
-            sb.Append("\"MaxObservedLightConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedLightConsumption) + ",");
-            sb.Append("\"MinObservedLightConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedLightConsumption) + ",");
-            sb.Append("\"MaxLightConsumption\":" + JsonConvert.SerializeObject(floor.MaxLightConsumption) + ",");
+            WriteAttribute(sb, "AverageColdWaterConsumption", floor.AverageColdWaterConsumption);
+            WriteAttribute(sb, "MaxObservedColdWaterConsumption", floor.MaxObservedColdWaterConsumption);
+            WriteAttribute(sb, "MinObservedColdWaterConsumption", floor.MinObservedColdWaterConsumption);
 
-            sb.Append("\"AverageVentilationConsumption\":" +
-                      JsonConvert.SerializeObject(floor.AverageVentilationConsumption) + ",");
-            sb.Append("\"MaxObservedVentilationConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedVentilationConsumption) + ",");
-            sb.Append("\"MinObservedVentilationConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedVentilationConsumption) + ",");
-            sb.Append("\"MaxVentilationConsumption\":" + JsonConvert.SerializeObject(floor.MaxVentilationConsumption) +
-                      ",");
+            WriteAttribute(sb, "AverageHotWaterConsumption", floor.AverageHotWaterConsumption);
+            WriteAttribute(sb, "MaxObservedHotWaterConsumption", floor.MaxObservedHotWaterConsumption);
+            WriteAttribute(sb, "MinObservedHotWaterConsumption", floor.MinObservedHotWaterConsumption);
 
-            sb.Append("\"AverageOtherConsumption\":" + JsonConvert.SerializeObject(floor.AverageOtherConsumption) +
-                      ",");
-            sb.Append("\"MaxObservedOtherConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedOtherConsumption) + ",");
-            sb.Append("\"MinObservedOtherConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedOtherConsumption) + ",");
-            sb.Append("\"MaxOtherConsumption\":" + JsonConvert.SerializeObject(floor.MaxOtherConsumption) + ",");
+            WriteAttribute(sb, "AverageMotion", floor.AverageMotion);
+            WriteAttribute(sb, "MaxObservedMotion", floor.MaxObservedMotion);
+            WriteAttribute(sb, "MinObservedMotion", floor.MinObservedMotion);
 
+            WriteAttribute(sb, "AverageOccupants", floor.AverageOccupants);
+            WriteAttribute(sb, "MaxObservedOccupants", floor.MaxObservedOccupants);
+            WriteAttribute(sb, "MinObservedOccupants", floor.MinObservedOccupants);
 
-            sb.Append("\"AverageTotalPowerConsumption\":" +
-                      JsonConvert.SerializeObject(floor.AverageTotalPowerConsumption) + ",");
-            sb.Append("\"MaxObservedTotalPowerConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedTotalPowerConsumption) + ",");
-            sb.Append("\"MinObservedTotalPowerConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedTotalPowerConsumption) + ",");
-            sb.Append("\"MaxTotalPowerConsumption\":" + JsonConvert.SerializeObject(floor.MaxTotalPowerConsumption) +
-                      ",");
-
-            sb.Append("\"AverageColdWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.AverageColdWaterConsumption) + ",");
-            sb.Append("\"MaxObservedColdWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedColdWaterConsumption) + ",");
-            sb.Append("\"MinObservedColdWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedColdWaterConsumption) + ",");
-            sb.Append("\"MaxColdWaterConsumption\":" + JsonConvert.SerializeObject(floor.MaxColdWaterConsumption) +
-                      ",");
-
-            sb.Append("\"AverageHotWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.AverageHotWaterConsumption) + ",");
-            sb.Append("\"MaxObservedHotWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MaxObservedHotWaterConsumption) + ",");
-            sb.Append("\"MinObservedHotWaterConsumption\":" +
-                      JsonConvert.SerializeObject(floor.MinObservedHotWaterConsumption) + ",");
-            sb.Append("\"MaxHotWaterConsumption\":" + JsonConvert.SerializeObject(floor.MaxHotWaterConsumption) + ",");
-
-            sb.Append("\"AverageMotion\":" + JsonConvert.SerializeObject(floor.AverageMotion) + ",");
-            sb.Append("\"MaxObservedMotion\":" + JsonConvert.SerializeObject(floor.MaxObservedMotion) + ",");
-            sb.Append("\"MinObservedMotion\":" + JsonConvert.SerializeObject(floor.MinObservedMotion) + ",");
-
-            sb.Append("\"AverageOccupants\":" + JsonConvert.SerializeObject(floor.AverageOccupants) + ",");
-            sb.Append("\"MaxObservedOccupants\":" + JsonConvert.SerializeObject(floor.MaxObservedOccupants) + ",");
-            sb.Append("\"MinObservedOccupants\":" + JsonConvert.SerializeObject(floor.MinObservedOccupants) + ",");
-            sb.Append("\"MaxOccupants\":" + JsonConvert.SerializeObject(floor.MaxOccupants) + ",");
-
-            sb.Append("\"AverageWifiClients\":" + JsonConvert.SerializeObject(floor.AverageWifiClients) + ",");
-            sb.Append("\"MaxObservedWifiClients\":" + JsonConvert.SerializeObject(floor.MaxObservedWifiClients) + ",");
-            sb.Append("\"MinObservedWifiClients\":" + JsonConvert.SerializeObject(floor.MinObservedWifiClients) + ",");
-            sb.Append("\"MaxWifiClients\":" + JsonConvert.SerializeObject(floor.MaxWifiClients));
-            sb.Append("}");
+            WriteAttribute(sb, "AverageWifiClients", floor.AverageWifiClients);
+            WriteAttribute(sb, "MaxObservedWifiClients", floor.MaxObservedWifiClients);
+            WriteLastAttribute(sb, "MinObservedWifiClients", floor.MinObservedWifiClients);
 
             return sb.ToString();
         }

@@ -98,7 +98,7 @@ namespace Website.Logic.Domain
             timeFrom = TemporalValidator.ValidateDate(timeFrom);
             timeTo = TemporalValidator.ValidateDate(timeTo);
             temporalSMapManagerTemporal.TemporalUpdateAll(floor, timeFrom, timeTo);
-            return temporalJsonConverter.ConvertFloor(floor);
+            return temporalJsonConverter.GetFloorInfobox(floor);
 
         }
 
