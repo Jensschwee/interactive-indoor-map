@@ -19,10 +19,9 @@ function CreateSpatialButtons() {
     var oneIcon = createIconForButton("Images/1Icon.png");
     var twoIcon = createIconForButton("Images/2Icon.png");
 
-
-    L.control.fullscreen({
-        position: 'bottomright'
-    }).addTo(geoMap);
+    //L.control.fullscreen({
+    //    position: 'bottomright'
+    //}).addTo(geoMap);
 
     //fullscreenButton.button.style.width = '30px';
     //fullscreenButton.button.style.height = '30px';
