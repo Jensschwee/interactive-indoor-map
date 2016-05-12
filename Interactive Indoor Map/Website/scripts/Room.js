@@ -11,8 +11,8 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
     if (linesOnMap != null) {
         geoMap.removeLayer(linesOnMap);
     }
-    if (linesMinMaxOnMap != null) {
-        geoMap.removeLayer(linesMinMaxOnMap);
+    if (averageTemporalLineOnMap != null) {
+        geoMap.removeLayer(averageTemporalLineOnMap);
     }
 
     var column = new Array();
@@ -130,21 +130,22 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
                 features2.push(feature2);
             }
         });
-        linesOnMap = L.geoJson(jsonLines, {
-            style: {
-                color: "white", //border color
-                opacity: "none",
-                weight: "1px" //Border thickness
-            }
-        }).addTo(geoMap).bringToBack();
+        //linesOnMap = L.geoJson(jsonLines, {
+        //    style: {
+        //        color: "white", //border color
+        //        opacity: "none",
+        //        weight: "1px" //Border thickness
+        //    }
+        //}).addTo(geoMap).bringToBack();
         if (temporalActive) {
-            linesMinMaxOnMap = L.geoJson(jsonMinMaxLines, {
+            averageTemporalLineOnMap = L.geoJson(jsonMinMaxLines, {
                 style: {
                     color: "black", //border color
                     opacity: "none",
                     weight: "2px" //Border thickness
                 }
             }).addTo(geoMap).bringToFront();
+            roomForegroundLayer.bringToFront();
         }
     }
 

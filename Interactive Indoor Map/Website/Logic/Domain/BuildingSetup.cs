@@ -326,6 +326,7 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 2",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -357,6 +358,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4308127080001,55.367183089)
             }))
             {
+                Alias = "U168",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -388,6 +390,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4306243130001,55.3671749660001)
             }))
             {
+                Alias = "U163",
                 MaxOccupants = 48,
                 MaxWifiClients = 60,
                 MaxTemperature = 25,
@@ -420,6 +423,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430772448,55.367483737)
             }))
             {
+                Alias = "U166",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -452,6 +456,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4305840530001,55.367475588)
             }))
             {
+                Alias = "U165",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -485,6 +490,7 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 1",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -518,6 +524,7 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 3",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -550,6 +557,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4311009250001,55.367174069)
             }))
             {
+                Alias = "U164",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -582,6 +590,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4309142490001,55.3671659950001)
             }))
             {
+                Alias = "U163",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -614,6 +623,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.431066425,55.3674316780001)
             }))
             {
+                Alias = "U162",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -646,6 +656,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4310578000001,55.3674960800001)
             }))
             {
+                Alias = "U161",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -678,6 +689,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4310491750001,55.367560482)
             }))
             {
+                Alias = "U160",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -711,6 +723,7 @@ namespace Website.Logic.Domain
             }))
             {
                 RoomType = RoomType.Studyzone,
+                Alias = "Studiezone 4",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -1958,6 +1971,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4308162180001,55.3671617540001),
             }))
             {
+                Alias = "Ø20-603-2",
                 MaxOccupants = 36,
                 MaxWifiClients = 60,
                 MaxTemperature = 25,
@@ -1990,6 +2004,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430801452,55.3672720260001)
             }))
             {
+                Alias = "U182",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2022,6 +2037,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430773097,55.367483765)
             }))
             {
+                Alias = "U183",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2054,6 +2070,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.430767358,55.36752662)
             }))
             {
+                Alias = "Ø20-510-2",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2086,6 +2103,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4311009250001,55.367174069)
             }))
             {
+                Alias = "Ø22-603-2",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2119,6 +2137,7 @@ namespace Website.Logic.Domain
 
             }))
             {
+                Alias = "U181",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2151,6 +2170,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4310578000001,55.3674960810001)
             }))
             {
+                Alias = "U180",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
@@ -2183,6 +2203,7 @@ namespace Website.Logic.Domain
                 new Coordinates(10.4308708630001,55.367487995)
             }))
             {
+                Alias = "Ø22-510-2",
                 MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,

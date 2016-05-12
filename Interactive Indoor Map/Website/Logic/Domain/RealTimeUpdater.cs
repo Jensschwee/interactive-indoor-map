@@ -15,15 +15,15 @@ namespace Website.Logic.Domain
     {
         LiveBuilding building = (LiveBuilding)HttpContext.Current.Application["Building"];
         private LiveSmapManager liveSmapManager;
-        private int temperatureUpdateInterval = 5000;
-        private int co2UpdateInterval = 5000;
-        private int lightUpdateInterval = 5000;
-        private int luxUpdateInterval = 5000;
-        private int powerConsumptionInterval = 5000;
-        private int waterUpdateInterval = 5000;
-        private int motionDetectedUpdateInterval = 5000;
-        private int occupantsUpdateInterval = 5000;
-        private int wifiClientsUpdateInterval = 5000;
+        private readonly int temperatureUpdateInterval = 5000;
+        private readonly int co2UpdateInterval = 5000;
+        private readonly int lightUpdateInterval = 5000;
+        private readonly int luxUpdateInterval = 5000;
+        private readonly int powerConsumptionInterval = 5000;
+        private readonly int waterUpdateInterval = 5000;
+        private readonly int motionDetectedUpdateInterval = 5000;
+        private readonly int occupantsUpdateInterval = 5000;
+        private readonly int wifiClientsUpdateInterval = 5000;
 
         public RealTimeUpdater(LiveBuilding building, LiveSmapManager liveSmapManager)
         {

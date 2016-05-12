@@ -104,8 +104,7 @@ tr:nth-child(even) {
     position: absolute;
     right: 0;
     bottom: 0;
-    margin-bottom: 228px;
-    /*margin-right: 45px;*/
+    margin-bottom: 189px;
     margin-right: 105px;
     z-index: 5;
 }
