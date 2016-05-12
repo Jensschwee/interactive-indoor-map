@@ -3,4 +3,4 @@
         getRoomsAndDrawRooms();
         infoboxUpdate();
     }
-}, 3000);
+}, 2500);
