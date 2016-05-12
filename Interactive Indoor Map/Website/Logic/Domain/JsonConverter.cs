@@ -66,18 +66,18 @@ namespace Website.Logic.Domain
             sb.Append("\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [");
         }
 
-        public void WriteGeoJsonCoordinates(StringBuilder sb, double XCoordinate, double YCoordinate)
+        public void WriteGeoJsonCoordinates(StringBuilder sb, double xCoordinate, double yCoordinate)
         {
-            WriteGeoJsonCoordinatesLast(sb, XCoordinate, YCoordinate);
+            WriteGeoJsonCoordinatesLast(sb, xCoordinate, yCoordinate);
             sb.Append(",");
         }
 
-        public void WriteGeoJsonCoordinatesLast(StringBuilder sb, double XCoordinate, double YCoordinate)
+        public void WriteGeoJsonCoordinatesLast(StringBuilder sb, double xCoordinate, double yCoordinate)
         {
             sb.Append("[");
-            sb.Append(JsonConvert.SerializeObject(XCoordinate));
+            sb.Append(JsonConvert.SerializeObject(xCoordinate));
             sb.Append(",");
-            sb.Append(JsonConvert.SerializeObject(YCoordinate));
+            sb.Append(JsonConvert.SerializeObject(yCoordinate));
             sb.Append("]");
         }
 

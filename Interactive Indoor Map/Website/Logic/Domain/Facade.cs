@@ -12,7 +12,7 @@ namespace Website.Logic.Domain
         private TemporalManager temporalManager;
         private LiveJsonConverter liveJsonLiveConverter;
 
-        private static Facade _instance;
+        private static Facade instance;
 
         private Facade()
         {
@@ -22,37 +22,30 @@ namespace Website.Logic.Domain
 
         public static Facade Instance
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new Facade();
-                }
-                return _instance;
-            }
+            get { return instance ?? (instance = new Facade()); }
         }
 
-        public string ConvertBuilding()
+        public string GetBuildingInfobox()
         {
             return liveJsonLiveConverter.GetBuildingInfobox((LiveBuilding)HttpContext.Current.Application["Building"]);
         }
 
-        public string ConvertBuilding(LiveBuilding building)
+        public string GetBuildingInfobox(LiveBuilding building)
         {
             return liveJsonLiveConverter.GetBuildingInfobox(building);
         }
 
-        public string ConvertFloors(int floorLevel)
+        public string GetFloorInfobox(int floorLevel)
         {
             return liveJsonLiveConverter.GetFloorInfobox(floorLevel);
         }
 
-        public string ConvertRoomsGeoJson(int floorLevel)
+        public string GetDrawableRooms(int floorLevel)
         {
             return liveJsonLiveConverter.GetDrawableRooms(floorLevel);
         }
 
-        public string ConvertRooms(int? floorLevel = null)
+        public string GetDrawableSensorRooms(int? floorLevel = null)
         {
             return liveJsonLiveConverter.GetDrawableSensorRooms(floorLevel);
         }

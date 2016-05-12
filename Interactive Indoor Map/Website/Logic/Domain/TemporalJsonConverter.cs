@@ -221,6 +221,7 @@ namespace Website.Logic.Domain
                 WriteAttribute(sb, "MinObservedWifiClients", room.MinObservedWifiClients);
                 WriteLastAttribute(sb, "MaxWifiClients", room.MaxWifiClients);
                 WriteGeoJsonPropertiesFooter(sb);
+
                 WriteGeoJsonGeometryHeader(sb);
                 WriteGeoJsonCoordinates(sb, room.Corners.TopLeftCorner.XCoordinate, room.Corners.TopLeftCorner.YCoordinate);
                 WriteGeoJsonCoordinates(sb, room.Corners.BottomLeftCorner.XCoordinate, room.Corners.BottomLeftCorner.YCoordinate);

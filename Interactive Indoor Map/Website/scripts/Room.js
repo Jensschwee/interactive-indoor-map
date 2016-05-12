@@ -1,4 +1,7 @@
-﻿function splitRoomsIntoBarchart(colletionOfRooms) {
+﻿var xCoordinate = 0;
+var yCoordinate = 1;
+
+function splitRoomsIntoBarchart(colletionOfRooms) {
     colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
 
     var numberOfLayers = roomLayers.length;
@@ -25,7 +28,7 @@
             type: "FeatureCollection",
             features: features
         };
-        
+
         $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
@@ -61,81 +64,20 @@
             if (ActiveViews[columnNumber].hasOwnProperty("max")) {
                 maxValue = value.properties[ActiveViews[columnNumber].max];
             }
-            var sensorValue = 0;
 
-            if (value.properties.hasOwnProperty(ActiveViews[columnNumber].value)) {
-                sensorValue = value.properties[ActiveViews[columnNumber].value];
+
+
+            if (!temporalActive) {
+                var sensorValue = 0;
+                if (value.properties.hasOwnProperty(ActiveViews[columnNumber].value)) {
+                    sensorValue = value.properties[ActiveViews[columnNumber].value];
+                }
+                DrawColnumLiveRoom(features,feature, coordinates, sensorValue, maxValue, minValue, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+            } else {
+                DrawColnumTemporalRoom(features, feature, coordinates, value.properties[ActiveViews[columnNumber].minObserved], value.properties[ActiveViews[columnNumber].maxObserved], maxValue, minValue, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+                drawAverageObservedLines(featuresLines, columnNumber, value.properties[ActiveViews[columnNumber].average], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
             }
 
-            if (temporalActive) {
-                sensorValue = value.properties[ActiveViews[columnNumber].average];
-                drawMinMaxObservedLines(featuresLines, columnNumber, value.properties[ActiveViews[columnNumber].minObserved], value.properties[ActiveViews[columnNumber].maxObserved], minValue, maxValue, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex);
-            }
-            var roomColumnWidthX = ((bottomRightVertex[0] - bottomLeftVertex[0]) / ActiveViews.length);
-            var roomColumnWidthY = ((bottomRightVertex[1] - bottomLeftVertex[1]) / ActiveViews.length);
-
-            var roomBottomLeftColumnOffsetX = roomColumnWidthX * columnNumber;
-            var roomBottomLeftColumnOffsetY = roomColumnWidthY * columnNumber;
-
-            var point = [];
-            //Column bottomLeftVertex X
-            point.push(bottomLeftVertex[0] + roomBottomLeftColumnOffsetX);
-            //Column bottomLeftVertex Y
-            point.push(bottomLeftVertex[1] + roomBottomLeftColumnOffsetY);
-
-            coordinates.push(point);
-
-            point = [];
-
-            var roomBottomRightColumnOffsetX = roomColumnWidthX * (columnNumber+1);
-            var roomBottomRightColumnOffsetY = roomColumnWidthY * (columnNumber+1);
-            //Column bottomRightVertex X
-            point.push(bottomLeftVertex[0] + roomBottomRightColumnOffsetX);
-
-            //Column bottomRightVertex Y
-            point.push(bottomLeftVertex[1] + roomBottomRightColumnOffsetY);
-
-            coordinates.push(point);
-
-            //calc the hight of the room
-            var roomHeight = ((sensorValue - minValue) / (maxValue - minValue));
-
-            //If the room is to fill more then 100%
-            if (roomHeight < 0) {
-                roomHeight = 0;
-            }
-                //If the room is to fill less then 0%
-            else if (roomHeight > 1) {
-                roomHeight = 1;
-            }
-
-            var roomHeightX = ((topLeftVertex[0] - bottomLeftVertex[0]) * roomHeight);
-            var roomHeightY = ((topLeftVertex[1] - bottomLeftVertex[1]) * roomHeight);
-
-            var roomTopRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1);
-            var roomTopRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1);
-
-            point = [];
-            //Column TopRightVertex X
-            point.push(bottomLeftVertex[0] + roomTopRightColumnOffsetX + roomHeightX);
-            //Column TopRightVertex Y
-            point.push(bottomLeftVertex[1] + roomTopRightColumnOffsetY + roomHeightY);
-            coordinates.push(point);
-
-            point = [];
-            var roomTopLeftColumnOffsetX = roomColumnWidthX * columnNumber;
-            var roomTopLeftColumnOffsetY = roomColumnWidthY * columnNumber;
-
-            //Column TopLeftVertex X
-            point.push(bottomLeftVertex[0] + roomTopLeftColumnOffsetX + roomHeightX);
-            //Column TopLeftVertex Y
-            point.push(bottomLeftVertex[1] + roomTopLeftColumnOffsetY + roomHeightY);
-
-            coordinates.push(point);
-
-            coordinates.push(coordinates[0]);
-
-            features.push(feature);
         });
         column.push(jsonColumn);
     }
@@ -178,12 +120,12 @@
                     geometry: geometry2
                 }
                 var point = [];
-                point.push(bottomLeftVertex[0] + (topLeftVertex[0] - bottomLeftVertex[0]) * 0.25 * l);
-                point.push(bottomLeftVertex[1] + (topLeftVertex[1] - bottomLeftVertex[1]) * 0.25 * l);
+                point.push(bottomLeftVertex[xCoordinate] + (topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * 0.25 * l);
+                point.push(bottomLeftVertex[yCoordinate] + (topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * 0.25 * l);
                 coordinates2.push(point);
                 point = [];
-                point.push(bottomRightVertex[0] + (topRightVertex[0] - bottomRightVertex[0]) * 0.25 * l);
-                point.push(bottomRightVertex[1] + (topRightVertex[1] - bottomRightVertex[1]) * 0.25 * l);
+                point.push(bottomRightVertex[xCoordinate] + (topRightVertex[xCoordinate] - bottomRightVertex[xCoordinate]) * 0.25 * l);
+                point.push(bottomRightVertex[yCoordinate] + (topRightVertex[yCoordinate] - bottomRightVertex[yCoordinate]) * 0.25 * l);
                 coordinates2.push(point);
                 features2.push(feature2);
             }
@@ -191,15 +133,15 @@
         linesOnMap = L.geoJson(jsonLines, {
             style: {
                 color: "white", //border color
-                opacity: "none", 
+                opacity: "none",
                 weight: "1px" //Border thickness
             }
         }).addTo(geoMap).bringToBack();
         if (temporalActive) {
-            linesMinMaxOnMap =  L.geoJson(jsonMinMaxLines, {
+            linesMinMaxOnMap = L.geoJson(jsonMinMaxLines, {
                 style: {
                     color: "black", //border color
-                    opacity: "none", 
+                    opacity: "none",
                     weight: "2px" //Border thickness
                 }
             }).addTo(geoMap).bringToFront();
@@ -241,24 +183,14 @@ function getRoomsAndDrawRoomsWithRoomOverlays() {
     getRoomsAndDrawBackground();
 }
 
-function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, roomObservedMax, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
+function drawAverageObservedLines(featuresLines, columnNumber, roomAverage, roomMin, roomMax, bottomRightVertex, bottomLeftVertex, topRightVertex, topLeftVertex) {
     //calc the hight for the min line
-    var roomHeightMin = (1-(roomObservedMin - roomMin) / (roomMax - roomMin));
-    if (roomHeightMin < 0) {
-        roomHeightMin = 0;
+    var roomHeightAverage = (1 - (roomAverage - roomMin) / (roomMax - roomMin));
+    if (roomHeightAverage < 0) {
+        roomHeightAverage = 0;
     }
-    else if (roomHeightMin > 1) {
-        roomHeightMin = 1;
-    }
-
-    //calc the hight for the min line
-    var roomHeightMax = (1-(roomObservedMax - roomMin) / (roomMax - roomMin));
-
-    if (roomHeightMax < 0) {
-        roomHeightMax = 0;
-    }
-    else if (roomHeightMax > 1) {
-        roomHeightMax = 1;
+    else if (roomHeightAverage > 1) {
+        roomHeightAverage = 1;
     }
 
     drawlines = function (value, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
@@ -275,19 +207,18 @@ function drawMinMaxObservedLines(featuresLines, columnNumber, roomObservedMin, r
         }
 
         var point = [];
-        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
-        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        point.push(topLeftVertex[xCoordinate] + ((topRightVertex[xCoordinate] - topLeftVertex[xCoordinate]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * value));
+        point.push(topLeftVertex[yCoordinate] + ((topRightVertex[yCoordinate] - topLeftVertex[yCoordinate]) / ActiveViews.length) * (columnNumber) - ((topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * value));
         coordinates.push(point);
 
         point = [];
-        point.push(topLeftVertex[0] + ((topRightVertex[0] - topLeftVertex[0]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[0] - bottomLeftVertex[0]) * value));
-        point.push(topLeftVertex[1] + ((topRightVertex[1] - topLeftVertex[1]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[1] - bottomLeftVertex[1]) * value));
+        point.push(topLeftVertex[xCoordinate] + ((topRightVertex[xCoordinate] - topLeftVertex[xCoordinate]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * value));
+        point.push(topLeftVertex[yCoordinate] + ((topRightVertex[yCoordinate] - topLeftVertex[yCoordinate]) / ActiveViews.length) * (columnNumber + 1) - ((topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * value));
         coordinates.push(point);
 
         featuresLines.push(feature);
     }
-    drawlines(roomHeightMin, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
-    drawlines(roomHeightMax, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
+    drawlines(roomHeightAverage, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex);
 }
 
 function getRoomsAndDrawRooms() {
@@ -385,4 +316,155 @@ function drawRoomsForeground(json) {
 function changeFloor() {
     roomArray = [];
     getRoomsAndDrawRoomsWithRoomOverlays();
+}
+
+function DrawColnumLiveRoom(features,feature, coordinates, sensorValue, maxValue, minValue, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
+    var roomColumnWidthX = ((bottomRightVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) / ActiveViews.length);
+    var roomColumnWidthY = ((bottomRightVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) / ActiveViews.length);
+
+    var roomBottomLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+    var roomBottomLeftColumnOffsetY = roomColumnWidthY * columnNumber;
+
+    var point = [];
+    //Column bottomLeftVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomBottomLeftColumnOffsetX);
+    //Column bottomLeftVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomBottomLeftColumnOffsetY);
+
+    coordinates.push(point);
+
+    point = [];
+
+    var roomBottomRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1);
+    var roomBottomRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1);
+    //Column bottomRightVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomBottomRightColumnOffsetX);
+
+    //Column bottomRightVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomBottomRightColumnOffsetY);
+
+    coordinates.push(point);
+
+    //calc the hight of the room
+    var roomHeight = ((sensorValue - minValue) / (maxValue - minValue));
+
+    //If the room is to fill more then 100%
+    if (roomHeight < 0) {
+        roomHeight = 0;
+    }
+        //If the room is to fill less then 0%
+    else if (roomHeight > 1) {
+        roomHeight = 1;
+    }
+
+    var roomHeightX = ((topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * roomHeight);
+    var roomHeightY = ((topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * roomHeight);
+
+    var roomTopRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1);
+    var roomTopRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1);
+
+    point = [];
+    //Column TopRightVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomTopRightColumnOffsetX + roomHeightX);
+    //Column TopRightVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomTopRightColumnOffsetY + roomHeightY);
+    coordinates.push(point);
+
+    point = [];
+    var roomTopLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+    var roomTopLeftColumnOffsetY = roomColumnWidthY * columnNumber;
+
+    //Column TopLeftVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomTopLeftColumnOffsetX + roomHeightX);
+    //Column TopLeftVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomTopLeftColumnOffsetY + roomHeightY);
+
+    coordinates.push(point);
+
+    coordinates.push(coordinates[0]);
+
+    features.push(feature);
+}
+
+function DrawColnumTemporalRoom(features, feature, coordinates, minObserved, maxObserved, maxValue, minValue, columnNumber, bottomLeftVertex, bottomRightVertex, topLeftVertex, topRightVertex) {
+    var roomColumnWidthX = ((bottomRightVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) / ActiveViews.length);
+    var roomColumnWidthY = ((bottomRightVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) / ActiveViews.length);
+
+    var roomBottomLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+    var roomBottomLeftColumnOffsetY = roomColumnWidthY * columnNumber;
+
+
+    var roomMinHeight = ((minObserved - minValue) / (maxValue - minValue));
+
+    //If the room is to fill more then 100%
+    if (roomMinHeight < 0) {
+        roomMinHeight = 0;
+    }
+        //If the room is to fill less then 0%
+    else if (roomMinHeight > 1) {
+        roomMinHeight = 1;
+    }
+
+    var roomMinHeightX = ((topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * roomMinHeight);
+    var roomMinHeightY = ((topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * roomMinHeight);
+
+    var point = [];
+    //Column bottomLeftVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomBottomLeftColumnOffsetX + roomMinHeightX);
+    //Column bottomLeftVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomBottomLeftColumnOffsetY + roomMinHeightY);
+
+    coordinates.push(point);
+
+    point = [];
+
+    var roomBottomRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1) + roomMinHeightX;
+    var roomBottomRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1) + roomMinHeightY;
+    //Column bottomRightVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomBottomRightColumnOffsetX);
+
+    //Column bottomRightVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomBottomRightColumnOffsetY);
+
+    coordinates.push(point);
+
+    //calc the hight of the room
+    var roomMaxHeight = ((maxObserved - minValue) / (maxValue - minValue));
+
+    //If the room is to fill more then 100%
+    if (roomMaxHeight < 0) {
+        roomMaxHeight = 0;
+    }
+        //If the room is to fill less then 0%
+    else if (roomMaxHeight > 1) {
+        roomMaxHeight = 1;
+    }
+
+    var roomMaxHeightX = ((topLeftVertex[xCoordinate] - bottomLeftVertex[xCoordinate]) * roomMaxHeight);
+    var roomMaxHeightY = ((topLeftVertex[yCoordinate] - bottomLeftVertex[yCoordinate]) * roomMaxHeight);
+
+    var roomTopRightColumnOffsetX = roomColumnWidthX * (columnNumber + 1);
+    var roomTopRightColumnOffsetY = roomColumnWidthY * (columnNumber + 1);
+
+    point = [];
+    //Column TopRightVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomTopRightColumnOffsetX + roomMaxHeightX);
+    //Column TopRightVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomTopRightColumnOffsetY + roomMaxHeightY);
+    coordinates.push(point);
+
+    point = [];
+    var roomTopLeftColumnOffsetX = roomColumnWidthX * columnNumber;
+    var roomTopLeftColumnOffsetY = roomColumnWidthY * columnNumber;
+
+    //Column TopLeftVertex X
+    point.push(bottomLeftVertex[xCoordinate] + roomTopLeftColumnOffsetX + roomMaxHeightX);
+    //Column TopLeftVertex Y
+    point.push(bottomLeftVertex[yCoordinate] + roomTopLeftColumnOffsetY + roomMaxHeightY);
+
+    coordinates.push(point);
+
+    coordinates.push(coordinates[0]);
+
+    features.push(feature);
 }

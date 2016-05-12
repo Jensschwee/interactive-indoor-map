@@ -22,7 +22,7 @@ namespace Website
                 Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
-                    string jsonRooms = Facade.Instance.ConvertRooms(1);
+                    string jsonRooms = Facade.Instance.GetDrawableSensorRooms(1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
                 }
@@ -33,26 +33,26 @@ namespace Website
         [System.Web.Services.WebMethod]
         public static string DrawFloor(int floorLevel)
         {
-            return Facade.Instance.ConvertRooms(floorLevel);
+            return Facade.Instance.GetDrawableSensorRooms(floorLevel);
         }
 
 
         [System.Web.Services.WebMethod]
         public static string DrawRoomsBackground(int floorLevel)
         {
-            return Facade.Instance.ConvertRoomsGeoJson(floorLevel);
+            return Facade.Instance.GetDrawableRooms(floorLevel);
         }
 
         [System.Web.Services.WebMethod]
         public static string DrawFloorInfoBox(int floorLevel)
         {
-            return Facade.Instance.ConvertFloors(floorLevel);
+            return Facade.Instance.GetFloorInfobox(floorLevel);
         }
 
         [System.Web.Services.WebMethod]
         public static string DrawBuildingInfoBox()
         {
-            return Facade.Instance.ConvertBuilding();
+            return Facade.Instance.GetBuildingInfobox();
         }
 
         [System.Web.Services.WebMethod]
