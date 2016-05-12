@@ -41,28 +41,33 @@ function drawBuildingInfoBox() {
 
             PageMethods.GetTemporalBuildingInfoBox(fromDate, toDate, onSuccess);
         }
-        function onSuccess(response, userContext, methodName) {
-            if (buildingInfoBox === infoboxUpdate) {
-                var json = jQuery.parseJSON(response);
-                var buildingInfo = {
-                    Name: json.Name,
-                    SurfaceArea: json.SurfaceArea,
-                    NumberOfRooms: json.NumberOfRooms,
-                    HTML: ""
-                };
-                if (!temporalActive)
-                    {
-                    buildingInfo.HTML = getLiveSensorValuesInfoBox(json);
-                } else {
-                    buildingInfo.HTML = getTemporalSensorValuesInfoBox(json);
+      
 
-                }
-                infoBox.update(buildingInfo);
+        function onSuccess(response, userContext, methodName) {
+            if (buildingInfoBox === infoboxDateUpdate) {
+                var json = jQuery.parseJSON(response);
+                infoboxData = json;
+                infoboxUpdate(json);
             }
         }
     };
-    infoboxUpdate = buildingInfoBox;
-    infoboxUpdate();
+    var infoboxBuildingUpdate = function (json) {
+        var buildingInfo = {
+            Name: json.Name,
+            SurfaceArea: json.SurfaceArea,
+            NumberOfRooms: json.NumberOfRooms,
+            HTML: ""
+        };
+        if (!temporalActive) {
+            buildingInfo.HTML = getLiveSensorValuesInfoBox(json);
+        } else {
+            buildingInfo.HTML = getTemporalSensorValuesInfoBox(json);
+        }
+        infoBox.update(buildingInfo);
+    }
+    infoboxDateUpdate = buildingInfoBox;
+    infoboxUpdate = infoboxBuildingUpdate;
+    infoboxDateUpdate();
 }
 
 function drawFloorInfoBox() {
@@ -89,26 +94,30 @@ function drawFloorInfoBox() {
             PageMethods.GetTemporalFloorInfoBox(currentFloorLevel, fromDate, toDate, onSuccess);
         }
         function onSuccess(response, userContext, methodName) {
-            if (infoboxUpdate === floorInfoBox) {
+            if (infoboxDateUpdate === floorInfoBox) {
                 var json = jQuery.parseJSON(response);
-                var floorInfo = {
-                    Name: json.Name,
-                    SurfaceArea: json.SurfaceArea,
-                    NumberOfRooms: json.NumberOfRooms,
-                    HTML: ""
-                };
-                if (!temporalActive) {
-                    floorInfo.HTML = getLiveSensorValuesInfoBox(json);
-                } else {
-                    floorInfo.HTML = getTemporalSensorValuesInfoBox(json);
-                }
-                infoBox.update(floorInfo);
+                infoboxData = json;
+                infoboxUpdate(json);
             }
         }
     };
-
-    infoboxUpdate = floorInfoBox;
-    infoboxUpdate();
+    var infoboxFloorUpdate = function (json) {
+        var floorInfo = {
+            Name: json.Name,
+            SurfaceArea: json.SurfaceArea,
+            NumberOfRooms: json.NumberOfRooms,
+            HTML: ""
+        };
+        if (!temporalActive) {
+            floorInfo.HTML = getLiveSensorValuesInfoBox(json);
+        } else {
+            floorInfo.HTML = getTemporalSensorValuesInfoBox(json);
+        }
+        infoBox.update(floorInfo);
+    }
+    infoboxUpdate = infoboxFloorUpdate;
+    infoboxDateUpdate = floorInfoBox;
+    infoboxDateUpdate();
 }
 
 function drawRoomInfo() {
