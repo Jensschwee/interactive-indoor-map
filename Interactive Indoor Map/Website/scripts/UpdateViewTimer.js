@@ -1,6 +1,6 @@
 ﻿setInterval(function () {
     if (!temporalActive) {
         getRoomsAndDrawRooms();
-        infoboxUpdate();
+        infoboxDateUpdate();
     }
 }, 2500);

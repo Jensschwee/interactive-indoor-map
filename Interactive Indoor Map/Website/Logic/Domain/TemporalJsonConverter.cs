@@ -197,7 +197,7 @@ namespace Website.Logic.Domain
 
                 WriteAttribute(sb, "AverageOtherConsumption", room.AverageOtherConsumption);
                 WriteAttribute(sb, "MaxObservedOtherConsumption", room.MaxObservedOtherConsumption);
-                WriteAttribute(sb, "MaxOtherConsumption", room.MaxOtherConsumption);
+                WriteAttribute(sb, "MinObservedOtherConsumption", room.MinObservedOtherConsumption);
                 WriteAttribute(sb, "MaxOtherConsumption", room.MaxOtherConsumption);
                 WriteAttribute(sb, "MinOtherConsumption", room.MinOtherConsumption);
 

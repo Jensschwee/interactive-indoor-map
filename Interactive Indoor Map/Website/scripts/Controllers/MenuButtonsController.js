@@ -231,7 +231,7 @@ function CreateViewButtons() {
                     ActiveViews.push(temperatureObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: temperatureIcon,
@@ -245,7 +245,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -279,7 +279,7 @@ function CreateViewButtons() {
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: co2Icon,
@@ -290,10 +290,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -326,8 +325,7 @@ function CreateViewButtons() {
                     ActiveViews.push(co2Obj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
-
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: lightIcon,
@@ -341,7 +339,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -373,7 +371,7 @@ function CreateViewButtons() {
                     ActiveViews.push(motionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: motionIcon,
@@ -386,7 +384,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -420,7 +418,7 @@ function CreateViewButtons() {
                     ActiveViews.push(wifiClientsObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: wifiClientsIcon,
@@ -431,10 +429,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.state('detoggled');
                         btn.button.style.backgroundColor = 'white';
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -467,7 +464,7 @@ function CreateViewButtons() {
                     ActiveViews.push(occupantsObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: occupantsIcon,
@@ -478,10 +475,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -514,7 +510,7 @@ function CreateViewButtons() {
                     btn.button.style.backgroundColor = TotalPowerConsumptionColor; //'#e74c3c'
                     ActiveViews.push(totalPowerObj);
                     reDrawItemsOnMap();
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                     btn.state('toggled');
                 }
             }, {
@@ -528,7 +524,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -563,7 +559,7 @@ function CreateViewButtons() {
                     ActiveViews.push(hardwareConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: hardwareConsumptionIcon,
@@ -574,10 +570,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -612,7 +607,7 @@ function CreateViewButtons() {
                     ActiveViews.push(lightConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: lightConsumptionIcon,
@@ -623,10 +618,9 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         reDrawItemsOnMap();
-
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -660,7 +654,7 @@ function CreateViewButtons() {
                     ActiveViews.push(ventilationConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: ventilationConsumptonIcon,
@@ -674,7 +668,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -708,7 +702,7 @@ function CreateViewButtons() {
                     ActiveViews.push(otherConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: otherConsumptionIcon,
@@ -722,7 +716,7 @@ function CreateViewButtons() {
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
@@ -752,7 +746,7 @@ function CreateViewButtons() {
                     ActiveFloorViews.push(waterConsumptionObj);
                     reDrawItemsOnMap();
                     btn.state('toggled');
-                    infoboxUpdate();
+                    infoboxUpdate(infoboxData);
                 }
             }, {
                 icon: waterConsumptionIcon,
@@ -765,7 +759,7 @@ function CreateViewButtons() {
                         reDrawItemsOnMap();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
-                        infoboxUpdate();
+                        infoboxUpdate(infoboxData);
                     }
                 }
             }
