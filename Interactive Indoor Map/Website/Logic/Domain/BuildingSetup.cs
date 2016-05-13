@@ -118,11 +118,23 @@ namespace Website.Logic.Domain
 
         public void SetupBuilding(LiveBuilding building)
         {
-            //building = buildingDAL.GetBuilding("Building 44");
-            //getLiveRooms(building);
-            //getSensorLessRooms(building);
-            this.building = building;
+            //SetupBuildingDB();
+            SetupBuildingNoDB(building);
 
+            HttpContext.Current.Application["Building"] = this.building;
+            //buildingDAL.SaveBuilding(building);
+        }
+
+        private void SetupBuildingDB()
+        {
+            building = buildingDAL.GetBuilding("Building 44");
+            GetLiveRooms(building);
+            GetSensorLessRooms(building);
+        }
+
+        private void SetupBuildingNoDB(LiveBuilding building)
+        {
+            this.building = building;
             CreateFloors();
 
             CreateCellarFloorRooms();
@@ -145,10 +157,6 @@ namespace Website.Logic.Domain
             CreateFirstFloorSensorlessRooms();
 
             AssembleBuilding();
-
-            HttpContext.Current.Application["Building"] = building;
-            //buildingDAL.SaveBuilding(building);
-            //TestTimer();
         }
 
         private void GetLiveRooms(Building building)
