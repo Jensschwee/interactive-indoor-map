@@ -130,13 +130,13 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
                 features2.push(feature2);
             }
         });
-        //linesOnMap = L.geoJson(jsonLines, {
-        //    style: {
-        //        color: "white", //border color
-        //        opacity: "none",
-        //        weight: "1px" //Border thickness
-        //    }
-        //}).addTo(geoMap).bringToBack();
+        linesOnMap = L.geoJson(jsonLines, {
+            style: {
+                color: "white", //border color
+                opacity: "none",
+                weight: "1px" //Border thickness
+            }
+        }).addTo(geoMap);
         if (temporalActive) {
             averageTemporalLineOnMap = L.geoJson(jsonMinMaxLines, {
                 style: {
