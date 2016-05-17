@@ -65,8 +65,6 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
                 maxValue = value.properties[ActiveViews[columnNumber].max];
             }
 
-
-
             if (!temporalActive) {
                 var sensorValue = 0;
                 if (value.properties.hasOwnProperty(ActiveViews[columnNumber].value)) {
@@ -148,7 +146,6 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
             roomForegroundLayer.bringToFront();
         }
     }
-
 
     for (var i = 0; i < ActiveViews.length; i++) {
         var roomColumn = column.shift();

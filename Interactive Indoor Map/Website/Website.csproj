@@ -157,6 +157,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Map\map.geojson" />
     <Content Include="Map\ou44_geometry.geojson" />
+    <Content Include="Diagrams\DomainModel.cd" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
     <Content Include="Style\External\bootstrap.css" />
