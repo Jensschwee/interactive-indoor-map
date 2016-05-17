@@ -117,29 +117,10 @@
   </Class>
   <Class Name="Website.Logic.BO.Utility.Endpoints" Collapsed="true">
     <Position X="5" Y="5" Width="1.5" />
-    <AssociationLine Name="Building" Type="Website.Logic.BO.Building" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="5" />
-        <Point X="5.75" Y="4.188" />
-        <Point X="3.5" Y="4.188" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Floor" Type="Website.Logic.BO.Floor" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6.156" Y="5" />
-        <Point X="6.156" Y="4.188" />
-        <Point X="8.25" Y="4.188" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AACCABAAAAAAAAgAABAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACCAAAEAAAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\Endpoints.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Building" />
-      <Property Name="Floor" />
-      <Property Name="Room" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Utility.SMapSensorReading" Collapsed="true">
     <Position X="7.25" Y="9.25" Width="1.75" />
