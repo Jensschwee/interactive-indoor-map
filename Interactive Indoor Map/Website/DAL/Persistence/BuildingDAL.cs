@@ -5,6 +5,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using Website.Logic.BO;
+using Website.Logic.BO.Buildings;
 using Website.Logic.BO.Floors;
 using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
@@ -13,23 +14,24 @@ namespace Website.DAL.Persistence
 {
     public class BuildingDAL
     {
-        public void SaveBuilding(Building building)
+        public void SaveBuilding(LiveBuilding building)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                context.Buildings.AddOrUpdate(building);
+                context.LiveBuildings.AddOrUpdate(building);
                 context.SaveChanges();
             }
         }
 
-        public Building GetBuilding(String buildingName)
+        public LiveBuilding GetBuilding(String buildingName)
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                var tempBuilding = context.Buildings.Where(b => b.Name == buildingName)
+                context.Configuration.ProxyCreationEnabled = false;
+                var tempBuilding = context.LiveBuildings.Where(b => b.Name == buildingName)
                     .Include(b => b.Endpoints)
                     .Include(b => b.Floors)
-                    .Include(b => b.Floors.Select( f => f.Endpoints))
+                    .Include(b => b.Floors.Select(f => f.Endpoints))
                     .Include(b => b.Floors.Select(f => f.Rooms));
                 return tempBuilding.First();
             }
@@ -39,7 +41,8 @@ namespace Website.DAL.Persistence
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<LiveRoom>()
+                context.Configuration.ProxyCreationEnabled = false;
+                var tempRoom = context.LiveRoom.Where(r => r.Id == id)
                     .Include(r => r.Corners)
                     .Include(r => r.Corners.BottomLeftCorner)
                     .Include(r => r.Corners.BottomRightCorner)
@@ -54,7 +57,8 @@ namespace Website.DAL.Persistence
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                var tempRoom = context.Rooms.Where(r => r.Id == id).OfType<SensorlessRoom>()
+                context.Configuration.ProxyCreationEnabled = false;
+                var tempRoom = context.SensorlessRoom.Where(r => r.Id == id)
                     .Include(r => r.Coordinates);
                 return tempRoom.First();
             }
@@ -64,7 +68,7 @@ namespace Website.DAL.Persistence
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                context.Floors.AddOrUpdate(floor);
+                context.LiveFloors.AddOrUpdate(floor);
                 context.SaveChanges();
             }
 
@@ -100,7 +104,7 @@ namespace Website.DAL.Persistence
         {
             using (BuildingDbContext context = new BuildingDbContext())
             {
-                context.SensorRoom.AddOrUpdate(liveRoom);
+                context.LiveRoom.AddOrUpdate(liveRoom);
                 context.SaveChanges();
             }
             SaveCorners(liveRoom.Corners);

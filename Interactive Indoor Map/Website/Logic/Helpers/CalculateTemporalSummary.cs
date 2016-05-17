@@ -23,18 +23,18 @@ namespace Website.Logic.Helpers
                 MaxValue = double.MinValue,
                 MeanValue = 0
             };
-            if (reading.Readings.Count > 1)
+            if (reading == null || reading.Readings.Count == 0)
+            {
+                temporalSummary.MaxValue = 0;
+                temporalSummary.MinValue = 0;
+            }
+            else  if (reading.Readings.Count > 1)
             {
                 SetMinMaxMeanValues(reading, temporalSummary);
             }
             else if (reading.Readings.Count == 1)
             {
                 SetSingleMinMaxMeanValues(reading, temporalSummary);
-            }
-            else
-            {
-                temporalSummary.MaxValue = 0;
-                temporalSummary.MinValue = 0;
             }
             return temporalSummary;
         }
@@ -78,7 +78,7 @@ namespace Website.Logic.Helpers
             };
             TimeSpan? timeSpan = null;
 
-            if (reading[0].Readings.Count > 1)
+            if (reading != null && reading[0].Readings.Count > 1)
             {
                 DateTime timeFrom = dateConverter.ConvertDate((long)reading[0].Readings[1][0]);
                 DateTime timeTo = dateConverter.ConvertDate((long)reading[0].Readings[reading[0].Readings.Count - 1][0]);
@@ -119,6 +119,11 @@ namespace Website.Logic.Helpers
 
                     SetMinAndMaxValues(temporalSummary, readingsValue);
                 }
+            }
+            else
+            {
+                temporalSummary.MaxValue = 0;
+                temporalSummary.MinValue = 0;
             }
             return temporalSummary;
         }

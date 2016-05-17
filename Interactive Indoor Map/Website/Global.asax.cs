@@ -24,8 +24,13 @@ namespace Website
             setup.SetupBuilding(building);
 
             SMAP smapDal = new SMAP();
-            LiveSmapManager _liveSmapManager = new LiveSmapManager(smapDal);
-            RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building, _liveSmapManager);
+            LiveSmapManager liveSmapManager = new LiveSmapManager(smapDal);
+            //DB call
+            //RealTimeUpdater smapTimerUpdater = new RealTimeUpdater((LiveBuilding)HttpContext.Current.Application["Building"], liveSmapManager);
+
+            //No DB call
+            RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building, liveSmapManager);
+
             smapTimerUpdater.CreateUpdateTimers();
         }
 
