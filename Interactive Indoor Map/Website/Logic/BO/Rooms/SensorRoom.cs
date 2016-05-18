@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Website.Logic.BO.Utility;
 
-namespace Website.Logic.BO
+namespace Website.Logic.BO.Rooms
 {
     public abstract class SensorRoom : Room
     {

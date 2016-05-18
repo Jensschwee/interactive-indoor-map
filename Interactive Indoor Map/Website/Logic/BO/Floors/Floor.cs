@@ -6,7 +6,7 @@ using System.Linq;
 using Website.Logic.BO.Rooms;
 using Website.Logic.BO.Utility;
 
-namespace Website.Logic.BO
+namespace Website.Logic.BO.Floors
 {
     public abstract class Floor
     {

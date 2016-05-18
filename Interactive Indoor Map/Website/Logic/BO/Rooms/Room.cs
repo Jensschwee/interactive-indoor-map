@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Website.Logic.BO
+namespace Website.Logic.BO.Rooms
 {
     public abstract class Room
     {

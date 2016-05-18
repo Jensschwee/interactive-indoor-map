@@ -6,11 +6,11 @@ using Website.Logic.BO.Utility;
 
 namespace Website.Logic.Helpers
 {
-    public class CalculateTemporalSummary
+    public class TemporalSummaryCalculator
     {
         private DateConverter dateConverter;
 
-        public CalculateTemporalSummary()
+        public TemporalSummaryCalculator()
         {
             dateConverter = new DateConverter();
         }

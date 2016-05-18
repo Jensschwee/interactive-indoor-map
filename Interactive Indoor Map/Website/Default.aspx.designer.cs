@@ -10,7 +10,7 @@
 namespace Website {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm {
         
         /// <summary>
         /// form1 control.
