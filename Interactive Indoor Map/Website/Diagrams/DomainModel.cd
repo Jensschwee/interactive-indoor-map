@@ -111,14 +111,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Utility.SMapSensorReading" Collapsed="true">
-    <Position X="15.25" Y="3.5" Width="1.5" />
+    <Position X="9.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\SMapSensorReading.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Utility.TemporalSummary" Collapsed="true">
-    <Position X="17" Y="3.5" Width="1.5" />
+    <Position X="11.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\TemporalSummary.cs</FileName>

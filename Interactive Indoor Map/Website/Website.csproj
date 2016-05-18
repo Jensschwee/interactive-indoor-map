@@ -158,6 +158,7 @@
     <Content Include="Diagrams\DomainModel.cd" />
     <Content Include="Diagrams\ClassFlowDiaradgml.dgml" />
     <Content Include="Diagrams\ClassDiagram.cd" />
+    <Content Include="Diagrams\LoginDiagram.cd" />
     <None Include="Properties\PublishProfiles\Dan.pubxml" />
     <None Include="Properties\PublishProfiles\Webserver.pubxml" />
     <Content Include="Style\External\bootstrap.css" />
