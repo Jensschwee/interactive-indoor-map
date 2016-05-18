@@ -70,11 +70,12 @@
       <FileName>Logic\Domain\LiveJsonConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Domain.LiveSmapManager" Collapsed="true">
+  <Class Name="Website.Logic.Domain.LiveSMapManager" Collapsed="true">
     <Position X="9.75" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAIAAAEBgAABACBABAAgAAAAAAAAAgAAAQ=</HashCode>
-      <FileName>Logic\Domain\LiveSmapManager.cs</FileName>
+      <FileName>Logic\Domain\LiveSMapManager.cs</FileName>
+      <NewMemberFileName>Logic\Domain\LiveSmapManager.cs</NewMemberFileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="smapDal" />
@@ -83,7 +84,7 @@
   <Class Name="Website.Logic.Domain.RealTimeUpdater" Collapsed="true">
     <Position X="7.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>MEQIABAAAAAgCAAAAYAgAhAAgBACABAAAAAQAAABAAA=</HashCode>
+      <HashCode>MEQIABAAAAAgCAAAAYAgAhAAgBAAAFAAAAAQAAABAAA=</HashCode>
       <FileName>Logic\Domain\RealTimeUpdater.cs</FileName>
     </TypeIdentifier>
   </Class>

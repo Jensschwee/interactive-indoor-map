@@ -24,12 +24,12 @@ namespace Website
             setup.SetupBuilding(building);
 
             SMAP smapDal = new SMAP();
-            LiveSmapManager liveSmapManager = new LiveSmapManager(smapDal);
+            LiveSMapManager _liveSMapManager = new LiveSMapManager(smapDal);
             //DB call
-            //RealTimeUpdater smapTimerUpdater = new RealTimeUpdater((LiveBuilding)HttpContext.Current.Application["Building"], liveSmapManager);
+            //RealTimeUpdater smapTimerUpdater = new RealTimeUpdater((LiveBuilding)HttpContext.Current.Application["Building"], LiveSMapManager);
 
             //No DB call
-            RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building, liveSmapManager);
+            RealTimeUpdater smapTimerUpdater = new RealTimeUpdater(building, _liveSMapManager);
 
             smapTimerUpdater.CreateUpdateTimers();
         }
