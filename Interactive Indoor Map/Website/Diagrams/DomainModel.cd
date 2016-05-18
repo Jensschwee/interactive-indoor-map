@@ -1,119 +1,151 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Website.Logic.BO.Buildings.Building" Collapsed="true">
-    <Position X="2" Y="3.75" Width="1.5" />
+    <Position X="8.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAEAgEAAmAAgwANQAAAQAkAAACAEAAAAgIIAAAAA=</HashCode>
       <FileName>Logic\BO\Buildings\Building.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Endpoints" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Floors" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Rooms.Room" Collapsed="true">
-    <Position X="5" Y="6.25" Width="1.5" />
+    <Position X="7.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\Room.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RoomType" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Rooms.SensorlessRoom" Collapsed="true">
-    <Position X="6.5" Y="7.5" Width="1.5" />
+    <Position X="12.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\SensorlessRoom.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Coordinates" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Rooms.SensorRoom" Collapsed="true">
-    <Position X="3.5" Y="7.5" Width="1.5" />
+    <Position X="3.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAEAgEAAmAAAxAEQAAGAAAAAAKAAgAAAhoIAAAEI=</HashCode>
       <FileName>Logic\BO\Rooms\SensorRoom.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Corners" />
+      <Property Name="Endpoints" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Buildings.LiveBuilding" Collapsed="true">
-    <Position X="0.75" Y="5" Width="1.5" />
+    <Position X="7.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAAmBAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Buildings\LiveBuilding.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Buildings.TemporalBuilding" Collapsed="true">
-    <Position X="3" Y="5" Width="1.5" />
+    <Position X="9.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BiAICUCABEAhEIcEgCQ8ElUBgCQCECAAAgAAAAAAEAI=</HashCode>
       <FileName>Logic\BO\Buildings\TemporalBuilding.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Floors.LiveFloor" Collapsed="true">
-    <Position X="7" Y="5" Width="1.5" />
+    <Position X="2.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAAmBAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Floors\LiveFloor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Floors.TemporalFloor" Collapsed="true">
-    <Position X="9.25" Y="5" Width="1.5" />
+    <Position X="4.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BiAICUSABEAhEIcEgCQ8ElUDgAQCECAAAgAAAAAAEAI=</HashCode>
       <FileName>Logic\BO\Floors\TemporalFloor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Rooms.LiveRoom" Collapsed="true">
-    <Position X="2.5" Y="9" Width="1.5" />
+    <Position X="2.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAACBAAAAAAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Rooms\LiveRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Rooms.TemporalRoom" Collapsed="true">
-    <Position X="4.75" Y="9" Width="1.5" />
+    <Position X="4.75" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAIAUCABEAhAIcEgCQ8AkUBgAQCACAAAoAAAAAAEAI=</HashCode>
       <FileName>Logic\BO\Rooms\TemporalRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Utility.Coordinates" Collapsed="true">
-    <Position X="9.5" Y="7.5" Width="1.5" />
+    <Position X="12.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQCAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\Coordinates.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Utility.Corners" Collapsed="true">
-    <Position X="0.75" Y="7.5" Width="1.5" />
+    <Position X="0.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABACSAAAAIAAAAAAAAAIAEAQAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Logic\BO\Utility\Corners.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Utility.Endpoints" Collapsed="true">
-    <Position X="5" Y="5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Utility.Endpoints">
+    <Position X="7.25" Y="4.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AACCAAAEAAAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\Endpoints.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SmapEndponts" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Utility.SMapSensorReading" Collapsed="true">
-    <Position X="7.25" Y="9.25" Width="1.75" />
+    <Position X="15.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\SMapSensorReading.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Utility.TemporalSummary" Collapsed="true">
-    <Position X="7.25" Y="8.5" Width="1.75" />
+    <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\TemporalSummary.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Website.Logic.BO.Floors.Floor" Collapsed="true">
+    <Position X="3.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAEAgEAAmAAAxANQAAAACkAAACAEAAAAhoIAAAEo=</HashCode>
+      <FileName>Logic\BO\Floors\Floor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Endpoints" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Rooms" />
+    </ShowAsCollectionAssociation>
+  </Class>
   <Enum Name="Website.Logic.BO.Rooms.RoomType" Collapsed="true">
-    <Position X="9.25" Y="9.25" Width="1.5" />
+    <Position X="9.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAQAgAAAEIAgAgAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\Room.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Website.Logic.BO.Utility.SensorType" Collapsed="true">
-    <Position X="9.25" Y="8.5" Width="1.5" />
+    <Position X="7.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAgAAABAAAEgAACAAEAAEgAAACAAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Utility\SensorType.cs</FileName>
