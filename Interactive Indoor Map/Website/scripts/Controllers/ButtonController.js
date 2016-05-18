@@ -1,5 +1,5 @@
 ﻿var buildingButton;
-var activeViewsMax = 5;
+var activeViewsMax = 4;
 var notContained = -1;
 var TemperatureColor = "#1a53ff";  //"#8ab1c4"
 var CO2Color = "#4d79ff"; //"#c7b7ea"
