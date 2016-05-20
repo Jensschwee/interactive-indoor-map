@@ -1,7 +1,7 @@
 ﻿var infoBox = L.control({ position: 'topleft' });
 var selectedLayers = [];
 
-function createInfoBox() {
+function drawInfobox() {
     infoBox.onAdd = function () {
         this._div = L.DomUtil.create('div');
         this._div.innerHTML = '<div class="info" id="InfoBox"><h4>Building data</h4> Click to expand</div>';

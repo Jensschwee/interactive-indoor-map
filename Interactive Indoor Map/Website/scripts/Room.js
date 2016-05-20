@@ -166,16 +166,21 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
         roomBackgroundLayer.bringToBack();
 }
 
-function getRoomsAndDrawRoomsWithRoomOverlays() {
+function getRoomsAndDrawRoomsWithRoomOverlays(jsonMap) {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
-    if (!temporalActive) {
+    if (jsonMap !== 'undefined') {
+        colletionOfRoomsOnMap = jsonMap;
+        drawRoomsForeground(jsonMap);
+        splitRoomsIntoBarchart(jsonMap);
+    }
+    else if (!temporalActive) {
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
     } else {
-        TemporalUpdater();
+        temporalUpdater();
     }
 
     getRoomsAndDrawBackground();

@@ -18,8 +18,6 @@ namespace Website
         {
             if (!Page.IsPostBack)
             {
-
-                Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
                     string jsonRooms = Facade.Instance.GetDrawableSensorRooms(1);
@@ -68,9 +66,9 @@ namespace Website
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetDrawableTemporalFloorReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
+        public static string GetDrawableTemporalReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
         {
-            return Facade.Instance.GetDrawableTemporalFloorReadings(floorLeel, timeFrom, timeTo);
+            return Facade.Instance.GetDrawableTemporalReadings(floorLeel, timeFrom, timeTo);
         }
     }
 }

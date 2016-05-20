@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Website.DAL.ExternalData.SMAP" Collapsed="true">
+    <Position X="8.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAABAAAgCACAAAAEAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>DAL\ExternalData\SMAP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.DAL.Persistence.BuildingDbContext" Collapsed="true">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAEAAAEAAIAAAAAAABAAAQAAAAAg=</HashCode>
+      <FileName>DAL\Persistence\BuildingDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.DAL.Persistence.BuildingDAL" Collapsed="true">
+    <Position X="12.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIAAAAQAAAAAAAAAAUAAAAAAAAIAAABCAAAAIAAI=</HashCode>
+      <FileName>DAL\Persistence\BuildingDAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.BO.Utility.SMapSensorReading" Collapsed="true">
+    <Position X="9" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Logic\BO\Utility\SMapSensorReading.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.BO.Utility.TemporalSummary" Collapsed="true">
+    <Position X="5.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Logic\BO\Utility\TemporalSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Domain.BuildingSetup" Collapsed="true">
+    <Position X="12.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UsAoPMkMAKJIAAIGAgiCwgQkgwBs4RkAFAD41jJgDyE=</HashCode>
+      <FileName>Logic\Domain\BuildingSetup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="buildingDAL" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Domain.Facade" Collapsed="true">
+    <Position X="7.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAUAAAAAAgAAAAAAAAAAACBAAAAAQAABABBAAAA=</HashCode>
+      <FileName>Logic\Domain\Facade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="temporalManager" />
+      <Field Name="liveJsonLiveConverter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Domain.JsonConverter" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABEQAAQAAIAAAAIBAAAEAIAIAEAAAAAAAEAAAAA=</HashCode>
+      <FileName>Logic\Domain\JsonConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Domain.LiveJsonConverter" Collapsed="true">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAgAAAAAAAAAAAABAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Logic\Domain\LiveJsonConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Domain.LiveSMapManager" Collapsed="true">
+    <Position X="9.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAIAAAEBgAABACBABAAgAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>Logic\Domain\LiveSMapManager.cs</FileName>
+      <NewMemberFileName>Logic\Domain\LiveSmapManager.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="smapDal" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Domain.RealTimeUpdater" Collapsed="true">
+    <Position X="7.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MEQIABAAAAAgCAAAAYAgAhAAgBAAAFAAAAAQAAABAAA=</HashCode>
+      <FileName>Logic\Domain\RealTimeUpdater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Domain.TemporalJsonConverter" Collapsed="true">
+    <Position X="10" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Domain\TemporalJsonConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Domain.TemporalManager" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAGAAAAAAAAEAIAEAAAAACACAAAAAAAhAgAAAAA=</HashCode>
+      <FileName>Logic\Domain\TemporalManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="temporalSMapManagerTemporal" />
+      <Field Name="temporalJsonConverter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Domain.TemporalSMapManager" Collapsed="true">
+    <Position X="10" Y="8.25" Width="2" />
+    <AssociationLine Name="_temporalSummaryCalculator" Type="Website.Logic.Helpers.TemporalSummaryCalculator">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.835" Y="0.606" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ACABAAAEAAAAAAAIAEBCAAQQAIAABCQAAAAAIAAAAAQ=</HashCode>
+      <FileName>Logic\Domain\TemporalSMapManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_temporalSummaryCalculator" />
+      <Field Name="smapDal" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Helpers.DateConverter" Collapsed="true">
+    <Position X="13.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Logic\Helpers\DateConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Website.Logic.Helpers.TemporalSummaryCalculator" Collapsed="true">
+    <Position X="12.25" Y="10.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgAIAAAAAAAACAACAAAAAAAAAAAAAAgBAAAAABAAQA=</HashCode>
+      <FileName>Logic\Helpers\TemporalSummaryCalculator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dateConverter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Website.Logic.Helpers.TemporalValidator" Collapsed="true">
+    <Position X="7.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Helpers\TemporalValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -17,11 +17,11 @@
     });
 
     $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
-        TemporalUpdater();
+        temporalUpdater();
     });
 }
 
-function TemporalUpdater() {
+function temporalUpdater() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRoomsForeground(colletionOfRoomsOnMap);
@@ -37,7 +37,7 @@ function TemporalUpdater() {
     var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
     var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
 
-    PageMethods.GetDrawableTemporalFloorReadings(currentFloorLevel, fromDate, toDate, onSuccess);
+    PageMethods.GetDrawableTemporalReadings(currentFloorLevel, fromDate, toDate, onSuccess);
 
     if (buildingButton._currentState.stateName === "toggled") {
         drawBuildingInfoBox();
