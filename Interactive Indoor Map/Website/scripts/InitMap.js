@@ -15,7 +15,7 @@ var linesOnMap = null;
 var averageTemporalLineOnMap = null;
 var temporalActive = false;
 
-function DrawWorldMap() {
+function createWorldMap() {
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
         minZoom: 19,
@@ -30,22 +30,30 @@ function DrawWorldMap() {
 }
 
 function InitLeafletMap(jsonMap) {
-    var worldMap = DrawWorldMap();
+    function drawWorldMap() {
+        var worldMap = createWorldMap();
+        var geojson = L.geoJson(jsonMap);
+        initMapSettings(geojson);
+        worldMap.addTo(geoMap);
+    }
+    drawWorldMap();
 
-    var geojson = L.geoJson(jsonMap);
-    initMapSettings(geojson);
-    worldMap.addTo(geoMap);
+    function drawRooms() {
+        getRoomsAndDrawBackground();
+        getRoomsAndDrawRoomsWithRoomOverlays(jsonMap);
+    }
+    drawRooms();
 
-    getRoomsAndDrawBackground();
-    getRoomsAndDrawRoomsWithRoomOverlays();
+    function drawButtons() {
+        CreateSpatialButtons();
+        CreateTemporalButtons();
+        TemporalDateRangePicker();
+        CreateViewButtons();
+        buildingButton.button.click();
+    }
+    drawButtons();
 
-    CreateSpatialButtons();
-    CreateTemporalButtons();
-    TemporalDateRangePicker();
-    CreateViewButtons();
-    buildingButton.button.click();
-
-    createInfoBox();
+    drawInfoBox();
 }
 
 function initMapSettings(geojson) {

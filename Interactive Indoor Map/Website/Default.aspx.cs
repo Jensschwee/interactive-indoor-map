@@ -18,8 +18,6 @@ namespace Website
         {
             if (!Page.IsPostBack)
             {
-
-                Session["FloorLevel"] = 0;
                 if (!ClientScript.IsStartupScriptRegistered("leaflet"))
                 {
                     string jsonRooms = Facade.Instance.GetDrawableSensorRooms(1);
