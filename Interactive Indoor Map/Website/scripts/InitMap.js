@@ -53,7 +53,7 @@ function InitLeafletMap(jsonMap) {
     }
     drawButtons();
 
-    drawInfoBox();
+    drawInfobox();
 }
 
 function initMapSettings(geojson) {
