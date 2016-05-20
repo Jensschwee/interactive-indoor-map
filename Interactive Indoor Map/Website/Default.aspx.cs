@@ -66,9 +66,9 @@ namespace Website
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetDrawableTemporalFloorReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
+        public static string GetDrawableTemporalReadings(int floorLeel, DateTime timeFrom, DateTime timeTo)
         {
-            return Facade.Instance.GetDrawableTemporalFloorReadings(floorLeel, timeFrom, timeTo);
+            return Facade.Instance.GetDrawableTemporalReadings(floorLeel, timeFrom, timeTo);
         }
     }
 }

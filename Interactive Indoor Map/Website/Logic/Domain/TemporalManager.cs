@@ -81,7 +81,7 @@ namespace Website.Logic.Domain
             return room;
         }
 
-        public string GetDrawableTemporalFloorReadings(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
+        public string GetDrawableTemporalReadings(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
            DateTime timeTo)
         {
             TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());

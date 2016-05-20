@@ -180,7 +180,7 @@ function getRoomsAndDrawRoomsWithRoomOverlays(jsonMap) {
     else if (!temporalActive) {
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
     } else {
-        TemporalUpdater();
+        temporalUpdater();
     }
 
     getRoomsAndDrawBackground();

@@ -64,10 +64,10 @@ namespace Website.Logic.Domain
                 (LiveBuilding)HttpContext.Current.Application["Building"], timeFrom, timeTo);
         }
 
-        public string GetDrawableTemporalFloorReadings(int floorLevel, DateTime timeFrom,
+        public string GetDrawableTemporalReadings(int floorLevel, DateTime timeFrom,
             DateTime timeTo)
         {
-            return temporalManager.GetDrawableTemporalFloorReadings(floorLevel,
+            return temporalManager.GetDrawableTemporalReadings(floorLevel,
                 (LiveBuilding)HttpContext.Current.Application["Building"], timeFrom, timeTo);
 
         }

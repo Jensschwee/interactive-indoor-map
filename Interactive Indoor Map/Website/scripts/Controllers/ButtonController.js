@@ -160,7 +160,7 @@ function CreateTemporalButtons() {
         states: [{
             stateName: 'detoggled',
             icon: temporalIcon,
-            title: 'TemporalUpdater',
+            title: 'temporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
@@ -170,7 +170,7 @@ function CreateTemporalButtons() {
         }, {
             stateName: 'toggled',
             icon: temporalIcon,
-            title: 'TemporalUpdater',
+            title: 'temporalUpdater',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = 'white';
                $("#DRP").hide();

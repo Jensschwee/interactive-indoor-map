@@ -226,7 +226,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAUAAAAAAgAAAAAAAAAAACBAAAAAQAABABBAAAA=</HashCode>
+      <HashCode>AAAAAAUAAAAAEgAAAAAAAAAAACBAAAAAQAABABBAAAA=</HashCode>
       <FileName>Logic\Domain\Facade.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -279,7 +279,7 @@
   <Class Name="Website.Logic.Domain.TemporalManager" Collapsed="true">
     <Position X="14.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAGAAAAAAAAEAIAEAAAAACACAAAAAAAhAgAAAAA=</HashCode>
+      <HashCode>AAACAACAAAAAEAAEAIAEAAAAACACAAAAAAAhAgAAAAA=</HashCode>
       <FileName>Logic\Domain\TemporalManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
