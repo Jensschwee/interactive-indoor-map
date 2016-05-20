@@ -42,6 +42,6 @@ function temporalUpdater() {
     if (buildingButton._currentState.stateName === "toggled") {
         drawBuildingInfoBox();
     } else {
-        drawFloorInfoBox(currentFloorLevel);
+        drawFloorInfobox(currentFloorLevel);
     }
 }
