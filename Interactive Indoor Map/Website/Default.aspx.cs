@@ -23,6 +23,8 @@ namespace Website
                     string jsonRooms = Facade.Instance.GetDrawableSensorRooms(1);
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "leaflet", "InitLeafletMap(" + jsonRooms + ");", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "updateTimer", "startUpdateTimer();", true);
+
                 }
             }
         }
