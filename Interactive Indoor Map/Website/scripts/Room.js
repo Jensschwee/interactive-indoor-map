@@ -177,7 +177,7 @@ function getRoomsAndDrawRoomsWithRoomOverlays(jsonMap) {
         drawRoomsForeground(jsonMap);
         splitRoomsIntoBarchart(jsonMap);
     }
-    if (!temporalActive) {
+    else if (!temporalActive) {
         PageMethods.DrawFloor(currentFloorLevel, onSuccess);
     } else {
         TemporalUpdater();
