@@ -19,22 +19,6 @@ function CreateSpatialButtons() {
     var oneIcon = createIconForButton("Images/1Icon.png");
     var twoIcon = createIconForButton("Images/2Icon.png");
 
-    //L.control.fullscreen({
-    //    position: 'bottomright'
-    //}).addTo(geoMap);
-
-    //fullscreenButton.button.style.width = '30px';
-    //fullscreenButton.button.style.height = '30px';
-    //fullscreenButton.addTo(geoMap)
-
-    geoMap.on('fullscreenchange', function () {
-        if (geoMap.isFullscreen()) {
-            geoMap.zoomIn();
-        } else {
-            geoMap.zoomOut();
-        }
-    });
-
     /*var cellarButton = L.easyButton({
         id: 'easy-button',
         position: 'bottomright',
@@ -47,7 +31,7 @@ function CreateSpatialButtons() {
                     currentFloorLevel = -1;
                     changeFloor();
                 }
-                drawFloorInfoBox();
+                drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
@@ -69,7 +53,7 @@ function CreateSpatialButtons() {
                     currentFloorLevel = 0;
                     changeFloor();
                 }
-                drawFloorInfoBox();
+                drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 groundFloorButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
@@ -91,7 +75,7 @@ function CreateSpatialButtons() {
                     currentFloorLevel = 1;
                     changeFloor();
                 }
-                drawFloorInfoBox();
+                drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 firstFloorButton.button.style.backgroundColor = 'white';
@@ -115,7 +99,7 @@ function CreateSpatialButtons() {
                     currentFloorLevel = 2;
                     changeFloor();
                 }
-                drawFloorInfoBox();
+                drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
                 groundFloorButton.button.style.backgroundColor = 'white';
@@ -143,7 +127,7 @@ function CreateSpatialButtons() {
             icon: buildingIcon,
             title: 'Building',
             onClick: function (btn) {
-                drawFloorInfoBox();
+                drawFloorInfobox();
                 btn.button.style.backgroundColor = 'white';
                 btn.state('detoggled');
             }

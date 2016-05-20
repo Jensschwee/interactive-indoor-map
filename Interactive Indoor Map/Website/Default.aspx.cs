@@ -44,7 +44,7 @@ namespace Website
         }
 
         [System.Web.Services.WebMethod]
-        public static string DrawFloorInfoBox(int floorLevel)
+        public static string DrawFloorInfobox(int floorLevel)
         {
             return Facade.Instance.GetFloorInfobox(floorLevel);
         }

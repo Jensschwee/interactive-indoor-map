@@ -70,7 +70,7 @@ function drawBuildingInfoBox() {
     infoboxDataUpdate();
 }
 
-function drawFloorInfoBox() {
+function drawFloorInfobox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
@@ -144,7 +144,7 @@ function onEachFeature(feature, layer) {
 
 function drawSelectedRoomInfoBox() {
     if (roomArray.length === 0) {
-        drawFloorInfoBox();
+        drawFloorInfobox();
     }
     else if (roomArray.length === 1) {
         var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
