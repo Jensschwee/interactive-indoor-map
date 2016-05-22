@@ -144,7 +144,7 @@ function CreateTemporalButtons() {
         states: [{
             stateName: 'detoggled',
             icon: temporalIcon,
-            title: 'temporalUpdater',
+            title: 'getTemporalData',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
@@ -154,7 +154,7 @@ function CreateTemporalButtons() {
         }, {
             stateName: 'toggled',
             icon: temporalIcon,
-            title: 'temporalUpdater',
+            title: 'getTemporalData',
             onClick: function (btn) {
                 btn.button.style.backgroundColor = 'white';
                $("#DRP").hide();
@@ -213,7 +213,7 @@ function CreateViewButtons() {
 
                     btn.button.style.backgroundColor = TemperatureColor;
                     ActiveViews.push(temperatureObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -225,7 +225,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("Temperature");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
@@ -261,7 +261,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = CO2Color;
                     ActiveViews.push(co2Obj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -273,7 +273,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("CO2");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -307,7 +307,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = LightColor;
                     ActiveViews.push(co2Obj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -319,7 +319,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("Lux");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
@@ -353,7 +353,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = MotionDetectionColor;
                     ActiveViews.push(motionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -365,7 +365,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("Motion");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -400,7 +400,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = WifiClientsColor;
                     ActiveViews.push(wifiClientsObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -412,7 +412,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("WifiClients");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.state('detoggled');
                         btn.button.style.backgroundColor = 'white';
                         infoboxUpdate(infoboxDataCached);
@@ -446,7 +446,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = OccupantsColor;
                     ActiveViews.push(occupantsObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -458,7 +458,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("Occupants");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -493,7 +493,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = TotalPowerConsumptionColor; //'#e74c3c'
                     ActiveViews.push(totalPowerObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     infoboxUpdate(infoboxDataCached);
                     btn.state('toggled');
                 }
@@ -505,7 +505,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("TotalPowerConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -541,7 +541,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = HardwarePowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(hardwareConsumptionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -553,7 +553,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("HardwareConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -589,7 +589,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = LightPowerConsumptionColor; //'#f83e2d'
                     ActiveViews.push(lightConsumptionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -601,7 +601,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("LightConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -636,7 +636,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = VentilationPowerConsumptionColor; //'#d15258'
                     ActiveViews.push(ventilationConsumptionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -648,7 +648,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("VentilationConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
@@ -684,7 +684,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = OtherPowerConsumptionColor; //'#ff8289'
                     ActiveViews.push(otherConsumptionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -696,7 +696,7 @@ function CreateViewButtons() {
                     var index = findIndexOfView("OtherConsumption");
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
 
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
@@ -728,7 +728,7 @@ function CreateViewButtons() {
                     };
                     btn.button.style.backgroundColor = '#8c8c8c'; //#3399cc
                     ActiveFloorViews.push(waterConsumptionObj);
-                    redrawColumnsOnMap();
+                    redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
                 }
@@ -740,7 +740,7 @@ function CreateViewButtons() {
                     var index = findIndexOfFloorView("WaterConsumption");
                     if (index !== notContained) {
                         ActiveFloorViews.splice(index, 1);
-                        redrawColumnsOnMap();
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
@@ -752,7 +752,7 @@ function CreateViewButtons() {
     }).addTo(geoMap);
 }
 
-function redrawColumnsOnMap() {
+function redrawVisualization() {
     drawLegend();
     splitRoomsIntoBarchart();
 }

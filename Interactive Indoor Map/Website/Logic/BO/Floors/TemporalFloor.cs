@@ -10,14 +10,12 @@ namespace Website.Logic.BO.Floors
     [NotMapped]
     public class TemporalFloor : Floor
     {
-
         public override List<Room> Rooms { get; set; }
 
         public double AverageTemperature =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
                     .Sum(room => room.AverageTemperature) / NumberOfSensorRooms);
-
         public double MaxObservedTemperature =>
             (Rooms.Where(room => room.GetType() == typeof (TemporalRoom))
                 .Cast<TemporalRoom>()
