@@ -6,12 +6,13 @@
             drops: "up",
             opens: "left",
             timePicker24Hour: true,
+            pick12HourFormat: false,            
             linkedCalendars: false,
             timePicker: true,
             timePickerIncrement: 15,
             startDate: "24/03/2016 00:00",
             locale: {
-                format: 'DD/MM/YYYY h:mm'
+                format: 'DD/MM/YYYY HH:mm'
             }
         });
     });
