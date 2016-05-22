@@ -102,11 +102,15 @@ tr:nth-child(even) {
 }
 
 #DRP {
-    max-width: 175px;
+    max-width: 150px;
     position: absolute;
-    left: 0%;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    bottom: 0px;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 210px;
+    margin-right: 105px;
     z-index: 5;
+}
+
+#daterangepicker {
+    width: 206px;
 }

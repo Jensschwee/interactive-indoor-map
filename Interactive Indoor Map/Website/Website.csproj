@@ -143,7 +143,6 @@
     <Content Include="scripts\External\d3.v3.min.js" />
     <Content Include="scripts\External\daterangepicker.js" />
     <Content Include="scripts\External\easy-button.js" />
-    <Content Include="scripts\External\Leaflet.fullscreen.min.js" />
     <Content Include="scripts\External\leaflet.js" />
     <Content Include="scripts\External\moment.js" />
     <Content Include="scripts\External\moment.min.js" />
