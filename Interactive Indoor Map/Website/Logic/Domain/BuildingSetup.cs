@@ -770,7 +770,6 @@ namespace Website.Logic.Domain
                 Alias = "U175",
                 MaxOccupants = 48,
                 MaxWifiClients = 60,
-                MaxTemperature = 25,
                 MaxLux = 700,
                 Temperature = 22,
                 CO2 = 600,
@@ -811,7 +810,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U172",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
@@ -854,7 +852,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U170",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
@@ -898,7 +895,6 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 7",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
@@ -942,7 +938,6 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 8",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
@@ -984,7 +979,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U171",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
@@ -1026,7 +1020,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U177",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
@@ -1077,7 +1070,6 @@ namespace Website.Logic.Domain
                     }
                 },
                 Alias = "Studiezone 6",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
@@ -1111,7 +1103,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "Studiezone 5",
                 RoomType = RoomType.Studyzone,
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
@@ -1153,7 +1144,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U176",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
@@ -1196,7 +1186,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U174",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 60,
@@ -1239,7 +1228,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U173",
-                MaxTemperature = 25,
                 MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 60,

@@ -13,9 +13,9 @@ namespace Website.Logic.BO.Rooms
         public Corners Corners { get; set; }
 
         public double SurfaceArea { get; set; }
-        
-        public double MaxTemperature { get; set; }
-        public double MinTemperature = 15;
+
+        public double MaxTemperature = 30;
+        public double MinTemperature = 0;
 
         public int MaxCO2 { get; set; }
         public int MinCO2 = 0;
