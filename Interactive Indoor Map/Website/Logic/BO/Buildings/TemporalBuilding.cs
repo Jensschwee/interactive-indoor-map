@@ -19,16 +19,16 @@ namespace Website.Logic.BO.Buildings
         public double MinObservedTemperature => (Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Min(f => f.MinObservedTemperature));
 
         public double AverageCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.AverageCO2)) / NumberOfSensorRooms);
-        public double MaxObservedCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Max(room => room.MaxObservedCO2)));
-        public double MinObservedCO2 => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Min(room => room.MinObservedCO2)));
+        public double MaxObservedCO2 => (Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Max(f => f.MaxObservedCO2));
+        public double MinObservedCO2 => (Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Min(f => f.MinObservedCO2));
 
         public double AverageLight => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.AverageLight)) / NumberOfSensorRooms);
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
 
         public double AverageLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Sum(room => room.AverageLux)) / NumberOfSensorRooms);
-        public double MaxObservedLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Max(room => room.MaxObservedLux)));
-        public double MinObservedLux => (Floors.Sum(floor => floor.Rooms.Where(room => room.GetType() == typeof(TemporalRoom)).Cast<TemporalRoom>().Min(room => room.MinObservedLux)));
+        public double MaxObservedLux => (Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Max(f => f.MaxObservedLux));
+        public double MinObservedLux => (Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Min(f => f.MinObservedLux));
 
         public double AverageHardwareConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.AverageHardwareConsumption);
         public double MaxObservedHardwareConsumption => Floors.Where(floor => floor.GetType() == typeof(TemporalFloor)).Cast<TemporalFloor>().Sum(floor => floor.MaxObservedHardwareConsumption);
