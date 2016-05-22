@@ -177,7 +177,7 @@
     <Content Include="scripts\Legend.js" />
     <Content Include="scripts\Controllers\ButtonController.js" />
     <Content Include="scripts\Room.js" />
-    <Content Include="scripts\UpdateViewTimer.js" />
+    <Content Include="scripts\UpdateTimer.js" />
     <Content Include="Style\External\bootstrap-theme.min.css" />
     <Content Include="Style\External\bootstrap.min.css" />
     <Content Include="Style\External\daterangepicker.css" />
