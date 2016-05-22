@@ -16,6 +16,7 @@ function drawBuildingInfoBox() {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+             getTemporalDate() +
             '<table class="tg">' +
             props.HTML +
             '</table></span></div>'
@@ -70,11 +71,14 @@ function drawBuildingInfoBox() {
     infoboxDataUpdate();
 }
 
+
+
 function drawFloorInfobox() {
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
             '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+            getTemporalDate() +
             '<table class="tg">' +
             props.HTML +
             '</table></div></span>'
@@ -129,6 +133,7 @@ function drawRoomInfo() {
             if (props.hasOwnProperty("Alias")) {
                 html += '</br><b>Alias: </b>' + props.Alias;
             }
+            html += getTemporalDate();
             html += '<table class="tg">' + props.HTML + '</table></span></div>';
 
             this._div.innerHTML = html;
@@ -145,6 +150,9 @@ function onEachFeature(feature, layer) {
 function drawSelectedRoomInfoBox() {
     if (roomArray.length === 0) {
         drawFloorInfobox();
+    }
+    else if (colletionOfRoomsOnMap === null) {
+        return;
     }
     else if (roomArray.length === 1) {
         var room = $.grep(colletionOfRoomsOnMap.features, function (value) {
@@ -361,10 +369,12 @@ function drawSelectedRoomInfoBox() {
 function getTemporalSensorValuesInfoBox(sensorData) {
     var notContained = -1;
     var html = "<br/>";
+    if (sensorData.MinObservedTemperature === undefined) {
+        return html;
+    }
     if (ActiveViews.length !== 0 || ActiveFloorViews.length !== 0) {
         html += "<br/>";
         html += '<tr><th>Sensor Type</th><th>Minimum</th><th>Average</th><th>Maximum</th></tr>';
-
     }
 
     if (findIndexOfView('Temperature') !== notContained) {
@@ -426,6 +436,9 @@ function getLiveSensorValuesInfoBox(sensorData) {
     var html = "<br/>";
     if (ActiveViews.length !== 0) {
         html += "<br/>";
+    }
+    if (sensorData.Temperature === undefined) {
+        return html;
     }
 
     if (findIndexOfView('Temperature') !== notContained) {
@@ -495,4 +508,11 @@ function getLiveSensorValuesInfoBox(sensorData) {
     }
 
     return html;
+}
+
+function getTemporalDate() {
+    if (temporalActive) {
+        return '</br><b>Date:</b> ' + document.getElementById("daterangepicker").value;
+    } else
+        return '';
 }

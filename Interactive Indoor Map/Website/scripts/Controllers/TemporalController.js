@@ -24,7 +24,6 @@
 function getTemporalData() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
-        drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
 
