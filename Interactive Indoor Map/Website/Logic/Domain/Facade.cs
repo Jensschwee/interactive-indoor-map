@@ -51,16 +51,16 @@ namespace Website.Logic.Domain
         }
 
 
-        public string GetTemporalFloorInfoBox(int floorLevel, DateTime timeFrom,
+        public string GetTemporalFloorInfobox(int floorLevel, DateTime timeFrom,
             DateTime timeTo)
         {
-            return temporalManager.GetTemporalFloorInfoBox(floorLevel,
+            return temporalManager.GetTemporalFloorInfobox(floorLevel,
                 (LiveBuilding)HttpContext.Current.Application["Building"], timeFrom, timeTo);
         }
 
-        public string GetTemporalBuildingInfoBox(DateTime timeFrom, DateTime timeTo)
+        public string GetTemporalBuildingInfobox(DateTime timeFrom, DateTime timeTo)
         {
-            return temporalManager.GetTemporalBuildingInfoBox(
+            return temporalManager.GetTemporalBuildingInfobox(
                 (LiveBuilding)HttpContext.Current.Application["Building"], timeFrom, timeTo);
         }
 

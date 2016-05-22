@@ -91,7 +91,7 @@ namespace Website.Logic.Domain
             return temporalJsonConverter.GetDrawableFloor(floor);
         }
 
-        public string GetTemporalFloorInfoBox(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
+        public string GetTemporalFloorInfobox(int floorLeel, LiveBuilding liveBuilding, DateTime timeFrom,
             DateTime timeTo)
         {
             TemporalFloor floor = GetTemporalFloor(liveBuilding.Floors.Where(f => f.FloorLevel == floorLeel).Cast<LiveFloor>().First());
@@ -102,7 +102,7 @@ namespace Website.Logic.Domain
 
         }
 
-        public string GetTemporalBuildingInfoBox(LiveBuilding liveBuilding, DateTime timeFrom,
+        public string GetTemporalBuildingInfobox(LiveBuilding liveBuilding, DateTime timeFrom,
           DateTime timeTo)
         {
             TemporalBuilding building = GetTemporalBuilding(liveBuilding);

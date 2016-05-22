@@ -23,7 +23,7 @@ function drawBuildingInfoBox() {
     };
     var buildingInfoBox = function () {
         if (!temporalActive) {
-            PageMethods.DrawBuildingInfoBox(onSuccess);
+            PageMethods.DrawBuildingInfobox(onSuccess);
         } else {
             var dateResult = document.getElementById("daterangepicker").value;
             var dateResultArray = dateResult.split(" - ");
@@ -39,7 +39,7 @@ function drawBuildingInfoBox() {
             var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
             var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
 
-            PageMethods.GetTemporalBuildingInfoBox(fromDate, toDate, onSuccess);
+            PageMethods.GetTemporalBuildingInfobox(fromDate, toDate, onSuccess);
         }
       
 
@@ -82,7 +82,7 @@ function drawFloorInfobox() {
     };
     var floorInfoBox = function () {
         if (!temporalActive) {
-            PageMethods.DrawFloorInfoBox(currentFloorLevel, onSuccess);
+            PageMethods.DrawFloorInfobox(currentFloorLevel, onSuccess);
         } else {
             var dateResult = document.getElementById("daterangepicker").value;
             var dateResultArray = dateResult.split(" - ");
@@ -91,7 +91,7 @@ function drawFloorInfobox() {
 
             var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
             var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];
-            PageMethods.GetTemporalFloorInfoBox(currentFloorLevel, fromDate, toDate, onSuccess);
+            PageMethods.GetTemporalFloorInfobox(currentFloorLevel, fromDate, toDate, onSuccess);
         }
         function onSuccess(response, userContext, methodName) {
             if (infoboxDataUpdate === floorInfoBox) {

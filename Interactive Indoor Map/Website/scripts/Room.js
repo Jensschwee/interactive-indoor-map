@@ -3,7 +3,9 @@ var yCoordinate = 1;
 
 function splitRoomsIntoBarchart(colletionOfRooms) {
     colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
-
+    if (colletionOfRooms === null) {
+        return;
+    }
     var numberOfLayers = roomLayers.length;
     for (var k = 0; k < numberOfLayers; k++) {
         geoMap.removeLayer(roomLayers.pop());
@@ -28,7 +30,6 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
             type: "FeatureCollection",
             features: features
         };
-
         $.each(colletionOfRooms.features, function (index, value) {
             var coordinate = new Array();
             var coordinates = new Array();
@@ -172,8 +173,7 @@ function getRoomsAndDrawRoomsWithRoomOverlays(jsonMap) {
         drawRoomsForeground(colletionOfRoomsOnMap);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
     }
-    if (jsonMap !== 'undefined') {
-        colletionOfRoomsOnMap = jsonMap;
+    if (jsonMap !== undefined) {
         drawRoomsForeground(jsonMap);
         splitRoomsIntoBarchart(jsonMap);
     }

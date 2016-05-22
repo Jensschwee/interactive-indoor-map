@@ -50,21 +50,21 @@ namespace Website
         }
 
         [System.Web.Services.WebMethod]
-        public static string DrawBuildingInfoBox()
+        public static string DrawBuildingInfobox()
         {
             return Facade.Instance.GetBuildingInfobox();
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetTemporalBuildingInfoBox(DateTime timeFrom, DateTime timeTo)
+        public static string GetTemporalBuildingInfobox(DateTime timeFrom, DateTime timeTo)
         {
-            return Facade.Instance.GetTemporalBuildingInfoBox(timeFrom, timeTo);
+            return Facade.Instance.GetTemporalBuildingInfobox(timeFrom, timeTo);
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetTemporalFloorInfoBox(int floorLevel,DateTime timeFrom, DateTime timeTo)
+        public static string GetTemporalFloorInfobox(int floorLevel,DateTime timeFrom, DateTime timeTo)
         {
-            return Facade.Instance.GetTemporalFloorInfoBox(floorLevel, timeFrom, timeTo);
+            return Facade.Instance.GetTemporalFloorInfobox(floorLevel, timeFrom, timeTo);
         }
 
         [System.Web.Services.WebMethod]
