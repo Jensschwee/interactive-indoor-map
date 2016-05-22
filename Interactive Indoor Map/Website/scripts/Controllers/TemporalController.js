@@ -17,11 +17,11 @@
     });
 
     $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
-        temporalUpdater();
+        getTemporalData();
     });
 }
 
-function temporalUpdater() {
+function getTemporalData() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         drawRoomsForeground(colletionOfRoomsOnMap);
