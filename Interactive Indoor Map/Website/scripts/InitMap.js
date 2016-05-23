@@ -66,7 +66,6 @@ function initMapSettings(geojson) {
         maxNativeZoom: 19
     }).fitBounds(geojson.getBounds());
 
-
     //Bug 
     geoMap.zoomOut();
 

@@ -4,6 +4,7 @@ var yCoordinate = 1;
 function splitRoomsIntoBarchart(colletionOfRooms) {
     colletionOfRooms = typeof colletionOfRooms !== 'undefined' ? colletionOfRooms : colletionOfRoomsOnMap;
     if (colletionOfRooms === null) {
+        console.log(colletionOfRooms);
         return;
     }
     var numberOfLayers = roomLayers.length;
@@ -288,7 +289,7 @@ function getRoomBorderColor(RoomType) {
 }
 
 function drawRoomsForeground(json) {
-
+    console.log(roomForegroundLayer);
     if (roomForegroundLayer != null) {
         geoMap.removeLayer(roomForegroundLayer);
     }

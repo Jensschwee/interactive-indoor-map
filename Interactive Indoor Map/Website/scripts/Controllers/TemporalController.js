@@ -26,6 +26,7 @@ function getTemporalData() {
     function onSuccess(response) {
         colletionOfRoomsOnMap = JSON.parse(response);
         splitRoomsIntoBarchart(colletionOfRoomsOnMap);
+        drawRoomsForeground(colletionOfRoomsOnMap);
     }
 
     var dateResult = document.getElementById("daterangepicker").value;
