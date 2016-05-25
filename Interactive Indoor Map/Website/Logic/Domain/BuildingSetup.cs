@@ -300,7 +300,6 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 MaxTemperature = 25,
                 MinTemperature = 20,
-                MaxCO2 = 1000,
                 MaxLux = 600,
                 MaxOccupants = 50,
                 MaxWifiClients = 75,
@@ -336,7 +335,6 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 2",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -368,7 +366,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U168",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -405,7 +402,6 @@ namespace Website.Logic.Domain
                 MaxLux = 700,
                 Temperature = 22,
                 CO2 = 600,
-                MaxCO2 = 800,
                 TotalPowerConsumption = 22,
                 HardwareConsumption = 8,
                 VentilationConsumption = 7,
@@ -433,7 +429,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U166",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -466,7 +461,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U165",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 60,
@@ -500,7 +494,6 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 1",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -534,7 +527,6 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 3",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -567,7 +559,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U164",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 25,
@@ -600,7 +591,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U163",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -633,7 +623,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U162",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -666,7 +655,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U161",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -699,7 +687,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U160",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -733,7 +720,6 @@ namespace Website.Logic.Domain
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 4",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -773,7 +759,6 @@ namespace Website.Logic.Domain
                 MaxLux = 700,
                 Temperature = 22,
                 CO2 = 600,
-                MaxCO2 = 800,
                 TotalPowerConsumption = 22,
                 HardwareConsumption = 8,
                 VentilationConsumption =7,
@@ -810,7 +795,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U172",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 50,
@@ -852,7 +836,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U170",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -895,7 +878,6 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 7",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -938,7 +920,6 @@ namespace Website.Logic.Domain
             {
                 RoomType = RoomType.Studyzone,
                 Alias = "Studiezone 8",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -979,7 +960,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U171",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 60,
@@ -1020,7 +1000,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U177",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -1070,7 +1049,6 @@ namespace Website.Logic.Domain
                     }
                 },
                 Alias = "Studiezone 6",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -1103,7 +1081,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "Studiezone 5",
                 RoomType = RoomType.Studyzone,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -1144,7 +1121,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U176",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 25,
@@ -1186,7 +1162,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U174",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 60,
                 MaxWifiClients = 100,
@@ -1228,7 +1203,6 @@ namespace Website.Logic.Domain
             }))
             {
                 Alias = "U173",
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 60,
                 MaxWifiClients = 75,
@@ -1974,7 +1948,6 @@ namespace Website.Logic.Domain
                 MaxLux = 700,
                 Temperature = 22,
                 CO2 = 600,
-                MaxCO2 = 800,
                 TotalPowerConsumption = 22,
                 HardwareConsumption = 8,
                 VentilationConsumption = 7,
@@ -2002,7 +1975,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U182",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -2035,7 +2007,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U183",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -2068,7 +2039,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "Ø20-510-2",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 50,
@@ -2101,7 +2071,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "Ø22-603-2",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 25,
@@ -2135,7 +2104,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U181",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 120,
                 MaxWifiClients = 150,
@@ -2168,7 +2136,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "U180",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 48,
                 MaxWifiClients = 75,
@@ -2201,7 +2168,6 @@ namespace Website.Logic.Domain
             {
                 Alias = "Ø22-510-2",
                 MaxTemperature = 25,
-                MaxCO2 = 800,
                 MaxLux = 700,
                 MaxOccupants = 36,
                 MaxWifiClients = 50,

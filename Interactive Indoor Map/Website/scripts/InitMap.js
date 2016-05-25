@@ -18,7 +18,7 @@ var temporalActive = false;
 function createWorldMap() {
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-        minZoom: 19,
+        minZoom: 17,
         zoom: 19,
         maxZoom: 20,
         maxNativeZoom: 19,
@@ -60,20 +60,25 @@ function initMapSettings(geojson) {
     //Finds the div for the map to draw in
     geoMap = L.map('map', {
         zoomControl: false,
-        minZoom: 19,
+        minZoom: 17,
         maxZoom: 20,
         zoom: 19,
-        maxNativeZoom: 19
+        maxNativeZoom: 19,
+        doubleClickZoom: 'center',
+        scrollWheelZoom: 'center'
     }).fitBounds(geojson.getBounds());
 
     //Bug 
-    geoMap.zoomOut();
+    //geoMap.zoomOut();
 
     //Disables zoom and dragging on the map
     geoMap.dragging.disable();
 
-    geoMap.touchZoom.disable();
-    geoMap.doubleClickZoom.disable();
-    geoMap.scrollWheelZoom.disable();
+    geoMap.touchZoom.enable();
+    //geoMap.doubleClickZoom.enable();
+    //geoMap.doubleClickZoom = 'center';
+    //geoMap.scrollWheelZoom.enable();
+    //geoMap.scrollWheelZoom = 'center';
+
     geoMap.keyboard.disable();
 }

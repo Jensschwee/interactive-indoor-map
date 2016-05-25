@@ -17,8 +17,8 @@ namespace Website.Logic.BO.Rooms
         public double MaxTemperature = 30;
         public double MinTemperature = 0;
 
-        public int MaxCO2 { get; set; }
-        public int MinCO2 = 0;
+        public int MaxCO2 = 1500;
+        public int MinCO2 = 200;
         
         public int MaxLux { get; set; }
         public int MinLux = 0;
