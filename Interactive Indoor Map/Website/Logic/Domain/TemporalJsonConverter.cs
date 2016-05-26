@@ -156,62 +156,62 @@ namespace Website.Logic.Domain
                 WriteAttribute(sb, "SurfaceArea", room.SurfaceArea);
                 WriteAttribute(sb, "Alias", room.Alias);
 
-                WriteAttribute(sb, "AverageTemperature", room.AverageTemperature);
+                WriteAttribute(sb, "AverageTemperature", (room.AverageTemperature.HasValue ? room.AverageTemperature : 0.0));
                 WriteAttribute(sb, "MaxObservedTemperature", room.MaxObservedTemperature);
                 WriteAttribute(sb, "MinObservedTemperature", room.MinObservedTemperature);
                 WriteAttribute(sb, "MaxTemperature", room.MaxTemperature);
                 WriteAttribute(sb, "MinTemperature", room.MinTemperature);
 
-                WriteAttribute(sb, "AverageCO2", room.AverageCO2);
+                WriteAttribute(sb, "AverageCO2", (room.AverageCO2.HasValue ? room.AverageCO2 : 0.0));
                 WriteAttribute(sb, "MaxObservedCO2", room.MaxObservedCO2);
                 WriteAttribute(sb, "MinObservedCO2", room.MinObservedCO2);
                 WriteAttribute(sb, "MaxCO2", room.MaxCO2);
                 WriteAttribute(sb, "MinCO2", room.MinCO2);
 
-                WriteAttribute(sb, "AverageLight", room.AverageLight);
+                WriteAttribute(sb, "AverageLight", (room.AverageLight.HasValue ? room.AverageLight : 0.0));
                 WriteAttribute(sb, "MaxObservedLight", room.MaxObservedLight);
                 WriteAttribute(sb, "MinObservedLight", room.MinObservedLight);
 
-                WriteAttribute(sb, "AverageLux", room.AverageLux);
+                WriteAttribute(sb, "AverageLux", (room.AverageLux.HasValue ? room.AverageLux : 0.0));
                 WriteAttribute(sb, "MaxObservedLux", room.MaxObservedLux);
                 WriteAttribute(sb, "MinObservedLux", room.MinObservedLux);
                 WriteAttribute(sb, "MaxLux", room.MaxLux);
 
-                WriteAttribute(sb, "AverageHardwareConsumption", room.AverageHardwareConsumption);
+                WriteAttribute(sb, "AverageHardwareConsumption", (room.AverageHardwareConsumption.HasValue ? room.AverageHardwareConsumption : 0.0));
                 WriteAttribute(sb, "MaxObservedHardwareConsumption", room.MaxObservedHardwareConsumption);
                 WriteAttribute(sb, "MinObservedHardwareConsumption", room.MinObservedHardwareConsumption);
                 WriteAttribute(sb, "MaxHardwareConsumption", room.MaxHardwareConsumption);
                 WriteAttribute(sb, "MinHardwareConsumption", room.MinHardwareConsumption);
 
-                WriteAttribute(sb, "AverageLightConsumption", room.AverageLightConsumption);
+                WriteAttribute(sb, "AverageLightConsumption", (room.AverageLightConsumption.HasValue ? room.AverageLightConsumption : 0.0));
                 WriteAttribute(sb, "MaxObservedLightConsumption", room.MaxObservedLightConsumption);
                 WriteAttribute(sb, "MinObservedLightConsumption", room.MinObservedLightConsumption);
                 WriteAttribute(sb, "MaxLightConsumption", room.MaxLightConsumption);
                 WriteAttribute(sb, "MinLightConsumption", room.MinLightConsumption);
 
-                WriteAttribute(sb, "AverageVentilationConsumption", room.AverageVentilationConsumption);
+                WriteAttribute(sb, "AverageVentilationConsumption", (room.AverageVentilationConsumption.HasValue ? room.AverageVentilationConsumption : 0.0));
                 WriteAttribute(sb, "MaxObservedVentilationConsumption", room.MaxObservedVentilationConsumption);
                 WriteAttribute(sb, "MinObservedVentilationConsumption", room.MinObservedVentilationConsumption);
                 WriteAttribute(sb, "MaxVentilationConsumption", room.MaxVentilationConsumption);
                 WriteAttribute(sb, "MinVentilationConsumption", room.MinVentilationConsumption);
 
-                WriteAttribute(sb, "AverageOtherConsumption", room.AverageOtherConsumption);
+                WriteAttribute(sb, "AverageOtherConsumption", (room.AverageOtherConsumption.HasValue ? room.AverageOtherConsumption : 0.0));
                 WriteAttribute(sb, "MaxObservedOtherConsumption", room.MaxObservedOtherConsumption);
                 WriteAttribute(sb, "MinObservedOtherConsumption", room.MinObservedOtherConsumption);
                 WriteAttribute(sb, "MaxOtherConsumption", room.MaxOtherConsumption);
                 WriteAttribute(sb, "MinOtherConsumption", room.MinOtherConsumption);
 
-                WriteAttribute(sb, "AverageTotalPowerConsumption", room.AverageTotalPowerConsumption);
+                WriteAttribute(sb, "AverageTotalPowerConsumption", (room.AverageTotalPowerConsumption.HasValue ? room.AverageTotalPowerConsumption : 0.0));
                 WriteAttribute(sb, "MaxObservedTotalPowerConsumption", room.MaxObservedTotalPowerConsumption);
                 WriteAttribute(sb, "MinObservedTotalPowerConsumption", room.MinObservedTotalPowerConsumption);
                 WriteAttribute(sb, "MaxTotalPowerConsumption", room.MaxTotalPowerConsumption);
                 WriteAttribute(sb, "MinTotalPowerConsumption", room.MinTotalPowerConsumption);
 
-                WriteAttribute(sb, "AverageMotion", room.AverageMotion);
+                WriteAttribute(sb, "AverageMotion", (room.AverageMotion.HasValue ? room.AverageMotion : 0.0));
                 WriteAttribute(sb, "MaxObservedMotion", room.MaxObservedMotion);
                 WriteAttribute(sb, "MinObservedMotion", room.MinObservedMotion);
 
-                WriteAttribute(sb, "AverageOccupants", room.AverageOccupants);
+                WriteAttribute(sb, "AverageOccupants", (room.AverageOccupants.HasValue ? room.AverageOccupants : 0.0));
                 WriteAttribute(sb, "MaxObservedOccupants", room.MaxObservedOccupants);
                 WriteAttribute(sb, "MinObservedOccupants", room.MinObservedOccupants);
                 WriteAttribute(sb, "MaxOccupants", room.MaxOccupants);

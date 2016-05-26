@@ -12,10 +12,11 @@ namespace Website.Logic.BO.Floors
     {
         public override List<Room> Rooms { get; set; }
 
+        public int NumberOfTemperatureRooms=> Rooms.Count(room => room.GetType() == typeof(TemporalRoom) && ((TemporalRoom)room).AverageTemperature.HasValue);
         public double AverageTemperature =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageTemperature) / NumberOfSensorRooms);
+                    .Sum(room => room.AverageTemperature ?? 0.0) / (NumberOfTemperatureRooms.Equals(0) ? 1: NumberOfTemperatureRooms));
         public double MaxObservedTemperature =>
             (Rooms.Where(room => room.GetType() == typeof (TemporalRoom))
                 .Cast<TemporalRoom>()
@@ -24,29 +25,36 @@ namespace Website.Logic.BO.Floors
                 .Cast<TemporalRoom>()
                 .Min(room => room.MinObservedTemperature));
 
+        public int NumberOfCO2Rooms => Rooms.Count(room => room.GetType() == typeof(TemporalRoom) && ((TemporalRoom)room).AverageCO2.HasValue);
+
         public double AverageCO2 =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageCO2) / NumberOfSensorRooms);
+                    .Sum(room => room.AverageCO2 ?? 0.0) / (NumberOfCO2Rooms.Equals(0) ? 1 : NumberOfCO2Rooms));
         public double MaxObservedCO2 =>
             (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                 .Cast<TemporalRoom>()
                 .Max(room => room.MaxObservedCO2));
+
         public double MinObservedCO2 => (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                 .Cast<TemporalRoom>()
                 .Min(room => room.MinObservedCO2));
 
+        public int NumberOfLightRooms => Rooms.Count(room => room.GetType() == typeof(TemporalRoom) && ((TemporalRoom)room).AverageLight.HasValue);
+
         public double AverageLight =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageLight) / NumberOfSensorRooms);
+                    .Sum(room => room.AverageLight ?? 0.0) / (NumberOfLightRooms.Equals(0) ? 1 : NumberOfLightRooms));
         public double MaxObservedLight = 1;
         public double MinObservedLight = 0;
+
+        public int NumberOfLuxRooms => Rooms.Count(room => room.GetType() == typeof(TemporalRoom) && ((TemporalRoom)room).AverageLux.HasValue);
 
         public double AverageLux =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageLux) / NumberOfSensorRooms);
+                    .Sum(room => room.AverageLux ?? 0.0) / (NumberOfLuxRooms.Equals(0) ? 1 : NumberOfLuxRooms));
         public double MaxObservedLux => (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                 .Cast<TemporalRoom>()
                 .Max(room => room.MaxObservedLux));
@@ -74,17 +82,19 @@ namespace Website.Logic.BO.Floors
         public double MaxObservedTotalPowerConsumption { get; set; }
         public double MinObservedTotalPowerConsumption { get; set; }
 
+        public int NumberOfMotionRooms => Rooms.Count(room => room.GetType() == typeof(TemporalRoom) && ((TemporalRoom)room).AverageMotion.HasValue);
+
         public double AverageMotion =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageMotion) / NumberOfSensorRooms);
+                    .Sum(room => room.AverageMotion ?? 0.0) / (NumberOfMotionRooms.Equals(0) ? 1 : NumberOfMotionRooms));
         public double MaxObservedMotion = 1;
         public double MinObservedMotion = 0;
 
         public double AverageOccupants =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.AverageOccupants));
+                    .Sum(room => room.AverageOccupants ?? 0.0));
         public double MaxObservedOccupants =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
@@ -92,7 +102,7 @@ namespace Website.Logic.BO.Floors
         public double MinObservedOccupants =>
                 (Rooms.Where(room => room.GetType() == typeof(TemporalRoom))
                     .Cast<TemporalRoom>()
-                    .Sum(room => room.MinObservedOccupants));
+                    .Sum(room => (room.MinObservedOccupants)));
 
         public double AverageWifiClients { get; set; }
         public double MaxObservedWifiClients { get; set; }

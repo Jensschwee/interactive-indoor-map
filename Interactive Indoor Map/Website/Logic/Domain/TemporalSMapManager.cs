@@ -102,9 +102,9 @@ namespace Website.Logic.Domain
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Temperature).Key,
                             timeFrom,
                             timeTo));
-                room.AverageTemperature = temporalSummary.MeanValue;
-                room.MinObservedTemperature = temporalSummary.MinValue;
-                room.MaxObservedTemperature = temporalSummary.MaxValue;
+                room.AverageTemperature = (double)temporalSummary.MeanValue;
+                room.MinObservedTemperature = (double)temporalSummary.MinValue;
+                room.MaxObservedTemperature = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -136,9 +136,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.CO2).Key, timeFrom,
                             timeTo));
-                room.AverageCO2 = temporalSummary.MeanValue;
-                room.MinObservedCO2 = temporalSummary.MinValue;
-                room.MaxObservedCO2 = temporalSummary.MaxValue;
+                room.AverageCO2 = (double)temporalSummary.MeanValue;
+                room.MinObservedCO2 = (double)temporalSummary.MinValue;
+                room.MaxObservedCO2 = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -158,9 +158,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             building.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Occupants).Key, timeFrom,
                             timeTo));
-                building.AverageOccupants = temporalSummary.MeanValue;
-                building.MinObservedOccupants = temporalSummary.MinValue;
-                building.MaxObservedOccupants = temporalSummary.MaxValue;
+                building.AverageOccupants = (double)temporalSummary.MeanValue;
+                building.MinObservedOccupants = (double)temporalSummary.MinValue;
+                building.MaxObservedOccupants = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -182,9 +182,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Occupants).Key, timeFrom,
                             timeTo));
-                room.AverageOccupants = temporalSummary.MeanValue;
-                room.MinObservedOccupants = temporalSummary.MinValue;
-                room.MaxObservedOccupants = temporalSummary.MaxValue;
+                room.AverageOccupants = (double)temporalSummary.MeanValue;
+                room.MinObservedOccupants = (double)temporalSummary.MinValue;
+                room.MaxObservedOccupants = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -216,9 +216,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.MotionDetection).Key, timeFrom,
                             timeTo),timeFrom,timeTo);
-                room.AverageMotion = temporalSummary.MeanValue;
-                room.MinObservedMotion = temporalSummary.MinValue;
-                room.MaxObservedMotion = temporalSummary.MaxValue;
+                room.AverageMotion = (double)temporalSummary.MeanValue;
+                room.MinObservedMotion = (double)temporalSummary.MinValue;
+                room.MaxObservedMotion = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -281,9 +281,9 @@ namespace Website.Logic.Domain
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Light).Key, timeFrom,
                             timeTo), timeFrom,
                             timeTo);
-                room.AverageLight = temporalSummary.MeanValue;
-                room.MinObservedLight = temporalSummary.MinValue;
-                room.MaxObservedLight = temporalSummary.MaxValue;
+                room.AverageLight = (double)temporalSummary.MeanValue;
+                room.MinObservedLight = (double)temporalSummary.MinValue;
+                room.MaxObservedLight = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -297,9 +297,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             room.Endpoints.SmapEndponts.First(s => s.Value == SensorType.Lux).Key, timeFrom,
                             timeTo));
-                room.AverageLux = temporalSummary.MeanValue;
-                room.MinObservedLux = temporalSummary.MinValue;
-                room.MaxObservedLux = temporalSummary.MaxValue;
+                room.AverageLux = (double)temporalSummary.MeanValue;
+                room.MinObservedLux = (double)temporalSummary.MinValue;
+                room.MaxObservedLux = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -341,9 +341,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.HotWater).Key, timeFrom,
                             timeTo));
-                floor.AverageHotWaterConsumption = temporalSummary.MeanValue;
-                floor.MinObservedHotWaterConsumption = temporalSummary.MinValue;
-                floor.MaxObservedHotWaterConsumption = temporalSummary.MaxValue;
+                floor.AverageHotWaterConsumption = (double)temporalSummary.MeanValue;
+                floor.MinObservedHotWaterConsumption = (double)temporalSummary.MinValue;
+                floor.MaxObservedHotWaterConsumption = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -366,9 +366,9 @@ namespace Website.Logic.Domain
                         smapDal.GetHistoricSensorValue(
                             floor.Endpoints.SmapEndponts.First(s => s.Value == SensorType.ColdWater).Key, timeFrom,
                             timeTo));
-                floor.AverageColdWaterConsumption = temporalSummary.MeanValue;
-                floor.MinObservedColdWaterConsumption = temporalSummary.MinValue;
-                floor.MaxObservedColdWaterConsumption = temporalSummary.MaxValue;
+                floor.AverageColdWaterConsumption = (double)temporalSummary.MeanValue;
+                floor.MinObservedColdWaterConsumption = (double)temporalSummary.MinValue;
+                floor.MaxObservedColdWaterConsumption = (double)temporalSummary.MaxValue;
             }
         }
 
@@ -385,9 +385,9 @@ namespace Website.Logic.Domain
                         _temporalSummaryCalculator.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
-                    floor.AverageTotalPowerConsumption = temporalSummary.MeanValue;
-                    floor.MinObservedTotalPowerConsumption = temporalSummary.MinValue;
-                    floor.MaxObservedTotalPowerConsumption = temporalSummary.MaxValue;
+                    floor.AverageTotalPowerConsumption = (double)temporalSummary.MeanValue;
+                    floor.MinObservedTotalPowerConsumption = (double)temporalSummary.MinValue;
+                    floor.MaxObservedTotalPowerConsumption = (double)temporalSummary.MaxValue;
                 }
             }
         }
@@ -413,9 +413,9 @@ namespace Website.Logic.Domain
                         _temporalSummaryCalculator.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
-                    floor.AverageHardwareConsumption = temporalSummary.MeanValue;
-                    floor.MinObservedHardwareConsumption = temporalSummary.MinValue;
-                    floor.MaxObservedHardwareConsumption = temporalSummary.MaxValue;
+                    floor.AverageHardwareConsumption = (double)temporalSummary.MeanValue;
+                    floor.MinObservedHardwareConsumption = (double)temporalSummary.MinValue;
+                    floor.MaxObservedHardwareConsumption = (double)temporalSummary.MaxValue;
                 }
             }
         }
@@ -441,9 +441,9 @@ namespace Website.Logic.Domain
                         _temporalSummaryCalculator.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
-                    floor.AverageLightConsumption= temporalSummary.MeanValue;
-                    floor.MinObservedLightConsumption = temporalSummary.MinValue;
-                    floor.MaxObservedLightConsumption = temporalSummary.MaxValue;
+                    floor.AverageLightConsumption= (double)temporalSummary.MeanValue;
+                    floor.MinObservedLightConsumption = (double)temporalSummary.MinValue;
+                    floor.MaxObservedLightConsumption = (double)temporalSummary.MaxValue;
                 }
             }
         }
@@ -469,9 +469,9 @@ namespace Website.Logic.Domain
                         _temporalSummaryCalculator.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
-                    floor.AverageOtherConsumption = temporalSummary.MeanValue;
-                    floor.MinObservedOtherConsumption = temporalSummary.MinValue;
-                    floor.MaxObservedOtherConsumption = temporalSummary.MaxValue;
+                    floor.AverageOtherConsumption = (double)temporalSummary.MeanValue;
+                    floor.MinObservedOtherConsumption = (double)temporalSummary.MinValue;
+                    floor.MaxObservedOtherConsumption = (double)temporalSummary.MaxValue;
                 }
             }
         }
@@ -497,9 +497,9 @@ namespace Website.Logic.Domain
                         _temporalSummaryCalculator.CalcSMapMinMaxMeanHourly(
                             smapDal.GetHistoricSensorValue(endpoints, timeFrom, timeTo));
 
-                    floor.AverageVentilationConsumption = temporalSummary.MeanValue;
-                    floor.MinObservedVentilationConsumption = temporalSummary.MinValue;
-                    floor.MaxObservedVentilationConsumption = temporalSummary.MaxValue;
+                    floor.AverageVentilationConsumption = (double)temporalSummary.MeanValue;
+                    floor.MinObservedVentilationConsumption = (double)temporalSummary.MinValue;
+                    floor.MaxObservedVentilationConsumption = (double)temporalSummary.MaxValue;
                 }
             }
         }
