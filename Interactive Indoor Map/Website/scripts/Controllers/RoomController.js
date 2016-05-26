@@ -5,7 +5,7 @@
         //Select room
         layer.setStyle({
             //border color
-            color: '#8c8c8c'
+            color: '#313131' //#8c8c8c
         });
 
         if (!L.Browser.ie && !L.Browser.opera) {
