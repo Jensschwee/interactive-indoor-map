@@ -52,7 +52,8 @@ function CreateSpatialButtons() {
                 if (currentFloorLevel !== 0) {
                     currentFloorLevel = 0;
                     changeFloor();
-                }
+                } else
+                    clearSelctedRooms();
                 drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 groundFloorButton.button.style.backgroundColor = 'white';
@@ -74,7 +75,8 @@ function CreateSpatialButtons() {
                 if (currentFloorLevel !== 1) {
                     currentFloorLevel = 1;
                     changeFloor();
-                }
+                } else
+                    clearSelctedRooms();
                 drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
@@ -98,7 +100,8 @@ function CreateSpatialButtons() {
                 if (currentFloorLevel !== 2) {
                     currentFloorLevel = 2;
                     changeFloor();
-                }
+                } else
+                    clearSelctedRooms();
                 drawFloorInfobox();
                 btn.button.style.backgroundColor = '#8c8c8c';
                 parterreButton.button.style.backgroundColor = 'white';
@@ -151,6 +154,7 @@ function CreateTemporalButtons() {
                 $("#daterangepicker").click();
                 btn.state('toggled');
                 temporalActive = true;
+                roomArray = [];
             }
         }, {
             stateName: 'toggled',
@@ -161,6 +165,7 @@ function CreateTemporalButtons() {
                $("#DRP").hide();
                btn.state('detoggled');
                temporalActive = false;
+               roomArray = [];
             }
         }]
     }).addTo(geoMap);

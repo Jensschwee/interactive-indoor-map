@@ -470,3 +470,10 @@ function DrawColnumTemporalRoom(features, feature, coordinates, minObserved, max
 
     features.push(feature);
 }
+
+function clearSelctedRooms() {
+    roomForegroundLayer.eachLayer(function(roomLayer) {
+        roomForegroundLayer.resetStyle(roomLayer);
+    });
+    roomArray = [];
+}
