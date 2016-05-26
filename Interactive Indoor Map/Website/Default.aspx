@@ -62,7 +62,7 @@
         }
     </script>
 
-    <%--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />--%>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
     <link type="text/css" href='Style/External/daterangepicker.css' rel='stylesheet' />
     
     <script src="scripts/External/L.D3SvgOverlay.min.js"></script>
