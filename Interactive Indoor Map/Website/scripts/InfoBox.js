@@ -12,6 +12,8 @@ function drawInfobox() {
 }
 
 function drawBuildingInfoBox() {
+    roomInfoboxActive = false;
+
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
@@ -74,6 +76,8 @@ function drawBuildingInfoBox() {
 
 
 function drawFloorInfobox() {
+    roomInfoboxActive = false;
+
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
@@ -125,6 +129,7 @@ function drawFloorInfobox() {
 }
 
 function drawRoomInfo() {
+    roomInfoboxActive = true;
     // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
         if (props != null) {
