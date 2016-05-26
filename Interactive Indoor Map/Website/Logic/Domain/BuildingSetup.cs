@@ -145,8 +145,6 @@ namespace Website.Logic.Domain
 
             CreateFloors();
 
-            CreateCellarFloorRooms();
-
             CreateParterreFloorRooms();
             CreateParterreFloorSensorlessRooms();
 
@@ -204,7 +202,7 @@ namespace Website.Logic.Domain
             cellarFloor = new LiveFloor(-1)
             {
                 FloorName = "Cellar",
-                SurfaceArea = 2400,
+                SurfaceArea = 800,
                 MaxHardwareConsumption = 200,
                 MaxLightConsumption = 200,
                 MaxVentilationConsumption = 200,
