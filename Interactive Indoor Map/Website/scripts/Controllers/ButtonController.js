@@ -148,6 +148,7 @@ function CreateTemporalButtons() {
             onClick: function (btn) {
                 btn.button.style.backgroundColor = '#8c8c8c';
                 $("#DRP").show();
+                $("#daterangepicker").click();
                 btn.state('toggled');
                 temporalActive = true;
             }
