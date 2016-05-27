@@ -12,6 +12,8 @@ function drawInfobox() {
 }
 
 function drawBuildingInfoBox() {
+    roomInfoboxActive = false;
+
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Building data</h4>' + (props ?
             '<span style="line-height:100%"><b>Name</b>: ' + props.Name + "</br>" +
@@ -32,7 +34,7 @@ function drawBuildingInfoBox() {
             var toDateResult = dateResultArray[1].split("/");
 
             var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
-            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];  var dateResult = document.getElementById("daterangepicker").value;
+            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2]; var dateResult = document.getElementById("daterangepicker").value;
             var dateResultArray = dateResult.split(" - ");
             var fromDateResult = dateResultArray[0].split("/");
             var toDateResult = dateResultArray[1].split("/");
@@ -42,7 +44,7 @@ function drawBuildingInfoBox() {
 
             PageMethods.GetTemporalBuildingInfobox(fromDate, toDate, onSuccess);
         }
-      
+
 
         function onSuccess(response, userContext, methodName) {
             if (buildingInfoBox === infoboxDataUpdate) {
@@ -74,6 +76,8 @@ function drawBuildingInfoBox() {
 
 
 function drawFloorInfobox() {
+    roomInfoboxActive = false;
+
     infoBox.update = function (props) {
         this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
             '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
@@ -125,6 +129,7 @@ function drawFloorInfobox() {
 }
 
 function drawRoomInfo() {
+    roomInfoboxActive = true;
     // method that we will use to update the control based on feature properties passed
     infoBox.update = function (props) {
         if (props != null) {
@@ -165,8 +170,7 @@ function drawSelectedRoomInfoBox() {
             Alias: room[0].properties.Alias,
             HTML: ''
         };
-        if (!temporalActive)
-        {
+        if (!temporalActive) {
             roomInfo.HTML += getLiveSensorValuesInfoBox(room[0].properties);
         } else {
             roomInfo.HTML += getTemporalSensorValuesInfoBox(room[0].properties);
@@ -237,37 +241,37 @@ function drawSelectedRoomInfoBox() {
             MinObservedMotion: 0,
             AverageMotion: 0,
             MaxObservedMotion: 0,
-            MinObservedOccupants: Number.MAX_SAFE_INTEGER,
+            MinObservedOccupants: 0,
             AverageOccupants: 0,
             MaxObservedOccupants: 0,
             MinObservedTemperature: Number.MAX_SAFE_INTEGER,
             AverageTemperature: 0,
-            MaxObservedTemperature: 0,
+            MaxObservedTemperature: Number.MIN_VALUE,
             MinObservedCO2: Number.MAX_SAFE_INTEGER,
             AverageCO2: 0,
-            MaxObservedCO2: 0,
+            MaxObservedCO2: Number.MIN_VALUE,
             MinObservedLight: Number.MAX_SAFE_INTEGER,
             AverageLight: 0,
-            MaxObservedLight: 0,
+            MaxObservedLight: Number.MIN_VALUE,
             MinObservedLux: Number.MAX_SAFE_INTEGER,
             AverageLux: 0,
-            MaxObservedLux: 0,
-            MinObservedTotalPowerConsumption: Number.MAX_SAFE_INTEGER,
+            MaxObservedLux: Number.MIN_VALUE,
+            MinObservedTotalPowerConsumption: 0,
             AverageTotalPowerConsumption: 0,
             MaxObservedTotalPowerConsumption: 0,
-            MinObservedHardwareConsumption: Number.MAX_SAFE_INTEGER,
+            MinObservedHardwareConsumption: 0,
             AverageHardwareConsumption: 0,
             MaxObservedHardwareConsumption: 0,
-            MinObservedLightConsumption: Number.MAX_SAFE_INTEGER,
+            MinObservedLightConsumption: 0,
             AverageLightConsumption: 0,
             MaxObservedLightConsumption: 0,
-            MinObservedVentilationConsumption: Number.MAX_SAFE_INTEGER ,
+            MinObservedVentilationConsumption: 0,
             AverageVentilationConsumption: 0,
             MaxObservedVentilationConsumption: 0,
-            MinObservedOtherConsumption: Number.MAX_SAFE_INTEGER,
+            MinObservedOtherConsumption: 0,
             AverageOtherConsumption: 0,
             MaxObservedOtherConsumption: 0,
-            MinObservedWifiClients: Number.MAX_SAFE_INTEGER,
+            MinObservedWifiClients: 0,
             AverageWifiClients: 0,
             MaxObservedWifiClients: 0,
             SurfaceArea: 0,
@@ -383,14 +387,16 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lux') !== notContained) {
+    if (findIndexOfView('Light') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + '%</td><td> ' + ((sensorData.AverageLight) * 100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '00%</td></tr>';
+    }
 
+    if (findIndexOfView('Lux') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLux.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '%</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion)*100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '00%</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '%</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion) * 100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '00%</td></tr>';
     }
 
     if (findIndexOfView('WifiClients') !== notContained) {
@@ -447,7 +453,8 @@ function getLiveSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.CO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lux') !== notContained) {
+    if (findIndexOfView('Light') !== notContained)
+    {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '</td></tr>';
         } else {
@@ -458,6 +465,9 @@ function getLiveSensorValuesInfoBox(sensorData) {
                 html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> Off</td></tr>';
             }
         }
+    }
+    if (findIndexOfView('Lux') !== notContained) {
+
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.Lux.toFixed(0) + ' lx </td></tr>';
     }
 

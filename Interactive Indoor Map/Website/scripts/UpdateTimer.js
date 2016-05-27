@@ -2,7 +2,8 @@
     setInterval(function () {
         if (!temporalActive) {
             getRoomsAndDrawRooms();
-            infoboxDataUpdate();
+            if (!roomInfoboxActive)
+                infoboxDataUpdate();
         }
     }, 2500);
 }

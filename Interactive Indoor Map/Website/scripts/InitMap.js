@@ -14,6 +14,7 @@ var ActiveFloorViews = [];
 var linesOnMap = null;
 var averageTemporalLineOnMap = null;
 var temporalActive = false;
+var roomInfoboxActive = false;
 
 function createWorldMap() {
     //Setup the world map
