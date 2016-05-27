@@ -34,7 +34,7 @@ function drawBuildingInfoBox() {
             var toDateResult = dateResultArray[1].split("/");
 
             var fromDate = fromDateResult[1] + "/" + fromDateResult[0] + "/" + fromDateResult[2];
-            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2];  var dateResult = document.getElementById("daterangepicker").value;
+            var toDate = toDateResult[1] + "/" + toDateResult[0] + "/" + toDateResult[2]; var dateResult = document.getElementById("daterangepicker").value;
             var dateResultArray = dateResult.split(" - ");
             var fromDateResult = dateResultArray[0].split("/");
             var toDateResult = dateResultArray[1].split("/");
@@ -44,7 +44,7 @@ function drawBuildingInfoBox() {
 
             PageMethods.GetTemporalBuildingInfobox(fromDate, toDate, onSuccess);
         }
-      
+
 
         function onSuccess(response, userContext, methodName) {
             if (buildingInfoBox === infoboxDataUpdate) {
@@ -170,8 +170,7 @@ function drawSelectedRoomInfoBox() {
             Alias: room[0].properties.Alias,
             HTML: ''
         };
-        if (!temporalActive)
-        {
+        if (!temporalActive) {
             roomInfo.HTML += getLiveSensorValuesInfoBox(room[0].properties);
         } else {
             roomInfo.HTML += getTemporalSensorValuesInfoBox(room[0].properties);
@@ -388,14 +387,16 @@ function getTemporalSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.MinObservedCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.AverageCO2.toFixed(0) + ' PPM </td><td> ' + sensorData.MaxObservedCO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lux') !== notContained) {
+    if (findIndexOfView('Light') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>Light</b></td><td> ' + sensorData.MinObservedLight.toFixed(0) + '%</td><td> ' + ((sensorData.AverageLight) * 100).toFixed(1) + '%</td><td> ' + sensorData.MaxObservedLight.toFixed(0) + '00%</td></tr>';
+    }
 
+    if (findIndexOfView('Lux') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.AverageLux.toFixed(0) + ' lx </td><td class="tg-yw4l"> ' + sensorData.MaxObservedLux.toFixed(0) + ' lx </td></tr>';
     }
 
     if (findIndexOfView('Motion') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '%</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion)*100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '00%</td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Average Motion</b></td></td><td class="tg-yw4l"> ' + sensorData.MinObservedMotion + '%</td><td class="tg-yw4l"> ' + ((sensorData.AverageMotion) * 100).toFixed(1) + '%</td></td><td class="tg-yw4l"> ' + sensorData.MaxObservedMotion + '00%</td></tr>';
     }
 
     if (findIndexOfView('WifiClients') !== notContained) {
@@ -452,7 +453,8 @@ function getLiveSensorValuesInfoBox(sensorData) {
     if (findIndexOfView('CO2') !== notContained) {
         html += '<tr><td class="tg-yw4l"><b>CO2</b></td><td> ' + sensorData.CO2.toFixed(0) + ' PPM </td></tr>';
     }
-    if (findIndexOfView('Lux') !== notContained) {
+    if (findIndexOfView('Light') !== notContained)
+    {
         if (sensorData.hasOwnProperty("NumberOfRooms")) {
             html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> ' + sensorData.Light + " / " + sensorData.NumberOfRooms + '</td></tr>';
         } else {
@@ -463,6 +465,9 @@ function getLiveSensorValuesInfoBox(sensorData) {
                 html += '<tr><td class="tg-yw4l"><b>Light</b></td><td class="tg-yw4l"> Off</td></tr>';
             }
         }
+    }
+    if (findIndexOfView('Lux') !== notContained) {
+
         html += '<tr><td class="tg-yw4l"><b>Lux</b></td><td class="tg-yw4l"> ' + sensorData.Lux.toFixed(0) + ' lx </td></tr>';
     }
 

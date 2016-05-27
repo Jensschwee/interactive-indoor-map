@@ -290,7 +290,7 @@ function CreateViewButtons() {
         position: 'topright'
     }).addTo(geoMap);
 
-    var toggleLightButton = L.easyButton({
+    var toggleLuxButton = L.easyButton({
         id: 'easy-button',
         states: [
             {
@@ -300,7 +300,7 @@ function CreateViewButtons() {
                 onClick: function (btn) {
                     if (ActiveViews.length === activeViewsMax)
                         ActiveViews[0].button.button.click();
-                    var co2Obj = {
+                    var luxObj = {
                         name: "Lux",
                         color: LightColor,
                         icon: lightIcon,
@@ -309,10 +309,10 @@ function CreateViewButtons() {
                         average: "AverageLux",
                         maxObserved: "MaxObservedLux",
                         minObserved: "MinObservedLux",
-                        button: toggleLightButton
+                        button: toggleLuxButton
                     };
                     btn.button.style.backgroundColor = LightColor;
-                    ActiveViews.push(co2Obj);
+                    ActiveViews.push(luxObj);
                     redrawVisualization();
                     btn.state('toggled');
                     infoboxUpdate(infoboxDataCached);
@@ -327,6 +327,51 @@ function CreateViewButtons() {
                         ActiveViews.splice(index, 1);
                         redrawVisualization();
 
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('detoggled');
+                        infoboxUpdate(infoboxDataCached);
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
+
+    var toggleLightButton = L.easyButton({
+        id: 'easy-button',
+        states: [
+            {
+                icon: lightIcon,
+                title: 'Light',
+                stateName: 'detoggled',
+                onClick: function (btn) {
+                    if (ActiveViews.length === activeViewsMax)
+                        ActiveViews[0].button.button.click();
+                    var lightObj = {
+                        name: "Light",
+                        color: LightColor,
+                        icon: lightIcon,
+                        value: 'Light',
+                        average: "AverageLight",
+                        maxObserved: "MaxObservedLight",
+                        minObserved: "MinObservedLight",
+                        button: toggleLightButton
+                    };
+                    btn.button.style.backgroundColor = LightColor;
+                    ActiveViews.push(lightObj);
+                    redrawVisualization();
+                    btn.state('toggled');
+                    infoboxUpdate(infoboxDataCached);
+                }
+            }, {
+                icon: lightIcon,
+                title: 'Light',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    var index = findIndexOfView("Light");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        redrawVisualization();
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
