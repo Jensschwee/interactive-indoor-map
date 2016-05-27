@@ -292,53 +292,6 @@ function CreateViewButtons() {
         position: 'topright'
     }).addTo(geoMap);
 
-    var toggleLuxButton = L.easyButton({
-        id: 'easy-button',
-        states: [
-            {
-                icon: lightIcon,
-                title: 'Lux',
-                stateName: 'detoggled',
-                onClick: function (btn) {
-                    if (ActiveViews.length === activeViewsMax)
-                        ActiveViews[0].button.button.click();
-                    var luxObj = {
-                        name: "Lux",
-                        color: LightColor,
-                        icon: lightIcon,
-                        value: 'Lux',
-                        max: 'MaxLux',
-                        average: "AverageLux",
-                        maxObserved: "MaxObservedLux",
-                        minObserved: "MinObservedLux",
-                        button: toggleLuxButton
-                    };
-                    btn.button.style.backgroundColor = LightColor;
-                    ActiveViews.push(luxObj);
-                    redrawVisualization();
-                    btn.state('toggled');
-                    infoboxUpdate(infoboxDataCached);
-                }
-            }, {
-                icon: lightIcon,
-                title: 'Lux',
-                stateName: 'toggled',
-                onClick: function (btn) {
-                    var index = findIndexOfView("Lux");
-                    if (index !== notContained) {
-                        ActiveViews.splice(index, 1);
-                        redrawVisualization();
-
-                        btn.button.style.backgroundColor = 'white';
-                        btn.state('detoggled');
-                        infoboxUpdate(infoboxDataCached);
-                    }
-                }
-            }
-        ],
-        position: 'topright'
-    }).addTo(geoMap);
-
     var toggleLightButton = L.easyButton({
         id: 'easy-button',
         states: [
@@ -374,6 +327,53 @@ function CreateViewButtons() {
                     if (index !== notContained) {
                         ActiveViews.splice(index, 1);
                         redrawVisualization();
+                        btn.button.style.backgroundColor = 'white';
+                        btn.state('detoggled');
+                        infoboxUpdate(infoboxDataCached);
+                    }
+                }
+            }
+        ],
+        position: 'topright'
+    }).addTo(geoMap);
+
+    var toggleLuxButton = L.easyButton({
+        id: 'easy-button',
+        states: [
+            {
+                icon: luxIcon,
+                title: 'Lux',
+                stateName: 'detoggled',
+                onClick: function (btn) {
+                    if (ActiveViews.length === activeViewsMax)
+                        ActiveViews[0].button.button.click();
+                    var luxObj = {
+                        name: "Lux",
+                        color: LightColor,
+                        icon: luxIcon,
+                        value: 'Lux',
+                        max: 'MaxLux',
+                        average: "AverageLux",
+                        maxObserved: "MaxObservedLux",
+                        minObserved: "MinObservedLux",
+                        button: toggleLuxButton
+                    };
+                    btn.button.style.backgroundColor = LightColor;
+                    ActiveViews.push(luxObj);
+                    redrawVisualization();
+                    btn.state('toggled');
+                    infoboxUpdate(infoboxDataCached);
+                }
+            }, {
+                icon: luxIcon,
+                title: 'Lux',
+                stateName: 'toggled',
+                onClick: function (btn) {
+                    var index = findIndexOfView("Lux");
+                    if (index !== notContained) {
+                        ActiveViews.splice(index, 1);
+                        redrawVisualization();
+
                         btn.button.style.backgroundColor = 'white';
                         btn.state('detoggled');
                         infoboxUpdate(infoboxDataCached);
