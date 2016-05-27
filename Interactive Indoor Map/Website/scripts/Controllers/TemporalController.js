@@ -1,4 +1,4 @@
-﻿function TemporalDateRangePicker() {
+﻿function temporalDateRangePicker() {
     $("#DRP").hide();
 
     $(function () {
@@ -6,7 +6,7 @@
             drops: "up",
             opens: "left",
             timePicker24Hour: true,
-            pick12HourFormat: false,            
+            pick12HourFormat: false,
             linkedCalendars: false,
             timePicker: true,
             timePickerIncrement: 15,

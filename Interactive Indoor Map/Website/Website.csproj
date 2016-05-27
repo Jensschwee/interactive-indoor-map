@@ -125,6 +125,7 @@
     <Content Include="Images\hardwarePowerIcon.png" />
     <Content Include="Images\lightIcon.png" />
     <Content Include="Images\lightPowerIcon.png" />
+    <Content Include="Images\luxIcon.png" />
     <Content Include="Images\motionIcon.png" />
     <Content Include="Images\occupantsIcon.png" />
     <Content Include="Images\otherPowerIcon.png" />

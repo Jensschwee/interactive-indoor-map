@@ -35,19 +35,11 @@ namespace Website.DAL.ExternalData
             return sendHTTPPost(ENDPOINT, sb.ToString()).Readings[0][1];
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="uuid"></param>
-        /// <param name="limit">
-        /// The number of reading returned
-        /// </param>
-        /// <returns></returns>
-        public double GetCurrentHourlyUse(string uuid, int limit = 2)
+        public double GetCurrentHourlyUse(string uuid, int readingsLimit = 2)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select data before now ");
-            sb.Append("limit " + limit);
+            sb.Append("limit " + readingsLimit);
             sb.Append(" where uuid = ");
             sb.Append("'" + uuid + "'");
             SMapSensorReading reading = sendHTTPPost(ENDPOINT, sb.ToString());

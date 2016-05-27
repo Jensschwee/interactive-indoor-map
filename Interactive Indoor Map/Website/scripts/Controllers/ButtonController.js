@@ -4,6 +4,7 @@ var notContained = -1;
 var TemperatureColor = "#1a53ff";  //"#8ab1c4"
 var CO2Color = "#4d79ff"; //"#c7b7ea"
 var LightColor = "#ffe11d"; //"#ffe11d"
+var LuxColor = "#ffeb66";
 var MotionDetectionColor = "#009933"; //"#b2d649"
 var WifiClientsColor = "#00cc44"; //"#83bd1a"
 var OccupantsColor = "#1aff66"; //"#2ecc71"
@@ -182,6 +183,7 @@ function CreateViewButtons() {
     var temperatureIcon = createIconForButton("Images/temperatureIcon.png");
     var co2Icon = createIconForButton("Images/co2Icon.png");
     var lightIcon = createIconForButton("Images/lightIcon.png");
+    var luxIcon = createIconForButton("Images/luxIcon.png");
     var totalConsumptionIcon = createIconForButton("Images/totalPowerIcon.png");
     var hardwareConsumptionIcon = createIconForButton("Images/hardwarePowerIcon.png");
     var lightConsumptionIcon = createIconForButton("Images/lightPowerIcon.png");

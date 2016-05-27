@@ -47,7 +47,7 @@ function InitLeafletMap(jsonMap) {
     function drawButtons() {
         CreateSpatialButtons();
         CreateTemporalButtons();
-        TemporalDateRangePicker();
+        temporalDateRangePicker();
         CreateViewButtons();
         buildingButton.button.click();
     }
