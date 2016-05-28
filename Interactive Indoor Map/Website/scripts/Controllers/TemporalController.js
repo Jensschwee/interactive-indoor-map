@@ -18,6 +18,8 @@
     });
 
     $('#daterangepicker').on('apply.daterangepicker', function (ev, picker) {
+        temporalActive = true;
+        clearSelctedRooms();
         getTemporalData();
     });
 }
