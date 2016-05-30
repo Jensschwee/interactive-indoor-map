@@ -144,6 +144,7 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
                     weight: "2px" //Border thickness
                 }
             }).addTo(geoMap).bringToFront();
+            roomForegroundLayer.bringToFront();
         }
     }
 
@@ -162,8 +163,6 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
             }
         }).addTo(geoMap).bringToBack());
     }
-    if(linesOnMap != null)
-        linesOnMap.bringToBack();
     if (roomBackgroundLayer != null)
         roomBackgroundLayer.bringToBack();
 }

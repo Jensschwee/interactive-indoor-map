@@ -4,7 +4,7 @@ var notContained = -1;
 var TemperatureColor = "#1a53ff";  //"#8ab1c4"
 var CO2Color = "#4d79ff"; //"#c7b7ea"
 var LightColor = "#ffe11d"; //"#ffe11d"
-var LuxColor = "#ffeb66";
+var LuxColor = "#ffee80";
 var MotionDetectionColor = "#009933"; //"#b2d649"
 var WifiClientsColor = "#00cc44"; //"#83bd1a"
 var OccupantsColor = "#1aff66"; //"#2ecc71"
@@ -350,7 +350,7 @@ function CreateViewButtons() {
                         ActiveViews[0].button.button.click();
                     var luxObj = {
                         name: "Lux",
-                        color: LightColor,
+                        color: LuxColor,
                         icon: luxIcon,
                         value: 'Lux',
                         max: 'MaxLux',
@@ -359,7 +359,7 @@ function CreateViewButtons() {
                         minObserved: "MinObservedLux",
                         button: toggleLuxButton
                     };
-                    btn.button.style.backgroundColor = LightColor;
+                    btn.button.style.backgroundColor = LuxColor;
                     ActiveViews.push(luxObj);
                     redrawVisualization();
                     btn.state('toggled');
