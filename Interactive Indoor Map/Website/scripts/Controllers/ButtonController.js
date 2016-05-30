@@ -154,8 +154,8 @@ function CreateTemporalButtons() {
                 $("#DRP").show();
                 $("#daterangepicker").click();
                 btn.state('toggled');
-                temporalActive = true;
-                roomArray = [];
+                clearSelctedRooms();
+                infoboxUpdate(infoboxDataCached);
             }
         }, {
             stateName: 'toggled',
@@ -166,7 +166,8 @@ function CreateTemporalButtons() {
                $("#DRP").hide();
                btn.state('detoggled');
                temporalActive = false;
-               roomArray = [];
+               clearSelctedRooms();
+               infoboxUpdate(infoboxDataCached);
             }
         }]
     }).addTo(geoMap);
