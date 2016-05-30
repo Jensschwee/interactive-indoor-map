@@ -422,7 +422,7 @@ function getTemporalSensorValuesInfoBox(sensorData) {
         html += '<tr><td class="tg-yw4l"><b>Ventilation Consumption</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedVentilationConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.AverageVentilationConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.MaxObservedVentilationConsumption.toFixed(2) + ' kWh </td></tr>';
     }
     if (findIndexOfView('OtherConsumption') !== notContained) {
-        html += '<tr><td class="tg-yw4l"><b>Average Other Consumption</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedOtherConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.AverageOtherConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.MaxObservedOtherConsumption.toFixed(2) + ' kWh </td></tr>';
+        html += '<tr><td class="tg-yw4l"><b>Other Consumption</b></td><td class="tg-yw4l"> ' + sensorData.MinObservedOtherConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.AverageOtherConsumption.toFixed(2) + ' kWh </td><td class="tg-yw4l"> ' + sensorData.MaxObservedOtherConsumption.toFixed(2) + ' kWh </td></tr>';
     }
 
     if (findIndexOfFloorView('WaterConsumption') !== notContained) {

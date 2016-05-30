@@ -15,7 +15,7 @@ namespace Website.Logic.BO.Rooms
         public double SurfaceArea { get; set; }
 
         public double MaxTemperature = 30;
-        public double MinTemperature = 0;
+        public double MinTemperature = 5;
 
         public int MaxCO2 = 1500;
         public int MinCO2 = 200;
