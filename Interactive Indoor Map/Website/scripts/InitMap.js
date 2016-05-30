@@ -19,10 +19,10 @@ var roomInfoboxActive = false;
 function createWorldMap() {
     //Setup the world map
     var worldMap = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-        minZoom: 17,
+        minZoom: 16,
         zoom: 19,
         maxZoom: 20,
-        maxNativeZoom: 19,
+        maxNativeZoom: 22,
         subdomains:['mt0','mt1','mt2','mt3'],
         attribution: 'Map data &copy; Google maps</a>'
      });
@@ -61,10 +61,10 @@ function initMapSettings(geojson) {
     //Finds the div for the map to draw in
     geoMap = L.map('map', {
         zoomControl: false,
-        minZoom: 17,
+        minZoom: 16,
         maxZoom: 20,
         zoom: 19,
-        maxNativeZoom: 19,
+        maxNativeZoom: 22,
         doubleClickZoom: 'center',
         scrollWheelZoom: 'center'
     }).fitBounds(geojson.getBounds());
