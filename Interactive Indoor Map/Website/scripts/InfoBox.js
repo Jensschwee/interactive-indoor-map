@@ -78,16 +78,6 @@ function drawBuildingInfoBox() {
 function drawFloorInfobox() {
     roomInfoboxActive = false;
 
-    infoBox.update = function (props) {
-        this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
-            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
-            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
-            getTemporalDate() +
-            '<table class="tg">' +
-            props.HTML +
-            '</table></div></span>'
-            : '') + '</div>';
-    };
     var floorInfoBox = function () {
         if (!temporalActive) {
             PageMethods.DrawFloorInfobox(currentFloorLevel, onSuccess);
@@ -109,23 +99,34 @@ function drawFloorInfobox() {
             }
         }
     };
-    var infoboxFloorUpdate = function (json) {
-        var floorInfo = {
-            Name: json.Name,
-            SurfaceArea: json.SurfaceArea,
-            NumberOfRooms: json.NumberOfRooms,
-            HTML: ""
-        };
-        if (!temporalActive) {
-            floorInfo.HTML = getLiveSensorValuesInfoBox(json);
-        } else {
-            floorInfo.HTML = getTemporalSensorValuesInfoBox(json);
-        }
-        infoBox.update(floorInfo);
-    }
     infoboxUpdate = infoboxFloorUpdate;
     infoboxDataUpdate = floorInfoBox;
     infoboxDataUpdate();
+}
+
+function infoboxFloorUpdate(json) {
+    infoBox.update = function (props) {
+        this._div.innerHTML = '<div class="info" id="InfoBox"> <h4>Floor data</h4>' + (props ?
+            '<span style="line-height:100%"><b>Floor Level</b>: ' + props.Name + "</br>" +
+            '<b>Surface Area:</b> ' + props.SurfaceArea + ' m<sup>2</sup>' +
+            getTemporalDate() +
+            '<table class="tg">' +
+            props.HTML +
+            '</table></div></span>'
+            : '') + '</div>';
+    };
+    var floorInfo = {
+        Name: json.Name,
+        SurfaceArea: json.SurfaceArea,
+        NumberOfRooms: json.NumberOfRooms,
+        HTML: ""
+    };
+    if (!temporalActive) {
+        floorInfo.HTML = getLiveSensorValuesInfoBox(json);
+    } else {
+        floorInfo.HTML = getTemporalSensorValuesInfoBox(json);
+    }
+    infoBox.update(floorInfo);
 }
 
 function drawRoomInfo() {
@@ -154,7 +155,7 @@ function onEachFeature(feature, layer) {
 
 function drawSelectedRoomInfoBox() {
     if (roomArray.length === 0) {
-        drawFloorInfobox();
+        infoboxFloorUpdate(infoboxDataCached);
     }
     else if (colletionOfRoomsOnMap === null) {
         return;
