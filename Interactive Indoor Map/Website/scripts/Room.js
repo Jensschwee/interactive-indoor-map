@@ -12,6 +12,7 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
     }
     if (linesOnMap != null) {
         geoMap.removeLayer(linesOnMap);
+        linesOnMap = null;
     }
     if (averageTemporalLineOnMap != null) {
         geoMap.removeLayer(averageTemporalLineOnMap);
