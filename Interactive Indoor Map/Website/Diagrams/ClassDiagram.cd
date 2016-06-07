@@ -1,38 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Website.DAL.ExternalData.SMAP" Collapsed="true">
-    <Position X="11.5" Y="11.5" Width="1.5" />
+  <Class Name="Website.DAL.ExternalData.SMAP">
+    <Position X="26.5" Y="23.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAABAAAgCACAAAAEAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>DAL\ExternalData\SMAP.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.DAL.Persistence.BuildingDbContext" Collapsed="true">
-    <Position X="13.25" Y="1" Width="1.5" />
+    <Position X="34.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAEAAAEAAIAAAAAAABAAAQAAAAAg=</HashCode>
       <FileName>DAL\Persistence\BuildingDbContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.DAL.Persistence.BuildingDAL" Collapsed="true">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+  <Class Name="Website.DAL.Persistence.BuildingDAL">
+    <Position X="31.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAIAAAAQAAAAAAAAAAUAAAAAAAAIAAABCAAAAIAAI=</HashCode>
       <FileName>DAL\Persistence\BuildingDAL.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Buildings.Building" Collapsed="true">
-    <Position X="13.5" Y="5.25" Width="1.5" />
-    <AssociationLine Name="Endpoints" Type="Website.Logic.BO.Utility.Endpoints" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="13.5" Y="5.445" />
-        <Point X="12.688" Y="5.445" />
-        <Point X="12.688" Y="3.062" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="-1.128" Y="0.098" Height="0.182" Width="0.967" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="Website.Logic.BO.Buildings.Building">
+    <Position X="18.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAEAgEAAmAAgwANQAAAQAkAAACAEAAAAgIIAAAAA=</HashCode>
       <FileName>Logic\BO\Buildings\Building.cs</FileName>
@@ -44,46 +34,36 @@
       <Property Name="Floors" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Website.Logic.BO.Buildings.LiveBuilding" Collapsed="true">
-    <Position X="14.5" Y="6.5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Buildings.LiveBuilding">
+    <Position X="19.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAAmBAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Buildings\LiveBuilding.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Buildings.TemporalBuilding" Collapsed="true">
-    <Position X="12.25" Y="6.5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Buildings.TemporalBuilding">
+    <Position X="17.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BiAICUCABEAhEIcEgCQ8ElUBgCQCECAAAgAAAAAAEAI=</HashCode>
+      <HashCode>BigICUCABEAhEIcEgCQ8ElUBgCwCECAACgAAAQAEEAI=</HashCode>
       <FileName>Logic\BO\Buildings\TemporalBuilding.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Floors.LiveFloor" Collapsed="true">
-    <Position X="7.5" Y="7.25" Width="1.5" />
+  <Class Name="Website.Logic.BO.Floors.LiveFloor">
+    <Position X="12.5" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAAmBAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Floors\LiveFloor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Floors.TemporalFloor" Collapsed="true">
-    <Position X="9.75" Y="7.25" Width="1.5" />
+  <Class Name="Website.Logic.BO.Floors.TemporalFloor">
+    <Position X="14.75" Y="18.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BiAICUSABEAhEIcEgCQ8ElUDgAQCECAAAgAAAAAAEAI=</HashCode>
+      <HashCode>BigICUSABEAhEIcEgCQ8ElUDgAwCECAACgAAAQAEEAI=</HashCode>
       <FileName>Logic\BO\Floors\TemporalFloor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Floors.Floor" Collapsed="true">
-    <Position X="8.75" Y="6" Width="1.5" />
-    <AssociationLine Name="Endpoints" Type="Website.Logic.BO.Utility.Endpoints" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="10.25" Y="6.094" />
-        <Point X="11.562" Y="6.094" />
-        <Point X="11.562" Y="3.062" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="0.098" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="Website.Logic.BO.Floors.Floor">
+    <Position X="13.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAACAEAgEAAmAAAxANQAAAACkAAACAEAAAAhoIAAAEo=</HashCode>
       <FileName>Logic\BO\Floors\Floor.cs</FileName>
@@ -95,22 +75,8 @@
       <Property Name="Rooms" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Website.Logic.BO.Rooms.SensorRoom" Collapsed="true">
-    <Position X="8.75" Y="3" Width="1.5" />
-    <AssociationLine Name="Endpoints" Type="Website.Logic.BO.Utility.Endpoints" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="10.25" Y="3.408" />
-        <Point X="10.625" Y="3.408" />
-        <Point X="10.625" Y="2.75" />
-        <Point X="11.25" Y="2.75" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Corners" Type="Website.Logic.BO.Utility.Corners" FixedToPoint="true">
-      <Path>
-        <Point X="9.812" Y="3" />
-        <Point X="9.812" Y="1.562" />
-      </Path>
-    </AssociationLine>
+  <Class Name="Website.Logic.BO.Rooms.SensorRoom">
+    <Position X="8.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAEAgEAAmAAAxAEQAAGAAAAAAKAAgAAAhoIAAAEI=</HashCode>
       <FileName>Logic\BO\Rooms\SensorRoom.cs</FileName>
@@ -120,17 +86,8 @@
       <Property Name="Corners" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.BO.Rooms.SensorlessRoom" Collapsed="true">
-    <Position X="6.75" Y="3.25" Width="1.5" />
-    <InheritanceLine Type="Website.Logic.BO.Rooms.Room" FixedToPoint="true">
-      <Path>
-        <Point X="7.25" Y="1.562" />
-        <Point X="7.25" Y="1.937" />
-        <Point X="6.375" Y="1.937" />
-        <Point X="6.375" Y="3.563" />
-        <Point X="6.75" Y="3.563" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="Website.Logic.BO.Rooms.SensorlessRoom">
+    <Position X="22.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\SensorlessRoom.cs</FileName>
@@ -139,13 +96,8 @@
       <Property Name="Coordinates" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Website.Logic.BO.Rooms.Room" Collapsed="true">
-    <Position X="6.5" Y="1" Width="1.5" />
-    <AssociationLine Name="RoomType" Type="Website.Logic.BO.Rooms.RoomType">
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.058" Y="0.067" Height="0.182" Width="1.033" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="Website.Logic.BO.Rooms.Room">
+    <Position X="12.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\Room.cs</FileName>
@@ -154,36 +106,36 @@
       <Property Name="RoomType" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.BO.Rooms.LiveRoom" Collapsed="true">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Rooms.LiveRoom">
+    <Position X="7.5" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAABAAAAEAAAAAAAAADgAAACBAAAAAAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Rooms\LiveRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Rooms.TemporalRoom" Collapsed="true">
-    <Position X="9.75" Y="4.5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Rooms.TemporalRoom">
+    <Position X="9.75" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAIAUCABEAhAIcEgCQ8AkUBgAQCACAAAoAAAAAAEAI=</HashCode>
       <FileName>Logic\BO\Rooms\TemporalRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Utility.Coordinates" Collapsed="true">
-    <Position X="5.75" Y="4.75" Width="1.5" />
+  <Class Name="Website.Logic.BO.Utility.Coordinates">
+    <Position X="25.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQCAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\Coordinates.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Utility.Corners" Collapsed="true">
-    <Position X="8.75" Y="1" Width="1.5" />
+  <Class Name="Website.Logic.BO.Utility.Corners">
+    <Position X="5.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABACSAAAAIAAAAAAAAAIAEAQAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Logic\BO\Utility\Corners.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.BO.Utility.Endpoints" Collapsed="true">
-    <Position X="11.25" Y="2.5" Width="1.5" />
+  <Class Name="Website.Logic.BO.Utility.Endpoints">
+    <Position X="15.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACCAAAEAAAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\Endpoints.cs</FileName>
@@ -193,21 +145,21 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Website.Logic.BO.Utility.SMapSensorReading" Collapsed="true">
-    <Position X="15" Y="1" Width="1.5" />
+    <Position X="36" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\SMapSensorReading.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Website.Logic.BO.Utility.TemporalSummary" Collapsed="true">
-    <Position X="13.25" Y="2" Width="1.5" />
+    <Position X="34.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Logic\BO\Utility\TemporalSummary.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Domain.BuildingSetup" Collapsed="true">
-    <Position X="13.5" Y="4.5" Width="1.5" />
+  <Class Name="Website.Logic.Domain.BuildingSetup">
+    <Position X="28.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>UsAoPMkMAKJIAAIGAgiCwgQkgwBs4RkAFAD41jJgDyE=</HashCode>
       <FileName>Logic\Domain\BuildingSetup.cs</FileName>
@@ -217,14 +169,8 @@
       <Field Name="buildingDAL" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Domain.Facade" Collapsed="true">
-    <Position X="11.5" Y="10.5" Width="1.5" />
-    <AssociationLine Name="liveJsonLiveConverter" Type="Website.Logic.Domain.LiveJsonConverter" FixedFromPoint="true">
-      <Path>
-        <Point X="12.25" Y="10.5" />
-        <Point X="12.25" Y="9.191" />
-      </Path>
-    </AssociationLine>
+  <Class Name="Website.Logic.Domain.Facade">
+    <Position X="17.5" Y="22.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAUAAAAAEgAAAAAAAAAAACBAAAAAQAABABBAAAA=</HashCode>
       <FileName>Logic\Domain\Facade.cs</FileName>
@@ -234,22 +180,22 @@
       <Field Name="liveJsonLiveConverter" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Domain.JsonConverter" Collapsed="true">
-    <Position X="13.25" Y="7.5" Width="1.5" />
+  <Class Name="Website.Logic.Domain.JsonConverter">
+    <Position X="22" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAABEQAAQAAIAAAAIBAAAEAIAIAEAAAAAAAEAAAAA=</HashCode>
       <FileName>Logic\Domain\JsonConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Domain.LiveJsonConverter" Collapsed="true">
-    <Position X="11.5" Y="8.5" Width="1.5" />
+  <Class Name="Website.Logic.Domain.LiveJsonConverter">
+    <Position X="20.5" Y="20" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAgAAAAAAAAAAAABAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Logic\Domain\LiveJsonConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Domain.LiveSMapManager" Collapsed="true">
-    <Position X="11.25" Y="12.5" Width="1.5" />
+  <Class Name="Website.Logic.Domain.LiveSMapManager">
+    <Position X="29.5" Y="23.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAIAAAEBgAABACBABAAgAAAAAAAAAgAAAQ=</HashCode>
       <FileName>Logic\Domain\LiveSMapManager.cs</FileName>
@@ -259,8 +205,8 @@
       <Field Name="smapDal" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Domain.RealTimeUpdater" Collapsed="true">
-    <Position X="15.25" Y="3.25" Width="1.5" />
+  <Class Name="Website.Logic.Domain.RealTimeUpdater">
+    <Position X="22.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MEQIABAAAAAgCAAAAYAgAhAAgBAAAFAAAAAQAAABAAA=</HashCode>
       <FileName>Logic\Domain\RealTimeUpdater.cs</FileName>
@@ -269,15 +215,15 @@
       <Field Name="building" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Domain.TemporalJsonConverter" Collapsed="true">
-    <Position X="14.25" Y="8.5" Width="2" />
+  <Class Name="Website.Logic.Domain.TemporalJsonConverter">
+    <Position X="22.75" Y="20" Width="2" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\Domain\TemporalJsonConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Domain.TemporalManager" Collapsed="true">
-    <Position X="14.5" Y="10.5" Width="1.5" />
+  <Class Name="Website.Logic.Domain.TemporalManager">
+    <Position X="20.5" Y="23.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAACAAAAAEAAEAIAEAAAAACACAAAAAAAhAgAAAAA=</HashCode>
       <FileName>Logic\Domain\TemporalManager.cs</FileName>
@@ -287,14 +233,8 @@
       <Field Name="temporalJsonConverter" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Domain.TemporalSMapManager" Collapsed="true">
-    <Position X="14.25" Y="11.5" Width="2" />
-    <AssociationLine Name="smapDal" Type="Website.DAL.ExternalData.SMAP" FixedToPoint="true">
-      <Path>
-        <Point X="14.25" Y="11.812" />
-        <Point X="13" Y="11.812" />
-      </Path>
-    </AssociationLine>
+  <Class Name="Website.Logic.Domain.TemporalSMapManager">
+    <Position X="23.25" Y="23" Width="2" />
     <TypeIdentifier>
       <HashCode>ACABAAAEAAAAAAAIAEBCAAQQAIAABCQAAAAAIAAAAAQ=</HashCode>
       <FileName>Logic\Domain\TemporalSMapManager.cs</FileName>
@@ -304,15 +244,15 @@
       <Field Name="smapDal" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Website.Logic.Helpers.DateConverter" Collapsed="true">
-    <Position X="14.5" Y="13.5" Width="1.5" />
+  <Class Name="Website.Logic.Helpers.DateConverter">
+    <Position X="20.5" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Logic\Helpers\DateConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Website.Logic.Helpers.TemporalSummaryCalculator" Collapsed="true">
-    <Position X="14.25" Y="12.5" Width="2.25" />
+  <Class Name="Website.Logic.Helpers.TemporalSummaryCalculator">
+    <Position X="20" Y="27.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -325,21 +265,21 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Website.Logic.Helpers.TemporalValidator" Collapsed="true">
-    <Position X="15" Y="2" Width="1.5" />
+    <Position X="36" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\Helpers\TemporalValidator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Website.Logic.BO.Rooms.RoomType" Collapsed="true">
-    <Position X="11.25" Y="0.75" Width="1.5" />
+  <Enum Name="Website.Logic.BO.Rooms.RoomType">
+    <Position X="12.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAQAgAAAEIAgAgAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Logic\BO\Rooms\Room.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Website.Logic.BO.Utility.SensorType" Collapsed="true">
-    <Position X="11.25" Y="1.5" Width="1.5" />
+  <Enum Name="Website.Logic.BO.Utility.SensorType">
+    <Position X="15.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAgAAABAAAEgAACAAEAAEgAAACAAAAAgAAAACAAEAAA=</HashCode>
       <FileName>Logic\BO\Utility\SensorType.cs</FileName>

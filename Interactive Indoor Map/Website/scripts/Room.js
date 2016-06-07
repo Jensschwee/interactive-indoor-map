@@ -163,6 +163,8 @@ function splitRoomsIntoBarchart(colletionOfRooms) {
             }
         }).addTo(geoMap).bringToBack());
     }
+    if (linesOnMap != null)
+        linesOnMap.bringToBack();
     if (roomBackgroundLayer != null)
         roomBackgroundLayer.bringToBack();
 }
